@@ -1,74 +1,62 @@
 <h1 align="center">Billel Helali</h1>
+
 <p align="center">
-  Senior Fullstack Engineer (TypeScript / Python) building production AI products, data systems, and high-performance web apps.
+  <strong>Senior Fullstack AI Engineer — B2B SaaS, LLM systems & agentic workflows</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/billel-helali-b7a07316b/">LinkedIn</a>
+  I design and ship production AI products end to end: architecture, frontend, APIs, data, cloud, testing and observability.
+</p>
+
+<p align="center">
+  <a href="https://lumelia.io">Lumelia</a>
   ·
-  <a href="mailto:billel.helali@gmail.com">Email</a>
+  <a href="https://www.linkedin.com/in/billel-lumelia/">LinkedIn</a>
   ·
   <a href="https://www.pixellight.app/">PixelLight</a>
+  ·
+  <a href="mailto:billel.helali@gmail.com">Email</a>
 </p>
 
 ---
 
-## About
+## What I deliver
 
-I build software end-to-end: product architecture, backend systems, frontend UX, and deployment.
+- **Production LLM features and agentic workflows** with structured outputs, multi-model routing, fallbacks, cost control and monitoring
+- **Fullstack B2B SaaS products** using React, Vue 3, Next.js, TypeScript, Node.js and Python
+- **Reliable APIs and data systems** with PostgreSQL, asynchronous processing and AWS
+- **Senior product reinforcement** for architecture, performance, technical debt, testing and delivery
 
-My focus:
-- AI-enabled products (LLMs, agent workflows, generation pipelines)
-- Fullstack SaaS engineering (React/TypeScript + Python/Node)
-- Data & analytics infrastructure (event pipelines, attribution, reporting)
-- Reliable delivery (testing, CI/CD, maintainable architecture)
+I build measurable, maintainable product capabilities—not demo-only chatbots.
 
----
+## Selected engineering work
 
-## What I Build
+### [BBTA SaaS](https://github.com/bilLkarkariy/bbta-saas)
 
-- **AI product features** that move business metrics (not demo-only AI)
-- **Complex internal tools** with clean UX and strong data integrity
-- **Data pipelines** that reconcile large, messy sources into usable systems
-- **Automation systems** for outbound, qualification, and operational workflows
+Multi-tenant WhatsApp AI SaaS built with Next.js, PostgreSQL, Prisma and Twilio. Includes LLM intent routing, structured conversation flows, real-time updates, CI and automated tests.
 
----
+### [AgentFlow](https://github.com/bilLkarkariy/AgentFlow)
 
-## Selected Projects
+Platform for building, running and observing agentic workflows. NestJS and React applications, Python workers, BullMQ, PostgreSQL and OpenTelemetry.
 
-### PixelLight (SaaS) — AI creative generation
-- Built a production SaaS to generate high-conversion visual assets
-- Designed agent-style generation workflows and prompt pipelines
-- Implemented fullstack architecture: React/TypeScript frontend + Python backend
+### [LeadMagnetAI](https://github.com/bilLkarkariy/LeadMagnetAI)
 
-### Renov Ops — outbound and reply automation engine
-- Built a complete ops system for lead enrichment, email generation, queueing, and reply handling
-- Added quality gates, safety guardrails, and seed-only/prod controls
-- Stack: Python, SQLite, Streamlit, SendGrid APIs, LLM-based writer/verifier flows
+Fullstack AI content platform with an `Analyst → Stylist → Builder → Critic` workflow, checkpoints, quality loops and recovery paths.
 
-### AssurTech Data Platform (Seyna)
-- Designed and delivered data-heavy API/services and ingestion pipelines
-- Worked on serverless services and asynchronous processing at scale
-- Improved reliability and maintainability for business-critical workflows
+### [PixelLight](https://www.pixellight.app/)
 
-### SaaS Frontend Rebuild (Daspren)
-- Led a full frontend rebuild with Vue 3 + TypeScript
-- Migrated from high debt to modular architecture
-- Improved performance, UX consistency, and release quality
+Production SaaS for AI image generation and editing, with multi-provider workflows, usage credits and operational monitoring.
 
----
+## Recent client impact
 
-## Engineering Principles
+- **Seyna** — Node.js/Python APIs and an AWS data pipeline processing more than 5 million records per month
+- **Daspren** — complete Vue 3/TypeScript SaaS frontend rebuild
+- **Arcane** — Tech Lead across React/TypeScript applications and Python microservices
 
-- Clear architecture over short-term hacks  
-- Measurable outcomes over feature volume  
-- Fast iteration with strong guardrails  
-- Production quality from day one  
+## Core stack
 
----
+`TypeScript` · `Python` · `React` · `Vue 3` · `Next.js` · `Node.js` · `PostgreSQL` · `AWS` · `LLM systems` · `Agentic workflows`
 
-## Current Focus
+## Work with me
 
-- AI agents in real production workflows
-- Fullstack product missions (freelance/contract)
-- Data-intensive systems with business impact
+Available for senior B2B freelance and contract missions through my SASU, remote across France/Europe with occasional hybrid work in Paris.
