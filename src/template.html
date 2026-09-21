@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Le laboratoire interactif de Billel Helali. Explorez quatre principes de l’ingénierie IA agentique : preuve, orchestration, validation humaine et fiabilité.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>Billel Helali — Agent Lab</title>
+  <style>/*__CSS__*/</style>
+</head>
+<body>
+<a class="skip" href="#labo">Aller au laboratoire</a>
+<div class="page">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Billel Helali, accueil"><span class="monogram">bh<span>.</span></span><span>BILLEL HELALI<small>INGÉNIEUR IA AGENTIQUE</small></span></a>
+    <nav aria-label="Navigation principale"><a href="#projets">Les projets <span>↗</span></a><a class="contact" href="mailto:billel.helali@gmail.com">Parlons de votre projet <span>↗</span></a></nav>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="headline">
+      <div><div class="eyebrow"><span class="dot"></span> LE PORTFOLIO QUI SE JOUE</div><h1 id="headline">Des agents.<br><em>Pas des promesses.</em></h1><p class="intro">Je construis des systèmes d’IA qui agissent, vérifient<br class="desktop-br"> et savent quand s’arrêter. Entrez dans le labo.</p><a class="hero-cta" id="enter-lab" href="#labo">Explorer le labo <span>↓</span></a></div>
+      <aside class="hero-note"><span class="note-index">LA RÈGLE DU JEU / 01</span><p>Une sortie n’est fiable<br>que si l’on peut<br><strong>la vérifier.</strong></p><div class="note-bottom">4 stations · 4 défis d’ingénierie<br>Quelques minutes pour explorer mon travail.</div></aside>
+    </section>
+    <section id="labo" class="lab" aria-label="Laboratoire interactif">
+      <div class="lab-top"><div class="lab-title"><span class="lab-icon">⌘</span><strong>AGENT LAB</strong><span class="version">v1.0</span></div><div class="lab-meta"><span class="local-badge"><span class="dot"></span> SIMULATION LOCALE</span><button id="motion" class="icon-btn" aria-pressed="false" aria-label="Mettre les animations en pause">Ⅱ <span>Pause</span></button><button id="reset" class="icon-btn" aria-label="Réinitialiser la progression du jeu">↺ <span>Rejouer</span></button></div></div>
+      <div class="lab-grid">
+        <div class="world-column">
+          <div class="scene" id="scene" tabindex="0" role="group" aria-label="Carte du laboratoire. Cliquez sur une station, ou déplacez-vous avec les flèches puis appuyez sur E." aria-describedby="world-help">
+            <canvas id="world" width="1000" height="620" aria-hidden="true"></canvas>
+            <div class="world-label">BILLEL’S WORKSPACE <span>/ 4 STATIONS</span></div>
+            <button class="station station-doksima" data-station="doksima" aria-pressed="true"><span class="station-top"><span class="station-number">01</span><span class="station-tag">EVIDENCE</span><span class="checkmark" aria-hidden="true">✓</span></span><span class="mini documents" aria-hidden="true"><span class="paper"><i></i><i></i><i></i><b>2 400</b></span><span class="paper"><i></i><i></i><i></i><b>2 700</b></span><span class="scan"></span></span><span class="station-name">Doksima <span>↗</span></span><span class="station-sub">Vérifier la preuve</span></button>
+            <button class="station station-agentflow" data-station="agentflow" aria-pressed="false"><span class="station-top"><span class="station-number">02</span><span class="station-tag">ORCHESTRATION</span><span class="checkmark" aria-hidden="true">✓</span></span><span class="mini mini-flow" aria-hidden="true"><i>↳</i><b></b><i>⌘</i><b></b><i>✓</i></span><span class="station-name">AgentFlow <span>↗</span></span><span class="station-sub">Reprendre sans perdre l’état</span></button>
+            <button class="station station-echotrust" data-station="echotrust" aria-pressed="false"><span class="station-top"><span class="station-number">03</span><span class="station-tag">HUMAN IN THE LOOP</span><span class="checkmark" aria-hidden="true">✓</span></span><span class="mini mini-chat" aria-hidden="true"><span>Un avis. Une réponse.<i></i><i></i></span><b>REVUE HUMAINE <strong>✓</strong></b></span><span class="station-name">EchoTrust <span>↗</span></span><span class="station-sub">Garder l’humain dans la boucle</span></button>
+            <button class="station station-pixellight" data-station="pixellight" aria-pressed="false"><span class="station-top"><span class="station-number">04</span><span class="station-tag">RESILIENCE</span><span class="checkmark" aria-hidden="true">✓</span></span><span class="mini mini-pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>A → B</span></span><span class="station-name">PixelLight <span>↗</span></span><span class="station-sub">Continuer malgré une panne</span></button>
+            <span class="scene-coordinates" aria-hidden="true">X <b id="coord-x">500</b> / Y <b id="coord-y">310</b></span>
+          </div>
+          <div class="world-bottom"><p id="world-help"><kbd>↑↓←→</kbd> ou <kbd>ZQSD</kbd> <span>se déplacer</span><kbd>E</kbd> <span>interagir</span></p><span class="click-hint">ou cliquez sur une station ↗</span></div>
+          <div class="touch-controls" aria-label="Déplacements tactiles"><button data-dir="ArrowLeft" aria-label="Aller à gauche">←</button><button data-dir="ArrowUp" aria-label="Aller en haut">↑</button><button data-dir="ArrowDown" aria-label="Aller en bas">↓</button><button data-dir="ArrowRight" aria-label="Aller à droite">→</button><button id="interact">Interagir</button></div>
+          <div class="progress-row"><div><span class="progress-title" id="progress-title">OBJECTIF : UNE RELEASE VÉRIFIÉE</span><div class="segments" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div><p><strong id="score">0 / 4</strong><span>stations validées</span></p></div>
+        </div>
+        <aside class="inspector" aria-labelledby="mission-name"><div class="inspector-label"><span id="mission-index">STATION 01</span><span id="mission-status">À EXPLORER</span></div><h2 id="mission-name">Doksima</h2><p class="mission-tagline" id="mission-tagline"></p><p class="mission-description" id="mission-description"></p><div class="exercise" id="exercise"></div><div class="trace-box"><div class="trace-head"><span>JOURNAL DE SIMULATION</span><span>●</span></div><ol id="trace" role="log" aria-live="polite" aria-relevant="additions"></ol></div><p class="simulation-note">Scénarios fictifs, exécutés dans votre navigateur.<br>Aucun appel à un modèle ou à un service externe.</p></aside>
+      </div>
+      <div id="success" class="success" hidden><span>✓</span><div><strong>Release sécurisée. Mission accomplie.</strong><p>Preuve, reprise, validation humaine, repli : quatre principes explorés.</p></div><a href="mailto:billel.helali@gmail.com">Construisons la suite ↗</a></div>
+    </section>
+    <noscript><p class="noscript">Activez JavaScript pour jouer. Les descriptions de projets ci-dessous restent accessibles sans JavaScript.</p></noscript>
+    <div class="after-lab"><span><span class="dot"></span> Pas de clé API. Pas de compte. Pas de tracking.</span><span>Le jeu illustre les principes. Les projets racontent le travail.</span></div>
+    <section id="projets" class="projects" aria-labelledby="projects-title"><div class="section-heading"><div><span class="eyebrow">DERRIÈRE LES STATIONS</span><h2 id="projects-title">Le jeu est une démo.<br>Le travail, lui, est réel.</h2></div><p>Une sélection de systèmes décrits dans mon parcours.<br>Les mini-jeux ne sont pas les applications de production.</p></div>
+      <div class="project-grid">
+        <article class="project-card"><div class="project-top"><span class="project-symbol c-green">⌑</span><span>01 / PREUVE & CONTRÔLE</span></div><h3>Doksima</h3><p>Détection de fraude documentaire. Les modèles localisent la preuve ; des contrôles déterministes vérifient l’arithmétique, les identifiants et la cohérence entre pièces. Sous le seuil de récupération, le système s’abstient.</p><div class="tags"><span>Preuves citées</span><span>Évaluation figée</span><span>Abstention</span></div><a href="mailto:billel.helali@gmail.com?subject=Doksima">Échanger sur le projet ↗</a></article>
+        <article class="project-card"><div class="project-top"><span class="project-symbol c-blue">⌘</span><span>02 / ORCHESTRATION & OBSERVABILITÉ</span></div><h3>AgentFlow</h3><p>Composition, exécution et observabilité de workflows agentiques. Des workers asynchrones exécutent les étapes, l’état est persisté et chaque appel est tracé.</p><div class="tags"><span>NestJS · React</span><span>Python · BullMQ</span><span>OpenTelemetry</span></div><a href="https://github.com/bilLkarkariy/AgentFlow" target="_blank" rel="noopener noreferrer">Voir le dépôt ↗</a></article>
+        <article class="project-card"><div class="project-top"><span class="project-symbol c-amber">≋</span><span>03 / GARDE-FOUS & VALIDATION HUMAINE</span></div><h3>EchoTrust</h3><p>Gestion des avis multi-établissements avec rédaction par LLM et validation humaine obligatoire. Serveur MCP à clés limitées par espace de travail, avec mode simulation sur le chemin d’écriture destructif.</p><div class="tags"><span>MCP</span><span>OAuth</span><span>Revue humaine</span></div><a href="mailto:billel.helali@gmail.com?subject=EchoTrust">Échanger sur le projet ↗</a></article>
+        <article class="project-card"><div class="project-top"><span class="project-symbol c-lilac">▧</span><span>04 / ROUTAGE & FIABILITÉ</span></div><h3>PixelLight</h3><p>Produit de contenu par IA avec routage multi-modèles côté serveur. Repli vers un autre fournisseur en cas d’incident, suivi des crédits et des coûts par appel.</p><div class="tags"><span>Multi-modèles</span><span>Repli fournisseur</span><span>Coûts par appel</span></div><a href="https://www.pixellight.app/" target="_blank" rel="noopener noreferrer">Découvrir le produit ↗</a></article>
+      </div>
+    </section>
+    <section class="closing"><span class="eyebrow">DU BESOIN À L’EXPLOITATION</span><h2>Un agent utile ne s’arrête<br>pas au démonstrateur.</h2><a class="hero-cta" href="mailto:billel.helali@gmail.com">Parlons de votre système <span>↗</span></a></section>
+  </main>
+  <footer><div class="footer-name">BILLEL HELALI <span>· Rennes, France</span></div><div><a href="https://github.com/bilLkarkariy" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/billel-lumelia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://lumelia.io" target="_blank" rel="noopener noreferrer">Lumelia ↗</a></div><details><summary>À propos de cette démo</summary><p>Ce laboratoire est une mise en scène pédagogique originale, inspirée du format « aperçu dans le README → jeu sur GitHub Pages ». Les montants, traces, pannes et crédits du jeu sont fictifs. Ils ne constituent ni des mesures de performance, ni des appels aux applications présentées. Descriptions des projets : CV de Billel Helali et README de son profil GitHub. La progression est stockée uniquement dans ce navigateur et peut être effacée avec « Rejouer ». Aucun code ni visuel du jeu de ChetasLua n’est repris.</p></details></footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>/*__JS__*/</script>
+</body>
+</html>
