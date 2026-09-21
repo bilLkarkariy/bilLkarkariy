@@ -1,0 +1,30 @@
+{
+  "browser": "Chromium 152.0.7977.0",
+  "passed_groups": 18,
+  "tests": [
+    "Doksima : écart recalculé, mauvais choix refusé, score idempotent",
+    "Doksima : concordance et pièce absente",
+    "AgentFlow : panne, checkpoint, reprise sans répéter le plan",
+    "EchoTrust : promesse bloquée, revue obligatoire, invalidation après modification",
+    "PixelLight : panne de A, repli B, budget respecté, mosaïque locale",
+    "PixelLight : budget insuffisant et fournisseur primaire disponible",
+    "Sauvegarde, restauration et réinitialisation avec doublure de stockage explicite",
+    "Changement de station : les anciens traitements asynchrones sont annulés",
+    "Déplacement au clavier et coordonnées mises à jour",
+    "Jeu utilisable même lorsque le stockage est indisponible",
+    "Stockage corrompu ou identifiants inconnus ignorés",
+    "Préférence de mouvement réduit et bouton de pause",
+    "Affichage et sélection des 4 stations à 320px, sans débordement horizontal",
+    "Affichage et sélection des 4 stations à 390px, sans débordement horizontal",
+    "Affichage et sélection des 4 stations à 768px, sans débordement horizontal",
+    "Affichage et sélection des 4 stations à 1024px, sans débordement horizontal",
+    "Affichage et sélection des 4 stations à 1440px, sans débordement horizontal",
+    "Aucune erreur JavaScript et aucune requête réseau durant les tests"
+  ],
+  "limits": [
+    "Rendu en mémoire via set_content ; pas de navigation file:// ou HTTP locale dans ce bac à sable.",
+    "Persistance testée avec une doublure explicite ; persistance native intersessions non testée ici.",
+    "Publication GitHub Pages et rendu réel du README non testés avant mise en ligne.",
+    "Pas de test Safari/Firefox ni d’audit complet d’accessibilité."
+  ]
+}
