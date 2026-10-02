@@ -822,7 +822,7 @@ ACTS.dance=(h,a,c)=>{const t=a.t,g=h.tg,n=a.beats||16,b=t/BEAT,bi=floor(b),q=b-b
 function noteFx(h){if(!h.M)return;const p=headTop(h);fx('note',p[0]+rnd(-1,1)*h.S*.5,p[1]-h.S*.1,{vx:rnd(-20,20),vy:rnd(-60,-35),life:1.4,size:h.S0/62,rot:rnd(-.3,.3)})}
 function doDance(beats){if(DANCE&&T<DANCE.until)return;interrupt();const n=beats||16;DANCE={at:T,until:T+n*BEAT,bi:-1};SFX('beat',{vol:.8,p:{n,bpm:60/BEAT}});
   for(const h of heads)if(!h.act||h.act.name!=='grabbed')setAct(h,'dance',{beats:n})}
-function discoPulse(){if(!DANCE)return;if(T>DANCE.until+.5){DANCE=null;return}const bi=floor((T-DANCE.at)/BEAT);
+function discoPulse(){if(!DANCE)return;if(T>DANCE.until+.5){DANCE=null;flashCol='255,255,255';return}const bi=floor((T-DANCE.at)/BEAT);
   if(bi!==DANCE.bi&&T<DANCE.until&&!(REDUCED&&!FILM)){DANCE.bi=bi;flash=max(flash,.2);flashCol=pick(['255,205,70','90,170,255','255,110,150','120,230,140'])}}
 // a party: paper hats, confetti, cheering
 ACTS.cheer=(h,a,c)=>{const t=a.t-(a.delay||0),g=h.tg;if(t<0)return false;const dur=a.dur||2.4,e=sin(PI*min(1,t/dur));
@@ -990,7 +990,7 @@ function frame(dt){T+=dt;runTimers();
   ctx.globalCompositeOperation='multiply';ctx.drawImage(paper,0,0,W,H);ctx.globalCompositeOperation='source-over';
   ctx.save();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle=grain;ctx.fillRect(0,0,W,H);ctx.restore();CAM.apply();
   if(FILM)FILM.overlay();
-  discoPulse();if(cheeseAt&&T>cheeseAt){flash=1;cheeseAt=0;SFX('shutter')}
+  discoPulse();if(cheeseAt&&T>cheeseAt){flash=1;flashCol='255,255,255';cheeseAt=0;SFX('shutter')}
   if(flash>0){ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='rgba('+flashCol+','+(flash*(REDUCED&&!FILM?.3:.9)).toFixed(3)+')';ctx.fillRect(0,0,W,H);flash-=dt*2.4}}
 function nameTag(h){const y=h.G?h.G.yB-h.S0*.22:h.by+h.S*1.9;SC=h.S0/62;BOIL=0;const s=h.S0*.17,w=textWidth(h.hero.name.toUpperCase(),s)+s*1.6;
   ctx.fillStyle=rgba(PAPER,.92);ctx.fillRect(h.bx-w/2,y-s*.95,w,s*1.9);ctx.fillStyle=INK;ink([[h.bx-w/2,y+s*.95],[h.bx+w/2,y+s*.95]],1,3);
