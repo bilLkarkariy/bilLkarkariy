@@ -6,15 +6,15 @@
   html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);overflow:hidden}
   canvas{display:block;width:100%;height:100%;cursor:pointer;touch-action:none}
   canvas.drag{cursor:grabbing}
-  #hud{position:fixed;left:20px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));right:20px;font:italic 13px/1.7 Georgia,'Times New Roman',serif;color:var(--ink);opacity:.7;pointer-events:none;user-select:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #hud{position:fixed;left:20px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));right:20px;font:italic 13px/1.7 Georgia,'Times New Roman',serif;color:var(--ink);opacity:.7;pointer-events:none;user-select:none;white-space:normal;overflow:hidden}
   #hud b{font-style:normal;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:11px;margin-right:10px}
   #hud kbd{font:600 10px/1 ui-monospace,Menlo,monospace;border:1px solid var(--ink);border-radius:3px;padding:1px 5px;margin:0 2px 0 8px;font-style:normal}
   #hud .snd{font-style:normal;font:600 10px/1 ui-monospace,Menlo,monospace;margin-left:10px;opacity:.8}
   @media (max-width:760px){#hud{font-size:11px;left:12px;right:12px;white-space:normal;line-height:1.5}#hud .k{display:none}}
 </style>
 <canvas id="c"></canvas>
-<div id="hud"><b>Head Cases: Heroes</b>every line is code &mdash; click a hero for their power, drag to turn a head<span class="k">
-  <kbd>W</kbd>wave <kbd>F</kbd>fly <kbd>S</kbd>sneeze <kbd>G</kbd>gossip <kbd>A</kbd>assemble <kbd>space</kbd>say cheese <kbd>M</kbd>sound</span><span class="snd">sound off</span></div>
+<div id="hud"><b>Head Cases: Heroes</b>every line is code &mdash; click for a power, drag to turn, flick to spin, wiggle to tickle<span class="k">
+  <kbd>W</kbd>wave <kbd>F</kbd>fly <kbd>S</kbd>sneeze <kbd>G</kbd>gossip <kbd>A</kbd>assemble <kbd>L</kbd>laugh <kbd>D</kbd>dance <kbd>P</kbd>party <kbd>Z</kbd>nap <kbd>space</kbd>say cheese <kbd>M</kbd>sound</span><span class="snd">sound off</span></div>
 <script>
 'use strict';
 /* ───────────────────────── 1. tiny maths ───────────────────────── */
@@ -800,6 +800,68 @@ function think(h,dt){const d=h.d,g=h.tg,e=h.ex,S=h.S;
 // sim-time timeouts (so a recorded film replays exactly)
 const TIMERS=[];function setTimeoutT(fn,dt){TIMERS.push({at:T+dt,fn})}
 function runTimers(){for(let i=TIMERS.length-1;i>=0;i--)if(T>=TIMERS[i].at){const f=TIMERS[i].fn;TIMERS.splice(i,1);f()}}
+/* ───────────────────────── 14b. mischief: contagious laughter, a dance, a party, a nap, tickles, flicks and spins ─────────────────────────
+   all of it runs on sim time and the seeded random stream, so the film replays every giggle exactly */
+const HA=['HA HA!','HAHAHA!','HEH HEH','HA!','HOO HOO!','HA HA HA'],CHEER=['HOORAY!','WOO!','YAY!','YEAH!','WHOOP!'],TICK=['HEE HEE!','TEE HEE','STOP IT!','THAT TICKLES!'],WAKE=['HUH?!','WHA-?','I\'M UP!','WHO? WHAT?'];
+const CONF=['#cf4a2e','#e9b93a','#2a4c96','#4f9a3c','#d85c9a'],BEAT=.46,LAUGHABLE=new Set(['nod','shake','talk','yawn','glance','look','laugh']);
+let NAP=null,DANCE=null;
+// laughter spreads head to head like the yawn does, only faster and louder
+ACTS.laugh=(h,a,c)=>{const t=a.t-(a.delay||0),g=h.tg;if(t<0)return false;const dur=a.dur||2.3,e=sin(PI*min(1,t/dur)),f=a.f||(a.f=rnd(12,16));
+  if(!a.k){a.k=1;SFX('laugh',{h,vol:.6,p:{n:3+floor(rand()*3),f0:rnd(280,520)*(h.hero.id==='hulk'||h.hero.id==='thor'?.6:1)}});
+    if(a.say)say(h,pick(HA),{shout:!a.gen,life:1.4,fs:a.gen?9.5:12,dy:-.1});
+    const gen=a.gen||0;if(gen<7)for(const o of near(h,1.5))if((!busy(o)||LAUGHABLE.has(o.act.name))&&!o.pending&&rand()<.92)o.pending={name:'laugh',at:T+rnd(.15,.4),data:{gen:gen+1,say:rand()<.3,dur:rnd(2,2.6)},force:true}}
+  g.happy=1;g.smile=1;g.mopen=.3+.3*abs(sin(t*f))*e;g.brow=.4;
+  c.pitchAdd=-.18*e+sin(t*f)*.09*e;c.rollAdd=sin(t*f*.5+h.seed)*.08*e;c.hop=abs(sin(t*f))*h.S*.07*e;c.gainMul=.3;return t>dur};
+function doLaugh(h){interrupt();h=h||pickFree()||heads[0];if(!h)return;setAct(h,'laugh',{gen:0,say:true,dur:2.6})}
+// everyone bobs to one beat; neighbours face opposite ways and swap every two beats
+ACTS.dance=(h,a,c)=>{const t=a.t,g=h.tg,n=a.beats||16,b=t/BEAT,bi=floor(b),q=b-bi;if(bi>=n)return true;
+  const side=((bi>>1)+h.col)%2?1:-1,e=1-sstep(n-1,n,b);
+  c.gainMul=0;c.lookAt=null;c.stiff=1.6;c.yawAdd=side*.45*e;c.rollAdd=-side*.12*e;c.hop=(1-q)*(1-q)*h.S*.22*e;c.pitchAdd=(q<.5?-.12:.05)*e;
+  g.smile=.9;g.happy=h.col%3===1?1:0;g.mopen=h.row%2?.25:0;g.brow=.3;
+  if(bi!==a.bi){a.bi=bi;if((bi+h.col)%4===0&&rand()<.5)noteFx(h)}return false};
+function noteFx(h){if(!h.M)return;const p=headTop(h);fx('note',p[0]+rnd(-1,1)*h.S*.5,p[1]-h.S*.1,{vx:rnd(-20,20),vy:rnd(-60,-35),life:1.4,size:h.S0/62,rot:rnd(-.3,.3)})}
+function doDance(beats){if(DANCE&&T<DANCE.until)return;interrupt();const n=beats||16;DANCE={at:T,until:T+n*BEAT,bi:-1};SFX('beat',{vol:.8,p:{n,bpm:60/BEAT}});
+  for(const h of heads)if(!h.act||h.act.name!=='grabbed')setAct(h,'dance',{beats:n})}
+function discoPulse(){if(!DANCE)return;if(T>DANCE.until+.5){DANCE=null;return}const bi=floor((T-DANCE.at)/BEAT);
+  if(bi!==DANCE.bi&&T<DANCE.until&&!(REDUCED&&!FILM)){DANCE.bi=bi;flash=max(flash,.2);flashCol=pick(['255,205,70','90,170,255','255,110,150','120,230,140'])}}
+// a party: paper hats, confetti, cheering
+ACTS.cheer=(h,a,c)=>{const t=a.t-(a.delay||0),g=h.tg;if(t<0)return false;const dur=a.dur||2.4,e=sin(PI*min(1,t/dur));
+  if(!a.k){a.k=1;if(a.say)say(h,pick(CHEER),{shout:true,life:1.3,fs:11,dy:-.15})}
+  g.smile=1;g.mopen=.6*e;g.wide=.6*e;g.brow=.9*e;c.pitchAdd=-.3*e;c.hop=abs(sin(t*9))*h.S*.12*e;c.gainMul=.4;c.lookAt={x:h.cx,y:h.cy-h.S*3};return t>dur};
+function doParty(){interrupt();SFX('horn',{vol:.9});SFX('confetti',{vol:.6});SHAKE=max(SHAKE,.35);
+  for(const h of heads){h.hat={at:T,until:T+12,col:pick(CONF),band:pick(CONF),tilt:rnd(-.35,.35)};if(!h.act||h.act.name!=='grabbed')setAct(h,'cheer',{delay:rnd(0,.5),say:rand()<.3,dur:rnd(2,3)})}
+  for(let i=0;i<150;i++)confetti(rnd(0,W),rnd(-H*.9,-10))}
+function confetti(x,y){const col=pick(CONF),sz=rnd(.9,1.5),ph=rnd(0,TAU),spin=rnd(-5,5);let rot=rnd(0,TAU);
+  fx('confetti',x,y,{vy:rnd(75,135),life:rnd(5,7),fade:false,update(p,dt){p.vx=sin(T*2.2+ph)*60;rot+=spin*dt},
+    draw(p,q){if(p.y>H+20)return;const s=6*sz,a=q>.85?(1-q)/.15:1;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(rot);ctx.scale(1,.35+.65*abs(sin(T*5+ph)));
+      ctx.globalAlpha=a;ctx.fillStyle=col;ctx.fillRect(-s,-s*.6,s*2,s*1.2);ctx.globalAlpha=a*.7;ctx.strokeStyle=INK;ctx.lineWidth=.8;ctx.strokeRect(-s,-s*.6,s*2,s*1.2);ctx.restore();ctx.fillStyle=INK}})}
+function drawHat(h){const k=h.hat;if(!k||h.hidden||!h.M)return;if(T>k.until){h.hat=null;return}const e=sstep(0,.35,T-k.at)*(1-sstep(k.until-.4,k.until,T));if(e<=0)return;
+  const p=headTop(h),S=h.S;SC=h.S0/62;BOIL=floor(T*6+h.seed)%3;const ang=h.roll*.6+k.tilt,hw=S*.42*e,hh=S*1.05*e,x=p[0],y=p[1]+S*.06;
+  const P=(u,v)=>{const q=rot2(u,v,ang);return [x+q[0],y+q[1]]},cone=[P(-hw,0),P(0,-hh),P(hw,0)],base=ellipsePts(0,0,hw,hw*.32,0,16).map(q=>P(q[0],q[1]));
+  fillPoly(cone,k.col);ctx.save();path(cone,1);ctx.clip();for(let i=0;i<5;i++){const q=P(hw*.8*sin(i*2.1+h.seed),-hh*(.15+i*.16));circ(q[0],q[1],S*.04,k.band)}ctx.restore();
+  ctx.fillStyle=INK;ink(cone,1.5,h.seed+40,false,.3);fillPoly(base,k.band);ctx.fillStyle=INK;ink(base,1.2,h.seed+41,true,.2);
+  const ap=P(0,-hh);circ(ap[0],ap[1],S*.09*e,k.band);ink(ring(ap[0],ap[1],S*.09*e,10),1.1,h.seed+42,true,.4);ctx.fillStyle=INK}
+// nap: eyes shut, heads droop, Zs float up; anything wakes them with a start
+ACTS.nap=(h,a,c)=>{const t=a.t-(a.delay||0),g=h.tg;if(t<0)return false;const e=sstep(0,1.1,t);
+  g.openL=g.openR=h.d.lid*(1-e);g.smile=.15;g.mopen=(h.row%2?.12:0)*e;c.pitchAdd=.5*e+sin(t*1.7+h.seed)*.04*e;c.rollAdd=(h.col%2?.12:-.12)*e;c.gainMul=0;c.lookAt={x:h.cx,y:h.cy+h.S*4};c.hop=sin(t*1.7+h.seed)*h.S*.012*e;
+  if(t>1.2&&(!a.zAt||T>a.zAt)){a.zAt=T+rnd(.6,1.3);if(rand()<.75&&h.M){const p=headTop(h);fx('z',p[0]+h.S*.35,p[1]-h.S*.15,{vx:rnd(12,34),vy:-rnd(22,40),life:2.6,size:h.S0/62*rnd(1.1,1.8)})}
+    if(a.snore&&rand()<.5)SFX('snore',{h,vol:.35,p:{f0:rnd(70,120)}})}return false};
+ACTS.startle=(h,a,c)=>{const t=a.t-(a.delay||0),g=h.tg;if(t<0){g.openL=g.openR=0;c.pitchAdd=.5;c.gainMul=0;return false}
+  const e=1-sstep(.9,1.6,t);g.wide=e;g.brow=e;g.mopen=.5*e;c.hop=(t<.25?sin(PI*t/.25):0)*h.S*.3;c.pitchAdd=-.25*e;c.stiff=2.5;c.gainMul=1.3;if(a.from)c.lookAt=a.from;
+  if(!a.k){a.k=1;if(rand()<.25)say(h,pick(WAKE),{life:1.1,fs:9.5});SFX('gasp',{h,vol:.3})}return t>1.6};
+function doNap(){if(NAP){wakeUp();return}interrupt();NAP={at:T};for(const h of heads)if(!h.act||h.act.name!=='grabbed')setAct(h,'nap',{delay:rnd(0,.3)+h.col*.12,snore:rand()<.25})}
+function wakeUp(src){if(!NAP)return;NAP=null;src=src||{x:W/2,y:H/2};for(const h of heads)if(h.act&&h.act.name==='nap')setAct(h,'startle',{from:src,delay:hypot(h.cx-src.x,h.cy-src.y)/W*.6})}
+function interrupt(){NAP=null;DANCE=null}
+// tickle: wiggle the cursor back and forth over a face
+ACTS.giggle=(h,a,c)=>{const t=a.t,g=h.tg,dur=1.5,e=sin(PI*min(1,t/dur));if(!a.k){a.k=1;say(h,pick(TICK),{life:1.2,fs:9});SFX('giggle',{h,vol:.5,p:{f0:rnd(600,900)}})}
+  g.happy=1;g.smile=1;g.mopen=.25+.25*abs(sin(t*22))*e;c.rollAdd=sin(t*20)*.1*e;c.yawAdd=sin(t*13)*.18*e;c.hop=abs(sin(t*22))*h.S*.05*e;c.pitchAdd=.1*e;c.gainMul=.3;c.stiff=2;return t>dur};
+function tickleCheck(h,x){const tk=h.tk||(h.tk={n:0,dir:0,t:-9,x});const dx=x-tk.x;tk.x=x;if(abs(dx)<1.5)return;const d=sign(dx);if(d===tk.dir)return;
+  if(T-tk.t>.7)tk.n=0;tk.dir=d;tk.n++;tk.t=T;if(tk.n>=6&&!busy(h)&&T>(h.tickledAt||-9)+2.5){h.tickledAt=T;tk.n=0;setAct(h,'giggle')}}
+// flick: let go of a dragged head while it is still moving and it keeps spinning (too fast and it gets dizzy)
+ACTS.flung=(h,a,c,dt)=>{const g=h.tg;if(a.v0==null){a.v0=a.v;h.vyaw=a.v;SFX('whirl',{h,vol:min(1,abs(a.v)/18)});if(abs(a.v)>14)say(h,pick(['WHOA!','WHEEE!','AAAH!']),{life:.9,fs:10,shout:true})}
+  c.kin=1;h.yaw+=h.vyaw*dt;h.vyaw*=exp(-dt*1.6);g.wide=.8;g.mopen=.4;g.brow=.7;c.hop=abs(sin(T*9))*h.S*.03;
+  if(abs(h.vyaw)<1.2){h.yaw=wrapA(h.yaw);h.vyaw=0;if(abs(a.v0)>12){setAct(h,'dizzy');return false}return true}return false};
+
 /* ───────────────────────── 15. the fly, particles, bubbles ───────────────────────── */
 function spawnFly(o){const left=o&&o.side!=null?o.side<0:rand()<.5;fly=Object.assign({x:left?-30:W+30,y:rnd(.2,.8)*H,vx:left?300:-300,vy:0,state:'buzz',gx:W/2,gy:H/2,goalAt:0,landAt:T+rnd(3.5,7),lands:0,target:null,trail:[],hunted:false},o||{});return fly}
 function updateFly(dt){const f=fly;if(!f)return;
@@ -834,6 +896,8 @@ function drawFX(dt){for(let i=FX.length-1;i>=0;i--){const p=FX[i];p.age+=dt;if(p
   const q=p.age/p.life;if(p.update)p.update(p,dt);p.x+=p.vx*dt;p.y+=p.vy*dt;BOIL=floor(T*6)%3;SC=p.sc||1;ctx.globalAlpha=p.fade===false?1:min(1,(1-q)*2.2);ctx.fillStyle=INK;
   if(p.draw){p.draw(p,q,dt);ctx.globalAlpha=1;continue}
   if(p.type==='z'){SC=p.size;const s=(5+q*8)*p.size,x=p.x+sin(p.age*3)*6,y=p.y;ink([[x-s,y-s],[x+s,y-s],[x-s,y+s],[x+s,y+s]],1.7,p.seed,false,.3)}
+  else if(p.type==='note'){SC=p.size;const s=6*p.size,x=p.x+sin(p.age*4)*5,y=p.y;ctx.save();ctx.translate(x,y);ctx.rotate(p.rot||0);
+    fillPoly(ellipsePts(0,0,s*.6,s*.42,-.5,12),INK);ink([[s*.5,-s*.15],[s*.5,-s*2]],1.6,p.seed);ink([[s*.5,-s*2],[s*1.2,-s*1.5],[s*.6,-s*1.05]],1.4,p.seed+1,false,.2);ctx.restore()}
   else if(p.type==='drop'){p.vy+=520*dt;ink([[p.x,p.y],[p.x-p.vx*.03,p.y-p.vy*.03]],1.4,p.seed,false,0)}
   else if(p.type==='pop'){ctx.fillStyle=p.col||ACCENT;for(let n=0;n<9;n++){const a=n/9*TAU+p.seed,r0=p.size*(.35+q*.5),r1=p.size*(.5+q*.8);ink([[p.x+cos(a)*r0,p.y+sin(a)*r0],[p.x+cos(a)*r1,p.y+sin(a)*r1]],2,p.seed+n,false,0)}}
   else if(p.type==='smoke'){p.vx*=exp(-dt*1.5);p.vy-=8*dt;const r=p.size*(.4+q*1.1);ctx.globalAlpha=(1-q)*.55;fillPoly(ellipsePts(p.x,p.y,r,r*.85,p.rot+q,12),p.col||'#cfcabd');ctx.fillStyle=INK;ink(ellipsePts(p.x,p.y,r,r*.85,p.rot+q,12),.7,p.seed,true,.3)}
@@ -880,17 +944,25 @@ function hit(x,y){let best=null,bd=1e9;for(const h of heads){const dd=hypot((x-h
 function powerUp(h){if(!h||!h.hero.power)return;if(h.act&&h.act.name==='power')return;setAct(h,'power');h.nextAct=T+20}
 function setupInput(){
   const P=e=>{const q=CAM.toWorld(e.clientX,e.clientY);return q};
-  cv.addEventListener('pointerdown',e=>{const q=P(e);mouse.down=true;mouse.moved=0;mouse.x=q.x;mouse.y=q.y;mouse.t=T;mouse.head=hit(q.x,q.y);AUD.unlock();try{cv.setPointerCapture(e.pointerId)}catch(_){}});
+  cv.addEventListener('pointerdown',e=>{const q=P(e);mouse.down=true;mouse.moved=0;mouse.x=q.x;mouse.y=q.y;mouse.t=T;mouse.head=hit(q.x,q.y);AUD.unlock();try{cv.setPointerCapture(e.pointerId)}catch(_){}
+    if(NAP){wakeUp(q);mouse.head=null;mouse.woke=1;return}mouse.woke=0;
+    // a second click on the same head within a beat is a double-click: it spins
+    mouse.dbl=!!(mouse.head&&mouse.head===mouse.lastHit&&T-mouse.lastT<.4);mouse.lastHit=mouse.head;mouse.lastT=T});
   cv.addEventListener('pointermove',e=>{const q=P(e);mouse.moved+=hypot(q.x-mouse.x,q.y-mouse.y);mouse.x=q.x;mouse.y=q.y;mouse.t=T;const h=mouse.head;mouse.hover=hit(q.x,q.y);
-    if(mouse.down&&h&&mouse.moved>6){if(!h.act||h.act.name!=='grabbed'){setAct(h,'grabbed',{y0:h.yaw,p0:h.pitch,mx:q.x,my:q.y});cv.classList.add('drag')}
-      const g=h.act;h.yaw=g.y0+(q.x-g.mx)/h.S*1.25;h.pitch=clamp(g.p0+(q.y-g.my)/h.S*1.1,-1.3,1.3);h.vyaw=h.vpitch=0}});
-  const release=()=>{const h=mouse.head;mouse.down=false;cv.classList.remove('drag');
-    if(h){if(mouse.moved<=6)powerUp(h);else{h.yaw=((h.yaw+PI)%TAU+TAU)%TAU-PI;if(h.act&&h.act.name==='grabbed')h.act=null}}mouse.head=null};
+    if(mouse.down&&h&&mouse.moved>6){if(!h.act||h.act.name!=='grabbed'){setAct(h,'grabbed',{y0:h.yaw,p0:h.pitch,mx:q.x,my:q.y,pt:T,py:h.yaw,v:0});cv.classList.add('drag')}
+      const g=h.act;h.yaw=g.y0+(q.x-g.mx)/h.S*1.25;h.pitch=clamp(g.p0+(q.y-g.my)/h.S*1.1,-1.3,1.3);h.vyaw=h.vpitch=0;
+      if(T>g.pt){g.v=lerp(g.v,(h.yaw-g.py)/(T-g.pt),.5);g.pt=T;g.py=h.yaw}}
+    else if(!mouse.down&&mouse.hover)tickleCheck(mouse.hover,q.x)});
+  const release=()=>{const h=mouse.head;mouse.down=false;cv.classList.remove('drag');if(mouse.woke){mouse.woke=0;mouse.head=null;return}
+    if(h){if(mouse.moved<=6){if(mouse.dbl){setAct(h,'spin');h.nextAct=T+8;SFX('whirl',{h,vol:.6})}else powerUp(h)}
+      else{h.yaw=wrapA(h.yaw);if(h.act&&h.act.name==='grabbed'){const g=h.act,v=T-g.pt<.12?g.v:0;h.act=null;if(abs(v)>6)setAct(h,'flung',{v:clamp(v,-30,30)})}}}mouse.head=null};
   cv.addEventListener('pointerup',release);cv.addEventListener('pointercancel',release);
   cv.addEventListener('pointerleave',()=>{mouse.hover=null});
-  addEventListener('keydown',e=>{const k=e.key.toLowerCase();let h;AUD.unlock();
+  addEventListener('keydown',e=>{const k=e.key.toLowerCase();let h;AUD.unlock();if(e.metaKey||e.ctrlKey||e.altKey)return;
+    if(NAP&&k!=='m'){if(k===' ')e.preventDefault();wakeUp();return}
     if(k==='w')doWave();else if(k==='f'){if(!fly)spawnFly()}else if(k==='s'){if(h=pickFree())setAct(h,'sneeze')}else if(k==='y'){if(h=pickFree())setAct(h,'yawn')}
     else if(k==='g')doGossip();else if(k===' '){e.preventDefault();doCheese()}else if(k==='a')doAssemble();
+    else if(k==='l')doLaugh();else if(k==='d')doDance();else if(k==='p')doParty();else if(k==='z')doNap();
     else if(k==='m'){AUD.toggle();hud()}else if(k==='n'){shuffleSeats()}});
   let rsz=0;addEventListener('resize',()=>{clearTimeout(rsz);rsz=setTimeout(()=>layout(),150)})}
 let cheeseAt=0;
@@ -910,7 +982,7 @@ function frame(dt){T+=dt;runTimers();
   for(const h of heads)think(h,dt);
   for(const h of heads)if(h.hero.under)h.hero.under(h);
   const vx0=CAM.x-W/2/CAM.z,vx1=CAM.x+W/2/CAM.z,vy0=CAM.y-H/2/CAM.z,vy1=CAM.y+H/2/CAM.z;
-  for(const h of heads){const m=h.S0*2.6;if(h.bx+m<vx0||h.bx-m>vx1||h.by+m*1.1<vy0||h.by-m>vy1)continue;drawDeco(h,0);drawHead(h);drawDeco(h,1)}
+  for(const h of heads){const m=h.S0*2.6;if(h.bx+m<vx0||h.bx-m>vx1||h.by+m*1.1<vy0||h.by-m>vy1)continue;drawDeco(h,0);drawHead(h);drawDeco(h,1);drawHat(h)}
   for(const h of heads)if(h.hero.over)h.hero.over(h);
   drawFX(dt);drawFly();drawBubbles(dt);
   if(mouse.hover&&!FILM?.noLabels)nameTag(mouse.hover);
@@ -918,7 +990,7 @@ function frame(dt){T+=dt;runTimers();
   ctx.globalCompositeOperation='multiply';ctx.drawImage(paper,0,0,W,H);ctx.globalCompositeOperation='source-over';
   ctx.save();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle=grain;ctx.fillRect(0,0,W,H);ctx.restore();CAM.apply();
   if(FILM)FILM.overlay();
-  if(cheeseAt&&T>cheeseAt){flash=1;cheeseAt=0;SFX('shutter')}
+  discoPulse();if(cheeseAt&&T>cheeseAt){flash=1;cheeseAt=0;SFX('shutter')}
   if(flash>0){ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='rgba('+flashCol+','+(flash*(REDUCED&&!FILM?.3:.9)).toFixed(3)+')';ctx.fillRect(0,0,W,H);flash-=dt*2.4}}
 function nameTag(h){const y=h.G?h.G.yB-h.S0*.22:h.by+h.S*1.9;SC=h.S0/62;BOIL=0;const s=h.S0*.17,w=textWidth(h.hero.name.toUpperCase(),s)+s*1.6;
   ctx.fillStyle=rgba(PAPER,.92);ctx.fillRect(h.bx-w/2,y-s*.95,w,s*1.9);ctx.fillStyle=INK;ink([[h.bx-w/2,y+s*.95],[h.bx+w/2,y+s*.95]],1,3);
@@ -1020,6 +1092,20 @@ Object.assign(SND,{
   key(ac,o,t){noise(ac,t,.03,o,'bandpass',2600,null,1.5,.3,.002);tone(ac,t,.04,o,'square',140,90,.05);noise(ac,t+.09,.025,o,'bandpass',3000,null,1.5,.18,.002)},
   title(ac,o,t){[[523,0],[659,.09],[784,.18],[1046,.3]].forEach(([f,d])=>{bell(ac,t+d,2.6,o,f,.07,[[1,1],[2,.25],[3.01,.12]]);tone(ac,t+d,2.2,lp(ac,o,1800),'triangle',f/2,null,.035,.02)})},
   wave(ac,o,t){},cheese(ac,o,t){}});
+// the mischief sounds: laughs, giggles, snores, a party horn, a drum machine
+Object.assign(SND,{
+  laugh(ac,o,t,p){const n=p.n||4,f0=p.f0||380;for(let i=0;i<n;i++){const tt=t+i*.16,f=f0*(1-i*.05);tone(ac,tt,.13,lp(ac,o,1600),'sawtooth',f,f*.72,.07,.012);tone(ac,tt,.1,o,'sine',f*2,f*1.5,.04,.01);noise(ac,tt,.11,o,'bandpass',1500,800,1.2,.14,.01)}},
+  giggle(ac,o,t,p){const f0=p.f0||750;for(let i=0;i<6;i++){const tt=t+i*.085;tone(ac,tt,.06,o,'sine',f0*(1+(i%2)*.12),f0*.8,.07,.005);noise(ac,tt,.05,o,'bandpass',2600,null,1.5,.08,.004)}},
+  snore(ac,o,t,p){const f0=p.f0||90;noise(ac,t,.75,lp(ac,o,500),'lowpass',320,140,1,.22,.25);tone(ac,t+.05,.6,o,'sawtooth',f0,f0*.8,.035,.2);amNoise(ac,t,.7,o,260,2,24,.08)},
+  gasp(ac,o,t){noise(ac,t,.22,o,'bandpass',800,2600,1.4,.18,.12)},
+  horn(ac,o,t){tone(ac,t,.75,lp(ac,o,2600),'sawtooth',320,520,.12,.03);tone(ac,t+.04,.7,o,'square',640,1040,.035,.03);fm(ac,t+.3,.5,o,520,8,.1,.05,.05,560);noise(ac,t,.08,o,'highpass',3000,null,.7,.15,.003)},
+  confetti(ac,o,t){for(let i=0;i<14;i++)noise(ac,t+rand()*.7,.025,o,'highpass',2800+rand()*2000,null,.8,.12,.002)},
+  whirl(ac,o,t){sweepNoise(ac,t,.55,o,500,2600,800,1.5,.22,.03);tone(ac,t,.5,o,'sine',300,900,.03,.05)},
+  beat(ac,o,t,p){const n=p.n||16,dt=60/(p.bpm||130),bass=[55,55,65,49],mel=[523,659,784,659];
+    for(let i=0;i<n;i++){const tb=t+i*dt;tone(ac,tb,.2,o,'sine',160,42,.5,.003);noise(ac,tb+dt/2,.04,o,'highpass',7000,null,.8,.1,.002);
+      if(i%4===2)noise(ac,tb,.13,o,'bandpass',1900,null,.9,.22,.002);
+      tone(ac,tb,dt*.85,lp(ac,o,700),'square',bass[(i>>1)%4],null,.07,.01);
+      if(i%2===0)bell(ac,tb,.45,o,mel[(i>>1)%4],.045)}}});
 // offline render of everything the film asked for (voices built just in time, see the web-audio notes)
 async function renderSFX(dur,sr){const ac=new OfflineAudioContext(2,Math.ceil(dur*sr),sr),out=masterChain(ac,ac.destination);out.gain.value=.9;
   const evs=SFXLOG.slice().sort((a,b)=>a.t-b.t);let i=0;const run=t1=>{while(i<evs.length&&evs[i].t<t1){const e=evs[i++];if(SND[e.name]&&e.t>=0&&e.t<dur)try{SND[e.name](ac,panTo(ac,out,e.pan,e.vol),max(0,e.t),e.o)}catch(err){console.warn(e.name,err)}}};
@@ -1991,9 +2077,10 @@ HERO({id:'wonderwoman',name:'Wonder Woman',team:'dc',
 
 /* ───────────────────────── 19. the film: a scripted screen recording of the page ─────────────────────────
    A cursor glides in, clicks each hero, the camera zooms like a screen recorder (and re-renders the vectors, so
-   every zoom stays crisp). Five clusters, then the Flash laps the page as we pull out, "say cheese", the title. */
+   every zoom stays crisp). Four clusters of powers, then the mischief: a tickle, a flick, laughter, a dance, a party
+   (the Flash laps it), a nap and a rude awakening, "say cheese", the title. Sixty seconds. */
 const FILMKIT=(()=>{
-  const D=46.5;let t0=0,cam=[],cur=[],ev=[],fired=0,ripples=[],key=null,title=0;
+  const D=60;let t0=0,cam=[],cur=[],ev=[],fired=0,ripples=[],key=null,title=0;
   const C={wide:[960,540,1],A:[340,262,2.25],B:[960,262,2.25],C:[1580,262,2.25],D:[495,790,2.05],E:[1425,790,2.05]};
   function P(id,dx,dy){const h=byId(id);return [h.bx+(dx||0)*h.S0,h.by+(dy||0)*h.S0]}
   function build(){cam=[];cur=[];ev=[];fired=0;ripples=[];title=0;key=null;
@@ -2001,6 +2088,7 @@ const FILMKIT=(()=>{
     const M=(t,p,stop)=>cur.push({t,x:p[0],y:p[1],stop:stop!==false});
     const CL=(t,id,dx,dy)=>{ev.push({t,f:()=>{const p=P(id,dx,dy);ripples.push({x:p[0],y:p[1],t:T});SFX('click',{h:byId(id),vol:.6});powerUp(byId(id))}})};
     const E=(t,f)=>ev.push({t,f});
+    const KEY=(t,k,label,fn)=>E(t,()=>{key={t:T,k,label};SFX('key',{vol:.8});fn()}),CUE=(t,label)=>E(t,()=>{key={t:T,k:null,label}});
     // ── intro: wide, the cursor sweeps in and every head follows it
     K(0,C.wide);K(2.7,C.wide);
     M(0,[1990,1180],false);M(.45,[1990,1180],false);M(1.1,[1500,850],false);M(1.8,[980,560],false);M(2.6,[600,330],false);
@@ -2028,18 +2116,31 @@ const FILMKIT=(()=>{
     M(26.45,P('groot',0,.2));CL(26.55,'groot');
     M(27.55,P('wanda',0,.25));CL(27.65,'wanda');
     M(29.05,P('wolverine',-.1,.3));CL(29.15,'wolverine');K(29.2,C.D);K(29.75,[805,870,2.7]);K(31.0,[805,870,2.7]);
-    // ── E: GL's jet, Cyborg locks on, Green Arrow's boxing glove, SHAZAM, the Martian copies his neighbour
-    K(31.8,C.E);M(31.6,P('lantern',0,.25));CL(31.7,'lantern');
-    M(32.75,P('cyborg',0,.25));CL(32.85,'cyborg');
-    M(34.25,P('arrow',.0,.3));CL(34.35,'arrow');
-    M(35.45,P('shazam',0,.3));CL(35.55,'shazam');
-    M(36.65,P('manhunter',0,.25));CL(36.75,'manhunter');
-    K(39.0,C.E);
-    // ── finale: the Flash laps the page as we pull out; say cheese; Batman won't
-    M(38.6,P('flash',0,.25));CL(38.7,'flash');K(39.9,C.wide);M(39.9,[1180,980],true);
-    E(40.35,()=>{key={t:T,label:'SPACE'};SFX('key',{vol:.8});doCheese({hold:4.2,blinker:false})});
-    K(42.15,C.wide);K(42.95,[1734,150,3.3]);K(44.0,[1734,150,3.3]);K(44.9,C.wide);
-    E(44.75,()=>{title=T;SFX('title',{vol:.9})});
+    // ── gestures: wiggle over Green Lantern to tickle him; flick Cyborg and he spins himself dizzy
+    K(31.8,C.E);M(31.5,P('lantern',-.4,.1));
+    for(let i=0;i<8;i++)M(31.95+i*.09,P('lantern',i%2?.34:-.34,.06),false);M(32.9,P('lantern',0,.12),true);
+    CUE(31.9,'wiggle the cursor to tickle');E(32.3,()=>{const h=byId('lantern');h.tickledAt=T;setAct(h,'giggle')});
+    M(33.6,P('cyborg',-.7,.1),true);M(33.85,P('cyborg',.8,0),false);M(34.4,P('cyborg',1.5,.4),true);
+    CUE(33.55,'flick a head to spin it');E(33.7,()=>{const h=byId('cyborg');ripples.push({x:h.bx-h.S0*.5,y:h.by,t:T});h.act=null;setAct(h,'flung',{v:24})});
+    K(35.2,C.E);K(36.0,C.wide);M(35.8,[1180,1000],true);
+    // ── L: laughter spreads from Deadpool across the page
+    KEY(36.2,'L','laugh',()=>doLaugh(byId('deadpool')));
+    K(37.2,[960,560,1.2]);K(39.6,[960,560,1.2]);K(40.3,C.wide);
+    // ── D: twelve beats of dancing while the camera drifts across the rows
+    KEY(40.5,'D','dance',()=>doDance(12));
+    K(41.6,[700,720,1.55]);K(43.6,[1220,360,1.55]);K(45.8,C.wide);
+    // ── P: a party; the Flash laps the page through the confetti
+    KEY(46.3,'P','party',()=>doParty());
+    K(47.3,[960,300,1.6]);K(48.7,[960,300,1.6]);K(49.5,C.wide);
+    M(48.9,P('flash',0,.25));CL(49.0,'flash');M(50.0,[1180,1000],true);
+    // ── Z: nap time (in party hats), then one click on the page wakes everyone
+    KEY(50.7,'Z','nap',()=>doNap());
+    K(51.8,[960,540,1.3]);K(53.2,[960,540,1.3]);K(54.2,C.wide);
+    M(52.9,[960,470],true);E(53.4,()=>{ripples.push({x:960,y:470,t:T});SFX('click',{vol:.6});wakeUp({x:960,y:470})});
+    // ── finale: say cheese; Batman won't; the title
+    KEY(54.9,'space','say cheese',()=>doCheese({hold:3.8,blinker:false}));
+    K(56.6,C.wide);K(57.4,[1734,150,3.3]);K(58.3,[1734,150,3.3]);K(59.1,C.wide);
+    E(58.5,()=>{title=T;SFX('title',{vol:.9})});
     ev.sort((a,b)=>a.t-b.t)}
   const fit=c=>{const hw=W/2/c.z,hh=H/2/c.z;return {x:clamp(c.x,hw,W-hw),y:clamp(c.y,hh,H-hh),z:c.z}};
   function camAt(t){if(t<=cam[0].t)return fit(cam[0]);for(let i=0;i<cam.length-1;i++){const a=fit(cam[i]),b=fit(cam[i+1]);if(t>=cam[i].t&&t<=cam[i+1].t){const u=ease((t-cam[i].t)/max(1e-6,cam[i+1].t-cam[i].t));
@@ -2058,8 +2159,8 @@ const FILMKIT=(()=>{
       ctx.save();ctx.globalAlpha=.72;ctx.fillStyle=INK;ctx.font='700 11px Georgia, serif';const y=H-18;let x=22;
       const tx=(s,f)=>{ctx.font=f;ctx.fillText(s,x,y);x+=ctx.measureText(s).width};
       ctx.letterSpacing='2px';tx('HEAD CASES: HEROES   ','700 11px Georgia, serif');ctx.letterSpacing='0px';tx('every line is code — click a hero for their power, drag to turn a head','italic 13px Georgia, serif');
-      for(const [k,l] of[['W','wave'],['F','fly'],['S','sneeze'],['G','gossip'],['A','assemble'],['space','say cheese'],['M','sound']]){x+=14;ctx.font='600 10px Menlo, monospace';const kw=ctx.measureText(k).width+10;
-        const hot=key&&k==='space'&&T-key.t<.9;ctx.lineWidth=1;ctx.strokeStyle=INK;if(hot){ctx.fillStyle=INK;ctx.fillRect(x,y-11,kw,15)}ctx.strokeRect(x+.5,y-10.5,kw,15);ctx.fillStyle=hot?PAPER:INK;ctx.fillText(k,x+5,y+1);ctx.fillStyle=INK;x+=kw+4;tx(l,'italic 13px Georgia, serif')}
+      for(const [k,l] of[['W','wave'],['F','fly'],['S','sneeze'],['G','gossip'],['A','assemble'],['L','laugh'],['D','dance'],['P','party'],['Z','nap'],['space','say cheese'],['M','sound']]){x+=14;ctx.font='600 10px Menlo, monospace';const kw=ctx.measureText(k).width+10;
+        const hot=key&&k===key.k&&T-key.t<.9;ctx.lineWidth=1;ctx.strokeStyle=INK;if(hot){ctx.fillStyle=INK;ctx.fillRect(x,y-11,kw,15)}ctx.strokeRect(x+.5,y-10.5,kw,15);ctx.fillStyle=hot?PAPER:INK;ctx.fillText(k,x+5,y+1);ctx.fillStyle=INK;x+=kw+4;tx(l,'italic 13px Georgia, serif')}
       ctx.restore();
       // click ripples (page space)
       for(let i=ripples.length-1;i>=0;i--){const r=ripples[i],q=(T-r.t)/.45;if(q>1){ripples.splice(i,1);continue}ctx.strokeStyle=rgba(INK,.55*(1-q));ctx.lineWidth=2/z;ctx.beginPath();ctx.arc(r.x,r.y,(8+q*30)/z,0,TAU);ctx.stroke()}
@@ -2067,9 +2168,9 @@ const FILMKIT=(()=>{
       const p=api.cursor;ctx.save();ctx.setTransform(DPR,0,0,DPR,0,0);const sx=(p[0]-CAM.x-CAM.sx)*z+W/2,sy=(p[1]-CAM.y-CAM.sy)*z+H/2;
       const press=ripples.length&&T-ripples[ripples.length-1].t<.15?.88:1;drawCursor(sx,sy,1.35*press);
       // the "space" key pressed for say cheese
-      if(key){const q=(T-key.t);if(q<1.6){const a=min(1,q/.12)*(1-sstep(1.2,1.6,q)),cx=W/2,cy=H-120,kw=260,kh=64,pr=q<.25?6:0;ctx.globalAlpha=a;
-        ctx.fillStyle='rgba(23,22,20,.88)';roundRect(cx-kw/2,cy-kh/2+pr,kw,kh,14);ctx.fill();ctx.fillStyle=PAPER;ctx.font='600 26px Menlo, monospace';ctx.textAlign='center';ctx.fillText('space',cx,cy+9+pr);
-        ctx.font='italic 22px Georgia, serif';ctx.fillStyle=INK;ctx.globalAlpha=a*.85;ctx.fillText('say cheese',cx,cy+kh/2+32);ctx.textAlign='left';ctx.globalAlpha=1}}
+      if(key){const q=(T-key.t);if(q<1.8){const a=min(1,q/.12)*(1-sstep(1.4,1.8,q)),cx=W/2,cy=H-120,kh=64,pr=q<.25?6:0;ctx.globalAlpha=a;ctx.textAlign='center';
+        if(key.k){ctx.font='600 26px Menlo, monospace';const kw=max(110,ctx.measureText(key.k).width+64);ctx.fillStyle='rgba(23,22,20,.88)';roundRect(cx-kw/2,cy-kh/2+pr,kw,kh,14);ctx.fill();ctx.fillStyle=PAPER;ctx.fillText(key.k,cx,cy+9+pr)}
+        ctx.font='italic 22px Georgia, serif';ctx.fillStyle=INK;ctx.globalAlpha=a*.85;ctx.fillText(key.label,cx,key.k?cy+kh/2+32:cy+12);ctx.textAlign='left';ctx.globalAlpha=1}}
       // title card
       if(title){const q=T-title,a=sstep(0,.5,q);if(a>0){ctx.globalAlpha=a*.9;ctx.fillStyle=PAPER;ctx.fillRect(0,H*.36,W,H*.28);ctx.globalAlpha=a;ctx.fillStyle=INK;
         SC=2.2;BOIL=floor(T*6)%3;ink([[W*.08,H*.36],[W*.92,H*.36]],1.2,3,false,.6);ink([[W*.08,H*.64],[W*.92,H*.64]],1.2,4,false,.6);
