@@ -16,6 +16,7 @@ import pascal_chambre from './data/captures/pascal_chambre.json';
 import pascal_ro139 from './data/captures/pascal_ro139.json';
 import pascal_ro210 from './data/captures/pascal_ro210.json';
 import pascal_solitude from './data/captures/pascal_solitude.json';
+import photo_omeyyades from './data/captures/photo_omeyyades.json';
 import pmc_domicile from './data/captures/pmc_domicile.json';
 import pmc_etude9 from './data/captures/pmc_etude9.json';
 import pmc_fin from './data/captures/pmc_fin.json';
@@ -23,6 +24,8 @@ import pmc_methode from './data/captures/pmc_methode.json';
 import pmc_preparation from './data/captures/pmc_preparation.json';
 import pmc_resultats from './data/captures/pmc_resultats.json';
 import pmc_revue from './data/captures/pmc_revue.json';
+import pmc_scenariste from './data/captures/pmc_scenariste.json';
+import pmc_techniques from './data/captures/pmc_techniques.json';
 import pmc_titre from './data/captures/pmc_titre.json';
 import pmc_vagabondage from './data/captures/pmc_vagabondage.json';
 
@@ -47,6 +50,7 @@ export const CAP: Record<string, CapMeta> = {
   pascal_ro139,
   pascal_ro210,
   pascal_solitude,
+  photo_omeyyades,
   pmc_domicile,
   pmc_etude9,
   pmc_fin,
@@ -54,6 +58,8 @@ export const CAP: Record<string, CapMeta> = {
   pmc_preparation,
   pmc_resultats,
   pmc_revue,
+  pmc_scenariste,
+  pmc_techniques,
   pmc_titre,
   pmc_vagabondage,
 };

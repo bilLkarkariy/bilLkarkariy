@@ -1,0 +1,54 @@
+{
+ "id": "pmc_scenariste",
+ "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+ "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+ "w": 860.0,
+ "h": 406.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "a “script writer” and an “experiencer”",
+   "rects": [
+    {
+     "x": 38.6,
+     "y": 56.1,
+     "w": 286.1,
+     "h": 21.0
+    }
+   ]
+  },
+  {
+   "text": "choose a topic to think about",
+   "rects": [
+    {
+     "x": 478.5,
+     "y": 56.1,
+     "w": 217.9,
+     "h": 21.0
+    }
+   ]
+  },
+  {
+   "text": "decide what would happen",
+   "rects": [
+    {
+     "x": 250.2,
+     "y": 86.1,
+     "w": 202.1,
+     "h": 21.0
+    }
+   ]
+  },
+  {
+   "text": "then mentally experience those actions",
+   "rects": [
+    {
+     "x": 377.2,
+     "y": 116.1,
+     "w": 293.0,
+     "h": 21.0
+    }
+   ]
+  }
+ ]
+}

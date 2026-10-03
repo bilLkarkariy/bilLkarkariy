@@ -67,7 +67,13 @@ def main():
         if only and job["id"] not in only:
             continue
         im = source(job)
-        rgba, (bx, by, _, _) = cutout(im, job.get("white", 232))
+        if job.get("print"):  # photographie : un tirage à bord blanc, rectangulaire
+            b = round(im.width * 0.035)
+            rgba = Image.new("RGBA", (im.width + 2 * b, im.height + 2 * b), (247, 245, 239, 255))
+            rgba.paste(im.convert("RGB"), (b, b))
+            bx, by = -b, -b
+        else:
+            rgba, (bx, by, _, _) = cutout(im, job.get("white", 232))
         dpr = rgba.width / job.get("css_w", 680)  # même rôle que le ×2,5 des captures web
         rgba.save(os.path.join(OUT, job["id"] + ".png"), optimize=True)
         hl = [{"text": h["text"], "rects": [

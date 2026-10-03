@@ -10,7 +10,9 @@ for f in "ofl/ebgaramond/EBGaramond%5Bwght%5D.ttf:EBGaramond.ttf" \
          "ofl/ebgaramond/EBGaramond-Italic%5Bwght%5D.ttf:EBGaramond-Italic.ttf" \
          "ofl/ibmplexmono/IBMPlexMono-Light.ttf:PlexMono-Light.ttf" \
          "ofl/ibmplexmono/IBMPlexMono-Regular.ttf:PlexMono-Regular.ttf" \
-         "ofl/ibmplexmono/IBMPlexMono-Medium.ttf:PlexMono-Medium.ttf"; do
+         "ofl/ibmplexmono/IBMPlexMono-Medium.ttf:PlexMono-Medium.ttf" \
+         "ofl/amiriquran/AmiriQuran-Regular.ttf:AmiriQuran-Regular.ttf" \
+         "ofl/amiri/Amiri-Regular.ttf:Amiri-Regular.ttf"; do
   curl -sSfL -o "public/fonts/${f##*:}" "https://raw.githubusercontent.com/google/fonts/main/${f%%:*}"
 done
 for ext in onnx onnx.json; do

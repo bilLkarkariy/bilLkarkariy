@@ -15,6 +15,8 @@ export const C = {
 export const F = {
   serif: "'Garamond', 'EB Garamond', serif",
   mono: "'Plex Mono', 'IBM Plex Mono', monospace",
+  quran: "'Amiri Quran', serif",
+  arabic: "'Amiri', serif",
 };
 
 // Plan de la pièce : mêmes valeurs que tools/maquette.py (1 m = 1920 / 7.2 px)
