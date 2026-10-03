@@ -5,12 +5,13 @@ import {ARoll} from './components/ARoll';
 import {Citation} from './components/Citation';
 import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Grain, Paper} from './components/Paper';
-import {at, DURATION, LEAD, VO_SRC} from './cues';
+import {at, LEAD, VO_SRC} from './cues';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
 import {Cit, citSfx, Fade, Sfx} from './montage/kit';
 import {P3, P3Back, P3Front, P3_SFX} from './montage/p3';
-import {P4, P4Front, P4_END, P4_SFX} from './montage/p4';
+import {P4, P4Front, P4_SFX} from './montage/p4';
+import {P5, P5Front, P5_END, P5_SFX} from './montage/p5';
 import {Countdown, Groups, Lab, Static} from './scenes/Part2';
 import {Plan} from './scenes/Plan';
 import {Study} from './scenes/Study';
@@ -363,6 +364,7 @@ const sfx: Sfx[] = [
   ...citSfx(cits),
   ...P3_SFX,
   ...P4_SFX,
+  ...P5_SFX,
 ];
 
 // bruitages ElevenLabs (tools/sfx_el.py, script/sfx_v01.json) ; les autres restent synthétisés (tools/sfx.py).
@@ -396,9 +398,13 @@ const SON: Record<string, string> = {
   carillon: 'el/carillon',
   calame: 'el/calame',
   crayon_carte: 'el/crayon_carte',
+  voiture: 'el/voiture',
+  respiration: 'el/respiration',
+  craie: 'el/craie',
+  arrachage: 'el/arrachage',
 };
 
-export const V01_DURATION = Math.min(DURATION, P4_END + 30);
+export const V01_DURATION = P5_END; // (la voix finit à DURATION ; l'écran de fin dure 6 s de plus)
 
 export const V01: React.FC = () => (
   <AbsoluteFill style={{background: C.paper}}>
@@ -491,6 +497,7 @@ export const V01: React.FC = () => (
     {/* partie 3 : le scénariste fatigué, Harvard, les écrans, Pascal */}
     <P3 />
     <P4 />
+    <P5 />
 
     {/* la lumière de la fenêtre, sur tout ce qui est posé sur le bureau */}
     <WindowLight />
@@ -507,6 +514,7 @@ export const V01: React.FC = () => (
     </Sequence>
     <P3Front />
     <P4Front />
+    <P5Front />
 
     <Grain />
 

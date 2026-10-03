@@ -37,6 +37,7 @@ export type Mark = {
   tone?: Tone;
   note?: Note;
   redact?: number; // caviardé au feutre noir
+  unredact?: number; // le caviardage s'arrache (la promesse tenue)
 };
 
 export type CitationProps = {
@@ -55,6 +56,7 @@ export type CitationProps = {
   out?: number; // la feuille repart
   dim?: number; // 0 à 1 : le reste de la page s'efface quand on surligne
   veil?: number; // flou de la page (px) : on voit que c'est la vraie page, sans pouvoir la lire
+  veilOff?: number; // le flou se lève
   inset?: number; // marge de papier autour de la capture (px), pour les captures prises sans marge
   zIndexNotes?: number;
 };
@@ -202,6 +204,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
   const SW = W + 2 * I;
   const SH = H + 2 * I;
   const marks = p.marks ?? [];
+  const veil = (p.veil ?? 0) * (p.veilOff === undefined ? 1 : interpolate(frame, [p.veilOff, p.veilOff + 14], [1, 0], clamp));
 
   // entrée : la feuille glisse et se pose ; sortie : elle remonte et s'efface
   const s = spring({frame, fps, config: {damping: 17, stiffness: 120, mass: 0.9}});
@@ -306,7 +309,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
             height: meta.h * k,
             display: 'block',
             mixBlendMode: cut ? 'normal' : 'multiply',
-            filter: `${cut ? 'contrast(1.04)' : 'grayscale(1) contrast(1.08)'}${p.veil ? ` blur(${p.veil}px)` : ''}`,
+            filter: `${cut ? 'contrast(1.04)' : 'grayscale(1) contrast(1.08)'}${veil > 0.05 ? ` blur(${veil}px)` : ''}`,
           }}
         />
         {p.crop !== undefined && p.crop < meta.h && (
@@ -356,9 +359,20 @@ export const Citation: React.FC<CitationProps> = (p) => {
               let t0 = m.redact as number;
               return meta.highlights[m.i].rects.map((r, j) => {
                 const q = interpolate(frame, [t0, t0 + 10], [0, 1], {...clamp, easing: Easing.inOut(Easing.quad)});
+                // arraché de gauche à droite, ligne après ligne
+                const off = m.unredact === undefined ? 0 : interpolate(frame, [m.unredact + j * 6, m.unredact + j * 6 + 14], [0, 1], {...clamp, easing: Easing.in(Easing.cubic)});
                 t0 += 9;
+                const w = (r.w * k + 10) * q;
                 return (
-                  <rect key={`r${m.i}-${j}`} x={r.x * k - 5} y={r.y * k - 3} width={(r.w * k + 10) * q} height={r.h * k + 6} fill={C.ink} />
+                  <rect
+                    key={`r${m.i}-${j}`}
+                    x={r.x * k - 5 + w * off}
+                    y={r.y * k - 3 - off * 18}
+                    width={w * (1 - off)}
+                    height={r.h * k + 6}
+                    fill={C.ink}
+                    transform={off > 0 ? `rotate(${-off * 8} ${r.x * k + w} ${r.y * k})` : undefined}
+                  />
                 );
               });
             })}

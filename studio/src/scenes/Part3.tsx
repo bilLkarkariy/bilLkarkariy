@@ -514,12 +514,12 @@ export const Night: React.FC<NightCues> = ({wake, spin, reflex, screen}) => {
 };
 
 // ── p27 : « une vingtaine de sessions sur smartphone par jour » : la journée, et chaque session ─────
-export const DayTicks: React.FC<{start: number; n?: number}> = ({start, n = 20}) => {
+export const DayTicks: React.FC<{start: number; n?: number; y?: number}> = ({start, n = 20, y = 760}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const X0 = 300;
   const X1 = 1620;
-  const Y = 760;
+  const Y = y;
   const ruler = interpolate(frame, [start - 10, start + 6], [0, 1], {...clamp, easing: inOut});
   // des heures plausibles, surtout le jour (7 h → 23 h), une la nuit
   const hours = useMemo(

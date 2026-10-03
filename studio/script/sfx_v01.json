@@ -160,5 +160,29 @@
   "duration": 3.0,
   "influence": 0.6,
   "prompt": "Pencil drawing long lines on paper, steady graphite scratching, close-up, quiet room"
+ },
+ {
+  "name": "voiture",
+  "duration": 2.5,
+  "influence": 0.6,
+  "prompt": "A single car passing by on the street outside an apartment window, heard from inside, soft distant whoosh, calm"
+ },
+ {
+  "name": "respiration",
+  "duration": 4.0,
+  "influence": 0.6,
+  "prompt": "One slow calm deep breath in through the nose and out, close, quiet room, very soft"
+ },
+ {
+  "name": "craie",
+  "duration": 0.5,
+  "influence": 0.8,
+  "prompt": "Single short pencil tally mark stroke on paper, quick scratch, close-up, dry"
+ },
+ {
+  "name": "arrachage",
+  "duration": 0.8,
+  "influence": 0.8,
+  "prompt": "A strip of tape peeled quickly off a sheet of paper, short crisp rip, close-up, dry"
  }
 ]
