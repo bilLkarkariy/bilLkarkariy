@@ -114,12 +114,15 @@ const cits: Cit[] = [
     y: 360,
     tilt: 0.5,
     tag: TAG + ' · DERNIER PARAGRAPHE',
+    // la promesse : on ne doit pas pouvoir lire la phrase (ni « Without such training » juste avant,
+    // qui vendrait la chute) : page floutée, dernière phrase caviardée avant même que la feuille se pose
+    veil: 7,
     marks: [
       {
         i: 0,
         at: at('p6', 'dernière') - finIn,
         tone: 'ink',
-        redact: at('p6', 'Tu') - finIn,
+        redact: -40,
         note: {
           at: at('p6', 'phrase') - finIn,
           kicker: 'LA DERNIÈRE PHRASE',
@@ -319,7 +322,9 @@ const cits: Cit[] = [
 const citSfx: [string, number, number][] = cits.flatMap((c) => [
   ['paper', c.from, 0.55] as [string, number, number],
   ...(c.marks ?? []).map((m) => ['marker', c.from + m.at, 0.3] as [string, number, number]),
-  ...(c.marks ?? []).filter((m) => m.redact !== undefined).map((m) => ['marker', c.from + (m.redact as number), 0.45] as [string, number, number]),
+  ...(c.marks ?? [])
+    .filter((m) => m.redact !== undefined && m.redact >= 0)
+    .map((m) => ['marker', c.from + (m.redact as number), 0.45] as [string, number, number]),
   ...[...(c.marks ?? []).flatMap((m) => (m.note ? [m.note] : [])), ...(c.notes ?? [])].map((n) => ['fiche', c.from + n.at, 0.45] as [string, number, number]),
 ]);
 

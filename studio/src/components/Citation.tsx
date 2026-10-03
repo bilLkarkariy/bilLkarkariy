@@ -54,6 +54,7 @@ export type CitationProps = {
   notesW?: number;
   out?: number; // la feuille repart
   dim?: number; // 0 à 1 : le reste de la page s'efface quand on surligne
+  veil?: number; // flou de la page (px) : on voit que c'est la vraie page, sans pouvoir la lire
   zIndexNotes?: number;
 };
 
@@ -281,7 +282,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
       >
         <Img
           src={staticFile(`captures/${p.cap}.png`)}
-          style={{width: W, height: meta.h * k, display: 'block', mixBlendMode: 'multiply', filter: 'grayscale(1) contrast(1.08)'}}
+          style={{width: W, height: meta.h * k, display: 'block', mixBlendMode: 'multiply', filter: `grayscale(1) contrast(1.08)${p.veil ? ` blur(${p.veil}px)` : ''}`}}
         />
         <div
           style={{
