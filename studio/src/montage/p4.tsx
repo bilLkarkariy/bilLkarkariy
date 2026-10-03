@@ -430,7 +430,7 @@ export const P4: React.FC = () => (
       <Fade from={dhikrIn - p50In} len={8} out>
         <Kinetic
           lines={[
-            {t: 'Seul dans une pièce fermée, on fait quoi ?', at: at('p50', 'seul') - p50In, y: 470, size: 60, italic: true, out: at('p50', 'Dans') - 6 - p50In},
+            {t: 'Seul dans une pièce fermée, on fait quoi ?', at: at('p50', 'seul') - p50In, y: 470, size: 60, italic: true, out: at('p50', 'Dans', 'start', 1) - 6 - p50In},
             {t: 'répéter un nom. Encore, et encore.', at: at('p51', 'répéter') - p50In, y: 760, size: 56, italic: true, gold: ['nom.']},
             {t: 'AILLEURS : MANTRA', at: at('p51', 'mantra') - 4 - p50In, y: 860, size: 24, mono: true, stagger: 6},
           ]}
