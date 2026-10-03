@@ -61,7 +61,8 @@ export type CitationProps = {
   zIndexNotes?: number;
 };
 
-const lineDur = (r: Rect) => Math.max(5, Math.min(16, Math.round(r.w / 34)));
+/** Durée (images) du trait de surligneur sur une ligne : la vitesse d'une main. */
+export const lineDur = (r: Rect) => Math.max(5, Math.min(16, Math.round(r.w / 34)));
 
 const CHIP_FONT = 17;
 const chipW = (c: {t: string; dot?: boolean}) => c.t.length * CHIP_FONT * 0.72 + 28 + (c.dot ? 24 : 0);

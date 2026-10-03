@@ -184,5 +184,33 @@
   "duration": 0.8,
   "influence": 0.8,
   "prompt": "A strip of tape peeled quickly off a sheet of paper, short crisp rip, close-up, dry"
+ },
+ {
+  "name": "frotte",
+  "duration": 0.6,
+  "influence": 0.6,
+  "variants": 6,
+  "prompt": "Soft dry brush stroke across thick matte paper, one gentle sweep, airy papery texture, close-up, quiet room"
+ },
+ {
+  "name": "glisse",
+  "duration": 0.6,
+  "influence": 0.6,
+  "variants": 6,
+  "prompt": "A fingertip sliding smoothly across a sheet of paper in one stroke, soft dry papery swish, close-up, quiet room"
+ },
+ {
+  "name": "tape",
+  "duration": 0.5,
+  "influence": 0.65,
+  "variants": 12,
+  "prompt": "One soft tap of a fingertip on a sheet of paper lying on a wooden desk, muted, gentle, close-up, dry room"
+ },
+ {
+  "name": "carte",
+  "duration": 0.7,
+  "influence": 0.65,
+  "variants": 6,
+  "prompt": "A small paper card gently slid onto a sheet of paper on a desk, soft papery swish then a light settle, close-up, quiet, dry room"
  }
 ]

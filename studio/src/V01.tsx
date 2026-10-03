@@ -372,7 +372,6 @@ const sfx: Sfx[] = [
 // Pour revenir au son synthétisé, retirer sa ligne.
 const SON: Record<string, string> = {
   paper: 'el/papier_pose',
-  marker: 'el/feutre',
   fiche: 'el/fiche',
   button_click: 'el/bouton',
   zap: 'el/decharge',
@@ -408,6 +407,35 @@ const SON: Record<string, string> = {
   craie: 'el/craie',
   arrachage: 'el/arrachage',
 };
+
+// Prises multiples (tools/sfx_el.py, "variants") : chaque occurrence prend la prise suivante, dans l'ordre du
+// temps, avec un léger écart de hauteur et de volume. Jamais deux fois exactement le même son : rien de mécanique.
+// Prises choisies sans raie étroite (pas de couinement) et sans double coup.
+const POOL: Record<string, {takes: string[]; gain: number; max?: number; fadeIn?: number}> = {
+  marker: {takes: ['frotte_1', 'glisse_2', 'frotte_4', 'glisse_6', 'frotte_2', 'frotte_6'], gain: 1, fadeIn: 2},
+  fiche: {takes: ['carte_1', 'carte_4', 'carte_2', 'carte_6', 'carte_3', 'carte_5'], gain: 0.8},
+  tick: {takes: ['tape_3', 'tape_10', 'tape_4', 'tape_12', 'tape_7', 'tape_8'], gain: 0.2, max: 6},
+};
+const CLAMP = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
+const rnd = (n: number, k: number) => (((Math.sin(n * 12.9898 + k * 78.233) * 43758.5453) % 1) + 1) % 1;
+const played = (() => {
+  const seen: Record<string, number> = {};
+  return [...sfx]
+    .sort((a, b) => a[1] - b[1])
+    .map(([name, f, v, max]) => {
+      const pool = POOL[name];
+      if (!pool) return {src: `sfx/${SON[name] ?? name}.wav`, f, v, len: max ?? 60, tone: 1, fadeIn: 0};
+      const n = (seen[name] = (seen[name] ?? -1) + 1);
+      return {
+        src: `sfx/el/${pool.takes[n % pool.takes.length]}.wav`,
+        f,
+        v: v * pool.gain * (0.85 + 0.3 * rnd(n, 1)),
+        len: Math.min(max ?? 60, pool.max ?? 60),
+        tone: 0.96 + 0.08 * rnd(n, 2),
+        fadeIn: pool.fadeIn ?? 0,
+      };
+    });
+})();
 
 export const V01_DURATION = P5_END; // (la voix finit à DURATION ; l'écran de fin dure 6 s de plus)
 
@@ -536,9 +564,17 @@ export const V01: React.FC = () => (
         {src: 'music/voie_165s.mp3', from: at('p54') - 30, to: V01_DURATION, gain: 0.22, fadeIn: 60, fadeOut: 90},
       ]}
     />
-    {sfx.map(([name, f, v], i) => (
-      <Sequence key={i} from={f} durationInFrames={60}>
-        <Audio src={staticFile(`sfx/${SON[name] ?? name}.wav`)} volume={v} />
+    {played.map((s, i) => (
+      <Sequence key={i} from={s.f} durationInFrames={s.len}>
+        <Audio
+          src={staticFile(s.src)}
+          toneFrequency={s.tone}
+          volume={(lf) =>
+            s.v *
+            (s.fadeIn ? interpolate(lf, [0, s.fadeIn], [0.35, 1], CLAMP) : 1) *
+            interpolate(lf, [s.len - 3, s.len], [1, 0], CLAMP)
+          }
+        />
       </Sequence>
     ))}
   </AbsoluteFill>

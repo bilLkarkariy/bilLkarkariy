@@ -61,10 +61,13 @@ def sfx(spec_path):
     out = os.path.join(ROOT, "public/sfx/el")
     os.makedirs(out, exist_ok=True)
     total = 0
-    for s in specs:
+    # "variants": n -> n prises du même son (<nom>_1 … <nom>_n) : jamais deux fois le même à l'oreille
+    jobs = [(s, k) for s in specs for k in (range(1, s["variants"] + 1) if s.get("variants") else [0])]
+    for s, k in jobs:
         body = {"text": s["prompt"], "duration_seconds": s["duration"], "prompt_influence": s.get("influence", 0.6),
                 "model_id": "eleven_text_to_sound_v2"}
-        cache = os.path.join(ROOT, ".cache/sfx_el", key(body) + ".mp3")
+        cache = os.path.join(ROOT, ".cache/sfx_el", key(body, k) + ".mp3" if k else key(body) + ".mp3")
+        name = f"{s['name']}_{k}" if k else s["name"]
         _, cost = call("/sound-generation?output_format=mp3_44100_192", body, cache)
         total += cost
         raw = subprocess.run(["ffmpeg", "-v", "error", "-i", cache, "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
@@ -78,8 +81,8 @@ def sfx(spec_path):
         x = x / (np.abs(x).max() + 1e-9) * 10 ** (-3 / 20)
         f = min(len(x), int(0.02 * SR))
         x[-f:] *= np.linspace(1, 0, f)
-        sf.write(os.path.join(out, s["name"] + ".wav"), x, SR, subtype="PCM_24")
-        print(f"{s['name']:14s} {len(x) / SR:4.2f} s  coût {cost}")
+        sf.write(os.path.join(out, name + ".wav"), x, SR, subtype="PCM_24")
+        print(f"{name:14s} {len(x) / SR:4.2f} s  coût {cost}")
     print(f"total : {total} crédits")
 
 
