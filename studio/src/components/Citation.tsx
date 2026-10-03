@@ -193,7 +193,12 @@ export const Citation: React.FC<CitationProps> = (p) => {
   const k = p.width / meta.w;
   const W = p.width;
   const H = (p.crop ?? meta.h) * k;
-  const I = p.inset ?? 0; // la feuille déborde de la capture de I px de chaque côté
+  const cut = meta.cutout === true; // objet détouré : pas de feuille, l'ombre a la forme du papier
+  const I = cut ? 0 : p.inset ?? 0; // la feuille déborde de la capture de I px de chaque côté
+  const src = staticFile(`captures/${p.cap}.png`);
+  const shape: React.CSSProperties = cut
+    ? {WebkitMaskImage: `url(${src})`, WebkitMaskSize: `${W}px ${meta.h * k}px`, WebkitMaskRepeat: 'no-repeat'}
+    : {};
   const SW = W + 2 * I;
   const SH = H + 2 * I;
   const marks = p.marks ?? [];
@@ -256,8 +261,16 @@ export const Citation: React.FC<CitationProps> = (p) => {
 
   return (
     <div style={{position: 'absolute', inset: 0, perspective: 2600, perspectiveOrigin: `${p.x + W / 2}px 42%`}}>
-      <div style={shadow(18 + air * 70, 30 + air * 110, 26 + air * 30, 0.16)} />
-      <div style={shadow(3 + air * 60, 5 + air * 90, 2.5 + air * 34, 0.26 * (1 - air * 0.5))} />
+      {[shadow(18 + air * 70, 30 + air * 110, 26 + air * 30, 0.16), shadow(3 + air * 60, 5 + air * 90, 2.5 + air * 34, 0.26 * (1 - air * 0.5))].map(
+        (st, i) =>
+          cut ? (
+            <div key={i} style={{...st, background: 'none'}}>
+              <Img src={src} style={{width: W, height: meta.h * k, display: 'block', filter: 'brightness(0)'}} />
+            </div>
+          ) : (
+            <div key={i} style={st} />
+          ),
+      )}
       <div style={sheet3d}>
       {p.tag && (
         <div
@@ -280,14 +293,21 @@ export const Citation: React.FC<CitationProps> = (p) => {
         style={{
           position: 'absolute',
           inset: 0,
-          background: C.sheet,
+          background: cut ? 'none' : C.sheet,
           overflow: 'hidden',
+          ...shape,
         }}
       >
         <div style={{position: 'absolute', left: I, top: I, width: W, height: H, overflow: 'hidden'}}>
         <Img
-          src={staticFile(`captures/${p.cap}.png`)}
-          style={{width: W, height: meta.h * k, display: 'block', mixBlendMode: 'multiply', filter: `grayscale(1) contrast(1.08)${p.veil ? ` blur(${p.veil}px)` : ''}`}}
+          src={src}
+          style={{
+            width: W,
+            height: meta.h * k,
+            display: 'block',
+            mixBlendMode: cut ? 'normal' : 'multiply',
+            filter: `${cut ? 'contrast(1.04)' : 'grayscale(1) contrast(1.08)'}${p.veil ? ` blur(${p.veil}px)` : ''}`,
+          }}
         />
         {p.crop !== undefined && p.crop < meta.h && (
           <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 70, background: `linear-gradient(transparent, ${C.sheet})`}} />

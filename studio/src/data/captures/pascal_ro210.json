@@ -1,0 +1,28 @@
+{
+ "id": "pascal_ro210",
+ "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+ "source": "Pascal, Pensées, Divertissement 4 (Laf. 136, Sel. 168), manuscrit autographe, Recueil des originaux p. 210 (BnF, fr. 9202), via penseesdepascal.fr",
+ "w": 680.0,
+ "h": 941.5,
+ "dpr": 1.491,
+ "cutout": true,
+ "highlights": [
+  {
+   "text": "De là vient que le plaisir de la solitude est une chose incompréhensible",
+   "rects": [
+    {
+     "x": 592.8,
+     "y": 400.4,
+     "w": 32.2,
+     "h": 22.1
+    },
+    {
+     "x": 156.9,
+     "y": 429.2,
+     "w": 448.0,
+     "h": 29.5
+    }
+   ]
+  }
+ ]
+}

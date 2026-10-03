@@ -1,4 +1,4 @@
-// Vraies pages capturées par tools/capture.py (web) et tools/pdfcap.py (PDF) : image dans public/captures/,
+// Vraies pages capturées par tools/capture.py (web), tools/pdfcap.py (PDF) et tools/relics.py (manuscrits) : image dans public/captures/,
 // rectangles des passages (px CSS de la page) dans src/data/captures/.
 import arcep_2025 from './data/captures/arcep_2025.json';
 import ghazali_baghdad from './data/captures/ghazali_baghdad.json';
@@ -13,6 +13,8 @@ import kg_resultats from './data/captures/kg_resultats.json';
 import mm_3h from './data/captures/mm_3h.json';
 import mm_mobile from './data/captures/mm_mobile.json';
 import pascal_chambre from './data/captures/pascal_chambre.json';
+import pascal_ro139 from './data/captures/pascal_ro139.json';
+import pascal_ro210 from './data/captures/pascal_ro210.json';
 import pascal_solitude from './data/captures/pascal_solitude.json';
 import pmc_domicile from './data/captures/pmc_domicile.json';
 import pmc_etude9 from './data/captures/pmc_etude9.json';
@@ -25,7 +27,8 @@ import pmc_titre from './data/captures/pmc_titre.json';
 import pmc_vagabondage from './data/captures/pmc_vagabondage.json';
 
 export type Rect = {x: number; y: number; w: number; h: number};
-export type CapMeta = {id: string; w: number; h: number; highlights: {text: string; rects: Rect[]}[]};
+// cutout : objet d'archive détouré (tools/relics.py) : vraie forme du papier, en couleur
+export type CapMeta = {id: string; w: number; h: number; cutout?: boolean; highlights: {text: string; rects: Rect[]}[]};
 
 export const CAP: Record<string, CapMeta> = {
   arcep_2025,
@@ -41,6 +44,8 @@ export const CAP: Record<string, CapMeta> = {
   mm_3h,
   mm_mobile,
   pascal_chambre,
+  pascal_ro139,
+  pascal_ro210,
   pascal_solitude,
   pmc_domicile,
   pmc_etude9,

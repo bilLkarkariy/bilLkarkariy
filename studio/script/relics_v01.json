@@ -1,0 +1,23 @@
+[
+ {
+  "id": "pascal_ro139",
+  "src": "https://www.penseesdepascal.fr/RO-extraits/RO139-210-209-217-2-133.pdf",
+  "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+  "source": "Pascal, Pensées, Divertissement 4 (Laf. 136, Sel. 168), manuscrit autographe, Recueil des originaux p. 139 (BnF, fr. 9202), via penseesdepascal.fr",
+  "page": 0,
+  "highlights": [
+   {"text": "que tout le malheur des hommes", "rects": [[528, 162, 870, 200]]},
+   {"text": "vient d'une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre", "rects": [[175, 199, 706, 245]]}
+  ]
+ },
+ {
+  "id": "pascal_ro210",
+  "src": "https://www.penseesdepascal.fr/RO-extraits/RO139-210-209-217-2-133.pdf",
+  "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+  "source": "Pascal, Pensées, Divertissement 4 (Laf. 136, Sel. 168), manuscrit autographe, Recueil des originaux p. 210 (BnF, fr. 9202), via penseesdepascal.fr",
+  "page": 1,
+  "highlights": [
+   {"text": "De là vient que le plaisir de la solitude est une chose incompréhensible", "rects": [[884, 597, 932, 630], [234, 640, 902, 684]]}
+  ]
+ }
+]

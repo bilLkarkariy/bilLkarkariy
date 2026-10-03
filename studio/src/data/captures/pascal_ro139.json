@@ -1,0 +1,33 @@
+{
+ "id": "pascal_ro139",
+ "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+ "source": "Pascal, Pensées, Divertissement 4 (Laf. 136, Sel. 168), manuscrit autographe, Recueil des originaux p. 139 (BnF, fr. 9202), via penseesdepascal.fr",
+ "w": 680.0,
+ "h": 998.6,
+ "dpr": 1.428,
+ "cutout": true,
+ "highlights": [
+  {
+   "text": "que tout le malheur des hommes",
+   "rects": [
+    {
+     "x": 369.8,
+     "y": 113.5,
+     "w": 239.5,
+     "h": 26.6
+    }
+   ]
+  },
+  {
+   "text": "vient d'une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre",
+   "rects": [
+    {
+     "x": 122.6,
+     "y": 139.4,
+     "w": 371.9,
+     "h": 32.2
+    }
+   ]
+  }
+ ]
+}

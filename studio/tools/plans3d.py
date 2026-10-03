@@ -1,4 +1,4 @@
-"""Plans 3D de la partie 2 : la maquette en carton blanc, éclairée comme une vraie pièce.
+"""Plans 3D : la maquette en carton blanc, éclairée comme une vraie pièce. C'est le fil rouge de la vidéo.
 
   seuls   « Puis on les laisse seuls. Et le bouton est là… »  soleil rasant par la porte ;
           la porte se ferme, la lumière se referme, il ne reste que le bouton rouge.
@@ -6,11 +6,21 @@
           la lumière s'éteint sur « bouton ».
   salon   « chez les gens. Sur leur canapé. »                  le salon en maquette, une lampe chaude ;
           sur « canapé », le participant tombe dans le canapé.
+  vide    « Imagine une pièce sans aucun meuble… Le téléphone, c'est la porte. »
+          la chaise et la table disparaissent sur leurs mots ; le pion entre, tourne, touche les murs,
+          cherche la porte ; sur « téléphone », la pièce s'éteint et la porte s'allume comme un écran.
+  khalwa  « Dans une khalwa, on se retire volontairement. Traditionnellement quarante jours… »
+          le pion entre et ferme la porte lui-même ; une petite lumière au centre ; sur « quarante jours »,
+          le soleil tourne au-dessus de la maquette (jours et nuits en accéléré), la lumière reste.
+  dhikr   « tu poses un meuble dans la pièce vide. Un point fixe. L'esprit part, tu le ramènes… »
+          le point d'or se pose au centre ; le pion s'en éloigne et y revient, deux fois.
+  meublee « Tu n'as juste jamais meublé la pièce. »   la même pièce, lumière dorée, le pion assis
+          près du point d'or ; la caméra s'élève.
 
 Les temps viennent des mots de la voix (src/data/v01.vo.json), calculés comme dans src/V01.tsx :
 si la voix change, on relance et tout se recale.
 
-  python3 tools/plans3d.py SHOT [--test] [--step 2] [--samples 32]
+  python3 tools/plans3d.py SHOT [--test [f,f,…]] [--pct 40] [--step 2] [--samples 32]
   -> public/3d/<shot>/f0001.png …  (fond transparent + ombres portées, composé sur le papier)
 """
 import json
@@ -131,8 +141,27 @@ def shell():
     bpy.context.object.is_shadow_catcher = True
 
 
-def lab_furniture():
+def group(name, objs, origin):
+    """Un repère au sol qui porte des objets : le mettre à l'échelle 0 les fait disparaître sur place."""
+    bpy.ops.object.empty_add(location=origin)
+    root = bpy.context.object
+    root.name = name
+    for o in objs:
+        o.parent = root
+        o.matrix_parent_inverse = root.matrix_world.inverted()
+    return root
+
+
+def vanish(root, f, dur=8):
+    """Le groupe gonfle à peine puis rentre dans le sol (un objet qu'on retire de la pièce)."""
+    for k, sc in ((1, 1.0), (f, 1.0), (f + 3, 1.05), (f + dur, 0.0)):
+        root.scale = (sc, sc, sc)
+        root.keyframe_insert("scale", frame=k)
+
+
+def lab_furniture(button=True):
     tx, ty, tw, td, th = TABLE["x"], TABLE["y"], TABLE["w"], TABLE["d"], TABLE["h"]
+    before = set(bpy.data.objects)
     box("plateau", tx - tw / 2, ty - td / 2, Z0 + th - 0.03, tx + tw / 2, ty + td / 2, Z0 + th)
     for sx in (-1, 1):
         for sy in (-1, 1):
@@ -145,6 +174,10 @@ def lab_furniture():
             lx, ly = cx + sx * (cs / 2 - 0.03), cy + sy * (cs / 2 - 0.03)
             box("pied_c", lx - 0.015, ly - 0.015, Z0, lx + 0.015, ly + 0.015, Z0 + ch - 0.03, bev=0.003)
     box("dossier", cx - cs / 2, cy - cs / 2, Z0 + ch, cx + cs / 2, cy - cs / 2 + 0.03, Z0 + ch + 0.42)
+    if not button:
+        made = [o for o in bpy.data.objects if o not in before]  # (bpy.data.objects est trié par nom)
+        return {"table": [o for o in made if o.name.startswith(("plateau", "pied")) and not o.name.startswith("pied_c")],
+                "chaise": [o for o in made if o.name.startswith(("assise", "pied_c", "dossier"))]}
     bx, by, br = BUTTON["x"], BUTTON["y"], BUTTON["r"]
     top = Z0 + th
     box("boitier", bx - 0.09, by - 0.07, top, bx + 0.09, by + 0.07, top + 0.04)
@@ -209,6 +242,82 @@ def smooth(u):
 def orbit(target, dist, elev, azim):
     e, a = math.radians(elev), math.radians(azim)
     return Vector(target) + Vector((dist * math.cos(e) * math.sin(a), -dist * math.cos(e) * math.cos(a), dist * math.sin(e)))
+
+
+def walk(root, keys, z, bob=0.035):
+    """Le pion suit des points (image, x, y) ; il sautille un peu quand il avance."""
+    keys = sorted(keys)
+    prev = None
+    for f in range(keys[0][0], keys[-1][0] + 1):
+        i = max(j for j in range(len(keys)) if keys[j][0] <= f)
+        if i == len(keys) - 1:
+            x, y = keys[i][1], keys[i][2]
+        else:
+            (f0, x0, y0), (f1, x1, y1) = keys[i][:3], keys[i + 1][:3]
+            u = smooth((f - f0) / (f1 - f0)) if keys[i + 1][3:] != ("lin",) else (f - f0) / (f1 - f0)
+            x, y = x0 + (x1 - x0) * u, y0 + (y1 - y0) * u
+        speed = 0 if prev is None else math.hypot(x - prev[0], y - prev[1])
+        root.location = (x, y, z + bob * min(1.0, speed / 0.02) * abs(math.sin(f * 0.55)))
+        root.keyframe_insert("location", frame=f)
+        prev = (x, y)
+
+
+def circle(f0, f1, c, start, turns, n=24):
+    """Points d'un tour (ou plus) autour de c, en partant de start : le pion « tourne en rond »."""
+    r = math.hypot(start[0] - c[0], start[1] - c[1])
+    a0 = math.atan2(start[1] - c[1], start[0] - c[0])
+    return [(round(f0 + (f1 - f0) * k / n), c[0] + r * math.cos(a0 + turns * 2 * math.pi * k / n),
+             c[1] + r * math.sin(a0 + turns * 2 * math.pi * k / n), "lin") for k in range(1, n + 1)]
+
+
+def squash(root, f, amount=0.18):
+    """Le pion se tasse (il touche un mur, il s'assoit, il atterrit)."""
+    for k, sz in ((f - 1, 1.0), (f + 2, 1.0 - amount), (f + 6, 1.0 + amount / 3), (f + 10, 1.0)):
+        root.scale = (1 + (1 - sz) * 0.5, 1 + (1 - sz) * 0.5, sz)
+        root.keyframe_insert("scale", frame=k)
+
+
+def ramp(target, prop, keys):
+    """Anime une valeur : ramp(lampe, "energy", [(image, valeur), …]) ; pour un nœud : (entrée, "default_value", …)."""
+    for f, v in keys:
+        setattr(target, prop, v)
+        target.keyframe_insert(prop, frame=f)
+
+
+GOLD = material("or", "#D9A441", rough=0.25, emission=0.0)
+
+
+def gold_point(x, y, z):
+    """Le point fixe : une petite perle d'or qui éclaire la pièce (le Nom, dans le dhikr)."""
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.055, location=(x, y, z), segments=48, ring_count=24)
+    o = bpy.context.object
+    o.name = "point_or"
+    o.data.materials.append(GOLD)
+    bpy.ops.object.shade_smooth()
+    bpy.ops.object.light_add(type="POINT", location=(x, y, z + 0.12))
+    lamp = bpy.context.object
+    lamp.data.color = srgb("#FFC46B")[:3]
+    lamp.data.shadow_soft_size = 0.04
+    lamp.parent = o
+    lamp.matrix_parent_inverse = o.matrix_world.inverted()
+    return o, lamp.data
+
+
+def door_leaf():
+    """Le battant de la porte, sur sa charnière (ouvert à -90°, fermé à 0°)."""
+    LW = DOOR_X1 - DOOR_X0 - 0.01
+    leaf = box("porte", 0, -0.02, 0, LW, 0.02, WALL_H - 0.02)
+    bpy.ops.object.empty_add(location=(DOOR_X1, -hd - 0.02, Z0))
+    hinge = bpy.context.object
+    leaf.parent = hinge
+    leaf.location = (-LW, 0, 0)
+    return hinge
+
+
+def swing(hinge, keys):
+    for f, ang in keys:
+        hinge.rotation_euler = (0, 0, math.radians(ang))
+        hinge.keyframe_insert("rotation_euler", frame=f)
 
 
 def key_emission(mat, f, v):
@@ -345,18 +454,196 @@ elif SHOT == "salon":
         u = smooth(f / N)
         tgt = Vector((-0.35, 0.25, 0.35))
         look(cam, orbit(tgt, 7.0 - 1.3 * u, 38 - 3 * u, -30 + 12 * u), tgt, f)
+elif SHOT == "vide":
+    # « Imagine une pièce sans aucun meuble. Pas de chaise, pas de table. Tu entres. Tu fais quoi ?
+    #   Tu tournes. Tu touches les murs. Et au bout d'un moment, tu cherches la porte.
+    #   Ton esprit sans point d'appui, c'est cette pièce. Le téléphone, c'est la porte. »
+    t0 = at("p35") - 4
+    N = at("p36", None, "end") + 24 - t0
+    F = lambda *a: at(*a) - t0 + 1
+    shell()
+    g = lab_furniture(button=False)
+    vanish(group("chaise", g["chaise"], (CHAIR["x"], CHAIR["y"], Z0)), F("p35", "chaise"))
+    vanish(group("table", g["table"], (TABLE["x"], TABLE["y"], Z0)), F("p35", "table"))
+    # une lumière blanche, un peu froide, de biais : l'ombre d'un mur barre le sol nu
+    sun(elev=38, azim=70, energy=3.4, angle=3, color="#F4F6FA")
+    world("#C9D2DC", 0.32)
+    p = person(1.4, -2.4, Z0)
+    enter, quoi = F("p35", "entres"), F("p35", "quoi")
+    turn0, touch = F("p35", "tournes"), F("p35", "touches")
+    walls, look_f, porte = F("p35", "murs"), F("p35", "cherches"), F("p35", "porte")
+    keys = [(1, 1.4, -2.4), (enter - 2, 1.4, -2.4), (enter + 16, 1.25, -0.75), (quoi + 6, 1.15, -0.55)]
+    keys += circle(turn0, touch - 4, (0.55, -0.15), (1.15, -0.55), 1.15)
+    # (le mur proche de la caméra cacherait le pion : il touche le mur de droite, puis celui du fond)
+    keys += [(touch + 10, 1.78, 0.35), (walls + 4, 1.78, 0.35), (walls + 18, -0.9, -1.28), (look_f - 2, -0.7, -1.28),
+             (porte + 4, 1.25, -1.05), (N, 1.35, -1.2)]
+    walk(p, [(1, 1.4, -2.4), *keys[1:]], Z0)
+    p.scale = (0, 0, 0)
+    p.keyframe_insert("scale", frame=enter - 3)
+    p.scale = (1, 1, 1)
+    p.keyframe_insert("scale", frame=enter + 3)
+    squash(p, touch + 10, 0.22)  # il touche le mur du fond
+    squash(p, walls + 18, 0.22)  # puis celui du fond
+    # « Le téléphone, c'est la porte » : la pièce s'éteint, l'embrasure s'allume comme un écran
+    tel = F("p36", "téléphone")
+    SCREEN = material("ecran_porte", "#9CC3FF", rough=0.4, emission=0.0)
+    bpy.ops.mesh.primitive_plane_add(size=1, location=((DOOR_X0 + DOOR_X1) / 2, -hd - t / 2, Z0 + WALL_H / 2 - 0.01),
+                                     rotation=(math.radians(90), 0, 0))
+    scr = bpy.context.object
+    scr.scale = (DOOR_X1 - DOOR_X0 - 0.002, WALL_H - 0.02, 1)
+    scr.data.materials.append(SCREEN)
+    scr.visible_shadow = False
+    for f, hide in ((1, True), (tel - 3, True), (tel - 2, False)):  # éteint, l'embrasure reste une ouverture
+        scr.hide_render = hide
+        scr.keyframe_insert("hide_render", frame=f)
+    key_emission(SCREEN, 1, 0.0)
+    key_emission(SCREEN, tel - 2, 0.0)
+    key_emission(SCREEN, tel + 14, 6.0)
+    bpy.ops.object.light_add(type="AREA", location=((DOOR_X0 + DOOR_X1) / 2, -hd + 0.02, Z0 + WALL_H / 2),
+                             rotation=(math.radians(90), 0, 0))  # émet vers +y : dans la pièce
+    glow = bpy.context.object.data
+    glow.shape, glow.size, glow.size_y = "RECTANGLE", DOOR_X1 - DOOR_X0, WALL_H
+    glow.color = srgb("#9CC3FF")[:3]
+    ramp(glow, "energy", [(1, 0.0), (tel - 2, 0.0), (tel + 14, 110.0)])
+    ramp(bpy.data.lights["Sun"], "energy", [(tel - 4, 3.2), (tel + 12, 0.15)])
+    ramp(scene.world.node_tree.nodes["Background"].inputs[1], "default_value", [(tel - 4, 0.32), (tel + 12, 0.04)])
+    # caméra derrière le mur du fond, face à la porte (comme « seuls ») ; elle s'élève sur « cette pièce »
+    cam = camera(lens=35)
+    rise = F("p36", "pièce")
+    for f in range(1, N + 1):
+        u = smooth(f / N)
+        r = smooth((f - rise) / 60)
+        tgt = Vector((0.1, -0.25, 0.2))
+        look(cam, orbit(tgt, 8.0 - 1.2 * u + 0.6 * r, 47 + 9 * r, 166 - 14 * u), tgt, f)
+
+elif SHOT == "khalwa":
+    # « Dans une khalwa, on se retire volontairement. Traditionnellement quarante jours, seul,
+    #   guidé par un maître. Exactement ce que les étudiants de Virginie fuyaient en quinze minutes. »
+    t0 = at("p44") - 6
+    N = at("p44", None, "end") + 24 - t0
+    F = lambda *a: at(*a) - t0 + 1
+    shell()
+    hinge = door_leaf()
+    retire, vol = F("p44", "retire"), F("p44", "volontairement")
+    jours0, jours1 = F("p44", "quarante"), F("p44", "Exactement")
+    swing(hinge, [(1, -90), (vol, -90), (vol + 18, 0)])
+    CX, CY = 0.0, 0.1
+    p = person(1.4, -2.3, Z0)
+    # il s'écarte de la porte pendant qu'elle se ferme (le battant balaie un quart de cercle de 0,9 m)
+    walk(p, [(1, 1.4, -2.3), (retire - 4, 1.4, -2.3), (vol - 2, 1.05, -0.55), (vol + 22, 0.95, -0.5),
+             (jours0 - 6, CX, CY - 0.32)], Z0)
+    squash(p, jours0 - 6, 0.12)
+    # la petite lumière au centre, devant lui : une flamme d'or qui ne bouge pas
+    pt, lamp = gold_point(CX, CY + 0.05, Z0 + 0.06)
+    pt.scale = (0, 0, 0)
+    pt.keyframe_insert("scale", frame=vol + 10)
+    pt.scale = (1, 1, 1)
+    pt.keyframe_insert("scale", frame=vol + 22)
+    key_emission(GOLD, 1, 0.0)
+    key_emission(GOLD, vol + 10, 0.0)
+    key_emission(GOLD, vol + 30, 3.0)
+    ramp(lamp, "energy", [(1, 0.0), (vol + 10, 0.0), (vol + 30, 22.0)])
+    # « quarante jours » : le soleil tourne au-dessus de la maquette, jours et nuits en accéléré
+    bpy.ops.object.light_add(type="SUN")
+    so = bpy.context.object
+    so.data.angle = math.radians(1.5)
+    world("#9FB0C6", 0.2)
+    bg = scene.world.node_tree.nodes["Background"]
+    DAYS = 3.0
+    for f in range(1, N + 1):
+        u = min(1.0, max(0.0, (f - jours0) / (jours1 - jours0)))
+        ph = 0.18 + DAYS * smooth(u)  # 0.18 : matin ; la course finit au soir (phase .x5)
+        a = 2 * math.pi * ph
+        h = math.sin(a)  # hauteur du soleil (> 0 le jour)
+        so.rotation_euler = Euler((math.radians(90 - max(6, 70 * h)), 0, a))
+        so.keyframe_insert("rotation_euler", frame=f)
+        so.data.energy = 4.5 * max(0.0, h) ** 0.6
+        so.data.keyframe_insert("energy", frame=f)
+        warm = 1 - max(0.0, h)
+        so.data.color = (1.0, 0.86 + 0.12 * (1 - warm), 0.7 + 0.28 * (1 - warm))
+        so.data.keyframe_insert("color", frame=f)
+        bg.inputs[1].default_value = 0.11 + 0.21 * max(0.0, h)
+        bg.inputs[1].keyframe_insert("default_value", frame=f)
+    cam = camera(lens=38)
+    for f in range(1, N + 1):
+        u = smooth(f / N)
+        tgt = Vector((0.2, -0.1, 0.2))
+        look(cam, orbit(tgt, 8.8 - 1.4 * u, 52 + 4 * u, 150 - 22 * u), tgt, f)
+
+elif SHOT == "dhikr":
+    # « L'idée est simple : tu poses un meuble dans la pièce vide. Un point fixe.
+    #   L'esprit part, tu le ramènes au nom. Il repart, tu le ramènes. »
+    t0 = at("p51", "L'idée") - 6
+    N = at("p51", None, "end") + 30 - t0
+    F = lambda *a: at(*a) - t0 + 1
+    shell()
+    sun(elev=62, azim=25, energy=2.2, angle=6, color="#F4F6FA")  # la pièce nue, comme dans « vide »
+    world("#C9D2DC", 0.24)
+    CX, CY = 0.2, 0.15
+    meuble, fixe = F("p51", "meuble"), F("p51", "fixe")
+    part, ram1 = F("p51", "part"), F("p51", "ramènes")
+    repart, ram2 = F("p51", "repart"), F("p51", "ramènes", "start", 1)
+    p = person(-1.2, 0.6, Z0)
+    # avant le point : il erre ; puis il vient s'asseoir près du point, s'en éloigne, revient
+    keys = [(1, -1.2, 0.6), (meuble - 10, 0.9, -0.9), (meuble + 14, 1.1, -0.6), (fixe + 16, CX + 0.05, CY - 0.38),
+            (part + 2, CX + 0.05, CY - 0.38), (ram1 - 2, 1.25, -1.05), (ram1 + 16, CX + 0.05, CY - 0.38),
+            (repart + 2, CX + 0.05, CY - 0.38), (ram2 - 2, -1.4, 0.95), (ram2 + 18, CX + 0.05, CY - 0.38)]
+    walk(p, keys, Z0)
+    squash(p, fixe + 16, 0.12)
+    squash(p, ram1 + 16, 0.12)
+    squash(p, ram2 + 18, 0.12)
+    # le point d'or descend et se pose sur « meuble », il s'allume sur « point fixe », pulse à chaque retour
+    pt, lamp = gold_point(CX, CY, Z0 + 0.06)
+    for f, z in ((1, 1.9), (meuble - 2, 1.9), (meuble + 8, Z0 + 0.06)):
+        pt.location.z = z
+        pt.keyframe_insert("location", frame=f)
+    squash(pt, meuble + 8, 0.3)
+    glow = [(1, 0.6), (meuble + 8, 0.6), (fixe, 0.6), (fixe + 10, 3.0)]
+    light = [(1, 0.0), (meuble + 8, 2.0), (fixe, 2.0), (fixe + 10, 26.0)]
+    for r in (ram1 + 16, ram2 + 18):
+        glow += [(r - 2, 3.0), (r + 4, 6.0), (r + 16, 3.0)]
+        light += [(r - 2, 26.0), (r + 4, 46.0), (r + 16, 26.0)]
+    for f, v in glow:
+        key_emission(GOLD, f, v)
+    ramp(lamp, "energy", light)
+    ramp(bpy.data.lights["Sun"], "energy", [(fixe, 2.2), (fixe + 20, 1.2)])
+    cam = camera(lens=36)
+    for f in range(1, N + 1):
+        u = smooth(f / N)
+        tgt = Vector((0.0, 0.0, 0.2))
+        look(cam, orbit(tgt, 8.8 - 1.0 * u, 58 - 6 * u, 200 - 30 * u), tgt, f)
+
+elif SHOT == "meublee":
+    # « Tu n'as juste jamais meublé la pièce. » : la même pièce, la lumière dorée, il est resté
+    t0 = at("p67", "meublé") - 10
+    N = at("p68") + 30 - t0
+    shell()
+    CX, CY = 0.2, 0.15
+    person(CX + 0.05, CY - 0.38, Z0)
+    pt, lamp = gold_point(CX, CY, Z0 + 0.06)
+    key_emission(GOLD, 1, 3.0)
+    lamp.energy = 30.0
+    sun(elev=24, azim=115, energy=5.0, angle=1.5, color="#FFD7A0")  # soleil bas et doré, de côté
+    world("#B8C2D0", 0.14)
+    cam = camera(lens=35)
+    for f in range(1, N + 1):
+        u = smooth(f / N)
+        tgt = Vector((0.2, -0.1, 0.2))
+        look(cam, orbit(tgt, 6.6 + 2.0 * u, 48 + 14 * u, 160 - 10 * u), tgt, f)
 else:
     raise SystemExit(f"plan inconnu : {SHOT}")
 
 # ── rendu ───────────────────────────────────────────────────────────────────────────────────────
 scene.render.engine = "CYCLES"
 scene.cycles.device = "CPU"
-scene.cycles.samples = 16 if TEST else SAMPLES
+scene.cycles.samples = SAMPLES if "--samples" in ARGS else (16 if TEST else 32)
 scene.cycles.use_denoising = True
 scene.cycles.max_bounces = 6
 scene.render.use_persistent_data = True
 scene.render.film_transparent = True
 scene.render.resolution_x, scene.render.resolution_y = 1920, 1080
+if "--pct" in ARGS:  # aperçu rapide : --test 1,40,80 --pct 40
+    scene.render.resolution_percentage = int(ARGS[ARGS.index("--pct") + 1])
 scene.render.fps = FPS
 scene.frame_start, scene.frame_end = 1, N
 try:
