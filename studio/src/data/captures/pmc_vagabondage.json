@@ -1,0 +1,38 @@
+{
+ "id": "pmc_vagabondage",
+ "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+ "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+ "w": 860.0,
+ "h": 194.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "their mind wandered (89.0%",
+   "rects": [
+    {
+     "x": 15.6,
+     "y": 55.6,
+     "w": 827.6,
+     "h": 21.2
+    },
+    {
+     "x": 15.6,
+     "y": 85.6,
+     "w": 133.6,
+     "h": 21.2
+    }
+   ]
+  },
+  {
+   "text": "difficult to concentrate (57.5%",
+   "rects": [
+    {
+     "x": 15.6,
+     "y": 55.6,
+     "w": 266.4,
+     "h": 21.2
+    }
+   ]
+  }
+ ]
+}

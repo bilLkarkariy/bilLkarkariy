@@ -24,10 +24,14 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 PG = os.path.join(ROOT, ".cache/playground")
 SR = 48000
 
-GAP = {"paragraphe": 0.7, "idée": 1.2, "partie": 1.9}
-PARTIES = ("Université de Virginie", "Le plus étrange, c'est ça", "Je crois qu'on se trompe", "Ce mot, c'est khalwa",
-           "Un. Ton téléphone", "Revenons au bouton", "Prochaine vidéo")
-IDEES = ("Avant de laisser", "Tu te dis peut-être", "Les auteurs ont une image", "Question.", "En deux mille dix",
+GAP = {"relance": 0.45, "chute": 0.8, "paragraphe": 0.7, "idée": 1.2, "partie": 1.9}
+PARTIES = ("Université de Virginie", "Je crois qu'on se trompe", "Un. Ton téléphone", "Revenons au bouton", "Prochaine vidéo")
+# la phrase reprend la précédente pour l'appuyer : ce n'est pas une nouvelle idée, le blanc est court
+# et imposé (on raccourcit le silence de la prise s'il est plus long)
+RELANCES = ("Le plus étrange, c'est ça", "D'autres techniques.")
+CHUTES = ("Ce mot, c'est khalwa",)  # la réponse à une attente : un temps, pas une rupture
+IDEES = ("Avant de laisser", "Tu te dis peut-être", "Et le plus étrange", "Les auteurs ont une image", "Question.",
+         "En deux mille dix",
          "L'ascenseur", "Mais ce problème", "Imagine une pièce", "Et les auteurs de l'étude", "Pourquoi quelqu'un",
          "Bagdad", "Attention, ce n'est pas", "Mais seul dans une pièce", "Le Coran", "La voie que je suis",
          "Je ne vais pas te demander", "Ce qui va probablement", "La dernière phrase", "Tu n'as pas un problème")
@@ -59,16 +63,21 @@ def paragraph_times(path, paras, model):
 
 
 def gap_after(p_text, next_text):
+    """(blanc voulu, imposé ?) : imposé = on raccourcit aussi le silence s'il est plus long."""
     clean = TAG.sub("", p_text).strip()
     for end, g in APRES_LONG.items():
         if clean.endswith(end):
-            return g
+            return g, False
     nxt = TAG.sub("", next_text).strip()
+    if nxt.startswith(RELANCES):
+        return GAP["relance"], True
+    if nxt.startswith(CHUTES):
+        return GAP["chute"], True
     if nxt.startswith(PARTIES):
-        return GAP["partie"]
+        return GAP["partie"], False
     if nxt.startswith(IDEES):
-        return GAP["idée"]
-    return GAP["paragraphe"]
+        return GAP["idée"], False
+    return GAP["paragraphe"], False
 
 
 def main():
@@ -112,10 +121,24 @@ def main():
         loud = np.where(db > thr)[0]
         c[2] = loud[0] * 0.01 if len(loud) else 0.0  # silence de tête
         c[3] = (len(db) - 1 - loud[-1]) * 0.01 if len(loud) else 0.0  # silence de queue
+    # blancs imposés : on retire l'excédent de silence, d'abord en queue du précédent, puis en tête
+    for k in range(1, len(clips)):
+        want, exact = gap_after(clips[k - 1][0], clips[k][0])
+        prev, cur = clips[k - 1], clips[k]
+        excess = prev[3] + cur[2] - want
+        if exact and excess > 0:
+            cut_tail = min(excess, max(0.0, prev[3] - want * 0.6))
+            cut_head = min(excess - cut_tail, max(0.0, cur[2] - 0.05))
+            if cut_tail > 0:
+                prev[1] = prev[1][: len(prev[1]) - int(cut_tail * SR)]
+                prev[3] -= cut_tail
+            if cut_head > 0:
+                cur[1] = cur[1][int(cut_head * SR):]
+                cur[2] -= cut_head
     out, timeline, t = [], [], 0.0
     for k, (p, a, pre, post) in enumerate(clips):
         if k:
-            want = gap_after(clips[k - 1][0], p)
+            want, _ = gap_after(clips[k - 1][0], p)
             have = clips[k - 1][3] + pre
             if want > have:
                 out.append(np.zeros(int((want - have) * SR), np.float32))

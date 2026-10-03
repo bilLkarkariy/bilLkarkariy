@@ -12,3 +12,4 @@ public/aroll/
 
 # secrets
 .env
+public/captures/

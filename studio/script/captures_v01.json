@@ -1,0 +1,96 @@
+[
+ {
+  "id": "pmc_revue",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "block": "div",
+  "deepest": true,
+  "anchor": "Published in final edited form as",
+  "highlights": [
+   "Science. 2014 Jul 4"
+  ],
+  "pad": 10
+ },
+ {
+  "id": "pmc_titre",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "block": "hgroup, .front-matter, section.front-matter, div.front-matter, h1",
+  "anchor": "Just think: The challenges of the disengaged mind",
+  "highlights": [],
+  "crop_h": 128
+ },
+ {
+  "id": "pmc_methode",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "Participants also reported how much they would pay",
+  "highlights": [
+   "how much they would pay to experience or not experience each stimulus again",
+   "$5"
+  ]
+ },
+ {
+  "id": "pmc_resultats",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "67% of men (12 of 18)",
+  "highlights": [
+   "67% of men (12 of 18)",
+   "25% of women (6 of 24",
+   "one outlier who administered 190 shocks to himself",
+   "only include participants who had reported that they would pay to avoid being shocked again"
+  ]
+ },
+ {
+  "id": "pmc_vagabondage",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "their mind wandered (89.0%",
+  "highlights": [
+   "their mind wandered (89.0%",
+   "difficult to concentrate (57.5%"
+  ]
+ },
+ {
+  "id": "pmc_domicile",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "reported that they had",
+  "highlights": [
+   "32% reported that they had",
+   "listening to music or consulting their cell phones",
+   "getting up out of their chair"
+  ]
+ },
+ {
+  "id": "pmc_etude9",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "farmer's market",
+  "highlights": [
+   "ranged in age from 18 to 77",
+   "participants' age",
+   "smart phones"
+  ]
+ },
+ {
+  "id": "pmc_preparation",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "prompted fantasy",
+  "highlights": [
+   "first spent a few minutes planning what they would think about",
+   "none reliably increased participants' enjoyment of the thinking period"
+  ]
+ },
+ {
+  "id": "pmc_fin",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+  "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+  "anchor": "The untutored mind does not like to be alone with itself",
+  "highlights": [
+   "The untutored mind does not like to be alone with itself."
+  ]
+ }
+]

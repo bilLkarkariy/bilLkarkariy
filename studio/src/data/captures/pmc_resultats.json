@@ -1,0 +1,72 @@
+{
+ "id": "pmc_resultats",
+ "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+ "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+ "w": 860.0,
+ "h": 556.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "67% of men (12 of 18)",
+   "rects": [
+    {
+     "x": 732.8,
+     "y": 26.4,
+     "w": 92.4,
+     "h": 21.2
+    },
+    {
+     "x": 16.0,
+     "y": 56.4,
+     "w": 76.0,
+     "h": 21.2
+    }
+   ]
+  },
+  {
+   "text": "25% of women (6 of 24",
+   "rects": [
+    {
+     "x": 756.0,
+     "y": 87.2,
+     "w": 55.6,
+     "h": 21.2
+    },
+    {
+     "x": 15.6,
+     "y": 117.2,
+     "w": 120.4,
+     "h": 21.2
+    }
+   ]
+  },
+  {
+   "text": "one outlier who administered 190 shocks to himself",
+   "rects": [
+    {
+     "x": 250.0,
+     "y": 87.2,
+     "w": 392.0,
+     "h": 21.2
+    }
+   ]
+  },
+  {
+   "text": "only include participants who had reported that they would pay to avoid being shocked again",
+   "rects": [
+    {
+     "x": 660.8,
+     "y": 117.2,
+     "w": 94.4,
+     "h": 21.2
+    },
+    {
+     "x": 16.0,
+     "y": 148.4,
+     "w": 605.2,
+     "h": 21.2
+    }
+   ]
+  }
+ ]
+}

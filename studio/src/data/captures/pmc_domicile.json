@@ -1,0 +1,49 @@
+{
+ "id": "pmc_domicile",
+ "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4330241/",
+ "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
+ "w": 860.0,
+ "h": 376.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "32% reported that they had",
+   "rects": [
+    {
+     "x": 454.0,
+     "y": 116.4,
+     "w": 204.4,
+     "h": 21.2
+    }
+   ]
+  },
+  {
+   "text": "listening to music or consulting their cell phones",
+   "rects": [
+    {
+     "x": 250.8,
+     "y": 146.4,
+     "w": 368.4,
+     "h": 21.2
+    }
+   ]
+  },
+  {
+   "text": "getting up out of their chair",
+   "rects": [
+    {
+     "x": 650.8,
+     "y": 146.4,
+     "w": 165.2,
+     "h": 21.2
+    },
+    {
+     "x": 16.0,
+     "y": 176.4,
+     "w": 38.0,
+     "h": 21.2
+    }
+   ]
+  }
+ ]
+}
