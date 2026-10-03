@@ -1,0 +1,162 @@
+"""Voix temporaire (Piper) puis alignement mot à mot (Whisper).
+
+  python3 tools/vo.py tts   script/hook.json            -> public/vo/hook.wav
+  python3 tools/vo.py align script/hook.json AUDIO.wav  -> src/data/hook.vo.json
+
+L'alignement marche pareil sur la vraie prise de Billel : on ne dépend que du
+texte du script, jamais de minutages écrits à la main.
+"""
+import difflib
+import json
+import os
+import re
+import subprocess
+import sys
+import tempfile
+import unicodedata
+
+import numpy as np
+import soundfile as sf
+
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+VOICE = os.path.join(ROOT, ".cache/piper/fr_FR-tom-medium.onnx")
+SR = 48000
+
+
+def norm(w):
+    w = unicodedata.normalize("NFD", w.lower())
+    w = "".join(c for c in w if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-z0-9]", "", w)
+
+
+def tokens(text):
+    return [t for t in re.findall(r"[\w'’-]+", text) if norm(t)]
+
+
+def expand_numbers(words):
+    from num2words import num2words
+    out = []
+    for w in words:
+        digits = re.sub(r"[^\d]", "", w["word"])
+        if digits and digits == re.sub(r"[%.,\s]", "", w["word"].strip()):
+            parts = num2words(int(digits), lang="fr").replace("-", " ").split()
+            n = len(parts)
+            for i, p in enumerate(parts):  # répartit la durée du nombre sur ses mots
+                a = w["start"] + (w["end"] - w["start"]) * i / n
+                b = w["start"] + (w["end"] - w["start"]) * (i + 1) / n
+                out.append({"word": p, "start": a, "end": b})
+        else:
+            out.append(w)
+    return out
+
+
+def snap_to_energy(audio_path, times, thr_db=-38.0, hop=0.01):
+    """Whisper colle souvent le silence au mot suivant : on recale chaque début
+    (et chaque fin) de mot sur l'attaque réelle du signal."""
+    a, sr = sf.read(audio_path)
+    if a.ndim > 1:
+        a = a.mean(axis=1)
+    n = int(hop * sr)
+    rms = np.sqrt(np.mean(a[: len(a) // n * n].reshape(-1, n) ** 2, axis=1) + 1e-12)
+    db = 20 * np.log10(rms / (np.max(rms) + 1e-12))
+    loud = db > thr_db
+    min_gap = int(0.12 / hop)  # un vrai silence dure au moins 120 ms
+
+    def silences(i0, i1):
+        runs, k = [], i0
+        while k < i1:
+            if not loud[k]:
+                j = k
+                while j < i1 and not loud[j]:
+                    j += 1
+                if j - k >= min_gap:
+                    runs.append((k, j))
+                k = j
+            else:
+                k += 1
+        return runs
+
+    out = []
+    for s0, e0 in times:
+        i0, i1 = int(s0 / hop), min(len(loud), max(int(s0 / hop) + 1, int(round(e0 / hop))))
+        runs = silences(i0, i1)
+        a0 = runs[-1][1] if runs and runs[-1][1] < i1 else i0  # le mot commence après le dernier silence
+        on = np.where(loud[a0:i1])[0]
+        if not len(on):
+            out.append((s0, e0))
+            continue
+        a0 += on[0]
+        tail = silences(a0, i1)
+        a1 = tail[0][0] if tail else a0 + np.where(loud[a0:i1])[0][-1] + 1
+        out.append((a0 * hop, max(a1 * hop, a0 * hop + 0.05)))
+    return out
+
+
+def tts(script_path):
+    sc = json.load(open(script_path))
+    chunks = [np.zeros(int(sc["lead"] * SR))]
+    with tempfile.TemporaryDirectory() as tmp:
+        for seg in sc["segments"]:
+            raw = os.path.join(tmp, seg["id"] + ".wav")
+            subprocess.run(["python3", "-m", "piper", "-m", VOICE, "-f", raw, "--length-scale", "0.97"],
+                           input=seg["text"].encode(), check=True, capture_output=True)
+            rs = os.path.join(tmp, seg["id"] + "_48k.wav")
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-ar", str(SR), "-ac", "1", rs], check=True)
+            a, _ = sf.read(rs)
+            loud = np.where(np.abs(a) > 0.01)[0]
+            a = a[max(0, loud[0] - 480): loud[-1] + 2400]
+            chunks += [a, np.zeros(int(seg["pause"] * SR))]
+    chunks.append(np.zeros(int(sc["tail"] * SR)))
+    audio = np.concatenate(chunks)
+    audio *= 0.5 / np.max(np.abs(audio))
+    out = os.path.join(ROOT, "public/vo", os.path.basename(script_path).replace(".json", ".wav"))
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    sf.write(out, audio, SR)
+    print("voix ->", out, f"{len(audio) / SR:.2f}s")
+    return out
+
+
+def align(script_path, audio_path):
+    from faster_whisper import WhisperModel
+    sc = json.load(open(script_path))
+    model = WhisperModel("small", device="cpu", compute_type="int8")
+    prompt = " ".join(s["text"] for s in sc["segments"])
+    segs, _ = model.transcribe(audio_path, language="fr", word_timestamps=True, initial_prompt=prompt)
+    heard = [{"word": w.word.strip(), "start": w.start, "end": w.end} for s in segs for w in s.words]
+    heard = expand_numbers(heard)
+
+    script = [(seg["id"], t) for seg in sc["segments"] for t in tokens(seg["text"])]
+    a = [norm(t) for _, t in script]
+    b = [norm(w["word"]) for w in heard]
+    times = [None] * len(script)
+    for blk in difflib.SequenceMatcher(None, a, b, autojunk=False).get_matching_blocks():
+        for k in range(blk.size):
+            h = heard[blk.b + k]
+            times[blk.a + k] = (h["start"], h["end"])
+    # mots non reconnus : interpolés entre voisins
+    for i, t in enumerate(times):
+        if t is None:
+            prev = next((times[j][1] for j in range(i - 1, -1, -1) if times[j]), 0.0)
+            nxt = next((times[j][0] for j in range(i + 1, len(times)) if times[j]), prev)
+            times[i] = (prev, nxt)
+    times = snap_to_energy(audio_path, times)
+    out = {"audio": os.path.relpath(audio_path, os.path.join(ROOT, "public")), "segments": []}
+    for seg in sc["segments"]:
+        words = [{"w": t, "start": round(times[i][0], 3), "end": round(times[i][1], 3)}
+                 for i, (sid, t) in enumerate(script) if sid == seg["id"]]
+        out["segments"].append({"id": seg["id"], "text": seg["text"],
+                                "start": words[0]["start"], "end": words[-1]["end"], "words": words})
+    info = sf.info(audio_path)
+    out["duration"] = round(info.frames / info.samplerate, 3)
+    dst = os.path.join(ROOT, "src/data", os.path.basename(script_path).replace(".json", ".vo.json"))
+    json.dump(out, open(dst, "w"), ensure_ascii=False, indent=1)
+    unmatched = sum(1 for i in range(len(script)) if times[i][0] == times[i][1])
+    print("alignement ->", dst, f"({len(script)} mots, {unmatched} interpolés)")
+
+
+if __name__ == "__main__":
+    cmd, path = sys.argv[1], sys.argv[2]
+    if cmd == "tts":
+        align(path, tts(path))
+    elif cmd == "align":
+        align(path, sys.argv[3])

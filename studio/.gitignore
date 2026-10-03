@@ -1,0 +1,11 @@
+node_modules/
+out/
+.cache/
+# régénérables (tools/setup.sh)
+public/3d/
+public/vo/
+public/tex/
+public/sfx/
+public/fonts/
+# rushes et photos personnelles : jamais dans le dépôt
+public/aroll/

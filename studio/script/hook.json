@@ -1,0 +1,19 @@
+{
+  "_doc": "Texte du hook, découpé en segments. 'pause' = silence après le segment (s), utilisé seulement pour la voix temporaire. Avec la vraie prise, tools/align.py retrouve les segments dans l'audio.",
+  "lead": 1.5,
+  "tail": 1.2,
+  "segments": [
+    {"id": "s1", "text": "Quinze minutes.", "pause": 0.45},
+    {"id": "s2", "text": "Seul dans une pièce vide.", "pause": 0.35},
+    {"id": "s3", "text": "Pas de téléphone, rien à lire.", "pause": 0.6},
+    {"id": "s4", "text": "Juste toi, tes pensées…", "pause": 0.45},
+    {"id": "s5", "text": "et un bouton qui t'envoie une décharge électrique.", "pause": 1.6},
+    {"id": "s6", "text": "Deux hommes sur trois ont appuyé.", "pause": 0.9},
+    {"id": "s7", "text": "Des gens qui, juste avant, avaient dit qu'ils paieraient pour ne plus jamais la sentir.", "pause": 0.6},
+    {"id": "s8", "text": "Et je suis presque sûr que toi aussi, tu aurais appuyé.", "pause": 0.7},
+    {"id": "s9", "text": "C'est une étude publiée dans Science en deux mille quatorze.", "pause": 0.35},
+    {"id": "s10", "text": "Sa dernière phrase, presque personne ne la cite.", "pause": 0.35},
+    {"id": "s11", "text": "Pourtant, elle change complètement le sens de ce bouton.", "pause": 0.45},
+    {"id": "s12", "text": "Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir.", "pause": 0}
+  ]
+}
