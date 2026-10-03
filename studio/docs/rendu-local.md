@@ -86,7 +86,7 @@ tools/master.sh out/v01_raw.mp4 out/v01.mp4      # -14 LUFS, crête -1,5 dBTP
 
 - **Face caméra** : les plans `A-ROLL · À REMPLACER` (`src/components/ARoll.tsx`) attendent tes rushes. Le texte et les cadrages sont dans `docs/v01-face-camera.md`. Une fois ta vraie voix enregistrée, on relance l'alignement mot à mot et toutes les images se recalent.
 - **Gros plan tissu (6b)** : à poser après « Cette veste rapiécée, c'est son habit ».
-- **Médiamétrie, « une vingtaine de sessions »** : les communiqués PDF de Médiamétrie renvoient 404. À l'écran, il n'y a que la fiche. Dans la description, cite https://fr.themedialeader.com/?p=102193 (« 20 sessions Internet par jour en moyenne, avec une durée de 11 minutes chacune »).
+- **Médiamétrie, « une vingtaine de sessions »** : les communiqués PDF de Médiamétrie renvoient 404. À l'écran, il n'y a que la fiche. La description cite https://fr.themedialeader.com/?p=102193 (« 20 sessions Internet par jour en moyenne, avec une durée de 11 minutes chacune ») et, pour les captures, https://www.mediametrie.fr/fr/lannee-internet-2025. Description complète : `docs/v01-description.md`.
 - **Agent local** : le prompt de reprise est dans `docs/reprise-agent.md`.
 
 ## Où est quoi
