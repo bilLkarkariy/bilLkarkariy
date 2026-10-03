@@ -2,12 +2,12 @@
   "_doc": "POC 1 min : hook + début de « L'expérience », jusqu'à « Quinze minutes. ». 'pause' = silence après le segment (s).",
   "tts": {
     "engine": "elevenlabs",
-    "voice_id": "VnOjW3Apdoew44v1s6wr",
-    "_voice": "Billel (clone instantané ElevenLabs)",
+    "voice_id": "pHC2zyzqoP1LrEi8yHHB",
+    "_voice": "Billel micro-cravate (brut) — choix F : clone des prises micro-cravate + isolateur sur la voix générée",
     "model": "eleven_v4",
     "settings": {
-      "stability": 0.7,
-      "similarity_boost": 0.8,
+      "stability": 0.6,
+      "similarity_boost": 0.85,
       "use_speaker_boost": true
     },
     "post": "isolate"

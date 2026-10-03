@@ -1,6 +1,6 @@
 # Script de montage : POC 1 min (hook + début de « L'expérience »)
 
-Voix : **ton clone ElevenLabs** (« Billel », modèle `eleven_v4`, balises de ton dans `script/hook.json`). Les temps du tableau viennent d'une version antérieure de la voix ; ils sont indicatifs. Si tu enregistres une vraie prise, tout se recale automatiquement : chaque événement est accroché à un mot, pas à un timecode (`src/Hook.tsx`).
+Voix : **« Billel micro-cravate (brut) »**, clone ElevenLabs fait à partir de 2 min 46 de tes prises au micro-cravate (reprises et apartés retirés, `tools/voice_dataset.py`), modèle `eleven_v4`, puis isolateur vocal sur la voix générée (choix F). Réglages dans `script/hook.json`. Les temps du tableau sont indicatifs : chaque événement est accroché à un mot, pas à un timecode (`src/Hook.tsx`).
 
 Son : **aucune ambiance ajoutée**, la voix passe par l'isolateur vocal ElevenLabs (le clone avait appris le bruit de ses échantillons). Pas de balises « douces » ([softly], [warmly], [lowers voice]) : elles rendaient la voix soufflée.
 
