@@ -1,0 +1,22 @@
+[
+ {"name": "papier_pose", "duration": 1.0, "influence": 0.7,
+  "prompt": "A single sheet of paper dropped flat onto a wooden desk, soft papery slap, close-up, quiet room, dry, no music"},
+ {"name": "feutre", "duration": 1.0, "influence": 0.7,
+  "prompt": "Highlighter marker pen swiped across paper in one quick stroke, soft felt tip squeak on paper, close-up, dry"},
+ {"name": "fiche", "duration": 0.6, "influence": 0.7,
+  "prompt": "Small stiff cardboard index card flipped over and snapped down on a desk, crisp paper flick, close-up, dry"},
+ {"name": "bouton", "duration": 0.5, "influence": 0.8,
+  "prompt": "Hard plastic push button pressed once, solid mechanical click, close-up, dry, no reverb"},
+ {"name": "decharge", "duration": 0.8, "influence": 0.7,
+  "prompt": "Short electric shock zap, crackling electrical discharge burst, close-up, dry"},
+ {"name": "etincelle", "duration": 0.5, "influence": 0.7,
+  "prompt": "Tiny static electricity spark snap from touching a metal door handle, small sharp crack"},
+ {"name": "porte", "duration": 1.6, "influence": 0.7,
+  "prompt": "Interior wooden door closing in an empty quiet room, soft thud and latch click, natural small room reverb"},
+ {"name": "horloge", "duration": 0.5, "influence": 0.8,
+  "prompt": "Single mechanical wall clock tick, quiet, close, dry"},
+ {"name": "canape", "duration": 1.0, "influence": 0.7,
+  "prompt": "Person dropping heavily onto a soft fabric sofa cushion, muffled thud and short fabric rustle, indoor"},
+ {"name": "telephone", "duration": 0.6, "influence": 0.8,
+  "prompt": "Smartphone placed face down on a wooden desk, firm single tap, close-up, dry"}
+]

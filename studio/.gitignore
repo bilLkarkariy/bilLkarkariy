@@ -13,3 +13,4 @@ public/aroll/
 # secrets
 .env
 public/captures/
+public/music/

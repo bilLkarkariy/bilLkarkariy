@@ -320,7 +320,7 @@ const citSfx: [string, number, number][] = cits.flatMap((c) => [
   ['paper', c.from, 0.55] as [string, number, number],
   ...(c.marks ?? []).map((m) => ['marker', c.from + m.at, 0.3] as [string, number, number]),
   ...(c.marks ?? []).filter((m) => m.redact !== undefined).map((m) => ['marker', c.from + (m.redact as number), 0.45] as [string, number, number]),
-  ...[...(c.marks ?? []).flatMap((m) => (m.note ? [m.note] : [])), ...(c.notes ?? [])].map((n) => ['tick', c.from + n.at, 0.4] as [string, number, number]),
+  ...[...(c.marks ?? []).flatMap((m) => (m.note ? [m.note] : [])), ...(c.notes ?? [])].map((n) => ['fiche', c.from + n.at, 0.45] as [string, number, number]),
 ]);
 
 const sfx: [string, number, number][] = [
@@ -349,7 +349,7 @@ const sfx: [string, number, number][] = [
   ['clock', studyIn + study.count + 30, 0.6],
   // partie 2
   ['zap', at('p9', 'décharge'), 0.55],
-  ['zap', at('p9', 'statique'), 0.3],
+  ['etincelle', at('p9', 'statique'), 0.5],
   ['door', at('p10', 'seuls'), 0.8],
   ['tick', at('p10', 'bouton'), 0.9],
   ['clock', at('p10', 'seuls') + 30, 0.45],
@@ -359,10 +359,25 @@ const sfx: [string, number, number][] = [
   ...[0, 5].map((d) => ['button_click', at('p11', 'six') + d, 0.6] as [string, number, number]),
   ['sub', at('p11', 'dix-huit'), 0.3],
   ['pencil', at('p16', 'chez'), 0.45],
-  ['tick', at('p16', 'canapé'), 0.6],
+  ['canape', at('p16', 'canapé') + 4, 0.7], // le pion touche le canapé ~4 images après le mot
   ['tick', lastIn + 2, 0.8],
   ...citSfx,
 ];
+
+// bruitages ElevenLabs (tools/sfx_el.py, script/sfx_v01.json) ; les autres restent synthétisés (tools/sfx.py).
+// Pour revenir au son synthétisé, retirer sa ligne.
+const SON: Record<string, string> = {
+  paper: 'el/papier_pose',
+  marker: 'el/feutre',
+  fiche: 'el/fiche',
+  button_click: 'el/bouton',
+  zap: 'el/decharge',
+  etincelle: 'el/etincelle',
+  door: 'el/porte',
+  clock: 'el/horloge',
+  canape: 'el/canape',
+  phone_down: 'el/telephone',
+};
 
 const Fade: React.FC<{from: number; len: number; out?: boolean; children: React.ReactNode}> = ({from, len, out, children}) => {
   const frame = useCurrentFrame();
@@ -487,7 +502,7 @@ export const V01: React.FC = () => (
     </Sequence>
     {sfx.map(([name, f, v], i) => (
       <Sequence key={i} from={f} durationInFrames={60}>
-        <Audio src={staticFile(`sfx/${name}.wav`)} volume={v} />
+        <Audio src={staticFile(`sfx/${SON[name] ?? name}.wav`)} volume={v} />
       </Sequence>
     ))}
   </AbsoluteFill>
