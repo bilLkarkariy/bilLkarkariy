@@ -85,7 +85,7 @@ const noteH = (n: Note, w: number) => {
   );
 };
 
-const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone: Tone}> = ({n, x, y, w, tone}) => {
+export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone: Tone}> = ({n, x, y, w, tone}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const a = frame - n.at;

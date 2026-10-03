@@ -2,18 +2,22 @@ import React from 'react';
 import {AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {hl} from './captures';
 import {ARoll} from './components/ARoll';
-import {Citation, CitationProps} from './components/Citation';
+import {Citation} from './components/Citation';
 import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Grain, Paper} from './components/Paper';
 import {at, DURATION, LEAD, VO_SRC} from './cues';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
+import {Cit, citSfx, Fade, Sfx} from './montage/kit';
+import {P3, P3Back, P3Front, P3_SFX} from './montage/p3';
+import {P4, P4Front, P4_END, P4_SFX} from './montage/p4';
 import {Countdown, Groups, Lab, Static} from './scenes/Part2';
 import {Plan} from './scenes/Plan';
 import {Study} from './scenes/Study';
 import {C, F} from './theme';
 
-// ── Vidéo 1, POC 0:00 → 2:27 : hook + « 01 · L'expérience », accroché aux mots de la voix ──────
+// ── Vidéo 1 : hook + « 01 · L'expérience » (ici), puis les parties suivantes (src/montage/p*.tsx).
+//    Tout est accroché aux mots de la voix.
 
 // hook
 const cut1 = at('p1', 'Seul') - 3; // A-roll -> maquette
@@ -38,7 +42,7 @@ const domIn = at('p16', 'Un') - 4; // « Un sur trois triche »
 const e9In = at('p17') - 6; // « Et ce n'est pas qu'une affaire d'étudiants »
 const lastIn = at('p18') - 4; // « Et le plus étrange, ce n'est pas ce bouton »
 const prepIn = at('p19') - 1; // coupe franche sur « Le plus étrange, c'est ça »
-const endF = at('p19', undefined, 'end') + 40;
+const p3In = at('p20') - 4; // la partie 3 prend le relais
 
 const plan = {
   dot: at('p2', 'toi') - planIn,
@@ -69,7 +73,6 @@ const study = {
 };
 
 // ── les vraies pages : chaque passage anglais se surligne, sa traduction sort dans la marge ──────
-type Cit = {from: number; to: number} & CitationProps;
 const SHEET = {x: 110, width: 1100};
 const TAG = 'SCIENCE · 2014 · WILSON ET AL.';
 
@@ -288,10 +291,11 @@ const cits: Cit[] = [
   // p19 : « Le plus étrange, c'est ça. »
   {
     from: prepIn,
-    to: endF + 20,
+    to: p3In + 8,
     cap: 'pmc_preparation',
     ...SHEET,
     y: 250,
+    out: p3In - 10 - prepIn,
     tag: TAG + ' · ÉTUDES 1 À 7',
     marks: [
       {
@@ -318,17 +322,7 @@ const cits: Cit[] = [
   },
 ];
 
-// le son des pages : feuille qui se pose, feutre, petit clic quand une fiche sort
-const citSfx: [string, number, number][] = cits.flatMap((c) => [
-  ['paper', c.from, 0.55] as [string, number, number],
-  ...(c.marks ?? []).map((m) => ['marker', c.from + m.at, 0.3] as [string, number, number]),
-  ...(c.marks ?? [])
-    .filter((m) => m.redact !== undefined && m.redact >= 0)
-    .map((m) => ['marker', c.from + (m.redact as number), 0.45] as [string, number, number]),
-  ...[...(c.marks ?? []).flatMap((m) => (m.note ? [m.note] : [])), ...(c.notes ?? [])].map((n) => ['fiche', c.from + n.at, 0.45] as [string, number, number]),
-]);
-
-const sfx: [string, number, number][] = [
+const sfx: Sfx[] = [
   // hook
   ['phone_down', 14, 0.9],
   ['pencil', planIn + 2, 0.55],
@@ -366,7 +360,9 @@ const sfx: [string, number, number][] = [
   ['pencil', at('p16', 'chez'), 0.45],
   ['canape', at('p16', 'canapé') + 4, 0.7], // le pion touche le canapé ~4 images après le mot
   ['tick', lastIn + 2, 0.8],
-  ...citSfx,
+  ...citSfx(cits),
+  ...P3_SFX,
+  ...P4_SFX,
 ];
 
 // bruitages ElevenLabs (tools/sfx_el.py, script/sfx_v01.json) ; les autres restent synthétisés (tools/sfx.py).
@@ -382,19 +378,32 @@ const SON: Record<string, string> = {
   clock: 'el/horloge',
   canape: 'el/canape',
   phone_down: 'el/telephone',
+  // (les noms ci-dessous n'existent qu'en version ElevenLabs)
+  projecteur: 'el/projecteur',
+  pellicule_vrille: 'el/pellicule_vrille',
+  ciseaux: 'el/ciseaux',
+  poche: 'el/poche',
+  notification: 'el/notification',
+  ascenseur: 'el/ascenseur',
+  compteur: 'el/compteur',
+  nuit: 'el/nuit',
+  souffle_ecran: 'el/souffle_ecran',
+  manuscrit: 'el/manuscrit',
+  toc_mur: 'el/toc_mur',
+  timelapse: 'el/timelapse',
+  bille: 'el/bille',
+  chapelet: 'el/chapelet',
+  carillon: 'el/carillon',
+  calame: 'el/calame',
+  crayon_carte: 'el/crayon_carte',
 };
 
-const Fade: React.FC<{from: number; len: number; out?: boolean; children: React.ReactNode}> = ({from, len, out, children}) => {
-  const frame = useCurrentFrame();
-  const o = interpolate(frame, [from, from + len], out ? [1, 0] : [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  return <AbsoluteFill style={{opacity: o}}>{children}</AbsoluteFill>;
-};
-
-export const V01_DURATION = Math.min(DURATION, endF + 20);
+export const V01_DURATION = Math.min(DURATION, P4_END + 30);
 
 export const V01: React.FC = () => (
   <AbsoluteFill style={{background: C.paper}}>
     <Paper grid={0.8} />
+    <P3Back />
 
     <Sequence from={cut1} durationInFrames={planIn + xfade - cut1}>
       <Fade from={planIn - cut1} len={xfade} out>
@@ -473,11 +482,15 @@ export const V01: React.FC = () => (
       <Shot3D dir="bouton" frames={prepIn - lastIn + 2} label="Gros plan sur le bouton rouge, le participant flou derrière. Sur « bouton », la lumière tombe." />
     </Sequence>
 
-    {cits.map(({from, to, ...p}, i) => (
+    {cits.map(({from, to, sound, ...p}, i) => (
       <Sequence key={i} from={from} durationInFrames={to - from}>
         <Citation {...p} />
       </Sequence>
     ))}
+
+    {/* partie 3 : le scénariste fatigué, Harvard, les écrans, Pascal */}
+    <P3 />
+    <P4 />
 
     {/* la lumière de la fenêtre, sur tout ce qui est posé sur le bureau */}
     <WindowLight />
@@ -492,12 +505,8 @@ export const V01: React.FC = () => (
     <Sequence from={aroll3} durationInFrames={vagIn - aroll3}>
       <ARoll shot="REGARD CAMÉRA · la relance" line="« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »" />
     </Sequence>
-
-    <Sequence from={endF}>
-      <Fade from={0} len={15}>
-        <AbsoluteFill style={{background: C.night}} />
-      </Fade>
-    </Sequence>
+    <P3Front />
+    <P4Front />
 
     <Grain />
 

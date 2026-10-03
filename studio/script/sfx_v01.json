@@ -1,22 +1,164 @@
 [
- {"name": "papier_pose", "duration": 1.0, "influence": 0.7,
-  "prompt": "A single sheet of paper dropped flat onto a wooden desk, soft papery slap, close-up, quiet room, dry, no music"},
- {"name": "feutre", "duration": 1.0, "influence": 0.7,
-  "prompt": "Highlighter marker pen swiped across paper in one quick stroke, soft felt tip squeak on paper, close-up, dry"},
- {"name": "fiche", "duration": 0.6, "influence": 0.7,
-  "prompt": "Small stiff cardboard index card flipped over and snapped down on a desk, crisp paper flick, close-up, dry"},
- {"name": "bouton", "duration": 0.5, "influence": 0.8,
-  "prompt": "Hard plastic push button pressed once, solid mechanical click, close-up, dry, no reverb"},
- {"name": "decharge", "duration": 0.8, "influence": 0.7,
-  "prompt": "Short electric shock zap, crackling electrical discharge burst, close-up, dry"},
- {"name": "etincelle", "duration": 0.5, "influence": 0.7,
-  "prompt": "Tiny static electricity spark snap from touching a metal door handle, small sharp crack"},
- {"name": "porte", "duration": 1.6, "influence": 0.7,
-  "prompt": "Interior wooden door closing in an empty quiet room, soft thud and latch click, natural small room reverb"},
- {"name": "horloge", "duration": 0.5, "influence": 0.8,
-  "prompt": "Single mechanical wall clock tick, quiet, close, dry"},
- {"name": "canape", "duration": 1.0, "influence": 0.7,
-  "prompt": "Person dropping heavily onto a soft fabric sofa cushion, muffled thud and short fabric rustle, indoor"},
- {"name": "telephone", "duration": 0.6, "influence": 0.8,
-  "prompt": "Smartphone placed face down on a wooden desk, firm single tap, close-up, dry"}
+ {
+  "name": "papier_pose",
+  "duration": 1.0,
+  "influence": 0.7,
+  "prompt": "A single sheet of paper dropped flat onto a wooden desk, soft papery slap, close-up, quiet room, dry, no music"
+ },
+ {
+  "name": "feutre",
+  "duration": 1.0,
+  "influence": 0.7,
+  "prompt": "Highlighter marker pen swiped across paper in one quick stroke, soft felt tip squeak on paper, close-up, dry"
+ },
+ {
+  "name": "fiche",
+  "duration": 0.6,
+  "influence": 0.7,
+  "prompt": "Small stiff cardboard index card flipped over and snapped down on a desk, crisp paper flick, close-up, dry"
+ },
+ {
+  "name": "bouton",
+  "duration": 0.5,
+  "influence": 0.8,
+  "prompt": "Hard plastic push button pressed once, solid mechanical click, close-up, dry, no reverb"
+ },
+ {
+  "name": "decharge",
+  "duration": 0.8,
+  "influence": 0.7,
+  "prompt": "Short electric shock zap, crackling electrical discharge burst, close-up, dry"
+ },
+ {
+  "name": "etincelle",
+  "duration": 0.5,
+  "influence": 0.7,
+  "prompt": "Tiny static electricity spark snap from touching a metal door handle, small sharp crack"
+ },
+ {
+  "name": "porte",
+  "duration": 1.6,
+  "influence": 0.7,
+  "prompt": "Interior wooden door closing in an empty quiet room, soft thud and latch click, natural small room reverb"
+ },
+ {
+  "name": "horloge",
+  "duration": 0.5,
+  "influence": 0.8,
+  "prompt": "Single mechanical wall clock tick, quiet, close, dry"
+ },
+ {
+  "name": "canape",
+  "duration": 1.0,
+  "influence": 0.7,
+  "prompt": "Person dropping heavily onto a soft fabric sofa cushion, muffled thud and short fabric rustle, indoor"
+ },
+ {
+  "name": "telephone",
+  "duration": 0.6,
+  "influence": 0.8,
+  "prompt": "Smartphone placed face down on a wooden desk, firm single tap, close-up, dry"
+ },
+ {
+  "name": "projecteur",
+  "duration": 3.0,
+  "influence": 0.6,
+  "prompt": "Old 16mm film projector running, steady mechanical clatter of the film gate, close, dry room, no music"
+ },
+ {
+  "name": "pellicule_vrille",
+  "duration": 2.0,
+  "influence": 0.6,
+  "prompt": "Film reel spinning out of control, film strip flapping and slapping rapidly, mechanical rattle speeding up, close"
+ },
+ {
+  "name": "ciseaux",
+  "duration": 0.6,
+  "influence": 0.8,
+  "prompt": "Single sharp cut of scissors through a strip of film, crisp snip, close-up, dry"
+ },
+ {
+  "name": "poche",
+  "duration": 0.8,
+  "influence": 0.7,
+  "prompt": "Hand reaching into a jeans pocket and pulling out a smartphone, short fabric rustle, close-up, dry"
+ },
+ {
+  "name": "notification",
+  "duration": 0.6,
+  "influence": 0.8,
+  "prompt": "Soft modern smartphone notification chime, single gentle ping, clean, no reverb"
+ },
+ {
+  "name": "ascenseur",
+  "duration": 1.5,
+  "influence": 0.7,
+  "prompt": "Elevator arrival bell ding, single soft chime inside a small metal elevator cabin, subtle hum"
+ },
+ {
+  "name": "compteur",
+  "duration": 1.5,
+  "influence": 0.7,
+  "prompt": "Mechanical split-flap counter rapidly flipping numbers then stopping, fast clicking flaps, close"
+ },
+ {
+  "name": "nuit",
+  "duration": 4.0,
+  "influence": 0.5,
+  "prompt": "Quiet bedroom at night, distant soft clock ticking, faint room hum, very calm, almost silent"
+ },
+ {
+  "name": "souffle_ecran",
+  "duration": 1.2,
+  "influence": 0.6,
+  "prompt": "Soft airy whoosh as a bright phone screen lights up in a dark room, gentle swell, subtle"
+ },
+ {
+  "name": "manuscrit",
+  "duration": 1.2,
+  "influence": 0.7,
+  "prompt": "Old thick parchment paper sheet laid down gently on a wooden desk, dry crinkle and soft thump, close-up"
+ },
+ {
+  "name": "toc_mur",
+  "duration": 0.5,
+  "influence": 0.8,
+  "prompt": "Small wooden game pawn bumping softly against a cardboard wall, single muted tap, close-up, dry"
+ },
+ {
+  "name": "timelapse",
+  "duration": 4.0,
+  "influence": 0.5,
+  "prompt": "Soft airy whooshes rising and falling like days passing in a time-lapse, gentle wind swells, calm, no music"
+ },
+ {
+  "name": "bille",
+  "duration": 0.8,
+  "influence": 0.8,
+  "prompt": "Small brass bead set down on a wooden floor, soft warm clink, close-up"
+ },
+ {
+  "name": "chapelet",
+  "duration": 3.0,
+  "influence": 0.6,
+  "prompt": "Wooden prayer beads sliding and clicking one by one through fingers, slow regular gentle clicks, close-up, quiet room"
+ },
+ {
+  "name": "carillon",
+  "duration": 1.5,
+  "influence": 0.6,
+  "prompt": "Single soft warm low chime, gentle, long soft decay, calm"
+ },
+ {
+  "name": "calame",
+  "duration": 2.0,
+  "influence": 0.6,
+  "prompt": "Reed pen calligraphy writing on thick paper, ink scratching strokes, close-up, quiet"
+ },
+ {
+  "name": "crayon_carte",
+  "duration": 3.0,
+  "influence": 0.6,
+  "prompt": "Pencil drawing long lines on paper, steady graphite scratching, close-up, quiet room"
+ }
 ]
