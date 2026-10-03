@@ -412,7 +412,7 @@ export const V01: React.FC = () => (
     <Sequence from={aloneIn} durationInFrames={groupsIn - aloneIn + 8}>
       <Fade from={groupsIn - aloneIn} len={8} out>
         {/* 3D : soleil rasant par la porte, la porte se ferme, il ne reste que le bouton */}
-        <Shot3D dir="seuls" frames={groupsIn - aloneIn + 2}>
+        <Shot3D dir="seuls" frames={groupsIn - aloneIn + 2} label="La maquette en contre-jour : un soleil rasant entre par la porte jusqu'à la chaise. La porte se ferme, la lumière se referme, il ne reste que le bouton rouge qui s'allume.">
           <Countdown left={15 * 60 - 13} />
         </Shot3D>
       </Fade>
@@ -441,7 +441,7 @@ export const V01: React.FC = () => (
 
     <Sequence from={salonIn} durationInFrames={domIn - salonIn + 8}>
       <Fade from={domIn - salonIn} len={8} out>
-        <Shot3D dir="salon" frames={domIn - salonIn + 2}>
+        <Shot3D dir="salon" frames={domIn - salonIn + 2} label="Le salon en maquette, le soir, une lampe chaude. Sur « canapé », le participant tombe dans le canapé.">
           <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink}}>
             CHEZ EUX · EN LIGNE, SEULS
           </div>
@@ -450,7 +450,7 @@ export const V01: React.FC = () => (
     </Sequence>
 
     <Sequence from={lastIn} durationInFrames={prepIn - lastIn}>
-      <Shot3D dir="bouton" frames={prepIn - lastIn + 2} />
+      <Shot3D dir="bouton" frames={prepIn - lastIn + 2} label="Gros plan sur le bouton rouge, le participant flou derrière. Sur « bouton », la lumière tombe." />
     </Sequence>
 
     {cits.map(({from, to, ...p}, i) => (

@@ -51,7 +51,13 @@ const NO3D = Boolean(getInputProps().no3d);
  * Plan 3D rendu par tools/plans3d.py (public/3d/<dir>/f0001.png…), une image sur `step` :
  * on fond les deux voisines (mouvements lents, ça ne se voit pas).
  */
-export const Shot3D: React.FC<{dir: string; frames: number; step?: number; children?: React.ReactNode}> = ({dir, frames, step = 2, children}) => {
+export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label?: string; children?: React.ReactNode}> = ({
+  dir,
+  frames,
+  step = 2,
+  label,
+  children,
+}) => {
   const frame = useCurrentFrame();
   const last = 1 + Math.floor((frames - 1) / step) * step;
   const n = Math.min(last, frame + 1);
@@ -62,8 +68,11 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; child
   return (
     <AbsoluteFill>
       {NO3D ? (
-        <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace', fontSize: 40, color: '#999'}}>
-          3D · {dir} · {n}
+        <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 18, color: '#22211E', textAlign: 'center'}}>
+          <div style={{fontFamily: "'Plex Mono', monospace", fontSize: 20, letterSpacing: '0.16em', background: '#F2D64B', padding: '6px 12px'}}>
+            PLAN 3D · EN COURS DE RENDU
+          </div>
+          <div style={{fontFamily: "'Garamond', serif", fontStyle: 'italic', fontSize: 40, maxWidth: 1300}}>{label ?? dir}</div>
         </AbsoluteFill>
       ) : (
         <AbsoluteFill style={{isolation: 'isolate'}}>
