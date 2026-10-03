@@ -267,6 +267,8 @@ const Push: React.FC<{len: number; to: number; ox: number; oy: number; children:
 };
 
 export const P4_SFX: Sfx[] = [
+  ['paper', at('p35', 'chaise') + 2, 0.5],
+  ['paper', at('p35', 'table') + 2, 0.5],
   ['toc_mur', at('p35', 'touches') + 10, 0.6],
   ['toc_mur', at('p35', 'murs') + 18, 0.6],
   ['souffle_ecran', at('p36', 'téléphone') - 4, 0.6],
