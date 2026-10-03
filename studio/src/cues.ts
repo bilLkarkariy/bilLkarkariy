@@ -1,9 +1,11 @@
 // Le montage est indexé sur le texte : chaque événement visuel est accroché à
 // un mot du script (src/data/*.vo.json, produit par tools/vo.py). Quand Billel
 // enregistre sa vraie prise, on relance l'alignement et tout se recale.
-import vo from './data/hook.vo.json';
+import vo from './data/v01.vo.json';
 
 export const FPS = 30;
+/** Avance de l'image sur la voix : le temps de retourner le téléphone avant « Quinze minutes ». */
+export const LEAD = 24;
 
 type Word = {w: string; start: number; end: number};
 type Seg = {id: string; text: string; start: number; end: number; words: Word[]};
@@ -33,7 +35,7 @@ export const toF = (s: number) => Math.round(s * FPS);
 
 /** Image où commence (ou finit) un segment, ou un mot de ce segment. */
 export const at = (id: string, w?: string, edge: 'start' | 'end' = 'start', nth = 0) =>
-  toF(w ? word(id, w, nth)[edge] : seg(id)[edge]);
+  LEAD + toF(w ? word(id, w, nth)[edge] : seg(id)[edge]);
 
-export const DURATION = toF(vo.duration);
+export const DURATION = LEAD + toF(vo.duration);
 export const VO_SRC = vo.audio;

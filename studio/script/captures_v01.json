@@ -9,7 +9,7 @@
   "highlights": [
    "Science. 2014 Jul 4"
   ],
-  "pad": 10
+  "pad": 5
  },
  {
   "id": "pmc_titre",
@@ -58,7 +58,7 @@
   "source": "Wilson et al., « Just think: The challenges of the disengaged mind », Science 345(6192), 2014 — texte intégral PMC4330241",
   "anchor": "reported that they had",
   "highlights": [
-   "32% reported that they had",
+   "32% reported that they had “cheated”",
    "listening to music or consulting their cell phones",
    "getting up out of their chair"
   ]
@@ -70,6 +70,7 @@
   "anchor": "farmer's market",
   "highlights": [
    "ranged in age from 18 to 77",
+   "The results were similar to those found with college students",
    "participants' age",
    "smart phones"
   ]

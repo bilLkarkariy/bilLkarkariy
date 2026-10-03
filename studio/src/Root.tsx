@@ -1,8 +1,8 @@
 import React from 'react';
 import {Composition} from 'remotion';
 import './fonts';
-import {Hook, HOOK_DURATION} from './Hook';
+import {V01, V01_DURATION} from './V01';
 
 export const Root: React.FC = () => (
-  <Composition id="Hook" component={Hook} durationInFrames={HOOK_DURATION} fps={30} width={1920} height={1080} />
+  <Composition id="V01" component={V01} durationInFrames={V01_DURATION} fps={30} width={1920} height={1080} />
 );
