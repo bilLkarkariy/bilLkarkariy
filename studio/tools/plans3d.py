@@ -687,6 +687,11 @@ ls.linestyle.alpha = 0.55
 
 os.makedirs(OUT, exist_ok=True)
 json.dump({"frames": N, "step": STEP}, open(os.path.join(OUT, "info.json"), "w"))
+if not TEST:  # le montage ne demandera jamais une image qui n'a pas été rendue (src/components/Light.tsx)
+    reg = os.path.join(ROOT, "src/data/renders3d.json")
+    done = json.load(open(reg)) if os.path.exists(reg) else {}
+    done[SHOT] = {"frames": N, "step": STEP}
+    json.dump(done, open(reg, "w"), indent=1)
 if TEST:
     frames = [int(x) for x in ARGS[ARGS.index("--test") + 1].split(",")] if len(ARGS) > ARGS.index("--test") + 1 and ARGS[ARGS.index("--test") + 1][0].isdigit() else [1, N // 2, N]
     for f in frames:

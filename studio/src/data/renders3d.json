@@ -1,0 +1,14 @@
+{
+ "seuls": {
+  "frames": 148,
+  "step": 2
+ },
+ "bouton": {
+  "frames": 83,
+  "step": 2
+ },
+ "salon": {
+  "frames": 82,
+  "step": 2
+ }
+}

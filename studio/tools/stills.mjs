@@ -4,7 +4,7 @@ import {openBrowser, renderStill, selectComposition} from '@remotion/renderer';
 import path from 'node:path';
 
 const [outDir, ...pairs] = process.argv.slice(2);
-const serveUrl = path.resolve('out/bundle');
+const serveUrl = path.resolve(process.env.BUNDLE ?? 'out/bundle');
 const inputProps = {no3d: !process.env.WITH3D};
 const browser = await openBrowser('chrome', {browserExecutable: process.env.CHROME ?? null});
 const composition = await selectComposition({serveUrl, id: 'V01', inputProps, puppeteerInstance: browser});
