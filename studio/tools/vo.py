@@ -22,6 +22,7 @@ import soundfile as sf
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 VOICE = os.path.join(ROOT, ".cache/piper/fr_FR-tom-medium.onnx")
 SR = 48000
+COSTS = []  # coût annoncé par ElevenLabs pour chaque appel réellement envoyé (hors cache)
 
 
 def env_key(name):
@@ -60,6 +61,7 @@ def elevenlabs(text, cfg, prev_text, next_text, dst):
         try:
             with urllib.request.urlopen(req, timeout=120) as r:
                 open(cache, "wb").write(r.read())
+                COSTS.append(int(r.headers.get("character-cost") or 0))
         except urllib.error.HTTPError as e:
             if e.code != 400:
                 raise
@@ -68,6 +70,7 @@ def elevenlabs(text, cfg, prev_text, next_text, dst):
             req.data = json.dumps(body).encode()
             with urllib.request.urlopen(req, timeout=120) as r:
                 open(cache, "wb").write(r.read())
+                COSTS.append(int(r.headers.get("character-cost") or 0))
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cache, "-ar", str(SR), "-ac", "1", dst], check=True)
 
 
@@ -157,7 +160,7 @@ def isolate(path):
     cache = os.path.join(ROOT, ".cache/isolated", key + ".audio")
     if not os.path.exists(cache):
         os.makedirs(os.path.dirname(cache), exist_ok=True)
-        r = subprocess.run(["curl", "-sS", "-f", "-o", cache, "-X", "POST",
+        r = subprocess.run(["curl", "-sS", "-f", "-o", cache, "-D", cache + ".headers", "-X", "POST",
                             "https://api.elevenlabs.io/v1/audio-isolation",
                             "-H", "xi-api-key: " + env_key("ELEVENLABS_API_KEY"),
                             "-F", f"audio=@{path};type=audio/wav"], capture_output=True, text=True)
@@ -169,7 +172,9 @@ def isolate(path):
     a, _ = sf.read(tmp)
     os.remove(tmp)
     sf.write(path, a * 0.5 / np.max(np.abs(a)), SR)
-    print("isolation -> ok")
+    hdr = cache + ".headers"
+    cost = [l.split(":", 1)[1].strip() for l in open(hdr) if l.lower().startswith(("character-cost", "x-character", "credit"))] if os.path.exists(hdr) else []
+    print("isolation -> ok", f"(coût annoncé : {', '.join(cost)})" if cost else "")
 
 
 def tts(script_path):
@@ -205,9 +210,11 @@ def tts(script_path):
     out = os.path.join(ROOT, "public/vo", os.path.basename(script_path).replace(".json", ".wav"))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     sf.write(out, audio, SR)
-    if cfg.get("post") == "isolate":
+    if cfg.get("post") == "isolate" and not os.environ.get("NO_ISOLATE"):
         isolate(out)
     print("voix ->", out, f"{len(audio) / SR:.2f}s")
+    if COSTS:
+        print(f"TTS : {len(COSTS)} appels envoyés, coût annoncé total {sum(COSTS)} crédits")
     return out
 
 
@@ -259,6 +266,8 @@ def align(script_path, audio_path):
 if __name__ == "__main__":
     cmd, path = sys.argv[1], sys.argv[2]
     if cmd == "tts":
-        align(path, tts(path))
+        wav = tts(path)
+        if not os.environ.get("NO_ALIGN"):
+            align(path, wav)
     elif cmd == "align":
         align(path, sys.argv[3])

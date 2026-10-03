@@ -1,0 +1,414 @@
+{
+  "_doc": "Voix de toute la vidéo 1, découpée par paragraphe (s1-s19 = hook + début de l'expérience, identiques au POC). Le témoignage (À COMPLÉTER) est un blanc de 2,5 s après la présentation de la Karkariya.",
+  "tts": {
+    "engine": "elevenlabs",
+    "voice_id": "pHC2zyzqoP1LrEi8yHHB",
+    "_voice": "Billel micro-cravate (brut) — choix F : clone des prises micro-cravate + isolateur sur la voix générée",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.85,
+      "use_speaker_boost": true
+    },
+    "post": "isolate"
+  },
+  "lead": 0.8,
+  "tail": 1.5,
+  "segments": [
+    {
+      "id": "s1",
+      "text": "Quinze minutes.",
+      "pause": 0.45
+    },
+    {
+      "id": "s2",
+      "text": "Seul dans une pièce vide.",
+      "pause": 0.35
+    },
+    {
+      "id": "s3",
+      "text": "Pas de téléphone, rien à lire.",
+      "pause": 0.6
+    },
+    {
+      "id": "s4",
+      "text": "Juste toi, tes pensées…",
+      "pause": 0.45
+    },
+    {
+      "id": "s5",
+      "text": "et un bouton qui t'envoie une décharge électrique.",
+      "pause": 1.6
+    },
+    {
+      "id": "s6",
+      "text": "[serious] Deux hommes sur trois ont appuyé.",
+      "pause": 0.9
+    },
+    {
+      "id": "s7",
+      "text": "Des gens qui, juste avant, avaient dit qu'ils paieraient pour ne plus jamais la sentir.",
+      "pause": 0.6
+    },
+    {
+      "id": "s8",
+      "text": "Et je suis presque sûr que toi aussi, tu aurais appuyé.",
+      "pause": 0.7
+    },
+    {
+      "id": "s9",
+      "text": "C'est une étude publiée dans Science en deux mille quatorze.",
+      "pause": 0.35
+    },
+    {
+      "id": "s10",
+      "text": "Sa dernière phrase, presque personne ne la cite.",
+      "pause": 0.35
+    },
+    {
+      "id": "s11",
+      "text": "Pourtant, elle change complètement le sens de ce bouton.",
+      "pause": 0.45
+    },
+    {
+      "id": "s12",
+      "text": "Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir.",
+      "pause": 0.8
+    },
+    {
+      "id": "s13",
+      "text": "Université de Virginie.",
+      "pause": 0.45
+    },
+    {
+      "id": "s14",
+      "text": "Des étudiants entrent dans une pièce presque vide.",
+      "pause": 0.35
+    },
+    {
+      "id": "s15",
+      "text": "On leur fait déposer leurs affaires à l'entrée.",
+      "pause": 0.3
+    },
+    {
+      "id": "s16",
+      "text": "Le téléphone, mais aussi les stylos.",
+      "pause": 0.3
+    },
+    {
+      "id": "s17",
+      "text": "Rien pour écrire.",
+      "pause": 0.7
+    },
+    {
+      "id": "s18",
+      "text": "La consigne tient en une ligne : reste assis, ne t'endors pas, et occupe-toi avec tes pensées.",
+      "pause": 0.5
+    },
+    {
+      "id": "s19",
+      "text": "Quinze minutes.",
+      "pause": 1.0
+    },
+    {
+      "id": "s20",
+      "text": "Avant de laisser les gens seuls, on leur fait goûter une petite décharge. Comme une grosse décharge d'électricité statique. On leur demande : combien tu paierais pour ne plus jamais la sentir ? Et on ne garde que ceux qui répondent : je paierais.",
+      "pause": 0.7
+    },
+    {
+      "id": "s21",
+      "text": "Puis on les laisse seuls. Et le bouton est là, si on veut se la remettre.",
+      "pause": 1.1
+    },
+    {
+      "id": "s22",
+      "text": "Chez les hommes, douze sur dix-huit ont appuyé. Chez les femmes, six sur vingt-quatre.",
+      "pause": 0.7
+    },
+    {
+      "id": "s23",
+      "text": "Un homme a appuyé cent quatre-vingt-dix fois.",
+      "pause": 0.8
+    },
+    {
+      "id": "s24",
+      "text": "Ce sont de petits groupes, quarante-deux personnes. Mais je le répète : tous venaient de dire qu'ils paieraient pour l'éviter.",
+      "pause": 1.0
+    },
+    {
+      "id": "s25",
+      "text": "Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. Les chercheurs se sont posé la même question.",
+      "pause": 0.6
+    },
+    {
+      "id": "s26",
+      "text": "Dans les versions sans bouton, neuf sur dix disent que leur esprit est parti ailleurs. Plus de la moitié trouvent ça dur de se concentrer.",
+      "pause": 0.7
+    },
+    {
+      "id": "s27",
+      "text": "Les chercheurs se disent : c'est le labo, c'est intimidant. Alors ils refont l'expérience chez les gens. Sur leur canapé. Un sur trois triche : musique, téléphone, ou il se lève.",
+      "pause": 0.7
+    },
+    {
+      "id": "s28",
+      "text": "Et ce n'est pas qu'une affaire d'étudiants. Des gens de dix-huit à soixante-dix-sept ans, chez eux : même résultat. Aucun lien avec l'âge. Aucun lien avec la fréquence à laquelle ils utilisaient leur smartphone.",
+      "pause": 0.8
+    },
+    {
+      "id": "s29",
+      "text": "Et le plus étrange, ce n'est pas ce bouton.",
+      "pause": 1.3
+    },
+    {
+      "id": "s30",
+      "text": "Le plus étrange, c'est ça. Les chercheurs ont laissé aux gens quelques minutes pour préparer à quoi ils allaient penser. Un voyage, un souvenir, un projet. Ça n'a rien changé.",
+      "pause": 0.7
+    },
+    {
+      "id": "s31",
+      "text": "Les auteurs ont une image pour ça. Penser seul, c'est être en même temps le scénariste et le spectateur du film. Dès que le scénariste fatigue, le film part dans tous les sens.",
+      "pause": 0.7
+    },
+    {
+      "id": "s32",
+      "text": "Tu connais ça. File d'attente à la boulangerie, trois personnes devant toi. Ta main est dans ta poche avant que tu aies décidé quoi que ce soit.",
+      "pause": 1.0
+    },
+    {
+      "id": "s33",
+      "text": "Question. La dernière fois que t'es resté cinq minutes sans rien faire, sans écran, sans musique, sans parler… c'était quand ?",
+      "pause": 2.0
+    },
+    {
+      "id": "s34",
+      "text": "En deux mille dix, deux chercheurs de Harvard ont fait sonner le téléphone de deux mille deux cent cinquante personnes, à des moments pris au hasard. Trois questions : qu'est-ce que tu fais, comment tu te sens, et est-ce que tu penses à ce que tu fais ?",
+      "pause": 0.6
+    },
+    {
+      "id": "s35",
+      "text": "Près d'une fois sur deux : non.",
+      "pause": 0.8
+    },
+    {
+      "id": "s36",
+      "text": "Et quand l'esprit était ailleurs, les gens étaient moins heureux. Leur article s'appelle : « Un esprit qui vagabonde est un esprit malheureux ».",
+      "pause": 0.8
+    },
+    {
+      "id": "s37",
+      "text": "L'ascenseur. Vingt secondes entre deux étages. Tu regardes le plafond, le sol, puis ton écran.",
+      "pause": 0.8
+    },
+    {
+      "id": "s38",
+      "text": "Le téléphone coupe le film avant qu'il parte en vrille. En France, on passe plus de trois heures par jour en ligne, dont quatre-vingts pour cent sur mobile. Médiamétrie comptait une vingtaine de sessions sur smartphone par jour. Et quatre Français sur dix disent eux-mêmes qu'ils passent trop de temps sur les écrans.",
+      "pause": 0.8
+    },
+    {
+      "id": "s39",
+      "text": "Mais ce problème, ce n'est pas le smartphone qui l'a inventé.",
+      "pause": 1.0
+    },
+    {
+      "id": "s40",
+      "text": "Blaise Pascal, dix-septième siècle : « Tout le malheur des hommes vient d'une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre. »",
+      "pause": 0.9
+    },
+    {
+      "id": "s41",
+      "text": "Et quelques lignes plus loin : « De là vient que le plaisir de la solitude est une chose incompréhensible. »",
+      "pause": 0.9
+    },
+    {
+      "id": "s42",
+      "text": "Plus de trois cent cinquante ans. Le téléphone n'a pas inventé la fuite. Il l'a mise dans ta poche, ouverte jour et nuit.",
+      "pause": 0.8
+    },
+    {
+      "id": "s43",
+      "text": "Trois heures du matin, tu te réveilles, ça tourne dans ta tête. Premier réflexe : l'écran.",
+      "pause": 0.8
+    },
+    {
+      "id": "s44",
+      "text": "Alors si le téléphone n'est pas la cause… c'est quoi ?",
+      "pause": 1.3
+    },
+    {
+      "id": "s45",
+      "text": "Je crois qu'on se trompe de problème. Le problème, ce n'est pas d'être seul. C'est d'être seul avec un esprit qui n'a pas de centre.",
+      "pause": 0.8
+    },
+    {
+      "id": "s46",
+      "text": "Imagine une pièce sans aucun meuble. Pas de chaise, pas de table. Tu entres. Tu fais quoi ? Tu tournes. Tu touches les murs. Et au bout d'un moment, tu cherches la porte.",
+      "pause": 0.7
+    },
+    {
+      "id": "s47",
+      "text": "Ton esprit sans point d'appui, c'est cette pièce. Le téléphone, c'est la porte.",
+      "pause": 0.8
+    },
+    {
+      "id": "s48",
+      "text": "Ce n'est pas un défaut de caractère. Personne ne t'a appris à habiter cette pièce. On t'a appris à remplir ton attention. Jamais à y rester.",
+      "pause": 0.6
+    },
+    {
+      "id": "s49",
+      "text": "C'est comme un muscle qu'on n'a jamais entraîné.",
+      "pause": 0.6
+    },
+    {
+      "id": "s50",
+      "text": "Et les auteurs de l'étude le disent eux-mêmes : sans entraînement, on préfère faire plutôt que penser. Ils citent la méditation, et d'autres techniques.",
+      "pause": 0.6
+    },
+    {
+      "id": "s51",
+      "text": "D'autres techniques. Deux mots dans un article scientifique. Derrière ces deux mots, il y a des siècles. Des traditions entières ont fabriqué des méthodes pour une seule chose : être seul sans fuir.",
+      "pause": 0.8
+    },
+    {
+      "id": "s52",
+      "text": "L'une d'elles a même un mot pour ça. Un mot qui veut dire, littéralement, « solitude ».",
+      "pause": 1.3
+    },
+    {
+      "id": "s53",
+      "text": "Ce mot, c'est khalwa. La retraite spirituelle.",
+      "pause": 0.6
+    },
+    {
+      "id": "s54",
+      "text": "Il vient du soufisme, la tradition intérieure de l'islam : celle qui travaille le cœur et l'attention.",
+      "pause": 0.6
+    },
+    {
+      "id": "s55",
+      "text": "Dans une khalwa, on se retire volontairement. Traditionnellement quarante jours, seul, guidé par un maître. Exactement ce que les étudiants de Virginie fuyaient en quinze minutes.",
+      "pause": 1.0
+    },
+    {
+      "id": "s56",
+      "text": "Pourquoi quelqu'un ferait ça de son plein gré ? Écoute l'histoire d'un des hommes les plus brillants de son temps.",
+      "pause": 0.8
+    },
+    {
+      "id": "s57",
+      "text": "Bagdad, mille quatre-vingt-quinze. Al-Ghazali est un professeur célèbre. Trois cents étudiants. Une carrière au sommet.",
+      "pause": 0.6
+    },
+    {
+      "id": "s58",
+      "text": "Un jour, il veut faire cours, et pas un mot ne sort. Il le raconte lui-même : sa langue s'est comme desséchée. Les médecins renoncent. « Ça vient du cœur », disent-ils.",
+      "pause": 0.8
+    },
+    {
+      "id": "s59",
+      "text": "Alors il part. Il passe près de deux ans à Damas. Pendant un temps, il monte chaque jour au minaret de la grande mosquée et s'y enferme. Toute la journée. Pour être seul.",
+      "pause": 0.8
+    },
+    {
+      "id": "s60",
+      "text": "Attention, ce n'est pas un éloge de la fuite. Il a consacré un livre entier de sa grande œuvre à la question : vivre au milieu des gens, ou se retirer ? Sa réponse : ça dépend, et d'abord de l'intention. Et lui-même a fini par revenir enseigner.",
+      "pause": 0.8
+    },
+    {
+      "id": "s61",
+      "text": "Mais seul dans une pièce fermée, on fait quoi ? Dans le soufisme, on fait le dhikr.",
+      "pause": 0.6
+    },
+    {
+      "id": "s62",
+      "text": "Le rappel. Concrètement : répéter un nom. Encore et encore. D'autres traditions disent mantra. L'idée est simple : tu poses un meuble dans la pièce vide. Un point fixe. L'esprit part, tu le ramènes au nom. Il repart, tu le ramènes.",
+      "pause": 0.8
+    },
+    {
+      "id": "s63",
+      "text": "Le Coran le dit en une phrase : « C'est par le rappel de Dieu que les cœurs s'apaisent. »",
+      "pause": 1.3
+    },
+    {
+      "id": "s64",
+      "text": "La voie que je suis s'appelle la Karkariya. Une voie soufie marocaine, contemporaine, fondée en deux mille sept près de Nador par le cheikh Mohamed Faouzi al-Karkari. Cette veste rapiécée, c'est son habit. Et parmi les fondements que le cheikh décrit, il y a justement ces deux-là : la retraite, et le Nom.",
+      "pause": 2.5
+    },
+    {
+      "id": "s65",
+      "text": "Je ne vais pas te demander quarante jours. Ce soir, je te demande deux minutes. Et je vais te dire ce qui va se passer.",
+      "pause": 1.2
+    },
+    {
+      "id": "s66",
+      "text": "Un. Ton téléphone dans une autre pièce. Pas retourné à côté de toi : une autre pièce. Si tu veux un minuteur, lance-le avant. Il sonnera de loin.",
+      "pause": 0.9
+    },
+    {
+      "id": "s67",
+      "text": "Deux. Assieds-toi. Rien d'héroïque. Une chaise suffit.",
+      "pause": 0.9
+    },
+    {
+      "id": "s68",
+      "text": "Trois. Pendant une minute, regarde juste le bruit. « Faut que je réponde à ce message. » « J'ai oublié le pain. » Tu ne chasses rien. Tu remarques. Comme des voitures qui passent sous ta fenêtre. Tu vas être surpris du volume.",
+      "pause": 0.9
+    },
+    {
+      "id": "s69",
+      "text": "Quatre. Pose ton attention sur un seul point. Ta respiration. Ou un mot, répété intérieurement, lentement. Un mot qui compte pour toi.",
+      "pause": 0.9
+    },
+    {
+      "id": "s70",
+      "text": "Cinq. Quand tu pars, et tu vas partir, tu reviens. Sans te juger.",
+      "pause": 1.1
+    },
+    {
+      "id": "s71",
+      "text": "Ce qui va probablement se passer : très vite, peut-être au bout de quarante secondes, tu vas avoir envie de te lever. Vérifier un truc. Aller chercher le téléphone, « juste pour l'heure ».",
+      "pause": 0.8
+    },
+    {
+      "id": "s72",
+      "text": "Ce moment-là, c'est le bouton de l'étude. Tu n'as pas raté l'exercice. C'est ça, l'exercice. Chaque retour compte, comme une répétition à la salle. Deux minutes ce soir. Demain, si tu veux, trois.",
+      "pause": 1.3
+    },
+    {
+      "id": "s73",
+      "text": "Revenons au bouton.",
+      "pause": 0.6
+    },
+    {
+      "id": "s74",
+      "text": "On a envie de rire de ces étudiants. Mais le bouton, tu l'as dans ta poche. Lui ne fait pas mal. Il fait même du bien, deux secondes. C'est pour ça qu'on l'ouvre une vingtaine de fois par jour sans y penser.",
+      "pause": 0.8
+    },
+    {
+      "id": "s75",
+      "text": "La dernière phrase de l'étude, celle que je t'avais promise :",
+      "pause": 0.9
+    },
+    {
+      "id": "s76",
+      "text": "« L'esprit non entraîné n'aime pas être seul avec lui-même. »",
+      "pause": 0.9
+    },
+    {
+      "id": "s77",
+      "text": "Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne.",
+      "pause": 2.0
+    },
+    {
+      "id": "s78",
+      "text": "Tu n'as pas un problème avec la solitude. Tu n'as juste jamais meublé la pièce.",
+      "pause": 1.5
+    },
+    {
+      "id": "s79",
+      "text": "Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal, et ce que les soufis font à la place.",
+      "pause": 0
+    }
+  ]
+}

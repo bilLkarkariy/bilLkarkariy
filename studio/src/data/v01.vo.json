@@ -1,0 +1,8178 @@
+{
+ "audio": "vo/v01.wav",
+ "segments": [
+  {
+   "id": "s1",
+   "text": "Quinze minutes.",
+   "start": 0.81,
+   "end": 1.36,
+   "words": [
+    {
+     "w": "Quinze",
+     "start": 0.81,
+     "end": 0.96
+    },
+    {
+     "w": "minutes",
+     "start": 0.96,
+     "end": 1.36
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "text": "Seul dans une pièce vide.",
+   "start": 2.15,
+   "end": 3.58,
+   "words": [
+    {
+     "w": "Seul",
+     "start": 2.15,
+     "end": 2.5
+    },
+    {
+     "w": "dans",
+     "start": 2.5,
+     "end": 2.68
+    },
+    {
+     "w": "une",
+     "start": 2.68,
+     "end": 2.9
+    },
+    {
+     "w": "pièce",
+     "start": 2.9,
+     "end": 3.22
+    },
+    {
+     "w": "vide",
+     "start": 3.22,
+     "end": 3.58
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "text": "Pas de téléphone, rien à lire.",
+   "start": 4.43,
+   "end": 6.36,
+   "words": [
+    {
+     "w": "Pas",
+     "start": 4.43,
+     "end": 4.5
+    },
+    {
+     "w": "de",
+     "start": 4.5,
+     "end": 4.64
+    },
+    {
+     "w": "téléphone",
+     "start": 4.63,
+     "end": 5.14
+    },
+    {
+     "w": "rien",
+     "start": 5.72,
+     "end": 5.94
+    },
+    {
+     "w": "à",
+     "start": 5.94,
+     "end": 6.1
+    },
+    {
+     "w": "lire",
+     "start": 6.1,
+     "end": 6.36
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "text": "Juste toi, tes pensées…",
+   "start": 7.37,
+   "end": 9.28,
+   "words": [
+    {
+     "w": "Juste",
+     "start": 7.37,
+     "end": 7.8
+    },
+    {
+     "w": "toi",
+     "start": 7.8,
+     "end": 8.1
+    },
+    {
+     "w": "tes",
+     "start": 8.65,
+     "end": 8.72
+    },
+    {
+     "w": "pensées",
+     "start": 8.72,
+     "end": 9.28
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "text": "et un bouton qui t'envoie une décharge électrique.",
+   "start": 9.85,
+   "end": 12.1,
+   "words": [
+    {
+     "w": "et",
+     "start": 9.85,
+     "end": 9.92
+    },
+    {
+     "w": "un",
+     "start": 9.92,
+     "end": 10.08
+    },
+    {
+     "w": "bouton",
+     "start": 10.08,
+     "end": 10.46
+    },
+    {
+     "w": "qui",
+     "start": 10.46,
+     "end": 10.64
+    },
+    {
+     "w": "t'envoie",
+     "start": 10.64,
+     "end": 11.0
+    },
+    {
+     "w": "une",
+     "start": 11.0,
+     "end": 11.14
+    },
+    {
+     "w": "décharge",
+     "start": 11.14,
+     "end": 11.56
+    },
+    {
+     "w": "électrique",
+     "start": 11.56,
+     "end": 12.1
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "text": "Deux hommes sur trois ont appuyé.",
+   "start": 13.84,
+   "end": 15.52,
+   "words": [
+    {
+     "w": "Deux",
+     "start": 13.84,
+     "end": 14.14
+    },
+    {
+     "w": "hommes",
+     "start": 14.14,
+     "end": 14.34
+    },
+    {
+     "w": "sur",
+     "start": 14.34,
+     "end": 14.54
+    },
+    {
+     "w": "trois",
+     "start": 14.53,
+     "end": 14.84
+    },
+    {
+     "w": "ont",
+     "start": 14.84,
+     "end": 15.03
+    },
+    {
+     "w": "appuyé",
+     "start": 15.09,
+     "end": 15.52
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "text": "Des gens qui, juste avant, avaient dit qu'ils paieraient pour ne plus jamais la sentir.",
+   "start": 16.51,
+   "end": 20.76,
+   "words": [
+    {
+     "w": "Des",
+     "start": 16.51,
+     "end": 16.68
+    },
+    {
+     "w": "gens",
+     "start": 16.68,
+     "end": 16.9
+    },
+    {
+     "w": "qui",
+     "start": 16.89,
+     "end": 17.18
+    },
+    {
+     "w": "juste",
+     "start": 17.42,
+     "end": 17.62
+    },
+    {
+     "w": "avant",
+     "start": 17.62,
+     "end": 17.96
+    },
+    {
+     "w": "avaient",
+     "start": 18.32,
+     "end": 18.46
+    },
+    {
+     "w": "dit",
+     "start": 18.46,
+     "end": 18.62
+    },
+    {
+     "w": "qu'ils",
+     "start": 18.62,
+     "end": 18.8
+    },
+    {
+     "w": "paieraient",
+     "start": 18.8,
+     "end": 19.3
+    },
+    {
+     "w": "pour",
+     "start": 19.3,
+     "end": 19.46
+    },
+    {
+     "w": "ne",
+     "start": 19.46,
+     "end": 19.58
+    },
+    {
+     "w": "plus",
+     "start": 19.57,
+     "end": 19.84
+    },
+    {
+     "w": "jamais",
+     "start": 19.84,
+     "end": 20.2
+    },
+    {
+     "w": "la",
+     "start": 20.2,
+     "end": 20.4
+    },
+    {
+     "w": "sentir",
+     "start": 20.39,
+     "end": 20.76
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "text": "Et je suis presque sûr que toi aussi, tu aurais appuyé.",
+   "start": 21.91,
+   "end": 24.98,
+   "words": [
+    {
+     "w": "Et",
+     "start": 21.91,
+     "end": 21.98
+    },
+    {
+     "w": "je",
+     "start": 21.98,
+     "end": 22.08
+    },
+    {
+     "w": "suis",
+     "start": 22.08,
+     "end": 22.24
+    },
+    {
+     "w": "presque",
+     "start": 22.24,
+     "end": 22.62
+    },
+    {
+     "w": "sûr",
+     "start": 22.62,
+     "end": 23.08
+    },
+    {
+     "w": "que",
+     "start": 23.08,
+     "end": 23.28
+    },
+    {
+     "w": "toi",
+     "start": 23.28,
+     "end": 23.56
+    },
+    {
+     "w": "aussi",
+     "start": 23.56,
+     "end": 23.92
+    },
+    {
+     "w": "tu",
+     "start": 24.26,
+     "end": 24.31
+    },
+    {
+     "w": "aurais",
+     "start": 24.3,
+     "end": 24.5
+    },
+    {
+     "w": "appuyé",
+     "start": 24.5,
+     "end": 24.98
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "text": "C'est une étude publiée dans Science en deux mille quatorze.",
+   "start": 25.76,
+   "end": 28.46,
+   "words": [
+    {
+     "w": "C'est",
+     "start": 25.76,
+     "end": 25.9
+    },
+    {
+     "w": "une",
+     "start": 25.9,
+     "end": 26.08
+    },
+    {
+     "w": "étude",
+     "start": 26.08,
+     "end": 26.3
+    },
+    {
+     "w": "publiée",
+     "start": 26.3,
+     "end": 26.78
+    },
+    {
+     "w": "dans",
+     "start": 26.78,
+     "end": 26.92
+    },
+    {
+     "w": "Science",
+     "start": 26.92,
+     "end": 27.4
+    },
+    {
+     "w": "en",
+     "start": 27.4,
+     "end": 27.76
+    },
+    {
+     "w": "deux",
+     "start": 27.76,
+     "end": 27.99
+    },
+    {
+     "w": "mille",
+     "start": 27.99,
+     "end": 28.23
+    },
+    {
+     "w": "quatorze",
+     "start": 28.22,
+     "end": 28.46
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": "Sa dernière phrase, presque personne ne la cite.",
+   "start": 29.45,
+   "end": 32.3,
+   "words": [
+    {
+     "w": "Sa",
+     "start": 29.45,
+     "end": 29.6
+    },
+    {
+     "w": "dernière",
+     "start": 29.6,
+     "end": 29.8
+    },
+    {
+     "w": "phrase",
+     "start": 29.8,
+     "end": 30.36
+    },
+    {
+     "w": "presque",
+     "start": 30.77,
+     "end": 30.98
+    },
+    {
+     "w": "personne",
+     "start": 30.98,
+     "end": 31.72
+    },
+    {
+     "w": "ne",
+     "start": 31.72,
+     "end": 31.96
+    },
+    {
+     "w": "la",
+     "start": 31.96,
+     "end": 32.08
+    },
+    {
+     "w": "cite",
+     "start": 32.07,
+     "end": 32.3
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": "Pourtant, elle change complètement le sens de ce bouton.",
+   "start": 32.93,
+   "end": 35.92,
+   "words": [
+    {
+     "w": "Pourtant",
+     "start": 32.93,
+     "end": 33.28
+    },
+    {
+     "w": "elle",
+     "start": 33.57,
+     "end": 33.66
+    },
+    {
+     "w": "change",
+     "start": 33.65,
+     "end": 33.98
+    },
+    {
+     "w": "complètement",
+     "start": 34.22,
+     "end": 34.68
+    },
+    {
+     "w": "le",
+     "start": 34.68,
+     "end": 34.96
+    },
+    {
+     "w": "sens",
+     "start": 34.96,
+     "end": 35.22
+    },
+    {
+     "w": "de",
+     "start": 35.22,
+     "end": 35.44
+    },
+    {
+     "w": "ce",
+     "start": 35.43,
+     "end": 35.58
+    },
+    {
+     "w": "bouton",
+     "start": 35.57,
+     "end": 35.92
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": "Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir.",
+   "start": 36.48,
+   "end": 39.56,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 36.48,
+     "end": 36.58
+    },
+    {
+     "w": "l'auras",
+     "start": 36.57,
+     "end": 36.86
+    },
+    {
+     "w": "à",
+     "start": 36.86,
+     "end": 36.96
+    },
+    {
+     "w": "la",
+     "start": 36.96,
+     "end": 37.02
+    },
+    {
+     "w": "fin",
+     "start": 37.02,
+     "end": 37.3
+    },
+    {
+     "w": "avec",
+     "start": 37.6,
+     "end": 37.76
+    },
+    {
+     "w": "deux",
+     "start": 37.75,
+     "end": 38.1
+    },
+    {
+     "w": "minutes",
+     "start": 38.1,
+     "end": 38.32
+    },
+    {
+     "w": "d'exercice",
+     "start": 38.32,
+     "end": 38.96
+    },
+    {
+     "w": "pour",
+     "start": 38.96,
+     "end": 39.14
+    },
+    {
+     "w": "ce",
+     "start": 39.14,
+     "end": 39.28
+    },
+    {
+     "w": "soir",
+     "start": 39.28,
+     "end": 39.56
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "Université de Virginie.",
+   "start": 40.61,
+   "end": 41.94,
+   "words": [
+    {
+     "w": "Université",
+     "start": 40.61,
+     "end": 41.18
+    },
+    {
+     "w": "de",
+     "start": 41.18,
+     "end": 41.34
+    },
+    {
+     "w": "Virginie",
+     "start": 41.34,
+     "end": 41.94
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "Des étudiants entrent dans une pièce presque vide.",
+   "start": 42.48,
+   "end": 45.14,
+   "words": [
+    {
+     "w": "Des",
+     "start": 42.48,
+     "end": 42.64
+    },
+    {
+     "w": "étudiants",
+     "start": 42.64,
+     "end": 43.2
+    },
+    {
+     "w": "entrent",
+     "start": 43.2,
+     "end": 43.6
+    },
+    {
+     "w": "dans",
+     "start": 43.6,
+     "end": 43.78
+    },
+    {
+     "w": "une",
+     "start": 43.78,
+     "end": 43.98
+    },
+    {
+     "w": "pièce",
+     "start": 43.98,
+     "end": 44.36
+    },
+    {
+     "w": "presque",
+     "start": 44.36,
+     "end": 44.7
+    },
+    {
+     "w": "vide",
+     "start": 44.7,
+     "end": 45.14
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "On leur fait déposer leurs affaires à l'entrée.",
+   "start": 45.68,
+   "end": 47.6,
+   "words": [
+    {
+     "w": "On",
+     "start": 45.68,
+     "end": 45.76
+    },
+    {
+     "w": "leur",
+     "start": 45.76,
+     "end": 45.92
+    },
+    {
+     "w": "fait",
+     "start": 45.92,
+     "end": 46.12
+    },
+    {
+     "w": "déposer",
+     "start": 46.12,
+     "end": 46.5
+    },
+    {
+     "w": "leurs",
+     "start": 46.5,
+     "end": 46.72
+    },
+    {
+     "w": "affaires",
+     "start": 46.72,
+     "end": 47.14
+    },
+    {
+     "w": "à",
+     "start": 47.14,
+     "end": 47.26
+    },
+    {
+     "w": "l'entrée",
+     "start": 47.26,
+     "end": 47.6
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "Le téléphone, mais aussi les stylos.",
+   "start": 48.08,
+   "end": 50.04,
+   "words": [
+    {
+     "w": "Le",
+     "start": 48.08,
+     "end": 48.18
+    },
+    {
+     "w": "téléphone",
+     "start": 48.18,
+     "end": 48.64
+    },
+    {
+     "w": "mais",
+     "start": 49.0,
+     "end": 49.22
+    },
+    {
+     "w": "aussi",
+     "start": 49.22,
+     "end": 49.52
+    },
+    {
+     "w": "les",
+     "start": 49.52,
+     "end": 49.64
+    },
+    {
+     "w": "stylos",
+     "start": 49.64,
+     "end": 50.04
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "Rien pour écrire.",
+   "start": 50.75,
+   "end": 51.52,
+   "words": [
+    {
+     "w": "Rien",
+     "start": 50.75,
+     "end": 51.02
+    },
+    {
+     "w": "pour",
+     "start": 51.02,
+     "end": 51.28
+    },
+    {
+     "w": "écrire",
+     "start": 51.28,
+     "end": 51.52
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "La consigne tient en une ligne : reste assis, ne t'endors pas, et occupe-toi avec tes pensées.",
+   "start": 52.56,
+   "end": 58.84,
+   "words": [
+    {
+     "w": "La",
+     "start": 52.56,
+     "end": 52.7
+    },
+    {
+     "w": "consigne",
+     "start": 52.7,
+     "end": 53.22
+    },
+    {
+     "w": "tient",
+     "start": 53.22,
+     "end": 53.58
+    },
+    {
+     "w": "en",
+     "start": 53.58,
+     "end": 53.8
+    },
+    {
+     "w": "une",
+     "start": 53.8,
+     "end": 54.02
+    },
+    {
+     "w": "ligne",
+     "start": 54.02,
+     "end": 54.32
+    },
+    {
+     "w": "reste",
+     "start": 54.88,
+     "end": 55.21
+    },
+    {
+     "w": "assis",
+     "start": 55.26,
+     "end": 55.68
+    },
+    {
+     "w": "ne",
+     "start": 56.02,
+     "end": 56.14
+    },
+    {
+     "w": "t'endors",
+     "start": 56.14,
+     "end": 56.52
+    },
+    {
+     "w": "pas",
+     "start": 56.52,
+     "end": 56.8
+    },
+    {
+     "w": "et",
+     "start": 57.23,
+     "end": 57.32
+    },
+    {
+     "w": "occupe-toi",
+     "start": 57.32,
+     "end": 58.0
+    },
+    {
+     "w": "avec",
+     "start": 58.0,
+     "end": 58.26
+    },
+    {
+     "w": "tes",
+     "start": 58.26,
+     "end": 58.44
+    },
+    {
+     "w": "pensées",
+     "start": 58.44,
+     "end": 58.84
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "Quinze minutes.",
+   "start": 59.41,
+   "end": 59.97,
+   "words": [
+    {
+     "w": "Quinze",
+     "start": 59.41,
+     "end": 59.58
+    },
+    {
+     "w": "minutes",
+     "start": 59.58,
+     "end": 59.97
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "text": "Avant de laisser les gens seuls, on leur fait goûter une petite décharge. Comme une grosse décharge d'électricité statique. On leur demande : combien tu paierais pour ne plus jamais la sentir ? Et on ne garde que ceux qui répondent : je paierais.",
+   "start": 61.32,
+   "end": 74.72,
+   "words": [
+    {
+     "w": "Avant",
+     "start": 61.32,
+     "end": 61.46
+    },
+    {
+     "w": "de",
+     "start": 61.46,
+     "end": 61.68
+    },
+    {
+     "w": "laisser",
+     "start": 61.68,
+     "end": 61.9
+    },
+    {
+     "w": "les",
+     "start": 61.9,
+     "end": 62.1
+    },
+    {
+     "w": "gens",
+     "start": 62.1,
+     "end": 62.24
+    },
+    {
+     "w": "seuls",
+     "start": 62.24,
+     "end": 62.7
+    },
+    {
+     "w": "on",
+     "start": 63.04,
+     "end": 63.09
+    },
+    {
+     "w": "leur",
+     "start": 63.08,
+     "end": 63.2
+    },
+    {
+     "w": "fait",
+     "start": 63.2,
+     "end": 63.36
+    },
+    {
+     "w": "goûter",
+     "start": 63.36,
+     "end": 63.64
+    },
+    {
+     "w": "une",
+     "start": 63.64,
+     "end": 63.82
+    },
+    {
+     "w": "petite",
+     "start": 63.82,
+     "end": 64.14
+    },
+    {
+     "w": "décharge",
+     "start": 64.14,
+     "end": 64.71
+    },
+    {
+     "w": "Comme",
+     "start": 65.25,
+     "end": 65.36
+    },
+    {
+     "w": "une",
+     "start": 65.36,
+     "end": 65.54
+    },
+    {
+     "w": "grosse",
+     "start": 65.54,
+     "end": 65.9
+    },
+    {
+     "w": "décharge",
+     "start": 65.9,
+     "end": 66.36
+    },
+    {
+     "w": "d'électricité",
+     "start": 66.36,
+     "end": 66.99
+    },
+    {
+     "w": "statique",
+     "start": 67.0,
+     "end": 67.54
+    },
+    {
+     "w": "On",
+     "start": 67.92,
+     "end": 67.98
+    },
+    {
+     "w": "leur",
+     "start": 67.98,
+     "end": 68.14
+    },
+    {
+     "w": "demande",
+     "start": 68.14,
+     "end": 68.48
+    },
+    {
+     "w": "combien",
+     "start": 69.01,
+     "end": 69.18
+    },
+    {
+     "w": "tu",
+     "start": 69.18,
+     "end": 69.46
+    },
+    {
+     "w": "paierais",
+     "start": 69.45,
+     "end": 69.88
+    },
+    {
+     "w": "pour",
+     "start": 69.87,
+     "end": 70.06
+    },
+    {
+     "w": "ne",
+     "start": 70.06,
+     "end": 70.2
+    },
+    {
+     "w": "plus",
+     "start": 70.2,
+     "end": 70.48
+    },
+    {
+     "w": "jamais",
+     "start": 70.48,
+     "end": 70.92
+    },
+    {
+     "w": "la",
+     "start": 70.92,
+     "end": 71.14
+    },
+    {
+     "w": "sentir",
+     "start": 71.14,
+     "end": 71.42
+    },
+    {
+     "w": "Et",
+     "start": 72.04,
+     "end": 72.12
+    },
+    {
+     "w": "on",
+     "start": 72.12,
+     "end": 72.22
+    },
+    {
+     "w": "ne",
+     "start": 72.22,
+     "end": 72.32
+    },
+    {
+     "w": "garde",
+     "start": 72.31,
+     "end": 72.6
+    },
+    {
+     "w": "que",
+     "start": 72.59,
+     "end": 72.69
+    },
+    {
+     "w": "ceux",
+     "start": 72.92,
+     "end": 73.14
+    },
+    {
+     "w": "qui",
+     "start": 73.14,
+     "end": 73.34
+    },
+    {
+     "w": "répondent",
+     "start": 73.34,
+     "end": 73.9
+    },
+    {
+     "w": "je",
+     "start": 74.14,
+     "end": 74.34
+    },
+    {
+     "w": "paierais",
+     "start": 74.34,
+     "end": 74.72
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "text": "Puis on les laisse seuls. Et le bouton est là, si on veut se la remettre.",
+   "start": 75.51,
+   "end": 78.99,
+   "words": [
+    {
+     "w": "Puis",
+     "start": 75.51,
+     "end": 75.68
+    },
+    {
+     "w": "on",
+     "start": 75.68,
+     "end": 76.0
+    },
+    {
+     "w": "les",
+     "start": 76.0,
+     "end": 76.12
+    },
+    {
+     "w": "laisse",
+     "start": 76.12,
+     "end": 76.34
+    },
+    {
+     "w": "seuls",
+     "start": 76.34,
+     "end": 76.72
+    },
+    {
+     "w": "Et",
+     "start": 77.14,
+     "end": 77.19
+    },
+    {
+     "w": "le",
+     "start": 77.18,
+     "end": 77.32
+    },
+    {
+     "w": "bouton",
+     "start": 77.31,
+     "end": 77.62
+    },
+    {
+     "w": "est",
+     "start": 77.62,
+     "end": 77.78
+    },
+    {
+     "w": "là",
+     "start": 77.78,
+     "end": 77.92
+    },
+    {
+     "w": "si",
+     "start": 78.12,
+     "end": 78.28
+    },
+    {
+     "w": "on",
+     "start": 78.28,
+     "end": 78.36
+    },
+    {
+     "w": "veut",
+     "start": 78.36,
+     "end": 78.48
+    },
+    {
+     "w": "se",
+     "start": 78.48,
+     "end": 78.6
+    },
+    {
+     "w": "la",
+     "start": 78.59,
+     "end": 78.68
+    },
+    {
+     "w": "remettre",
+     "start": 78.68,
+     "end": 78.99
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": "Chez les hommes, douze sur dix-huit ont appuyé. Chez les femmes, six sur vingt-quatre.",
+   "start": 80.26,
+   "end": 85.27,
+   "words": [
+    {
+     "w": "Chez",
+     "start": 80.26,
+     "end": 80.4
+    },
+    {
+     "w": "les",
+     "start": 80.4,
+     "end": 80.54
+    },
+    {
+     "w": "hommes",
+     "start": 80.54,
+     "end": 80.84
+    },
+    {
+     "w": "douze",
+     "start": 81.26,
+     "end": 81.46
+    },
+    {
+     "w": "sur",
+     "start": 81.45,
+     "end": 81.74
+    },
+    {
+     "w": "dix-huit",
+     "start": 81.73,
+     "end": 82.2
+    },
+    {
+     "w": "ont",
+     "start": 82.2,
+     "end": 82.4
+    },
+    {
+     "w": "appuyé",
+     "start": 82.4,
+     "end": 82.9
+    },
+    {
+     "w": "Chez",
+     "start": 83.37,
+     "end": 83.52
+    },
+    {
+     "w": "les",
+     "start": 83.52,
+     "end": 83.66
+    },
+    {
+     "w": "femmes",
+     "start": 83.66,
+     "end": 83.92
+    },
+    {
+     "w": "six",
+     "start": 84.36,
+     "end": 84.62
+    },
+    {
+     "w": "sur",
+     "start": 84.62,
+     "end": 84.82
+    },
+    {
+     "w": "vingt-quatre",
+     "start": 84.82,
+     "end": 85.27
+    }
+   ]
+  },
+  {
+   "id": "s23",
+   "text": "Un homme a appuyé cent quatre-vingt-dix fois.",
+   "start": 86.21,
+   "end": 88.76,
+   "words": [
+    {
+     "w": "Un",
+     "start": 86.21,
+     "end": 86.36
+    },
+    {
+     "w": "homme",
+     "start": 86.36,
+     "end": 86.66
+    },
+    {
+     "w": "a",
+     "start": 86.66,
+     "end": 86.92
+    },
+    {
+     "w": "appuyé",
+     "start": 86.92,
+     "end": 87.44
+    },
+    {
+     "w": "cent",
+     "start": 87.44,
+     "end": 87.57
+    },
+    {
+     "w": "quatre-vingt-dix",
+     "start": 87.57,
+     "end": 87.96
+    },
+    {
+     "w": "fois",
+     "start": 87.96,
+     "end": 88.76
+    }
+   ]
+  },
+  {
+   "id": "s24",
+   "text": "Ce sont de petits groupes, quarante-deux personnes. Mais je le répète : tous venaient de dire qu'ils paieraient pour l'éviter.",
+   "start": 89.73,
+   "end": 96.03,
+   "words": [
+    {
+     "w": "Ce",
+     "start": 89.73,
+     "end": 89.88
+    },
+    {
+     "w": "sont",
+     "start": 89.88,
+     "end": 90.06
+    },
+    {
+     "w": "de",
+     "start": 90.06,
+     "end": 90.2
+    },
+    {
+     "w": "petits",
+     "start": 90.2,
+     "end": 90.48
+    },
+    {
+     "w": "groupes",
+     "start": 90.48,
+     "end": 90.89
+    },
+    {
+     "w": "quarante-deux",
+     "start": 91.22,
+     "end": 91.54
+    },
+    {
+     "w": "personnes",
+     "start": 91.54,
+     "end": 92.04
+    },
+    {
+     "w": "Mais",
+     "start": 92.54,
+     "end": 92.68
+    },
+    {
+     "w": "je",
+     "start": 92.68,
+     "end": 92.8
+    },
+    {
+     "w": "le",
+     "start": 92.8,
+     "end": 92.9
+    },
+    {
+     "w": "répète",
+     "start": 92.9,
+     "end": 93.32
+    },
+    {
+     "w": "tous",
+     "start": 93.75,
+     "end": 93.9
+    },
+    {
+     "w": "venaient",
+     "start": 93.9,
+     "end": 94.36
+    },
+    {
+     "w": "de",
+     "start": 94.36,
+     "end": 94.48
+    },
+    {
+     "w": "dire",
+     "start": 94.48,
+     "end": 94.72
+    },
+    {
+     "w": "qu'ils",
+     "start": 94.72,
+     "end": 95.02
+    },
+    {
+     "w": "paieraient",
+     "start": 95.22,
+     "end": 95.54
+    },
+    {
+     "w": "pour",
+     "start": 95.54,
+     "end": 95.74
+    },
+    {
+     "w": "l'éviter",
+     "start": 95.74,
+     "end": 96.03
+    }
+   ]
+  },
+  {
+   "id": "s25",
+   "text": "Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. Les chercheurs se sont posé la même question.",
+   "start": 97.34,
+   "end": 104.12,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 97.34,
+     "end": 97.42
+    },
+    {
+     "w": "te",
+     "start": 97.42,
+     "end": 97.56
+    },
+    {
+     "w": "dis",
+     "start": 97.56,
+     "end": 97.68
+    },
+    {
+     "w": "peut-être",
+     "start": 97.68,
+     "end": 98.24
+    },
+    {
+     "w": "des",
+     "start": 98.54,
+     "end": 98.74
+    },
+    {
+     "w": "étudiants",
+     "start": 98.74,
+     "end": 99.4
+    },
+    {
+     "w": "dans",
+     "start": 99.4,
+     "end": 99.7
+    },
+    {
+     "w": "un",
+     "start": 99.7,
+     "end": 99.9
+    },
+    {
+     "w": "labo",
+     "start": 99.9,
+     "end": 100.36
+    },
+    {
+     "w": "ça",
+     "start": 100.51,
+     "end": 100.74
+    },
+    {
+     "w": "ne",
+     "start": 100.74,
+     "end": 100.86
+    },
+    {
+     "w": "prouve",
+     "start": 100.87,
+     "end": 101.04
+    },
+    {
+     "w": "pas",
+     "start": 101.13,
+     "end": 101.22
+    },
+    {
+     "w": "grand-chose",
+     "start": 101.22,
+     "end": 101.79
+    },
+    {
+     "w": "Les",
+     "start": 102.21,
+     "end": 102.34
+    },
+    {
+     "w": "chercheurs",
+     "start": 102.34,
+     "end": 102.72
+    },
+    {
+     "w": "se",
+     "start": 102.72,
+     "end": 102.9
+    },
+    {
+     "w": "sont",
+     "start": 102.9,
+     "end": 103.04
+    },
+    {
+     "w": "posé",
+     "start": 103.04,
+     "end": 103.36
+    },
+    {
+     "w": "la",
+     "start": 103.36,
+     "end": 103.48
+    },
+    {
+     "w": "même",
+     "start": 103.48,
+     "end": 103.7
+    },
+    {
+     "w": "question",
+     "start": 103.7,
+     "end": 104.12
+    }
+   ]
+  },
+  {
+   "id": "s26",
+   "text": "Dans les versions sans bouton, neuf sur dix disent que leur esprit est parti ailleurs. Plus de la moitié trouvent ça dur de se concentrer.",
+   "start": 104.92,
+   "end": 112.32,
+   "words": [
+    {
+     "w": "Dans",
+     "start": 104.92,
+     "end": 105.08
+    },
+    {
+     "w": "les",
+     "start": 105.08,
+     "end": 105.2
+    },
+    {
+     "w": "versions",
+     "start": 105.2,
+     "end": 105.52
+    },
+    {
+     "w": "sans",
+     "start": 105.52,
+     "end": 105.84
+    },
+    {
+     "w": "bouton",
+     "start": 105.84,
+     "end": 106.28
+    },
+    {
+     "w": "neuf",
+     "start": 106.62,
+     "end": 106.84
+    },
+    {
+     "w": "sur",
+     "start": 106.84,
+     "end": 107.1
+    },
+    {
+     "w": "dix",
+     "start": 107.1,
+     "end": 107.4
+    },
+    {
+     "w": "disent",
+     "start": 107.4,
+     "end": 107.74
+    },
+    {
+     "w": "que",
+     "start": 107.74,
+     "end": 107.94
+    },
+    {
+     "w": "leur",
+     "start": 107.94,
+     "end": 108.06
+    },
+    {
+     "w": "esprit",
+     "start": 108.06,
+     "end": 108.4
+    },
+    {
+     "w": "est",
+     "start": 108.4,
+     "end": 108.56
+    },
+    {
+     "w": "parti",
+     "start": 108.56,
+     "end": 108.82
+    },
+    {
+     "w": "ailleurs",
+     "start": 108.82,
+     "end": 109.24
+    },
+    {
+     "w": "Plus",
+     "start": 109.64,
+     "end": 109.78
+    },
+    {
+     "w": "de",
+     "start": 109.78,
+     "end": 109.92
+    },
+    {
+     "w": "la",
+     "start": 109.92,
+     "end": 110.06
+    },
+    {
+     "w": "moitié",
+     "start": 110.06,
+     "end": 110.58
+    },
+    {
+     "w": "trouvent",
+     "start": 110.58,
+     "end": 110.92
+    },
+    {
+     "w": "ça",
+     "start": 110.92,
+     "end": 111.12
+    },
+    {
+     "w": "dur",
+     "start": 111.12,
+     "end": 111.44
+    },
+    {
+     "w": "de",
+     "start": 111.44,
+     "end": 111.64
+    },
+    {
+     "w": "se",
+     "start": 111.64,
+     "end": 111.8
+    },
+    {
+     "w": "concentrer",
+     "start": 111.85,
+     "end": 112.32
+    }
+   ]
+  },
+  {
+   "id": "s27",
+   "text": "Les chercheurs se disent : c'est le labo, c'est intimidant. Alors ils refont l'expérience chez les gens. Sur leur canapé. Un sur trois triche : musique, téléphone, ou il se lève.",
+   "start": 113.13,
+   "end": 124.72,
+   "words": [
+    {
+     "w": "Les",
+     "start": 113.13,
+     "end": 113.24
+    },
+    {
+     "w": "chercheurs",
+     "start": 113.24,
+     "end": 113.66
+    },
+    {
+     "w": "se",
+     "start": 113.66,
+     "end": 113.84
+    },
+    {
+     "w": "disent",
+     "start": 113.84,
+     "end": 114.08
+    },
+    {
+     "w": "c'est",
+     "start": 114.58,
+     "end": 114.8
+    },
+    {
+     "w": "le",
+     "start": 114.8,
+     "end": 114.92
+    },
+    {
+     "w": "labo",
+     "start": 114.92,
+     "end": 115.32
+    },
+    {
+     "w": "c'est",
+     "start": 115.64,
+     "end": 115.76
+    },
+    {
+     "w": "intimidant",
+     "start": 115.76,
+     "end": 116.38
+    },
+    {
+     "w": "Alors",
+     "start": 116.81,
+     "end": 117.0
+    },
+    {
+     "w": "ils",
+     "start": 117.0,
+     "end": 117.36
+    },
+    {
+     "w": "refont",
+     "start": 117.36,
+     "end": 117.82
+    },
+    {
+     "w": "l'expérience",
+     "start": 117.81,
+     "end": 118.38
+    },
+    {
+     "w": "chez",
+     "start": 118.38,
+     "end": 118.72
+    },
+    {
+     "w": "les",
+     "start": 118.72,
+     "end": 118.88
+    },
+    {
+     "w": "gens",
+     "start": 118.88,
+     "end": 119.06
+    },
+    {
+     "w": "Sur",
+     "start": 119.45,
+     "end": 119.68
+    },
+    {
+     "w": "leur",
+     "start": 119.68,
+     "end": 119.82
+    },
+    {
+     "w": "canapé",
+     "start": 119.81,
+     "end": 120.34
+    },
+    {
+     "w": "Un",
+     "start": 120.74,
+     "end": 120.88
+    },
+    {
+     "w": "sur",
+     "start": 120.88,
+     "end": 121.06
+    },
+    {
+     "w": "trois",
+     "start": 121.06,
+     "end": 121.36
+    },
+    {
+     "w": "triche",
+     "start": 121.36,
+     "end": 121.88
+    },
+    {
+     "w": "musique",
+     "start": 122.36,
+     "end": 122.79
+    },
+    {
+     "w": "téléphone",
+     "start": 123.18,
+     "end": 123.46
+    },
+    {
+     "w": "ou",
+     "start": 124.04,
+     "end": 124.12
+    },
+    {
+     "w": "il",
+     "start": 124.12,
+     "end": 124.22
+    },
+    {
+     "w": "se",
+     "start": 124.22,
+     "end": 124.44
+    },
+    {
+     "w": "lève",
+     "start": 124.44,
+     "end": 124.72
+    }
+   ]
+  },
+  {
+   "id": "s28",
+   "text": "Et ce n'est pas qu'une affaire d'étudiants. Des gens de dix-huit à soixante-dix-sept ans, chez eux : même résultat. Aucun lien avec l'âge. Aucun lien avec la fréquence à laquelle ils utilisaient leur smartphone.",
+   "start": 125.48,
+   "end": 137.16,
+   "words": [
+    {
+     "w": "Et",
+     "start": 125.48,
+     "end": 125.56
+    },
+    {
+     "w": "ce",
+     "start": 125.56,
+     "end": 125.7
+    },
+    {
+     "w": "n'est",
+     "start": 125.7,
+     "end": 125.84
+    },
+    {
+     "w": "pas",
+     "start": 125.84,
+     "end": 126.02
+    },
+    {
+     "w": "qu'une",
+     "start": 126.02,
+     "end": 126.26
+    },
+    {
+     "w": "affaire",
+     "start": 126.26,
+     "end": 126.52
+    },
+    {
+     "w": "d'étudiants",
+     "start": 126.52,
+     "end": 127.06
+    },
+    {
+     "w": "Des",
+     "start": 127.56,
+     "end": 127.68
+    },
+    {
+     "w": "gens",
+     "start": 127.68,
+     "end": 127.88
+    },
+    {
+     "w": "de",
+     "start": 127.88,
+     "end": 128.04
+    },
+    {
+     "w": "dix-huit",
+     "start": 128.03,
+     "end": 128.5
+    },
+    {
+     "w": "à",
+     "start": 128.5,
+     "end": 128.82
+    },
+    {
+     "w": "soixante-dix-sept",
+     "start": 128.81,
+     "end": 129.36
+    },
+    {
+     "w": "ans",
+     "start": 129.36,
+     "end": 129.82
+    },
+    {
+     "w": "chez",
+     "start": 130.09,
+     "end": 130.32
+    },
+    {
+     "w": "eux",
+     "start": 130.31,
+     "end": 130.56
+    },
+    {
+     "w": "même",
+     "start": 130.93,
+     "end": 131.24
+    },
+    {
+     "w": "résultat",
+     "start": 131.24,
+     "end": 131.8
+    },
+    {
+     "w": "Aucun",
+     "start": 132.2,
+     "end": 132.58
+    },
+    {
+     "w": "lien",
+     "start": 132.58,
+     "end": 132.82
+    },
+    {
+     "w": "avec",
+     "start": 132.81,
+     "end": 133.04
+    },
+    {
+     "w": "l'âge",
+     "start": 133.03,
+     "end": 133.52
+    },
+    {
+     "w": "Aucun",
+     "start": 133.87,
+     "end": 134.22
+    },
+    {
+     "w": "lien",
+     "start": 134.22,
+     "end": 134.48
+    },
+    {
+     "w": "avec",
+     "start": 134.47,
+     "end": 134.72
+    },
+    {
+     "w": "la",
+     "start": 134.72,
+     "end": 134.88
+    },
+    {
+     "w": "fréquence",
+     "start": 134.88,
+     "end": 135.32
+    },
+    {
+     "w": "à",
+     "start": 135.31,
+     "end": 135.48
+    },
+    {
+     "w": "laquelle",
+     "start": 135.47,
+     "end": 135.76
+    },
+    {
+     "w": "ils",
+     "start": 135.75,
+     "end": 135.92
+    },
+    {
+     "w": "utilisaient",
+     "start": 135.91,
+     "end": 136.54
+    },
+    {
+     "w": "leur",
+     "start": 136.53,
+     "end": 136.66
+    },
+    {
+     "w": "smartphone",
+     "start": 136.66,
+     "end": 137.16
+    }
+   ]
+  },
+  {
+   "id": "s29",
+   "text": "Et le plus étrange, ce n'est pas ce bouton.",
+   "start": 138.19,
+   "end": 140.36,
+   "words": [
+    {
+     "w": "Et",
+     "start": 138.19,
+     "end": 138.26
+    },
+    {
+     "w": "le",
+     "start": 138.25,
+     "end": 138.36
+    },
+    {
+     "w": "plus",
+     "start": 138.36,
+     "end": 138.54
+    },
+    {
+     "w": "étrange",
+     "start": 138.53,
+     "end": 138.92
+    },
+    {
+     "w": "ce",
+     "start": 139.36,
+     "end": 139.54
+    },
+    {
+     "w": "n'est",
+     "start": 139.53,
+     "end": 139.68
+    },
+    {
+     "w": "pas",
+     "start": 139.68,
+     "end": 139.8
+    },
+    {
+     "w": "ce",
+     "start": 139.8,
+     "end": 140.0
+    },
+    {
+     "w": "bouton",
+     "start": 140.0,
+     "end": 140.36
+    }
+   ]
+  },
+  {
+   "id": "s30",
+   "text": "Le plus étrange, c'est ça. Les chercheurs ont laissé aux gens quelques minutes pour préparer à quoi ils allaient penser. Un voyage, un souvenir, un projet. Ça n'a rien changé.",
+   "start": 141.78,
+   "end": 152.66,
+   "words": [
+    {
+     "w": "Le",
+     "start": 141.78,
+     "end": 141.88
+    },
+    {
+     "w": "plus",
+     "start": 141.88,
+     "end": 142.1
+    },
+    {
+     "w": "étrange",
+     "start": 142.1,
+     "end": 142.54
+    },
+    {
+     "w": "c'est",
+     "start": 143.0,
+     "end": 143.14
+    },
+    {
+     "w": "ça",
+     "start": 143.13,
+     "end": 143.42
+    },
+    {
+     "w": "Les",
+     "start": 143.97,
+     "end": 144.08
+    },
+    {
+     "w": "chercheurs",
+     "start": 144.08,
+     "end": 144.46
+    },
+    {
+     "w": "ont",
+     "start": 144.46,
+     "end": 144.64
+    },
+    {
+     "w": "laissé",
+     "start": 144.63,
+     "end": 144.92
+    },
+    {
+     "w": "aux",
+     "start": 144.91,
+     "end": 145.06
+    },
+    {
+     "w": "gens",
+     "start": 145.06,
+     "end": 145.28
+    },
+    {
+     "w": "quelques",
+     "start": 145.28,
+     "end": 145.6
+    },
+    {
+     "w": "minutes",
+     "start": 145.6,
+     "end": 146.06
+    },
+    {
+     "w": "pour",
+     "start": 146.06,
+     "end": 146.16
+    },
+    {
+     "w": "préparer",
+     "start": 146.36,
+     "end": 146.9
+    },
+    {
+     "w": "à",
+     "start": 146.9,
+     "end": 147.04
+    },
+    {
+     "w": "quoi",
+     "start": 147.03,
+     "end": 147.32
+    },
+    {
+     "w": "ils",
+     "start": 147.31,
+     "end": 147.5
+    },
+    {
+     "w": "allaient",
+     "start": 147.5,
+     "end": 147.74
+    },
+    {
+     "w": "penser",
+     "start": 147.74,
+     "end": 148.04
+    },
+    {
+     "w": "Un",
+     "start": 148.58,
+     "end": 148.7
+    },
+    {
+     "w": "voyage",
+     "start": 148.69,
+     "end": 148.96
+    },
+    {
+     "w": "un",
+     "start": 149.58,
+     "end": 149.66
+    },
+    {
+     "w": "souvenir",
+     "start": 149.66,
+     "end": 150.06
+    },
+    {
+     "w": "un",
+     "start": 150.58,
+     "end": 150.68
+    },
+    {
+     "w": "projet",
+     "start": 150.68,
+     "end": 151.02
+    },
+    {
+     "w": "Ça",
+     "start": 151.56,
+     "end": 151.64
+    },
+    {
+     "w": "n'a",
+     "start": 151.63,
+     "end": 151.84
+    },
+    {
+     "w": "rien",
+     "start": 151.84,
+     "end": 152.2
+    },
+    {
+     "w": "changé",
+     "start": 152.19,
+     "end": 152.66
+    }
+   ]
+  },
+  {
+   "id": "s31",
+   "text": "Les auteurs ont une image pour ça. Penser seul, c'est être en même temps le scénariste et le spectateur du film. Dès que le scénariste fatigue, le film part dans tous les sens.",
+   "start": 153.48,
+   "end": 163.36,
+   "words": [
+    {
+     "w": "Les",
+     "start": 153.48,
+     "end": 153.64
+    },
+    {
+     "w": "auteurs",
+     "start": 153.63,
+     "end": 153.96
+    },
+    {
+     "w": "ont",
+     "start": 153.96,
+     "end": 154.14
+    },
+    {
+     "w": "une",
+     "start": 154.13,
+     "end": 154.34
+    },
+    {
+     "w": "image",
+     "start": 154.34,
+     "end": 154.64
+    },
+    {
+     "w": "pour",
+     "start": 154.63,
+     "end": 154.84
+    },
+    {
+     "w": "ça",
+     "start": 154.89,
+     "end": 155.08
+    },
+    {
+     "w": "Penser",
+     "start": 155.47,
+     "end": 155.68
+    },
+    {
+     "w": "seul",
+     "start": 155.68,
+     "end": 156.12
+    },
+    {
+     "w": "c'est",
+     "start": 156.4,
+     "end": 156.58
+    },
+    {
+     "w": "être",
+     "start": 156.58,
+     "end": 156.8
+    },
+    {
+     "w": "en",
+     "start": 156.8,
+     "end": 156.9
+    },
+    {
+     "w": "même",
+     "start": 156.9,
+     "end": 157.12
+    },
+    {
+     "w": "temps",
+     "start": 157.12,
+     "end": 157.38
+    },
+    {
+     "w": "le",
+     "start": 157.38,
+     "end": 157.56
+    },
+    {
+     "w": "scénariste",
+     "start": 157.56,
+     "end": 158.26
+    },
+    {
+     "w": "et",
+     "start": 158.45,
+     "end": 158.54
+    },
+    {
+     "w": "le",
+     "start": 158.53,
+     "end": 158.7
+    },
+    {
+     "w": "spectateur",
+     "start": 158.69,
+     "end": 159.2
+    },
+    {
+     "w": "du",
+     "start": 159.19,
+     "end": 159.4
+    },
+    {
+     "w": "film",
+     "start": 159.4,
+     "end": 159.68
+    },
+    {
+     "w": "Dès",
+     "start": 160.03,
+     "end": 160.26
+    },
+    {
+     "w": "que",
+     "start": 160.25,
+     "end": 160.38
+    },
+    {
+     "w": "le",
+     "start": 160.38,
+     "end": 160.48
+    },
+    {
+     "w": "scénariste",
+     "start": 160.47,
+     "end": 160.94
+    },
+    {
+     "w": "fatigue",
+     "start": 160.98,
+     "end": 161.34
+    },
+    {
+     "w": "le",
+     "start": 161.86,
+     "end": 161.98
+    },
+    {
+     "w": "film",
+     "start": 161.97,
+     "end": 162.26
+    },
+    {
+     "w": "part",
+     "start": 162.25,
+     "end": 162.58
+    },
+    {
+     "w": "dans",
+     "start": 162.58,
+     "end": 162.76
+    },
+    {
+     "w": "tous",
+     "start": 162.9,
+     "end": 163.0
+    },
+    {
+     "w": "les",
+     "start": 163.0,
+     "end": 163.14
+    },
+    {
+     "w": "sens",
+     "start": 163.13,
+     "end": 163.36
+    }
+   ]
+  },
+  {
+   "id": "s32",
+   "text": "Tu connais ça. File d'attente à la boulangerie, trois personnes devant toi. Ta main est dans ta poche avant que tu aies décidé quoi que ce soit.",
+   "start": 164.34,
+   "end": 171.72,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 164.34,
+     "end": 164.44
+    },
+    {
+     "w": "connais",
+     "start": 164.44,
+     "end": 164.7
+    },
+    {
+     "w": "ça",
+     "start": 164.7,
+     "end": 164.96
+    },
+    {
+     "w": "File",
+     "start": 165.39,
+     "end": 165.6
+    },
+    {
+     "w": "d'attente",
+     "start": 165.6,
+     "end": 165.94
+    },
+    {
+     "w": "à",
+     "start": 165.94,
+     "end": 166.1
+    },
+    {
+     "w": "la",
+     "start": 166.1,
+     "end": 166.24
+    },
+    {
+     "w": "boulangerie",
+     "start": 166.24,
+     "end": 166.78
+    },
+    {
+     "w": "trois",
+     "start": 167.06,
+     "end": 167.32
+    },
+    {
+     "w": "personnes",
+     "start": 167.32,
+     "end": 167.76
+    },
+    {
+     "w": "devant",
+     "start": 167.76,
+     "end": 168.02
+    },
+    {
+     "w": "toi",
+     "start": 168.02,
+     "end": 168.34
+    },
+    {
+     "w": "Ta",
+     "start": 168.65,
+     "end": 168.74
+    },
+    {
+     "w": "main",
+     "start": 168.74,
+     "end": 168.92
+    },
+    {
+     "w": "est",
+     "start": 168.92,
+     "end": 169.06
+    },
+    {
+     "w": "dans",
+     "start": 169.06,
+     "end": 169.16
+    },
+    {
+     "w": "ta",
+     "start": 169.16,
+     "end": 169.3
+    },
+    {
+     "w": "poche",
+     "start": 169.3,
+     "end": 169.7
+    },
+    {
+     "w": "avant",
+     "start": 169.7,
+     "end": 170.02
+    },
+    {
+     "w": "que",
+     "start": 170.02,
+     "end": 170.22
+    },
+    {
+     "w": "tu",
+     "start": 170.22,
+     "end": 170.36
+    },
+    {
+     "w": "aies",
+     "start": 170.36,
+     "end": 170.46
+    },
+    {
+     "w": "décidé",
+     "start": 170.46,
+     "end": 170.82
+    },
+    {
+     "w": "quoi",
+     "start": 170.82,
+     "end": 171.18
+    },
+    {
+     "w": "que",
+     "start": 171.18,
+     "end": 171.32
+    },
+    {
+     "w": "ce",
+     "start": 171.32,
+     "end": 171.44
+    },
+    {
+     "w": "soit",
+     "start": 171.44,
+     "end": 171.72
+    }
+   ]
+  },
+  {
+   "id": "s33",
+   "text": "Question. La dernière fois que t'es resté cinq minutes sans rien faire, sans écran, sans musique, sans parler… c'était quand ?",
+   "start": 172.81,
+   "end": 180.38,
+   "words": [
+    {
+     "w": "Question",
+     "start": 172.81,
+     "end": 173.0
+    },
+    {
+     "w": "La",
+     "start": 173.84,
+     "end": 173.89
+    },
+    {
+     "w": "dernière",
+     "start": 173.84,
+     "end": 174.1
+    },
+    {
+     "w": "fois",
+     "start": 174.1,
+     "end": 174.38
+    },
+    {
+     "w": "que",
+     "start": 174.38,
+     "end": 174.47
+    },
+    {
+     "w": "t'es",
+     "start": 174.54,
+     "end": 174.62
+    },
+    {
+     "w": "resté",
+     "start": 174.62,
+     "end": 174.96
+    },
+    {
+     "w": "cinq",
+     "start": 174.96,
+     "end": 175.32
+    },
+    {
+     "w": "minutes",
+     "start": 175.32,
+     "end": 175.58
+    },
+    {
+     "w": "sans",
+     "start": 175.58,
+     "end": 175.84
+    },
+    {
+     "w": "rien",
+     "start": 175.84,
+     "end": 176.06
+    },
+    {
+     "w": "faire",
+     "start": 176.06,
+     "end": 176.4
+    },
+    {
+     "w": "sans",
+     "start": 176.82,
+     "end": 176.96
+    },
+    {
+     "w": "écran",
+     "start": 176.96,
+     "end": 177.76
+    },
+    {
+     "w": "sans",
+     "start": 177.76,
+     "end": 177.94
+    },
+    {
+     "w": "musique",
+     "start": 177.94,
+     "end": 178.36
+    },
+    {
+     "w": "sans",
+     "start": 178.76,
+     "end": 178.94
+    },
+    {
+     "w": "parler",
+     "start": 178.94,
+     "end": 179.3
+    },
+    {
+     "w": "c'était",
+     "start": 179.91,
+     "end": 180.12
+    },
+    {
+     "w": "quand",
+     "start": 180.12,
+     "end": 180.38
+    }
+   ]
+  },
+  {
+   "id": "s34",
+   "text": "En deux mille dix, deux chercheurs de Harvard ont fait sonner le téléphone de deux mille deux cent cinquante personnes, à des moments pris au hasard. Trois questions : qu'est-ce que tu fais, comment tu te sens, et est-ce que tu penses à ce que tu fais ?",
+   "start": 182.5,
+   "end": 195.66,
+   "words": [
+    {
+     "w": "En",
+     "start": 182.5,
+     "end": 182.58
+    },
+    {
+     "w": "deux",
+     "start": 182.58,
+     "end": 182.76
+    },
+    {
+     "w": "mille",
+     "start": 182.76,
+     "end": 182.94
+    },
+    {
+     "w": "dix",
+     "start": 182.94,
+     "end": 183.12
+    },
+    {
+     "w": "deux",
+     "start": 183.7,
+     "end": 183.92
+    },
+    {
+     "w": "chercheurs",
+     "start": 183.92,
+     "end": 184.34
+    },
+    {
+     "w": "de",
+     "start": 184.34,
+     "end": 184.48
+    },
+    {
+     "w": "Harvard",
+     "start": 184.48,
+     "end": 184.88
+    },
+    {
+     "w": "ont",
+     "start": 184.88,
+     "end": 185.3
+    },
+    {
+     "w": "fait",
+     "start": 185.3,
+     "end": 185.48
+    },
+    {
+     "w": "sonner",
+     "start": 185.48,
+     "end": 185.8
+    },
+    {
+     "w": "le",
+     "start": 185.8,
+     "end": 185.92
+    },
+    {
+     "w": "téléphone",
+     "start": 185.92,
+     "end": 186.36
+    },
+    {
+     "w": "de",
+     "start": 186.36,
+     "end": 186.64
+    },
+    {
+     "w": "deux",
+     "start": 186.64,
+     "end": 186.85
+    },
+    {
+     "w": "mille",
+     "start": 186.85,
+     "end": 187.06
+    },
+    {
+     "w": "deux",
+     "start": 187.06,
+     "end": 187.28
+    },
+    {
+     "w": "cent",
+     "start": 187.27,
+     "end": 187.49
+    },
+    {
+     "w": "cinquante",
+     "start": 187.48,
+     "end": 187.7
+    },
+    {
+     "w": "personnes",
+     "start": 187.7,
+     "end": 188.36
+    },
+    {
+     "w": "à",
+     "start": 188.76,
+     "end": 188.84
+    },
+    {
+     "w": "des",
+     "start": 188.84,
+     "end": 188.96
+    },
+    {
+     "w": "moments",
+     "start": 188.96,
+     "end": 189.16
+    },
+    {
+     "w": "pris",
+     "start": 189.16,
+     "end": 189.5
+    },
+    {
+     "w": "au",
+     "start": 189.5,
+     "end": 189.64
+    },
+    {
+     "w": "hasard",
+     "start": 189.64,
+     "end": 190.0
+    },
+    {
+     "w": "Trois",
+     "start": 190.45,
+     "end": 190.62
+    },
+    {
+     "w": "questions",
+     "start": 190.62,
+     "end": 191.02
+    },
+    {
+     "w": "qu'est-ce",
+     "start": 191.58,
+     "end": 191.74
+    },
+    {
+     "w": "que",
+     "start": 191.75,
+     "end": 191.82
+    },
+    {
+     "w": "tu",
+     "start": 191.82,
+     "end": 191.94
+    },
+    {
+     "w": "fais",
+     "start": 191.94,
+     "end": 192.22
+    },
+    {
+     "w": "comment",
+     "start": 192.69,
+     "end": 192.84
+    },
+    {
+     "w": "tu",
+     "start": 192.84,
+     "end": 193.04
+    },
+    {
+     "w": "te",
+     "start": 193.04,
+     "end": 193.2
+    },
+    {
+     "w": "sens",
+     "start": 193.2,
+     "end": 193.36
+    },
+    {
+     "w": "et",
+     "start": 193.83,
+     "end": 194.0
+    },
+    {
+     "w": "est-ce",
+     "start": 194.0,
+     "end": 194.41
+    },
+    {
+     "w": "que",
+     "start": 194.45,
+     "end": 194.53
+    },
+    {
+     "w": "tu",
+     "start": 194.56,
+     "end": 194.68
+    },
+    {
+     "w": "penses",
+     "start": 194.68,
+     "end": 195.08
+    },
+    {
+     "w": "à",
+     "start": 195.08,
+     "end": 195.18
+    },
+    {
+     "w": "ce",
+     "start": 195.18,
+     "end": 195.23
+    },
+    {
+     "w": "que",
+     "start": 195.25,
+     "end": 195.32
+    },
+    {
+     "w": "tu",
+     "start": 195.33,
+     "end": 195.44
+    },
+    {
+     "w": "fais",
+     "start": 195.44,
+     "end": 195.66
+    }
+   ]
+  },
+  {
+   "id": "s35",
+   "text": "Près d'une fois sur deux : non.",
+   "start": 196.37,
+   "end": 198.12,
+   "words": [
+    {
+     "w": "Près",
+     "start": 196.37,
+     "end": 196.56
+    },
+    {
+     "w": "d'une",
+     "start": 196.56,
+     "end": 196.74
+    },
+    {
+     "w": "fois",
+     "start": 196.74,
+     "end": 196.94
+    },
+    {
+     "w": "sur",
+     "start": 196.94,
+     "end": 197.16
+    },
+    {
+     "w": "deux",
+     "start": 197.16,
+     "end": 197.4
+    },
+    {
+     "w": "non",
+     "start": 197.87,
+     "end": 198.12
+    }
+   ]
+  },
+  {
+   "id": "s36",
+   "text": "Et quand l'esprit était ailleurs, les gens étaient moins heureux. Leur article s'appelle : « Un esprit qui vagabonde est un esprit malheureux ».",
+   "start": 199.09,
+   "end": 207.12,
+   "words": [
+    {
+     "w": "Et",
+     "start": 199.09,
+     "end": 199.2
+    },
+    {
+     "w": "quand",
+     "start": 199.2,
+     "end": 199.38
+    },
+    {
+     "w": "l'esprit",
+     "start": 199.38,
+     "end": 199.76
+    },
+    {
+     "w": "était",
+     "start": 199.76,
+     "end": 199.96
+    },
+    {
+     "w": "ailleurs",
+     "start": 199.96,
+     "end": 200.5
+    },
+    {
+     "w": "les",
+     "start": 200.88,
+     "end": 201.0
+    },
+    {
+     "w": "gens",
+     "start": 201.0,
+     "end": 201.22
+    },
+    {
+     "w": "étaient",
+     "start": 201.22,
+     "end": 201.48
+    },
+    {
+     "w": "moins",
+     "start": 201.48,
+     "end": 201.84
+    },
+    {
+     "w": "heureux",
+     "start": 201.84,
+     "end": 202.23
+    },
+    {
+     "w": "Leur",
+     "start": 202.7,
+     "end": 202.84
+    },
+    {
+     "w": "article",
+     "start": 202.84,
+     "end": 203.2
+    },
+    {
+     "w": "s'appelle",
+     "start": 203.2,
+     "end": 203.76
+    },
+    {
+     "w": "Un",
+     "start": 204.26,
+     "end": 204.4
+    },
+    {
+     "w": "esprit",
+     "start": 204.4,
+     "end": 204.8
+    },
+    {
+     "w": "qui",
+     "start": 204.8,
+     "end": 204.96
+    },
+    {
+     "w": "vagabonde",
+     "start": 204.96,
+     "end": 205.71
+    },
+    {
+     "w": "est",
+     "start": 205.82,
+     "end": 205.9
+    },
+    {
+     "w": "un",
+     "start": 205.98,
+     "end": 206.1
+    },
+    {
+     "w": "esprit",
+     "start": 206.1,
+     "end": 206.52
+    },
+    {
+     "w": "malheureux",
+     "start": 206.52,
+     "end": 207.12
+    }
+   ]
+  },
+  {
+   "id": "s37",
+   "text": "L'ascenseur. Vingt secondes entre deux étages. Tu regardes le plafond, le sol, puis ton écran.",
+   "start": 207.98,
+   "end": 215.43,
+   "words": [
+    {
+     "w": "L'ascenseur",
+     "start": 207.98,
+     "end": 208.7
+    },
+    {
+     "w": "Vingt",
+     "start": 209.14,
+     "end": 209.38
+    },
+    {
+     "w": "secondes",
+     "start": 209.38,
+     "end": 209.96
+    },
+    {
+     "w": "entre",
+     "start": 209.96,
+     "end": 210.24
+    },
+    {
+     "w": "deux",
+     "start": 210.24,
+     "end": 210.54
+    },
+    {
+     "w": "étages",
+     "start": 210.54,
+     "end": 211.02
+    },
+    {
+     "w": "Tu",
+     "start": 211.52,
+     "end": 211.58
+    },
+    {
+     "w": "regardes",
+     "start": 211.58,
+     "end": 211.96
+    },
+    {
+     "w": "le",
+     "start": 211.96,
+     "end": 212.08
+    },
+    {
+     "w": "plafond",
+     "start": 212.08,
+     "end": 212.56
+    },
+    {
+     "w": "le",
+     "start": 212.92,
+     "end": 213.04
+    },
+    {
+     "w": "sol",
+     "start": 213.04,
+     "end": 213.34
+    },
+    {
+     "w": "puis",
+     "start": 213.83,
+     "end": 214.51
+    },
+    {
+     "w": "ton",
+     "start": 215.38,
+     "end": 215.43
+    },
+    {
+     "w": "écran",
+     "start": 215.38,
+     "end": 215.43
+    }
+   ]
+  },
+  {
+   "id": "s38",
+   "text": "Le téléphone coupe le film avant qu'il parte en vrille. En France, on passe plus de trois heures par jour en ligne, dont quatre-vingts pour cent sur mobile. Médiamétrie comptait une vingtaine de sessions sur smartphone par jour. Et quatre Français sur dix disent eux-mêmes qu'ils passent trop de temps sur les écrans.",
+   "start": 215.38,
+   "end": 232.34,
+   "words": [
+    {
+     "w": "Le",
+     "start": 215.38,
+     "end": 215.5
+    },
+    {
+     "w": "téléphone",
+     "start": 215.5,
+     "end": 215.9
+    },
+    {
+     "w": "coupe",
+     "start": 215.9,
+     "end": 216.34
+    },
+    {
+     "w": "le",
+     "start": 216.34,
+     "end": 216.5
+    },
+    {
+     "w": "film",
+     "start": 216.5,
+     "end": 216.86
+    },
+    {
+     "w": "avant",
+     "start": 216.86,
+     "end": 217.18
+    },
+    {
+     "w": "qu'il",
+     "start": 217.18,
+     "end": 217.42
+    },
+    {
+     "w": "parte",
+     "start": 217.42,
+     "end": 217.64
+    },
+    {
+     "w": "en",
+     "start": 217.64,
+     "end": 217.86
+    },
+    {
+     "w": "vrille",
+     "start": 217.86,
+     "end": 218.14
+    },
+    {
+     "w": "En",
+     "start": 218.7,
+     "end": 218.8
+    },
+    {
+     "w": "France",
+     "start": 218.8,
+     "end": 219.22
+    },
+    {
+     "w": "on",
+     "start": 219.48,
+     "end": 219.56
+    },
+    {
+     "w": "passe",
+     "start": 219.56,
+     "end": 219.78
+    },
+    {
+     "w": "plus",
+     "start": 219.78,
+     "end": 220.04
+    },
+    {
+     "w": "de",
+     "start": 220.04,
+     "end": 220.18
+    },
+    {
+     "w": "trois",
+     "start": 220.18,
+     "end": 220.54
+    },
+    {
+     "w": "heures",
+     "start": 220.54,
+     "end": 220.82
+    },
+    {
+     "w": "par",
+     "start": 220.82,
+     "end": 221.06
+    },
+    {
+     "w": "jour",
+     "start": 221.06,
+     "end": 221.28
+    },
+    {
+     "w": "en",
+     "start": 221.28,
+     "end": 221.48
+    },
+    {
+     "w": "ligne",
+     "start": 221.48,
+     "end": 221.74
+    },
+    {
+     "w": "dont",
+     "start": 222.37,
+     "end": 223.12
+    },
+    {
+     "w": "quatre-vingts",
+     "start": 223.12,
+     "end": 223.17
+    },
+    {
+     "w": "pour",
+     "start": 223.12,
+     "end": 223.17
+    },
+    {
+     "w": "cent",
+     "start": 223.12,
+     "end": 223.17
+    },
+    {
+     "w": "sur",
+     "start": 223.12,
+     "end": 223.38
+    },
+    {
+     "w": "mobile",
+     "start": 223.38,
+     "end": 223.68
+    },
+    {
+     "w": "Médiamétrie",
+     "start": 224.13,
+     "end": 224.8
+    },
+    {
+     "w": "comptait",
+     "start": 224.8,
+     "end": 225.18
+    },
+    {
+     "w": "une",
+     "start": 225.18,
+     "end": 225.36
+    },
+    {
+     "w": "vingtaine",
+     "start": 225.36,
+     "end": 225.82
+    },
+    {
+     "w": "de",
+     "start": 225.82,
+     "end": 225.98
+    },
+    {
+     "w": "sessions",
+     "start": 225.98,
+     "end": 226.28
+    },
+    {
+     "w": "sur",
+     "start": 226.28,
+     "end": 226.56
+    },
+    {
+     "w": "smartphone",
+     "start": 226.56,
+     "end": 226.98
+    },
+    {
+     "w": "par",
+     "start": 226.98,
+     "end": 227.26
+    },
+    {
+     "w": "jour",
+     "start": 227.26,
+     "end": 227.54
+    },
+    {
+     "w": "Et",
+     "start": 228.0,
+     "end": 228.05
+    },
+    {
+     "w": "quatre",
+     "start": 228.02,
+     "end": 228.4
+    },
+    {
+     "w": "Français",
+     "start": 228.4,
+     "end": 228.74
+    },
+    {
+     "w": "sur",
+     "start": 228.74,
+     "end": 229.04
+    },
+    {
+     "w": "dix",
+     "start": 229.04,
+     "end": 229.34
+    },
+    {
+     "w": "disent",
+     "start": 229.34,
+     "end": 229.82
+    },
+    {
+     "w": "eux-mêmes",
+     "start": 230.03,
+     "end": 230.46
+    },
+    {
+     "w": "qu'ils",
+     "start": 230.46,
+     "end": 230.74
+    },
+    {
+     "w": "passent",
+     "start": 230.74,
+     "end": 231.04
+    },
+    {
+     "w": "trop",
+     "start": 231.13,
+     "end": 231.32
+    },
+    {
+     "w": "de",
+     "start": 231.32,
+     "end": 231.48
+    },
+    {
+     "w": "temps",
+     "start": 231.48,
+     "end": 231.66
+    },
+    {
+     "w": "sur",
+     "start": 231.66,
+     "end": 231.84
+    },
+    {
+     "w": "les",
+     "start": 231.84,
+     "end": 231.98
+    },
+    {
+     "w": "écrans",
+     "start": 231.98,
+     "end": 232.34
+    }
+   ]
+  },
+  {
+   "id": "s39",
+   "text": "Mais ce problème, ce n'est pas le smartphone qui l'a inventé.",
+   "start": 233.22,
+   "end": 236.09,
+   "words": [
+    {
+     "w": "Mais",
+     "start": 233.22,
+     "end": 233.36
+    },
+    {
+     "w": "ce",
+     "start": 233.36,
+     "end": 233.52
+    },
+    {
+     "w": "problème",
+     "start": 233.52,
+     "end": 233.86
+    },
+    {
+     "w": "ce",
+     "start": 234.22,
+     "end": 234.44
+    },
+    {
+     "w": "n'est",
+     "start": 234.44,
+     "end": 234.54
+    },
+    {
+     "w": "pas",
+     "start": 234.54,
+     "end": 234.66
+    },
+    {
+     "w": "le",
+     "start": 234.66,
+     "end": 234.78
+    },
+    {
+     "w": "smartphone",
+     "start": 234.78,
+     "end": 235.24
+    },
+    {
+     "w": "qui",
+     "start": 235.24,
+     "end": 235.64
+    },
+    {
+     "w": "l'a",
+     "start": 235.63,
+     "end": 235.68
+    },
+    {
+     "w": "inventé",
+     "start": 235.63,
+     "end": 236.09
+    }
+   ]
+  },
+  {
+   "id": "s40",
+   "text": "Blaise Pascal, dix-septième siècle : « Tout le malheur des hommes vient d'une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre. »",
+   "start": 237.32,
+   "end": 245.96,
+   "words": [
+    {
+     "w": "Blaise",
+     "start": 237.32,
+     "end": 237.58
+    },
+    {
+     "w": "Pascal",
+     "start": 237.58,
+     "end": 238.1
+    },
+    {
+     "w": "dix-septième",
+     "start": 238.55,
+     "end": 239.18
+    },
+    {
+     "w": "siècle",
+     "start": 239.18,
+     "end": 239.43
+    },
+    {
+     "w": "Tout",
+     "start": 240.14,
+     "end": 240.24
+    },
+    {
+     "w": "le",
+     "start": 240.24,
+     "end": 240.4
+    },
+    {
+     "w": "malheur",
+     "start": 240.4,
+     "end": 240.7
+    },
+    {
+     "w": "des",
+     "start": 240.7,
+     "end": 240.86
+    },
+    {
+     "w": "hommes",
+     "start": 240.86,
+     "end": 241.24
+    },
+    {
+     "w": "vient",
+     "start": 241.24,
+     "end": 241.64
+    },
+    {
+     "w": "d'une",
+     "start": 241.63,
+     "end": 241.98
+    },
+    {
+     "w": "seule",
+     "start": 241.98,
+     "end": 242.2
+    },
+    {
+     "w": "chose",
+     "start": 242.2,
+     "end": 242.67
+    },
+    {
+     "w": "qui",
+     "start": 243.03,
+     "end": 243.18
+    },
+    {
+     "w": "est",
+     "start": 243.18,
+     "end": 243.3
+    },
+    {
+     "w": "de",
+     "start": 243.3,
+     "end": 243.42
+    },
+    {
+     "w": "ne",
+     "start": 243.42,
+     "end": 243.5
+    },
+    {
+     "w": "savoir",
+     "start": 243.5,
+     "end": 243.74
+    },
+    {
+     "w": "pas",
+     "start": 243.74,
+     "end": 243.89
+    },
+    {
+     "w": "demeurer",
+     "start": 244.1,
+     "end": 244.5
+    },
+    {
+     "w": "en",
+     "start": 244.5,
+     "end": 244.7
+    },
+    {
+     "w": "repos",
+     "start": 244.7,
+     "end": 245.18
+    },
+    {
+     "w": "dans",
+     "start": 245.18,
+     "end": 245.36
+    },
+    {
+     "w": "une",
+     "start": 245.36,
+     "end": 245.58
+    },
+    {
+     "w": "chambre",
+     "start": 245.58,
+     "end": 245.96
+    }
+   ]
+  },
+  {
+   "id": "s41",
+   "text": "Et quelques lignes plus loin : « De là vient que le plaisir de la solitude est une chose incompréhensible. »",
+   "start": 246.96,
+   "end": 252.68,
+   "words": [
+    {
+     "w": "Et",
+     "start": 246.96,
+     "end": 247.04
+    },
+    {
+     "w": "quelques",
+     "start": 247.04,
+     "end": 247.3
+    },
+    {
+     "w": "lignes",
+     "start": 247.3,
+     "end": 247.58
+    },
+    {
+     "w": "plus",
+     "start": 247.58,
+     "end": 247.84
+    },
+    {
+     "w": "loin",
+     "start": 247.84,
+     "end": 248.1
+    },
+    {
+     "w": "De",
+     "start": 248.63,
+     "end": 248.74
+    },
+    {
+     "w": "là",
+     "start": 248.74,
+     "end": 248.94
+    },
+    {
+     "w": "vient",
+     "start": 248.94,
+     "end": 249.28
+    },
+    {
+     "w": "que",
+     "start": 249.28,
+     "end": 249.44
+    },
+    {
+     "w": "le",
+     "start": 249.44,
+     "end": 249.56
+    },
+    {
+     "w": "plaisir",
+     "start": 249.56,
+     "end": 249.96
+    },
+    {
+     "w": "de",
+     "start": 249.96,
+     "end": 250.16
+    },
+    {
+     "w": "la",
+     "start": 250.16,
+     "end": 250.26
+    },
+    {
+     "w": "solitude",
+     "start": 250.26,
+     "end": 250.78
+    },
+    {
+     "w": "est",
+     "start": 250.78,
+     "end": 251.1
+    },
+    {
+     "w": "une",
+     "start": 251.1,
+     "end": 251.32
+    },
+    {
+     "w": "chose",
+     "start": 251.32,
+     "end": 251.62
+    },
+    {
+     "w": "incompréhensible",
+     "start": 251.85,
+     "end": 252.68
+    }
+   ]
+  },
+  {
+   "id": "s42",
+   "text": "Plus de trois cent cinquante ans. Le téléphone n'a pas inventé la fuite. Il l'a mise dans ta poche, ouverte jour et nuit.",
+   "start": 253.83,
+   "end": 260.9,
+   "words": [
+    {
+     "w": "Plus",
+     "start": 253.83,
+     "end": 253.94
+    },
+    {
+     "w": "de",
+     "start": 253.94,
+     "end": 254.16
+    },
+    {
+     "w": "trois",
+     "start": 254.16,
+     "end": 254.35
+    },
+    {
+     "w": "cent",
+     "start": 254.35,
+     "end": 254.55
+    },
+    {
+     "w": "cinquante",
+     "start": 254.54,
+     "end": 254.74
+    },
+    {
+     "w": "ans",
+     "start": 254.74,
+     "end": 255.4
+    },
+    {
+     "w": "Le",
+     "start": 255.92,
+     "end": 256.0
+    },
+    {
+     "w": "téléphone",
+     "start": 256.0,
+     "end": 256.44
+    },
+    {
+     "w": "n'a",
+     "start": 256.44,
+     "end": 256.7
+    },
+    {
+     "w": "pas",
+     "start": 256.7,
+     "end": 256.92
+    },
+    {
+     "w": "inventé",
+     "start": 256.92,
+     "end": 257.3
+    },
+    {
+     "w": "la",
+     "start": 257.3,
+     "end": 257.42
+    },
+    {
+     "w": "fuite",
+     "start": 257.42,
+     "end": 257.65
+    },
+    {
+     "w": "Il",
+     "start": 258.22,
+     "end": 258.32
+    },
+    {
+     "w": "l'a",
+     "start": 258.32,
+     "end": 258.5
+    },
+    {
+     "w": "mise",
+     "start": 258.5,
+     "end": 258.66
+    },
+    {
+     "w": "dans",
+     "start": 258.66,
+     "end": 258.88
+    },
+    {
+     "w": "ta",
+     "start": 258.88,
+     "end": 259.02
+    },
+    {
+     "w": "poche",
+     "start": 259.01,
+     "end": 259.44
+    },
+    {
+     "w": "ouverte",
+     "start": 259.73,
+     "end": 260.11
+    },
+    {
+     "w": "jour",
+     "start": 260.2,
+     "end": 260.56
+    },
+    {
+     "w": "et",
+     "start": 260.56,
+     "end": 260.72
+    },
+    {
+     "w": "nuit",
+     "start": 260.72,
+     "end": 260.9
+    }
+   ]
+  },
+  {
+   "id": "s43",
+   "text": "Trois heures du matin, tu te réveilles, ça tourne dans ta tête. Premier réflexe : l'écran.",
+   "start": 262.18,
+   "end": 267.39,
+   "words": [
+    {
+     "w": "Trois",
+     "start": 262.18,
+     "end": 262.36
+    },
+    {
+     "w": "heures",
+     "start": 262.36,
+     "end": 262.46
+    },
+    {
+     "w": "du",
+     "start": 262.45,
+     "end": 262.6
+    },
+    {
+     "w": "matin",
+     "start": 262.6,
+     "end": 262.88
+    },
+    {
+     "w": "tu",
+     "start": 263.28,
+     "end": 263.36
+    },
+    {
+     "w": "te",
+     "start": 263.36,
+     "end": 263.52
+    },
+    {
+     "w": "réveilles",
+     "start": 263.51,
+     "end": 263.98
+    },
+    {
+     "w": "ça",
+     "start": 264.24,
+     "end": 264.42
+    },
+    {
+     "w": "tourne",
+     "start": 264.58,
+     "end": 264.84
+    },
+    {
+     "w": "dans",
+     "start": 264.83,
+     "end": 264.96
+    },
+    {
+     "w": "ta",
+     "start": 264.95,
+     "end": 265.12
+    },
+    {
+     "w": "tête",
+     "start": 265.21,
+     "end": 265.28
+    },
+    {
+     "w": "Premier",
+     "start": 265.77,
+     "end": 265.98
+    },
+    {
+     "w": "réflexe",
+     "start": 265.98,
+     "end": 266.6
+    },
+    {
+     "w": "l'écran",
+     "start": 267.0,
+     "end": 267.39
+    }
+   ]
+  },
+  {
+   "id": "s44",
+   "text": "Alors si le téléphone n'est pas la cause… c'est quoi ?",
+   "start": 268.26,
+   "end": 271.3,
+   "words": [
+    {
+     "w": "Alors",
+     "start": 268.26,
+     "end": 268.44
+    },
+    {
+     "w": "si",
+     "start": 268.82,
+     "end": 268.96
+    },
+    {
+     "w": "le",
+     "start": 268.95,
+     "end": 269.12
+    },
+    {
+     "w": "téléphone",
+     "start": 269.12,
+     "end": 269.46
+    },
+    {
+     "w": "n'est",
+     "start": 269.45,
+     "end": 269.72
+    },
+    {
+     "w": "pas",
+     "start": 269.72,
+     "end": 269.86
+    },
+    {
+     "w": "la",
+     "start": 269.86,
+     "end": 270.0
+    },
+    {
+     "w": "cause",
+     "start": 270.0,
+     "end": 270.3
+    },
+    {
+     "w": "c'est",
+     "start": 270.92,
+     "end": 271.12
+    },
+    {
+     "w": "quoi",
+     "start": 271.12,
+     "end": 271.3
+    }
+   ]
+  },
+  {
+   "id": "s45",
+   "text": "Je crois qu'on se trompe de problème. Le problème, ce n'est pas d'être seul. C'est d'être seul avec un esprit qui n'a pas de centre.",
+   "start": 272.83,
+   "end": 280.0,
+   "words": [
+    {
+     "w": "Je",
+     "start": 272.83,
+     "end": 272.96
+    },
+    {
+     "w": "crois",
+     "start": 272.95,
+     "end": 273.2
+    },
+    {
+     "w": "qu'on",
+     "start": 273.2,
+     "end": 273.38
+    },
+    {
+     "w": "se",
+     "start": 273.38,
+     "end": 273.54
+    },
+    {
+     "w": "trompe",
+     "start": 273.54,
+     "end": 273.82
+    },
+    {
+     "w": "de",
+     "start": 273.82,
+     "end": 273.96
+    },
+    {
+     "w": "problème",
+     "start": 273.95,
+     "end": 274.32
+    },
+    {
+     "w": "Le",
+     "start": 274.82,
+     "end": 274.94
+    },
+    {
+     "w": "problème",
+     "start": 274.94,
+     "end": 275.32
+    },
+    {
+     "w": "ce",
+     "start": 275.65,
+     "end": 275.82
+    },
+    {
+     "w": "n'est",
+     "start": 275.82,
+     "end": 275.96
+    },
+    {
+     "w": "pas",
+     "start": 275.95,
+     "end": 276.12
+    },
+    {
+     "w": "d'être",
+     "start": 276.12,
+     "end": 276.32
+    },
+    {
+     "w": "seul",
+     "start": 276.32,
+     "end": 276.8
+    },
+    {
+     "w": "C'est",
+     "start": 277.19,
+     "end": 277.34
+    },
+    {
+     "w": "d'être",
+     "start": 277.33,
+     "end": 277.52
+    },
+    {
+     "w": "seul",
+     "start": 277.51,
+     "end": 278.08
+    },
+    {
+     "w": "avec",
+     "start": 278.07,
+     "end": 278.4
+    },
+    {
+     "w": "un",
+     "start": 278.39,
+     "end": 278.66
+    },
+    {
+     "w": "esprit",
+     "start": 278.66,
+     "end": 279.04
+    },
+    {
+     "w": "qui",
+     "start": 279.04,
+     "end": 279.22
+    },
+    {
+     "w": "n'a",
+     "start": 279.22,
+     "end": 279.36
+    },
+    {
+     "w": "pas",
+     "start": 279.5,
+     "end": 279.56
+    },
+    {
+     "w": "de",
+     "start": 279.56,
+     "end": 279.72
+    },
+    {
+     "w": "centre",
+     "start": 279.72,
+     "end": 280.0
+    }
+   ]
+  },
+  {
+   "id": "s46",
+   "text": "Imagine une pièce sans aucun meuble. Pas de chaise, pas de table. Tu entres. Tu fais quoi ? Tu tournes. Tu touches les murs. Et au bout d'un moment, tu cherches la porte.",
+   "start": 281.01,
+   "end": 291.43,
+   "words": [
+    {
+     "w": "Imagine",
+     "start": 281.01,
+     "end": 281.14
+    },
+    {
+     "w": "une",
+     "start": 281.13,
+     "end": 281.52
+    },
+    {
+     "w": "pièce",
+     "start": 281.51,
+     "end": 281.98
+    },
+    {
+     "w": "sans",
+     "start": 281.98,
+     "end": 282.28
+    },
+    {
+     "w": "aucun",
+     "start": 282.27,
+     "end": 282.72
+    },
+    {
+     "w": "meuble",
+     "start": 282.72,
+     "end": 283.13
+    },
+    {
+     "w": "Pas",
+     "start": 283.5,
+     "end": 283.58
+    },
+    {
+     "w": "de",
+     "start": 283.57,
+     "end": 283.74
+    },
+    {
+     "w": "chaise",
+     "start": 283.74,
+     "end": 284.08
+    },
+    {
+     "w": "pas",
+     "start": 284.37,
+     "end": 284.44
+    },
+    {
+     "w": "de",
+     "start": 284.44,
+     "end": 284.51
+    },
+    {
+     "w": "table",
+     "start": 284.63,
+     "end": 284.81
+    },
+    {
+     "w": "Tu",
+     "start": 285.5,
+     "end": 285.55
+    },
+    {
+     "w": "entres",
+     "start": 285.51,
+     "end": 285.77
+    },
+    {
+     "w": "Tu",
+     "start": 286.25,
+     "end": 286.3
+    },
+    {
+     "w": "fais",
+     "start": 286.3,
+     "end": 286.44
+    },
+    {
+     "w": "quoi",
+     "start": 286.44,
+     "end": 286.6
+    },
+    {
+     "w": "Tu",
+     "start": 287.23,
+     "end": 287.3
+    },
+    {
+     "w": "tournes",
+     "start": 287.3,
+     "end": 287.7
+    },
+    {
+     "w": "Tu",
+     "start": 288.14,
+     "end": 288.22
+    },
+    {
+     "w": "touches",
+     "start": 288.22,
+     "end": 288.48
+    },
+    {
+     "w": "les",
+     "start": 288.48,
+     "end": 288.64
+    },
+    {
+     "w": "murs",
+     "start": 288.63,
+     "end": 288.89
+    },
+    {
+     "w": "Et",
+     "start": 289.48,
+     "end": 289.53
+    },
+    {
+     "w": "au",
+     "start": 289.48,
+     "end": 289.76
+    },
+    {
+     "w": "bout",
+     "start": 289.76,
+     "end": 289.86
+    },
+    {
+     "w": "d'un",
+     "start": 289.86,
+     "end": 290.0
+    },
+    {
+     "w": "moment",
+     "start": 290.0,
+     "end": 290.32
+    },
+    {
+     "w": "tu",
+     "start": 290.68,
+     "end": 290.78
+    },
+    {
+     "w": "cherches",
+     "start": 290.77,
+     "end": 291.06
+    },
+    {
+     "w": "la",
+     "start": 291.06,
+     "end": 291.18
+    },
+    {
+     "w": "porte",
+     "start": 291.18,
+     "end": 291.43
+    }
+   ]
+  },
+  {
+   "id": "s47",
+   "text": "Ton esprit sans point d'appui, c'est cette pièce. Le téléphone, c'est la porte.",
+   "start": 292.36,
+   "end": 296.9,
+   "words": [
+    {
+     "w": "Ton",
+     "start": 292.36,
+     "end": 292.42
+    },
+    {
+     "w": "esprit",
+     "start": 292.42,
+     "end": 292.88
+    },
+    {
+     "w": "sans",
+     "start": 292.88,
+     "end": 293.12
+    },
+    {
+     "w": "point",
+     "start": 293.12,
+     "end": 293.36
+    },
+    {
+     "w": "d'appui",
+     "start": 293.36,
+     "end": 293.8
+    },
+    {
+     "w": "c'est",
+     "start": 294.09,
+     "end": 294.26
+    },
+    {
+     "w": "cette",
+     "start": 294.26,
+     "end": 294.46
+    },
+    {
+     "w": "pièce",
+     "start": 294.45,
+     "end": 294.86
+    },
+    {
+     "w": "Le",
+     "start": 295.34,
+     "end": 295.46
+    },
+    {
+     "w": "téléphone",
+     "start": 295.45,
+     "end": 295.9
+    },
+    {
+     "w": "c'est",
+     "start": 296.35,
+     "end": 296.52
+    },
+    {
+     "w": "la",
+     "start": 296.51,
+     "end": 296.68
+    },
+    {
+     "w": "porte",
+     "start": 296.74,
+     "end": 296.9
+    }
+   ]
+  },
+  {
+   "id": "s48",
+   "text": "Ce n'est pas un défaut de caractère. Personne ne t'a appris à habiter cette pièce. On t'a appris à remplir ton attention. Jamais à y rester.",
+   "start": 297.98,
+   "end": 306.01,
+   "words": [
+    {
+     "w": "Ce",
+     "start": 297.98,
+     "end": 298.1
+    },
+    {
+     "w": "n'est",
+     "start": 298.1,
+     "end": 298.28
+    },
+    {
+     "w": "pas",
+     "start": 298.27,
+     "end": 298.4
+    },
+    {
+     "w": "un",
+     "start": 298.39,
+     "end": 298.58
+    },
+    {
+     "w": "défaut",
+     "start": 298.57,
+     "end": 298.84
+    },
+    {
+     "w": "de",
+     "start": 298.83,
+     "end": 298.92
+    },
+    {
+     "w": "caractère",
+     "start": 298.92,
+     "end": 299.48
+    },
+    {
+     "w": "Personne",
+     "start": 299.98,
+     "end": 300.42
+    },
+    {
+     "w": "ne",
+     "start": 300.42,
+     "end": 300.56
+    },
+    {
+     "w": "t'a",
+     "start": 300.56,
+     "end": 300.7
+    },
+    {
+     "w": "appris",
+     "start": 300.7,
+     "end": 301.0
+    },
+    {
+     "w": "à",
+     "start": 301.0,
+     "end": 301.14
+    },
+    {
+     "w": "habiter",
+     "start": 301.13,
+     "end": 301.31
+    },
+    {
+     "w": "cette",
+     "start": 301.38,
+     "end": 301.6
+    },
+    {
+     "w": "pièce",
+     "start": 301.71,
+     "end": 302.04
+    },
+    {
+     "w": "On",
+     "start": 302.46,
+     "end": 302.54
+    },
+    {
+     "w": "t'a",
+     "start": 302.54,
+     "end": 302.72
+    },
+    {
+     "w": "appris",
+     "start": 302.72,
+     "end": 303.06
+    },
+    {
+     "w": "à",
+     "start": 303.06,
+     "end": 303.32
+    },
+    {
+     "w": "remplir",
+     "start": 303.32,
+     "end": 303.86
+    },
+    {
+     "w": "ton",
+     "start": 303.86,
+     "end": 304.02
+    },
+    {
+     "w": "attention",
+     "start": 304.01,
+     "end": 304.44
+    },
+    {
+     "w": "Jamais",
+     "start": 304.98,
+     "end": 305.46
+    },
+    {
+     "w": "à",
+     "start": 305.45,
+     "end": 305.7
+    },
+    {
+     "w": "y",
+     "start": 305.7,
+     "end": 305.78
+    },
+    {
+     "w": "rester",
+     "start": 305.77,
+     "end": 306.01
+    }
+   ]
+  },
+  {
+   "id": "s49",
+   "text": "C'est comme un muscle qu'on n'a jamais entraîné.",
+   "start": 306.9,
+   "end": 309.0,
+   "words": [
+    {
+     "w": "C'est",
+     "start": 306.9,
+     "end": 307.06
+    },
+    {
+     "w": "comme",
+     "start": 307.06,
+     "end": 307.28
+    },
+    {
+     "w": "un",
+     "start": 307.27,
+     "end": 307.4
+    },
+    {
+     "w": "muscle",
+     "start": 307.39,
+     "end": 307.72
+    },
+    {
+     "w": "qu'on",
+     "start": 307.76,
+     "end": 308.06
+    },
+    {
+     "w": "n'a",
+     "start": 308.06,
+     "end": 308.18
+    },
+    {
+     "w": "jamais",
+     "start": 308.18,
+     "end": 308.52
+    },
+    {
+     "w": "entraîné",
+     "start": 308.51,
+     "end": 309.0
+    }
+   ]
+  },
+  {
+   "id": "s50",
+   "text": "Et les auteurs de l'étude le disent eux-mêmes : sans entraînement, on préfère faire plutôt que penser. Ils citent la méditation, et d'autres techniques.",
+   "start": 309.71,
+   "end": 317.84,
+   "words": [
+    {
+     "w": "Et",
+     "start": 309.71,
+     "end": 309.78
+    },
+    {
+     "w": "les",
+     "start": 309.77,
+     "end": 309.92
+    },
+    {
+     "w": "auteurs",
+     "start": 309.92,
+     "end": 310.24
+    },
+    {
+     "w": "de",
+     "start": 310.24,
+     "end": 310.36
+    },
+    {
+     "w": "l'étude",
+     "start": 310.36,
+     "end": 310.68
+    },
+    {
+     "w": "le",
+     "start": 310.68,
+     "end": 310.9
+    },
+    {
+     "w": "disent",
+     "start": 310.89,
+     "end": 311.06
+    },
+    {
+     "w": "eux-mêmes",
+     "start": 311.06,
+     "end": 311.66
+    },
+    {
+     "w": "sans",
+     "start": 312.06,
+     "end": 312.26
+    },
+    {
+     "w": "entraînement",
+     "start": 312.26,
+     "end": 312.82
+    },
+    {
+     "w": "on",
+     "start": 313.2,
+     "end": 313.25
+    },
+    {
+     "w": "préfère",
+     "start": 313.24,
+     "end": 313.68
+    },
+    {
+     "w": "faire",
+     "start": 313.68,
+     "end": 314.04
+    },
+    {
+     "w": "plutôt",
+     "start": 314.04,
+     "end": 314.26
+    },
+    {
+     "w": "que",
+     "start": 314.54,
+     "end": 314.8
+    },
+    {
+     "w": "penser",
+     "start": 314.8,
+     "end": 315.16
+    },
+    {
+     "w": "Ils",
+     "start": 315.62,
+     "end": 316.02
+    },
+    {
+     "w": "citent",
+     "start": 316.01,
+     "end": 316.06
+    },
+    {
+     "w": "la",
+     "start": 316.01,
+     "end": 316.12
+    },
+    {
+     "w": "méditation",
+     "start": 316.12,
+     "end": 316.66
+    },
+    {
+     "w": "et",
+     "start": 316.66,
+     "end": 316.85
+    },
+    {
+     "w": "d'autres",
+     "start": 317.2,
+     "end": 317.46
+    },
+    {
+     "w": "techniques",
+     "start": 317.45,
+     "end": 317.84
+    }
+   ]
+  },
+  {
+   "id": "s51",
+   "text": "D'autres techniques. Deux mots dans un article scientifique. Derrière ces deux mots, il y a des siècles. Des traditions entières ont fabriqué des méthodes pour une seule chose : être seul sans fuir.",
+   "start": 319.1,
+   "end": 331.78,
+   "words": [
+    {
+     "w": "D'autres",
+     "start": 319.1,
+     "end": 319.4
+    },
+    {
+     "w": "techniques",
+     "start": 319.39,
+     "end": 319.84
+    },
+    {
+     "w": "Deux",
+     "start": 320.57,
+     "end": 321.0
+    },
+    {
+     "w": "mots",
+     "start": 321.0,
+     "end": 321.12
+    },
+    {
+     "w": "dans",
+     "start": 321.12,
+     "end": 321.38
+    },
+    {
+     "w": "un",
+     "start": 321.38,
+     "end": 321.6
+    },
+    {
+     "w": "article",
+     "start": 321.6,
+     "end": 321.94
+    },
+    {
+     "w": "scientifique",
+     "start": 321.94,
+     "end": 322.58
+    },
+    {
+     "w": "Derrière",
+     "start": 323.12,
+     "end": 323.5
+    },
+    {
+     "w": "ces",
+     "start": 323.5,
+     "end": 323.7
+    },
+    {
+     "w": "deux",
+     "start": 323.7,
+     "end": 323.96
+    },
+    {
+     "w": "mots",
+     "start": 323.95,
+     "end": 324.22
+    },
+    {
+     "w": "il",
+     "start": 324.51,
+     "end": 324.6
+    },
+    {
+     "w": "y",
+     "start": 324.6,
+     "end": 324.72
+    },
+    {
+     "w": "a",
+     "start": 324.72,
+     "end": 324.77
+    },
+    {
+     "w": "des",
+     "start": 324.76,
+     "end": 324.9
+    },
+    {
+     "w": "siècles",
+     "start": 324.89,
+     "end": 325.5
+    },
+    {
+     "w": "Des",
+     "start": 325.92,
+     "end": 325.98
+    },
+    {
+     "w": "traditions",
+     "start": 325.98,
+     "end": 326.46
+    },
+    {
+     "w": "entières",
+     "start": 326.45,
+     "end": 327.14
+    },
+    {
+     "w": "ont",
+     "start": 327.13,
+     "end": 327.48
+    },
+    {
+     "w": "fabriqué",
+     "start": 327.48,
+     "end": 327.98
+    },
+    {
+     "w": "des",
+     "start": 327.98,
+     "end": 328.14
+    },
+    {
+     "w": "méthodes",
+     "start": 328.14,
+     "end": 328.56
+    },
+    {
+     "w": "pour",
+     "start": 328.56,
+     "end": 328.8
+    },
+    {
+     "w": "une",
+     "start": 328.8,
+     "end": 329.1
+    },
+    {
+     "w": "seule",
+     "start": 329.1,
+     "end": 329.3
+    },
+    {
+     "w": "chose",
+     "start": 329.3,
+     "end": 329.66
+    },
+    {
+     "w": "être",
+     "start": 330.16,
+     "end": 330.38
+    },
+    {
+     "w": "seul",
+     "start": 330.38,
+     "end": 330.84
+    },
+    {
+     "w": "sans",
+     "start": 331.22,
+     "end": 331.34
+    },
+    {
+     "w": "fuir",
+     "start": 331.34,
+     "end": 331.78
+    }
+   ]
+  },
+  {
+   "id": "s52",
+   "text": "L'une d'elles a même un mot pour ça. Un mot qui veut dire, littéralement, « solitude ».",
+   "start": 332.66,
+   "end": 337.62,
+   "words": [
+    {
+     "w": "L'une",
+     "start": 332.66,
+     "end": 332.92
+    },
+    {
+     "w": "d'elles",
+     "start": 332.92,
+     "end": 333.2
+    },
+    {
+     "w": "a",
+     "start": 333.2,
+     "end": 333.44
+    },
+    {
+     "w": "même",
+     "start": 333.44,
+     "end": 333.62
+    },
+    {
+     "w": "un",
+     "start": 333.62,
+     "end": 333.8
+    },
+    {
+     "w": "mot",
+     "start": 333.8,
+     "end": 334.04
+    },
+    {
+     "w": "pour",
+     "start": 334.04,
+     "end": 334.28
+    },
+    {
+     "w": "ça",
+     "start": 334.28,
+     "end": 334.48
+    },
+    {
+     "w": "Un",
+     "start": 335.08,
+     "end": 335.18
+    },
+    {
+     "w": "mot",
+     "start": 335.18,
+     "end": 335.36
+    },
+    {
+     "w": "qui",
+     "start": 335.36,
+     "end": 335.5
+    },
+    {
+     "w": "veut",
+     "start": 335.5,
+     "end": 335.66
+    },
+    {
+     "w": "dire",
+     "start": 335.66,
+     "end": 335.94
+    },
+    {
+     "w": "littéralement",
+     "start": 335.94,
+     "end": 336.82
+    },
+    {
+     "w": "solitude",
+     "start": 337.08,
+     "end": 337.62
+    }
+   ]
+  },
+  {
+   "id": "s53",
+   "text": "Ce mot, c'est khalwa. La retraite spirituelle.",
+   "start": 339.56,
+   "end": 342.78,
+   "words": [
+    {
+     "w": "Ce",
+     "start": 339.56,
+     "end": 339.74
+    },
+    {
+     "w": "mot",
+     "start": 339.74,
+     "end": 340.04
+    },
+    {
+     "w": "c'est",
+     "start": 340.32,
+     "end": 340.72
+    },
+    {
+     "w": "khalwa",
+     "start": 340.75,
+     "end": 341.28
+    },
+    {
+     "w": "La",
+     "start": 341.88,
+     "end": 342.0
+    },
+    {
+     "w": "retraite",
+     "start": 342.0,
+     "end": 342.5
+    },
+    {
+     "w": "spirituelle",
+     "start": 342.5,
+     "end": 342.78
+    }
+   ]
+  },
+  {
+   "id": "s54",
+   "text": "Il vient du soufisme, la tradition intérieure de l'islam : celle qui travaille le cœur et l'attention.",
+   "start": 344.02,
+   "end": 349.92,
+   "words": [
+    {
+     "w": "Il",
+     "start": 344.02,
+     "end": 344.12
+    },
+    {
+     "w": "vient",
+     "start": 344.12,
+     "end": 344.32
+    },
+    {
+     "w": "du",
+     "start": 344.32,
+     "end": 344.48
+    },
+    {
+     "w": "soufisme",
+     "start": 344.48,
+     "end": 345.08
+    },
+    {
+     "w": "la",
+     "start": 345.52,
+     "end": 345.57
+    },
+    {
+     "w": "tradition",
+     "start": 345.54,
+     "end": 346.02
+    },
+    {
+     "w": "intérieure",
+     "start": 346.02,
+     "end": 346.76
+    },
+    {
+     "w": "de",
+     "start": 346.76,
+     "end": 346.9
+    },
+    {
+     "w": "l'islam",
+     "start": 346.9,
+     "end": 347.28
+    },
+    {
+     "w": "celle",
+     "start": 347.76,
+     "end": 347.96
+    },
+    {
+     "w": "qui",
+     "start": 347.96,
+     "end": 348.14
+    },
+    {
+     "w": "travaille",
+     "start": 348.14,
+     "end": 348.44
+    },
+    {
+     "w": "le",
+     "start": 348.44,
+     "end": 348.66
+    },
+    {
+     "w": "cœur",
+     "start": 348.66,
+     "end": 349.02
+    },
+    {
+     "w": "et",
+     "start": 349.02,
+     "end": 349.18
+    },
+    {
+     "w": "l'attention",
+     "start": 349.46,
+     "end": 349.92
+    }
+   ]
+  },
+  {
+   "id": "s55",
+   "text": "Dans une khalwa, on se retire volontairement. Traditionnellement quarante jours, seul, guidé par un maître. Exactement ce que les étudiants de Virginie fuyaient en quinze minutes.",
+   "start": 350.74,
+   "end": 361.64,
+   "words": [
+    {
+     "w": "Dans",
+     "start": 350.74,
+     "end": 350.92
+    },
+    {
+     "w": "une",
+     "start": 350.92,
+     "end": 351.1
+    },
+    {
+     "w": "khalwa",
+     "start": 351.1,
+     "end": 351.52
+    },
+    {
+     "w": "on",
+     "start": 351.97,
+     "end": 352.04
+    },
+    {
+     "w": "se",
+     "start": 352.04,
+     "end": 352.26
+    },
+    {
+     "w": "retire",
+     "start": 352.26,
+     "end": 352.58
+    },
+    {
+     "w": "volontairement",
+     "start": 352.58,
+     "end": 352.86
+    },
+    {
+     "w": "Traditionnellement",
+     "start": 353.98,
+     "end": 354.54
+    },
+    {
+     "w": "quarante",
+     "start": 354.78,
+     "end": 354.92
+    },
+    {
+     "w": "jours",
+     "start": 354.92,
+     "end": 355.34
+    },
+    {
+     "w": "seul",
+     "start": 355.66,
+     "end": 356.15
+    },
+    {
+     "w": "guidé",
+     "start": 356.74,
+     "end": 356.79
+    },
+    {
+     "w": "par",
+     "start": 356.74,
+     "end": 356.94
+    },
+    {
+     "w": "un",
+     "start": 356.94,
+     "end": 357.08
+    },
+    {
+     "w": "maître",
+     "start": 357.08,
+     "end": 357.21
+    },
+    {
+     "w": "Exactement",
+     "start": 358.04,
+     "end": 358.6
+    },
+    {
+     "w": "ce",
+     "start": 358.6,
+     "end": 358.78
+    },
+    {
+     "w": "que",
+     "start": 358.78,
+     "end": 358.92
+    },
+    {
+     "w": "les",
+     "start": 358.92,
+     "end": 359.06
+    },
+    {
+     "w": "étudiants",
+     "start": 359.06,
+     "end": 359.52
+    },
+    {
+     "w": "de",
+     "start": 359.52,
+     "end": 359.64
+    },
+    {
+     "w": "Virginie",
+     "start": 359.64,
+     "end": 360.16
+    },
+    {
+     "w": "fuyaient",
+     "start": 360.16,
+     "end": 360.8
+    },
+    {
+     "w": "en",
+     "start": 360.8,
+     "end": 361.0
+    },
+    {
+     "w": "quinze",
+     "start": 361.0,
+     "end": 361.34
+    },
+    {
+     "w": "minutes",
+     "start": 361.34,
+     "end": 361.64
+    }
+   ]
+  },
+  {
+   "id": "s56",
+   "text": "Pourquoi quelqu'un ferait ça de son plein gré ? Écoute l'histoire d'un des hommes les plus brillants de son temps.",
+   "start": 362.87,
+   "end": 372.57,
+   "words": [
+    {
+     "w": "Pourquoi",
+     "start": 362.87,
+     "end": 363.1
+    },
+    {
+     "w": "quelqu'un",
+     "start": 363.1,
+     "end": 363.62
+    },
+    {
+     "w": "ferait",
+     "start": 363.62,
+     "end": 363.9
+    },
+    {
+     "w": "ça",
+     "start": 363.9,
+     "end": 364.08
+    },
+    {
+     "w": "de",
+     "start": 364.08,
+     "end": 364.2
+    },
+    {
+     "w": "son",
+     "start": 364.2,
+     "end": 364.36
+    },
+    {
+     "w": "plein",
+     "start": 364.36,
+     "end": 364.62
+    },
+    {
+     "w": "gré",
+     "start": 364.62,
+     "end": 364.92
+    },
+    {
+     "w": "Écoute",
+     "start": 365.5,
+     "end": 365.74
+    },
+    {
+     "w": "l'histoire",
+     "start": 365.74,
+     "end": 366.16
+    },
+    {
+     "w": "d'un",
+     "start": 366.16,
+     "end": 366.46
+    },
+    {
+     "w": "des",
+     "start": 366.46,
+     "end": 366.62
+    },
+    {
+     "w": "hommes",
+     "start": 366.62,
+     "end": 366.86
+    },
+    {
+     "w": "les",
+     "start": 366.86,
+     "end": 367.02
+    },
+    {
+     "w": "plus",
+     "start": 367.02,
+     "end": 367.2
+    },
+    {
+     "w": "brillants",
+     "start": 367.2,
+     "end": 367.6
+    },
+    {
+     "w": "de",
+     "start": 370.43,
+     "end": 371.54
+    },
+    {
+     "w": "son",
+     "start": 372.52,
+     "end": 372.57
+    },
+    {
+     "w": "temps",
+     "start": 372.52,
+     "end": 372.57
+    }
+   ]
+  },
+  {
+   "id": "s57",
+   "text": "Bagdad, mille quatre-vingt-quinze. Al-Ghazali est un professeur célèbre. Trois cents étudiants. Une carrière au sommet.",
+   "start": 372.52,
+   "end": 377.25,
+   "words": [
+    {
+     "w": "Bagdad",
+     "start": 372.52,
+     "end": 372.57
+    },
+    {
+     "w": "mille",
+     "start": 372.52,
+     "end": 372.57
+    },
+    {
+     "w": "quatre-vingt-quinze",
+     "start": 372.52,
+     "end": 372.57
+    },
+    {
+     "w": "Al-Ghazali",
+     "start": 372.52,
+     "end": 372.57
+    },
+    {
+     "w": "est",
+     "start": 372.52,
+     "end": 372.88
+    },
+    {
+     "w": "un",
+     "start": 372.88,
+     "end": 373.02
+    },
+    {
+     "w": "professeur",
+     "start": 373.02,
+     "end": 373.56
+    },
+    {
+     "w": "célèbre",
+     "start": 373.56,
+     "end": 374.08
+    },
+    {
+     "w": "Trois",
+     "start": 374.52,
+     "end": 374.68
+    },
+    {
+     "w": "cents",
+     "start": 374.67,
+     "end": 374.84
+    },
+    {
+     "w": "étudiants",
+     "start": 374.84,
+     "end": 375.54
+    },
+    {
+     "w": "Une",
+     "start": 375.84,
+     "end": 375.96
+    },
+    {
+     "w": "carrière",
+     "start": 375.96,
+     "end": 376.46
+    },
+    {
+     "w": "au",
+     "start": 376.46,
+     "end": 376.7
+    },
+    {
+     "w": "sommet",
+     "start": 376.7,
+     "end": 377.25
+    }
+   ]
+  },
+  {
+   "id": "s58",
+   "text": "Un jour, il veut faire cours, et pas un mot ne sort. Il le raconte lui-même : sa langue s'est comme desséchée. Les médecins renoncent. « Ça vient du cœur », disent-ils.",
+   "start": 377.92,
+   "end": 388.56,
+   "words": [
+    {
+     "w": "Un",
+     "start": 377.92,
+     "end": 378.02
+    },
+    {
+     "w": "jour",
+     "start": 378.02,
+     "end": 378.34
+    },
+    {
+     "w": "il",
+     "start": 378.69,
+     "end": 378.78
+    },
+    {
+     "w": "veut",
+     "start": 378.78,
+     "end": 378.92
+    },
+    {
+     "w": "faire",
+     "start": 378.92,
+     "end": 379.12
+    },
+    {
+     "w": "cours",
+     "start": 379.12,
+     "end": 379.48
+    },
+    {
+     "w": "et",
+     "start": 379.95,
+     "end": 380.03
+    },
+    {
+     "w": "pas",
+     "start": 380.25,
+     "end": 380.34
+    },
+    {
+     "w": "un",
+     "start": 380.34,
+     "end": 380.64
+    },
+    {
+     "w": "mot",
+     "start": 380.64,
+     "end": 380.82
+    },
+    {
+     "w": "ne",
+     "start": 380.82,
+     "end": 380.94
+    },
+    {
+     "w": "sort",
+     "start": 380.94,
+     "end": 381.22
+    },
+    {
+     "w": "Il",
+     "start": 381.78,
+     "end": 381.86
+    },
+    {
+     "w": "le",
+     "start": 381.86,
+     "end": 382.0
+    },
+    {
+     "w": "raconte",
+     "start": 382.0,
+     "end": 382.28
+    },
+    {
+     "w": "lui-même",
+     "start": 382.28,
+     "end": 382.74
+    },
+    {
+     "w": "sa",
+     "start": 383.2,
+     "end": 383.4
+    },
+    {
+     "w": "langue",
+     "start": 383.4,
+     "end": 383.74
+    },
+    {
+     "w": "s'est",
+     "start": 383.74,
+     "end": 384.14
+    },
+    {
+     "w": "comme",
+     "start": 384.14,
+     "end": 384.34
+    },
+    {
+     "w": "desséchée",
+     "start": 384.34,
+     "end": 385.08
+    },
+    {
+     "w": "Les",
+     "start": 385.54,
+     "end": 385.66
+    },
+    {
+     "w": "médecins",
+     "start": 385.66,
+     "end": 386.02
+    },
+    {
+     "w": "renoncent",
+     "start": 386.02,
+     "end": 386.58
+    },
+    {
+     "w": "Ça",
+     "start": 387.01,
+     "end": 387.1
+    },
+    {
+     "w": "vient",
+     "start": 387.1,
+     "end": 387.26
+    },
+    {
+     "w": "du",
+     "start": 387.26,
+     "end": 387.42
+    },
+    {
+     "w": "cœur",
+     "start": 387.42,
+     "end": 387.78
+    },
+    {
+     "w": "disent-ils",
+     "start": 388.06,
+     "end": 388.56
+    }
+   ]
+  },
+  {
+   "id": "s59",
+   "text": "Alors il part. Il passe près de deux ans à Damas. Pendant un temps, il monte chaque jour au minaret de la grande mosquée et s'y enferme. Toute la journée. Pour être seul.",
+   "start": 389.48,
+   "end": 399.72,
+   "words": [
+    {
+     "w": "Alors",
+     "start": 389.48,
+     "end": 389.62
+    },
+    {
+     "w": "il",
+     "start": 389.62,
+     "end": 389.84
+    },
+    {
+     "w": "part",
+     "start": 389.84,
+     "end": 390.16
+    },
+    {
+     "w": "Il",
+     "start": 390.64,
+     "end": 390.74
+    },
+    {
+     "w": "passe",
+     "start": 390.74,
+     "end": 390.98
+    },
+    {
+     "w": "près",
+     "start": 390.98,
+     "end": 391.22
+    },
+    {
+     "w": "de",
+     "start": 391.22,
+     "end": 391.36
+    },
+    {
+     "w": "deux",
+     "start": 391.36,
+     "end": 391.74
+    },
+    {
+     "w": "ans",
+     "start": 391.74,
+     "end": 391.96
+    },
+    {
+     "w": "à",
+     "start": 391.96,
+     "end": 392.1
+    },
+    {
+     "w": "Damas",
+     "start": 392.1,
+     "end": 392.3
+    },
+    {
+     "w": "Pendant",
+     "start": 392.94,
+     "end": 393.16
+    },
+    {
+     "w": "un",
+     "start": 393.16,
+     "end": 393.32
+    },
+    {
+     "w": "temps",
+     "start": 393.32,
+     "end": 393.58
+    },
+    {
+     "w": "il",
+     "start": 393.92,
+     "end": 394.0
+    },
+    {
+     "w": "monte",
+     "start": 394.0,
+     "end": 394.22
+    },
+    {
+     "w": "chaque",
+     "start": 394.22,
+     "end": 394.54
+    },
+    {
+     "w": "jour",
+     "start": 394.54,
+     "end": 394.86
+    },
+    {
+     "w": "au",
+     "start": 394.86,
+     "end": 395.06
+    },
+    {
+     "w": "minaret",
+     "start": 395.06,
+     "end": 395.38
+    },
+    {
+     "w": "de",
+     "start": 395.38,
+     "end": 395.52
+    },
+    {
+     "w": "la",
+     "start": 395.52,
+     "end": 395.64
+    },
+    {
+     "w": "grande",
+     "start": 395.64,
+     "end": 395.88
+    },
+    {
+     "w": "mosquée",
+     "start": 395.88,
+     "end": 396.42
+    },
+    {
+     "w": "et",
+     "start": 396.68,
+     "end": 396.76
+    },
+    {
+     "w": "s'y",
+     "start": 396.76,
+     "end": 396.98
+    },
+    {
+     "w": "enferme",
+     "start": 396.98,
+     "end": 397.43
+    },
+    {
+     "w": "Toute",
+     "start": 397.87,
+     "end": 397.96
+    },
+    {
+     "w": "la",
+     "start": 397.96,
+     "end": 398.22
+    },
+    {
+     "w": "journée",
+     "start": 398.22,
+     "end": 398.56
+    },
+    {
+     "w": "Pour",
+     "start": 399.02,
+     "end": 399.12
+    },
+    {
+     "w": "être",
+     "start": 399.12,
+     "end": 399.32
+    },
+    {
+     "w": "seul",
+     "start": 399.32,
+     "end": 399.72
+    }
+   ]
+  },
+  {
+   "id": "s60",
+   "text": "Attention, ce n'est pas un éloge de la fuite. Il a consacré un livre entier de sa grande œuvre à la question : vivre au milieu des gens, ou se retirer ? Sa réponse : ça dépend, et d'abord de l'intention. Et lui-même a fini par revenir enseigner.",
+   "start": 400.7,
+   "end": 415.36,
+   "words": [
+    {
+     "w": "Attention",
+     "start": 400.7,
+     "end": 401.0
+    },
+    {
+     "w": "ce",
+     "start": 401.62,
+     "end": 401.67
+    },
+    {
+     "w": "n'est",
+     "start": 401.66,
+     "end": 401.8
+    },
+    {
+     "w": "pas",
+     "start": 401.8,
+     "end": 401.98
+    },
+    {
+     "w": "un",
+     "start": 401.98,
+     "end": 402.18
+    },
+    {
+     "w": "éloge",
+     "start": 402.18,
+     "end": 402.46
+    },
+    {
+     "w": "de",
+     "start": 402.46,
+     "end": 402.56
+    },
+    {
+     "w": "la",
+     "start": 402.56,
+     "end": 402.66
+    },
+    {
+     "w": "fuite",
+     "start": 402.66,
+     "end": 402.9
+    },
+    {
+     "w": "Il",
+     "start": 403.41,
+     "end": 403.48
+    },
+    {
+     "w": "a",
+     "start": 403.48,
+     "end": 403.6
+    },
+    {
+     "w": "consacré",
+     "start": 403.6,
+     "end": 404.04
+    },
+    {
+     "w": "un",
+     "start": 404.04,
+     "end": 404.22
+    },
+    {
+     "w": "livre",
+     "start": 404.22,
+     "end": 404.42
+    },
+    {
+     "w": "entier",
+     "start": 404.63,
+     "end": 405.04
+    },
+    {
+     "w": "de",
+     "start": 405.04,
+     "end": 405.18
+    },
+    {
+     "w": "sa",
+     "start": 405.18,
+     "end": 405.34
+    },
+    {
+     "w": "grande",
+     "start": 405.34,
+     "end": 405.6
+    },
+    {
+     "w": "œuvre",
+     "start": 405.6,
+     "end": 405.92
+    },
+    {
+     "w": "à",
+     "start": 405.92,
+     "end": 406.12
+    },
+    {
+     "w": "la",
+     "start": 406.12,
+     "end": 406.2
+    },
+    {
+     "w": "question",
+     "start": 406.2,
+     "end": 406.58
+    },
+    {
+     "w": "vivre",
+     "start": 407.24,
+     "end": 407.5
+    },
+    {
+     "w": "au",
+     "start": 407.5,
+     "end": 407.6
+    },
+    {
+     "w": "milieu",
+     "start": 407.6,
+     "end": 407.74
+    },
+    {
+     "w": "des",
+     "start": 407.74,
+     "end": 407.96
+    },
+    {
+     "w": "gens",
+     "start": 407.96,
+     "end": 408.2
+    },
+    {
+     "w": "ou",
+     "start": 408.2,
+     "end": 408.29
+    },
+    {
+     "w": "se",
+     "start": 408.56,
+     "end": 408.72
+    },
+    {
+     "w": "retirer",
+     "start": 408.72,
+     "end": 409.18
+    },
+    {
+     "w": "Sa",
+     "start": 409.6,
+     "end": 409.68
+    },
+    {
+     "w": "réponse",
+     "start": 409.68,
+     "end": 410.0
+    },
+    {
+     "w": "ça",
+     "start": 410.62,
+     "end": 410.8
+    },
+    {
+     "w": "dépend",
+     "start": 410.8,
+     "end": 411.12
+    },
+    {
+     "w": "et",
+     "start": 411.6,
+     "end": 411.68
+    },
+    {
+     "w": "d'abord",
+     "start": 411.68,
+     "end": 412.08
+    },
+    {
+     "w": "de",
+     "start": 412.08,
+     "end": 412.26
+    },
+    {
+     "w": "l'intention",
+     "start": 412.26,
+     "end": 412.79
+    },
+    {
+     "w": "Et",
+     "start": 413.19,
+     "end": 413.26
+    },
+    {
+     "w": "lui-même",
+     "start": 413.26,
+     "end": 413.74
+    },
+    {
+     "w": "a",
+     "start": 413.74,
+     "end": 414.02
+    },
+    {
+     "w": "fini",
+     "start": 414.02,
+     "end": 414.24
+    },
+    {
+     "w": "par",
+     "start": 414.24,
+     "end": 414.48
+    },
+    {
+     "w": "revenir",
+     "start": 414.48,
+     "end": 414.86
+    },
+    {
+     "w": "enseigner",
+     "start": 414.86,
+     "end": 415.36
+    }
+   ]
+  },
+  {
+   "id": "s61",
+   "text": "Mais seul dans une pièce fermée, on fait quoi ? Dans le soufisme, on fait le dhikr.",
+   "start": 416.28,
+   "end": 421.25,
+   "words": [
+    {
+     "w": "Mais",
+     "start": 416.28,
+     "end": 416.44
+    },
+    {
+     "w": "seul",
+     "start": 416.44,
+     "end": 416.8
+    },
+    {
+     "w": "dans",
+     "start": 416.8,
+     "end": 416.98
+    },
+    {
+     "w": "une",
+     "start": 416.98,
+     "end": 417.16
+    },
+    {
+     "w": "pièce",
+     "start": 417.16,
+     "end": 417.44
+    },
+    {
+     "w": "fermée",
+     "start": 417.44,
+     "end": 417.92
+    },
+    {
+     "w": "on",
+     "start": 418.16,
+     "end": 418.24
+    },
+    {
+     "w": "fait",
+     "start": 418.24,
+     "end": 418.4
+    },
+    {
+     "w": "quoi",
+     "start": 418.4,
+     "end": 418.6
+    },
+    {
+     "w": "Dans",
+     "start": 419.16,
+     "end": 419.32
+    },
+    {
+     "w": "le",
+     "start": 419.32,
+     "end": 419.44
+    },
+    {
+     "w": "soufisme",
+     "start": 419.44,
+     "end": 420.11
+    },
+    {
+     "w": "on",
+     "start": 420.38,
+     "end": 420.43
+    },
+    {
+     "w": "fait",
+     "start": 420.42,
+     "end": 420.64
+    },
+    {
+     "w": "le",
+     "start": 420.64,
+     "end": 420.8
+    },
+    {
+     "w": "dhikr",
+     "start": 420.8,
+     "end": 421.25
+    }
+   ]
+  },
+  {
+   "id": "s62",
+   "text": "Le rappel. Concrètement : répéter un nom. Encore et encore. D'autres traditions disent mantra. L'idée est simple : tu poses un meuble dans la pièce vide. Un point fixe. L'esprit part, tu le ramènes au nom. Il repart, tu le ramènes.",
+   "start": 421.94,
+   "end": 437.8,
+   "words": [
+    {
+     "w": "Le",
+     "start": 421.94,
+     "end": 422.1
+    },
+    {
+     "w": "rappel",
+     "start": 422.1,
+     "end": 422.64
+    },
+    {
+     "w": "Concrètement",
+     "start": 423.16,
+     "end": 423.62
+    },
+    {
+     "w": "répéter",
+     "start": 424.12,
+     "end": 424.52
+    },
+    {
+     "w": "un",
+     "start": 424.52,
+     "end": 424.74
+    },
+    {
+     "w": "nom",
+     "start": 424.74,
+     "end": 424.92
+    },
+    {
+     "w": "Encore",
+     "start": 425.3,
+     "end": 425.74
+    },
+    {
+     "w": "et",
+     "start": 425.74,
+     "end": 425.88
+    },
+    {
+     "w": "encore",
+     "start": 426.2,
+     "end": 426.62
+    },
+    {
+     "w": "D'autres",
+     "start": 427.03,
+     "end": 427.32
+    },
+    {
+     "w": "traditions",
+     "start": 427.32,
+     "end": 427.86
+    },
+    {
+     "w": "disent",
+     "start": 427.86,
+     "end": 428.24
+    },
+    {
+     "w": "mantra",
+     "start": 428.24,
+     "end": 428.82
+    },
+    {
+     "w": "L'idée",
+     "start": 429.38,
+     "end": 429.6
+    },
+    {
+     "w": "est",
+     "start": 429.6,
+     "end": 429.78
+    },
+    {
+     "w": "simple",
+     "start": 429.78,
+     "end": 430.06
+    },
+    {
+     "w": "tu",
+     "start": 430.64,
+     "end": 430.7
+    },
+    {
+     "w": "poses",
+     "start": 430.7,
+     "end": 431.02
+    },
+    {
+     "w": "un",
+     "start": 431.02,
+     "end": 431.2
+    },
+    {
+     "w": "meuble",
+     "start": 431.2,
+     "end": 431.44
+    },
+    {
+     "w": "dans",
+     "start": 431.44,
+     "end": 431.62
+    },
+    {
+     "w": "la",
+     "start": 431.62,
+     "end": 431.74
+    },
+    {
+     "w": "pièce",
+     "start": 431.74,
+     "end": 432.0
+    },
+    {
+     "w": "vide",
+     "start": 432.0,
+     "end": 432.24
+    },
+    {
+     "w": "Un",
+     "start": 432.68,
+     "end": 432.78
+    },
+    {
+     "w": "point",
+     "start": 432.78,
+     "end": 432.94
+    },
+    {
+     "w": "fixe",
+     "start": 432.94,
+     "end": 433.47
+    },
+    {
+     "w": "L'esprit",
+     "start": 433.86,
+     "end": 434.18
+    },
+    {
+     "w": "part",
+     "start": 434.18,
+     "end": 434.5
+    },
+    {
+     "w": "tu",
+     "start": 434.99,
+     "end": 435.06
+    },
+    {
+     "w": "le",
+     "start": 435.06,
+     "end": 435.22
+    },
+    {
+     "w": "ramènes",
+     "start": 435.22,
+     "end": 435.56
+    },
+    {
+     "w": "au",
+     "start": 435.56,
+     "end": 435.68
+    },
+    {
+     "w": "nom",
+     "start": 435.68,
+     "end": 435.82
+    },
+    {
+     "w": "Il",
+     "start": 436.26,
+     "end": 436.34
+    },
+    {
+     "w": "repart",
+     "start": 436.34,
+     "end": 436.8
+    },
+    {
+     "w": "tu",
+     "start": 437.26,
+     "end": 437.32
+    },
+    {
+     "w": "le",
+     "start": 437.32,
+     "end": 437.46
+    },
+    {
+     "w": "ramènes",
+     "start": 437.46,
+     "end": 437.8
+    }
+   ]
+  },
+  {
+   "id": "s63",
+   "text": "Le Coran le dit en une phrase : « C'est par le rappel de Dieu que les cœurs s'apaisent. »",
+   "start": 438.73,
+   "end": 443.76,
+   "words": [
+    {
+     "w": "Le",
+     "start": 438.73,
+     "end": 438.86
+    },
+    {
+     "w": "Coran",
+     "start": 438.86,
+     "end": 439.2
+    },
+    {
+     "w": "le",
+     "start": 439.2,
+     "end": 439.36
+    },
+    {
+     "w": "dit",
+     "start": 439.36,
+     "end": 439.56
+    },
+    {
+     "w": "en",
+     "start": 439.56,
+     "end": 439.8
+    },
+    {
+     "w": "une",
+     "start": 439.8,
+     "end": 440.02
+    },
+    {
+     "w": "phrase",
+     "start": 440.02,
+     "end": 440.42
+    },
+    {
+     "w": "C'est",
+     "start": 440.97,
+     "end": 441.16
+    },
+    {
+     "w": "par",
+     "start": 441.16,
+     "end": 441.32
+    },
+    {
+     "w": "le",
+     "start": 441.32,
+     "end": 441.46
+    },
+    {
+     "w": "rappel",
+     "start": 441.46,
+     "end": 441.88
+    },
+    {
+     "w": "de",
+     "start": 441.88,
+     "end": 442.06
+    },
+    {
+     "w": "Dieu",
+     "start": 442.06,
+     "end": 442.36
+    },
+    {
+     "w": "que",
+     "start": 442.36,
+     "end": 442.48
+    },
+    {
+     "w": "les",
+     "start": 442.76,
+     "end": 442.88
+    },
+    {
+     "w": "cœurs",
+     "start": 442.99,
+     "end": 443.22
+    },
+    {
+     "w": "s'apaisent",
+     "start": 443.22,
+     "end": 443.76
+    }
+   ]
+  },
+  {
+   "id": "s64",
+   "text": "La voie que je suis s'appelle la Karkariya. Une voie soufie marocaine, contemporaine, fondée en deux mille sept près de Nador par le cheikh Mohamed Faouzi al-Karkari. Cette veste rapiécée, c'est son habit. Et parmi les fondements que le cheikh décrit, il y a justement ces deux-là : la retraite, et le Nom.",
+   "start": 445.14,
+   "end": 463.82,
+   "words": [
+    {
+     "w": "La",
+     "start": 445.14,
+     "end": 445.28
+    },
+    {
+     "w": "voie",
+     "start": 445.27,
+     "end": 445.46
+    },
+    {
+     "w": "que",
+     "start": 445.46,
+     "end": 445.64
+    },
+    {
+     "w": "je",
+     "start": 445.64,
+     "end": 445.8
+    },
+    {
+     "w": "suis",
+     "start": 445.8,
+     "end": 446.1
+    },
+    {
+     "w": "s'appelle",
+     "start": 446.1,
+     "end": 446.8
+    },
+    {
+     "w": "la",
+     "start": 446.8,
+     "end": 447.08
+    },
+    {
+     "w": "Karkariya",
+     "start": 447.15,
+     "end": 447.79
+    },
+    {
+     "w": "Une",
+     "start": 448.14,
+     "end": 448.26
+    },
+    {
+     "w": "voie",
+     "start": 448.26,
+     "end": 448.86
+    },
+    {
+     "w": "soufie",
+     "start": 448.86,
+     "end": 448.91
+    },
+    {
+     "w": "marocaine",
+     "start": 448.86,
+     "end": 449.52
+    },
+    {
+     "w": "contemporaine",
+     "start": 449.8,
+     "end": 450.54
+    },
+    {
+     "w": "fondée",
+     "start": 450.88,
+     "end": 451.2
+    },
+    {
+     "w": "en",
+     "start": 451.2,
+     "end": 451.3
+    },
+    {
+     "w": "deux",
+     "start": 451.3,
+     "end": 451.5
+    },
+    {
+     "w": "mille",
+     "start": 451.5,
+     "end": 451.7
+    },
+    {
+     "w": "sept",
+     "start": 451.7,
+     "end": 451.9
+    },
+    {
+     "w": "près",
+     "start": 452.14,
+     "end": 452.26
+    },
+    {
+     "w": "de",
+     "start": 452.26,
+     "end": 452.38
+    },
+    {
+     "w": "Nador",
+     "start": 452.38,
+     "end": 452.74
+    },
+    {
+     "w": "par",
+     "start": 453.13,
+     "end": 453.22
+    },
+    {
+     "w": "le",
+     "start": 453.22,
+     "end": 453.44
+    },
+    {
+     "w": "cheikh",
+     "start": 453.44,
+     "end": 455.39
+    },
+    {
+     "w": "Mohamed",
+     "start": 455.77,
+     "end": 455.82
+    },
+    {
+     "w": "Faouzi",
+     "start": 455.77,
+     "end": 455.82
+    },
+    {
+     "w": "al-Karkari",
+     "start": 455.77,
+     "end": 455.82
+    },
+    {
+     "w": "Cette",
+     "start": 455.77,
+     "end": 455.9
+    },
+    {
+     "w": "veste",
+     "start": 455.9,
+     "end": 456.14
+    },
+    {
+     "w": "rapiécée",
+     "start": 456.14,
+     "end": 456.98
+    },
+    {
+     "w": "c'est",
+     "start": 457.09,
+     "end": 457.26
+    },
+    {
+     "w": "son",
+     "start": 457.26,
+     "end": 457.44
+    },
+    {
+     "w": "habit",
+     "start": 457.44,
+     "end": 457.72
+    },
+    {
+     "w": "Et",
+     "start": 458.18,
+     "end": 458.23
+    },
+    {
+     "w": "parmi",
+     "start": 458.2,
+     "end": 458.54
+    },
+    {
+     "w": "les",
+     "start": 458.54,
+     "end": 458.66
+    },
+    {
+     "w": "fondements",
+     "start": 458.66,
+     "end": 459.1
+    },
+    {
+     "w": "que",
+     "start": 459.1,
+     "end": 459.3
+    },
+    {
+     "w": "le",
+     "start": 459.3,
+     "end": 459.46
+    },
+    {
+     "w": "cheikh",
+     "start": 459.46,
+     "end": 459.62
+    },
+    {
+     "w": "décrit",
+     "start": 459.62,
+     "end": 460.12
+    },
+    {
+     "w": "il",
+     "start": 460.48,
+     "end": 460.6
+    },
+    {
+     "w": "y",
+     "start": 460.6,
+     "end": 460.7
+    },
+    {
+     "w": "a",
+     "start": 460.7,
+     "end": 460.76
+    },
+    {
+     "w": "justement",
+     "start": 460.76,
+     "end": 461.24
+    },
+    {
+     "w": "ces",
+     "start": 461.24,
+     "end": 461.54
+    },
+    {
+     "w": "deux-là",
+     "start": 461.54,
+     "end": 461.89
+    },
+    {
+     "w": "la",
+     "start": 462.32,
+     "end": 462.4
+    },
+    {
+     "w": "retraite",
+     "start": 462.4,
+     "end": 462.98
+    },
+    {
+     "w": "et",
+     "start": 463.41,
+     "end": 463.5
+    },
+    {
+     "w": "le",
+     "start": 463.5,
+     "end": 463.62
+    },
+    {
+     "w": "Nom",
+     "start": 463.62,
+     "end": 463.82
+    }
+   ]
+  },
+  {
+   "id": "s65",
+   "text": "Je ne vais pas te demander quarante jours. Ce soir, je te demande deux minutes. Et je vais te dire ce qui va se passer.",
+   "start": 466.38,
+   "end": 472.68,
+   "words": [
+    {
+     "w": "Je",
+     "start": 466.38,
+     "end": 466.5
+    },
+    {
+     "w": "ne",
+     "start": 466.5,
+     "end": 466.6
+    },
+    {
+     "w": "vais",
+     "start": 466.6,
+     "end": 466.68
+    },
+    {
+     "w": "pas",
+     "start": 466.68,
+     "end": 466.86
+    },
+    {
+     "w": "te",
+     "start": 466.86,
+     "end": 467.0
+    },
+    {
+     "w": "demander",
+     "start": 467.0,
+     "end": 467.3
+    },
+    {
+     "w": "quarante",
+     "start": 467.3,
+     "end": 467.64
+    },
+    {
+     "w": "jours",
+     "start": 467.64,
+     "end": 467.98
+    },
+    {
+     "w": "Ce",
+     "start": 468.49,
+     "end": 468.62
+    },
+    {
+     "w": "soir",
+     "start": 468.62,
+     "end": 468.98
+    },
+    {
+     "w": "je",
+     "start": 469.35,
+     "end": 469.48
+    },
+    {
+     "w": "te",
+     "start": 469.48,
+     "end": 469.62
+    },
+    {
+     "w": "demande",
+     "start": 469.62,
+     "end": 469.94
+    },
+    {
+     "w": "deux",
+     "start": 469.94,
+     "end": 470.48
+    },
+    {
+     "w": "minutes",
+     "start": 470.48,
+     "end": 470.69
+    },
+    {
+     "w": "Et",
+     "start": 471.27,
+     "end": 471.34
+    },
+    {
+     "w": "je",
+     "start": 471.34,
+     "end": 471.44
+    },
+    {
+     "w": "vais",
+     "start": 471.44,
+     "end": 471.52
+    },
+    {
+     "w": "te",
+     "start": 471.52,
+     "end": 471.66
+    },
+    {
+     "w": "dire",
+     "start": 471.66,
+     "end": 471.86
+    },
+    {
+     "w": "ce",
+     "start": 471.86,
+     "end": 472.02
+    },
+    {
+     "w": "qui",
+     "start": 472.02,
+     "end": 472.16
+    },
+    {
+     "w": "va",
+     "start": 472.16,
+     "end": 472.28
+    },
+    {
+     "w": "se",
+     "start": 472.27,
+     "end": 472.35
+    },
+    {
+     "w": "passer",
+     "start": 472.42,
+     "end": 472.68
+    }
+   ]
+  },
+  {
+   "id": "s66",
+   "text": "Un. Ton téléphone dans une autre pièce. Pas retourné à côté de toi : une autre pièce. Si tu veux un minuteur, lance-le avant. Il sonnera de loin.",
+   "start": 473.99,
+   "end": 483.6,
+   "words": [
+    {
+     "w": "Un",
+     "start": 473.99,
+     "end": 474.14
+    },
+    {
+     "w": "Ton",
+     "start": 474.86,
+     "end": 474.91
+    },
+    {
+     "w": "téléphone",
+     "start": 474.86,
+     "end": 475.34
+    },
+    {
+     "w": "dans",
+     "start": 475.34,
+     "end": 475.82
+    },
+    {
+     "w": "une",
+     "start": 475.82,
+     "end": 476.04
+    },
+    {
+     "w": "autre",
+     "start": 476.04,
+     "end": 476.24
+    },
+    {
+     "w": "pièce",
+     "start": 476.24,
+     "end": 476.78
+    },
+    {
+     "w": "Pas",
+     "start": 477.18,
+     "end": 477.68
+    },
+    {
+     "w": "retourné",
+     "start": 477.68,
+     "end": 477.73
+    },
+    {
+     "w": "à",
+     "start": 477.68,
+     "end": 477.78
+    },
+    {
+     "w": "côté",
+     "start": 477.77,
+     "end": 477.94
+    },
+    {
+     "w": "de",
+     "start": 477.94,
+     "end": 478.05
+    },
+    {
+     "w": "toi",
+     "start": 478.14,
+     "end": 478.3
+    },
+    {
+     "w": "une",
+     "start": 478.68,
+     "end": 478.8
+    },
+    {
+     "w": "autre",
+     "start": 478.8,
+     "end": 479.14
+    },
+    {
+     "w": "pièce",
+     "start": 479.14,
+     "end": 479.68
+    },
+    {
+     "w": "Si",
+     "start": 480.17,
+     "end": 480.28
+    },
+    {
+     "w": "tu",
+     "start": 480.27,
+     "end": 480.44
+    },
+    {
+     "w": "veux",
+     "start": 480.44,
+     "end": 480.58
+    },
+    {
+     "w": "un",
+     "start": 480.58,
+     "end": 480.72
+    },
+    {
+     "w": "minuteur",
+     "start": 480.72,
+     "end": 481.31
+    },
+    {
+     "w": "lance-le",
+     "start": 481.58,
+     "end": 482.02
+    },
+    {
+     "w": "avant",
+     "start": 482.02,
+     "end": 482.44
+    },
+    {
+     "w": "Il",
+     "start": 482.88,
+     "end": 482.93
+    },
+    {
+     "w": "sonnera",
+     "start": 482.9,
+     "end": 483.26
+    },
+    {
+     "w": "de",
+     "start": 483.26,
+     "end": 483.38
+    },
+    {
+     "w": "loin",
+     "start": 483.38,
+     "end": 483.6
+    }
+   ]
+  },
+  {
+   "id": "s67",
+   "text": "Deux. Assieds-toi. Rien d'héroïque. Une chaise suffit.",
+   "start": 485.14,
+   "end": 488.91,
+   "words": [
+    {
+     "w": "Deux",
+     "start": 485.14,
+     "end": 485.3
+    },
+    {
+     "w": "Assieds-toi",
+     "start": 485.93,
+     "end": 486.57
+    },
+    {
+     "w": "Rien",
+     "start": 487.02,
+     "end": 487.18
+    },
+    {
+     "w": "d'héroïque",
+     "start": 487.18,
+     "end": 487.69
+    },
+    {
+     "w": "Une",
+     "start": 488.08,
+     "end": 488.2
+    },
+    {
+     "w": "chaise",
+     "start": 488.2,
+     "end": 488.52
+    },
+    {
+     "w": "suffit",
+     "start": 488.52,
+     "end": 488.91
+    }
+   ]
+  },
+  {
+   "id": "s68",
+   "text": "Trois. Pendant une minute, regarde juste le bruit. « Faut que je réponde à ce message. » « J'ai oublié le pain. » Tu ne chasses rien. Tu remarques. Comme des voitures qui passent sous ta fenêtre. Tu vas être surpris du volume.",
+   "start": 489.9,
+   "end": 503.16,
+   "words": [
+    {
+     "w": "Trois",
+     "start": 489.9,
+     "end": 490.14
+    },
+    {
+     "w": "Pendant",
+     "start": 490.76,
+     "end": 490.96
+    },
+    {
+     "w": "une",
+     "start": 490.96,
+     "end": 491.18
+    },
+    {
+     "w": "minute",
+     "start": 491.18,
+     "end": 491.64
+    },
+    {
+     "w": "regarde",
+     "start": 492.02,
+     "end": 492.16
+    },
+    {
+     "w": "juste",
+     "start": 492.16,
+     "end": 492.7
+    },
+    {
+     "w": "le",
+     "start": 492.7,
+     "end": 493.0
+    },
+    {
+     "w": "bruit",
+     "start": 493.0,
+     "end": 493.27
+    },
+    {
+     "w": "Faut",
+     "start": 493.82,
+     "end": 493.98
+    },
+    {
+     "w": "que",
+     "start": 493.98,
+     "end": 494.06
+    },
+    {
+     "w": "je",
+     "start": 494.06,
+     "end": 494.12
+    },
+    {
+     "w": "réponde",
+     "start": 494.12,
+     "end": 494.38
+    },
+    {
+     "w": "à",
+     "start": 494.38,
+     "end": 494.5
+    },
+    {
+     "w": "ce",
+     "start": 494.5,
+     "end": 494.57
+    },
+    {
+     "w": "message",
+     "start": 494.59,
+     "end": 494.88
+    },
+    {
+     "w": "J'ai",
+     "start": 495.58,
+     "end": 495.74
+    },
+    {
+     "w": "oublié",
+     "start": 495.74,
+     "end": 496.0
+    },
+    {
+     "w": "le",
+     "start": 496.0,
+     "end": 496.12
+    },
+    {
+     "w": "pain",
+     "start": 496.12,
+     "end": 496.3
+    },
+    {
+     "w": "Tu",
+     "start": 496.94,
+     "end": 497.0
+    },
+    {
+     "w": "ne",
+     "start": 497.0,
+     "end": 497.16
+    },
+    {
+     "w": "chasses",
+     "start": 497.16,
+     "end": 497.48
+    },
+    {
+     "w": "rien",
+     "start": 497.48,
+     "end": 497.92
+    },
+    {
+     "w": "Tu",
+     "start": 498.42,
+     "end": 498.5
+    },
+    {
+     "w": "remarques",
+     "start": 498.5,
+     "end": 499.02
+    },
+    {
+     "w": "Comme",
+     "start": 499.64,
+     "end": 499.76
+    },
+    {
+     "w": "des",
+     "start": 499.76,
+     "end": 499.92
+    },
+    {
+     "w": "voitures",
+     "start": 499.92,
+     "end": 500.26
+    },
+    {
+     "w": "qui",
+     "start": 500.26,
+     "end": 500.44
+    },
+    {
+     "w": "passent",
+     "start": 500.44,
+     "end": 500.72
+    },
+    {
+     "w": "sous",
+     "start": 500.72,
+     "end": 500.85
+    },
+    {
+     "w": "ta",
+     "start": 500.9,
+     "end": 500.98
+    },
+    {
+     "w": "fenêtre",
+     "start": 500.98,
+     "end": 501.32
+    },
+    {
+     "w": "Tu",
+     "start": 501.83,
+     "end": 501.9
+    },
+    {
+     "w": "vas",
+     "start": 501.9,
+     "end": 502.0
+    },
+    {
+     "w": "être",
+     "start": 502.0,
+     "end": 502.2
+    },
+    {
+     "w": "surpris",
+     "start": 502.2,
+     "end": 502.76
+    },
+    {
+     "w": "du",
+     "start": 502.76,
+     "end": 502.9
+    },
+    {
+     "w": "volume",
+     "start": 502.9,
+     "end": 503.16
+    }
+   ]
+  },
+  {
+   "id": "s69",
+   "text": "Quatre. Pose ton attention sur un seul point. Ta respiration. Ou un mot, répété intérieurement, lentement. Un mot qui compte pour toi.",
+   "start": 504.06,
+   "end": 514.42,
+   "words": [
+    {
+     "w": "Quatre",
+     "start": 504.06,
+     "end": 504.36
+    },
+    {
+     "w": "Pose",
+     "start": 505.38,
+     "end": 505.43
+    },
+    {
+     "w": "ton",
+     "start": 505.38,
+     "end": 505.58
+    },
+    {
+     "w": "attention",
+     "start": 505.58,
+     "end": 506.04
+    },
+    {
+     "w": "sur",
+     "start": 506.04,
+     "end": 506.38
+    },
+    {
+     "w": "un",
+     "start": 506.6,
+     "end": 506.72
+    },
+    {
+     "w": "seul",
+     "start": 506.72,
+     "end": 506.96
+    },
+    {
+     "w": "point",
+     "start": 506.96,
+     "end": 507.26
+    },
+    {
+     "w": "Ta",
+     "start": 507.82,
+     "end": 507.9
+    },
+    {
+     "w": "respiration",
+     "start": 507.9,
+     "end": 508.58
+    },
+    {
+     "w": "Ou",
+     "start": 509.23,
+     "end": 509.38
+    },
+    {
+     "w": "un",
+     "start": 509.38,
+     "end": 509.68
+    },
+    {
+     "w": "mot",
+     "start": 509.68,
+     "end": 509.92
+    },
+    {
+     "w": "répété",
+     "start": 510.23,
+     "end": 510.72
+    },
+    {
+     "w": "intérieurement",
+     "start": 510.72,
+     "end": 511.72
+    },
+    {
+     "w": "lentement",
+     "start": 512.0,
+     "end": 512.6
+    },
+    {
+     "w": "Un",
+     "start": 513.06,
+     "end": 513.18
+    },
+    {
+     "w": "mot",
+     "start": 513.17,
+     "end": 513.4
+    },
+    {
+     "w": "qui",
+     "start": 513.4,
+     "end": 513.58
+    },
+    {
+     "w": "compte",
+     "start": 513.73,
+     "end": 513.96
+    },
+    {
+     "w": "pour",
+     "start": 513.96,
+     "end": 514.2
+    },
+    {
+     "w": "toi",
+     "start": 514.2,
+     "end": 514.42
+    }
+   ]
+  },
+  {
+   "id": "s70",
+   "text": "Cinq. Quand tu pars, et tu vas partir, tu reviens. Sans te juger.",
+   "start": 515.89,
+   "end": 520.89,
+   "words": [
+    {
+     "w": "Cinq",
+     "start": 515.89,
+     "end": 516.14
+    },
+    {
+     "w": "Quand",
+     "start": 516.81,
+     "end": 516.9
+    },
+    {
+     "w": "tu",
+     "start": 516.9,
+     "end": 517.08
+    },
+    {
+     "w": "pars",
+     "start": 517.08,
+     "end": 517.44
+    },
+    {
+     "w": "et",
+     "start": 517.44,
+     "end": 517.51
+    },
+    {
+     "w": "tu",
+     "start": 517.9,
+     "end": 518.04
+    },
+    {
+     "w": "vas",
+     "start": 518.03,
+     "end": 518.18
+    },
+    {
+     "w": "partir",
+     "start": 518.17,
+     "end": 518.6
+    },
+    {
+     "w": "tu",
+     "start": 519.2,
+     "end": 519.28
+    },
+    {
+     "w": "reviens",
+     "start": 519.27,
+     "end": 519.77
+    },
+    {
+     "w": "Sans",
+     "start": 520.08,
+     "end": 520.34
+    },
+    {
+     "w": "te",
+     "start": 520.34,
+     "end": 520.52
+    },
+    {
+     "w": "juger",
+     "start": 520.52,
+     "end": 520.89
+    }
+   ]
+  },
+  {
+   "id": "s71",
+   "text": "Ce qui va probablement se passer : très vite, peut-être au bout de quarante secondes, tu vas avoir envie de te lever. Vérifier un truc. Aller chercher le téléphone, « juste pour l'heure ».",
+   "start": 522.06,
+   "end": 532.51,
+   "words": [
+    {
+     "w": "Ce",
+     "start": 522.06,
+     "end": 522.18
+    },
+    {
+     "w": "qui",
+     "start": 522.17,
+     "end": 522.34
+    },
+    {
+     "w": "va",
+     "start": 522.34,
+     "end": 522.48
+    },
+    {
+     "w": "probablement",
+     "start": 522.48,
+     "end": 523.14
+    },
+    {
+     "w": "se",
+     "start": 523.14,
+     "end": 523.32
+    },
+    {
+     "w": "passer",
+     "start": 523.32,
+     "end": 523.64
+    },
+    {
+     "w": "très",
+     "start": 524.23,
+     "end": 524.46
+    },
+    {
+     "w": "vite",
+     "start": 524.46,
+     "end": 524.64
+    },
+    {
+     "w": "peut-être",
+     "start": 525.11,
+     "end": 525.4
+    },
+    {
+     "w": "au",
+     "start": 525.4,
+     "end": 525.58
+    },
+    {
+     "w": "bout",
+     "start": 525.58,
+     "end": 525.64
+    },
+    {
+     "w": "de",
+     "start": 525.64,
+     "end": 525.78
+    },
+    {
+     "w": "quarante",
+     "start": 525.77,
+     "end": 526.14
+    },
+    {
+     "w": "secondes",
+     "start": 526.14,
+     "end": 526.75
+    },
+    {
+     "w": "tu",
+     "start": 527.09,
+     "end": 527.14
+    },
+    {
+     "w": "vas",
+     "start": 527.14,
+     "end": 527.3
+    },
+    {
+     "w": "avoir",
+     "start": 527.29,
+     "end": 527.58
+    },
+    {
+     "w": "envie",
+     "start": 527.58,
+     "end": 527.84
+    },
+    {
+     "w": "de",
+     "start": 527.84,
+     "end": 527.98
+    },
+    {
+     "w": "te",
+     "start": 527.98,
+     "end": 528.12
+    },
+    {
+     "w": "lever",
+     "start": 528.12,
+     "end": 528.4
+    },
+    {
+     "w": "Vérifier",
+     "start": 528.95,
+     "end": 529.4
+    },
+    {
+     "w": "un",
+     "start": 529.4,
+     "end": 529.56
+    },
+    {
+     "w": "truc",
+     "start": 529.55,
+     "end": 529.73
+    },
+    {
+     "w": "Aller",
+     "start": 530.27,
+     "end": 530.4
+    },
+    {
+     "w": "chercher",
+     "start": 530.4,
+     "end": 530.68
+    },
+    {
+     "w": "le",
+     "start": 530.67,
+     "end": 530.88
+    },
+    {
+     "w": "téléphone",
+     "start": 530.88,
+     "end": 531.24
+    },
+    {
+     "w": "juste",
+     "start": 531.64,
+     "end": 531.92
+    },
+    {
+     "w": "pour",
+     "start": 531.91,
+     "end": 532.26
+    },
+    {
+     "w": "l'heure",
+     "start": 532.26,
+     "end": 532.51
+    }
+   ]
+  },
+  {
+   "id": "s72",
+   "text": "Ce moment-là, c'est le bouton de l'étude. Tu n'as pas raté l'exercice. C'est ça, l'exercice. Chaque retour compte, comme une répétition à la salle. Deux minutes ce soir. Demain, si tu veux, trois.",
+   "start": 533.44,
+   "end": 545.26,
+   "words": [
+    {
+     "w": "Ce",
+     "start": 533.44,
+     "end": 533.6
+    },
+    {
+     "w": "moment-là",
+     "start": 533.6,
+     "end": 534.12
+    },
+    {
+     "w": "c'est",
+     "start": 534.36,
+     "end": 534.56
+    },
+    {
+     "w": "le",
+     "start": 534.55,
+     "end": 534.68
+    },
+    {
+     "w": "bouton",
+     "start": 534.67,
+     "end": 535.12
+    },
+    {
+     "w": "de",
+     "start": 535.12,
+     "end": 535.24
+    },
+    {
+     "w": "l'étude",
+     "start": 535.24,
+     "end": 535.64
+    },
+    {
+     "w": "Tu",
+     "start": 536.11,
+     "end": 536.18
+    },
+    {
+     "w": "n'as",
+     "start": 536.17,
+     "end": 536.3
+    },
+    {
+     "w": "pas",
+     "start": 536.29,
+     "end": 536.5
+    },
+    {
+     "w": "raté",
+     "start": 536.5,
+     "end": 536.76
+    },
+    {
+     "w": "l'exercice",
+     "start": 536.76,
+     "end": 537.38
+    },
+    {
+     "w": "C'est",
+     "start": 537.7,
+     "end": 537.92
+    },
+    {
+     "w": "ça",
+     "start": 537.91,
+     "end": 538.22
+    },
+    {
+     "w": "l'exercice",
+     "start": 538.4,
+     "end": 539.06
+    },
+    {
+     "w": "Chaque",
+     "start": 539.33,
+     "end": 539.7
+    },
+    {
+     "w": "retour",
+     "start": 539.7,
+     "end": 539.98
+    },
+    {
+     "w": "compte",
+     "start": 539.98,
+     "end": 540.44
+    },
+    {
+     "w": "comme",
+     "start": 540.79,
+     "end": 540.92
+    },
+    {
+     "w": "une",
+     "start": 540.91,
+     "end": 541.04
+    },
+    {
+     "w": "répétition",
+     "start": 541.03,
+     "end": 541.56
+    },
+    {
+     "w": "à",
+     "start": 541.55,
+     "end": 541.72
+    },
+    {
+     "w": "la",
+     "start": 541.72,
+     "end": 541.84
+    },
+    {
+     "w": "salle",
+     "start": 541.84,
+     "end": 542.11
+    },
+    {
+     "w": "Deux",
+     "start": 542.5,
+     "end": 542.64
+    },
+    {
+     "w": "minutes",
+     "start": 542.64,
+     "end": 542.84
+    },
+    {
+     "w": "ce",
+     "start": 542.84,
+     "end": 543.06
+    },
+    {
+     "w": "soir",
+     "start": 543.05,
+     "end": 543.34
+    },
+    {
+     "w": "Demain",
+     "start": 543.86,
+     "end": 544.16
+    },
+    {
+     "w": "si",
+     "start": 544.29,
+     "end": 544.38
+    },
+    {
+     "w": "tu",
+     "start": 544.38,
+     "end": 544.52
+    },
+    {
+     "w": "veux",
+     "start": 544.52,
+     "end": 544.72
+    },
+    {
+     "w": "trois",
+     "start": 545.04,
+     "end": 545.26
+    }
+   ]
+  },
+  {
+   "id": "s73",
+   "text": "Revenons au bouton.",
+   "start": 546.67,
+   "end": 547.5,
+   "words": [
+    {
+     "w": "Revenons",
+     "start": 546.67,
+     "end": 547.04
+    },
+    {
+     "w": "au",
+     "start": 547.03,
+     "end": 547.2
+    },
+    {
+     "w": "bouton",
+     "start": 547.2,
+     "end": 547.5
+    }
+   ]
+  },
+  {
+   "id": "s74",
+   "text": "On a envie de rire de ces étudiants. Mais le bouton, tu l'as dans ta poche. Lui ne fait pas mal. Il fait même du bien, deux secondes. C'est pour ça qu'on l'ouvre une vingtaine de fois par jour sans y penser.",
+   "start": 548.23,
+   "end": 558.66,
+   "words": [
+    {
+     "w": "On",
+     "start": 548.23,
+     "end": 548.34
+    },
+    {
+     "w": "a",
+     "start": 548.34,
+     "end": 548.46
+    },
+    {
+     "w": "envie",
+     "start": 548.46,
+     "end": 548.66
+    },
+    {
+     "w": "de",
+     "start": 548.65,
+     "end": 548.88
+    },
+    {
+     "w": "rire",
+     "start": 548.88,
+     "end": 549.08
+    },
+    {
+     "w": "de",
+     "start": 549.08,
+     "end": 549.22
+    },
+    {
+     "w": "ces",
+     "start": 549.22,
+     "end": 549.36
+    },
+    {
+     "w": "étudiants",
+     "start": 549.36,
+     "end": 549.54
+    },
+    {
+     "w": "Mais",
+     "start": 550.31,
+     "end": 550.46
+    },
+    {
+     "w": "le",
+     "start": 550.46,
+     "end": 550.58
+    },
+    {
+     "w": "bouton",
+     "start": 550.58,
+     "end": 550.98
+    },
+    {
+     "w": "tu",
+     "start": 551.22,
+     "end": 551.32
+    },
+    {
+     "w": "l'as",
+     "start": 551.32,
+     "end": 551.44
+    },
+    {
+     "w": "dans",
+     "start": 551.44,
+     "end": 551.58
+    },
+    {
+     "w": "ta",
+     "start": 551.58,
+     "end": 551.7
+    },
+    {
+     "w": "poche",
+     "start": 551.7,
+     "end": 552.14
+    },
+    {
+     "w": "Lui",
+     "start": 552.62,
+     "end": 552.76
+    },
+    {
+     "w": "ne",
+     "start": 552.76,
+     "end": 552.9
+    },
+    {
+     "w": "fait",
+     "start": 552.9,
+     "end": 553.06
+    },
+    {
+     "w": "pas",
+     "start": 553.05,
+     "end": 553.22
+    },
+    {
+     "w": "mal",
+     "start": 553.22,
+     "end": 553.46
+    },
+    {
+     "w": "Il",
+     "start": 553.87,
+     "end": 553.96
+    },
+    {
+     "w": "fait",
+     "start": 553.96,
+     "end": 554.14
+    },
+    {
+     "w": "même",
+     "start": 554.14,
+     "end": 554.34
+    },
+    {
+     "w": "du",
+     "start": 554.34,
+     "end": 554.54
+    },
+    {
+     "w": "bien",
+     "start": 554.53,
+     "end": 554.84
+    },
+    {
+     "w": "deux",
+     "start": 555.0,
+     "end": 555.12
+    },
+    {
+     "w": "secondes",
+     "start": 555.12,
+     "end": 555.47
+    },
+    {
+     "w": "C'est",
+     "start": 555.82,
+     "end": 555.96
+    },
+    {
+     "w": "pour",
+     "start": 555.96,
+     "end": 556.12
+    },
+    {
+     "w": "ça",
+     "start": 556.12,
+     "end": 556.28
+    },
+    {
+     "w": "qu'on",
+     "start": 556.27,
+     "end": 556.48
+    },
+    {
+     "w": "l'ouvre",
+     "start": 556.48,
+     "end": 556.78
+    },
+    {
+     "w": "une",
+     "start": 556.77,
+     "end": 556.92
+    },
+    {
+     "w": "vingtaine",
+     "start": 556.91,
+     "end": 557.28
+    },
+    {
+     "w": "de",
+     "start": 557.27,
+     "end": 557.42
+    },
+    {
+     "w": "fois",
+     "start": 557.41,
+     "end": 557.58
+    },
+    {
+     "w": "par",
+     "start": 557.58,
+     "end": 557.78
+    },
+    {
+     "w": "jour",
+     "start": 557.77,
+     "end": 558.0
+    },
+    {
+     "w": "sans",
+     "start": 558.0,
+     "end": 558.24
+    },
+    {
+     "w": "y",
+     "start": 558.24,
+     "end": 558.39
+    },
+    {
+     "w": "penser",
+     "start": 558.46,
+     "end": 558.66
+    }
+   ]
+  },
+  {
+   "id": "s75",
+   "text": "La dernière phrase de l'étude, celle que je t'avais promise :",
+   "start": 559.67,
+   "end": 562.3,
+   "words": [
+    {
+     "w": "La",
+     "start": 559.67,
+     "end": 559.8
+    },
+    {
+     "w": "dernière",
+     "start": 559.79,
+     "end": 560.06
+    },
+    {
+     "w": "phrase",
+     "start": 560.05,
+     "end": 560.44
+    },
+    {
+     "w": "de",
+     "start": 560.44,
+     "end": 560.58
+    },
+    {
+     "w": "l'étude",
+     "start": 560.58,
+     "end": 560.98
+    },
+    {
+     "w": "celle",
+     "start": 561.35,
+     "end": 561.52
+    },
+    {
+     "w": "que",
+     "start": 561.52,
+     "end": 561.7
+    },
+    {
+     "w": "je",
+     "start": 561.7,
+     "end": 561.78
+    },
+    {
+     "w": "t'avais",
+     "start": 561.77,
+     "end": 561.96
+    },
+    {
+     "w": "promise",
+     "start": 561.96,
+     "end": 562.3
+    }
+   ]
+  },
+  {
+   "id": "s76",
+   "text": "« L'esprit non entraîné n'aime pas être seul avec lui-même. »",
+   "start": 563.48,
+   "end": 566.78,
+   "words": [
+    {
+     "w": "L'esprit",
+     "start": 563.48,
+     "end": 563.92
+    },
+    {
+     "w": "non",
+     "start": 563.91,
+     "end": 564.14
+    },
+    {
+     "w": "entraîné",
+     "start": 564.14,
+     "end": 564.72
+    },
+    {
+     "w": "n'aime",
+     "start": 565.05,
+     "end": 565.18
+    },
+    {
+     "w": "pas",
+     "start": 565.17,
+     "end": 565.48
+    },
+    {
+     "w": "être",
+     "start": 565.48,
+     "end": 565.7
+    },
+    {
+     "w": "seul",
+     "start": 565.7,
+     "end": 566.08
+    },
+    {
+     "w": "avec",
+     "start": 566.08,
+     "end": 566.28
+    },
+    {
+     "w": "lui-même",
+     "start": 566.27,
+     "end": 566.78
+    }
+   ]
+  },
+  {
+   "id": "s77",
+   "text": "Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne.",
+   "start": 568.31,
+   "end": 572.5,
+   "words": [
+    {
+     "w": "Non",
+     "start": 568.31,
+     "end": 568.66
+    },
+    {
+     "w": "entraîné",
+     "start": 568.65,
+     "end": 569.18
+    },
+    {
+     "w": "Tout",
+     "start": 569.82,
+     "end": 569.92
+    },
+    {
+     "w": "est",
+     "start": 569.91,
+     "end": 570.12
+    },
+    {
+     "w": "dans",
+     "start": 570.12,
+     "end": 570.26
+    },
+    {
+     "w": "ce",
+     "start": 570.26,
+     "end": 570.44
+    },
+    {
+     "w": "mot",
+     "start": 570.44,
+     "end": 570.64
+    },
+    {
+     "w": "Ça",
+     "start": 571.11,
+     "end": 571.22
+    },
+    {
+     "w": "veut",
+     "start": 571.22,
+     "end": 571.34
+    },
+    {
+     "w": "dire",
+     "start": 571.34,
+     "end": 571.58
+    },
+    {
+     "w": "que",
+     "start": 571.58,
+     "end": 571.74
+    },
+    {
+     "w": "ça",
+     "start": 571.74,
+     "end": 571.88
+    },
+    {
+     "w": "s'entraîne",
+     "start": 571.88,
+     "end": 572.5
+    }
+   ]
+  },
+  {
+   "id": "s78",
+   "text": "Tu n'as pas un problème avec la solitude. Tu n'as juste jamais meublé la pièce.",
+   "start": 574.63,
+   "end": 579.0,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 574.63,
+     "end": 574.7
+    },
+    {
+     "w": "n'as",
+     "start": 574.7,
+     "end": 574.84
+    },
+    {
+     "w": "pas",
+     "start": 574.84,
+     "end": 575.02
+    },
+    {
+     "w": "un",
+     "start": 575.02,
+     "end": 575.16
+    },
+    {
+     "w": "problème",
+     "start": 575.15,
+     "end": 575.56
+    },
+    {
+     "w": "avec",
+     "start": 575.55,
+     "end": 575.82
+    },
+    {
+     "w": "la",
+     "start": 575.82,
+     "end": 576.0
+    },
+    {
+     "w": "solitude",
+     "start": 576.0,
+     "end": 576.48
+    },
+    {
+     "w": "Tu",
+     "start": 577.04,
+     "end": 577.12
+    },
+    {
+     "w": "n'as",
+     "start": 577.12,
+     "end": 577.28
+    },
+    {
+     "w": "juste",
+     "start": 577.27,
+     "end": 577.57
+    },
+    {
+     "w": "jamais",
+     "start": 577.59,
+     "end": 578.1
+    },
+    {
+     "w": "meublé",
+     "start": 578.1,
+     "end": 578.5
+    },
+    {
+     "w": "la",
+     "start": 578.5,
+     "end": 578.64
+    },
+    {
+     "w": "pièce",
+     "start": 578.64,
+     "end": 579.0
+    }
+   ]
+  },
+  {
+   "id": "s79",
+   "text": "Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal, et ce que les soufis font à la place.",
+   "start": 580.68,
+   "end": 587.32,
+   "words": [
+    {
+     "w": "Prochaine",
+     "start": 580.68,
+     "end": 581.0
+    },
+    {
+     "w": "vidéo",
+     "start": 581.0,
+     "end": 581.38
+    },
+    {
+     "w": "pourquoi",
+     "start": 581.94,
+     "end": 582.22
+    },
+    {
+     "w": "essayer",
+     "start": 582.22,
+     "end": 582.74
+    },
+    {
+     "w": "de",
+     "start": 582.74,
+     "end": 582.98
+    },
+    {
+     "w": "ne",
+     "start": 582.98,
+     "end": 583.08
+    },
+    {
+     "w": "penser",
+     "start": 583.08,
+     "end": 583.36
+    },
+    {
+     "w": "à",
+     "start": 583.36,
+     "end": 583.62
+    },
+    {
+     "w": "rien",
+     "start": 583.62,
+     "end": 583.92
+    },
+    {
+     "w": "marche",
+     "start": 583.91,
+     "end": 584.44
+    },
+    {
+     "w": "si",
+     "start": 584.44,
+     "end": 584.78
+    },
+    {
+     "w": "mal",
+     "start": 584.77,
+     "end": 585.1
+    },
+    {
+     "w": "et",
+     "start": 585.55,
+     "end": 585.6
+    },
+    {
+     "w": "ce",
+     "start": 585.55,
+     "end": 585.78
+    },
+    {
+     "w": "que",
+     "start": 585.77,
+     "end": 585.94
+    },
+    {
+     "w": "les",
+     "start": 585.94,
+     "end": 586.06
+    },
+    {
+     "w": "soufis",
+     "start": 586.05,
+     "end": 586.5
+    },
+    {
+     "w": "font",
+     "start": 586.5,
+     "end": 586.78
+    },
+    {
+     "w": "à",
+     "start": 586.77,
+     "end": 586.94
+    },
+    {
+     "w": "la",
+     "start": 586.94,
+     "end": 587.02
+    },
+    {
+     "w": "place",
+     "start": 587.02,
+     "end": 587.32
+    }
+   ]
+  }
+ ],
+ "duration": 589.044
+}
