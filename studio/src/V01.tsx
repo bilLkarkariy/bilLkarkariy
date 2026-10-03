@@ -381,6 +381,10 @@ const SON: Record<string, string> = {
   clock: 'el/horloge',
   canape: 'el/canape',
   phone_down: 'el/telephone',
+  // noms français des mêmes sons (parties 3 à 5)
+  porte: 'el/porte',
+  horloge: 'el/horloge',
+  bouton: 'el/bouton',
   // (les noms ci-dessous n'existent qu'en version ElevenLabs)
   projecteur: 'el/projecteur',
   pellicule_vrille: 'el/pellicule_vrille',
