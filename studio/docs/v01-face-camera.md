@@ -4,11 +4,31 @@ Ton visage revient aux moments où la confiance compte plus que l'information : 
 
 **Total : environ 59 s sur 9 min 38, soit 10 %.** Le témoignage n'est pas encore écrit ; il ajouterait environ 25 s.
 
-Conseils de tournage :
-- Dans ton bureau, avec la muraqqa'a.
-- Lumière d'une fenêtre sur le côté, comme la lumière de la vidéo.
-- Fais 2 ou 3 prises de chaque passage. Laisse 1 s de silence avant et après.
+Les fichiers audio `1.mp3` à `9.mp3` donnent le rythme de chaque passage.
+
+## Le dispositif (une seule installation pour presque tout)
+
+- **Caméra** fixe sur pied, objectif à hauteur des yeux. Tourne en **4K** en plan poitrine : les gros plans sont recadrés au montage, sans perte en sortie 1080p. Il n'y a que 2 installations : le plan poitrine pour tout, et le plan taille pour la veste (§ 6).
+- **Lumière** : une fenêtre à gauche de l'image, comme la lumière qui traverse la vidéo. Pas de plafonnier. Un drap blanc ou un réflecteur de l'autre côté pour déboucher.
+- **Fond** : à 1,5 ou 2 m derrière toi, plus sombre que ton visage, sans étagère chargée.
+- **Regard caméra** : regarde l'objectif lui-même, pas l'écran.
+- **Son** : ton micro-cravate. Fais 2 ou 3 prises par passage, avec 1 s de silence avant et après.
 - Au montage, ta vraie voix remplace la voix ElevenLabs sur ces passages. On relance l'alignement mot à mot et les images se recalent toutes seules.
+
+| # | Cadre | Angle et regard | Jeu |
+|---|---|---|---|
+| 1 | Plan serré poitrine, le bord du bureau en bas de l'image | Face, regard caméra | Tu retournes le téléphone face contre le bureau (on doit entendre le bruit), tu lèves les yeux, un temps, puis tu parles. |
+| 2 | Gros plan, visage et épaules (recadrage) | Face, regard caméra | Complice, presque un sourire. |
+| 3 | Plan poitrine | Face, regard caméra | Tu joues l'objection du sceptique, sourcil levé, un geste léger. Ton vif. |
+| 4 | Gros plan (recadrage) | Face, regard caméra | Lent. Après « c'était quand ? », 2 s immobile à fixer l'objectif, sans sourire. |
+| 5 | Plan poitrine | **3/4 puis face** | Sur la question, regard hors champ vers la fenêtre. Sur « Je crois », tu tournes la tête vers l'objectif et tu ne le lâches plus. |
+| 6 | **Plan taille**, plus large, légèrement décentré, toute la veste visible | Face, regard caméra | Posé. Sur « Cette veste rapiécée », la main montre les pièces cousues. |
+| 6b | **Très gros plan sur le tissu**, 8 à 10 s, sans parole | Caméra proche, mouvement très lent | Lumière rasante sur les coutures. C'est l'image du raccord : la pièce vide devient une pièce de la muraqqa'a. |
+| 7 | Plan poitrine, un peu plus proche que le 3 | Face, regard caméra | Une invitation, pas un ordre. Voix plus basse, plus lente. |
+| 8 | Gros plan serré, les yeux au tiers haut (recadrage, poussée très lente au montage) | Face, regard caméra | Le plus calme de la vidéo. Un temps après « s'entraîne. », puis tiens 1 s après « meublé la pièce ». |
+| 9 | Plan poitrine (le cadre s'ouvre, on respire) | Face, regard caméra | Plus léger, petit sourire. Tiens 1 s à la fin pour l'écran de fin. |
+
+La logique : plus c'est intime, plus c'est serré. Le plan poitrine sert à parler au spectateur ; le gros plan sert à lui poser une question ou à conclure. Le 3/4 n'apparaît qu'une fois, au moment où tu réfléchis avant de prendre position.
 
 ---
 
