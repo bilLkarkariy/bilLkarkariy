@@ -39,6 +39,7 @@ def env_key(name):
 def elevenlabs(text, cfg, prev_text, next_text, dst):
     """Un segment, avec ses voisins en contexte pour garder une prosodie continue.
     Mis en cache : relancer le rendu ne recoûte pas de caractères."""
+    import urllib.error
     import urllib.request
     body = {
         "text": text,
@@ -56,8 +57,17 @@ def elevenlabs(text, cfg, prev_text, next_text, dst):
             data=json.dumps(body).encode(),
             headers={"xi-api-key": env_key("ELEVENLABS_API_KEY"), "Content-Type": "application/json"},
         )
-        with urllib.request.urlopen(req, timeout=120) as r:
-            open(cache, "wb").write(r.read())
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                open(cache, "wb").write(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code != 400:
+                raise
+            for k in ("previous_text", "next_text"):  # modèles sans « request stitching »
+                body.pop(k)
+            req.data = json.dumps(body).encode()
+            with urllib.request.urlopen(req, timeout=120) as r:
+                open(cache, "wb").write(r.read())
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cache, "-ar", str(SR), "-ac", "1", dst], check=True)
 
 
@@ -67,8 +77,15 @@ def norm(w):
     return re.sub(r"[^a-z0-9]", "", w)
 
 
+TAG = re.compile(r"\[[^\]]*\]")  # balises d'intonation ElevenLabs : [pause], [whispers]…
+
+
+def spoken(text):
+    return re.sub(r"\s+", " ", TAG.sub("", text)).strip()
+
+
 def tokens(text):
-    return [t for t in re.findall(r"[\w'’-]+", text) if norm(t)]
+    return [t for t in re.findall(r"[\w'’-]+", spoken(text)) if norm(t)]
 
 
 def expand_numbers(words):
@@ -165,8 +182,8 @@ def align(script_path, audio_path):
     from faster_whisper import WhisperModel
     sc = json.load(open(script_path))
     model = WhisperModel("small", device="cpu", compute_type="int8")
-    prompt = " ".join(s["text"] for s in sc["segments"])
-    segs, _ = model.transcribe(audio_path, language="fr", word_timestamps=True, initial_prompt=prompt)
+    # pas d'initial_prompt : avec le script complet en indice, Whisper hallucine et saute des phrases
+    segs, _ = model.transcribe(audio_path, language="fr", word_timestamps=True)
     heard = [{"word": w.word.strip(), "start": w.start, "end": w.end} for s in segs for w in s.words]
     heard = expand_numbers(heard)
 
@@ -189,7 +206,7 @@ def align(script_path, audio_path):
     for seg in sc["segments"]:
         words = [{"w": t, "start": round(times[i][0], 3), "end": round(times[i][1], 3)}
                  for i, (sid, t) in enumerate(script) if sid == seg["id"]]
-        out["segments"].append({"id": seg["id"], "text": seg["text"],
+        out["segments"].append({"id": seg["id"], "text": spoken(seg["text"]),
                                 "start": words[0]["start"], "end": words[-1]["end"], "words": words})
     info = sf.info(audio_path)
     out["duration"] = round(info.frames / info.samplerate, 3)
