@@ -5,87 +5,87 @@
    "id": "s1",
    "text": "Quinze minutes.",
    "start": 1.51,
-   "end": 2.04,
+   "end": 2.02,
    "words": [
     {
      "w": "Quinze",
      "start": 1.51,
-     "end": 1.66
+     "end": 1.64
     },
     {
      "w": "minutes",
-     "start": 1.66,
-     "end": 2.04
+     "start": 1.64,
+     "end": 2.02
     }
    ]
   },
   {
    "id": "s2",
    "text": "Seul dans une pièce vide.",
-   "start": 2.76,
-   "end": 4.32,
+   "start": 2.63,
+   "end": 4.26,
    "words": [
     {
      "w": "Seul",
-     "start": 2.76,
-     "end": 3.16
+     "start": 2.63,
+     "end": 3.1
     },
     {
      "w": "dans",
-     "start": 3.16,
-     "end": 3.48
+     "start": 3.1,
+     "end": 3.36
     },
     {
      "w": "une",
-     "start": 3.48,
-     "end": 3.7
+     "start": 3.36,
+     "end": 3.6
     },
     {
      "w": "pièce",
-     "start": 3.7,
-     "end": 4.02
+     "start": 3.6,
+     "end": 3.92
     },
     {
      "w": "vide",
-     "start": 4.01,
-     "end": 4.32
+     "start": 3.92,
+     "end": 4.26
     }
    ]
   },
   {
    "id": "s3",
    "text": "Pas de téléphone, rien à lire.",
-   "start": 4.82,
+   "start": 4.75,
    "end": 6.7,
    "words": [
     {
      "w": "Pas",
-     "start": 4.82,
-     "end": 4.9
+     "start": 4.75,
+     "end": 4.86
     },
     {
      "w": "de",
-     "start": 4.9,
-     "end": 5.05
+     "start": 4.86,
+     "end": 4.96
     },
     {
      "w": "téléphone",
-     "start": 5.07,
-     "end": 5.5
+     "start": 4.96,
+     "end": 5.44
     },
     {
      "w": "rien",
-     "start": 6.18,
-     "end": 6.36
+     "start": 6.0,
+     "end": 6.28
     },
     {
      "w": "à",
-     "start": 6.36,
-     "end": 6.54
+     "start": 6.28,
+     "end": 6.46
     },
     {
      "w": "lire",
-     "start": 6.54,
+     "start": 6.46,
      "end": 6.7
     }
    ]
@@ -93,27 +93,27 @@
   {
    "id": "s4",
    "text": "Juste toi, tes pensées…",
-   "start": 7.39,
+   "start": 7.38,
    "end": 9.28,
    "words": [
     {
      "w": "Juste",
-     "start": 7.39,
-     "end": 7.78
+     "start": 7.38,
+     "end": 7.8
     },
     {
      "w": "toi",
-     "start": 7.78,
-     "end": 8.04
+     "start": 7.8,
+     "end": 8.08
     },
     {
      "w": "tes",
-     "start": 8.69,
-     "end": 8.76
+     "start": 8.66,
+     "end": 8.72
     },
     {
      "w": "pensées",
-     "start": 8.77,
+     "start": 8.72,
      "end": 9.28
     }
    ]
@@ -121,462 +121,748 @@
   {
    "id": "s5",
    "text": "et un bouton qui t'envoie une décharge électrique.",
-   "start": 9.77,
-   "end": 11.94,
+   "start": 10.32,
+   "end": 12.44,
    "words": [
     {
      "w": "et",
-     "start": 9.77,
-     "end": 9.86
+     "start": 10.32,
+     "end": 10.4
     },
     {
      "w": "un",
-     "start": 9.85,
-     "end": 10.0
+     "start": 10.4,
+     "end": 10.54
     },
     {
      "w": "bouton",
-     "start": 10.0,
-     "end": 10.42
-    },
-    {
-     "w": "qui",
-     "start": 10.42,
-     "end": 10.58
-    },
-    {
-     "w": "t'envoie",
-     "start": 10.58,
+     "start": 10.54,
      "end": 10.92
     },
     {
-     "w": "une",
+     "w": "qui",
      "start": 10.92,
-     "end": 11.06
+     "end": 11.08
+    },
+    {
+     "w": "t'envoie",
+     "start": 11.08,
+     "end": 11.44
+    },
+    {
+     "w": "une",
+     "start": 11.44,
+     "end": 11.58
     },
     {
      "w": "décharge",
-     "start": 11.06,
-     "end": 11.48
+     "start": 11.58,
+     "end": 11.98
     },
     {
      "w": "électrique",
-     "start": 11.48,
-     "end": 11.94
+     "start": 11.98,
+     "end": 12.44
     }
    ]
   },
   {
    "id": "s6",
    "text": "Deux hommes sur trois ont appuyé.",
-   "start": 13.68,
-   "end": 15.36,
+   "start": 14.27,
+   "end": 16.08,
    "words": [
     {
      "w": "Deux",
-     "start": 13.68,
-     "end": 13.86
+     "start": 14.27,
+     "end": 14.52
     },
     {
      "w": "hommes",
-     "start": 13.86,
-     "end": 14.08
+     "start": 14.52,
+     "end": 14.76
     },
     {
      "w": "sur",
-     "start": 14.08,
-     "end": 14.26
+     "start": 14.76,
+     "end": 14.94
     },
     {
      "w": "trois",
-     "start": 14.26,
-     "end": 14.6
+     "start": 14.94,
+     "end": 15.28
     },
     {
      "w": "ont",
-     "start": 14.6,
-     "end": 14.86
+     "start": 15.28,
+     "end": 15.54
     },
     {
      "w": "appuyé",
-     "start": 14.91,
-     "end": 15.36
+     "start": 15.53,
+     "end": 16.08
     }
    ]
   },
   {
    "id": "s7",
    "text": "Des gens qui, juste avant, avaient dit qu'ils paieraient pour ne plus jamais la sentir.",
-   "start": 16.31,
-   "end": 20.62,
+   "start": 17.04,
+   "end": 21.44,
    "words": [
     {
      "w": "Des",
-     "start": 16.31,
-     "end": 16.5
+     "start": 17.04,
+     "end": 17.22
     },
     {
      "w": "gens",
-     "start": 16.5,
-     "end": 16.72
+     "start": 17.21,
+     "end": 17.44
     },
     {
      "w": "qui",
-     "start": 16.71,
-     "end": 16.98
+     "start": 17.44,
+     "end": 17.72
     },
     {
      "w": "juste",
-     "start": 17.3,
-     "end": 17.48
+     "start": 18.03,
+     "end": 18.24
     },
     {
      "w": "avant",
-     "start": 17.48,
-     "end": 17.86
+     "start": 18.23,
+     "end": 18.58
     },
     {
      "w": "avaient",
-     "start": 18.19,
-     "end": 18.34
+     "start": 18.98,
+     "end": 19.12
     },
     {
      "w": "dit",
-     "start": 18.34,
-     "end": 18.54
+     "start": 19.12,
+     "end": 19.32
     },
     {
      "w": "qu'ils",
-     "start": 18.53,
-     "end": 18.72
-    },
-    {
-     "w": "paieraient",
-     "start": 18.71,
-     "end": 19.22
-    },
-    {
-     "w": "pour",
-     "start": 19.21,
-     "end": 19.38
-    },
-    {
-     "w": "ne",
-     "start": 19.37,
+     "start": 19.32,
      "end": 19.5
     },
     {
-     "w": "plus",
+     "w": "paieraient",
      "start": 19.5,
-     "end": 19.82
+     "end": 19.98
+    },
+    {
+     "w": "pour",
+     "start": 19.98,
+     "end": 20.16
+    },
+    {
+     "w": "ne",
+     "start": 20.16,
+     "end": 20.28
+    },
+    {
+     "w": "plus",
+     "start": 20.28,
+     "end": 20.54
     },
     {
      "w": "jamais",
-     "start": 19.82,
-     "end": 20.1
+     "start": 20.54,
+     "end": 20.88
     },
     {
      "w": "la",
-     "start": 20.1,
-     "end": 20.26
+     "start": 20.88,
+     "end": 21.1
     },
     {
      "w": "sentir",
-     "start": 20.26,
-     "end": 20.62
+     "start": 21.1,
+     "end": 21.44
     }
    ]
   },
   {
    "id": "s8",
    "text": "Et je suis presque sûr que toi aussi, tu aurais appuyé.",
-   "start": 21.36,
-   "end": 24.24,
+   "start": 22.22,
+   "end": 25.32,
    "words": [
     {
      "w": "Et",
-     "start": 21.36,
-     "end": 21.46
+     "start": 22.22,
+     "end": 22.28
     },
     {
      "w": "je",
-     "start": 21.46,
-     "end": 21.58
+     "start": 22.28,
+     "end": 22.4
     },
     {
      "w": "suis",
-     "start": 21.58,
-     "end": 21.72
+     "start": 22.4,
+     "end": 22.56
     },
     {
      "w": "presque",
-     "start": 21.72,
-     "end": 22.04
+     "start": 22.56,
+     "end": 22.9
     },
     {
      "w": "sûr",
-     "start": 22.04,
-     "end": 22.44
+     "start": 22.9,
+     "end": 23.4
     },
     {
      "w": "que",
-     "start": 22.44,
-     "end": 22.64
+     "start": 23.4,
+     "end": 23.6
     },
     {
      "w": "toi",
-     "start": 22.64,
-     "end": 22.86
+     "start": 23.6,
+     "end": 23.84
     },
     {
      "w": "aussi",
-     "start": 22.86,
-     "end": 23.22
+     "start": 23.84,
+     "end": 24.24
     },
     {
      "w": "tu",
-     "start": 23.47,
-     "end": 23.56
+     "start": 24.52,
+     "end": 24.6
     },
     {
      "w": "aurais",
-     "start": 23.56,
-     "end": 23.74
+     "start": 24.6,
+     "end": 24.84
     },
     {
      "w": "appuyé",
-     "start": 23.74,
-     "end": 24.24
+     "start": 24.84,
+     "end": 25.32
     }
    ]
   },
   {
    "id": "s9",
    "text": "C'est une étude publiée dans Science en deux mille quatorze.",
-   "start": 24.99,
-   "end": 27.55,
+   "start": 26.06,
+   "end": 28.62,
    "words": [
     {
      "w": "C'est",
-     "start": 24.99,
-     "end": 25.39
+     "start": 26.06,
+     "end": 26.22
     },
     {
      "w": "une",
-     "start": 25.39,
-     "end": 25.44
+     "start": 26.22,
+     "end": 26.38
     },
     {
      "w": "étude",
-     "start": 25.39,
-     "end": 25.57
+     "start": 26.38,
+     "end": 26.62
     },
     {
      "w": "publiée",
-     "start": 25.57,
-     "end": 26.03
+     "start": 26.62,
+     "end": 27.1
     },
     {
      "w": "dans",
-     "start": 26.03,
-     "end": 26.13
+     "start": 27.1,
+     "end": 27.22
     },
     {
      "w": "Science",
-     "start": 26.13,
-     "end": 26.55
+     "start": 27.22,
+     "end": 27.66
     },
     {
      "w": "en",
-     "start": 26.55,
-     "end": 26.93
+     "start": 27.66,
+     "end": 28.0
     },
     {
      "w": "deux",
-     "start": 26.93,
-     "end": 27.14
+     "start": 28.0,
+     "end": 28.21
     },
     {
      "w": "mille",
-     "start": 27.13,
-     "end": 27.34
+     "start": 28.2,
+     "end": 28.41
     },
     {
      "w": "quatorze",
-     "start": 27.34,
-     "end": 27.55
+     "start": 28.41,
+     "end": 28.62
     }
    ]
   },
   {
    "id": "s10",
    "text": "Sa dernière phrase, presque personne ne la cite.",
-   "start": 28.13,
-   "end": 30.96,
+   "start": 29.7,
+   "end": 32.61,
    "words": [
     {
      "w": "Sa",
-     "start": 28.13,
-     "end": 28.25
+     "start": 29.7,
+     "end": 29.82
     },
     {
      "w": "dernière",
-     "start": 28.25,
-     "end": 28.49
+     "start": 29.82,
+     "end": 30.08
     },
     {
      "w": "phrase",
-     "start": 28.49,
-     "end": 29.01
+     "start": 30.07,
+     "end": 30.64
     },
     {
      "w": "presque",
-     "start": 29.46,
-     "end": 29.73
+     "start": 31.08,
+     "end": 31.32
     },
     {
      "w": "personne",
-     "start": 30.09,
-     "end": 30.39
+     "start": 31.7,
+     "end": 32.0
     },
     {
      "w": "ne",
-     "start": 30.39,
-     "end": 30.63
+     "start": 32.0,
+     "end": 32.28
     },
     {
      "w": "la",
-     "start": 30.63,
-     "end": 30.75
+     "start": 32.28,
+     "end": 32.4
     },
     {
      "w": "cite",
-     "start": 30.75,
-     "end": 30.96
+     "start": 32.4,
+     "end": 32.61
     }
    ]
   },
   {
    "id": "s11",
    "text": "Pourtant, elle change complètement le sens de ce bouton.",
-   "start": 31.52,
-   "end": 34.49,
+   "start": 33.18,
+   "end": 36.07,
    "words": [
     {
      "w": "Pourtant",
-     "start": 31.52,
-     "end": 31.87
+     "start": 33.18,
+     "end": 33.54
     },
     {
      "w": "elle",
-     "start": 32.15,
-     "end": 32.25
+     "start": 33.82,
+     "end": 33.9
     },
     {
      "w": "change",
-     "start": 32.25,
-     "end": 32.53
+     "start": 33.9,
+     "end": 34.18
     },
     {
      "w": "complètement",
-     "start": 32.78,
-     "end": 33.17
+     "start": 34.41,
+     "end": 34.86
     },
     {
      "w": "le",
-     "start": 33.17,
-     "end": 33.53
+     "start": 34.86,
+     "end": 35.12
     },
     {
      "w": "sens",
-     "start": 33.53,
-     "end": 33.79
+     "start": 35.11,
+     "end": 35.38
     },
     {
      "w": "de",
-     "start": 33.79,
-     "end": 33.99
+     "start": 35.38,
+     "end": 35.6
     },
     {
      "w": "ce",
-     "start": 33.99,
-     "end": 34.15
+     "start": 35.6,
+     "end": 35.74
     },
     {
      "w": "bouton",
-     "start": 34.15,
-     "end": 34.49
+     "start": 35.74,
+     "end": 36.07
     }
    ]
   },
   {
    "id": "s12",
    "text": "Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir.",
-   "start": 34.98,
-   "end": 38.03,
+   "start": 36.57,
+   "end": 39.58,
    "words": [
     {
      "w": "Tu",
-     "start": 34.98,
-     "end": 35.07
+     "start": 36.57,
+     "end": 36.66
     },
     {
      "w": "l'auras",
-     "start": 35.07,
-     "end": 35.37
+     "start": 36.65,
+     "end": 36.94
     },
     {
      "w": "à",
-     "start": 35.36,
-     "end": 35.47
+     "start": 36.93,
+     "end": 37.06
     },
     {
      "w": "la",
-     "start": 35.47,
-     "end": 35.53
+     "start": 37.06,
+     "end": 37.12
     },
     {
      "w": "fin",
-     "start": 35.53,
-     "end": 35.81
+     "start": 37.11,
+     "end": 37.4
     },
     {
      "w": "avec",
-     "start": 36.11,
-     "end": 36.31
+     "start": 37.69,
+     "end": 37.86
     },
     {
      "w": "deux",
-     "start": 36.31,
-     "end": 36.67
+     "start": 37.86,
+     "end": 38.2
     },
     {
      "w": "minutes",
-     "start": 36.67,
-     "end": 36.85
+     "start": 38.2,
+     "end": 38.4
     },
     {
      "w": "d'exercice",
-     "start": 36.85,
-     "end": 37.47
+     "start": 38.4,
+     "end": 38.98
     },
     {
      "w": "pour",
-     "start": 37.47,
-     "end": 37.65
+     "start": 38.97,
+     "end": 39.16
     },
     {
      "w": "ce",
-     "start": 37.65,
-     "end": 37.79
+     "start": 39.15,
+     "end": 39.32
     },
     {
      "w": "soir",
-     "start": 37.79,
-     "end": 38.03
+     "start": 39.32,
+     "end": 39.58
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "Université de Virginie.",
+   "start": 40.6,
+   "end": 41.92,
+   "words": [
+    {
+     "w": "Université",
+     "start": 40.6,
+     "end": 41.16
+    },
+    {
+     "w": "de",
+     "start": 41.16,
+     "end": 41.32
+    },
+    {
+     "w": "Virginie",
+     "start": 41.32,
+     "end": 41.92
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "Des étudiants entrent dans une pièce presque vide.",
+   "start": 42.48,
+   "end": 45.08,
+   "words": [
+    {
+     "w": "Des",
+     "start": 42.48,
+     "end": 42.58
+    },
+    {
+     "w": "étudiants",
+     "start": 42.58,
+     "end": 43.14
+    },
+    {
+     "w": "entrent",
+     "start": 43.14,
+     "end": 43.56
+    },
+    {
+     "w": "dans",
+     "start": 43.56,
+     "end": 43.74
+    },
+    {
+     "w": "une",
+     "start": 43.74,
+     "end": 43.94
+    },
+    {
+     "w": "pièce",
+     "start": 43.94,
+     "end": 44.3
+    },
+    {
+     "w": "presque",
+     "start": 44.3,
+     "end": 44.64
+    },
+    {
+     "w": "vide",
+     "start": 44.64,
+     "end": 45.08
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "On leur fait déposer leurs affaires à l'entrée.",
+   "start": 45.6,
+   "end": 47.5,
+   "words": [
+    {
+     "w": "On",
+     "start": 45.6,
+     "end": 45.68
+    },
+    {
+     "w": "leur",
+     "start": 45.68,
+     "end": 45.82
+    },
+    {
+     "w": "fait",
+     "start": 45.82,
+     "end": 46.02
+    },
+    {
+     "w": "déposer",
+     "start": 46.02,
+     "end": 46.42
+    },
+    {
+     "w": "leurs",
+     "start": 46.42,
+     "end": 46.62
+    },
+    {
+     "w": "affaires",
+     "start": 46.62,
+     "end": 47.04
+    },
+    {
+     "w": "à",
+     "start": 47.04,
+     "end": 47.16
+    },
+    {
+     "w": "l'entrée",
+     "start": 47.16,
+     "end": 47.5
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "Le téléphone, mais aussi les stylos.",
+   "start": 47.9,
+   "end": 49.88,
+   "words": [
+    {
+     "w": "Le",
+     "start": 47.9,
+     "end": 48.0
+    },
+    {
+     "w": "téléphone",
+     "start": 48.0,
+     "end": 48.46
+    },
+    {
+     "w": "mais",
+     "start": 48.83,
+     "end": 49.06
+    },
+    {
+     "w": "aussi",
+     "start": 49.06,
+     "end": 49.34
+    },
+    {
+     "w": "les",
+     "start": 49.34,
+     "end": 49.46
+    },
+    {
+     "w": "stylos",
+     "start": 49.46,
+     "end": 49.88
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "Rien pour écrire.",
+   "start": 50.64,
+   "end": 51.4,
+   "words": [
+    {
+     "w": "Rien",
+     "start": 50.64,
+     "end": 50.92
+    },
+    {
+     "w": "pour",
+     "start": 50.92,
+     "end": 51.16
+    },
+    {
+     "w": "écrire",
+     "start": 51.16,
+     "end": 51.4
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "La consigne tient en une ligne : reste assis, ne t'endors pas, et occupe-toi avec tes pensées.",
+   "start": 52.34,
+   "end": 58.87,
+   "words": [
+    {
+     "w": "La",
+     "start": 52.34,
+     "end": 52.46
+    },
+    {
+     "w": "consigne",
+     "start": 52.46,
+     "end": 52.96
+    },
+    {
+     "w": "tient",
+     "start": 52.96,
+     "end": 53.38
+    },
+    {
+     "w": "en",
+     "start": 53.38,
+     "end": 53.6
+    },
+    {
+     "w": "une",
+     "start": 53.6,
+     "end": 53.82
+    },
+    {
+     "w": "ligne",
+     "start": 53.82,
+     "end": 54.1
+    },
+    {
+     "w": "reste",
+     "start": 54.75,
+     "end": 55.05
+    },
+    {
+     "w": "assis",
+     "start": 55.08,
+     "end": 55.56
+    },
+    {
+     "w": "ne",
+     "start": 55.94,
+     "end": 56.02
+    },
+    {
+     "w": "t'endors",
+     "start": 56.02,
+     "end": 56.38
+    },
+    {
+     "w": "pas",
+     "start": 56.38,
+     "end": 56.68
+    },
+    {
+     "w": "et",
+     "start": 57.16,
+     "end": 57.24
+    },
+    {
+     "w": "occupe-toi",
+     "start": 57.24,
+     "end": 58.0
+    },
+    {
+     "w": "avec",
+     "start": 58.0,
+     "end": 58.26
+    },
+    {
+     "w": "tes",
+     "start": 58.26,
+     "end": 58.46
+    },
+    {
+     "w": "pensées",
+     "start": 58.46,
+     "end": 58.87
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "Quinze minutes.",
+   "start": 59.42,
+   "end": 59.9,
+   "words": [
+    {
+     "w": "Quinze",
+     "start": 59.42,
+     "end": 59.62
+    },
+    {
+     "w": "minutes",
+     "start": 59.62,
+     "end": 59.9
     }
    ]
   }
  ],
- "duration": 39.374
+ "duration": 62.74
 }

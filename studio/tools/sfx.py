@@ -149,8 +149,33 @@ def marker():
     save("marker", (x + squeak) * shape, -18)
 
 
+def door():
+    """Porte qui se referme : souffle d'air, choc sourd du battant, clic du pêne."""
+    d = 0.7
+    n = int(d * SR)
+    air = bp(rng.standard_normal(n), 200, 1200, 2) * np.minimum(1, t(d) / 0.12) * np.exp(-np.maximum(0, t(d) - 0.12) / 0.03)
+    k = int(0.12 * SR)
+    thump = np.zeros(n)
+    th = np.sin(2 * np.pi * (85 - 25 * t(d)) * t(d)) * env(n, 0.002, 0.08)
+    thump[k:] = th[: n - k]
+    latch = np.zeros(n)
+    lc = bp(rng.standard_normal(n), 2000, 6000) * env(n, 0.0003, 0.007)
+    k2 = int(0.15 * SR)
+    latch[k2:] = lc[: n - k2]
+    save("door", air * 0.12 + thump + latch * 0.5, -8)
+
+
+def clock():
+    """Tic de minuteur : bois sec, très court."""
+    d = 0.12
+    n = int(d * SR)
+    x = bp(rng.standard_normal(n), 1500, 5000) * env(n, 0.0002, 0.006)
+    x += np.sin(2 * np.pi * 1150 * t(d)) * env(n, 0.0005, 0.02) * 0.4
+    save("clock", x, -14)
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
-    for fn in (roomtone, phone_down, tick, pencil, button_click, zap, sub, paper, marker):
+    for fn in (roomtone, phone_down, tick, pencil, button_click, zap, sub, paper, marker, door, clock):
         fn()
     print("sfx ->", sorted(os.listdir(OUT)))

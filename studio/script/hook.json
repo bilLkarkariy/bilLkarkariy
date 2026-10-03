@@ -1,22 +1,23 @@
 {
-  "_doc": "Texte du hook, découpé en segments. 'pause' = silence après le segment (s), utilisé seulement pour la voix temporaire. Avec la vraie prise, tools/align.py retrouve les segments dans l'audio.",
+  "_doc": "POC 1 min : hook + début de « L'expérience », jusqu'à « Quinze minutes. ». 'pause' = silence après le segment (s).",
   "tts": {
     "engine": "elevenlabs",
     "voice_id": "VnOjW3Apdoew44v1s6wr",
     "_voice": "Billel (clone instantané ElevenLabs)",
     "model": "eleven_v4",
     "settings": {
-      "stability": 0.5,
+      "stability": 0.7,
       "similarity_boost": 0.8,
       "use_speaker_boost": true
-    }
+    },
+    "post": "isolate"
   },
   "lead": 1.5,
-  "tail": 1.2,
+  "tail": 2.6,
   "segments": [
     {
       "id": "s1",
-      "text": "[calm] Quinze minutes.",
+      "text": "Quinze minutes.",
       "pause": 0.45
     },
     {
@@ -31,7 +32,7 @@
     },
     {
       "id": "s4",
-      "text": "[softly] Juste toi, tes pensées…",
+      "text": "Juste toi, tes pensées…",
       "pause": 0.45
     },
     {
@@ -51,7 +52,7 @@
     },
     {
       "id": "s8",
-      "text": "[warmly] Et je suis presque sûr que toi aussi, tu aurais appuyé.",
+      "text": "Et je suis presque sûr que toi aussi, tu aurais appuyé.",
       "pause": 0.7
     },
     {
@@ -61,7 +62,7 @@
     },
     {
       "id": "s10",
-      "text": "[lowers voice] Sa dernière phrase, presque personne ne la cite.",
+      "text": "Sa dernière phrase, presque personne ne la cite.",
       "pause": 0.35
     },
     {
@@ -71,9 +72,44 @@
     },
     {
       "id": "s12",
-      "text": "[calm] Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir.",
+      "text": "Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir.",
+      "pause": 0.8
+    },
+    {
+      "id": "s13",
+      "text": "Université de Virginie.",
+      "pause": 0.45
+    },
+    {
+      "id": "s14",
+      "text": "Des étudiants entrent dans une pièce presque vide.",
+      "pause": 0.35
+    },
+    {
+      "id": "s15",
+      "text": "On leur fait déposer leurs affaires à l'entrée.",
+      "pause": 0.3
+    },
+    {
+      "id": "s16",
+      "text": "Le téléphone, mais aussi les stylos.",
+      "pause": 0.3
+    },
+    {
+      "id": "s17",
+      "text": "Rien pour écrire.",
+      "pause": 0.7
+    },
+    {
+      "id": "s18",
+      "text": "La consigne tient en une ligne : reste assis, ne t'endors pas, et occupe-toi avec tes pensées.",
+      "pause": 0.5
+    },
+    {
+      "id": "s19",
+      "text": "Quinze minutes.",
       "pause": 0
     }
   ],
-  "_tags": "Balises v4 en anglais entre crochets : [calm], [softly], [whispers], [serious]… Elles règlent le ton et ne sont pas prononcées. Les silences restent gérés par 'pause' (précis au montage)."
+  "_tags": "Balises v4 entre crochets, non prononcées. Éviter [softly], [warmly], [whispers], [lowers voice] : la voix devient soufflée, presque sensuelle. Garder des balises neutres ([serious]) et rares."
 }

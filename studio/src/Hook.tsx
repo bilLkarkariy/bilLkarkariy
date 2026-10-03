@@ -7,16 +7,18 @@ import {Card} from './scenes/Card';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
 import {Plan} from './scenes/Plan';
+import {Study} from './scenes/Study';
 import {C} from './theme';
 
-// ── Script de montage du hook, accroché aux mots ────────────────────────────
+// ── Script de montage (hook + début de l'expérience), accroché aux mots ────────────────────────────
 const cut1 = at('s2') - 3; // A-roll -> maquette, juste avant « Seul »
 const planIn = at('s4') - 10; // la maquette, vue de dessus, devient le plan
 const xfade = 14;
 const dotsIn = at('s6') - 5; // « Deux hommes sur trois »
 const aroll2 = at('s8') - 3; // « Et je suis presque sûr… » : face caméra
 const cardIn = at('s9') - 3; // « C'est une étude publiée dans Science »
-const black = at('s12', undefined, 'end') + 20; // coupe sèche au noir
+const studyIn = at('s13') - 8; // « Université de Virginie » : chapitre 01
+const black = at('s19', undefined, 'end') + 75; // le minuteur tourne 2 s, puis coupe sèche
 
 const plan = {
   dot: at('s4', 'toi') - planIn,
@@ -38,7 +40,20 @@ const card = {
   button: at('s11', 'bouton') - cardIn,
   redact: at('s12') - cardIn,
   extra: at('s12', "d'exercice") - cardIn,
-  end: black - cardIn,
+  end: studyIn - cardIn,
+};
+const study = {
+  place: at('s13', 'Université') - studyIn,
+  students: at('s14', 'étudiants') - studyIn,
+  walk1: [at('s14', 'entrent') - studyIn, at('s15', 'déposer') - studyIn] as [number, number],
+  phone: at('s16', 'téléphone') - studyIn,
+  pen: at('s16', 'stylos') - studyIn,
+  walk2: [at('s17', 'Rien') - studyIn, at('s17', 'écrire', 'end') + 20 - studyIn] as [number, number],
+  door: at('s17', 'écrire', 'end') + 24 - studyIn,
+  slip: at('s18', 'consigne') - studyIn,
+  words: ['reste', 'assis', 'ne', "t'endors", 'pas', 'occupe-toi', 'avec', 'tes', 'pensées'].map((w) => at('s18', w) - studyIn),
+  timer: at('s19', 'Quinze') - studyIn,
+  count: at('s19', undefined, 'end') + 6 - studyIn,
 };
 
 const sfx: [string, number, number][] = [
@@ -58,6 +73,16 @@ const sfx: [string, number, number][] = [
   ['paper', cardIn, 0.8],
   ['tick', cardIn + card.mark, 0.6],
   ['marker', cardIn + card.redact, 0.42],
+  ['pencil', studyIn + 2, 0.45],
+  ['tick', studyIn + study.students + 3, 0.4],
+  ['tick', studyIn + study.students + 6, 0.4],
+  ['tick', studyIn + study.students + 9, 0.4],
+  ['tick', studyIn + study.phone + 12, 0.7],
+  ['tick', studyIn + study.pen + 12, 0.7],
+  ['door', studyIn + study.door, 0.8],
+  ['paper', studyIn + study.slip, 0.7],
+  ['clock', studyIn + study.count + 30, 0.6],
+  ['clock', studyIn + study.count + 60, 0.6],
 ];
 
 const Fade: React.FC<{from: number; len: number; out?: boolean; children: React.ReactNode}> = ({from, len, out, children}) => {
@@ -88,8 +113,12 @@ export const Hook: React.FC = () => (
       <Dots {...dots} />
     </Sequence>
 
-    <Sequence from={cardIn} durationInFrames={black - cardIn}>
+    <Sequence from={cardIn} durationInFrames={studyIn - cardIn}>
       <Card {...card} />
+    </Sequence>
+
+    <Sequence from={studyIn} durationInFrames={black - studyIn}>
+      <Study {...study} />
     </Sequence>
 
     {/* face caméra : emplacements à remplacer par les rushes */}
@@ -108,9 +137,6 @@ export const Hook: React.FC = () => (
 
     {/* son */}
     <Audio src={staticFile(VO_SRC)} />
-    <Sequence from={0} durationInFrames={black}>
-      <Audio src={staticFile('sfx/roomtone.wav')} volume={0.5} />
-    </Sequence>
     {sfx.map(([name, f, v], i) => (
       <Sequence key={i} from={f} durationInFrames={60}>
         <Audio src={staticFile(`sfx/${name}.wav`)} volume={v} />

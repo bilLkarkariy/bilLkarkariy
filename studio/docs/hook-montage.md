@@ -1,6 +1,8 @@
-# Script de montage : hook (0:00–0:39, POC)
+# Script de montage : POC 1 min (hook + début de « L'expérience »)
 
 Voix : **ton clone ElevenLabs** (« Billel », modèle `eleven_v4`, balises de ton dans `script/hook.json`). Les temps du tableau viennent d'une version antérieure de la voix ; ils sont indicatifs. Si tu enregistres une vraie prise, tout se recale automatiquement : chaque événement est accroché à un mot, pas à un timecode (`src/Hook.tsx`).
+
+Son : **aucune ambiance ajoutée**, la voix passe par l'isolateur vocal ElevenLabs (le clone avait appris le bruit de ses échantillons). Pas de balises « douces » ([softly], [warmly], [lowers voice]) : elles rendaient la voix soufflée.
 
 Direction artistique : « La pièce ». Papier froid quadrillé (le carnet de labo), encre, et une seule couleur à l'image : le **rouge = la fuite** (bouton, décharge, ceux qui appuient). L'or (le centre) n'apparaît pas avant la partie sur la voie.
 
@@ -18,7 +20,12 @@ Direction artistique : « La pièce ». Papier froid quadrillé (le carnet de la
 | 10 | 0:30–0:33 | « Sa dernière phrase, presque personne ne la cite. » | La caméra descend au bas de la colonne 2. Les deux dernières lignes foncent, crochet DERNIÈRE PHRASE. | Tic. |
 | 11 | 0:33–0:37 | « Pourtant, elle change complètement le sens de ce bouton. » | Sur « bouton », le petit bouton rouge se relie à la phrase en pointillés. | — |
 | 12 | 0:37–0:41 | « Tu l'auras à la fin, avec deux minutes d'exercice pour ce soir. » | Sur « Tu l'auras », la phrase est **caviardée** au feutre noir (la boucle A devient visible). → À LA FIN · + 2 MIN D'EXERCICE. | Feutre. |
-| 13 | 0:41 | — | **Coupe sèche au noir**, l'ambiance coupe en même temps. | Silence. |
+| 13 | 0:41–0:44 | « Université de Virginie. » | Coupe sur le **même plan de pièce**, vu de plus haut, avec le couloir devant la porte. Chapitre « 01 · L'EXPÉRIENCE », lieu en dessous. | Crayon. |
+| 14 | 0:44–0:47 | « Des étudiants entrent dans une pièce presque vide. » | Des points en file dans le couloir ; l'un d'eux avance. | Tics. |
+| 15 | 0:47–0:52 | « On leur fait déposer leurs affaires à l'entrée. Le téléphone, mais aussi les stylos. » | Il s'arrête au casier AFFAIRES. Sur « téléphone », le téléphone (pastille rouge) y tombe ; sur « stylos », le stylo. | Tics. |
+| 16 | 0:52–0:54 | « Rien pour écrire. » | Il entre, va à la chaise. La porte se referme derrière lui. | Porte. |
+| 17 | 0:54–0:59 | « La consigne tient en une ligne : reste assis, ne t'endors pas, et occupe-toi avec tes pensées. » | Le plan s'efface ; une fiche CONSIGNE glisse. Chaque mot s'écrit au moment où il est dit. | Feuille. |
+| 18 | 0:59–1:02 | « Quinze minutes. » | La fiche remonte, **15:00** apparaît puis décompte : 14:59, 14:58. Coupe sèche au noir. | Tic d'horloge. |
 
 Sources (description uniquement) : Wilson et al., *Science* 345(6192), 2014 (R1, R6, R7).
 

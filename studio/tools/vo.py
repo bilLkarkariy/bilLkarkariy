@@ -134,17 +134,42 @@ def snap_to_energy(audio_path, times, thr_db=-38.0, hop=0.01):
     out = []
     for s0, e0 in times:
         i0, i1 = int(s0 / hop), min(len(loud), max(int(s0 / hop) + 1, int(round(e0 / hop))))
-        runs = silences(i0, i1)
-        a0 = runs[-1][1] if runs and runs[-1][1] < i1 else i0  # le mot commence après le dernier silence
-        on = np.where(loud[a0:i1])[0]
-        if not len(on):
+        # blocs de parole séparés par de vrais silences ; le mot = le plus long bloc
+        # (la fenêtre de Whisper déborde souvent sur la pause d'avant ou d'après)
+        cuts = [i0] + [k for r in silences(i0, i1) for k in r] + [i1]
+        blocks = [(cuts[j], cuts[j + 1]) for j in range(0, len(cuts) - 1, 2)]
+        best, best_n = None, 0
+        for b0, b1 in blocks:
+            on = np.where(loud[b0:b1])[0]
+            if len(on) > best_n:
+                best, best_n = (b0 + on[0], b0 + on[-1] + 1), len(on)
+        if best is None:
             out.append((s0, e0))
             continue
-        a0 += on[0]
-        tail = silences(a0, i1)
-        a1 = tail[0][0] if tail else a0 + np.where(loud[a0:i1])[0][-1] + 1
-        out.append((a0 * hop, max(a1 * hop, a0 * hop + 0.05)))
+        out.append((best[0] * hop, max(best[1] * hop, best[0] * hop + 0.05)))
     return out
+
+
+def isolate(path):
+    """Isolateur vocal ElevenLabs : retire le bruit que le clone a appris de ses
+    échantillons (souffle, grondement). Puis coupe-bas 70 Hz. Mis en cache."""
+    key = hashlib.sha1(open(path, "rb").read()).hexdigest()[:16]
+    cache = os.path.join(ROOT, ".cache/isolated", key + ".audio")
+    if not os.path.exists(cache):
+        os.makedirs(os.path.dirname(cache), exist_ok=True)
+        r = subprocess.run(["curl", "-sS", "-f", "-o", cache, "-X", "POST",
+                            "https://api.elevenlabs.io/v1/audio-isolation",
+                            "-H", "xi-api-key: " + env_key("ELEVENLABS_API_KEY"),
+                            "-F", f"audio=@{path};type=audio/wav"], capture_output=True, text=True)
+        if r.returncode:
+            raise SystemExit("isolation ElevenLabs : " + r.stderr)
+    tmp = path + ".tmp.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cache, "-af", "highpass=f=70",
+                    "-ar", str(SR), "-ac", "1", tmp], check=True)
+    a, _ = sf.read(tmp)
+    os.remove(tmp)
+    sf.write(path, a * 0.5 / np.max(np.abs(a)), SR)
+    print("isolation -> ok")
 
 
 def tts(script_path):
@@ -180,6 +205,8 @@ def tts(script_path):
     out = os.path.join(ROOT, "public/vo", os.path.basename(script_path).replace(".json", ".wav"))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     sf.write(out, audio, SR)
+    if cfg.get("post") == "isolate":
+        isolate(out)
     print("voix ->", out, f"{len(audio) / SR:.2f}s")
     return out
 
@@ -191,7 +218,14 @@ def align(script_path, audio_path):
     # pas d'initial_prompt : avec le script complet en indice, Whisper hallucine et saute des phrases
     segs, _ = model.transcribe(audio_path, language="fr", word_timestamps=True)
     heard = [{"word": w.word.strip(), "start": w.start, "end": w.end} for s in segs for w in s.words]
-    heard = expand_numbers(heard)
+    # Whisper coupe « t'endors » en « t » + « 'endors », « occupe-toi » en « occupe » + « -toi » : on recolle
+    merged = []
+    for w in heard:
+        if merged and w["word"][:1] in "'’-" and len(w["word"]) > 1:
+            merged[-1] = {"word": merged[-1]["word"] + w["word"], "start": merged[-1]["start"], "end": w["end"]}
+        else:
+            merged.append(w)
+    heard = expand_numbers(merged)
 
     script = [(seg["id"], t) for seg in sc["segments"] for t in tokens(seg["text"])]
     a = [norm(t) for _, t in script]
