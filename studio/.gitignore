@@ -9,3 +9,6 @@ public/sfx/
 public/fonts/
 # rushes et photos personnelles : jamais dans le dépôt
 public/aroll/
+
+# secrets
+.env

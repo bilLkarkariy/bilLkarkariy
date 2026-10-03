@@ -1,4 +1,4 @@
-"""Voix temporaire (Piper) puis alignement mot à mot (Whisper).
+"""Voix temporaire (ElevenLabs, ou Piper hors ligne) puis alignement mot à mot (Whisper).
 
   python3 tools/vo.py tts   script/hook.json            -> public/vo/hook.wav
   python3 tools/vo.py align script/hook.json AUDIO.wav  -> src/data/hook.vo.json
@@ -7,6 +7,7 @@ L'alignement marche pareil sur la vraie prise de Billel : on ne dépend que du
 texte du script, jamais de minutages écrits à la main.
 """
 import difflib
+import hashlib
 import json
 import os
 import re
@@ -21,6 +22,43 @@ import soundfile as sf
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 VOICE = os.path.join(ROOT, ".cache/piper/fr_FR-tom-medium.onnx")
 SR = 48000
+
+
+def env_key(name):
+    if os.environ.get(name):
+        return os.environ[name]
+    path = os.path.join(ROOT, ".env")
+    if os.path.exists(path):
+        for line in open(path):
+            k, _, v = line.strip().partition("=")
+            if k == name:
+                return v
+    raise SystemExit(f"{name} manquant (studio/.env)")
+
+
+def elevenlabs(text, cfg, prev_text, next_text, dst):
+    """Un segment, avec ses voisins en contexte pour garder une prosodie continue.
+    Mis en cache : relancer le rendu ne recoûte pas de caractères."""
+    import urllib.request
+    body = {
+        "text": text,
+        "model_id": cfg.get("model", "eleven_multilingual_v2"),
+        "voice_settings": cfg.get("settings", {}),
+        "previous_text": prev_text,
+        "next_text": next_text,
+    }
+    key = hashlib.sha1(json.dumps([cfg.get("voice_id"), body], sort_keys=True).encode()).hexdigest()[:16]
+    cache = os.path.join(ROOT, ".cache/tts", key + ".mp3")
+    if not os.path.exists(cache):
+        os.makedirs(os.path.dirname(cache), exist_ok=True)
+        req = urllib.request.Request(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{cfg['voice_id']}?output_format=mp3_44100_128",
+            data=json.dumps(body).encode(),
+            headers={"xi-api-key": env_key("ELEVENLABS_API_KEY"), "Content-Type": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=120) as r:
+            open(cache, "wb").write(r.read())
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cache, "-ar", str(SR), "-ac", "1", dst], check=True)
 
 
 def norm(w):
@@ -94,14 +132,21 @@ def snap_to_energy(audio_path, times, thr_db=-38.0, hop=0.01):
 
 def tts(script_path):
     sc = json.load(open(script_path))
+    cfg = sc.get("tts", {})
+    engine = cfg.get("engine", "piper")
     chunks = [np.zeros(int(sc["lead"] * SR))]
     with tempfile.TemporaryDirectory() as tmp:
         for seg in sc["segments"]:
-            raw = os.path.join(tmp, seg["id"] + ".wav")
-            subprocess.run(["python3", "-m", "piper", "-m", VOICE, "-f", raw, "--length-scale", "0.97"],
-                           input=seg["text"].encode(), check=True, capture_output=True)
             rs = os.path.join(tmp, seg["id"] + "_48k.wav")
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-ar", str(SR), "-ac", "1", rs], check=True)
+            if engine == "elevenlabs":
+                texts = [x["text"] for x in sc["segments"]]
+                i = texts.index(seg["text"])
+                elevenlabs(seg["text"], cfg, " ".join(texts[max(0, i - 2):i]), " ".join(texts[i + 1:i + 2]), rs)
+            else:
+                raw = os.path.join(tmp, seg["id"] + ".wav")
+                subprocess.run(["python3", "-m", "piper", "-m", VOICE, "-f", raw, "--length-scale", "0.97"],
+                               input=seg["text"].encode(), check=True, capture_output=True)
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-ar", str(SR), "-ac", "1", rs], check=True)
             a, _ = sf.read(rs)
             loud = np.where(np.abs(a) > 0.01)[0]
             a = a[max(0, loud[0] - 480): loud[-1] + 2400]
