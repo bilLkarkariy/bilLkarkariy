@@ -1,0 +1,21 @@
+{
+ "id": "ghazali_baghdad",
+ "url": "https://www.ghazali.org/works/watt3.htm",
+ "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+ "w": 830.4,
+ "h": 144.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "three hundred students in Baghdad",
+   "rects": [
+    {
+     "x": 380.7,
+     "y": 54.3,
+     "w": 223.4,
+     "h": 17.0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": "ghazali_langue",
+ "url": "https://www.ghazali.org/works/watt3.htm",
+ "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+ "w": 835.2,
+ "h": 95.2,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "God caused my tongue to dry up so that I was prevented from lecturing",
+   "rects": [
+    {
+     "x": 183.3,
+     "y": 41.5,
+     "w": 467.3,
+     "h": 17.0
+    }
+   ]
+  },
+  {
+   "text": "my tongue would not utter a single word",
+   "rects": [
+    {
+     "x": 492.8,
+     "y": 59.5,
+     "w": 265.7,
+     "h": 17.0
+    }
+   ]
+  }
+ ]
+}

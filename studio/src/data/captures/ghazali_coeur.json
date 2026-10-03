@@ -1,0 +1,38 @@
+{
+ "id": "ghazali_coeur",
+ "url": "https://www.ghazali.org/works/watt3.htm",
+ "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+ "w": 830.4,
+ "h": 72.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "the doctors gave up all hope of successful treatment",
+   "rects": [
+    {
+     "x": 759.6,
+     "y": 18.1,
+     "w": 70.8,
+     "h": 17.0
+    },
+    {
+     "x": 0.0,
+     "y": 36.1,
+     "w": 259.0,
+     "h": 17.0
+    }
+   ]
+  },
+  {
+   "text": "This trouble arises from the heart",
+   "rects": [
+    {
+     "x": 272.7,
+     "y": 36.1,
+     "w": 214.7,
+     "h": 17.0
+    }
+   ]
+  }
+ ]
+}

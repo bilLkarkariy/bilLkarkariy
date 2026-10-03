@@ -1,0 +1,66 @@
+{
+ "id": "kg_methode",
+ "url": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+ "source": "Killingsworth & Gilbert, Science 2010",
+ "w": 860.0,
+ "h": 1088.4,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "contacts participants through their iPhones at random moments",
+   "rects": [
+    {
+     "x": 372.6,
+     "y": 58.7,
+     "w": 463.5,
+     "h": 43.6
+    },
+    {
+     "x": 29.1,
+     "y": 109.6,
+     "w": 587.8,
+     "h": 43.6
+    }
+   ]
+  },
+  {
+   "text": "2250 adults",
+   "rects": [
+    {
+     "x": 119.8,
+     "y": 719.5,
+     "w": 187.5,
+     "h": 43.6
+    }
+   ]
+  },
+  {
+   "text": "What are you doing right now?",
+   "rects": [
+    {
+     "x": 575.7,
+     "y": 971.8,
+     "w": 260.3,
+     "h": 45.1
+    },
+    {
+     "x": 29.1,
+     "y": 1022.8,
+     "w": 309.9,
+     "h": 45.1
+    }
+   ]
+  },
+  {
+   "text": "How are you feeling right now?",
+   "rects": [
+    {
+     "x": 29.1,
+     "y": 870.2,
+     "w": 567.1,
+     "h": 45.1
+    }
+   ]
+  }
+ ]
+}

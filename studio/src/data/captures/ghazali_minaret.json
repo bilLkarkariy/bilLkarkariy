@@ -1,0 +1,27 @@
+{
+ "id": "ghazali_minaret",
+ "url": "https://www.ghazali.org/works/watt3.htm",
+ "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+ "w": 840.0,
+ "h": 90.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "going up the minaret of the mosque for the whole day and shutting myself in so as to be alone",
+   "rects": [
+    {
+     "x": 410.3,
+     "y": 54.0,
+     "w": 429.7,
+     "h": 17.0
+    },
+    {
+     "x": 0.0,
+     "y": 72.0,
+     "w": 169.8,
+     "h": 17.0
+    }
+   ]
+  }
+ ]
+}

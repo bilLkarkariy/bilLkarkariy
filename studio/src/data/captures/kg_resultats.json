@@ -1,0 +1,67 @@
+{
+ "id": "kg_resultats",
+ "url": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+ "source": "Killingsworth & Gilbert, Science 2010",
+ "w": 860.0,
+ "h": 1197.2,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "Are you thinking about something other than what you’re currently doing?",
+   "rects": [
+    {
+     "x": 188.2,
+     "y": 115.4,
+     "w": 647.6,
+     "h": 45.4
+    },
+    {
+     "x": 24.5,
+     "y": 166.6,
+     "w": 649.6,
+     "h": 45.4
+    }
+   ]
+  },
+  {
+   "text": "Mind wandering occurred in 46.9% of the samples",
+   "rects": [
+    {
+     "x": 570.0,
+     "y": 423.6,
+     "w": 265.9,
+     "h": 43.8
+    },
+    {
+     "x": 24.5,
+     "y": 474.9,
+     "w": 558.7,
+     "h": 43.8
+    }
+   ]
+  },
+  {
+   "text": "people were less happy when their minds were wandering than when they were not",
+   "rects": [
+    {
+     "x": 765.2,
+     "y": 986.0,
+     "w": 70.7,
+     "h": 43.8
+    },
+    {
+     "x": 24.5,
+     "y": 1037.0,
+     "w": 811.1,
+     "h": 43.8
+    },
+    {
+     "x": 24.5,
+     "y": 1088.2,
+     "w": 505.4,
+     "h": 43.8
+    }
+   ]
+  }
+ ]
+}

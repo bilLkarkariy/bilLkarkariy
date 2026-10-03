@@ -1,0 +1,27 @@
+{
+ "id": "pascal_chambre",
+ "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+ "source": "Pascal, Pensées, Divertissement 4 (Laf. 136), penseesdepascal.fr",
+ "w": 715.2,
+ "h": 126.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "tout le malheur des hommes vient d’une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre",
+   "rects": [
+    {
+     "x": 214.5,
+     "y": 37.3,
+     "w": 459.4,
+     "h": 15.0
+    },
+    {
+     "x": 0.4,
+     "y": 55.3,
+     "w": 226.7,
+     "h": 15.0
+    }
+   ]
+  }
+ ]
+}

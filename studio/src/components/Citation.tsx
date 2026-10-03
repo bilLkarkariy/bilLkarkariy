@@ -55,6 +55,7 @@ export type CitationProps = {
   out?: number; // la feuille repart
   dim?: number; // 0 à 1 : le reste de la page s'efface quand on surligne
   veil?: number; // flou de la page (px) : on voit que c'est la vraie page, sans pouvoir la lire
+  inset?: number; // marge de papier autour de la capture (px), pour les captures prises sans marge
   zIndexNotes?: number;
 };
 
@@ -192,6 +193,9 @@ export const Citation: React.FC<CitationProps> = (p) => {
   const k = p.width / meta.w;
   const W = p.width;
   const H = (p.crop ?? meta.h) * k;
+  const I = p.inset ?? 0; // la feuille déborde de la capture de I px de chaque côté
+  const SW = W + 2 * I;
+  const SH = H + 2 * I;
   const marks = p.marks ?? [];
 
   // entrée : la feuille glisse et se pose ; sortie : elle remonte et s'efface
@@ -203,7 +207,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
   // hauteur au-dessus du bureau : 1 quand elle tombe, 0 posée ; elle se soulève pour repartir
   const h = 1 - s;
   const air = Math.max(h, e * 0.8);
-  const box = {position: 'absolute', left: p.x, top: p.y, width: W, height: H} as const;
+  const box = {position: 'absolute', left: p.x - I, top: p.y - I, width: SW, height: SH} as const;
   const sheet3d: React.CSSProperties = {
     ...box,
     opacity: o * (1 - e),
@@ -227,14 +231,14 @@ export const Citation: React.FC<CitationProps> = (p) => {
   const maskId = `dim-${p.cap}`;
 
   // fiches : à hauteur de leur passage, empilées sans se chevaucher
-  const notesX = p.notesX ?? W + 70;
+  const notesX = p.notesX ?? SW + 70;
   const notesW = p.notesW ?? 540;
   const placed: {n: Note; y: number; h: number; tone: Tone; mid?: number; top?: number; bot?: number}[] = [];
   const all = [
     ...marks.filter((m) => m.note).map((m) => {
       const r = meta.highlights[m.i].rects;
-      const top = r[0].y * k;
-      const bot = (r[r.length - 1].y + r[r.length - 1].h) * k;
+      const top = r[0].y * k + I;
+      const bot = (r[r.length - 1].y + r[r.length - 1].h) * k + I;
       return {n: m.note as Note, tone: m.note?.tone ?? m.tone ?? 'red', mid: (top + bot) / 2, top, bot};
     }),
     ...(p.notes ?? []).map((n) => ({n, tone: n.tone ?? ('ink' as Tone), mid: undefined, top: undefined, bot: undefined})),
@@ -280,17 +284,10 @@ export const Citation: React.FC<CitationProps> = (p) => {
           overflow: 'hidden',
         }}
       >
+        <div style={{position: 'absolute', left: I, top: I, width: W, height: H, overflow: 'hidden'}}>
         <Img
           src={staticFile(`captures/${p.cap}.png`)}
           style={{width: W, height: meta.h * k, display: 'block', mixBlendMode: 'multiply', filter: `grayscale(1) contrast(1.08)${p.veil ? ` blur(${p.veil}px)` : ''}`}}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(125deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 38%, rgba(40,36,30,0.06) 100%)',
-            mixBlendMode: 'soft-light',
-          }}
         />
         {p.crop !== undefined && p.crop < meta.h && (
           <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 70, background: `linear-gradient(transparent, ${C.sheet})`}} />
@@ -346,6 +343,16 @@ export const Citation: React.FC<CitationProps> = (p) => {
               });
             })}
         </svg>
+        </div>
+        {/* lumière de la fenêtre sur toute la feuille, marge comprise */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(125deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 38%, rgba(40,36,30,0.06) 100%)',
+            mixBlendMode: 'soft-light',
+          }}
+        />
       </div>
 
       {p.sub && (
@@ -353,7 +360,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
           style={{
             position: 'absolute',
             left: 0,
-            top: H + 26,
+            top: SH + 26,
             width: W,
             fontFamily: F.serif,
             fontStyle: 'italic',
@@ -374,12 +381,12 @@ export const Citation: React.FC<CitationProps> = (p) => {
       </div>
       <div style={{...box, opacity: 1 - e, transform: flat}}>
       {/* crochet dans la marge + trait vers la fiche */}
-      <svg width={W + notesX + 40} height={H + 600} style={{position: 'absolute', left: 0, top: 0, overflow: 'visible', pointerEvents: 'none'}}>
+      <svg width={SW + notesX + 40} height={SH + 600} style={{position: 'absolute', left: 0, top: 0, overflow: 'visible', pointerEvents: 'none'}}>
         {placed.map((it, i) => {
           if (it.mid === undefined || frame < it.n.at - 8) return null;
           const gone = it.n.until === undefined ? 1 : interpolate(frame, [it.n.until, it.n.until + 8], [1, 0], clamp);
           const b = interpolate(frame, [it.n.at - 8, it.n.at], [0, 1], {...clamp, easing: inOut});
-          const bx = W + 16;
+          const bx = SW + 16;
           const cy = it.y + 40;
           return (
             <g key={i} opacity={gone} fill="none" stroke={C.ink} strokeWidth={1.6}>

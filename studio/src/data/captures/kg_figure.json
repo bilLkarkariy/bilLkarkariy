@@ -1,0 +1,32 @@
+{
+ "id": "kg_figure",
+ "url": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+ "source": "Killingsworth & Gilbert, Science 2010, Fig. 1",
+ "w": 860.0,
+ "h": 1190.4,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "unpleasant mind wandering",
+   "rects": [
+    {
+     "x": 106.9,
+     "y": 743.4,
+     "w": 447.0,
+     "h": 92.3
+    }
+   ]
+  },
+  {
+   "text": "not mind wandering",
+   "rects": [
+    {
+     "x": 374.1,
+     "y": 957.2,
+     "w": 393.6,
+     "h": 131.2
+    }
+   ]
+  }
+ ]
+}

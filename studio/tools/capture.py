@@ -1,10 +1,12 @@
 """Captures de vraies pages (articles, études) avec la position exacte des passages à surligner.
 
 Pour chaque capture : on ouvre la page dans Chromium, on trouve le paragraphe
-qui contient l'ancre et on le photographie (×2.5, net en 4K). Pour chaque
-passage, on le colore avec l'API CSS Highlight (aucun changement de mise en
-page), on rephotographie, et la différence de pixels donne ses rectangles,
-ligne par ligne. Le montage anime ensuite un feutre sur ces rectangles.
+qui contient l'ancre et on le photographie (×2.5, net en 4K). Chaque passage
+devient une plage de texte (Range) dont on lit les boîtes, ligne par ligne,
+dans le même repère que la capture d'écran (l'écran, sans défilement entre les
+deux). Le montage anime ensuite un feutre sur ces rectangles.
+Option `pad` : marge autour du bloc (0 quand les paragraphes voisins sont trop proches ;
+la feuille ajoute alors sa propre marge, voir `inset` dans src/components/Citation.tsx).
 
   python3 tools/capture.py script/captures_v01.json [id ...]
   -> public/captures/<id>.png + src/data/captures/<id>.json   (rectangles en px CSS)
@@ -71,10 +73,12 @@ BOX = """
 HIDE = """
 header, nav, .usa-banner, .ncbi-header, .pmc-sidenav, .pmc-header, footer, [role="banner"],
 .usa-overlay, .ncbi-alerts, .pmc-sticky-header, aside, .QSIFeedbackButton, [class*="QSIFeedback"] { display: none !important; }
+/* bandeaux cookies, barres collantes et fenêtres d'autres sites (Médiamétrie, Arcep, Wardah…) */
+#sliding-popup, .eu-cookie-compliance-banner, #tarteaucitronRoot, #didomi-host, #onetrust-consent-sdk, .cookie-banner,
+#shopify-section-announcement-bar, .announcement-bar, [role="dialog"], [aria-modal="true"] { display: none !important; }
 body { background: #fff !important; }
 html, body { scrollbar-width: none !important; scroll-behavior: auto !important; }
 ::-webkit-scrollbar { display: none !important; }
-::highlight(cap) { background-color: rgb(255, 0, 255); color: rgb(255, 0, 255); }
 """
 
 
@@ -82,24 +86,20 @@ def shot(pg):
     return np.asarray(Image.open(io.BytesIO(pg.screenshot())).convert("RGB")).astype(np.int16)
 
 
-def bands(diff, ox, oy):
-    """Pixels modifiés -> un rectangle par ligne de texte (en px CSS, relatifs au bloc)."""
-    rows = np.where(diff.any(axis=1))[0]
-    out = []
-    if not len(rows):
-        return out
-    starts = [rows[0]]
-    ends = []
-    for a, b in zip(rows[:-1], rows[1:]):
-        if b > a + 1:
-            ends.append(a)
-            starts.append(b)
-    ends.append(rows[-1])
-    for r0, r1 in zip(starts, ends):
-        cols = np.where(diff[r0:r1 + 1].any(axis=0))[0]
-        out.append({"x": round((cols[0] - ox) / DPR, 1), "y": round((r0 - oy) / DPR, 1),
-                    "w": round((cols[-1] + 1 - cols[0]) / DPR, 1), "h": round((r1 + 1 - r0) / DPR, 1)})
-    return out
+# rectangles d'un passage, une boîte par ligne (coordonnées de l'écran, comme la capture)
+RECTS = """
+(i) => {
+  const rs = [...window.__ranges[i].getClientRects()].filter(r => r.width > 1 && r.height > 1);
+  const lines = [];
+  for (const r of rs) {
+    const l = lines.find(l => Math.abs((l.top + l.bottom) / 2 - (r.top + r.bottom) / 2) < r.height / 2);
+    if (l) { l.left = Math.min(l.left, r.left); l.right = Math.max(l.right, r.right);
+             l.top = Math.min(l.top, r.top); l.bottom = Math.max(l.bottom, r.bottom); }
+    else lines.push({left: r.left, right: r.right, top: r.top, bottom: r.bottom});
+  }
+  return lines.sort((a, b) => a.top - b.top);
+}
+"""
 
 
 def main():
@@ -117,7 +117,13 @@ def main():
             url = job["url"]
             if url not in pages:
                 pg = ctx.new_page()
-                pg.goto(url, wait_until="networkidle", timeout=90000)
+                try:
+                    # « load » puis un temps : certains sites (mesure d'audience) ne sont jamais « networkidle »
+                    pg.goto(url, wait_until="load", timeout=90000)
+                except Exception as e:  # noqa: BLE001
+                    print(f"{job['id']:16s} ÉCHEC du chargement : {str(e).splitlines()[0]}")
+                    continue
+                pg.wait_for_timeout(2500)
                 pg.add_style_tag(content=HIDE)
                 pg.evaluate("document.fonts.ready")
                 pages[url] = pg
@@ -125,7 +131,8 @@ def main():
             pg.evaluate("document.querySelectorAll('[data-capture]').forEach(e => e.removeAttribute('data-capture'))")
             res = pg.evaluate(FIND, [job["anchor"], job.get("highlights", []), job.get("block", "p"), job.get("deepest", False)])
             if "error" in res:
-                raise SystemExit(f"{job['id']} : {res['error']}")
+                print(f"{job['id']:16s} ÉCHEC : {res['error']}")
+                continue
             pg.wait_for_timeout(300)
             box = pg.evaluate(BOX)
             pad = job.get("pad", 22)
@@ -137,17 +144,18 @@ def main():
             if "crop_h" in job:  # ne garder que le haut du bloc (titre + auteurs, sans le bandeau PMC)
                 y1 = min(y1, y0 + int((pad + job["crop_h"]) * DPR))
             hl = []
+            ox, oy = x0 / DPR, y0 / DPR
             for i, text in enumerate(job.get("highlights", [])):
-                pg.evaluate("i => CSS.highlights.set('cap', new Highlight(window.__ranges[i]))", i)
-                pg.wait_for_timeout(250)
-                full = np.abs(shot(pg) - clean).sum(axis=2) > 60
-                pg.evaluate("CSS.highlights.delete('cap')")
-                rects = bands(full[y0:y1, x0:x1], 0, 0)
+                lines = pg.evaluate(RECTS, i)
+                rects = [{"x": round(l["left"] - ox, 1), "y": round(l["top"] - oy, 1),
+                          "w": round(l["right"] - l["left"], 1), "h": round(l["bottom"] - l["top"], 1)}
+                         for l in lines if l["top"] >= oy - 2 and l["bottom"] <= y1 / DPR + 2]
                 if not rects:
-                    ys = np.where(full.any(axis=1))[0]
-                    raise SystemExit(f"{job['id']} : passage invisible dans le cadre {y0}-{y1} : {text} "
-                                     f"(différence en {ys.min() if len(ys) else '-'}-{ys.max() if len(ys) else '-'})")
+                    print(f"{job['id']:16s} ÉCHEC : passage hors du cadre : {text}")
+                    break
                 hl.append({"text": text, "rects": rects})
+            if len(hl) != len(job.get("highlights", [])):
+                continue
             png = os.path.join(OUT, job["id"] + ".png")
             Image.fromarray(clean[y0:y1, x0:x1].astype(np.uint8)).save(png, optimize=True)
             meta = {"id": job["id"], "url": url, "source": job.get("source", ""),

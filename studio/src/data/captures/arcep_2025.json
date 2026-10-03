@@ -1,0 +1,27 @@
+{
+ "id": "arcep_2025",
+ "url": "https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/barometre-du-numerique/le-barometre-du-numerique-edition-2025.html",
+ "source": "Arcep, Arcom, CGE, ANCT / CREDOC, Baromètre du numérique 2025",
+ "w": 466.8,
+ "h": 72.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "42 % de la population estime passer trop de temps devant les écrans pour un usage personnel",
+   "rects": [
+    {
+     "x": 18.8,
+     "y": 1.3,
+     "w": 434.0,
+     "h": 22.0
+    },
+    {
+     "x": 0.3,
+     "y": 25.3,
+     "w": 265.5,
+     "h": 22.0
+    }
+   ]
+  }
+ ]
+}

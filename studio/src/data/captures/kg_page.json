@@ -1,0 +1,49 @@
+{
+ "id": "kg_page",
+ "url": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+ "source": "Killingsworth & Gilbert, « A wandering mind is an unhappy mind », Science 330(6006), p. 932, 12 nov. 2010",
+ "w": 860.0,
+ "h": 1136.6,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "A Wandering Mind Is an Unhappy Mind",
+   "rects": [
+    {
+     "x": 54.1,
+     "y": 76.4,
+     "w": 336.7,
+     "h": 33.0
+    },
+    {
+     "x": 54.1,
+     "y": 113.9,
+     "w": 196.6,
+     "h": 33.0
+    }
+   ]
+  },
+  {
+   "text": "12 NOVEMBER 2010",
+   "rects": [
+    {
+     "x": 242.5,
+     "y": 1107.9,
+     "w": 127.4,
+     "h": 13.5
+    }
+   ]
+  },
+  {
+   "text": "Harvard University",
+   "rects": [
+    {
+     "x": 589.4,
+     "y": 1037.2,
+     "w": 81.9,
+     "h": 11.2
+    }
+   ]
+  }
+ ]
+}

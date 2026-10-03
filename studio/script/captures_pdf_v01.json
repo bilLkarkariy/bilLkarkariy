@@ -1,0 +1,82 @@
+[
+ {
+  "id": "kg_page",
+  "pdf": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+  "source": "Killingsworth & Gilbert, « A wandering mind is an unhappy mind », Science 330(6006), p. 932, 12 nov. 2010",
+  "clip": [
+   0,
+   0,
+   572,
+   756
+  ],
+  "highlights": [
+   "A Wandering Mind Is an Unhappy Mind",
+   "12 NOVEMBER 2010",
+   "Harvard University"
+  ]
+ },
+ {
+  "id": "kg_methode",
+  "pdf": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+  "source": "Killingsworth & Gilbert, Science 2010",
+  "clip": [
+   30,
+   498,
+   207,
+   722
+  ],
+  "highlights": [
+   "contacts participants through their iPhones at random moments",
+   "2250 adults",
+   "What are you doing right now?",
+   "How are you feeling right now?"
+  ]
+ },
+ {
+  "id": "kg_resultats",
+  "pdf": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+  "source": "Killingsworth & Gilbert, Science 2010",
+  "clip": [
+   209,
+   120,
+   385,
+   365
+  ],
+  "highlights": [
+   "Are you thinking about something other than what you’re currently doing?",
+   "Mind wandering occurred in 46.9% of the samples",
+   "people were less happy when their minds were wandering than when they were not"
+  ]
+ },
+ {
+  "id": "kg_figure",
+  "pdf": "https://www.imm.uzh.ch/news/schatzkammer/Science_2010.330.932.pdf",
+  "source": "Killingsworth & Gilbert, Science 2010, Fig. 1",
+  "clip": [
+   209,
+   370,
+   386,
+   615
+  ],
+  "highlights": [
+   {
+    "text": "unpleasant mind wandering",
+    "rect": [
+     231,
+     523,
+     323,
+     542
+    ]
+   },
+   {
+    "text": "not mind wandering",
+    "rect": [
+     286,
+     567,
+     367,
+     594
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,49 @@
+{
+ "id": "karkariya_fondements",
+ "url": "https://wardahbooks.com/products/the-foundations-of-the-karkariya-order",
+ "source": "M. F. al-Karkari, The Foundations of the Karkariya Order, trad. Y. Casewit et K. Williams (fiche Wardah Books)",
+ "w": 419.2,
+ "h": 252.0,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "the Patched Cloak (al-muraqqa'a)",
+   "rects": [
+    {
+     "x": 214.6,
+     "y": 128.2,
+     "w": 145.5,
+     "h": 22.0
+    },
+    {
+     "x": 22.4,
+     "y": 154.2,
+     "w": 77.9,
+     "h": 22.0
+    }
+   ]
+  },
+  {
+   "text": "the Singular Name (al-ism al-mufrad)",
+   "rects": [
+    {
+     "x": 107.5,
+     "y": 154.2,
+     "w": 246.8,
+     "h": 22.0
+    }
+   ]
+  },
+  {
+   "text": "the Spiritual Retreat (al-khalwa)",
+   "rects": [
+    {
+     "x": 174.5,
+     "y": 180.2,
+     "w": 212.2,
+     "h": 22.0
+    }
+   ]
+  }
+ ]
+}

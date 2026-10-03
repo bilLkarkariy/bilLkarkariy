@@ -93,5 +93,128 @@
   "highlights": [
    "The untutored mind does not like to be alone with itself."
   ]
+ },
+ {
+  "id": "mm_3h",
+  "url": "https://www.mediametrie.fr/fr/lannee-internet-2025",
+  "source": "Médiamétrie, L'Année Internet 2025 (février 2026)",
+  "block": "p",
+  "deepest": true,
+  "anchor": "plus de 3h par jour en ligne",
+  "highlights": [
+   "plus de 3h par jour en ligne, un record"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "mm_mobile",
+  "url": "https://www.mediametrie.fr/fr/lannee-internet-2025",
+  "source": "Médiamétrie, L'Année Internet 2025 (février 2026)",
+  "block": "p",
+  "deepest": true,
+  "anchor": "il représente 80",
+  "highlights": [
+   "il représente 80 % du temps passé sur Internet"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "arcep_2025",
+  "url": "https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/barometre-du-numerique/le-barometre-du-numerique-edition-2025.html",
+  "source": "Arcep, Arcom, CGE, ANCT / CREDOC, Baromètre du numérique 2025",
+  "block": "p, li",
+  "deepest": true,
+  "anchor": "42 % de la population estime passer trop de temps",
+  "highlights": [
+   "42 % de la population estime passer trop de temps devant les écrans pour un usage personnel"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "pascal_chambre",
+  "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+  "source": "Pascal, Pensées, Divertissement 4 (Laf. 136), penseesdepascal.fr",
+  "block": "p",
+  "deepest": true,
+  "anchor": "j’ai dit souvent que tout le malheur",
+  "highlights": [
+   "tout le malheur des hommes vient d’une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "pascal_solitude",
+  "url": "https://www.penseesdepascal.fr/Divertissement/Divertissement4-moderne.php",
+  "source": "Pascal, Pensées, Divertissement 4 (Laf. 136), penseesdepascal.fr",
+  "block": "p",
+  "deepest": true,
+  "anchor": "le plaisir de la solitude est une chose incompréhensible",
+  "highlights": [
+   "De là vient que le plaisir de la solitude est une chose incompréhensible"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "ghazali_baghdad",
+  "url": "https://www.ghazali.org/works/watt3.htm",
+  "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+  "block": "p",
+  "deepest": true,
+  "anchor": "three hundred students in Baghdad",
+  "highlights": [
+   "three hundred students in Baghdad"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "ghazali_langue",
+  "url": "https://www.ghazali.org/works/watt3.htm",
+  "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+  "block": "p",
+  "deepest": true,
+  "anchor": "God caused my tongue to dry up",
+  "highlights": [
+   "God caused my tongue to dry up so that I was prevented from lecturing",
+   "my tongue would not utter a single word"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "ghazali_coeur",
+  "url": "https://www.ghazali.org/works/watt3.htm",
+  "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+  "block": "p",
+  "deepest": true,
+  "anchor": "This trouble arises from the heart",
+  "highlights": [
+   "the doctors gave up all hope of successful treatment",
+   "This trouble arises from the heart"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "ghazali_minaret",
+  "url": "https://www.ghazali.org/works/watt3.htm",
+  "source": "Al-Ghazali, Al-Munqidh min al-dalal, trad. W. M. Watt (1953), ghazali.org",
+  "block": "p",
+  "deepest": true,
+  "anchor": "going up the minaret of the mosque",
+  "highlights": [
+   "going up the minaret of the mosque for the whole day and shutting myself in so as to be alone"
+  ],
+  "pad": 0
+ },
+ {
+  "id": "karkariya_fondements",
+  "url": "https://wardahbooks.com/products/the-foundations-of-the-karkariya-order",
+  "source": "M. F. al-Karkari, The Foundations of the Karkariya Order, trad. Y. Casewit et K. Williams (fiche Wardah Books)",
+  "block": "p",
+  "deepest": true,
+  "anchor": "These foundations consist of",
+  "highlights": [
+   "the Patched Cloak (al-muraqqa'a)",
+   "the Singular Name (al-ism al-mufrad)",
+   "the Spiritual Retreat (al-khalwa)"
+  ]
  }
 ]

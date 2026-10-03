@@ -1,0 +1,21 @@
+{
+ "id": "mm_mobile",
+ "url": "https://www.mediametrie.fr/fr/lannee-internet-2025",
+ "source": "Médiamétrie, L'Année Internet 2025 (février 2026)",
+ "w": 812.0,
+ "h": 81.2,
+ "dpr": 2.5,
+ "highlights": [
+  {
+   "text": "il représente 80 % du temps passé sur Internet",
+   "rects": [
+    {
+     "x": 291.0,
+     "y": 3.2,
+     "w": 396.2,
+     "h": 21.0
+    }
+   ]
+  }
+ ]
+}
