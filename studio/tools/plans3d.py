@@ -20,7 +20,7 @@
 Les temps viennent des mots de la voix (src/data/v01.vo.json), calculés comme dans src/V01.tsx :
 si la voix change, on relance et tout se recale.
 
-  python3 tools/plans3d.py SHOT [--test [f,f,…]] [--pct 40] [--step 2] [--samples 32]
+  python3 tools/plans3d.py SHOT [--test [f,f,…]] [--pct 40] [--step 2] [--samples 32] [--gpu]
   -> public/3d/<shot>/f0001.png …  (fond transparent + ombres portées, composé sur le papier)
 """
 import json
@@ -636,6 +636,23 @@ else:
 # ── rendu ───────────────────────────────────────────────────────────────────────────────────────
 scene.render.engine = "CYCLES"
 scene.cycles.device = "CPU"
+if "--gpu" in ARGS:  # en local : la carte graphique (NVIDIA, AMD, Apple, Intel), 10 à 50 fois plus rapide
+    prefs = bpy.context.preferences.addons["cycles"].preferences
+    for kind in ("OPTIX", "CUDA", "METAL", "HIP", "ONEAPI"):
+        try:
+            prefs.compute_device_type = kind
+        except TypeError:
+            continue
+        prefs.get_devices()
+        gpus = [d for d in prefs.devices if d.type == kind]
+        if gpus:
+            for d in prefs.devices:
+                d.use = d.type == kind
+            scene.cycles.device = "GPU"
+            print(f"GPU : {kind} ({', '.join(d.name for d in gpus)})")
+            break
+    else:
+        print("aucune carte graphique utilisable : rendu sur le processeur")
 scene.cycles.samples = SAMPLES if "--samples" in ARGS else (16 if TEST else 32)
 scene.cycles.use_denoising = True
 scene.cycles.max_bounces = 6

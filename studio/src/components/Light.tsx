@@ -45,7 +45,9 @@ export const Lift: React.FC<{children: React.ReactNode; d?: number}> = ({childre
   <AbsoluteFill style={{filter: `drop-shadow(${4 * d}px ${7 * d}px ${5 * d}px rgba(30,28,24,0.22))`}}>{children}</AbsoluteFill>
 );
 
-const NO3D = Boolean(getInputProps().no3d);
+// --props '{"no3d":true}' : tous les plans 3D en carton ; '{"no3d":["vide","khalwa"]}' : seulement ceux-là
+const NO3D_PROP = getInputProps().no3d as boolean | string[] | undefined;
+const no3d = (dir: string) => (Array.isArray(NO3D_PROP) ? NO3D_PROP.includes(dir) : Boolean(NO3D_PROP));
 
 /**
  * Plan 3D rendu par tools/plans3d.py (public/3d/<dir>/f0001.png…), une image sur `step` :
@@ -67,7 +69,7 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
   const file = (k: number) => staticFile(`3d/${dir}/f${String(k).padStart(4, '0')}.png`);
   return (
     <AbsoluteFill>
-      {NO3D ? (
+      {no3d(dir) ? (
         <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 18, color: '#22211E', textAlign: 'center'}}>
           <div style={{fontFamily: "'Plex Mono', monospace", fontSize: 20, letterSpacing: '0.16em', background: '#F2D64B', padding: '6px 12px'}}>
             PLAN 3D · EN COURS DE RENDU

@@ -4,13 +4,14 @@ import {hl} from './captures';
 import {ARoll} from './components/ARoll';
 import {Citation} from './components/Citation';
 import {Lift, Shot3D, WindowLight} from './components/Light';
+import {Music} from './components/Music';
 import {Grain, Paper} from './components/Paper';
 import {at, LEAD, VO_SRC} from './cues';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
 import {Cit, citSfx, Fade, Sfx} from './montage/kit';
 import {P3, P3Back, P3Front, P3_SFX} from './montage/p3';
-import {P4, P4Front, P4_SFX} from './montage/p4';
+import {P4, P4Front, P4_SFX, VERSE_SILENCE} from './montage/p4';
 import {P5, P5Front, P5_END, P5_SFX} from './montage/p5';
 import {Countdown, Groups, Lab, Static} from './scenes/Part2';
 import {Plan} from './scenes/Plan';
@@ -522,6 +523,15 @@ export const V01: React.FC = () => (
     <Sequence from={LEAD}>
       <Audio src={staticFile(VO_SRC)} />
     </Sequence>
+    {/* musique (ElevenLabs, tools/sfx_el.py music) : la science, rien sous la pièce vide, la khalwa, la voie */}
+    <Music
+      silence={[VERSE_SILENCE]}
+      cues={[
+        {src: 'music/science_270s.mp3', from: cut1, to: Math.min(cut1 + 270 * 30, at('p35') + 30), fadeIn: 45, fadeOut: 75},
+        {src: 'music/soufi_khalwa_130s.mp3', from: at('p41') - 10, to: at('p54') - 6, gain: 0.24, fadeIn: 60},
+        {src: 'music/voie_165s.mp3', from: at('p54') - 30, to: V01_DURATION, gain: 0.22, fadeIn: 60, fadeOut: 90},
+      ]}
+    />
     {sfx.map(([name, f, v], i) => (
       <Sequence key={i} from={f} durationInFrames={60}>
         <Audio src={staticFile(`sfx/${SON[name] ?? name}.wav`)} volume={v} />
