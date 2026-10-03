@@ -2,8 +2,8 @@
   "_doc": "Texte du hook, découpé en segments. 'pause' = silence après le segment (s), utilisé seulement pour la voix temporaire. Avec la vraie prise, tools/align.py retrouve les segments dans l'audio.",
   "tts": {
     "engine": "elevenlabs",
-    "voice_id": "Qrl71rx6Yg8RvyPYRGCQ",
-    "_voice": "Guillaume - Narrator (bibliothèque ElevenLabs), voix temporaire",
+    "voice_id": "VnOjW3Apdoew44v1s6wr",
+    "_voice": "Billel (clone instantané ElevenLabs)",
     "model": "eleven_v4",
     "settings": {
       "stability": 0.5,

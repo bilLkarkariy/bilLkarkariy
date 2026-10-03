@@ -1,10 +1,10 @@
-# Script de montage : hook (0:00–0:42, POC)
+# Script de montage : hook (0:00–0:39, POC)
 
-Les temps viennent de la **voix temporaire** (Piper). Avec ta vraie prise, tout se recale automatiquement : chaque événement est accroché à un mot, pas à un timecode (`src/Hook.tsx`).
+Voix : **ton clone ElevenLabs** (« Billel », modèle `eleven_v4`, balises de ton dans `script/hook.json`). Les temps du tableau viennent d'une version antérieure de la voix ; ils sont indicatifs. Si tu enregistres une vraie prise, tout se recale automatiquement : chaque événement est accroché à un mot, pas à un timecode (`src/Hook.tsx`).
 
 Direction artistique : « La pièce ». Papier froid quadrillé (le carnet de labo), encre, et une seule couleur à l'image : le **rouge = la fuite** (bouton, décharge, ceux qui appuient). L'or (le centre) n'apparaît pas avant la partie sur la voie.
 
-| # | Temps (voix temp.) | Voix | Image | Son |
+| # | Temps (indicatif) | Voix | Image | Son |
 |---|---|---|---|---|
 | 1 | 0:00–0:03 | *(silence)* « Quinze minutes. » | **A-ROLL** plan serré : tu retournes ton téléphone sur le bureau, sans un mot, puis tu dis la phrase. | Téléphone posé face contre le bois. Ambiance de pièce. |
 | 2 | 0:03–0:08 | « Seul dans une pièce vide. Pas de téléphone, rien à lire. » | **Maquette 3D** en carton blanc, coupée à 1,1 m, en axonométrie. La caméra pivote lentement jusqu'à la vue de dessus. Un seul point rouge : le bouton sur la table. Cartouche d'architecte « SEUL · SANS RIEN · 15:00 ». Étiquettes TÉLÉPHONE puis LECTURE, barrées sur le mot. | Ambiance seule. |
@@ -27,6 +27,10 @@ Sources (description uniquement) : Wilson et al., *Science* 345(6192), 2014 (R1,
 1. Place tes fichiers dans `public/aroll/` (par exemple `hook_01.mp4`).
 2. Dans `src/components/ARoll.tsx`, remplace l'`<Img>` par `<OffthreadVideo src={staticFile('aroll/hook_01.mp4')} startFrom={...} />`.
 3. Utilise l'audio de ta prise comme voix : `python3 tools/vo.py align script/hook.json public/vo/ta_prise.wav`, puis relance le rendu. Tous les repères se recalent sur ta diction.
+
+## Changer la voix ou le ton
+
+Dans `script/hook.json` : `tts.voice_id`, `tts.model`, et les balises en tête de segment (`[calm]`, `[softly]`, `[serious]`…). Puis `python3 tools/vo.py tts script/hook.json` : génère, met en cache, aligne.
 
 ## Rendu
 

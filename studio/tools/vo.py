@@ -169,6 +169,12 @@ def tts(script_path):
             a = a[max(0, loud[0] - 480): loud[-1] + 2400]
             chunks += [a, np.zeros(int(seg["pause"] * SR))]
     chunks.append(np.zeros(int(sc["tail"] * SR)))
+    # nivellement doux : chaque segment fait la moitié du chemin vers le niveau médian
+    # (une phrase [softly] reste douce, mais ne disparaît pas sous l'ambiance)
+    rms = {i: np.sqrt(np.mean(c ** 2)) for i, c in enumerate(chunks) if len(c) and np.any(c)}
+    ref = np.median(list(rms.values()))
+    for i, r in rms.items():
+        chunks[i] = chunks[i] * (ref / r) ** 0.5
     audio = np.concatenate(chunks)
     audio *= 0.5 / np.max(np.abs(audio))
     out = os.path.join(ROOT, "public/vo", os.path.basename(script_path).replace(".json", ".wav"))

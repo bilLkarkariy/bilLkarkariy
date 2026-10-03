@@ -32,9 +32,9 @@ const Tag: React.FC<{label: string; from: number; strikeAt: number; y: number}> 
     easing: Easing.out(Easing.cubic),
   });
   return (
-    <div style={{position: 'absolute', left: 1500, top: y, opacity: o, display: 'flex', alignItems: 'center', gap: 16}}>
-      <div style={{width: 48, height: 1.5, background: C.inkSoft}} />
-      <div style={{position: 'relative', fontFamily: F.mono, fontSize: 22, letterSpacing: '0.16em', color: C.ink}}>
+    <div style={{position: 'absolute', left: 1572, top: y, opacity: o, display: 'flex', alignItems: 'center', gap: 14}}>
+      <div style={{width: 30, height: 1.5, background: C.inkSoft}} />
+      <div style={{position: 'relative', fontFamily: F.mono, fontSize: 21, letterSpacing: '0.14em', color: C.ink}}>
         {label}
         <div
           style={{
@@ -68,8 +68,8 @@ export const Maquette: React.FC<{reachTop: number; phone: number; read: number}>
       <div
         style={{
           position: 'absolute',
-          right: 64,
-          bottom: 56,
+          right: 34,
+          bottom: 28,
           opacity: cart,
           border: `1.5px solid ${C.ink}`,
           fontFamily: F.mono,
@@ -78,10 +78,10 @@ export const Maquette: React.FC<{reachTop: number; phone: number; read: number}>
           gridTemplateColumns: 'auto auto',
         }}
       >
-        <div style={{padding: '10px 18px', fontSize: 17, letterSpacing: '0.14em', borderRight: `1.5px solid ${C.ink}`}}>
+        <div style={{padding: '8px 14px', fontSize: 15, letterSpacing: '0.12em', borderRight: `1.5px solid ${C.ink}`}}>
           SEUL · SANS RIEN
         </div>
-        <div style={{padding: '4px 18px', fontSize: 34, fontWeight: 500, letterSpacing: '0.04em'}}>15:00</div>
+        <div style={{padding: '2px 14px', fontSize: 30, fontWeight: 500, letterSpacing: '0.04em'}}>15:00</div>
       </div>
     </AbsoluteFill>
   );
