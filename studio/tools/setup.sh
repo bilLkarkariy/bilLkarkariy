@@ -17,6 +17,10 @@ for ext in onnx onnx.json; do
   curl -sSfL -o ".cache/piper/fr_FR-tom-medium.$ext" \
     "https://huggingface.co/rhasspy/piper-voices/resolve/main/fr/fr_FR/tom/medium/fr_FR-tom-medium.$ext"
 done
+pip install -q torch==2.0.1 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu
+pip install -q --ignore-installed packaging && pip install -q deepfilternet
+mkdir -p ~/.cache/DeepFilterNet && curl -sSfL -o /tmp/dfn3.zip \
+  https://raw.githubusercontent.com/Rikorose/DeepFilterNet/main/models/DeepFilterNet3.zip && unzip -o -q /tmp/dfn3.zip -d ~/.cache/DeepFilterNet
 python3 tools/textures.py
 python3 tools/sfx.py
 echo "Ensuite : placer la photo/les rushes dans public/aroll/, puis"
