@@ -69,7 +69,7 @@ export const Static: React.FC<StaticCues> = ({shock, handle, label, spark}) => {
   const sparkOn = frame >= spark && frame < spark + 10;
   const tagO = interpolate(frame, [shock + 4, shock + 12], [0, 1], clamp) * interpolate(frame, [handle, handle + 6], [1, 0], clamp);
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{transform: 'scale(1.32)', transformOrigin: '940px 560px'}}>
       <svg width={1920} height={1080} style={{position: 'absolute'}}>
         <defs>
           <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">

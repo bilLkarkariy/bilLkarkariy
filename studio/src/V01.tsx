@@ -148,6 +148,7 @@ const cits: Cit[] = [
     cap: 'pmc_methode',
     ...SHEET,
     y: 290,
+    out: aloneIn - methIn - 12,
     tag: TAG + ' · ÉTUDE 10 · AVANT DE LES LAISSER SEULS',
     marks: [
       {
@@ -176,7 +177,7 @@ const cits: Cit[] = [
           kicker: 'UN SEUL HOMME',
           count: {to: 190, dur: 24},
           text: 'décharges en quinze minutes',
-          until: at('p13', 'quarante-deux') - resIn - 6,
+          until: at('p13', 'quarante-deux') - resIn - 2,
         },
       },
       {i: hl('pmc_resultats', '67% of men'), at: at('p13', 'petits') - resIn},
@@ -205,6 +206,7 @@ const cits: Cit[] = [
     cap: 'pmc_vagabondage',
     ...SHEET,
     y: 380,
+    out: homeIn - vagIn - 12,
     tag: TAG + ' · ÉTUDES 1 À 6 · SANS BOUTON',
     marks: [
       {
@@ -226,6 +228,7 @@ const cits: Cit[] = [
     cap: 'pmc_domicile',
     ...SHEET,
     y: 300,
+    out: e9In - domIn - 12,
     tag: TAG + ' · ÉTUDE 7 · À LA MAISON',
     marks: [
       {
@@ -254,6 +257,7 @@ const cits: Cit[] = [
     cap: 'pmc_etude9',
     ...SHEET,
     y: 360,
+    out: lastIn - e9In - 12,
     tag: TAG + ' · ÉTUDE 9 · MARCHÉ, ÉGLISE, CHEZ EUX',
     marks: [
       {
@@ -392,47 +396,57 @@ export const V01: React.FC = () => (
       <Lift><Study {...study} /></Lift>
     </Sequence>
 
-    <Sequence from={staticIn} durationInFrames={methIn - staticIn}>
-      <Lift>
-        <Static
-          shock={at('p9', 'décharge') - staticIn}
-          handle={at('p9', 'Comme') - staticIn}
-          label={at('p9', "d'électricité") - staticIn}
-          spark={at('p9', 'statique') - staticIn}
-        />
-      </Lift>
+    <Sequence from={staticIn} durationInFrames={methIn - staticIn + 8}>
+      <Fade from={methIn - staticIn} len={8} out>
+        <Lift>
+          <Static
+            shock={at('p9', 'décharge') - staticIn}
+            handle={at('p9', 'Comme') - staticIn}
+            label={at('p9', "d'électricité") - staticIn}
+            spark={at('p9', 'statique') - staticIn}
+          />
+        </Lift>
+      </Fade>
     </Sequence>
 
-    <Sequence from={aloneIn} durationInFrames={groupsIn - aloneIn}>
-      {/* 3D : soleil rasant par la porte, la porte se ferme, il ne reste que le bouton */}
-      <Shot3D dir="seuls" frames={groupsIn - aloneIn + 2}>
-        <Countdown left={15 * 60 - 13} />
-      </Shot3D>
+    <Sequence from={aloneIn} durationInFrames={groupsIn - aloneIn + 8}>
+      <Fade from={groupsIn - aloneIn} len={8} out>
+        {/* 3D : soleil rasant par la porte, la porte se ferme, il ne reste que le bouton */}
+        <Shot3D dir="seuls" frames={groupsIn - aloneIn + 2}>
+          <Countdown left={15 * 60 - 13} />
+        </Shot3D>
+      </Fade>
     </Sequence>
 
-    <Sequence from={groupsIn} durationInFrames={resIn - groupsIn}>
-      <Lift>
-        <Groups
-          men={at('p11', 'douze') - groupsIn}
-          menN={at('p11', 'dix-huit') - groupsIn}
-          women={at('p11', 'six') - groupsIn}
-          womenN={at('p11', 'vingt-quatre') - groupsIn}
-        />
-      </Lift>
+    <Sequence from={groupsIn} durationInFrames={resIn - groupsIn + 8}>
+      <Fade from={resIn - groupsIn} len={8} out>
+        <Lift>
+          <Groups
+            men={at('p11', 'douze') - groupsIn}
+            menN={at('p11', 'dix-huit') - groupsIn}
+            women={at('p11', 'six') - groupsIn}
+            womenN={at('p11', 'vingt-quatre') - groupsIn}
+          />
+        </Lift>
+      </Fade>
     </Sequence>
 
-    <Sequence from={homeIn} durationInFrames={salonIn - homeIn}>
-      <Lift>
-        <Lab intimidating={at('p16', 'intimidant') - homeIn} />
-      </Lift>
+    <Sequence from={homeIn} durationInFrames={salonIn - homeIn + 8}>
+      <Fade from={salonIn - homeIn} len={8} out>
+        <Lift>
+          <Lab intimidating={at('p16', 'intimidant') - homeIn} />
+        </Lift>
+      </Fade>
     </Sequence>
 
-    <Sequence from={salonIn} durationInFrames={domIn - salonIn}>
-      <Shot3D dir="salon" frames={domIn - salonIn + 2}>
-        <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink}}>
-          CHEZ EUX · EN LIGNE, SEULS
-        </div>
-      </Shot3D>
+    <Sequence from={salonIn} durationInFrames={domIn - salonIn + 8}>
+      <Fade from={domIn - salonIn} len={8} out>
+        <Shot3D dir="salon" frames={domIn - salonIn + 2}>
+          <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink}}>
+            CHEZ EUX · EN LIGNE, SEULS
+          </div>
+        </Shot3D>
+      </Fade>
     </Sequence>
 
     <Sequence from={lastIn} durationInFrames={prepIn - lastIn}>

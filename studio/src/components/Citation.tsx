@@ -228,8 +228,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
   // fiches : à hauteur de leur passage, empilées sans se chevaucher
   const notesX = p.notesX ?? W + 70;
   const notesW = p.notesW ?? 540;
-  const placed: {n: Note; y: number; tone: Tone; mid?: number; top?: number; bot?: number}[] = [];
-  let floor = -Infinity;
+  const placed: {n: Note; y: number; h: number; tone: Tone; mid?: number; top?: number; bot?: number}[] = [];
   const all = [
     ...marks.filter((m) => m.note).map((m) => {
       const r = meta.highlights[m.i].rects;
@@ -239,14 +238,15 @@ export const Citation: React.FC<CitationProps> = (p) => {
     }),
     ...(p.notes ?? []).map((n) => ({n, tone: n.tone ?? ('ink' as Tone), mid: undefined, top: undefined, bot: undefined})),
   ].sort((a, b) => a.n.at - b.n.at);
+  // la place de chaque fiche est fixée à son apparition : sous les fiches encore là à ce moment
+  // (une fiche qui s'efface laisse sa place à la suivante, qui pivote par-dessus)
   for (const it of all) {
-    const gone = it.n.until !== undefined && frame > it.n.until + 8;
     let y = it.n.y ?? (it.mid !== undefined ? it.mid - 46 : 0);
-    if (!gone && frame >= it.n.at) {
-      y = Math.max(y, floor + 18);
-      floor = y + noteH(it.n, notesW);
+    for (const q of placed) {
+      const stays = q.n.until === undefined || q.n.until > it.n.at;
+      if (stays) y = Math.max(y, q.y + q.h + 18);
     }
-    placed.push({...it, y});
+    placed.push({...it, y, h: noteH(it.n, notesW)});
   }
 
   return (
