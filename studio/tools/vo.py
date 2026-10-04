@@ -96,7 +96,12 @@ def tokens(text):
 
 
 def expand_numbers(words, language="fr"):
-    from num2words import num2words
+    try:
+        from num2words import num2words
+    except ImportError:
+        if language == "fr":
+            raise
+        return words  # (arabe… sans num2words : les nombres non reconnus seront interpolés entre leurs voisins)
     out = []
     for w in words:
         digits = re.sub(r"[^\d]", "", w["word"])
@@ -259,6 +264,8 @@ def align(script_path, audio_path):
             times[i] = (prev, nxt)
     times = snap_to_energy(audio_path, times)
     out = {"audio": os.path.relpath(audio_path, os.path.join(ROOT, "public")), "segments": []}
+    if sc.get("language", "fr") != "fr":  # (arabe : tools/srt.py et les contrôles lisent la langue ici)
+        out["language"] = sc["language"]
     for seg in sc["segments"]:
         words = [{"w": t, "start": round(times[i][0], 3), "end": round(times[i][1], 3)}
                  for i, (sid, t) in enumerate(script) if sid == seg["id"]]
