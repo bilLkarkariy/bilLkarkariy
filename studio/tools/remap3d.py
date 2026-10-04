@@ -80,7 +80,7 @@ def cues(lang):
     return at, vo
 
 
-def specs(at):
+def specs(at, lang='fr'):
     # Mêmes bornes que les séquences Remotion et tools/plans3d.py (début, fin exclue, pas).
     return {
         "maquette": (at("p1", "Seul") - 3, at("p2") - 10, 2),
@@ -89,7 +89,7 @@ def specs(at):
         "salon": (at("p16", "chez") - 3, at("p16", "Un") - 4 + 2, 2),
         "vide": (at("p35") - 4, at("p36", None, "end") + 24, 2),
         "khalwa": (at("p44") - 6, at("p44", None, "end") + 24, 2),
-        "dhikr": (at("p51", "L'idée") - 6, at("p51", None, "end") + 30, 2),
+        "dhikr": (at("p51", "L'idée") - 6, at("p52") - 10 if lang == 'ar' else at("p51", None, "end") + 30, 2),
         "meublee": (at("p67", "meublé") - 10, at("p68") + 30, 3),
     }
 
@@ -153,7 +153,7 @@ def main():
     fr_at, _ = cues("fr")
     done = load("src/data/renders3d.json")
     calls = word_calls()
-    lang_specs, fr_specs = specs(lang_at), specs(fr_at)
+    lang_specs, fr_specs = specs(lang_at, a.lang), specs(fr_at)
     out = {}
     for shot, (a0, b0, _step) in lang_specs.items():
         if shot not in done:  # la maquette suit déjà les repères de la langue (src/scenes/Maquette.tsx)
