@@ -1,112 +1,93 @@
-# V01 UR — images fixes à rendre et regarder
+# V01 UR — images fixes sur le vrai alignement
 
-Liste calculée sur la **voix estimée** (`src/data/v01_ur.vo.json`, `audio: null`) : 20 255 images, 30 i/s, 11:15. Toutes les
-images bougeront avec la vraie voix : après l'alignement, relancer `node tools/check_v01_en.mjs --lang ur` (il réécrit
-`out/validation/render-ur-stills.txt`) et refaire cette liste.
+Calculées sur `src/data/v01_ur.vo.json`, voix réelle `vo/v01_ur.wav` : **21072 images**, 30 i/s, **11:42.400**. Vidéo = voix + 0,8 s. Les trois Shorts suivent automatiquement le même alignement.
 
-Aucun PNG Remotion n'a été rendu ici (pas de `public/`). Une planche HTML a été regardée dans le navigateur, avec les
-polices du Mac et la police nastaliq du système : sens de lecture, mots barrés et colorés, compteurs, carte, verset,
-pages sans face caméra et Shorts sont à leur place. Ce n'est pas une preuve visuelle : les PNG restent à faire.
+Le contrôle HTML/styles et audio simulé est décrit dans `docs/v01-ur-etat.md`. Les PNG et le rendu complet restent à inspecter sur le Mac ; les tableaux ci-dessous sont une liste de rendu, pas une preuve d’inspection. La police `public/fonts/NotoNastaliqUrdu-Regular.ttf` est présente.
 
-## Vidéo longue : 38 vues
+## Vidéo longue
 
 | Vue | Image | Temps vidéo |
 |---|---:|---:|
 | p1_debut | 30 | 00:01.000 |
-| p1_milieu | 735 | 00:24.500 |
-| p1_fin | 1434 | 00:47.800 |
-| p2_debut | 1499 | 00:49.967 |
-| p2_milieu | 3424 | 01:54.133 |
-| p2_fin | 5343 | 02:58.100 |
-| p3_debut | 5408 | 03:00.267 |
-| p3_milieu | 7404 | 04:06.800 |
-| p3_fin | 9395 | 05:13.167 |
-| p4_debut | 9460 | 05:15.333 |
-| p4_milieu | 12667 | 07:02.233 |
-| p4_fin | 15868 | 08:48.933 |
-| p5_debut | 15933 | 08:51.100 |
-| p5_milieu | 18079 | 10:02.633 |
-| p5_fin | 20220 | 11:14.000 |
-| consigne | 1976 | 01:05.867 |
-| ecrans | 7617 | 04:13.900 |
-| pascal | 8200 | 04:33.333 |
-| solitude | 8422 | 04:40.733 |
-| khalwa | 11829 | 06:34.300 |
-| carte | 12376 | 06:52.533 |
-| carte_route | 13150 | 07:18.333 |
-| ghazali | 12736 | 07:04.533 |
-| dhikr | 14417 | 08:00.567 |
-| verset | 14996 | 08:19.867 |
-| fondements | 15459 | 08:35.300 |
-| point | 17416 | 09:40.533 |
-| retour | 17783 | 09:52.767 |
-| revelation | 19271 | 10:42.367 |
-| verset_fondu_entree | 14916 | 08:17.200 |
-| verset_fondu_sortie | 15076 | 08:22.533 |
-| verset_avant | 14908 | 08:16.933 |
-| verset_apres | 15083 | 08:22.767 |
-| traduction_parlee | 14789 | 08:12.967 |
-| pause_question | 6291 | 03:29.700 |
-| chuchotements | 17644 | 09:48.133 |
-| fin_voix | 20055 | 11:08.500 |
-| ecran_final | 20165 | 11:12.167 |
+| p1_milieu | 754 | 00:25.133 |
+| p1_fin | 1473 | 00:49.100 |
+| p2_debut | 1538 | 00:51.267 |
+| consigne | 2020 | 01:07.333 |
+| p2_milieu | 3514 | 01:57.133 |
+| p2_fin | 5485 | 03:02.833 |
+| p3_debut | 5550 | 03:05.000 |
+| pause_question | 6508 | 03:36.933 |
+| p3_milieu | 7719 | 04:17.300 |
+| ecrans | 7939 | 04:24.633 |
+| pascal | 8561 | 04:45.367 |
+| solitude | 8832 | 04:54.400 |
+| p3_fin | 9882 | 05:29.400 |
+| p4_debut | 9947 | 05:31.567 |
+| khalwa | 12422 | 06:54.067 |
+| carte | 12982 | 07:12.733 |
+| p4_milieu | 13250 | 07:21.667 |
+| ghazali | 13369 | 07:25.633 |
+| carte_route | 13660 | 07:35.333 |
+| dhikr | 15120 | 08:24.000 |
+| verset_avant | 15429 | 08:34.300 |
+| verset_fondu_entree | 15437 | 08:34.567 |
+| traduction_parlee | 15531 | 08:37.700 |
+| verset | 15541 | 08:38.033 |
+| verset_fondu_sortie | 15645 | 08:41.500 |
+| verset_apres | 15652 | 08:41.733 |
+| fondements | 16094 | 08:56.467 |
+| p4_fin | 16547 | 09:11.567 |
+| p5_debut | 16612 | 09:13.733 |
+| point | 18145 | 10:04.833 |
+| chuchotements | 18406 | 10:13.533 |
+| retour | 18562 | 10:18.733 |
+| p5_milieu | 18827 | 10:27.567 |
+| revelation | 20083 | 11:09.433 |
+| fin_voix | 20872 | 11:35.733 |
+| ecran_final | 20982 | 11:39.400 |
+| p5_fin | 21037 | 11:41.233 |
 
-## Pages sans face caméra (`FACELESS=1`) : 8 vues
+## Pages sans face caméra
 
 | Vue | Image | Temps vidéo |
 |---|---:|---:|
-| sans_face_2 | 884 | 00:29.467 |
-| sans_face_3 | 3665 | 02:02.167 |
-| sans_face_4 | 6285 | 03:29.500 |
-| sans_face_5a | 9077 | 05:02.567 |
-| sans_face_5b | 9345 | 05:11.500 |
-| sans_face_8a | 19534 | 10:51.133 |
-| sans_face_8b | 19651 | 10:55.033 |
-| sans_face_9 | 20017 | 11:07.233 |
+| sans_face_2 | 898 | 00:29.933 |
+| sans_face_3 | 3687 | 02:02.900 |
+| sans_face_4 | 6507 | 03:36.900 |
+| sans_face_5a | 9585 | 05:19.500 |
+| sans_face_5b | 9763 | 05:25.433 |
+| sans_face_8a | 20375 | 11:19.167 |
+| sans_face_8b | 20540 | 11:24.667 |
+| sans_face_9 | 20857 | 11:35.233 |
 
-## Shorts : 9 vues
+## Shorts
 
-| Short | Images | Vues |
+| Short | Durée (images) | Vues |
 |---|---:|---|
-| short-bouton-ur | 3 519 | debut:60 milieu:1760 fin:3489 |
-| short-pascal-ur | 2 122 | debut:60 milieu:1061 fin:2092 |
-| short-exercice-ur | 2 712 | debut:60 milieu:1356 fin:2682 |
+| short-bouton-ur | 3617 | debut:60 milieu:1809 fin:3587 |
+| short-pascal-ur | 2316 | debut:60 milieu:1158 fin:2286 |
+| short-exercice-ur | 2864 | debut:60 milieu:1432 fin:2834 |
 
-## Commandes pour Claude (sur le Mac)
+## Commandes pour Claude
 
-Poser d'abord la police : `public/fonts/NotoNastaliqUrdu-Regular.ttf` (Noto Nastaliq Urdu, Google Fonts, licence OFL).
-Sans ce fichier, Remotion n'attend pas : il prend la police système du même nom si elle existe, sinon une autre.
+Réemploi des images 3D françaises avec `WITH3D=1`, aucun Blender. `FACELESS=1` est requis pour toutes les vues ourdoues.
 
 ```bash
 node tools/bundle_local.mjs out/bundle-ur
 export CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 export BUNDLE=out/bundle-ur
-node tools/stills.mjs out/validation/ur-png --composition V01-UR p1_debut:30 p1_milieu:735 p1_fin:1434 p2_debut:1499 p2_milieu:3424 p2_fin:5343 p3_debut:5408 p3_milieu:7404 p3_fin:9395 p4_debut:9460 p4_milieu:12667 p4_fin:15868 p5_debut:15933 p5_milieu:18079 p5_fin:20220 consigne:1976 ecrans:7617 pascal:8200 solitude:8422 khalwa:11829 carte:12376 carte_route:13150 ghazali:12736 dhikr:14417 verset:14996 fondements:15459 point:17416 retour:17783 revelation:19271 verset_fondu_entree:14916 verset_fondu_sortie:15076 verset_avant:14908 verset_apres:15083 traduction_parlee:14789 pause_question:6291 chuchotements:17644 fin_voix:20055 ecran_final:20165
-FACELESS=1 node tools/stills.mjs out/validation/ur-sans-face-png --composition V01-UR sans_face_2:884 sans_face_3:3665 sans_face_4:6285 sans_face_5a:9077 sans_face_5b:9345 sans_face_8a:19534 sans_face_8b:19651 sans_face_9:20017
-node tools/stills.mjs out/validation/short-bouton-ur-png --composition short-bouton-ur debut:60 milieu:1760 fin:3489
-node tools/stills.mjs out/validation/short-pascal-ur-png --composition short-pascal-ur debut:60 milieu:1061 fin:2092
-node tools/stills.mjs out/validation/short-exercice-ur-png --composition short-exercice-ur debut:60 milieu:1356 fin:2682
+FACELESS=1 WITH3D=1 node tools/stills.mjs out/validation/ur-png --composition V01-UR p1_debut:30 p1_milieu:754 p1_fin:1473 p2_debut:1538 consigne:2020 p2_milieu:3514 p2_fin:5485 p3_debut:5550 pause_question:6508 p3_milieu:7719 ecrans:7939 pascal:8561 solitude:8832 p3_fin:9882 p4_debut:9947 khalwa:12422 carte:12982 p4_milieu:13250 ghazali:13369 carte_route:13660 dhikr:15120 verset_avant:15429 verset_fondu_entree:15437 traduction_parlee:15531 verset:15541 verset_fondu_sortie:15645 verset_apres:15652 fondements:16094 p4_fin:16547 p5_debut:16612 point:18145 chuchotements:18406 retour:18562 p5_milieu:18827 revelation:20083 fin_voix:20872 ecran_final:20982 p5_fin:21037
+FACELESS=1 WITH3D=1 node tools/stills.mjs out/validation/ur-sans-face-png --composition V01-UR sans_face_2:898 sans_face_3:3687 sans_face_4:6507 sans_face_5a:9585 sans_face_5b:9763 sans_face_8a:20375 sans_face_8b:20540 sans_face_9:20857
+FACELESS=1 WITH3D=1 node tools/stills.mjs out/validation/short-bouton-ur-png --composition short-bouton-ur debut:60 milieu:1809 fin:3587
+FACELESS=1 WITH3D=1 node tools/stills.mjs out/validation/short-pascal-ur-png --composition short-pascal-ur debut:60 milieu:1158 fin:2286
+FACELESS=1 WITH3D=1 node tools/stills.mjs out/validation/short-exercice-ur-png --composition short-exercice-ur debut:60 milieu:1432 fin:2834
 ```
 
-Pour les plans 3D, ajouter `WITH3D=1` (les images 3D françaises recalées sur l'ourdou, `src/data/remap3d_ur.json`).
+## Contrôles visuels et sonores
 
-## Ce qu'il faut regarder
-
-- **Sens de lecture :** chaque ligne part de la droite ; les mots barrés le sont de droite à gauche ; les mots en or ou
-  en rouge sont les bons ; « 16 / 40 », « 4 / 5 », « 0:07 / 0:20 », « 12 / 18 » se lisent de gauche à droite.
-- **Nastaliq :** aucune hampe ni point coupé en haut ou en bas des lignes, des fiches et des Shorts ; interligne
-  suffisant sur les étapes de l'exercice (`point`), la consigne (`consigne`) et les fiches noires.
-- **Fiches noires :** la citation de Ghazali (`ghazali`) passe sur deux lignes, avec un seul mot sur la seconde :
-  à resserrer si c'est gênant.
-- **Carte :** noms de villes, de mer, de fleuve et de désert lisibles ; « بغداد » touche le bord droit comme
-  « BAGDAD » en français.
-- **Verset :** arabe uthmani en Amiri Quran, traduction ourdoue dessous, même place que l'anglais ; immobile entre les
-  fondus (`verset_fondu_entree`, `verset`, `verset_fondu_sortie`) ; aucun son.
-- **Guillemets :** “ ” ne se retournent pas en écriture de droite à gauche ; vérifier qu'ils s'ouvrent du bon côté.
-- **HUD et étiquettes de coin :** restés à leur place française (le compteur de la khalwa en haut à gauche) ;
-  dire s'il faut les passer à droite.
-- **Français et anglais :** les 1 733 comparaisons HTML FR et EN, avant et après, sont identiques. Comparer aussi
-  quelques PNG FR et EN avant/après si une preuve visuelle est voulue.
-
-Le montage ourdou garde ses emplacements face caméra et, sans `WITH3D`, ses cartons 3D. Ce ne sont pas des images
-prêtes à publier.
+- Nastaliq : hampes et points visibles, aucun débordement coupé dans les fiches, les étapes de l’exercice et les Shorts ; lecture de droite à gauche et nombres de gauche à droite.
+- Verset : texte uthmani en Amiri Quran, traduction ourdoue dessous, immobile entre les fondus. La voix continue ; musique et bruitages se taisent.
+- Plans 3D : vérifier chaque raccord de vitesse et la continuité des images françaises remappées, surtout khalwa, dhikr et pièce vide.
+- Pages sans face caméra : aucun visage ; la veste et l’invitation attendent les inserts de finition.
+- Les repères précis des inserts, de l’intro Pixar et des chuchotements figurent dans `v01-ur-finition.md`.
+- Comparaison FR/EN : le contrôle `--baseline out/validation/ur-baseline/src` compare HTML, styles et audio simulé. Il ne remplace pas une comparaison de PNG ni une écoute.

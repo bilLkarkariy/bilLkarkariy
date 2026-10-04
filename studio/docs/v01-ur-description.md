@@ -1,9 +1,6 @@
 # Description YouTube — V01 UR
 
-**Provisoire.** Chapitres calculés sur la voix estimée (`src/data/v01_ur.vo.json`, `audio: null`) avec
-`LEAD + début du groupe p…`, arrondis à la seconde inférieure, comme pour l'anglais. Durée estimée de `V01-UR` :
-**11:15** (20 255 images). Tout est à recalculer sur le vrai alignement. Les choix à valider sont dans
-`v01-ur-questions.md`.
+Version recalée sur la voix enregistrée assemblée (`vo/v01_ur.wav`). Chapitres calculés avec `LEAD + début du groupe p…`, arrondis à la seconde inférieure, comme pour l’anglais. Durée de `V01-UR` : **11:42.400** (21 072 images, 30 i/s). Les choix éditoriaux restants sont dans `v01-ur-questions.md`.
 
 ---
 
@@ -14,14 +11,14 @@
 نفسیات کی لیب سے پاسکل تک، امام غزالی کی گوشہ نشینی سے خلوت اور ذکر تک، اُس صوفی طریقے میں جس پر میں چلتا ہوں: طریقۂ کرکریہ۔ اور آج رات آزمانے کے لیے 2 منٹ کی ایک سادہ مشق۔
 
 00:00 15 منٹ اکیلے، اور ایک بٹن
-00:49 تجربہ
-02:42 سب سے عجیب بات
-04:25 پاسکل نے پہلے ہی دیکھ لیا تھا
-05:04 خالی کمرہ
-06:10 خلوت اور امام غزالی
-07:45 یاد: ذکر
-08:50 آج رات کی 2 منٹ کی مشق
-10:18 واپس بٹن کی طرف
+00:50 تجربہ
+02:46 سب سے عجیب بات
+04:36 پاسکل نے پہلے ہی دیکھ لیا تھا
+05:20 خالی کمرہ
+06:29 خلوت اور امام غزالی
+08:07 یاد: ذکر
+09:12 آج رات کی 2 منٹ کی مشق
+10:46 واپس بٹن کی طرف
 
 ذرائع
 
@@ -76,9 +73,8 @@ Map data: Natural Earth, public domain: https://www.naturalearthdata.com/about/t
 ## Notes de préparation (hors description à publier)
 
 - Chapitres : p7, p18, p28, p34, p41, p50, p54, p62, comme l'anglais. La même méthode redonne exactement les chapitres
-  anglais publiés, ce qui la valide. Ici, la voix est estimée : les temps sont faux de plusieurs secondes.
-- Sous-titres : `python3 tools/srt.py src/data/v01_ur.vo.json out/package_ur/v01.ur.srt` (306 entrées sur la voix
-  estimée). Chiffres occidentaux, ponctuation ourdoue, marque de droite à gauche en tête de ligne.
+  anglais publiés, ce qui la valide. Les temps ci-dessus suivent désormais le vrai alignement ourdou.
+- Sous-titres : `python3 tools/srt.py src/data/v01_ur.vo.json docs/v01-ur.srt` (306 entrées sur la voix enregistrée). Chiffres occidentaux, ponctuation ourdoue, marque de droite à gauche en tête de ligne.
 - Mêmes sources que l'anglais. Titres d'œuvres de Ghazali en arabe d'origine, avec leur translittération. Pour
   Pascal, l'original français vient en premier, puis la traduction anglaise de Trotter citée par la version anglaise.
   Les citations de Pascal et de Ghazali dites en ourdou ne suivent pas une traduction ourdoue publiée connue de moi :
