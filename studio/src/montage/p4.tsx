@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
 import {hl} from '../captures';
-import {ARoll} from '../components/ARoll';
+import {ARoll, FACELESS} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
 import {createCues, LEAD, toF} from '../cues';
@@ -466,11 +466,12 @@ const P4: React.FC = () => (
 );
 
 /** Au premier plan : le face caméra. */
-const P4Front: React.FC = () => (
+const P4Front: React.FC = () =>
+  FACELESS ? null : (
   <Sequence from={aroll6} durationInFrames={fondIn - aroll6}>
     <ARoll shot={tx("PLAN TAILLE · la veste visible")} line={tx("« La voie que je suis s'appelle la Karkariya. […] Cette veste rapiécée, c'est son habit. »")} />
   </Sequence>
-);
+  );
 
 /** Fenêtre où rien ne doit jouer (le verset) : la musique s'y coupe. */
 const VERSE_SILENCE: [number, number] = [verseIn, verseOut];

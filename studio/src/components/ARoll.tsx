@@ -10,6 +10,8 @@ import {C, F} from '../theme';
  * Au montage final, remplacer par <OffthreadVideo src={...} startFrom={...} />.
  */
 const CLEAN = Boolean(getInputProps().clean);
+/** --props '{"faceless":true}' : seul le premier face caméra reste (src/montage/faceless.tsx). */
+export const FACELESS = Boolean(getInputProps().faceless);
 export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
   const tx = useText();
   const frame = useCurrentFrame();

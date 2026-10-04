@@ -18,7 +18,7 @@ for (let i = 0; i < args.length; i++) {
 }
 if (!outDir || !pairs.length) throw new Error('Usage : node tools/stills.mjs out/stills [--composition V01-EN] [--html] nom:frame …');
 await fs.mkdir(outDir, {recursive: true});
-const inputProps = {no3d: !process.env.WITH3D, clean: Boolean(process.env.CLEAN)};
+const inputProps = {no3d: !process.env.WITH3D, clean: Boolean(process.env.CLEAN), faceless: Boolean(process.env.FACELESS)};
 if (html) {
   const {htmlStills} = await import('./stills_html.mjs');
   await htmlStills({outDir, pairs, composition: compositionId, sourceRoot: process.env.SOURCE_ROOT, ...inputProps});

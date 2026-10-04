@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Sequence} from 'remotion';
 import {hl} from '../captures';
-import {ARoll} from '../components/ARoll';
+import {ARoll, FACELESS} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift} from '../components/Light';
 import {Paper} from '../components/Paper';
@@ -461,12 +461,16 @@ const P3Front: React.FC = () => (
         screen={at('p32', "l'écran") - nightIn}
       />
     </Sequence>
-    <Sequence from={aroll4} durationInFrames={kgIn - aroll4}>
-      <ARoll shot={tx("GROS PLAN · regard caméra, 2 s de silence")} line={tx("« Question. La dernière fois que t'es resté cinq minutes sans rien faire… c'était quand ? »")} />
-    </Sequence>
-    <Sequence from={aroll5} durationInFrames={P3_END - aroll5}>
-      <ARoll shot={tx("3/4 PUIS FACE · la bascule")} line={tx("« Je crois qu'on se trompe de problème. »")} />
-    </Sequence>
+    {!FACELESS && (
+      <Sequence from={aroll4} durationInFrames={kgIn - aroll4}>
+        <ARoll shot={tx("GROS PLAN · regard caméra, 2 s de silence")} line={tx("« Question. La dernière fois que t'es resté cinq minutes sans rien faire… c'était quand ? »")} />
+      </Sequence>
+    )}
+    {!FACELESS && (
+      <Sequence from={aroll5} durationInFrames={P3_END - aroll5}>
+        <ARoll shot={tx("3/4 PUIS FACE · la bascule")} line={tx("« Je crois qu'on se trompe de problème. »")} />
+      </Sequence>
+    )}
   </>
 );
 

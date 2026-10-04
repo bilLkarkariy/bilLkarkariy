@@ -392,6 +392,44 @@
     "seul|0": "alone"
   },
   "p67": {
-    "meublé|0": "furnished"
+    "meublé|0": "furnished",
+    "tu|0": "You don't have"
+  },
+  "p5": {
+    "presque|0": "pretty sure",
+    "tu|0": "you would"
+  },
+  "p14": {
+    "des|0": "students",
+    "ça|0": "That doesn't",
+    "les|0": "The researchers"
+  },
+  "p22": {
+    "question|0": "question",
+    "cinq|0": "five",
+    "écran|0": "screen",
+    "c'était|0": "When was it"
+  },
+  "p33": {
+    "si|0": "if",
+    "c'est|0": "what is"
+  },
+  "p34": {
+    "je|0": "I think",
+    "qu'on|0": "we're looking",
+    "pas|0": "isn't being",
+    "c'est|0": "It's being",
+    "esprit|0": "mind"
+  },
+  "p66": {
+    "non|0": "Untutored",
+    "tout|0": "That's the key",
+    "s'entraîne|0": "something you can learn"
+  },
+  "p68": {
+    "prochaine|0": "Next time",
+    "pourquoi|0": "why trying",
+    "marche|0": "works so badly",
+    "et|0": "and what Sufis"
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import {AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, getInputProps, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {hl} from './captures';
-import {ARoll} from './components/ARoll';
+import {ARoll, FACELESS} from './components/ARoll';
 import {Citation} from './components/Citation';
 import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Music} from './components/Music';
@@ -14,6 +14,7 @@ import {Cit, citSfx, Fade, Sfx} from './montage/kit';
 import {getP3} from './montage/p3';
 import {getP4} from './montage/p4';
 import {getP5} from './montage/p5';
+import {getFaceless} from './montage/faceless';
 import {Countdown, Groups, Lab, Static} from './scenes/Part2';
 import {Plan} from './scenes/Plan';
 import {Study} from './scenes/Study';
@@ -25,6 +26,7 @@ const tx = translator(lang);
 const {P3, P3Back, P3Front, P3_SFX} = getP3(lang);
 const {P4, P4Front, P4_SFX, VERSE_SILENCE} = getP4(lang);
 const {P5, P5Front, P5_END, P5_SFX} = getP5(lang);
+const Faceless = getFaceless(lang);
 
 // ── Vidéo 1 : hook + « 01 · L'expérience » (ici), puis les parties suivantes (src/montage/p*.tsx).
 //    Tout est accroché aux mots de la voix.
@@ -426,9 +428,12 @@ const POOL: Record<string, {takes: string[]; gain: number; max?: number; fadeIn?
 };
 const CLAMP = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const rnd = (n: number, k: number) => (((Math.sin(n * 12.9898 + k * 78.233) * 43758.5453) % 1) + 1) % 1;
+/** --props '{"sfxOff":[[de, à], …]}' : bruitages coupés sur ces images (passages remplacés au montage, qui ont les leurs). */
+const SFX_OFF = (getInputProps().sfxOff ?? []) as [number, number][];
 const played = (() => {
   const seen: Record<string, number> = {};
   return [...sfx]
+    .filter(([, f]) => !SFX_OFF.some(([a, b]) => f >= a && f < b))
     .sort((a, b) => a[1] - b[1])
     .map(([name, f, v, max]) => {
       const pool = POOL[name];
@@ -541,6 +546,8 @@ const Component: React.FC = () => {
     <P4 />
     <P5 />
 
+    {FACELESS && <Faceless />}
+
     {/* la lumière de la fenêtre, sur tout ce qui est posé sur le bureau */}
     {!verse && <WindowLight />}
 
@@ -548,12 +555,16 @@ const Component: React.FC = () => {
     <Sequence from={0} durationInFrames={cut1}>
       <ARoll shot={tx("PLAN SERRÉ · il retourne son téléphone sur le bureau")} line={tx("« Quinze minutes. »")} />
     </Sequence>
-    <Sequence from={aroll2} durationInFrames={docIn - aroll2}>
-      <ARoll shot={tx("REGARD CAMÉRA")} line={tx("« Et je suis presque sûr que toi aussi, tu aurais appuyé. »")} />
-    </Sequence>
-    <Sequence from={aroll3} durationInFrames={vagIn - aroll3}>
-      <ARoll shot={tx("REGARD CAMÉRA · la relance")} line={tx("« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »")} />
-    </Sequence>
+    {!FACELESS && (
+      <>
+        <Sequence from={aroll2} durationInFrames={docIn - aroll2}>
+          <ARoll shot={tx("REGARD CAMÉRA")} line={tx("« Et je suis presque sûr que toi aussi, tu aurais appuyé. »")} />
+        </Sequence>
+        <Sequence from={aroll3} durationInFrames={vagIn - aroll3}>
+          <ARoll shot={tx("REGARD CAMÉRA · la relance")} line={tx("« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »")} />
+        </Sequence>
+      </>
+    )}
     <P3Front />
     <P4Front />
     <P5Front />
