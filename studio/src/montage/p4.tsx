@@ -46,11 +46,12 @@ const minaretIn = at('p48', 'enferme') - 8;
 const p49In = at('p49') - 4;
 const p50In = at('p50') - 4;
 const aroll6 = at('p53') - 6;
-// La traduction enregistrée reste audible AVANT le plateau silencieux.
-// Sans insert, repli sur la pause du script ; la version FR reste inchangée (anglais, ourdou : même logique).
+// EN : traduction avant le plateau silencieux. UR, comme FR : verset pendant
+// la phrase enregistrée, dès l'introduction ; aucun insert silencieux ajouté.
 const verseHold = vo.silences?.find((s) => s.kind === 'silent_verse');
-const verseIn = lang !== 'fr' ? (verseHold ? LEAD + toF(verseHold.start) : at('p52', undefined, 'end') + 1) : at('p52') - 10;
-const verseOut = lang !== 'fr' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
+const verseIn = lang === 'en' ? (verseHold ? LEAD + toF(verseHold.start) : at('p52', undefined, 'end') + 1) : at('p52') - 10;
+const verseOut = lang === 'ur' ? Math.min(aroll6, at('p52', undefined, 'end') + 30)
+  : lang === 'en' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
 const fondIn = at('p53', 'Et') - 4;
 const P4_END = at('p54') - 6;
 
@@ -459,7 +460,7 @@ const P4: React.FC = () => (
       <Shot3D dir="dhikr" frames={dhikrN} label={tx("La pièce nue. Sur « meuble », le point d'or se pose au centre ; le pion s'en éloigne (« l'esprit part ») et y revient, deux fois.")} />
     </Sequence>
 
-    {/* p52 : le verset. Aucun mouvement, aucun son dessous. */}
+    {/* p52 : fondu seul, musique et bruitages muets ; la voix UR continue. */}
     <Sequence from={verseIn} durationInFrames={verseOut - verseIn}>
       <Verse out={verseOut - verseIn - 14} />
     </Sequence>
@@ -474,7 +475,7 @@ const P4Front: React.FC = () =>
   </Sequence>
   );
 
-/** Fenêtre où rien ne doit jouer (le verset) : la musique s'y coupe. */
+/** Fenêtre du verset : musique et bruitages coupés, voix UR conservée. */
 const VERSE_SILENCE: [number, number] = [verseIn, verseOut];
 
 return {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE};

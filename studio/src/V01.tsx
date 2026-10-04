@@ -578,7 +578,7 @@ const Component: React.FC = () => {
 
     {/* son */}
     {vo.audio && <Sequence from={LEAD}>
-      <Audio src={staticFile(vo.audio)} volume={verse ? 0 : 1} />
+      <Audio src={staticFile(vo.audio)} volume={lang === 'en' && verse ? 0 : 1} />
     </Sequence>}
     {/* musique (ElevenLabs, tools/sfx_el.py music) : la science, rien sous la pièce vide, la khalwa, la voie */}
     <Music

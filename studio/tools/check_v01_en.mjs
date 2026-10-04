@@ -58,7 +58,8 @@ for (const [id, targets] of Object.entries(anchors)) {
   }
 }
 const outDir = 'out/validation';
-const render = await prepareStills({outDir: path.join(outDir, 'check')});
+const standard = await prepareStills({outDir: path.join(outDir, 'check')});
+const render = lang === 'ur' ? await prepareStills({outDir:path.join(outDir,'check-ur-faceless'),faceless:true}) : standard;
 const duration = render(COMP, 0).durationInFrames;
 const at = (p) => 24 + Math.round(segments[groups[p][0]].start * 30);
 const end = (p) => 24 + Math.round(segments[groups[p].at(-1)].end * 30);
@@ -77,27 +78,38 @@ for (const f of [...frames].sort((a, b) => a-b)) {
   assert(!/captures\/(?:mm_3h|mm_mobile|arcep_2025|pascal_chambre|pascal_solitude|pascal_ro139|pascal_ro210)\.png/.test(markup));
   assert(!/PUBMED CENTRAL|WILSON ET AL\.|TRAD\. W\. M\. WATT|PENSEESDEPASCAL/.test(markup));
   if (cfg.arabicScript) assert(markup.includes('dir="rtl"'), `Sens de lecture absent : ${f}`);
+  if (lang === 'ur') assert(!/aroll\/(?:placeholder|setup)\.jpg/.test(markup), `Visage en mode faceless : ${f}`);
 }
 await fs.writeFile(path.join(outDir, lang === 'en' ? 'rendered-text.txt' : `rendered-text-${lang}.txt`), [...texts].join('\n'));
 if (cfg.arabicScript) await fs.writeFile(path.join(outDir, `latin-${lang}.txt`), [...latin].join('\n'));
 // Même texte uthmani, police Amiri Quran, et aucun mouvement pendant le plateau du fondu.
 const hold = vo.silences?.find((s) => s.kind === 'silent_verse');
-const verseStart = hold ? 24 + Math.round(hold.start * 30) : vo.audio ? end('p52') + 1 : at('p52') - 10;
-const verseEnd = hold ? Math.min(at('p53') - 6, 24 + Math.round(hold.end * 30)) : at('p53') - 6;
+const voiceDuringVerse = lang === 'ur';
+if (voiceDuringVerse) assert(!hold, 'Aucun insert silencieux pour le verset ourdou');
+const verseStart = voiceDuringVerse ? at('p52') - 10 : hold ? 24 + Math.round(hold.start * 30) : vo.audio ? end('p52') + 1 : at('p52') - 10;
+const verseEnd = voiceDuringVerse ? Math.min(at('p53') - 6, end('p52') + 30)
+  : hold ? Math.min(at('p53') - 6, 24 + Math.round(hold.end * 30)) : at('p53') - 6;
 assert(verseEnd - verseStart >= 29, 'Le verset doit laisser au moins un plateau entre les fondus');
 const verseA = render(COMP, verseStart + 14).markup;
 const verseB = render(COMP, verseEnd - 15).markup;
-assert.equal(verseA, verseB, 'Le verset doit être immobile entre ses fondus');
+// Le faux composant Audio laisse une Sequence vide tant que le fichier son
+// est monté. Sa disparition ne change aucun pixel ; on contrôle séparément
+// son volume ci-dessous. Ne retirer que ce wrapper précis, sans style visuel.
+const visualMarkup = (s) => s.replaceAll('<div style="position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;display:flex"></div>', '');
+assert.equal(visualMarkup(verseA), visualMarkup(verseB), 'Le verset doit être immobile entre ses fondus');
 assert(verseA.includes('Amiri Quran'));
 assert(verseA.includes('أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ'));
 assert(verseA.includes(cfg.verse));
-// Sans voix : aucune musique non plus pendant le plateau du verset.
-for (let f = verseStart; f < verseEnd; f += 5) assert(render(COMP, f).audio.every((a) => a.volume === 0), `Son sous le verset : ${f}`);
+const isVoice = (a) => vo.audio && a.src.endsWith(vo.audio);
+// La voix UR accompagne le verset ; toutes les autres sources restent muettes.
+for (let f = verseStart; f < verseEnd; f += 5) assert(render(COMP, f).audio.every((a) => voiceDuringVerse && isVoice(a) ? a.volume === 1 : a.volume === 0), `Son sous le verset : ${f}`);
 if (vo.audio) {
   assert.equal(vo.audio, `vo/v01_${lang}.wav`);
   for (let f = verseStart; f < verseEnd; f++) {
-    assert(render(COMP, f).audio.every((a) => a.volume === 0), `Son sous le verset : ${f}`);
-    assert(!words.some((w) => 24 + w.start*30 < f+1 && 24 + w.end*30 > f), `Mot sous le verset : ${f}`);
+    const audio = render(COMP, f).audio;
+    assert(audio.every((a) => voiceDuringVerse && isVoice(a) ? a.volume === 1 : a.volume === 0), `Son sous le verset : ${f}`);
+    if (voiceDuringVerse) assert(audio.some((a) => isVoice(a) && a.volume === 1), `Voix coupée sous le verset : ${f}`);
+    else assert(!words.some((w) => 24 + w.start*30 < f+1 && 24 + w.end*30 > f), `Mot sous le verset : ${f}`);
   }
   for (const w of segments.s63.words) {
     const f = 24 + Math.round((w.start+w.end)*15);
@@ -117,7 +129,7 @@ for (const [name,frame] of Object.entries({verset_fondu_entree:verseStart+7, ver
   verset_avant:verseStart-1, verset_apres:verseEnd, traduction_parlee:Math.round((at('p52')+end('p52'))/2),
   pause_question:24+Math.round(segments.s33.end*30)+30, chuchotements:24+Math.round(segments.s69.words.at(-1).start*30),
   fin_voix:24+Math.round(segments.s79.end*30), ecran_final:duration-90})) pairs.push({name,frame});
-await htmlStills({outDir:path.join(outDir, lang), pairs, composition:COMP});
+await htmlStills({outDir:path.join(outDir, lang), pairs, composition:COMP,faceless:voiceDuringVerse});
 const shortDurations = {};
 for (const id of ['bouton', 'pascal', 'exercice'].map((s) => `short-${s}-${lang}`)) {
   const n = render(id, 0).durationInFrames; shortDurations[id] = n;
@@ -125,7 +137,7 @@ for (const id of ['bouton', 'pascal', 'exercice'].map((s) => `short-${s}-${lang}
     const {markup} = render(id, f);
     if (cfg.arabicScript) assert(markup.includes('dir="rtl"'), `Sens de lecture absent : ${id}:${f}`);
   }
-  await htmlStills({outDir:path.join(outDir, id), composition:id, pairs:[{name:'debut', frame:60}, {name:'milieu', frame:Math.round(n/2)}, {name:'fin', frame:n-30}]});
+  await htmlStills({outDir:path.join(outDir, id), composition:id, faceless:voiceDuringVerse, pairs:[{name:'debut', frame:60}, {name:'milieu', frame:Math.round(n/2)}, {name:'fin', frame:n-30}]});
 }
 let frenchComparison;
 const sourceRoot = arg('--baseline');
@@ -138,9 +150,10 @@ if (process.argv.includes('--baseline')) {
   if (lang !== 'en') ids.push('V01-EN', 'short-bouton-en', 'short-pascal-en', 'short-exercice-en');
   for (const id of ids) {
     const n = before(id, 0).durationInFrames;
-    assert.equal(render(id, 0).durationInFrames, n);
+    assert.equal(standard(id, 0).durationInFrames, n);
     for (let f=0; f<n; f+=30) {
-      if (before(id,f).markup !== render(id,f).markup) frenchComparison.different.push(`${id}:${f}`);
+      const previous = before(id,f), current = standard(id,f);
+      if (previous.markup !== current.markup || JSON.stringify(previous.audio) !== JSON.stringify(current.audio)) frenchComparison.different.push(`${id}:${f}`);
       frenchComparison.count++;
     }
   }
