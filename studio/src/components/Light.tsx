@@ -3,9 +3,11 @@ import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import rendered from '../data/renders3d.json';
 import remapEN from '../data/remap3d_en.json';
+import remapAR from '../data/remap3d_ar.json';
 
-// Hors français, aucune 3D recalculée : les images FR sont recalées sur les mots de la langue (tools/remap3d.py).
-const REMAP: Partial<Record<Lang, Record<string, number[][]>>> = {en: remapEN};
+// Hors français, aucune 3D recalculée : les images FR sont recalées sur les mots de la langue
+// (python3 tools/remap3d.py --lang <langue>, sur la vraie voix). Arabe : vide ({}) tant que la voix n'existe pas.
+const REMAP: Partial<Record<Lang, Record<string, number[][]>>> = {en: remapEN, ar: remapAR};
 
 // La lumière de la pièce : une fenêtre en haut à gauche. Le soleil glisse lentement
 // sur le bureau pendant toute la vidéo, ses montants posent une ombre floue sur le papier.
