@@ -1,5 +1,4 @@
-import {Shot3D} from '../components/Light';
-import {useLang, useText} from '../i18n';
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, getInputProps, Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {C, F} from '../theme';
@@ -66,7 +65,8 @@ export const Maquette: React.FC<{reachTop: number; phone: number; read: number}>
   const cart = interpolate(frame, [6, 16], [0, 1], {extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill>
-      {useLang() === 'en' ? <Shot3D dir="maquette" frames={reachTop} label={tx('SEUL · SANS RIEN')} /> : getInputProps().noMaquette ? null : <Frames idx={idx} />}
+      {/* (en anglais aussi : idx suit déjà les repères de la voix EN) */}
+      {getInputProps().noMaquette ? null : <Frames idx={idx} />}
       <Tag label={tx("TÉLÉPHONE")} from={phone - 4} strikeAt={phone + 6} y={430} />
       <Tag label={tx("LECTURE")} from={read - 4} strikeAt={read + 6} y={490} />
       {/* cartouche */}

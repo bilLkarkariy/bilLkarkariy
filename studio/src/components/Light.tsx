@@ -2,6 +2,7 @@ import {useLang, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import rendered from '../data/renders3d.json';
+import remapEN from '../data/remap3d_en.json';
 
 // La lumière de la pièce : une fenêtre en haut à gauche. Le soleil glisse lentement
 // sur le bureau pendant toute la vidéo, ses montants posent une ombre floue sur le papier.
@@ -56,6 +57,17 @@ const no3d = (dir: string) => (Array.isArray(NO3D_PROP) ? NO3D_PROP.includes(dir
  * Plan 3D rendu par tools/plans3d.py (public/3d/<dir>/f0001.png…), une image sur `step` :
  * on fond les deux voisines (mouvements lents, ça ne se voit pas).
  */
+/** Image FR (fractionnaire) à montrer pour une image EN : linéaire entre deux repères [EN, FR]. */
+const remap = (knots: number[][], e: number) => {
+  if (e <= knots[0][0]) return knots[0][1];
+  for (let i = 1; i < knots.length; i++) {
+    const [e0, f0] = knots[i - 1];
+    const [e1, f1] = knots[i];
+    if (e <= e1) return f0 + ((e - e0) / (e1 - e0)) * (f1 - f0);
+  }
+  return knots[knots.length - 1][1];
+};
+
 export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label?: string; children?: React.ReactNode}> = ({
   dir,
   frames,
@@ -65,19 +77,24 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
 }) => {
   const tx = useText();
   const frame = useCurrentFrame();
+  const en = useLang() === 'en';
+  // (version anglaise : aucune 3D recalculée, les images FR sont recalées sur les mots anglais, tools/remap3d_en.py)
+  const knots = en ? (remapEN as Record<string, number[][]>)[dir] : undefined;
   // (si la voix a bougé depuis le rendu, on s'arrête sur la dernière image rendue)
   const done = (rendered as Record<string, {frames: number; step: number}>)[dir];
   // (le pas réellement rendu prime : un plan recalculé image par image n'a plus rien à fondre)
   if (done?.step) step = Math.min(step, done.step);
-  const last = 1 + Math.floor((Math.min(frames, done?.frames ?? frames) - 1) / step) * step;
-  const n = Math.min(last, frame + 1);
-  const n0 = 1 + Math.floor((n - 1) / step) * step;
+  const avail = knots ? done?.frames ?? frames : Math.min(frames, done?.frames ?? frames);
+  const last = 1 + Math.floor((avail - 1) / step) * step;
+  const n = Math.max(1, Math.min(last, knots ? remap(knots, frame + 1) : frame + 1));
+  // (rendu image par image : on prend l'image la plus proche, un fondu dédoublerait le pion recalé en anglais)
+  const n0 = step === 1 ? Math.round(n) : 1 + Math.floor((n - 1) / step) * step;
   const n1 = Math.min(last, n0 + step);
-  const t = n1 === n0 ? 0 : (n - n0) / step;
+  const t = step === 1 || n1 === n0 ? 0 : (n - n0) / step;
   const file = (k: number) => staticFile(`3d/${dir}/f${String(k).padStart(4, '0')}.png`);
   return (
     <AbsoluteFill>
-      {(useLang() === 'en' || no3d(dir)) ? (
+      {((en && !knots) || no3d(dir)) ? (
         <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 18, color: '#22211E', textAlign: 'center'}}>
           <div style={{fontFamily: "'Plex Mono', monospace", fontSize: 20, letterSpacing: '0.16em', background: '#F2D64B', padding: '6px 12px'}}>{tx("PLAN 3D · EN COURS DE RENDU")}</div>
           <div style={{fontFamily: "'Garamond', serif", fontStyle: 'italic', fontSize: 40, maxWidth: 1300}}>{label ?? dir}</div>

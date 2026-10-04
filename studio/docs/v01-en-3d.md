@@ -31,24 +31,11 @@ Pour les sept autres plans, une correspondance linéaire par morceaux entre les 
 Aucun réemploi ni nouveau rendu n’est branché automatiquement : les cartons 3D EN restent actifs jusqu’à inspection des aperçus. Le plan dhikr conserve ensuite son dernier état pendant la traduction parlée, avant le verset silencieux.
 Option recalcul intégral des sept plans animés : environ 97.1 min (1.62 h) à 7 s/image. Le rendu GPU réel peut différer.
 
-## Commandes prêtes pour Claude, à lancer hors de ce bac à sable
+## Décision : aucune 3D anglaise calculée
 
-```bash
-HF_HUB_OFFLINE=1 python3 tools/report_3d_en.py
-python3 tools/plans3d.py seuls --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu --test 1,88,177 --pct 50
-python3 tools/plans3d.py seuls --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu
-python3 tools/plans3d.py bouton --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu --test 1,63,127 --pct 50
-python3 tools/plans3d.py bouton --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu
-python3 tools/plans3d.py salon --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu --test 1,39,78 --pct 50
-python3 tools/plans3d.py salon --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu
-python3 tools/plans3d.py vide --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu --test 1,252,504 --pct 50
-python3 tools/plans3d.py vide --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu
-python3 tools/plans3d.py khalwa --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu --test 1,185,370 --pct 50
-python3 tools/plans3d.py khalwa --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu
-python3 tools/plans3d.py dhikr --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu --test 1,163,326 --pct 50
-python3 tools/plans3d.py dhikr --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 2 --samples 32 --gpu
-python3 tools/plans3d.py meublee --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 3 --samples 32 --gpu --test 1,59,119 --pct 50
-python3 tools/plans3d.py meublee --cues out/validation/3d-en-cues.json --out-root out/3d-en --step 3 --samples 32 --gpu
-```
-
-Ces commandes écrivent les PNG et leur registre dans `out/3d-en/`. Après inspection, Claude devra prévoir leur copie vers des assets EN séparés et leur branchement Remotion, dans une session autorisant cette écriture. Ne pas remplacer le registre ni les PNG FR.
+Billel refuse tout nouveau rendu 3D pour la version anglaise. Les images FR sont réutilisées et recalées :
+`python3 tools/report_3d_en.py` puis `python3 tools/remap3d_en.py` écrivent `src/data/remap3d_en.json`
+(repères [image EN, image FR] de chaque plan), lu par `Shot3D` en anglais. Lecture linéaire entre deux repères,
+vitesse normale avant le premier et après le dernier, dernière image tenue. Les plans rendus image par image
+(vide, khalwa, dhikr) prennent l'image la plus proche, sans fondu, pour ne pas dédoubler le pion.
+La maquette suit déjà les repères EN dans `src/scenes/Maquette.tsx`.
