@@ -1,10 +1,14 @@
 """Sous-titres .srt depuis l'alignement mot à mot de la voix.
 
   python3 tools/srt.py src/data/v01.vo.json out/v01.fr.srt
+  python3 tools/srt.py src/data/v01_ur.vo.json out/v01.ur.srt   (la langue vient du champ « language »)
 
 Le texte affiché est celui du script (ponctuation, majuscules) ; les temps sont ceux des mots,
 décalés de LEAD (24 images, src/cues.ts) pour tomber juste sur la vidéo.
 Une ligne : 42 caractères au plus, 4,5 s au plus, coupée en fin de phrase ou sur un silence.
+Ourdou : chiffres occidentaux (comme à l'écran), ponctuation ourdoue (۔ ، ؟ ؛) prise pour des fins de phrase,
+et chaque ligne commence par une marque de droite à gauche (U+200F) pour que les lecteurs la posent à droite
+même quand elle commence par un chiffre.
 """
 import json
 import re
@@ -29,6 +33,20 @@ NOMBRES_EN = [
     *zip('seventy-seven forty twenty eighteen fifteen twelve ten nine six five four three two one'.split(),
          '77 40 20 18 15 12 10 9 6 5 4 3 2 1'.split()),
 ]
+# Ourdou : seulement les nombres sûrs. « ایک » (un, une) reste en lettres, sauf comme numéro d'étape (« ایک۔ »).
+NOMBRES_UR = [
+    ('دو ہزار دو سو پچاس', '2,250'), ('ایک ہزار پچانوے', '1095'), ('دو ہزار چودہ', '2014'),
+    ('دو ہزار سات', '2007'), ('دو ہزار دس', '2010'), ('ساڑھے تین سو', '350'), ('ایک سو نوے', '190'),
+    ('تین سو', '300'), ('اسی فیصد', '80%'), ('اٹھارہ سے ستتر', '18 سے 77'),
+    ('اٹھارہ میں سے بارہ', '18 میں سے 12'), ('چوبیس میں سے چھ', '24 میں سے 6'), ('تین میں سے دو', '3 میں سے 2'),
+    ('تین میں سے ایک', '3 میں سے 1'), ('دس میں سے نو', '10 میں سے 9'), ('دس میں سے چار', '10 میں سے 4'),
+    ('پندرہ منٹ', '15 منٹ'), ('پانچ منٹ', '5 منٹ'), ('دو منٹ', '2 منٹ'), ('ایک منٹ', '1 منٹ'),
+    ('چالیس سیکنڈ', '40 سیکنڈ'), ('بیس سیکنڈ', '20 سیکنڈ'), ('دو سیکنڈ', '2 سیکنڈ'), ('تین گھنٹے', '3 گھنٹے'),
+    ('چالیس دن', '40 دن'), ('چالیس تو', '40 تو'), ('تین دن', '3 دن'), ('دو سال', '2 سال'), ('تین بجے', '3 بجے'),
+    ('بیس انٹرنیٹ', '20 انٹرنیٹ'), ('بیس بار', '20 بار'), ('بیالیس', '42'),
+    ('ایک۔', '1۔'), ('دو۔', '2۔'), ('تین۔', '3۔'), ('چار۔', '4۔'), ('پانچ۔', '5۔'),
+]
+RTL = {'ur', 'ar'}
 
 
 def tc(t):
@@ -59,7 +77,7 @@ def tokens(seg, language='fr'):
         res = [(t, words[min(n - 1, i * n // len(toks))]["start"], words[min(n - 1, (i + 1) * n // len(toks) - 1)]["end"])
                for i, t in enumerate(toks)]
     # un nombre écrit en lettres devient un seul jeton en chiffres (il ne sera jamais coupé en deux)
-    for a, b in NOMBRES_EN if language == 'en' else NOMBRES:
+    for a, b in {'en': NOMBRES_EN, 'ur': NOMBRES_UR}.get(language, NOMBRES):
         k = len(a.split())
         i = 0
         while i + k <= len(res):
@@ -69,7 +87,7 @@ def tokens(seg, language='fr'):
                     res[i:i+k] = [(b + chunk[len(a):], res[i][1], res[i+k-1][2])]
                 i += 1
                 continue
-            match = re.match(r'^([“"‘(]*)' + re.escape(a) + r'(?=$|[.,!?;:…”"\)])', chunk, re.I)
+            match = re.match(r'^([“"‘(]*)' + re.escape(a) + r'(?=$|[.,!?;:…”"\)۔،؟؛])', chunk, re.I)
             if match:
                 res[i:i + k] = [(match[1] + b + chunk[match.end():], res[i][1], res[i + k - 1][2])]
             i += 1
@@ -98,7 +116,7 @@ def cues(vo):
                 parts.append(cur)
                 cur = []
             cur.append(t)
-            if re.search(r"[.?!…»:;,]$", t[0]):
+            if re.search(r"[.?!…»:;,۔؟،؛]$", t[0]):
                 parts.append(cur)
                 cur = []
         if cur:
@@ -106,7 +124,7 @@ def cues(vo):
         # 2. on regroupe les propositions courtes, on coupe les longues
         cur = []
         for p in parts:
-            if cur and (L(cur + p) > MAX_CHARS or p[-1][2] - cur[0][1] > MAX_DUR or re.search(r"[.?!…»]$", cur[-1][0])):
+            if cur and (L(cur + p) > MAX_CHARS or p[-1][2] - cur[0][1] > MAX_DUR or re.search(r"[.?!…»۔؟]$", cur[-1][0])):
                 out += split_long(cur)
                 cur = []
             cur = cur + p
@@ -115,7 +133,7 @@ def cues(vo):
     # 3. un mot seul ne reste jamais sur son propre sous-titre : il rejoint la suite de sa phrase
     i = 0
     while i < len(out):
-        if len(out[i]) == 1 and not re.search(r"[.?!…»]$", out[i][0][0]) and i + 1 < len(out):
+        if len(out[i]) == 1 and not re.search(r"[.?!…»۔؟]$", out[i][0][0]) and i + 1 < len(out):
             out[i:i + 2] = [out[i] + out[i + 1]]
         i += 1
     return out
@@ -131,6 +149,8 @@ def main(src, dst):
         if i + 1 < len(cs):
             end = min(end, cs[i + 1][0][1] + LEAD - 0.04)
         txt = " ".join(x[0] for x in c)
+        if vo.get('language') in RTL:
+            txt = "\u200f" + txt
         lines.append(f"{i + 1}\n{tc(start)} --> {tc(end)}\n{txt}\n")
     open(dst, "w").write("\n".join(lines))
     print(f"{dst} : {len(cs)} sous-titres")

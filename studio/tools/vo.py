@@ -80,6 +80,18 @@ def norm(w):
     return re.sub(r"[^a-z0-9]", "", w)
 
 
+# Écriture arabe (ourdou) : un mot = une suite de lettres, signes et chiffres (comme tools/vo_estime.py) ;
+# pour comparer, on retire les signes et on ramène les variantes arabes de Whisper aux lettres ourdoues.
+ARABIC_SCRIPT = {"ur", "ar"}
+FOLD_UR = str.maketrans({"ي": "ی", "ى": "ی", "ك": "ک", "ه": "ہ", "ۀ": "ۂ"})
+
+
+def norm_arabic(w, lang="ur"):
+    w = unicodedata.normalize("NFD", w)
+    w = "".join(c for c in w if unicodedata.category(c)[0] in "LN")
+    return w.translate(FOLD_UR) if lang == "ur" else w
+
+
 TAG = re.compile(r"\[[^\]]*\]")  # balises d'intonation ElevenLabs : [pause], [whispers]…
 
 
@@ -87,7 +99,16 @@ def spoken(text):
     return re.sub(r"\s+", " ", TAG.sub("", text)).strip()
 
 
-def tokens(text):
+def tokens(text, lang=None):
+    if lang in ARABIC_SCRIPT:
+        out, cur = [], ""
+        for c in spoken(text) + " ":
+            if unicodedata.category(c)[0] in "LMN":
+                cur += c
+            elif cur:
+                out.append(cur)
+                cur = ""
+        return [t for t in out if norm_arabic(t, lang)]
     return [t for t in re.findall(r"[\w'’-]+", spoken(text)) if norm(t)]
 
 
@@ -97,7 +118,11 @@ def expand_numbers(words, language="fr"):
     for w in words:
         digits = re.sub(r"[^\d]", "", w["word"])
         if digits and digits == re.sub(r"[%.,\s]", "", w["word"].strip()):
-            parts = num2words(int(digits), lang=language).replace("-", " ").split()
+            try:
+                parts = num2words(int(digits), lang=language).replace("-", " ").split()
+            except (NotImplementedError, OverflowError):  # langue absente de num2words (ourdou) : le mot reste tel quel
+                out.append(w)
+                continue
             n = len(parts)
             for i, p in enumerate(parts):  # répartit la durée du nombre sur ses mots
                 a = w["start"] + (w["end"] - w["start"]) * i / n
@@ -239,9 +264,11 @@ def align(script_path, audio_path):
             merged.append(w)
     heard = expand_numbers(merged, sc.get("language", "fr"))
 
-    script = [(seg["id"], t) for seg in sc["segments"] for t in tokens(seg["text"])]
-    a = [norm(t) for _, t in script]
-    b = [norm(w["word"]) for w in heard]
+    lang = sc.get("language", "fr")
+    nrm = (lambda t: norm_arabic(t, lang)) if lang in ARABIC_SCRIPT else norm
+    script = [(seg["id"], t) for seg in sc["segments"] for t in tokens(seg["text"], lang)]
+    a = [nrm(t) for _, t in script]
+    b = [nrm(w["word"]) for w in heard]
     times = [None] * len(script)
     for blk in difflib.SequenceMatcher(None, a, b, autojunk=False).get_matching_blocks():
         for k in range(blk.size):
@@ -262,6 +289,11 @@ def align(script_path, audio_path):
                                 "start": words[0]["start"], "end": words[-1]["end"], "words": words})
     info = sf.info(audio_path)
     out["duration"] = round(info.frames / info.samplerate, 3)
+    if lang != "fr":  # langue (sous-titres, chiffres) et plateau muet du verset posé à l'assemblage, s'il existe
+        out["language"] = lang
+        manifest = os.path.splitext(audio_path)[0] + ".assembly.json"
+        if os.path.exists(manifest):
+            out["silences"] = json.load(open(manifest)).get("inserts", [])
     dst = os.path.join(ROOT, "src/data", os.path.basename(script_path).replace(".json", ".vo.json"))
     json.dump(out, open(dst, "w"), ensure_ascii=False, indent=1)
     unmatched = sum(1 for i in range(len(script)) if times[i][0] == times[i][1])
