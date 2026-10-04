@@ -9,7 +9,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 
-export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, clean = false}) {
+export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, clean = false, faceless = false}) {
   await fs.mkdir(outDir, {recursive: true});
   const entry = path.resolve(outDir, 'entry.ts');
   const output = path.resolve(outDir, 'render.mjs');
@@ -31,7 +31,7 @@ export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, cl
         };
         export const Img = ({pauseWhenBuffering, onError, onLoad, ...p}) => React.createElement('img', p);
         export const staticFile = (s) => ${JSON.stringify(pathToFileURL(path.resolve('public')).href + '/')} + s;
-        export const getInputProps = () => (${JSON.stringify({no3d, clean})});
+        export const getInputProps = () => (${JSON.stringify(faceless ? {no3d, clean, faceless} : {no3d, clean})});
       `}));
     },
   }]});
@@ -65,10 +65,14 @@ const fontCSS = () => [
   ['Plex Mono', 'PlexMono-Light.ttf', 'normal', '300'], ['Plex Mono', 'PlexMono-Regular.ttf', 'normal', '400'],
   ['Plex Mono', 'PlexMono-Medium.ttf', 'normal', '500'], ['Amiri Quran', 'AmiriQuran-Regular.ttf', 'normal', '400'],
   ['Amiri', 'Amiri-Regular.ttf', 'normal', '400'],
-].map(([family, file, style, weight]) => `@font-face{font-family:'${family}';src:url('${pathToFileURL(path.resolve('public/fonts', file)).href}');font-style:${style};font-weight:${weight}}`).join('\n');
+  // comme src/fonts.ts : l'arabe en « Garamond » ou « Plex Mono » s'affiche en Amiri
+  ...[['Garamond', 'normal', '400 800'], ['Garamond', 'italic', '400 800'], ['Plex Mono', 'normal', '300'], ['Plex Mono', 'normal', '400'], ['Plex Mono', 'normal', '500']]
+    .map(([family, style, weight]) => [family, 'Amiri-Regular.ttf', style, weight,
+      `unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF;size-adjust:${family === 'Plex Mono' ? 130 : 110}%;ascent-override:100%;descent-override:30%`]),
+].map(([family, file, style, weight, extra]) => `@font-face{font-family:'${family}';src:url('${pathToFileURL(path.resolve('public/fonts', file)).href}');font-style:${style};font-weight:${weight}${extra ? ';' + extra : ''}}`).join('\n');
 
-export async function htmlStills({outDir, pairs, composition, sourceRoot, clean, no3d}) {
-  const render = await prepareStills({sourceRoot, outDir, clean, no3d});
+export async function htmlStills({outDir, pairs, composition, sourceRoot, clean, no3d, faceless}) {
+  const render = await prepareStills({sourceRoot, outDir, clean, no3d, faceless});
   const shots = [];
   for (const {name, frame} of pairs) {
     const shot = render(composition, frame);

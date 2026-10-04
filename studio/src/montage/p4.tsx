@@ -5,7 +5,7 @@ import {ARoll, FACELESS} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
 import {createCues, LEAD, toF} from '../cues';
-import {Lang, translator} from '../i18n';
+import {isRTL, Lang, Ltr, translator} from '../i18n';
 import {ArabicWord, GhazaliMap, Kinetic, Tasbih, Verse} from '../scenes/Part4';
 import {C, F} from '../theme';
 import {Cit, citSfx, Fade, Sfx} from './kit';
@@ -13,6 +13,7 @@ import {Cit, citSfx, Fade, Sfx} from './kit';
 const makeP4 = (lang: Lang) => {
 const {at, vo} = createCues(lang);
 const tx = translator(lang);
+const dir: React.CSSProperties = isRTL(lang) ? {direction: 'rtl'} : {};
 
 // ── Partie 4 (4:28 → 7:29) : la pièce sans meuble, la khalwa, al-Ghazali, le dhikr, le verset ─────
 //    p35 → p53. Trois plans 3D (tools/plans3d.py : vide, khalwa, dhikr) ; les vraies pages :
@@ -258,9 +259,9 @@ const KhalwaHud: React.FC = () => {
   const ink = `rgba(${Math.round(34 + 200 * night)},${Math.round(33 + 197 * night)},${Math.round(30 + 194 * night)},1)`;
   return (
     <>
-      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: ink, opacity: interpolate(frame, [jours0 - 10, jours0], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("KHALWA · JOUR")}{' '}{String(day).padStart(2, '0')} / 40
+      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: ink, opacity: interpolate(frame, [jours0 - 10, jours0], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}), ...dir}}>{tx("KHALWA · JOUR")}{' '}<Ltr>{String(day).padStart(2, '0')} / 40</Ltr>
       </div>
-      <div style={{position: 'absolute', left: 64, top: 86, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.red, opacity: interpolate(frame, [fuy, fuy + 8], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("VIRGINIE · 15 MINUTES")}</div>
+      <div style={{position: 'absolute', left: 64, top: 86, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.red, opacity: interpolate(frame, [fuy, fuy + 8], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}), ...dir}}>{tx("VIRGINIE · 15 MINUTES")}</div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import {Lang, useLang, useText} from '../i18n';
+import {isRTL, Lang, useLang, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import rendered from '../data/renders3d.json';
@@ -100,7 +100,7 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
   return (
     <AbsoluteFill>
       {((foreign && !knots) || no3d(dir)) ? (
-        <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 18, color: '#22211E', textAlign: 'center'}}>
+        <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 18, color: '#22211E', textAlign: 'center', ...(isRTL(lang) ? {direction: 'rtl'} : {})}}>
           <div style={{fontFamily: "'Plex Mono', monospace", fontSize: 20, letterSpacing: '0.16em', background: '#F2D64B', padding: '6px 12px'}}>{tx("PLAN 3D · EN COURS DE RENDU")}</div>
           <div style={{fontFamily: "'Garamond', serif", fontStyle: 'italic', fontSize: 40, maxWidth: 1300}}>{label ?? dir}</div>
         </AbsoluteFill>

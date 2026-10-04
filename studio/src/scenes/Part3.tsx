@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useDir, useDirFor, useText} from '../i18n';
 import React, {useMemo} from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -33,6 +33,7 @@ const Mono: React.FC<{x: number; y: number; o?: number; size?: number; color?: s
       letterSpacing: '0.16em',
       color,
       whiteSpace: 'nowrap',
+      ...useDirFor(children),
     }}
   >
     {children}
@@ -214,6 +215,7 @@ export type QueueCues = {file: number; three: number; you: number; hand: number;
 
 export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => {
   const tx = useText();
+  const dir = useDir();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const draw = (s: number, len = 16) => interpolate(frame, [s, s + len], [0, 1], {...clamp, easing: inOut});
@@ -246,7 +248,7 @@ export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => 
           <path d={`M 1470 500 q 30 -50 60 0 M 1550 500 q 30 -60 70 0 M 1640 500 q 20 -40 50 0`} strokeWidth={2.5} opacity={shop} />
         </g>
         <foreignObject x={1400} y={178} width={360} height={60}>
-          <div style={{fontFamily: F.mono, fontSize: 22, letterSpacing: '0.24em', textAlign: 'center', color: C.ink, opacity: shop, lineHeight: '60px'}}>{tx("BOULANGERIE")}</div>
+          <div style={{fontFamily: F.mono, fontSize: 22, letterSpacing: '0.24em', textAlign: 'center', color: C.ink, opacity: shop, lineHeight: '60px', ...dir}}>{tx("BOULANGERIE")}</div>
         </foreignObject>
         {/* trois personnes devant toi */}
         {people.map((x, k) => {
@@ -372,7 +374,7 @@ const Digit: React.FC<{v: number; size: number}> = ({v, size}) => (
 );
 
 export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt = 0, sub, subAt = 0, out}) => {
-  
+  const dir = useDir();
   const frame = useCurrentFrame();
   const q = interpolate(frame, [start, start + len], [0, 1], {...clamp, easing: inOut});
   const y = from + (to - from) * q;
@@ -392,7 +394,7 @@ export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt
         ))}
       </div>
       {label && (
-        <div style={{fontFamily: F.mono, fontSize: 24, letterSpacing: '0.2em', color: C.ink, marginTop: 34, opacity: interpolate(frame, [labelAt, labelAt + 8], [0, 1], clamp)}}>
+        <div style={{fontFamily: F.mono, fontSize: 24, letterSpacing: '0.2em', color: C.ink, marginTop: 34, opacity: interpolate(frame, [labelAt, labelAt + 8], [0, 1], clamp), ...dir}}>
           {label}
         </div>
       )}
@@ -406,6 +408,7 @@ export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt
             marginTop: 18,
             opacity: interpolate(frame, [subAt, subAt + 8], [0, 1], clamp),
             transform: `translateY(${interpolate(frame, [subAt, subAt + 10], [16, 0], {...clamp, easing: Easing.out(Easing.cubic)})}px)`,
+            ...dir,
           }}
         >
           {sub}

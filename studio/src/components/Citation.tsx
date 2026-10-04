@@ -1,4 +1,5 @@
-import {useLang} from '../i18n';
+import {hasArabic, useLang, useRTL} from '../i18n';
+import {ArabicEvidence, ARABIC_QUOTES} from './ArabicEvidence';
 import {EnglishEvidence, ENGLISH_ONLY_CAPTURES} from './EnglishEvidence';
 import React from 'react';
 import {Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
@@ -93,6 +94,7 @@ const noteH = (n: Note, w: number) => {
 export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone: Tone}> = ({n, x, y, w, tone}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const r = useRTL(); // arabe : la fiche pivote depuis la droite, la barre de couleur passe à droite
   const a = frame - n.at;
   if (a < 0) return null;
   const sp = spring({frame: a, fps, config: {damping: 13, stiffness: 190, mass: 0.7}});
@@ -106,6 +108,9 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
           ),
         )
       : n.big;
+  // en arabe, un chiffre seul se lit de gauche à droite, collé à son signe (« 51% »)
+  const bigDir: React.CSSProperties = r ? (big && !hasArabic(big) ? {direction: 'ltr', display: 'inline-block'} : {}) : {};
+  const bigText = r && big ? big.replace(/ %/g, '%') : big;
   const words = n.text ? n.text.split(' ') : [];
   const rise = (d: number) => {
     const q = interpolate(a, [d, d + 6], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
@@ -120,15 +125,16 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
         top: y,
         width: w,
         opacity: o,
-        transform: `perspective(1400px) translateX(${(1 - sp) * -24}px) rotateY(${(1 - sp) * -78}deg)`,
-        transformOrigin: '0% 50%',
+        transform: `perspective(1400px) translateX(${(1 - sp) * (r ? 24 : -24)}px) rotateY(${(1 - sp) * (r ? 78 : -78)}deg)`,
+        transformOrigin: r ? '100% 50%' : '0% 50%',
         background: C.ink,
         color: CARD_INK,
-        padding: '22px 30px 24px 34px',
+        padding: r ? '22px 34px 24px 30px' : '22px 30px 24px 34px',
         boxShadow: '16px 26px 40px rgba(20,18,15,0.30), 2px 4px 8px rgba(20,18,15,0.22)',
+        ...(r ? {direction: 'rtl'} : {}),
       }}
     >
-      <div style={{position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, background: t.accent}} />
+      <div style={{position: 'absolute', ...(r ? {right: 0} : {left: 0}), top: 0, bottom: 0, width: 6, background: t.accent}} />
       {n.kicker && (
         <div style={{...rise(2), fontFamily: F.mono, fontSize: 16, letterSpacing: '0.16em', color: 'rgba(238,235,228,0.6)', marginBottom: 8}}>
           {n.kicker}
@@ -146,13 +152,13 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
             marginBottom: 6,
           }}
         >
-          <span style={rise(n.kicker ? 4 : 2)}>{big}</span>
+          <span style={{...rise(n.kicker ? 4 : 2), ...bigDir}}>{bigText}</span>
         </div>
       )}
       {n.text && (
-        <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 36, lineHeight: 1.16}}>
+        <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 36, lineHeight: r ? 1.35 : 1.16}}>
           {words.map((wd, i) => (
-            <span key={i} style={{...rise(textAt + i * 1.3), marginRight: '0.26em'}}>
+            <span key={i} style={{...rise(textAt + i * 1.3), ...(r ? {marginLeft: '0.26em'} : {marginRight: '0.26em'})}}>
               {wd}
             </span>
           ))}
@@ -178,7 +184,7 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
                 }}
               >
                 {c.dot && (
-                  <span style={{display: 'inline-block', width: 14, height: 14, borderRadius: 7, background: C.red, marginRight: 10, verticalAlign: '-1px'}} />
+                  <span style={{display: 'inline-block', width: 14, height: 14, borderRadius: 7, background: C.red, ...(r ? {marginLeft: 10} : {marginRight: 10}), verticalAlign: '-1px'}} />
                 )}
                 {c.t}
               </span>
@@ -197,6 +203,8 @@ export const Citation: React.FC<CitationProps> = (p) => {
   if (lang === 'en' && ENGLISH_ONLY_CAPTURES.has(p.cap)) return <EnglishEvidence {...p} />;
   if (lang === 'en' && ['pmc_titre', 'kg_page'].includes(p.cap)) p = {...p, sub: undefined};
   if (lang === 'en' && p.cap === 'pmc_revue') p = {...p, marks: p.marks?.map(({note, ...mark}) => mark)};
+  if (lang === 'ar' && ARABIC_QUOTES.has(p.cap)) return <ArabicEvidence {...p} />;
+  const r = lang === 'ar';
   const meta = CAP[p.cap];
   if (!meta) throw new Error(`capture inconnue : ${p.cap}`);
   const k = p.width / meta.w;
@@ -407,12 +415,13 @@ export const Citation: React.FC<CitationProps> = (p) => {
             fontStyle: 'italic',
             fontSize: 38,
             color: C.ink,
+            ...(r ? {direction: 'rtl'} : {}),
           }}
         >
           {p.sub.text.split(' ').map((wd, i) => {
             const q = interpolate(frame, [p.sub!.at + i * 1.5, p.sub!.at + i * 1.5 + 6], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
             return (
-              <span key={i} style={{display: 'inline-block', marginRight: '0.26em', opacity: q, transform: `translateY(${(1 - q) * 12}px)`}}>
+              <span key={i} style={{display: 'inline-block', ...(r ? {marginLeft: '0.26em'} : {marginRight: '0.26em'}), opacity: q, transform: `translateY(${(1 - q) * 12}px)`}}>
                 {wd}
               </span>
             );

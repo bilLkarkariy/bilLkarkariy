@@ -3,7 +3,7 @@
 // Repris de tools/check_v01_en.mjs. Ce que l'on vérifie :
 //  - le texte de la voix est exactement script/v01_texte_playground_balises_ar.txt (figé), mêmes IDs et pauses ;
 //  - l'alignement contient tous les mots, dans l'ordre ; tous les repères arabes se trouvent ;
-//  - V01-AR et les trois Shorts arabes se rendent (HTML) sans texte français ni anglais oublié ;
+//  - V01-AR (avec et sans visage) et les trois Shorts arabes se rendent (HTML) sans texte français ni anglais oublié ;
 //  - écriture de droite à gauche : tout texte arabe est dans un bloc `direction: rtl` (SVG exceptés) ;
 //  - le verset : texte uthmani exact, Amiri Quran, immobile entre ses fondus, rien dessous, musique et bruitages muets ;
 //  - avec --baseline : le français et l'anglais (V01, V01-EN, leurs Shorts) gardent exactement le même HTML.
@@ -82,7 +82,7 @@ const textNodes = (markup) => {
   for (const m of markup.matchAll(/<(\/?)([a-zA-Z][\w:-]*)((?:[^>"']|"[^"]*"|'[^']*')*?)(\/?)>|([^<]+)/g)) {
     if (m[5] !== undefined) {
       const text = m[5].replace(/&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-      if (text.trim()) out.push({text, rtl: stack.some((t) => /direction:\s*rtl/.test(t.attrs)), svg: stack.some((t) => t.tag === 'svg' || t.tag === 'text'), style: stack.some((t) => t.tag === 'style')});
+      if (text.trim()) out.push({text, rtl: stack.some((t) => /direction:\s*rtl/.test(t.attrs)), svg: stack.some((t) => t.tag === 'svg' || t.tag === 'text'), style: stack.some((t) => t.tag === 'style'), parent: stack.at(-1)});
       continue;
     }
     const [, close, tag, attrs, self] = m;
@@ -98,15 +98,27 @@ for (const f of [...frames].sort((a, b) => a - b)) {
     if (t.style) continue;
     texts.add(t.text);
     if (/[A-Za-zÀ-ÿ]/.test(t.text) && !LATIN_OK.has(t.text.trim())) latin.add(t.text.trim());
-    if (ARABIC.test(t.text) && !t.svg) { rtlChecked++; if (!t.rtl) ltrArabic.add(t.text.trim()); }
+    if (ARABIC.test(t.text) && !t.svg) { rtlChecked++; if (!t.rtl) ltrArabic.add(`${f}: ${t.text.trim()} < ${t.parent?.tag} ${t.parent?.attrs.slice(0, 200)}`); }
   }
   // pas d'étiquette d'archive (les sources restent dans la description)
   assert(!/PUBMED CENTRAL|WILSON ET AL\.|TRAD\. W\. M\. WATT|PENSEESDEPASCAL|MÉDIAMÉTRIE ·|ARCEP ·/.test(markup), `Source à l'écran : ${f}`);
 }
+// la version livrée est sans visage et sans cartons de travail (comme l'anglais) : mêmes contrôles sur ses pages
+const delivered = await prepareStills({outDir: path.join(outDir, 'check-faceless'), faceless: true, clean: true});
+assert.equal(delivered('V01-AR', 0).durationInFrames, duration);
+let facelessFrames = 0;
+for (let f = 0; f < duration; f += 15) {
+  for (const t of textNodes(delivered('V01-AR', f).markup)) {
+    if (t.style) continue;
+    texts.add(t.text);
+    if (/[A-Za-zÀ-ÿ]/.test(t.text) && !LATIN_OK.has(t.text.trim())) latin.add(`sans visage ${f}: ${t.text.trim()}`);
+    if (ARABIC.test(t.text) && !t.svg) { rtlChecked++; if (!t.rtl) ltrArabic.add(`sans visage ${f}: ${t.text.trim()}`); }
+  }
+  facelessFrames++;
+}
 await fs.writeFile(path.join(outDir, 'rendered-text.txt'), [...texts].join('\n'));
 assert.deepEqual([...latin], [], `Texte non traduit à l'écran : ${[...latin].join(' | ')}`);
-const RTL_REQUIRED = !process.argv.includes('--sans-rtl');
-if (RTL_REQUIRED) assert.deepEqual([...ltrArabic], [], `Texte arabe sans direction rtl : ${[...ltrArabic].join(' | ')}`);
+assert.deepEqual([...ltrArabic], [], `Texte arabe sans direction rtl : ${[...ltrArabic].join(' | ')}`);
 
 // 5. le verset : la voix arabe le dit, l'écran ne montre que le texte uthmani
 const verseStart = at('p52') - 10;
@@ -152,6 +164,8 @@ const named = {
 };
 for (const [name, frame] of Object.entries(named)) pairs.push({name, frame: Math.min(duration - 1, frame)});
 await htmlStills({outDir: path.join(outDir, 'ar'), pairs, composition: 'V01-AR'});
+const facelessPairs = pairs.filter(({name}) => /^page_|^p1_debut$|^revelation$|^meublee$|^retours$|^consigne$|^ecran_final$/.test(name));
+await htmlStills({outDir: path.join(outDir, 'ar-sans-visage'), pairs: facelessPairs, composition: 'V01-AR', faceless: true, clean: true});
 
 // 7. les Shorts arabes
 const shortDurations = {};
@@ -162,14 +176,14 @@ for (const id of ['short-bouton-ar', 'short-pascal-ar', 'short-exercice-ar']) {
     for (const t of textNodes(render(id, f).markup)) {
       if (t.style) continue;
       if (/[A-Za-zÀ-ÿ]/.test(t.text) && !LATIN_OK.has(t.text.trim())) latin.add(`${id}:${t.text.trim()}`);
-      if (RTL_REQUIRED && ARABIC.test(t.text) && !t.svg && !t.rtl) ltrArabic.add(`${id}:${t.text.trim()}`);
+      if (ARABIC.test(t.text) && !t.svg && !t.rtl) ltrArabic.add(`${id}:${t.text.trim()}`);
     }
   }
   shortPairs[id] = [{name: 'debut', frame: 60}, {name: 'milieu', frame: Math.round(n / 2)}, {name: 'fin', frame: n - 30}];
   await htmlStills({outDir: path.join(outDir, id), composition: id, pairs: shortPairs[id]});
 }
 assert.deepEqual([...latin], [], `Texte non traduit dans les Shorts : ${[...latin].join(' | ')}`);
-if (RTL_REQUIRED) assert.deepEqual([...ltrArabic], [], `Texte arabe sans direction rtl dans les Shorts : ${[...ltrArabic].join(' | ')}`);
+assert.deepEqual([...ltrArabic], [], `Texte arabe sans direction rtl dans les Shorts : ${[...ltrArabic].join(' | ')}`);
 
 // 8. le français et l'anglais n'ont pas bougé
 let comparison;
@@ -193,9 +207,9 @@ if (baselineIndex !== -1) {
 
 const report = {segments: ar.segments.length, words: words.length, anchors: anchorCount, durationInFrames: duration,
   duration: `${Math.floor(duration / 1800)}:${String(Math.round(duration / 30) % 60).padStart(2, '0')}`, estimated: Boolean(vo.estimated),
-  checkedArabicFrames: frames.size, arabicTextNodesCheckedRtl: rtlChecked, shortDurations, frenchEnglishComparison: comparison,
+  checkedArabicFrames: frames.size, checkedFacelessFrames: facelessFrames, arabicTextNodesCheckedRtl: rtlChecked, shortDurations, frenchEnglishComparison: comparison,
   verse: [verseStart, verseEnd], audioSource: vo.audio,
   pngInspection: 'NOT_PERFORMED: HTML only; PNG stills to render on the Mac (docs/v01-ar-images-fixes.md)', stills: pairs, shortStills: shortPairs};
 await fs.writeFile(path.join(outDir, 'v01-ar-report.json'), JSON.stringify(report, null, 2) + '\n');
 await fs.writeFile(path.join(outDir, 'render-ar-stills.txt'), 'node tools/stills.mjs out/stills-ar --composition V01-AR ' + pairs.map(({name, frame}) => `${name}:${frame}`).join(' ') + '\n');
-console.log(JSON.stringify({...report, stills: `${pairs.length} vues V01-AR + 9 vues Shorts, HTML`, shortStills: undefined}, null, 2));
+console.log(JSON.stringify({...report, stills: `${pairs.length} vues V01-AR + ${facelessPairs.length} sans visage + 9 vues Shorts, HTML`, shortStills: undefined}, null, 2));

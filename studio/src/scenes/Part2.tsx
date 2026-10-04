@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useDir, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -45,6 +45,7 @@ const Label: React.FC<{x: number; y: number; o: number; children: React.ReactNod
       letterSpacing: '0.16em',
       color: C.ink,
       whiteSpace: 'nowrap',
+      ...useDir(),
     }}
   >
     {children}

@@ -3,7 +3,7 @@
 // Rendu : npx remotion render out/bundle short-bouton out/short-bouton.mp4 --props='{"clean":true}'
 import React from 'react';
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
-import {Lang, translator} from './i18n';
+import {isRTL, Lang, LanguageProvider, RtlType, translator} from './i18n';
 import {createCues, voices, LEAD, toF} from './cues';
 import {C, F} from './theme';
 import {V01} from './V01';
@@ -81,6 +81,7 @@ const Captions: React.FC<{from: number; lang: Lang}> = ({from, lang}) => {
         fontSize: 84,
         lineHeight: 1.12,
         color: C.ink,
+        ...(isRTL(lang) ? {direction: 'rtl', lineHeight: 1.4} : {}),
       }}
     >
       {g.map((w, i) => {
@@ -98,12 +99,16 @@ const Captions: React.FC<{from: number; lang: Lang}> = ({from, lang}) => {
 
 export const Short: React.FC<{from: number; to: number; title: string[]; lang?: Lang}> = ({from, to, title, lang = 'fr'}) => {
   const tx = translator(lang);
+  // arabe : de droite à gauche, et des lignes plus hautes (les lettres arabes montent et descendent plus loin)
+  const rtl = isRTL(lang);
+  const dir: React.CSSProperties = rtl ? {direction: 'rtl'} : {};
   const frame = useCurrentFrame();
   const len = to - from;
   const fadeOut = interpolate(frame, [len - 10, len], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const endIn = interpolate(frame, [len, len + 12], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: C.paperWarm}}>
+      <LanguageProvider value={lang}><RtlType /></LanguageProvider>
       <div style={{opacity: fadeOut}}>
         <div
           style={{
@@ -116,6 +121,8 @@ export const Short: React.FC<{from: number; to: number; title: string[]; lang?: 
             lineHeight: 1.05,
             color: C.ink,
             textAlign: 'center',
+            ...dir,
+            ...(rtl ? {lineHeight: 1.35} : {}),
           }}
         >
           {title.map((t, i) => (
@@ -154,10 +161,11 @@ export const Short: React.FC<{from: number; to: number; title: string[]; lang?: 
           padding: 90,
           fontFamily: F.serif,
           color: C.ink,
+          ...dir,
         }}
       >
         <div style={{fontFamily: F.mono, fontSize: 30, letterSpacing: '0.18em', color: C.inkSoft}}>{tx("LA VIDÉO COMPLÈTE")}</div>
-        <div style={{fontSize: 76, lineHeight: 1.1, marginTop: 40}}>{tx("Pourquoi tu n’arrives plus à rester seul avec toi-même")}</div>
+        <div style={{fontSize: 76, lineHeight: 1.1, marginTop: 40, ...(rtl ? {lineHeight: 1.4, textWrap: 'balance'} : {})}}>{tx("Pourquoi tu n’arrives plus à rester seul avec toi-même")}</div>
         <div style={{width: 120, height: 3, background: C.gold, margin: '60px auto'}} />
         <div style={{fontFamily: F.mono, fontSize: 34, letterSpacing: '0.12em'}}>bilLkarkariy</div>
       </AbsoluteFill>

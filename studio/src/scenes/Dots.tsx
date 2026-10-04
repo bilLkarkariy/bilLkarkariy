@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useDir, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -10,6 +10,7 @@ export type DotsCues = {presses: number[]; pct: number; before: number; pay: num
 /** « Deux hommes sur trois ont appuyé. » Chaque personne = un point, comme partout. */
 export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
   const tx = useText();
+  const dir = useDir();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const xs = [760, 960, 1160];
@@ -61,6 +62,7 @@ export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
           justifyContent: 'center',
           alignItems: 'baseline',
           gap: 18,
+          ...dir,
         }}
       >
         <span style={{opacity: beforeIn, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.inkSoft}}>{tx("JUSTE AVANT")}</span>
@@ -77,6 +79,7 @@ export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
           gap: 26,
           opacity: pctIn,
           transform: `translateY(${(1 - pctIn) * 18}px)`,
+          ...dir,
         }}
       >
         <span style={{fontFamily: F.mono, fontWeight: 500, fontSize: 150, color: C.ink, letterSpacing: '-0.02em'}}>

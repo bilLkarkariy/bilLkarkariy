@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useDir, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -64,6 +64,7 @@ export type StudyCues = {
 
 export const Study: React.FC<StudyCues> = (c) => {
   const tx = useText();
+  const dir = useDir();
 const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pas.")], [tx("Occupe-toi"), tx("avec"), tx("tes"), tx("pensées.")]];
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -195,7 +196,7 @@ const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pa
       </AbsoluteFill>
 
       {/* chapitre + lieu */}
-      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, color: C.ink}}>
+      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, color: C.ink, ...dir}}>
         <div style={{fontSize: 20, letterSpacing: '0.18em', fontWeight: 500, opacity: draw(0, 10)}}>{tx("01 · L'EXPÉRIENCE")}</div>
         <div style={{fontSize: 18, letterSpacing: '0.14em', marginTop: 10, color: C.inkSoft, opacity: labelO * planDim}}>{tx("UNIVERSITÉ DE VIRGINIE · ÉTATS-UNIS")}</div>
       </div>
@@ -209,6 +210,7 @@ const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pa
           letterSpacing: '0.16em',
           color: C.inkSoft,
           opacity: corridor * planDim,
+          ...dir,
         }}
       >{tx("AFFAIRES")}</div>
 
@@ -224,6 +226,7 @@ const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pa
           background: C.sheet,
           boxShadow: '0 24px 50px rgba(30,28,24,0.16), 0 2px 6px rgba(30,28,24,0.1)',
           padding: '34px 56px 40px',
+          ...dir,
         }}
       >
         <div
@@ -238,9 +241,10 @@ const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pa
           }}
         >{tx("CONSIGNE")}</div>
         {CONSIGNE.map((line, li) => (
-          <div key={li} style={{fontFamily: F.mono, fontSize: 46, lineHeight: 1.32, color: C.ink, display: 'flex', gap: '0.55em'}}>
+          <div key={li} style={{fontFamily: F.mono, fontSize: 46, lineHeight: dir.direction ? 1.6 : 1.32, color: C.ink, display: 'flex', gap: '0.55em'}}>
             {line.map((w) => {
               const at = c.words[wi++];
+              if (!w) return null; // (arabe : certains mots de la consigne n'ont pas d'équivalent séparé)
               return (
                 <span key={w} style={{opacity: interpolate(frame, [at - 1, at + 3], [0, 1], clamp)}}>
                   {w}

@@ -1,4 +1,4 @@
-import {useLang, useText} from '../i18n';
+import {useDir, useLang, useRTL, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import carte from '../data/carte_ghazali.json';
@@ -31,7 +31,8 @@ export type Line = {
 };
 
 export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
-  
+  // arabe : les mots sortent de droite à gauche, le feutre barre depuis la droite
+  const r = useRTL();
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill>
@@ -41,10 +42,10 @@ export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
         const o = l.out === undefined ? 1 : interpolate(frame, [l.out, l.out + 8], [1, 0], clamp);
         const strike = l.strike === undefined ? 0 : interpolate(frame, [l.strike, l.strike + 10], [0, 1], {...clamp, easing: inOut});
         return (
-          <div key={i} style={{position: 'absolute', left: 0, right: 0, top: l.y, textAlign: 'center', opacity: o}}>
+          <div key={i} style={{position: 'absolute', left: 0, right: 0, top: l.y, textAlign: 'center', opacity: o, ...(r ? {direction: 'rtl'} : {})}}>
             <span style={{position: 'relative', display: 'inline-block'}}>
               {words.map((w, k) => {
-                const bare = w.replace(/[.,:;!?«»]/g, '');
+                const bare = w.replace(/[.,:;!?«»،؛؟]/g, '');
                 const color = l.gold?.includes(bare) ? C.gold : l.red?.includes(bare) ? C.red : l.color ?? C.ink;
                 return (
                   <span
@@ -52,7 +53,7 @@ export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
                     style={{
                       ...rise(frame, l.at + k * (l.stagger ?? 2.5)),
                       display: 'inline-block',
-                      marginRight: '0.26em',
+                      ...(r ? {marginLeft: '0.26em'} : {marginRight: '0.26em'}),
                       fontFamily: l.mono ? F.mono : F.serif,
                       fontStyle: l.italic ? 'italic' : 'normal',
                       fontSize: size,
@@ -68,14 +69,14 @@ export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
                 <div
                   style={{
                     position: 'absolute',
-                    left: -10,
-                    right: 0,
+                    left: r ? 0 : -10,
+                    right: r ? -10 : 0,
                     top: size * 0.6,
                     height: size * 0.08,
                     borderRadius: size * 0.04,
                     background: C.red,
-                    transformOrigin: '0 50%',
-                    transform: `scaleX(${strike}) rotate(-1deg)`,
+                    transformOrigin: r ? '100% 50%' : '0 50%',
+                    transform: `scaleX(${strike}) rotate(${r ? 1 : -1}deg)`,
                   }}
                 />
               )}
@@ -99,7 +100,7 @@ export const ArabicWord: React.FC<{ar: string; latin: string; gloss?: string; at
   out,
   size = 230,
 }) => {
-  
+  const dir = useDir();
   const frame = useCurrentFrame();
   const w = interpolate(frame, [at, at + 26], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
   const o = out === undefined ? 1 : interpolate(frame, [out, out + 10], [1, 0], clamp);
@@ -132,7 +133,7 @@ export const ArabicWord: React.FC<{ar: string; latin: string; gloss?: string; at
         <span style={{fontFamily: F.mono, fontSize: 30, letterSpacing: '0.42em', color: C.ink}}>{latin}</span>
       </div>
       {gloss && (
-        <div style={{position: 'absolute', left: 0, right: 0, top: y + size * 1.36 + 90, textAlign: 'center', ...rise(frame, glossAt ?? at + 30)}}>
+        <div style={{position: 'absolute', left: 0, right: 0, top: y + size * 1.36 + (latin ? 90 : 30), textAlign: 'center', ...rise(frame, glossAt ?? at + 30), ...dir}}>
           <span style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 52, color: C.ink}}>{gloss}</span>
         </div>
       )}
@@ -159,6 +160,7 @@ const WATER = '#4E7690';
 
 export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, damas, route, routeLabel}) => {
   const tx = useText();
+  const dir = useDir();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const ink = interpolate(frame, [draw, draw + 40], [0, 1], {...clamp, easing: Easing.out(Easing.quad)});
@@ -247,7 +249,7 @@ export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, dam
         </g>
       </svg>
       {routeLabel && (
-        <div style={{position: 'absolute', left: 0, right: 0, top: 820, textAlign: 'center', ...rise(frame, routeLabel.at)}}>
+        <div style={{position: 'absolute', left: 0, right: 0, top: 820, textAlign: 'center', ...rise(frame, routeLabel.at), ...dir}}>
           <span style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 48, color: C.ink}}>{routeLabel.t}</span>
         </div>
       )}

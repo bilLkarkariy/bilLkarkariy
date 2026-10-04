@@ -7,7 +7,7 @@ import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Music} from './components/Music';
 import {Grain, Paper} from './components/Paper';
 import {createCues, LEAD} from './cues';
-import {Lang, LanguageProvider, translator} from './i18n';
+import {isRTL, Lang, LanguageProvider, RtlType, translator} from './i18n';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
 import {Cit, citSfx, Fade, Sfx} from './montage/kit';
@@ -529,7 +529,7 @@ const Component: React.FC = () => {
     <Sequence from={salonIn} durationInFrames={domIn - salonIn + 8}>
       <Fade from={domIn - salonIn} len={8} out>
         <Shot3D dir="salon" frames={domIn - salonIn + 2} label={tx("Le salon en maquette, le soir, une lampe chaude. Sur « canapé », le participant tombe dans le canapé.")}>
-          <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink}}>{tx("CHEZ EUX · EN LIGNE, SEULS")}</div>
+          <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink, ...(isRTL(lang) ? {direction: 'rtl'} : {})}}>{tx("CHEZ EUX · EN LIGNE, SEULS")}</div>
         </Shot3D>
       </Fade>
     </Sequence>
@@ -613,5 +613,5 @@ export const durationFor = (lang: Lang) => versions[lang].duration;
 export const V01_DURATION = durationFor('fr');
 export const V01: React.FC<{lang?: Lang}> = ({lang = 'fr'}) => {
   const {Component} = versions[lang];
-  return <LanguageProvider value={lang}><Component /></LanguageProvider>;
+  return <LanguageProvider value={lang}><RtlType /><Component /></LanguageProvider>;
 };

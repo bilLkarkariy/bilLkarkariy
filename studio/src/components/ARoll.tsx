@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useDir, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -14,6 +14,7 @@ const CLEAN = Boolean(getInputProps().clean);
 export const FACELESS = Boolean(getInputProps().faceless);
 export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
   const tx = useText();
+  const dir = useDir();
   const frame = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
   const zoom = interpolate(frame, [0, durationInFrames], [1.0, 1.045]);
@@ -49,6 +50,7 @@ export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
               display: 'flex',
               gap: 14,
               alignItems: 'center',
+              ...dir,
             }}
           >
             <span
@@ -84,6 +86,7 @@ export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
               fontSize: 34,
               color: 'rgba(255,255,255,0.9)',
               textShadow: '0 1px 12px rgba(0,0,0,0.6)',
+              ...dir,
             }}
           >
             {line}
