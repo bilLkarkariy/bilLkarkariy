@@ -1,90 +1,114 @@
 # V01 UR — état
 
-4 octobre 2026 — branche `studio/v01-ur`, partie de `studio/v01-en`. Rien n'est fusionné.
+4 octobre 2026 — branche `studio/v01-ur`. Brief exécuté : `docs/v01-ur-voix-brief.md`. **Vraie voix assemblée et alignée ; montage et livrables recalés.** Durée de V01-UR : **21 072 images à 30 i/s, soit 11:42.400**, écran de fin compris. Sept commits locaux par étape ; aucun push.
 
-La version ourdoue est montée **sur une voix estimée** : tous les textes, le sens de droite à gauche, le verset, les
-Shorts et les pages sans face caméra sont prêts. La vraie voix, le vrai alignement, le recalage 3D définitif et le
-rendu restent à faire sur le Mac. Aucune voix générée, aucun appel ElevenLabs, aucun calcul 3D, `.env` jamais lu,
-`package.json` inchangé, rien de `public/` ni de `out/` dans git.
+## Voix et alignement
 
-## Fait
-
-| Livrable | État |
+| Livrable | Résultat |
 |---|---|
-| `script/v01_ur.json` | Texte figé découpé en **79 segments**, balises comprises ; mêmes `id`, `pause`, `lead`, `tail` que l'anglais. Mis bout à bout, il redonne mot pour mot `script/v01_texte_playground_balises_ur.txt`. `tts.voice_id` vide : aucune génération possible par accident. |
-| `src/data/v01_ur.groups.json` | Mêmes groupes `p…` → `s…` que l'anglais. |
-| `tools/vo_estime.py` | Écriture arabe : mots, voyelles longues, lettres muettes (ھ, ں). Sortie anglaise inchangée. |
-| `src/data/v01_ur.vo.json` | **Estimé**, `audio: null`, 1 836 mots, 669 s de voix, silence du verset de 6 s après `s63`. |
-| `src/data/v01_ur.anchors.json` | **302 repères**, mêmes clés que l'anglais, tous résolus. Quand l'ourdou inverse l'ordre (verbe en fin de phrase), le premier mot français prend le premier mot ourdou de la tournure, pour qu'aucune animation ne recule. |
-| `src/i18n/ur.ts`, `src/i18n/rtl.tsx` | Tous les textes à l'écran en ourdou. Cadre de droite à gauche autour des versions RTL seulement : le français et l'anglais ne passent jamais par là. |
-| `src/fonts.ts` | Noto Nastaliq Urdu déclarée (`fonts/NotoNastaliqUrdu-Regular.ttf`), interligne réglé ; si le fichier manque, le rendu n'attend pas. |
-| Montage | Kinetic, fiches, titres, étiquettes, carte, compteur de la khalwa, étapes de l'exercice, écran de fin, pages sans face caméra : en ourdou, de droite à gauche. Mots barrés de droite à gauche, nombres composés (« 16 / 40 ») lus de gauche à droite. Chiffres occidentaux. |
-| Verset | Arabe uthmani exact en Amiri Quran, traduction Kanz ul-Iman dessous (même place et style que l'anglais), fondu seul, aucun son. |
-| `src/Root.tsx` | `V01-UR` (**20 255 images, 11:15**) et `short-bouton-ur` (3 519 images, 1:57), `short-pascal-ur` (2 122, 1:11), `short-exercice-ur` (2 712, 1:30). |
-| 3D | `tools/report_3d_en.py` et `tools/remap3d_en.py` prennent `--lang`. `src/data/remap3d_ur.json` **provisoire** (voix estimée), branché dans `Shot3D`. Images 3D françaises réutilisées, aucune recalculée. |
-| `tools/srt.py` | Ourdou : chiffres, ponctuation ourdoue, marque de droite à gauche en tête de ligne. 306 sous-titres sur la voix estimée. |
-| `tools/vo.py align` | Sait découper et comparer les mots ourdous ; garde la langue et le silence du verset. |
-| `tools/check_v01_en.mjs --lang ur` | Texte figé, repères, verset immobile et muet, sens de droite à gauche, Shorts, textes restés en latin. |
-| Docs | `v01-ur-description.md`, `v01-ur-images-fixes.md`, `v01-ur-questions.md`, ce fichier. |
+| `public/vo/v01_ur_brut.wav` | Prise originale intacte, 640,914 s ; WAVEX, 48 kHz, mono, PCM 24 bits. |
+| `public/vo/v01_ur.wav` | **696,455 s**, même format. 79 segments conservés ; 78 jonctions dans le silence ; 65,6 s de pauses prescrites, lead 0,8 s et tail 1,5 s. Fondus de coupe de 8 ms. |
+| `src/data/v01_ur.assembly.json` | Coupes en échantillons, pauses, gains, empreintes SHA-256. Copie locale identique dans `public/vo/v01_ur.assembly.json`. Aucun audio dans git. |
+| `script/v01_ur.audio-review.json` | Reconnaissances isolées des deux chuchotements, protection de la coupe après s69, bornes mesurées et gain exact. Lié à l’empreinte de la prise. |
+| `src/data/v01_ur.vo.json` | `audio: "vo/v01_ur.wav"`, `language: "ur"`, **79 segments, 1 836 mots** du script figé, tous ordonnés, durées positives et bornées par les coupes. Aucun trou interne de plus de 1,2 s. |
+| Outils | `assemble_vo.py --lang ur`, `vo_alignment_en.py`, `vo_alignment_ur.py`, `vo.py align`, `check_vo_ur.py`. Whisper small, CPU int8, fichiers locaux seulement. Le chemin anglais reste compatible et identique. |
 
-## Vérifications faites ici
+Empreintes SHA-256 :
 
-- `npx tsc --noEmit` : réussi.
-- `node tools/check_v01_en.mjs --lang ur --baseline out/validation/baseline-src` : 79 segments, 302 repères,
-  1 284 instants ourdous, les trois Shorts ; **1 733 instants FR et EN identiques** avant/après (HTML et styles,
-  pas des pixels). Seuls textes encore en lettres latines : « OTHER TECHNIQUES » (citation de l'article, voir les
-  questions) et « BILLKARKARIY ».
-- `node tools/check_v01_en.mjs` (anglais) : réussi, inchangé.
-- `tools/srt.py`, `tools/report_3d_en.py`, `tools/remap3d_en.py` : sorties françaises et anglaises identiques
-  octet pour octet avant/après.
-- Planche HTML regardée dans le navigateur (polices du Mac, nastaliq du système) : début de vidéo, consigne,
-  fiches, compteur, carte, verset, étapes, écran de fin, pages sans face caméra, Short. Pas de PNG Remotion.
+- Prise brute : `7dc530f0c308557ee6dfcdd8d7ecffc6106c0bba95e4105e801cd40f73a9589d`.
+- WAV assemblé : `c509a8bfc53a26f5726f15e7259088f2f92687fd09df22c78dbc11a740f492dc`.
 
-## Reste à faire sur le Mac
+### Les deux chuchotements
 
-1. **Police :** poser `public/fonts/NotoNastaliqUrdu-Regular.ttf` (Noto Nastaliq Urdu, OFL).
-2. **Voix :** Billel enregistre avec son clone, à partir de `script/v01_texte_playground_balises_ur.txt`, sans rien
-   changer au texte. Jamais la voix « Sidi Mounir ».
-3. **Vrai alignement :** `tools/assemble_vo.py` et `tools/vo_alignment_en.py` sont réglés pour l'anglais (Whisper en
-   anglais, nombres anglais). Deux chemins :
-   - les adapter à l'ourdou (Whisper `language='ur'`, mots ourdous et comparaison `tokens(text, 'ur')` /
-     `norm_arabic` de `tools/vo.py`), puis assembler avec `--verse-hold 6` comme l'anglais ;
-   - ou, plus simple : `python3 tools/vo.py align script/v01_ur.json public/vo/v01_ur.wav`. Il lit l'ourdou, mais
-     n'ajoute pas le silence du verset tout seul (il le reprend d'un manifeste `v01_ur.assembly.json` s'il existe).
-   Whisper small en ourdou est moins sûr qu'en anglais : contrôler le nombre de mots interpolés.
-4. **Contrôle :** `node tools/check_v01_en.mjs --lang ur --baseline <src de référence>` ; tous les repères doivent
-   encore se résoudre (le texte est figé, ils le devraient).
-5. **Recalage 3D :** `python3 tools/report_3d_en.py --lang ur` puis `python3 tools/remap3d_en.py --lang ur`, sans
-   Blender ; commiter `src/data/remap3d_ur.json`. Regarder les plans avec `WITH3D=1`.
-6. **Paquet :** recalculer les chapitres de `docs/v01-ur-description.md` (même méthode que l'anglais) ;
-   `python3 tools/srt.py src/data/v01_ur.vo.json out/package_ur/v01.ur.srt` ; miniatures depuis les brouillons
-   français, avec les textes proposés.
-7. **Images fixes :** rendre et regarder la liste de `docs/v01-ur-images-fixes.md` (à recalculer après l'alignement).
-8. **Rendu :** `npx remotion bundle src/index.ts --out-dir=out/bundle` puis
-   `npx remotion render out/bundle V01-UR out/v01_ur_raw.mp4 --crf=16 --props='{"faceless":true}'`, et les trois
-   `short-*-ur`, puis `tools/master.sh`.
-9. **Questions :** les réponses de Billel à `docs/v01-ur-questions.md` (chiffres, verset, termes religieux, citations,
-   titre, miniatures) peuvent changer des textes de `src/i18n/ur.ts`.
+**+12 dB exactement**, seulement sur les deux occurrences chuchotées de « استغفراللہ », avec rampes de gain de 30 ms. Pas de normalisation globale. Les autres échantillons de parole restent identiques bit pour bit hors fondus de coupe.
 
-## Points d'attention
+| Occurrence | Gain dans la brute (s) | Gain dans le WAV final (s) | Niveau moyen avant → après | Crête après |
+|---|---:|---:|---:|---:|
+| 1 | 565.180 → 566.450 | 611.390 → 612.660 | -53.03 → -41.06 dBFS | -18.27 dBFS |
+| 2 | 566.490 → 567.830 | 612.700 → 614.040 | -55.98 → -43.98 dBFS | -21.81 dBFS |
 
-- Les chapitres, sous-titres, Shorts et images listées suivent la voix **estimée** : tout bouge avec la vraie voix.
-- `src/data/remap3d_ur.json` vient de la voix estimée : le refaire (étape 5), sinon les plans 3D seront décalés.
-- La police nastaliq est haute : regarder en priorité les fiches noires, les étapes de l'exercice et les Shorts.
-- L'avertissement React sur les clés de `FilmStrip` existe aussi en français et en anglais.
+Les deux mots ont été reconnus séparément après **+24 dB d’analyse uniquement**. Ce gain d’analyse n’a pas été appliqué au WAV livré. Aucune saturation ; aucun rognage de l’intérieur de s69. Les extraits comparatifs sont dans `out/validation/vo-ur/chuchotements-{brut,final}.wav`.
 
-## Prompt plus récent sur `studio/v01-en`
+### Incertitudes de l’alignement
 
-Après le départ de cette branche, `studio/v01-en` a reçu `docs/prompts/v01-ur-agent-cloud.md` et
-`docs/v01-finition.md` (pas sur cette branche). Ce travail suit `docs/v01-langue-brief.md`. Écarts à reprendre par
-l'agent suivant, si ce prompt est confirmé :
+La reconnaissance du WAV final est comparée, segment par segment, à celle de la prise brute, dont les temps sont transférés par les coupes exactes. 56 segments retiennent la reconnaissance finale, 23 celle de la source. Le choix privilégie le moins de mots interpolés, puis le moins de répartitions et de substitutions. Les variantes homophones sont comparées seulement après fixation des coupes.
 
-- **Verset :** le prompt demande `--verse-hold 0` et le verset affiché dès « قرآن اسے ایک جملے میں کہتا ہے »
-  (`at('p52') - 10`), pendant la voix, musique et bruitages coupés. Ici : silence de 6 s après `s63`, comme l'anglais
-  (`src/montage/p4.tsx`, `src/V01.tsx`, `tools/check_v01_en.mjs`).
-- **Voix jointe** (`bilKarkariy_ep1_urdu.mp3`) : pas reçue ici. Assemblage, gain des deux « استغفراللہ » chuchotés,
-  manifeste `src/data/v01_ur.assembly.json`, vrai alignement : à faire.
-- **À livrer en plus :** `docs/v01-ur-finition.md` (repères de finition et `sfxOff`), `docs/v01-ur.srt`, chapitres sur
-  le vrai alignement.
-- Déjà conforme : ouverture sur la maquette dès l'image 0, `remap3d_ur.json` lu par `Shot3D` (image la plus proche à
-  pas 1), Shorts, police et chiffres.
+- **24 mots interpolés** entre des voisins reconnus, sur 1 836 (1,31 %).
+- **28 mots répartis dans un bloc reconnu** dont Whisper change la séparation des mots ; ces temps restent approximatifs.
+- **111 substitutions rapprochées** : orthographe ou prononciation reconnue différente ; le mot du script est conservé.
+- **3 bornes revues par enveloppe** : les deux chuchotements et le début de « پانچ ». Un écart de 10 ms entre reconnaissances a été borné au mot suivant.
+- Audit complet dans `alignment.interpolated` et `alignment.segment_recognition` du JSON ; ce nom historique contient aussi les substitutions et répartitions, pas seulement les 24 interpolations.
+
+Mots encore interpolés, à écouter en priorité :
+
+| Segment | Mot(s) | Temps voix (s) |
+|---|---|---:|
+| s12 | مشق | 46.100 → 46.500 |
+| s18 | سیدھی | 63.340 → 63.697 |
+| s18 | سی | 63.697 → 63.840 |
+| s18 | سوئیں | 65.500 → 65.760 |
+| s26 | دس | 127.600 → 128.100 |
+| s26 | نو | 128.460 → 128.760 |
+| s32 | آگے | 200.360 → 200.680 |
+| s32 | طے | 202.220 → 202.400 |
+| s42 | ساڑھے | 297.475 → 297.960 |
+| s43 | دوڑ | 311.175 → 311.435 |
+| s46 | ڈھونڈنے | 342.650 → 343.010 |
+| s51 | صدیاں | 380.920 → 381.520 |
+| s57 | کیریئر | 434.490 → 434.970 |
+| s59 | چڑھ | 460.710 → 460.950 |
+| s60 | عظیم | 469.660 → 470.080 |
+| s60 | وقف | 473.040 → 473.360 |
+| s60 | الگ | 475.700 → 475.980 |
+| s60 | بڑھ | 480.040 → 480.340 |
+| s66 | دیں | 565.090 → 565.130 |
+| s69 | لفظ | 598.970 → 599.330 |
+| s69 | لفظ | 603.690 → 604.130 |
+| s72 | مشق | 634.640 → 635.060 |
+| s72 | مشق | 636.840 → 637.280 |
+| s72 | چاہیں | 643.400 → 643.840 |
+
+## Montage et livrables
+
+- **Verset** : images **15430 → 15652** (fin exclusive), dès `at("p52") - 10`, pendant l’introduction et la traduction, puis une seconde après la dernière parole. Arabe uthmani exact, Amiri Quran, fondu seul. **La voix continue ; musique et bruitages coupés.** Aucun insert `silent_verse`, assemblage `--verse-hold 0`. Français et anglais inchangés.
+- **Sans face caméra** : rendre avec `faceless: true` ; ouverture sur la maquette. L’intro Pixar sera posée par Claude après le rendu. Les fenêtres veste et invitation restent destinées aux inserts de finition.
+- **3D** : `report_3d_en.py --lang ur` puis `remap3d_en.py --lang ur` exécutés. `src/data/remap3d_ur.json` définitif pour cet alignement ; 7 correspondances monotones et bornées. Dhikr arrêté à l’entrée du verset. Images FR réutilisées, aucun Blender. Rapport : `docs/v01-ur-3d.md`.
+- **Chapitres** recalculés dans `docs/v01-ur-description.md`, par la même méthode que l’anglais.
+- **Sous-titres** : `docs/v01-ur.srt`, **306 entrées**, temps vidéo (voix + 0,8 s), chiffres occidentaux, ponctuation ourdoue et marque RTL. Temps croissants, aucun chevauchement.
+- **Finition** : `docs/v01-ur-finition.md`, repères intro Pixar, six remplacements, mots internes, bornes voix/vidéo et `sfxOff` prêt à coller.
+- **Images fixes** : `docs/v01-ur-images-fixes.md`, 38 vues longues, 8 pages sans face caméra et 9 vues des Shorts recalculées. Police Noto Nastaliq Urdu présente sur le Mac.
+- **Shorts** : `short-bouton-ur` 3 617 images ; `short-pascal-ur` 2 316 ; `short-exercice-ur` 2 864.
+
+## Vérifications exécutées
+
+```bash
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python tools/assemble_vo.py script/v01_ur.json public/vo/v01_ur_brut.wav public/vo/v01_ur.wav --lang ur --verse-hold 0
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python tools/vo.py align script/v01_ur.json public/vo/v01_ur.wav
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python tools/check_vo_ur.py
+node tools/check_v01_en.mjs --lang ur --baseline out/validation/ur-baseline/src
+node tools/check_v01_en.mjs
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 python3 tools/report_3d_en.py --lang ur
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 python3 tools/remap3d_en.py --lang ur
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 python3 tools/srt.py src/data/v01_ur.vo.json docs/v01-ur.srt
+npx tsc --noEmit
+```
+
+- Contrôle audio : format conservé, empreintes, copie PCM, 79 pauses, lead/tail, deux gains, aucun écrêtage et mots bornés/ordonnés : réussi. Le WAV a été reproduit à l’identique.
+- Contrôle montage : **302 repères**, **1 311 instants UR**, mode faceless sans image de visage, verset immobile et sources de fond muettes sur chaque image de sa fenêtre : réussi.
+- Comparaison `--baseline` : **1 733 instants FR/EN identiques** (durées, HTML, styles et événements audio simulés). La référence est le `src` du commit de départ `27a19b7`.
+- Régression des outils anglais : assemblage exécuté avec les outils avant/après ; **WAV et manifeste identiques octet pour octet**, alignement des mots identique. Plans 3D FR/EN identiques. Voix FR/EN, prise UR et `package.json` gardent leurs empreintes.
+- TypeScript : réussi. SRT : 306 intervalles croissants, dans la composition, aucun chevauchement.
+- Rapports locaux dans `out/validation/` ; aucun de ces fichiers lourds ni aucun audio commité. Avertissement React préexistant sur les clés de `FilmStrip` ; les contrôles terminent avec le code 0.
+- `.env` jamais lu ; aucun réseau, appel ElevenLabs, génération vocale ou calcul Blender. Aucun changement dans `package.json`, `node_modules/`, `.venv/` ; seules écritures dans `public/vo/` pour les assets.
+
+## Entendu / vu et reste pour Claude
+
+**Pas d’écoute humaine effectuée.** La reconnaissance Whisper et les mesures du signal ne prouvent pas seules la qualité perceptive ou une précision phonétique absolue. Écouter en priorité les 24 interpolations, les 28 répartitions, les noms propres et les deux chuchotements.
+
+**Pas de PNG Remotion ni de rendu vidéo inspecté dans cette session.** Les contrôles visuels sont des comparaisons HTML/styles ; ils ne remplacent pas l’inspection de la police, des raccords 3D et du rendu réel.
+
+1. Rendre et regarder les PNG de `docs/v01-ur-images-fixes.md`, avec `FACELESS=1 WITH3D=1`.
+2. Rendre V01-UR avec les propriétés de `docs/v01-ur-finition.md`, puis poser intro Pixar, cinq passages animés et veste selon les repères fournis.
+3. Écouter et masteriser la vidéo finale, contrôler en particulier la voix seule sous le verset et le niveau des chuchotements.
+4. Finaliser les trois Shorts à partir de la vidéo validée, les miniatures et le paquet. Les questions éditoriales restantes sont dans `docs/v01-ur-questions.md` ; les décisions voix/verset du présent brief sont appliquées.
+5. Claude pourra pousser les commits locaux. Rien n’a été poussé ici.
