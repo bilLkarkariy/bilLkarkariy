@@ -48,7 +48,9 @@ Claude fera le rendu et la finition sur le Mac de Billel à partir de ce que tu 
    texte du fichier playground sans rien y changer, et `src/data/v01_ur.groups.json`.
 2. **Voix assemblée** : `tools/assemble_vo.py` (pauses du script, coupes seulement dans le silence entre deux segments,
    jamais à l'intérieur ; fondus de 5 à 10 ms ; **`--verse-hold 0`**). Vérifie que les deux « استغفراللہ » chuchotés
-   sont entiers. Commite le manifeste d'assemblage dans `src/data/v01_ur.assembly.json`, avec l'empreinte sha256 du WAV
+   sont entiers. **Ils sont très bas dans la prise** (vers 565,2 à 567,8 s du mp3 : environ -54 dB de moyenne, contre
+   -26 dB pour la parole autour) : remonte seulement ce passage d'environ 12 dB, avec des fondus, pour qu'on les entende
+   comme un chuchotement, sans saturer. Note le gain exact dans le manifeste. Commite le manifeste d'assemblage dans `src/data/v01_ur.assembly.json`, avec l'empreinte sha256 du WAV
    produit : Claude reconstruira le même fichier sur le Mac et comparera l'empreinte.
 3. **Alignement** : `python3 tools/vo.py align script/v01_ur.json <wav assemblé>` → `src/data/v01_ur.vo.json`
    (Whisper « small », langue `ur`). Contrôle : 79 segments, mots dans l'ordre, aucun trou anormal. Mots que Whisper
