@@ -1,0 +1,8237 @@
+{
+  "audio": null,
+  "duration": 670.765,
+  "estimated": true,
+  "language": "en",
+  "_doc": "PROVISOIRE : syllabes estimées, pauses FR conservées. Aucun son généré. Remplacer avec tools/vo.py align.",
+  "segments": [
+    {
+      "id": "s1",
+      "text": "Fifteen minutes.",
+      "start": 0.8,
+      "end": 1.905,
+      "words": [
+        {
+          "w": "Fifteen",
+          "start": 0.8,
+          "end": 1.25
+        },
+        {
+          "w": "minutes",
+          "start": 1.275,
+          "end": 1.905
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "text": "Alone in an empty room.",
+      "start": 2.535,
+      "end": 4.345,
+      "words": [
+        {
+          "w": "Alone",
+          "start": 2.535,
+          "end": 2.985
+        },
+        {
+          "w": "in",
+          "start": 3.01,
+          "end": 3.28
+        },
+        {
+          "w": "an",
+          "start": 3.305,
+          "end": 3.575
+        },
+        {
+          "w": "empty",
+          "start": 3.6,
+          "end": 4.05
+        },
+        {
+          "w": "room",
+          "start": 4.075,
+          "end": 4.345
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "text": "No phone. Nothing to read.",
+      "start": 4.875,
+      "end": 6.66,
+      "words": [
+        {
+          "w": "No",
+          "start": 4.875,
+          "end": 5.145
+        },
+        {
+          "w": "phone",
+          "start": 5.17,
+          "end": 5.44
+        },
+        {
+          "w": "Nothing",
+          "start": 5.62,
+          "end": 6.07
+        },
+        {
+          "w": "to",
+          "start": 6.095,
+          "end": 6.365
+        },
+        {
+          "w": "read",
+          "start": 6.39,
+          "end": 6.66
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "text": "Just you and your thoughts…",
+      "start": 7.44,
+      "end": 8.89,
+      "words": [
+        {
+          "w": "Just",
+          "start": 7.44,
+          "end": 7.71
+        },
+        {
+          "w": "you",
+          "start": 7.735,
+          "end": 8.005
+        },
+        {
+          "w": "and",
+          "start": 8.03,
+          "end": 8.3
+        },
+        {
+          "w": "your",
+          "start": 8.325,
+          "end": 8.595
+        },
+        {
+          "w": "thoughts",
+          "start": 8.62,
+          "end": 8.89
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "text": "and a button that gives you an electric shock.",
+      "start": 9.52,
+      "end": 12.87,
+      "words": [
+        {
+          "w": "and",
+          "start": 9.52,
+          "end": 9.79
+        },
+        {
+          "w": "a",
+          "start": 9.815,
+          "end": 10.085
+        },
+        {
+          "w": "button",
+          "start": 10.11,
+          "end": 10.56
+        },
+        {
+          "w": "that",
+          "start": 10.585,
+          "end": 10.855
+        },
+        {
+          "w": "gives",
+          "start": 10.88,
+          "end": 11.33
+        },
+        {
+          "w": "you",
+          "start": 11.355,
+          "end": 11.625
+        },
+        {
+          "w": "an",
+          "start": 11.65,
+          "end": 11.92
+        },
+        {
+          "w": "electric",
+          "start": 11.945,
+          "end": 12.575
+        },
+        {
+          "w": "shock",
+          "start": 12.6,
+          "end": 12.87
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "text": "Two out of three men pressed it.",
+      "start": 14.65,
+      "end": 16.69,
+      "words": [
+        {
+          "w": "Two",
+          "start": 14.65,
+          "end": 14.92
+        },
+        {
+          "w": "out",
+          "start": 14.945,
+          "end": 15.215
+        },
+        {
+          "w": "of",
+          "start": 15.24,
+          "end": 15.51
+        },
+        {
+          "w": "three",
+          "start": 15.535,
+          "end": 15.805
+        },
+        {
+          "w": "men",
+          "start": 15.83,
+          "end": 16.1
+        },
+        {
+          "w": "pressed",
+          "start": 16.125,
+          "end": 16.395
+        },
+        {
+          "w": "it",
+          "start": 16.42,
+          "end": 16.69
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "text": "People who, just moments earlier, had said they'd pay never to feel that shock again.",
+      "start": 17.77,
+      "end": 23.18,
+      "words": [
+        {
+          "w": "People",
+          "start": 17.77,
+          "end": 18.22
+        },
+        {
+          "w": "who",
+          "start": 18.245,
+          "end": 18.515
+        },
+        {
+          "w": "just",
+          "start": 18.595,
+          "end": 18.865
+        },
+        {
+          "w": "moments",
+          "start": 18.89,
+          "end": 19.34
+        },
+        {
+          "w": "earlier",
+          "start": 19.365,
+          "end": 19.815
+        },
+        {
+          "w": "had",
+          "start": 19.895,
+          "end": 20.165
+        },
+        {
+          "w": "said",
+          "start": 20.19,
+          "end": 20.46
+        },
+        {
+          "w": "they'd",
+          "start": 20.485,
+          "end": 20.755
+        },
+        {
+          "w": "pay",
+          "start": 20.78,
+          "end": 21.05
+        },
+        {
+          "w": "never",
+          "start": 21.075,
+          "end": 21.525
+        },
+        {
+          "w": "to",
+          "start": 21.55,
+          "end": 21.82
+        },
+        {
+          "w": "feel",
+          "start": 21.845,
+          "end": 22.115
+        },
+        {
+          "w": "that",
+          "start": 22.14,
+          "end": 22.41
+        },
+        {
+          "w": "shock",
+          "start": 22.435,
+          "end": 22.705
+        },
+        {
+          "w": "again",
+          "start": 22.73,
+          "end": 23.18
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "text": "And I'm pretty sure you would have pressed it too.",
+      "start": 23.96,
+      "end": 27.065,
+      "words": [
+        {
+          "w": "And",
+          "start": 23.96,
+          "end": 24.23
+        },
+        {
+          "w": "I'm",
+          "start": 24.255,
+          "end": 24.525
+        },
+        {
+          "w": "pretty",
+          "start": 24.55,
+          "end": 25.0
+        },
+        {
+          "w": "sure",
+          "start": 25.025,
+          "end": 25.295
+        },
+        {
+          "w": "you",
+          "start": 25.32,
+          "end": 25.59
+        },
+        {
+          "w": "would",
+          "start": 25.615,
+          "end": 25.885
+        },
+        {
+          "w": "have",
+          "start": 25.91,
+          "end": 26.18
+        },
+        {
+          "w": "pressed",
+          "start": 26.205,
+          "end": 26.475
+        },
+        {
+          "w": "it",
+          "start": 26.5,
+          "end": 26.77
+        },
+        {
+          "w": "too",
+          "start": 26.795,
+          "end": 27.065
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "text": "This was a study published in Science in twenty fourteen.",
+      "start": 27.945,
+      "end": 31.77,
+      "words": [
+        {
+          "w": "This",
+          "start": 27.945,
+          "end": 28.215
+        },
+        {
+          "w": "was",
+          "start": 28.24,
+          "end": 28.51
+        },
+        {
+          "w": "a",
+          "start": 28.535,
+          "end": 28.805
+        },
+        {
+          "w": "study",
+          "start": 28.83,
+          "end": 29.28
+        },
+        {
+          "w": "published",
+          "start": 29.305,
+          "end": 29.755
+        },
+        {
+          "w": "in",
+          "start": 29.78,
+          "end": 30.05
+        },
+        {
+          "w": "Science",
+          "start": 30.075,
+          "end": 30.525
+        },
+        {
+          "w": "in",
+          "start": 30.55,
+          "end": 30.82
+        },
+        {
+          "w": "twenty",
+          "start": 30.845,
+          "end": 31.295
+        },
+        {
+          "w": "fourteen",
+          "start": 31.32,
+          "end": 31.77
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "text": "Almost nobody quotes its final sentence.",
+      "start": 32.3,
+      "end": 35.125,
+      "words": [
+        {
+          "w": "Almost",
+          "start": 32.3,
+          "end": 32.75
+        },
+        {
+          "w": "nobody",
+          "start": 32.775,
+          "end": 33.405
+        },
+        {
+          "w": "quotes",
+          "start": 33.43,
+          "end": 33.88
+        },
+        {
+          "w": "its",
+          "start": 33.905,
+          "end": 34.175
+        },
+        {
+          "w": "final",
+          "start": 34.2,
+          "end": 34.65
+        },
+        {
+          "w": "sentence",
+          "start": 34.675,
+          "end": 35.125
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "text": "But it changes the way you see that button.",
+      "start": 35.655,
+      "end": 38.645,
+      "words": [
+        {
+          "w": "But",
+          "start": 35.655,
+          "end": 35.925
+        },
+        {
+          "w": "it",
+          "start": 35.95,
+          "end": 36.22
+        },
+        {
+          "w": "changes",
+          "start": 36.245,
+          "end": 36.695
+        },
+        {
+          "w": "the",
+          "start": 36.72,
+          "end": 36.99
+        },
+        {
+          "w": "way",
+          "start": 37.015,
+          "end": 37.285
+        },
+        {
+          "w": "you",
+          "start": 37.31,
+          "end": 37.58
+        },
+        {
+          "w": "see",
+          "start": 37.605,
+          "end": 37.875
+        },
+        {
+          "w": "that",
+          "start": 37.9,
+          "end": 38.17
+        },
+        {
+          "w": "button",
+          "start": 38.195,
+          "end": 38.645
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "text": "I'll come back to it at the end, with a two-minute exercise you can try tonight.",
+      "start": 39.275,
+      "end": 44.925,
+      "words": [
+        {
+          "w": "I'll",
+          "start": 39.275,
+          "end": 39.545
+        },
+        {
+          "w": "come",
+          "start": 39.57,
+          "end": 39.84
+        },
+        {
+          "w": "back",
+          "start": 39.865,
+          "end": 40.135
+        },
+        {
+          "w": "to",
+          "start": 40.16,
+          "end": 40.43
+        },
+        {
+          "w": "it",
+          "start": 40.455,
+          "end": 40.725
+        },
+        {
+          "w": "at",
+          "start": 40.75,
+          "end": 41.02
+        },
+        {
+          "w": "the",
+          "start": 41.045,
+          "end": 41.315
+        },
+        {
+          "w": "end",
+          "start": 41.34,
+          "end": 41.61
+        },
+        {
+          "w": "with",
+          "start": 41.69,
+          "end": 41.96
+        },
+        {
+          "w": "a",
+          "start": 41.985,
+          "end": 42.255
+        },
+        {
+          "w": "two-minute",
+          "start": 42.28,
+          "end": 42.91
+        },
+        {
+          "w": "exercise",
+          "start": 42.935,
+          "end": 43.565
+        },
+        {
+          "w": "you",
+          "start": 43.59,
+          "end": 43.86
+        },
+        {
+          "w": "can",
+          "start": 43.885,
+          "end": 44.155
+        },
+        {
+          "w": "try",
+          "start": 44.18,
+          "end": 44.45
+        },
+        {
+          "w": "tonight",
+          "start": 44.475,
+          "end": 44.925
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "text": "The University of Virginia.",
+      "start": 45.905,
+      "end": 48.14,
+      "words": [
+        {
+          "w": "The",
+          "start": 45.905,
+          "end": 46.175
+        },
+        {
+          "w": "University",
+          "start": 46.2,
+          "end": 47.19
+        },
+        {
+          "w": "of",
+          "start": 47.215,
+          "end": 47.485
+        },
+        {
+          "w": "Virginia",
+          "start": 47.51,
+          "end": 48.14
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "text": "Students walk into an almost empty room.",
+      "start": 48.77,
+      "end": 51.53,
+      "words": [
+        {
+          "w": "Students",
+          "start": 48.77,
+          "end": 49.22
+        },
+        {
+          "w": "walk",
+          "start": 49.245,
+          "end": 49.515
+        },
+        {
+          "w": "into",
+          "start": 49.54,
+          "end": 49.99
+        },
+        {
+          "w": "an",
+          "start": 50.015,
+          "end": 50.285
+        },
+        {
+          "w": "almost",
+          "start": 50.31,
+          "end": 50.76
+        },
+        {
+          "w": "empty",
+          "start": 50.785,
+          "end": 51.235
+        },
+        {
+          "w": "room",
+          "start": 51.26,
+          "end": 51.53
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "text": "They're asked to leave their belongings at the door.",
+      "start": 52.06,
+      "end": 55.05,
+      "words": [
+        {
+          "w": "They're",
+          "start": 52.06,
+          "end": 52.33
+        },
+        {
+          "w": "asked",
+          "start": 52.355,
+          "end": 52.625
+        },
+        {
+          "w": "to",
+          "start": 52.65,
+          "end": 52.92
+        },
+        {
+          "w": "leave",
+          "start": 52.945,
+          "end": 53.215
+        },
+        {
+          "w": "their",
+          "start": 53.24,
+          "end": 53.51
+        },
+        {
+          "w": "belongings",
+          "start": 53.535,
+          "end": 54.165
+        },
+        {
+          "w": "at",
+          "start": 54.19,
+          "end": 54.46
+        },
+        {
+          "w": "the",
+          "start": 54.485,
+          "end": 54.755
+        },
+        {
+          "w": "door",
+          "start": 54.78,
+          "end": 55.05
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "text": "Their phones. Even their pens.",
+      "start": 55.53,
+      "end": 57.495,
+      "words": [
+        {
+          "w": "Their",
+          "start": 55.53,
+          "end": 55.8
+        },
+        {
+          "w": "phones",
+          "start": 55.825,
+          "end": 56.275
+        },
+        {
+          "w": "Even",
+          "start": 56.455,
+          "end": 56.905
+        },
+        {
+          "w": "their",
+          "start": 56.93,
+          "end": 57.2
+        },
+        {
+          "w": "pens",
+          "start": 57.225,
+          "end": 57.495
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "text": "Nothing to write with.",
+      "start": 57.975,
+      "end": 59.31,
+      "words": [
+        {
+          "w": "Nothing",
+          "start": 57.975,
+          "end": 58.425
+        },
+        {
+          "w": "to",
+          "start": 58.45,
+          "end": 58.72
+        },
+        {
+          "w": "write",
+          "start": 58.745,
+          "end": 59.015
+        },
+        {
+          "w": "with",
+          "start": 59.04,
+          "end": 59.31
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "text": "The instructions are simple: stay seated, don't fall asleep, and entertain yourself with your thoughts.",
+      "start": 60.19,
+      "end": 66.375,
+      "words": [
+        {
+          "w": "The",
+          "start": 60.19,
+          "end": 60.46
+        },
+        {
+          "w": "instructions",
+          "start": 60.485,
+          "end": 61.115
+        },
+        {
+          "w": "are",
+          "start": 61.14,
+          "end": 61.59
+        },
+        {
+          "w": "simple",
+          "start": 61.615,
+          "end": 62.065
+        },
+        {
+          "w": "stay",
+          "start": 62.145,
+          "end": 62.415
+        },
+        {
+          "w": "seated",
+          "start": 62.44,
+          "end": 62.89
+        },
+        {
+          "w": "don't",
+          "start": 62.97,
+          "end": 63.24
+        },
+        {
+          "w": "fall",
+          "start": 63.265,
+          "end": 63.535
+        },
+        {
+          "w": "asleep",
+          "start": 63.56,
+          "end": 64.01
+        },
+        {
+          "w": "and",
+          "start": 64.09,
+          "end": 64.36
+        },
+        {
+          "w": "entertain",
+          "start": 64.385,
+          "end": 65.015
+        },
+        {
+          "w": "yourself",
+          "start": 65.04,
+          "end": 65.49
+        },
+        {
+          "w": "with",
+          "start": 65.515,
+          "end": 65.785
+        },
+        {
+          "w": "your",
+          "start": 65.81,
+          "end": 66.08
+        },
+        {
+          "w": "thoughts",
+          "start": 66.105,
+          "end": 66.375
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "text": "Fifteen minutes.",
+      "start": 67.055,
+      "end": 68.16,
+      "words": [
+        {
+          "w": "Fifteen",
+          "start": 67.055,
+          "end": 67.505
+        },
+        {
+          "w": "minutes",
+          "start": 67.53,
+          "end": 68.16
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "text": "Before leaving people alone, the researchers give them a mild electric shock. Like a strong jolt of static electricity. Then they ask: how much would you pay never to feel it again? They only keep the people who say: I'd pay.",
+      "start": 69.34,
+      "end": 85.1,
+      "words": [
+        {
+          "w": "Before",
+          "start": 69.34,
+          "end": 69.79
+        },
+        {
+          "w": "leaving",
+          "start": 69.815,
+          "end": 70.265
+        },
+        {
+          "w": "people",
+          "start": 70.29,
+          "end": 70.74
+        },
+        {
+          "w": "alone",
+          "start": 70.765,
+          "end": 71.215
+        },
+        {
+          "w": "the",
+          "start": 71.295,
+          "end": 71.565
+        },
+        {
+          "w": "researchers",
+          "start": 71.59,
+          "end": 72.22
+        },
+        {
+          "w": "give",
+          "start": 72.245,
+          "end": 72.515
+        },
+        {
+          "w": "them",
+          "start": 72.54,
+          "end": 72.81
+        },
+        {
+          "w": "a",
+          "start": 72.835,
+          "end": 73.105
+        },
+        {
+          "w": "mild",
+          "start": 73.13,
+          "end": 73.4
+        },
+        {
+          "w": "electric",
+          "start": 73.425,
+          "end": 74.055
+        },
+        {
+          "w": "shock",
+          "start": 74.08,
+          "end": 74.35
+        },
+        {
+          "w": "Like",
+          "start": 74.53,
+          "end": 74.8
+        },
+        {
+          "w": "a",
+          "start": 74.825,
+          "end": 75.095
+        },
+        {
+          "w": "strong",
+          "start": 75.12,
+          "end": 75.39
+        },
+        {
+          "w": "jolt",
+          "start": 75.415,
+          "end": 75.685
+        },
+        {
+          "w": "of",
+          "start": 75.71,
+          "end": 75.98
+        },
+        {
+          "w": "static",
+          "start": 76.005,
+          "end": 76.455
+        },
+        {
+          "w": "electricity",
+          "start": 76.48,
+          "end": 77.47
+        },
+        {
+          "w": "Then",
+          "start": 77.65,
+          "end": 77.92
+        },
+        {
+          "w": "they",
+          "start": 77.945,
+          "end": 78.215
+        },
+        {
+          "w": "ask",
+          "start": 78.24,
+          "end": 78.51
+        },
+        {
+          "w": "how",
+          "start": 78.59,
+          "end": 78.86
+        },
+        {
+          "w": "much",
+          "start": 78.885,
+          "end": 79.155
+        },
+        {
+          "w": "would",
+          "start": 79.18,
+          "end": 79.45
+        },
+        {
+          "w": "you",
+          "start": 79.475,
+          "end": 79.745
+        },
+        {
+          "w": "pay",
+          "start": 79.77,
+          "end": 80.04
+        },
+        {
+          "w": "never",
+          "start": 80.065,
+          "end": 80.515
+        },
+        {
+          "w": "to",
+          "start": 80.54,
+          "end": 80.81
+        },
+        {
+          "w": "feel",
+          "start": 80.835,
+          "end": 81.105
+        },
+        {
+          "w": "it",
+          "start": 81.13,
+          "end": 81.4
+        },
+        {
+          "w": "again",
+          "start": 81.425,
+          "end": 81.875
+        },
+        {
+          "w": "They",
+          "start": 82.055,
+          "end": 82.325
+        },
+        {
+          "w": "only",
+          "start": 82.35,
+          "end": 82.8
+        },
+        {
+          "w": "keep",
+          "start": 82.825,
+          "end": 83.095
+        },
+        {
+          "w": "the",
+          "start": 83.12,
+          "end": 83.39
+        },
+        {
+          "w": "people",
+          "start": 83.415,
+          "end": 83.865
+        },
+        {
+          "w": "who",
+          "start": 83.89,
+          "end": 84.16
+        },
+        {
+          "w": "say",
+          "start": 84.185,
+          "end": 84.455
+        },
+        {
+          "w": "I'd",
+          "start": 84.535,
+          "end": 84.805
+        },
+        {
+          "w": "pay",
+          "start": 84.83,
+          "end": 85.1
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "text": "Then they're left alone. And the button is right there, if they want another shock.",
+      "start": 85.98,
+      "end": 91.31,
+      "words": [
+        {
+          "w": "Then",
+          "start": 85.98,
+          "end": 86.25
+        },
+        {
+          "w": "they're",
+          "start": 86.275,
+          "end": 86.545
+        },
+        {
+          "w": "left",
+          "start": 86.57,
+          "end": 86.84
+        },
+        {
+          "w": "alone",
+          "start": 86.865,
+          "end": 87.315
+        },
+        {
+          "w": "And",
+          "start": 87.495,
+          "end": 87.765
+        },
+        {
+          "w": "the",
+          "start": 87.79,
+          "end": 88.06
+        },
+        {
+          "w": "button",
+          "start": 88.085,
+          "end": 88.535
+        },
+        {
+          "w": "is",
+          "start": 88.56,
+          "end": 88.83
+        },
+        {
+          "w": "right",
+          "start": 88.855,
+          "end": 89.125
+        },
+        {
+          "w": "there",
+          "start": 89.15,
+          "end": 89.42
+        },
+        {
+          "w": "if",
+          "start": 89.5,
+          "end": 89.77
+        },
+        {
+          "w": "they",
+          "start": 89.795,
+          "end": 90.065
+        },
+        {
+          "w": "want",
+          "start": 90.09,
+          "end": 90.36
+        },
+        {
+          "w": "another",
+          "start": 90.385,
+          "end": 91.015
+        },
+        {
+          "w": "shock",
+          "start": 91.04,
+          "end": 91.31
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "text": "Twelve out of eighteen men pressed it. Among the women, six out of twenty-four.",
+      "start": 92.59,
+      "end": 97.805,
+      "words": [
+        {
+          "w": "Twelve",
+          "start": 92.59,
+          "end": 92.86
+        },
+        {
+          "w": "out",
+          "start": 92.885,
+          "end": 93.155
+        },
+        {
+          "w": "of",
+          "start": 93.18,
+          "end": 93.45
+        },
+        {
+          "w": "eighteen",
+          "start": 93.475,
+          "end": 93.925
+        },
+        {
+          "w": "men",
+          "start": 93.95,
+          "end": 94.22
+        },
+        {
+          "w": "pressed",
+          "start": 94.245,
+          "end": 94.515
+        },
+        {
+          "w": "it",
+          "start": 94.54,
+          "end": 94.81
+        },
+        {
+          "w": "Among",
+          "start": 94.99,
+          "end": 95.44
+        },
+        {
+          "w": "the",
+          "start": 95.465,
+          "end": 95.735
+        },
+        {
+          "w": "women",
+          "start": 95.76,
+          "end": 96.21
+        },
+        {
+          "w": "six",
+          "start": 96.29,
+          "end": 96.56
+        },
+        {
+          "w": "out",
+          "start": 96.585,
+          "end": 96.855
+        },
+        {
+          "w": "of",
+          "start": 96.88,
+          "end": 97.15
+        },
+        {
+          "w": "twenty-four",
+          "start": 97.175,
+          "end": 97.805
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "text": "One man pressed it a hundred and ninety times.",
+      "start": 98.685,
+      "end": 102.035,
+      "words": [
+        {
+          "w": "One",
+          "start": 98.685,
+          "end": 99.135
+        },
+        {
+          "w": "man",
+          "start": 99.16,
+          "end": 99.43
+        },
+        {
+          "w": "pressed",
+          "start": 99.455,
+          "end": 99.725
+        },
+        {
+          "w": "it",
+          "start": 99.75,
+          "end": 100.02
+        },
+        {
+          "w": "a",
+          "start": 100.045,
+          "end": 100.315
+        },
+        {
+          "w": "hundred",
+          "start": 100.34,
+          "end": 100.61
+        },
+        {
+          "w": "and",
+          "start": 100.635,
+          "end": 100.905
+        },
+        {
+          "w": "ninety",
+          "start": 100.93,
+          "end": 101.56
+        },
+        {
+          "w": "times",
+          "start": 101.585,
+          "end": 102.035
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "text": "These are small groups. Forty-two people in total. But remember: every one of them had just said they'd pay to avoid it.",
+      "start": 103.015,
+      "end": 111.645,
+      "words": [
+        {
+          "w": "These",
+          "start": 103.015,
+          "end": 103.285
+        },
+        {
+          "w": "are",
+          "start": 103.31,
+          "end": 103.76
+        },
+        {
+          "w": "small",
+          "start": 103.785,
+          "end": 104.055
+        },
+        {
+          "w": "groups",
+          "start": 104.08,
+          "end": 104.35
+        },
+        {
+          "w": "Forty-two",
+          "start": 104.53,
+          "end": 105.16
+        },
+        {
+          "w": "people",
+          "start": 105.185,
+          "end": 105.635
+        },
+        {
+          "w": "in",
+          "start": 105.66,
+          "end": 105.93
+        },
+        {
+          "w": "total",
+          "start": 105.955,
+          "end": 106.405
+        },
+        {
+          "w": "But",
+          "start": 106.585,
+          "end": 106.855
+        },
+        {
+          "w": "remember",
+          "start": 106.88,
+          "end": 107.51
+        },
+        {
+          "w": "every",
+          "start": 107.59,
+          "end": 108.04
+        },
+        {
+          "w": "one",
+          "start": 108.065,
+          "end": 108.515
+        },
+        {
+          "w": "of",
+          "start": 108.54,
+          "end": 108.81
+        },
+        {
+          "w": "them",
+          "start": 108.835,
+          "end": 109.105
+        },
+        {
+          "w": "had",
+          "start": 109.13,
+          "end": 109.4
+        },
+        {
+          "w": "just",
+          "start": 109.425,
+          "end": 109.695
+        },
+        {
+          "w": "said",
+          "start": 109.72,
+          "end": 109.99
+        },
+        {
+          "w": "they'd",
+          "start": 110.015,
+          "end": 110.285
+        },
+        {
+          "w": "pay",
+          "start": 110.31,
+          "end": 110.58
+        },
+        {
+          "w": "to",
+          "start": 110.605,
+          "end": 110.875
+        },
+        {
+          "w": "avoid",
+          "start": 110.9,
+          "end": 111.35
+        },
+        {
+          "w": "it",
+          "start": 111.375,
+          "end": 111.645
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "text": "You might be thinking: students in a lab? That doesn't tell us much. The researchers wondered about that too.",
+      "start": 112.825,
+      "end": 119.85,
+      "words": [
+        {
+          "w": "You",
+          "start": 112.825,
+          "end": 113.095
+        },
+        {
+          "w": "might",
+          "start": 113.12,
+          "end": 113.39
+        },
+        {
+          "w": "be",
+          "start": 113.415,
+          "end": 113.685
+        },
+        {
+          "w": "thinking",
+          "start": 113.71,
+          "end": 114.16
+        },
+        {
+          "w": "students",
+          "start": 114.24,
+          "end": 114.69
+        },
+        {
+          "w": "in",
+          "start": 114.715,
+          "end": 114.985
+        },
+        {
+          "w": "a",
+          "start": 115.01,
+          "end": 115.28
+        },
+        {
+          "w": "lab",
+          "start": 115.305,
+          "end": 115.575
+        },
+        {
+          "w": "That",
+          "start": 115.755,
+          "end": 116.025
+        },
+        {
+          "w": "doesn't",
+          "start": 116.05,
+          "end": 116.32
+        },
+        {
+          "w": "tell",
+          "start": 116.345,
+          "end": 116.615
+        },
+        {
+          "w": "us",
+          "start": 116.64,
+          "end": 116.91
+        },
+        {
+          "w": "much",
+          "start": 116.935,
+          "end": 117.205
+        },
+        {
+          "w": "The",
+          "start": 117.385,
+          "end": 117.655
+        },
+        {
+          "w": "researchers",
+          "start": 117.68,
+          "end": 118.31
+        },
+        {
+          "w": "wondered",
+          "start": 118.335,
+          "end": 118.785
+        },
+        {
+          "w": "about",
+          "start": 118.81,
+          "end": 119.26
+        },
+        {
+          "w": "that",
+          "start": 119.285,
+          "end": 119.555
+        },
+        {
+          "w": "too",
+          "start": 119.58,
+          "end": 119.85
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "text": "In the experiments without a button, nine out of ten people said their minds wandered. More than half found it hard to concentrate.",
+      "start": 120.63,
+      "end": 129.22,
+      "words": [
+        {
+          "w": "In",
+          "start": 120.63,
+          "end": 120.9
+        },
+        {
+          "w": "the",
+          "start": 120.925,
+          "end": 121.195
+        },
+        {
+          "w": "experiments",
+          "start": 121.22,
+          "end": 122.03
+        },
+        {
+          "w": "without",
+          "start": 122.055,
+          "end": 122.505
+        },
+        {
+          "w": "a",
+          "start": 122.53,
+          "end": 122.8
+        },
+        {
+          "w": "button",
+          "start": 122.825,
+          "end": 123.275
+        },
+        {
+          "w": "nine",
+          "start": 123.355,
+          "end": 123.625
+        },
+        {
+          "w": "out",
+          "start": 123.65,
+          "end": 123.92
+        },
+        {
+          "w": "of",
+          "start": 123.945,
+          "end": 124.215
+        },
+        {
+          "w": "ten",
+          "start": 124.24,
+          "end": 124.51
+        },
+        {
+          "w": "people",
+          "start": 124.535,
+          "end": 124.985
+        },
+        {
+          "w": "said",
+          "start": 125.01,
+          "end": 125.28
+        },
+        {
+          "w": "their",
+          "start": 125.305,
+          "end": 125.575
+        },
+        {
+          "w": "minds",
+          "start": 125.6,
+          "end": 125.87
+        },
+        {
+          "w": "wandered",
+          "start": 125.895,
+          "end": 126.345
+        },
+        {
+          "w": "More",
+          "start": 126.525,
+          "end": 126.795
+        },
+        {
+          "w": "than",
+          "start": 126.82,
+          "end": 127.09
+        },
+        {
+          "w": "half",
+          "start": 127.115,
+          "end": 127.385
+        },
+        {
+          "w": "found",
+          "start": 127.41,
+          "end": 127.68
+        },
+        {
+          "w": "it",
+          "start": 127.705,
+          "end": 127.975
+        },
+        {
+          "w": "hard",
+          "start": 128.0,
+          "end": 128.27
+        },
+        {
+          "w": "to",
+          "start": 128.295,
+          "end": 128.565
+        },
+        {
+          "w": "concentrate",
+          "start": 128.59,
+          "end": 129.22
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "text": "Maybe it's the lab, the researchers thought. An intimidating place. So they ran the experiment in people's homes. On their own sofas. One in three cheated: they put on music, used their phone, or got up.",
+      "start": 130.1,
+      "end": 144.235,
+      "words": [
+        {
+          "w": "Maybe",
+          "start": 130.1,
+          "end": 130.37
+        },
+        {
+          "w": "it's",
+          "start": 130.395,
+          "end": 130.665
+        },
+        {
+          "w": "the",
+          "start": 130.69,
+          "end": 130.96
+        },
+        {
+          "w": "lab",
+          "start": 130.985,
+          "end": 131.255
+        },
+        {
+          "w": "the",
+          "start": 131.335,
+          "end": 131.605
+        },
+        {
+          "w": "researchers",
+          "start": 131.63,
+          "end": 132.26
+        },
+        {
+          "w": "thought",
+          "start": 132.285,
+          "end": 132.555
+        },
+        {
+          "w": "An",
+          "start": 132.735,
+          "end": 133.005
+        },
+        {
+          "w": "intimidating",
+          "start": 133.03,
+          "end": 134.02
+        },
+        {
+          "w": "place",
+          "start": 134.045,
+          "end": 134.315
+        },
+        {
+          "w": "So",
+          "start": 134.495,
+          "end": 134.765
+        },
+        {
+          "w": "they",
+          "start": 134.79,
+          "end": 135.06
+        },
+        {
+          "w": "ran",
+          "start": 135.085,
+          "end": 135.355
+        },
+        {
+          "w": "the",
+          "start": 135.38,
+          "end": 135.65
+        },
+        {
+          "w": "experiment",
+          "start": 135.675,
+          "end": 136.485
+        },
+        {
+          "w": "in",
+          "start": 136.51,
+          "end": 136.78
+        },
+        {
+          "w": "people's",
+          "start": 136.805,
+          "end": 137.255
+        },
+        {
+          "w": "homes",
+          "start": 137.28,
+          "end": 137.73
+        },
+        {
+          "w": "On",
+          "start": 137.91,
+          "end": 138.18
+        },
+        {
+          "w": "their",
+          "start": 138.205,
+          "end": 138.475
+        },
+        {
+          "w": "own",
+          "start": 138.5,
+          "end": 138.77
+        },
+        {
+          "w": "sofas",
+          "start": 138.795,
+          "end": 139.245
+        },
+        {
+          "w": "One",
+          "start": 139.425,
+          "end": 139.875
+        },
+        {
+          "w": "in",
+          "start": 139.9,
+          "end": 140.17
+        },
+        {
+          "w": "three",
+          "start": 140.195,
+          "end": 140.465
+        },
+        {
+          "w": "cheated",
+          "start": 140.49,
+          "end": 140.94
+        },
+        {
+          "w": "they",
+          "start": 141.02,
+          "end": 141.29
+        },
+        {
+          "w": "put",
+          "start": 141.315,
+          "end": 141.585
+        },
+        {
+          "w": "on",
+          "start": 141.61,
+          "end": 141.88
+        },
+        {
+          "w": "music",
+          "start": 141.905,
+          "end": 142.355
+        },
+        {
+          "w": "used",
+          "start": 142.435,
+          "end": 142.705
+        },
+        {
+          "w": "their",
+          "start": 142.73,
+          "end": 143.0
+        },
+        {
+          "w": "phone",
+          "start": 143.025,
+          "end": 143.295
+        },
+        {
+          "w": "or",
+          "start": 143.375,
+          "end": 143.645
+        },
+        {
+          "w": "got",
+          "start": 143.67,
+          "end": 143.94
+        },
+        {
+          "w": "up",
+          "start": 143.965,
+          "end": 144.235
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "text": "And it wasn't just students. People aged eighteen to seventy-seven tried it at home. Same result. No link with age. No link with how often they used a smartphone.",
+      "start": 145.115,
+      "end": 156.245,
+      "words": [
+        {
+          "w": "And",
+          "start": 145.115,
+          "end": 145.385
+        },
+        {
+          "w": "it",
+          "start": 145.41,
+          "end": 145.68
+        },
+        {
+          "w": "wasn't",
+          "start": 145.705,
+          "end": 145.975
+        },
+        {
+          "w": "just",
+          "start": 146.0,
+          "end": 146.27
+        },
+        {
+          "w": "students",
+          "start": 146.295,
+          "end": 146.745
+        },
+        {
+          "w": "People",
+          "start": 146.925,
+          "end": 147.375
+        },
+        {
+          "w": "aged",
+          "start": 147.4,
+          "end": 147.67
+        },
+        {
+          "w": "eighteen",
+          "start": 147.695,
+          "end": 148.145
+        },
+        {
+          "w": "to",
+          "start": 148.17,
+          "end": 148.44
+        },
+        {
+          "w": "seventy-seven",
+          "start": 148.465,
+          "end": 149.455
+        },
+        {
+          "w": "tried",
+          "start": 149.48,
+          "end": 149.75
+        },
+        {
+          "w": "it",
+          "start": 149.775,
+          "end": 150.045
+        },
+        {
+          "w": "at",
+          "start": 150.07,
+          "end": 150.34
+        },
+        {
+          "w": "home",
+          "start": 150.365,
+          "end": 150.635
+        },
+        {
+          "w": "Same",
+          "start": 150.815,
+          "end": 151.085
+        },
+        {
+          "w": "result",
+          "start": 151.11,
+          "end": 151.56
+        },
+        {
+          "w": "No",
+          "start": 151.74,
+          "end": 152.01
+        },
+        {
+          "w": "link",
+          "start": 152.035,
+          "end": 152.305
+        },
+        {
+          "w": "with",
+          "start": 152.33,
+          "end": 152.6
+        },
+        {
+          "w": "age",
+          "start": 152.625,
+          "end": 153.075
+        },
+        {
+          "w": "No",
+          "start": 153.255,
+          "end": 153.525
+        },
+        {
+          "w": "link",
+          "start": 153.55,
+          "end": 153.82
+        },
+        {
+          "w": "with",
+          "start": 153.845,
+          "end": 154.115
+        },
+        {
+          "w": "how",
+          "start": 154.14,
+          "end": 154.41
+        },
+        {
+          "w": "often",
+          "start": 154.435,
+          "end": 154.885
+        },
+        {
+          "w": "they",
+          "start": 154.91,
+          "end": 155.18
+        },
+        {
+          "w": "used",
+          "start": 155.205,
+          "end": 155.475
+        },
+        {
+          "w": "a",
+          "start": 155.5,
+          "end": 155.77
+        },
+        {
+          "w": "smartphone",
+          "start": 155.795,
+          "end": 156.245
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "text": "But the strangest thing isn't the button.",
+      "start": 157.225,
+      "end": 159.625,
+      "words": [
+        {
+          "w": "But",
+          "start": 157.225,
+          "end": 157.495
+        },
+        {
+          "w": "the",
+          "start": 157.52,
+          "end": 157.79
+        },
+        {
+          "w": "strangest",
+          "start": 157.815,
+          "end": 158.265
+        },
+        {
+          "w": "thing",
+          "start": 158.29,
+          "end": 158.56
+        },
+        {
+          "w": "isn't",
+          "start": 158.585,
+          "end": 158.855
+        },
+        {
+          "w": "the",
+          "start": 158.88,
+          "end": 159.15
+        },
+        {
+          "w": "button",
+          "start": 159.175,
+          "end": 159.625
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "text": "It's this. The researchers gave people a few minutes to plan what they would think about. A trip. A memory. A project. It made no difference.",
+      "start": 161.105,
+      "end": 171.505,
+      "words": [
+        {
+          "w": "It's",
+          "start": 161.105,
+          "end": 161.375
+        },
+        {
+          "w": "this",
+          "start": 161.4,
+          "end": 161.67
+        },
+        {
+          "w": "The",
+          "start": 161.85,
+          "end": 162.12
+        },
+        {
+          "w": "researchers",
+          "start": 162.145,
+          "end": 162.775
+        },
+        {
+          "w": "gave",
+          "start": 162.8,
+          "end": 163.07
+        },
+        {
+          "w": "people",
+          "start": 163.095,
+          "end": 163.545
+        },
+        {
+          "w": "a",
+          "start": 163.57,
+          "end": 163.84
+        },
+        {
+          "w": "few",
+          "start": 163.865,
+          "end": 164.135
+        },
+        {
+          "w": "minutes",
+          "start": 164.16,
+          "end": 164.79
+        },
+        {
+          "w": "to",
+          "start": 164.815,
+          "end": 165.085
+        },
+        {
+          "w": "plan",
+          "start": 165.11,
+          "end": 165.38
+        },
+        {
+          "w": "what",
+          "start": 165.405,
+          "end": 165.675
+        },
+        {
+          "w": "they",
+          "start": 165.7,
+          "end": 165.97
+        },
+        {
+          "w": "would",
+          "start": 165.995,
+          "end": 166.265
+        },
+        {
+          "w": "think",
+          "start": 166.29,
+          "end": 166.56
+        },
+        {
+          "w": "about",
+          "start": 166.585,
+          "end": 167.035
+        },
+        {
+          "w": "A",
+          "start": 167.215,
+          "end": 167.485
+        },
+        {
+          "w": "trip",
+          "start": 167.51,
+          "end": 167.78
+        },
+        {
+          "w": "A",
+          "start": 167.96,
+          "end": 168.23
+        },
+        {
+          "w": "memory",
+          "start": 168.255,
+          "end": 168.885
+        },
+        {
+          "w": "A",
+          "start": 169.065,
+          "end": 169.335
+        },
+        {
+          "w": "project",
+          "start": 169.36,
+          "end": 169.81
+        },
+        {
+          "w": "It",
+          "start": 169.99,
+          "end": 170.26
+        },
+        {
+          "w": "made",
+          "start": 170.285,
+          "end": 170.555
+        },
+        {
+          "w": "no",
+          "start": 170.58,
+          "end": 170.85
+        },
+        {
+          "w": "difference",
+          "start": 170.875,
+          "end": 171.505
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "text": "The authors have a way of putting it. Thinking alone means being both the writer and the audience of your own film. Once the writer gets tired, the film goes all over the place.",
+      "start": 172.385,
+      "end": 184.195,
+      "words": [
+        {
+          "w": "The",
+          "start": 172.385,
+          "end": 172.655
+        },
+        {
+          "w": "authors",
+          "start": 172.68,
+          "end": 173.13
+        },
+        {
+          "w": "have",
+          "start": 173.155,
+          "end": 173.425
+        },
+        {
+          "w": "a",
+          "start": 173.45,
+          "end": 173.72
+        },
+        {
+          "w": "way",
+          "start": 173.745,
+          "end": 174.015
+        },
+        {
+          "w": "of",
+          "start": 174.04,
+          "end": 174.31
+        },
+        {
+          "w": "putting",
+          "start": 174.335,
+          "end": 174.785
+        },
+        {
+          "w": "it",
+          "start": 174.81,
+          "end": 175.08
+        },
+        {
+          "w": "Thinking",
+          "start": 175.26,
+          "end": 175.71
+        },
+        {
+          "w": "alone",
+          "start": 175.735,
+          "end": 176.185
+        },
+        {
+          "w": "means",
+          "start": 176.21,
+          "end": 176.48
+        },
+        {
+          "w": "being",
+          "start": 176.505,
+          "end": 176.775
+        },
+        {
+          "w": "both",
+          "start": 176.8,
+          "end": 177.07
+        },
+        {
+          "w": "the",
+          "start": 177.095,
+          "end": 177.365
+        },
+        {
+          "w": "writer",
+          "start": 177.39,
+          "end": 177.84
+        },
+        {
+          "w": "and",
+          "start": 177.865,
+          "end": 178.135
+        },
+        {
+          "w": "the",
+          "start": 178.16,
+          "end": 178.43
+        },
+        {
+          "w": "audience",
+          "start": 178.455,
+          "end": 178.905
+        },
+        {
+          "w": "of",
+          "start": 178.93,
+          "end": 179.2
+        },
+        {
+          "w": "your",
+          "start": 179.225,
+          "end": 179.495
+        },
+        {
+          "w": "own",
+          "start": 179.52,
+          "end": 179.79
+        },
+        {
+          "w": "film",
+          "start": 179.815,
+          "end": 180.085
+        },
+        {
+          "w": "Once",
+          "start": 180.265,
+          "end": 180.535
+        },
+        {
+          "w": "the",
+          "start": 180.56,
+          "end": 180.83
+        },
+        {
+          "w": "writer",
+          "start": 180.855,
+          "end": 181.305
+        },
+        {
+          "w": "gets",
+          "start": 181.33,
+          "end": 181.6
+        },
+        {
+          "w": "tired",
+          "start": 181.625,
+          "end": 181.895
+        },
+        {
+          "w": "the",
+          "start": 181.975,
+          "end": 182.245
+        },
+        {
+          "w": "film",
+          "start": 182.27,
+          "end": 182.54
+        },
+        {
+          "w": "goes",
+          "start": 182.565,
+          "end": 182.835
+        },
+        {
+          "w": "all",
+          "start": 182.86,
+          "end": 183.13
+        },
+        {
+          "w": "over",
+          "start": 183.155,
+          "end": 183.605
+        },
+        {
+          "w": "the",
+          "start": 183.63,
+          "end": 183.9
+        },
+        {
+          "w": "place",
+          "start": 183.925,
+          "end": 184.195
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "text": "You know the feeling. You're waiting at a bakery. Three people ahead of you. Your hand is in your pocket before you've even decided to move it.",
+      "start": 185.075,
+      "end": 195.46,
+      "words": [
+        {
+          "w": "You",
+          "start": 185.075,
+          "end": 185.345
+        },
+        {
+          "w": "know",
+          "start": 185.37,
+          "end": 185.64
+        },
+        {
+          "w": "the",
+          "start": 185.665,
+          "end": 185.935
+        },
+        {
+          "w": "feeling",
+          "start": 185.96,
+          "end": 186.41
+        },
+        {
+          "w": "You're",
+          "start": 186.59,
+          "end": 186.86
+        },
+        {
+          "w": "waiting",
+          "start": 186.885,
+          "end": 187.335
+        },
+        {
+          "w": "at",
+          "start": 187.36,
+          "end": 187.63
+        },
+        {
+          "w": "a",
+          "start": 187.655,
+          "end": 187.925
+        },
+        {
+          "w": "bakery",
+          "start": 187.95,
+          "end": 188.58
+        },
+        {
+          "w": "Three",
+          "start": 188.76,
+          "end": 189.03
+        },
+        {
+          "w": "people",
+          "start": 189.055,
+          "end": 189.505
+        },
+        {
+          "w": "ahead",
+          "start": 189.53,
+          "end": 189.98
+        },
+        {
+          "w": "of",
+          "start": 190.005,
+          "end": 190.275
+        },
+        {
+          "w": "you",
+          "start": 190.3,
+          "end": 190.57
+        },
+        {
+          "w": "Your",
+          "start": 190.75,
+          "end": 191.02
+        },
+        {
+          "w": "hand",
+          "start": 191.045,
+          "end": 191.315
+        },
+        {
+          "w": "is",
+          "start": 191.34,
+          "end": 191.61
+        },
+        {
+          "w": "in",
+          "start": 191.635,
+          "end": 191.905
+        },
+        {
+          "w": "your",
+          "start": 191.93,
+          "end": 192.2
+        },
+        {
+          "w": "pocket",
+          "start": 192.225,
+          "end": 192.675
+        },
+        {
+          "w": "before",
+          "start": 192.7,
+          "end": 193.15
+        },
+        {
+          "w": "you've",
+          "start": 193.175,
+          "end": 193.445
+        },
+        {
+          "w": "even",
+          "start": 193.47,
+          "end": 193.92
+        },
+        {
+          "w": "decided",
+          "start": 193.945,
+          "end": 194.575
+        },
+        {
+          "w": "to",
+          "start": 194.6,
+          "end": 194.87
+        },
+        {
+          "w": "move",
+          "start": 194.895,
+          "end": 195.165
+        },
+        {
+          "w": "it",
+          "start": 195.19,
+          "end": 195.46
+        }
+      ]
+    },
+    {
+      "id": "s33",
+      "text": "A question. When was the last time you spent five minutes doing nothing? No screen, no music, no conversation. When was it?",
+      "start": 196.64,
+      "end": 205.12,
+      "words": [
+        {
+          "w": "A",
+          "start": 196.64,
+          "end": 196.91
+        },
+        {
+          "w": "question",
+          "start": 196.935,
+          "end": 197.385
+        },
+        {
+          "w": "When",
+          "start": 197.565,
+          "end": 197.835
+        },
+        {
+          "w": "was",
+          "start": 197.86,
+          "end": 198.13
+        },
+        {
+          "w": "the",
+          "start": 198.155,
+          "end": 198.425
+        },
+        {
+          "w": "last",
+          "start": 198.45,
+          "end": 198.72
+        },
+        {
+          "w": "time",
+          "start": 198.745,
+          "end": 199.015
+        },
+        {
+          "w": "you",
+          "start": 199.04,
+          "end": 199.31
+        },
+        {
+          "w": "spent",
+          "start": 199.335,
+          "end": 199.605
+        },
+        {
+          "w": "five",
+          "start": 199.63,
+          "end": 199.9
+        },
+        {
+          "w": "minutes",
+          "start": 199.925,
+          "end": 200.555
+        },
+        {
+          "w": "doing",
+          "start": 200.58,
+          "end": 200.85
+        },
+        {
+          "w": "nothing",
+          "start": 200.875,
+          "end": 201.325
+        },
+        {
+          "w": "No",
+          "start": 201.505,
+          "end": 201.775
+        },
+        {
+          "w": "screen",
+          "start": 201.8,
+          "end": 202.07
+        },
+        {
+          "w": "no",
+          "start": 202.15,
+          "end": 202.42
+        },
+        {
+          "w": "music",
+          "start": 202.445,
+          "end": 202.895
+        },
+        {
+          "w": "no",
+          "start": 202.975,
+          "end": 203.245
+        },
+        {
+          "w": "conversation",
+          "start": 203.27,
+          "end": 204.08
+        },
+        {
+          "w": "When",
+          "start": 204.26,
+          "end": 204.53
+        },
+        {
+          "w": "was",
+          "start": 204.555,
+          "end": 204.825
+        },
+        {
+          "w": "it",
+          "start": 204.85,
+          "end": 205.12
+        }
+      ]
+    },
+    {
+      "id": "s34",
+      "text": "In twenty ten, two Harvard researchers sent phone alerts to two thousand two hundred and fifty people at random moments. Three questions: what are you doing, how are you feeling, and are you thinking about what you're doing?",
+      "start": 207.3,
+      "end": 221.92,
+      "words": [
+        {
+          "w": "In",
+          "start": 207.3,
+          "end": 207.57
+        },
+        {
+          "w": "twenty",
+          "start": 207.595,
+          "end": 208.045
+        },
+        {
+          "w": "ten",
+          "start": 208.07,
+          "end": 208.34
+        },
+        {
+          "w": "two",
+          "start": 208.42,
+          "end": 208.69
+        },
+        {
+          "w": "Harvard",
+          "start": 208.715,
+          "end": 209.165
+        },
+        {
+          "w": "researchers",
+          "start": 209.19,
+          "end": 209.82
+        },
+        {
+          "w": "sent",
+          "start": 209.845,
+          "end": 210.115
+        },
+        {
+          "w": "phone",
+          "start": 210.14,
+          "end": 210.41
+        },
+        {
+          "w": "alerts",
+          "start": 210.435,
+          "end": 210.885
+        },
+        {
+          "w": "to",
+          "start": 210.91,
+          "end": 211.18
+        },
+        {
+          "w": "two",
+          "start": 211.205,
+          "end": 211.475
+        },
+        {
+          "w": "thousand",
+          "start": 211.5,
+          "end": 211.95
+        },
+        {
+          "w": "two",
+          "start": 211.975,
+          "end": 212.245
+        },
+        {
+          "w": "hundred",
+          "start": 212.27,
+          "end": 212.54
+        },
+        {
+          "w": "and",
+          "start": 212.565,
+          "end": 212.835
+        },
+        {
+          "w": "fifty",
+          "start": 212.86,
+          "end": 213.31
+        },
+        {
+          "w": "people",
+          "start": 213.335,
+          "end": 213.785
+        },
+        {
+          "w": "at",
+          "start": 213.81,
+          "end": 214.08
+        },
+        {
+          "w": "random",
+          "start": 214.105,
+          "end": 214.555
+        },
+        {
+          "w": "moments",
+          "start": 214.58,
+          "end": 215.03
+        },
+        {
+          "w": "Three",
+          "start": 215.21,
+          "end": 215.48
+        },
+        {
+          "w": "questions",
+          "start": 215.505,
+          "end": 215.955
+        },
+        {
+          "w": "what",
+          "start": 216.035,
+          "end": 216.305
+        },
+        {
+          "w": "are",
+          "start": 216.33,
+          "end": 216.78
+        },
+        {
+          "w": "you",
+          "start": 216.805,
+          "end": 217.075
+        },
+        {
+          "w": "doing",
+          "start": 217.1,
+          "end": 217.37
+        },
+        {
+          "w": "how",
+          "start": 217.45,
+          "end": 217.72
+        },
+        {
+          "w": "are",
+          "start": 217.745,
+          "end": 218.195
+        },
+        {
+          "w": "you",
+          "start": 218.22,
+          "end": 218.49
+        },
+        {
+          "w": "feeling",
+          "start": 218.515,
+          "end": 218.965
+        },
+        {
+          "w": "and",
+          "start": 219.045,
+          "end": 219.315
+        },
+        {
+          "w": "are",
+          "start": 219.34,
+          "end": 219.79
+        },
+        {
+          "w": "you",
+          "start": 219.815,
+          "end": 220.085
+        },
+        {
+          "w": "thinking",
+          "start": 220.11,
+          "end": 220.56
+        },
+        {
+          "w": "about",
+          "start": 220.585,
+          "end": 221.035
+        },
+        {
+          "w": "what",
+          "start": 221.06,
+          "end": 221.33
+        },
+        {
+          "w": "you're",
+          "start": 221.355,
+          "end": 221.625
+        },
+        {
+          "w": "doing",
+          "start": 221.65,
+          "end": 221.92
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "text": "Almost half the time, the answer was no.",
+      "start": 222.7,
+      "end": 225.45,
+      "words": [
+        {
+          "w": "Almost",
+          "start": 222.7,
+          "end": 223.15
+        },
+        {
+          "w": "half",
+          "start": 223.175,
+          "end": 223.445
+        },
+        {
+          "w": "the",
+          "start": 223.47,
+          "end": 223.74
+        },
+        {
+          "w": "time",
+          "start": 223.765,
+          "end": 224.035
+        },
+        {
+          "w": "the",
+          "start": 224.115,
+          "end": 224.385
+        },
+        {
+          "w": "answer",
+          "start": 224.41,
+          "end": 224.86
+        },
+        {
+          "w": "was",
+          "start": 224.885,
+          "end": 225.155
+        },
+        {
+          "w": "no",
+          "start": 225.18,
+          "end": 225.45
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "text": "And when their minds were elsewhere, people were less happy. The paper's title is “A Wandering Mind Is an Unhappy Mind.”",
+      "start": 226.43,
+      "end": 234.61,
+      "words": [
+        {
+          "w": "And",
+          "start": 226.43,
+          "end": 226.7
+        },
+        {
+          "w": "when",
+          "start": 226.725,
+          "end": 226.995
+        },
+        {
+          "w": "their",
+          "start": 227.02,
+          "end": 227.29
+        },
+        {
+          "w": "minds",
+          "start": 227.315,
+          "end": 227.585
+        },
+        {
+          "w": "were",
+          "start": 227.61,
+          "end": 227.88
+        },
+        {
+          "w": "elsewhere",
+          "start": 227.905,
+          "end": 228.535
+        },
+        {
+          "w": "people",
+          "start": 228.615,
+          "end": 229.065
+        },
+        {
+          "w": "were",
+          "start": 229.09,
+          "end": 229.36
+        },
+        {
+          "w": "less",
+          "start": 229.385,
+          "end": 229.655
+        },
+        {
+          "w": "happy",
+          "start": 229.68,
+          "end": 230.13
+        },
+        {
+          "w": "The",
+          "start": 230.31,
+          "end": 230.58
+        },
+        {
+          "w": "paper's",
+          "start": 230.605,
+          "end": 231.055
+        },
+        {
+          "w": "title",
+          "start": 231.08,
+          "end": 231.53
+        },
+        {
+          "w": "is",
+          "start": 231.555,
+          "end": 231.825
+        },
+        {
+          "w": "A",
+          "start": 231.85,
+          "end": 232.12
+        },
+        {
+          "w": "Wandering",
+          "start": 232.145,
+          "end": 232.775
+        },
+        {
+          "w": "Mind",
+          "start": 232.8,
+          "end": 233.07
+        },
+        {
+          "w": "Is",
+          "start": 233.095,
+          "end": 233.365
+        },
+        {
+          "w": "an",
+          "start": 233.39,
+          "end": 233.66
+        },
+        {
+          "w": "Unhappy",
+          "start": 233.685,
+          "end": 234.315
+        },
+        {
+          "w": "Mind",
+          "start": 234.34,
+          "end": 234.61
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "text": "The lift. Twenty seconds between floors. You look at the ceiling. The floor. Then your screen.",
+      "start": 235.59,
+      "end": 241.625,
+      "words": [
+        {
+          "w": "The",
+          "start": 235.59,
+          "end": 235.86
+        },
+        {
+          "w": "lift",
+          "start": 235.885,
+          "end": 236.155
+        },
+        {
+          "w": "Twenty",
+          "start": 236.335,
+          "end": 236.785
+        },
+        {
+          "w": "seconds",
+          "start": 236.81,
+          "end": 237.26
+        },
+        {
+          "w": "between",
+          "start": 237.285,
+          "end": 237.735
+        },
+        {
+          "w": "floors",
+          "start": 237.76,
+          "end": 238.03
+        },
+        {
+          "w": "You",
+          "start": 238.21,
+          "end": 238.48
+        },
+        {
+          "w": "look",
+          "start": 238.505,
+          "end": 238.775
+        },
+        {
+          "w": "at",
+          "start": 238.8,
+          "end": 239.07
+        },
+        {
+          "w": "the",
+          "start": 239.095,
+          "end": 239.365
+        },
+        {
+          "w": "ceiling",
+          "start": 239.39,
+          "end": 239.84
+        },
+        {
+          "w": "The",
+          "start": 240.02,
+          "end": 240.29
+        },
+        {
+          "w": "floor",
+          "start": 240.315,
+          "end": 240.585
+        },
+        {
+          "w": "Then",
+          "start": 240.765,
+          "end": 241.035
+        },
+        {
+          "w": "your",
+          "start": 241.06,
+          "end": 241.33
+        },
+        {
+          "w": "screen",
+          "start": 241.355,
+          "end": 241.625
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "text": "The phone cuts the film off before it unravels. In France, people spend over three hours a day online. Eighty percent of that time is on mobile. Médiamétrie reported around twenty internet sessions a day. And four in ten people in France say they spend too much time on screens.",
+      "start": 242.605,
+      "end": 261.065,
+      "words": [
+        {
+          "w": "The",
+          "start": 242.605,
+          "end": 242.875
+        },
+        {
+          "w": "phone",
+          "start": 242.9,
+          "end": 243.17
+        },
+        {
+          "w": "cuts",
+          "start": 243.195,
+          "end": 243.465
+        },
+        {
+          "w": "the",
+          "start": 243.49,
+          "end": 243.76
+        },
+        {
+          "w": "film",
+          "start": 243.785,
+          "end": 244.055
+        },
+        {
+          "w": "off",
+          "start": 244.08,
+          "end": 244.35
+        },
+        {
+          "w": "before",
+          "start": 244.375,
+          "end": 244.825
+        },
+        {
+          "w": "it",
+          "start": 244.85,
+          "end": 245.12
+        },
+        {
+          "w": "unravels",
+          "start": 245.145,
+          "end": 245.775
+        },
+        {
+          "w": "In",
+          "start": 245.955,
+          "end": 246.225
+        },
+        {
+          "w": "France",
+          "start": 246.25,
+          "end": 246.52
+        },
+        {
+          "w": "people",
+          "start": 246.6,
+          "end": 247.05
+        },
+        {
+          "w": "spend",
+          "start": 247.075,
+          "end": 247.345
+        },
+        {
+          "w": "over",
+          "start": 247.37,
+          "end": 247.82
+        },
+        {
+          "w": "three",
+          "start": 247.845,
+          "end": 248.115
+        },
+        {
+          "w": "hours",
+          "start": 248.14,
+          "end": 248.41
+        },
+        {
+          "w": "a",
+          "start": 248.435,
+          "end": 248.705
+        },
+        {
+          "w": "day",
+          "start": 248.73,
+          "end": 249.0
+        },
+        {
+          "w": "online",
+          "start": 249.025,
+          "end": 249.475
+        },
+        {
+          "w": "Eighty",
+          "start": 249.655,
+          "end": 250.105
+        },
+        {
+          "w": "percent",
+          "start": 250.13,
+          "end": 250.58
+        },
+        {
+          "w": "of",
+          "start": 250.605,
+          "end": 250.875
+        },
+        {
+          "w": "that",
+          "start": 250.9,
+          "end": 251.17
+        },
+        {
+          "w": "time",
+          "start": 251.195,
+          "end": 251.465
+        },
+        {
+          "w": "is",
+          "start": 251.49,
+          "end": 251.76
+        },
+        {
+          "w": "on",
+          "start": 251.785,
+          "end": 252.055
+        },
+        {
+          "w": "mobile",
+          "start": 252.08,
+          "end": 252.53
+        },
+        {
+          "w": "Médiamétrie",
+          "start": 252.71,
+          "end": 252.98
+        },
+        {
+          "w": "reported",
+          "start": 253.005,
+          "end": 253.635
+        },
+        {
+          "w": "around",
+          "start": 253.66,
+          "end": 254.11
+        },
+        {
+          "w": "twenty",
+          "start": 254.135,
+          "end": 254.585
+        },
+        {
+          "w": "internet",
+          "start": 254.61,
+          "end": 255.24
+        },
+        {
+          "w": "sessions",
+          "start": 255.265,
+          "end": 255.715
+        },
+        {
+          "w": "a",
+          "start": 255.74,
+          "end": 256.01
+        },
+        {
+          "w": "day",
+          "start": 256.035,
+          "end": 256.305
+        },
+        {
+          "w": "And",
+          "start": 256.485,
+          "end": 256.755
+        },
+        {
+          "w": "four",
+          "start": 256.78,
+          "end": 257.05
+        },
+        {
+          "w": "in",
+          "start": 257.075,
+          "end": 257.345
+        },
+        {
+          "w": "ten",
+          "start": 257.37,
+          "end": 257.64
+        },
+        {
+          "w": "people",
+          "start": 257.665,
+          "end": 258.115
+        },
+        {
+          "w": "in",
+          "start": 258.14,
+          "end": 258.41
+        },
+        {
+          "w": "France",
+          "start": 258.435,
+          "end": 258.705
+        },
+        {
+          "w": "say",
+          "start": 258.73,
+          "end": 259.0
+        },
+        {
+          "w": "they",
+          "start": 259.025,
+          "end": 259.295
+        },
+        {
+          "w": "spend",
+          "start": 259.32,
+          "end": 259.59
+        },
+        {
+          "w": "too",
+          "start": 259.615,
+          "end": 259.885
+        },
+        {
+          "w": "much",
+          "start": 259.91,
+          "end": 260.18
+        },
+        {
+          "w": "time",
+          "start": 260.205,
+          "end": 260.475
+        },
+        {
+          "w": "on",
+          "start": 260.5,
+          "end": 260.77
+        },
+        {
+          "w": "screens",
+          "start": 260.795,
+          "end": 261.065
+        }
+      ]
+    },
+    {
+      "id": "s39",
+      "text": "But smartphones didn't invent this problem.",
+      "start": 262.045,
+      "end": 264.51,
+      "words": [
+        {
+          "w": "But",
+          "start": 262.045,
+          "end": 262.315
+        },
+        {
+          "w": "smartphones",
+          "start": 262.34,
+          "end": 262.97
+        },
+        {
+          "w": "didn't",
+          "start": 262.995,
+          "end": 263.265
+        },
+        {
+          "w": "invent",
+          "start": 263.29,
+          "end": 263.74
+        },
+        {
+          "w": "this",
+          "start": 263.765,
+          "end": 264.035
+        },
+        {
+          "w": "problem",
+          "start": 264.06,
+          "end": 264.51
+        }
+      ]
+    },
+    {
+      "id": "s40",
+      "text": "Blaise Pascal, in the seventeenth century: “all the unhappiness of men arises from one single fact, that they cannot stay quietly in their own chamber.”",
+      "start": 265.69,
+      "end": 276.085,
+      "words": [
+        {
+          "w": "Blaise",
+          "start": 265.69,
+          "end": 265.96
+        },
+        {
+          "w": "Pascal",
+          "start": 265.985,
+          "end": 266.435
+        },
+        {
+          "w": "in",
+          "start": 266.515,
+          "end": 266.785
+        },
+        {
+          "w": "the",
+          "start": 266.81,
+          "end": 267.08
+        },
+        {
+          "w": "seventeenth",
+          "start": 267.105,
+          "end": 267.735
+        },
+        {
+          "w": "century",
+          "start": 267.76,
+          "end": 268.39
+        },
+        {
+          "w": "all",
+          "start": 268.47,
+          "end": 268.74
+        },
+        {
+          "w": "the",
+          "start": 268.765,
+          "end": 269.035
+        },
+        {
+          "w": "unhappiness",
+          "start": 269.06,
+          "end": 269.87
+        },
+        {
+          "w": "of",
+          "start": 269.895,
+          "end": 270.165
+        },
+        {
+          "w": "men",
+          "start": 270.19,
+          "end": 270.46
+        },
+        {
+          "w": "arises",
+          "start": 270.485,
+          "end": 271.115
+        },
+        {
+          "w": "from",
+          "start": 271.14,
+          "end": 271.41
+        },
+        {
+          "w": "one",
+          "start": 271.435,
+          "end": 271.885
+        },
+        {
+          "w": "single",
+          "start": 271.91,
+          "end": 272.36
+        },
+        {
+          "w": "fact",
+          "start": 272.385,
+          "end": 272.655
+        },
+        {
+          "w": "that",
+          "start": 272.735,
+          "end": 273.005
+        },
+        {
+          "w": "they",
+          "start": 273.03,
+          "end": 273.3
+        },
+        {
+          "w": "cannot",
+          "start": 273.325,
+          "end": 273.775
+        },
+        {
+          "w": "stay",
+          "start": 273.8,
+          "end": 274.07
+        },
+        {
+          "w": "quietly",
+          "start": 274.095,
+          "end": 274.725
+        },
+        {
+          "w": "in",
+          "start": 274.75,
+          "end": 275.02
+        },
+        {
+          "w": "their",
+          "start": 275.045,
+          "end": 275.315
+        },
+        {
+          "w": "own",
+          "start": 275.34,
+          "end": 275.61
+        },
+        {
+          "w": "chamber",
+          "start": 275.635,
+          "end": 276.085
+        }
+      ]
+    },
+    {
+      "id": "s41",
+      "text": "And a few lines later: “hence it comes that the pleasure of solitude is a thing incomprehensible.”",
+      "start": 277.165,
+      "end": 284.19,
+      "words": [
+        {
+          "w": "And",
+          "start": 277.165,
+          "end": 277.435
+        },
+        {
+          "w": "a",
+          "start": 277.46,
+          "end": 277.73
+        },
+        {
+          "w": "few",
+          "start": 277.755,
+          "end": 278.025
+        },
+        {
+          "w": "lines",
+          "start": 278.05,
+          "end": 278.5
+        },
+        {
+          "w": "later",
+          "start": 278.525,
+          "end": 278.975
+        },
+        {
+          "w": "hence",
+          "start": 279.055,
+          "end": 279.325
+        },
+        {
+          "w": "it",
+          "start": 279.35,
+          "end": 279.62
+        },
+        {
+          "w": "comes",
+          "start": 279.645,
+          "end": 280.095
+        },
+        {
+          "w": "that",
+          "start": 280.12,
+          "end": 280.39
+        },
+        {
+          "w": "the",
+          "start": 280.415,
+          "end": 280.685
+        },
+        {
+          "w": "pleasure",
+          "start": 280.71,
+          "end": 281.16
+        },
+        {
+          "w": "of",
+          "start": 281.185,
+          "end": 281.455
+        },
+        {
+          "w": "solitude",
+          "start": 281.48,
+          "end": 282.11
+        },
+        {
+          "w": "is",
+          "start": 282.135,
+          "end": 282.405
+        },
+        {
+          "w": "a",
+          "start": 282.43,
+          "end": 282.7
+        },
+        {
+          "w": "thing",
+          "start": 282.725,
+          "end": 282.995
+        },
+        {
+          "w": "incomprehensible",
+          "start": 283.02,
+          "end": 284.19
+        }
+      ]
+    },
+    {
+      "id": "s42",
+      "text": "More than three hundred and fifty years ago. The phone didn't invent the escape. It put it in your pocket, available day and night.",
+      "start": 285.27,
+      "end": 294.13,
+      "words": [
+        {
+          "w": "More",
+          "start": 285.27,
+          "end": 285.54
+        },
+        {
+          "w": "than",
+          "start": 285.565,
+          "end": 285.835
+        },
+        {
+          "w": "three",
+          "start": 285.86,
+          "end": 286.13
+        },
+        {
+          "w": "hundred",
+          "start": 286.155,
+          "end": 286.425
+        },
+        {
+          "w": "and",
+          "start": 286.45,
+          "end": 286.72
+        },
+        {
+          "w": "fifty",
+          "start": 286.745,
+          "end": 287.195
+        },
+        {
+          "w": "years",
+          "start": 287.22,
+          "end": 287.49
+        },
+        {
+          "w": "ago",
+          "start": 287.515,
+          "end": 287.965
+        },
+        {
+          "w": "The",
+          "start": 288.145,
+          "end": 288.415
+        },
+        {
+          "w": "phone",
+          "start": 288.44,
+          "end": 288.71
+        },
+        {
+          "w": "didn't",
+          "start": 288.735,
+          "end": 289.005
+        },
+        {
+          "w": "invent",
+          "start": 289.03,
+          "end": 289.48
+        },
+        {
+          "w": "the",
+          "start": 289.505,
+          "end": 289.775
+        },
+        {
+          "w": "escape",
+          "start": 289.8,
+          "end": 290.25
+        },
+        {
+          "w": "It",
+          "start": 290.43,
+          "end": 290.7
+        },
+        {
+          "w": "put",
+          "start": 290.725,
+          "end": 290.995
+        },
+        {
+          "w": "it",
+          "start": 291.02,
+          "end": 291.29
+        },
+        {
+          "w": "in",
+          "start": 291.315,
+          "end": 291.585
+        },
+        {
+          "w": "your",
+          "start": 291.61,
+          "end": 291.88
+        },
+        {
+          "w": "pocket",
+          "start": 291.905,
+          "end": 292.355
+        },
+        {
+          "w": "available",
+          "start": 292.435,
+          "end": 293.245
+        },
+        {
+          "w": "day",
+          "start": 293.27,
+          "end": 293.54
+        },
+        {
+          "w": "and",
+          "start": 293.565,
+          "end": 293.835
+        },
+        {
+          "w": "night",
+          "start": 293.86,
+          "end": 294.13
+        }
+      ]
+    },
+    {
+      "id": "s43",
+      "text": "Three in the morning. You wake up and your mind is racing. Your first instinct? The screen.",
+      "start": 295.11,
+      "end": 301.105,
+      "words": [
+        {
+          "w": "Three",
+          "start": 295.11,
+          "end": 295.38
+        },
+        {
+          "w": "in",
+          "start": 295.405,
+          "end": 295.675
+        },
+        {
+          "w": "the",
+          "start": 295.7,
+          "end": 295.97
+        },
+        {
+          "w": "morning",
+          "start": 295.995,
+          "end": 296.445
+        },
+        {
+          "w": "You",
+          "start": 296.625,
+          "end": 296.895
+        },
+        {
+          "w": "wake",
+          "start": 296.92,
+          "end": 297.19
+        },
+        {
+          "w": "up",
+          "start": 297.215,
+          "end": 297.485
+        },
+        {
+          "w": "and",
+          "start": 297.51,
+          "end": 297.78
+        },
+        {
+          "w": "your",
+          "start": 297.805,
+          "end": 298.075
+        },
+        {
+          "w": "mind",
+          "start": 298.1,
+          "end": 298.37
+        },
+        {
+          "w": "is",
+          "start": 298.395,
+          "end": 298.665
+        },
+        {
+          "w": "racing",
+          "start": 298.69,
+          "end": 299.14
+        },
+        {
+          "w": "Your",
+          "start": 299.32,
+          "end": 299.59
+        },
+        {
+          "w": "first",
+          "start": 299.615,
+          "end": 299.885
+        },
+        {
+          "w": "instinct",
+          "start": 299.91,
+          "end": 300.36
+        },
+        {
+          "w": "The",
+          "start": 300.54,
+          "end": 300.81
+        },
+        {
+          "w": "screen",
+          "start": 300.835,
+          "end": 301.105
+        }
+      ]
+    },
+    {
+      "id": "s44",
+      "text": "So if the phone isn't the cause… what is?",
+      "start": 302.085,
+      "end": 304.87,
+      "words": [
+        {
+          "w": "So",
+          "start": 302.085,
+          "end": 302.355
+        },
+        {
+          "w": "if",
+          "start": 302.38,
+          "end": 302.65
+        },
+        {
+          "w": "the",
+          "start": 302.675,
+          "end": 302.945
+        },
+        {
+          "w": "phone",
+          "start": 302.97,
+          "end": 303.24
+        },
+        {
+          "w": "isn't",
+          "start": 303.265,
+          "end": 303.535
+        },
+        {
+          "w": "the",
+          "start": 303.56,
+          "end": 303.83
+        },
+        {
+          "w": "cause",
+          "start": 303.855,
+          "end": 304.125
+        },
+        {
+          "w": "what",
+          "start": 304.305,
+          "end": 304.575
+        },
+        {
+          "w": "is",
+          "start": 304.6,
+          "end": 304.87
+        }
+      ]
+    },
+    {
+      "id": "s45",
+      "text": "I think we're looking at the wrong problem. The problem isn't being alone. It's being alone with a mind that has no centre.",
+      "start": 306.35,
+      "end": 314.32,
+      "words": [
+        {
+          "w": "I",
+          "start": 306.35,
+          "end": 306.62
+        },
+        {
+          "w": "think",
+          "start": 306.645,
+          "end": 306.915
+        },
+        {
+          "w": "we're",
+          "start": 306.94,
+          "end": 307.21
+        },
+        {
+          "w": "looking",
+          "start": 307.235,
+          "end": 307.685
+        },
+        {
+          "w": "at",
+          "start": 307.71,
+          "end": 307.98
+        },
+        {
+          "w": "the",
+          "start": 308.005,
+          "end": 308.275
+        },
+        {
+          "w": "wrong",
+          "start": 308.3,
+          "end": 308.57
+        },
+        {
+          "w": "problem",
+          "start": 308.595,
+          "end": 309.045
+        },
+        {
+          "w": "The",
+          "start": 309.225,
+          "end": 309.495
+        },
+        {
+          "w": "problem",
+          "start": 309.52,
+          "end": 309.97
+        },
+        {
+          "w": "isn't",
+          "start": 309.995,
+          "end": 310.265
+        },
+        {
+          "w": "being",
+          "start": 310.29,
+          "end": 310.56
+        },
+        {
+          "w": "alone",
+          "start": 310.585,
+          "end": 311.035
+        },
+        {
+          "w": "It's",
+          "start": 311.215,
+          "end": 311.485
+        },
+        {
+          "w": "being",
+          "start": 311.51,
+          "end": 311.78
+        },
+        {
+          "w": "alone",
+          "start": 311.805,
+          "end": 312.255
+        },
+        {
+          "w": "with",
+          "start": 312.28,
+          "end": 312.55
+        },
+        {
+          "w": "a",
+          "start": 312.575,
+          "end": 312.845
+        },
+        {
+          "w": "mind",
+          "start": 312.87,
+          "end": 313.14
+        },
+        {
+          "w": "that",
+          "start": 313.165,
+          "end": 313.435
+        },
+        {
+          "w": "has",
+          "start": 313.46,
+          "end": 313.73
+        },
+        {
+          "w": "no",
+          "start": 313.755,
+          "end": 314.025
+        },
+        {
+          "w": "centre",
+          "start": 314.05,
+          "end": 314.32
+        }
+      ]
+    },
+    {
+      "id": "s46",
+      "text": "Imagine a room with no furniture. No chair. No table. You walk in. What do you do? Walk around. Touch the walls. And after a while, you start looking for the door.",
+      "start": 315.3,
+      "end": 327.295,
+      "words": [
+        {
+          "w": "Imagine",
+          "start": 315.3,
+          "end": 315.93
+        },
+        {
+          "w": "a",
+          "start": 315.955,
+          "end": 316.225
+        },
+        {
+          "w": "room",
+          "start": 316.25,
+          "end": 316.52
+        },
+        {
+          "w": "with",
+          "start": 316.545,
+          "end": 316.815
+        },
+        {
+          "w": "no",
+          "start": 316.84,
+          "end": 317.11
+        },
+        {
+          "w": "furniture",
+          "start": 317.135,
+          "end": 317.765
+        },
+        {
+          "w": "No",
+          "start": 317.945,
+          "end": 318.215
+        },
+        {
+          "w": "chair",
+          "start": 318.24,
+          "end": 318.51
+        },
+        {
+          "w": "No",
+          "start": 318.69,
+          "end": 318.96
+        },
+        {
+          "w": "table",
+          "start": 318.985,
+          "end": 319.435
+        },
+        {
+          "w": "You",
+          "start": 319.615,
+          "end": 319.885
+        },
+        {
+          "w": "walk",
+          "start": 319.91,
+          "end": 320.18
+        },
+        {
+          "w": "in",
+          "start": 320.205,
+          "end": 320.475
+        },
+        {
+          "w": "What",
+          "start": 320.655,
+          "end": 320.925
+        },
+        {
+          "w": "do",
+          "start": 320.95,
+          "end": 321.22
+        },
+        {
+          "w": "you",
+          "start": 321.245,
+          "end": 321.515
+        },
+        {
+          "w": "do",
+          "start": 321.54,
+          "end": 321.81
+        },
+        {
+          "w": "Walk",
+          "start": 321.99,
+          "end": 322.26
+        },
+        {
+          "w": "around",
+          "start": 322.285,
+          "end": 322.735
+        },
+        {
+          "w": "Touch",
+          "start": 322.915,
+          "end": 323.185
+        },
+        {
+          "w": "the",
+          "start": 323.21,
+          "end": 323.48
+        },
+        {
+          "w": "walls",
+          "start": 323.505,
+          "end": 323.775
+        },
+        {
+          "w": "And",
+          "start": 323.955,
+          "end": 324.225
+        },
+        {
+          "w": "after",
+          "start": 324.25,
+          "end": 324.7
+        },
+        {
+          "w": "a",
+          "start": 324.725,
+          "end": 324.995
+        },
+        {
+          "w": "while",
+          "start": 325.02,
+          "end": 325.29
+        },
+        {
+          "w": "you",
+          "start": 325.37,
+          "end": 325.64
+        },
+        {
+          "w": "start",
+          "start": 325.665,
+          "end": 325.935
+        },
+        {
+          "w": "looking",
+          "start": 325.96,
+          "end": 326.41
+        },
+        {
+          "w": "for",
+          "start": 326.435,
+          "end": 326.705
+        },
+        {
+          "w": "the",
+          "start": 326.73,
+          "end": 327.0
+        },
+        {
+          "w": "door",
+          "start": 327.025,
+          "end": 327.295
+        }
+      ]
+    },
+    {
+      "id": "s47",
+      "text": "Your mind without an anchor is that room. The phone is the door.",
+      "start": 328.175,
+      "end": 332.5,
+      "words": [
+        {
+          "w": "Your",
+          "start": 328.175,
+          "end": 328.445
+        },
+        {
+          "w": "mind",
+          "start": 328.47,
+          "end": 328.74
+        },
+        {
+          "w": "without",
+          "start": 328.765,
+          "end": 329.215
+        },
+        {
+          "w": "an",
+          "start": 329.24,
+          "end": 329.51
+        },
+        {
+          "w": "anchor",
+          "start": 329.535,
+          "end": 329.985
+        },
+        {
+          "w": "is",
+          "start": 330.01,
+          "end": 330.28
+        },
+        {
+          "w": "that",
+          "start": 330.305,
+          "end": 330.575
+        },
+        {
+          "w": "room",
+          "start": 330.6,
+          "end": 330.87
+        },
+        {
+          "w": "The",
+          "start": 331.05,
+          "end": 331.32
+        },
+        {
+          "w": "phone",
+          "start": 331.345,
+          "end": 331.615
+        },
+        {
+          "w": "is",
+          "start": 331.64,
+          "end": 331.91
+        },
+        {
+          "w": "the",
+          "start": 331.935,
+          "end": 332.205
+        },
+        {
+          "w": "door",
+          "start": 332.23,
+          "end": 332.5
+        }
+      ]
+    },
+    {
+      "id": "s48",
+      "text": "It's not a character flaw. Nobody taught you how to live in that room. You were taught to fill your attention. Never to stay with it.",
+      "start": 333.48,
+      "end": 342.85,
+      "words": [
+        {
+          "w": "It's",
+          "start": 333.48,
+          "end": 333.75
+        },
+        {
+          "w": "not",
+          "start": 333.775,
+          "end": 334.045
+        },
+        {
+          "w": "a",
+          "start": 334.07,
+          "end": 334.34
+        },
+        {
+          "w": "character",
+          "start": 334.365,
+          "end": 334.995
+        },
+        {
+          "w": "flaw",
+          "start": 335.02,
+          "end": 335.29
+        },
+        {
+          "w": "Nobody",
+          "start": 335.47,
+          "end": 336.1
+        },
+        {
+          "w": "taught",
+          "start": 336.125,
+          "end": 336.395
+        },
+        {
+          "w": "you",
+          "start": 336.42,
+          "end": 336.69
+        },
+        {
+          "w": "how",
+          "start": 336.715,
+          "end": 336.985
+        },
+        {
+          "w": "to",
+          "start": 337.01,
+          "end": 337.28
+        },
+        {
+          "w": "live",
+          "start": 337.305,
+          "end": 337.575
+        },
+        {
+          "w": "in",
+          "start": 337.6,
+          "end": 337.87
+        },
+        {
+          "w": "that",
+          "start": 337.895,
+          "end": 338.165
+        },
+        {
+          "w": "room",
+          "start": 338.19,
+          "end": 338.46
+        },
+        {
+          "w": "You",
+          "start": 338.64,
+          "end": 338.91
+        },
+        {
+          "w": "were",
+          "start": 338.935,
+          "end": 339.205
+        },
+        {
+          "w": "taught",
+          "start": 339.23,
+          "end": 339.5
+        },
+        {
+          "w": "to",
+          "start": 339.525,
+          "end": 339.795
+        },
+        {
+          "w": "fill",
+          "start": 339.82,
+          "end": 340.09
+        },
+        {
+          "w": "your",
+          "start": 340.115,
+          "end": 340.385
+        },
+        {
+          "w": "attention",
+          "start": 340.41,
+          "end": 341.04
+        },
+        {
+          "w": "Never",
+          "start": 341.22,
+          "end": 341.67
+        },
+        {
+          "w": "to",
+          "start": 341.695,
+          "end": 341.965
+        },
+        {
+          "w": "stay",
+          "start": 341.99,
+          "end": 342.26
+        },
+        {
+          "w": "with",
+          "start": 342.285,
+          "end": 342.555
+        },
+        {
+          "w": "it",
+          "start": 342.58,
+          "end": 342.85
+        }
+      ]
+    },
+    {
+      "id": "s49",
+      "text": "It's like a muscle you've never trained.",
+      "start": 343.63,
+      "end": 346.03,
+      "words": [
+        {
+          "w": "It's",
+          "start": 343.63,
+          "end": 343.9
+        },
+        {
+          "w": "like",
+          "start": 343.925,
+          "end": 344.195
+        },
+        {
+          "w": "a",
+          "start": 344.22,
+          "end": 344.49
+        },
+        {
+          "w": "muscle",
+          "start": 344.515,
+          "end": 344.965
+        },
+        {
+          "w": "you've",
+          "start": 344.99,
+          "end": 345.26
+        },
+        {
+          "w": "never",
+          "start": 345.285,
+          "end": 345.735
+        },
+        {
+          "w": "trained",
+          "start": 345.76,
+          "end": 346.03
+        }
+      ]
+    },
+    {
+      "id": "s50",
+      "text": "The authors say it themselves: without training, we tend to choose doing over thinking. They mention meditation, and other techniques.",
+      "start": 346.81,
+      "end": 355.525,
+      "words": [
+        {
+          "w": "The",
+          "start": 346.81,
+          "end": 347.08
+        },
+        {
+          "w": "authors",
+          "start": 347.105,
+          "end": 347.555
+        },
+        {
+          "w": "say",
+          "start": 347.58,
+          "end": 347.85
+        },
+        {
+          "w": "it",
+          "start": 347.875,
+          "end": 348.145
+        },
+        {
+          "w": "themselves",
+          "start": 348.17,
+          "end": 348.8
+        },
+        {
+          "w": "without",
+          "start": 348.88,
+          "end": 349.33
+        },
+        {
+          "w": "training",
+          "start": 349.355,
+          "end": 349.805
+        },
+        {
+          "w": "we",
+          "start": 349.885,
+          "end": 350.155
+        },
+        {
+          "w": "tend",
+          "start": 350.18,
+          "end": 350.45
+        },
+        {
+          "w": "to",
+          "start": 350.475,
+          "end": 350.745
+        },
+        {
+          "w": "choose",
+          "start": 350.77,
+          "end": 351.04
+        },
+        {
+          "w": "doing",
+          "start": 351.065,
+          "end": 351.335
+        },
+        {
+          "w": "over",
+          "start": 351.36,
+          "end": 351.81
+        },
+        {
+          "w": "thinking",
+          "start": 351.835,
+          "end": 352.285
+        },
+        {
+          "w": "They",
+          "start": 352.465,
+          "end": 352.735
+        },
+        {
+          "w": "mention",
+          "start": 352.76,
+          "end": 353.21
+        },
+        {
+          "w": "meditation",
+          "start": 353.235,
+          "end": 354.045
+        },
+        {
+          "w": "and",
+          "start": 354.125,
+          "end": 354.395
+        },
+        {
+          "w": "other",
+          "start": 354.42,
+          "end": 354.87
+        },
+        {
+          "w": "techniques",
+          "start": 354.895,
+          "end": 355.525
+        }
+      ]
+    },
+    {
+      "id": "s51",
+      "text": "Other techniques. Two words in a scientific paper. Behind those words are centuries of practice. Entire traditions have developed ways to do one thing: be alone without running away.",
+      "start": 356.305,
+      "end": 369.135,
+      "words": [
+        {
+          "w": "Other",
+          "start": 356.305,
+          "end": 356.755
+        },
+        {
+          "w": "techniques",
+          "start": 356.78,
+          "end": 357.41
+        },
+        {
+          "w": "Two",
+          "start": 357.59,
+          "end": 357.86
+        },
+        {
+          "w": "words",
+          "start": 357.885,
+          "end": 358.155
+        },
+        {
+          "w": "in",
+          "start": 358.18,
+          "end": 358.45
+        },
+        {
+          "w": "a",
+          "start": 358.475,
+          "end": 358.745
+        },
+        {
+          "w": "scientific",
+          "start": 358.77,
+          "end": 359.4
+        },
+        {
+          "w": "paper",
+          "start": 359.425,
+          "end": 359.875
+        },
+        {
+          "w": "Behind",
+          "start": 360.055,
+          "end": 360.505
+        },
+        {
+          "w": "those",
+          "start": 360.53,
+          "end": 360.8
+        },
+        {
+          "w": "words",
+          "start": 360.825,
+          "end": 361.095
+        },
+        {
+          "w": "are",
+          "start": 361.12,
+          "end": 361.57
+        },
+        {
+          "w": "centuries",
+          "start": 361.595,
+          "end": 362.225
+        },
+        {
+          "w": "of",
+          "start": 362.25,
+          "end": 362.52
+        },
+        {
+          "w": "practice",
+          "start": 362.545,
+          "end": 362.995
+        },
+        {
+          "w": "Entire",
+          "start": 363.175,
+          "end": 363.625
+        },
+        {
+          "w": "traditions",
+          "start": 363.65,
+          "end": 364.28
+        },
+        {
+          "w": "have",
+          "start": 364.305,
+          "end": 364.575
+        },
+        {
+          "w": "developed",
+          "start": 364.6,
+          "end": 365.23
+        },
+        {
+          "w": "ways",
+          "start": 365.255,
+          "end": 365.525
+        },
+        {
+          "w": "to",
+          "start": 365.55,
+          "end": 365.82
+        },
+        {
+          "w": "do",
+          "start": 365.845,
+          "end": 366.115
+        },
+        {
+          "w": "one",
+          "start": 366.14,
+          "end": 366.59
+        },
+        {
+          "w": "thing",
+          "start": 366.615,
+          "end": 366.885
+        },
+        {
+          "w": "be",
+          "start": 366.965,
+          "end": 367.235
+        },
+        {
+          "w": "alone",
+          "start": 367.26,
+          "end": 367.71
+        },
+        {
+          "w": "without",
+          "start": 367.735,
+          "end": 368.185
+        },
+        {
+          "w": "running",
+          "start": 368.21,
+          "end": 368.66
+        },
+        {
+          "w": "away",
+          "start": 368.685,
+          "end": 369.135
+        }
+      ]
+    },
+    {
+      "id": "s52",
+      "text": "One of them even has a word for it. A word that literally means solitude.",
+      "start": 370.115,
+      "end": 375.93,
+      "words": [
+        {
+          "w": "One",
+          "start": 370.115,
+          "end": 370.565
+        },
+        {
+          "w": "of",
+          "start": 370.59,
+          "end": 370.86
+        },
+        {
+          "w": "them",
+          "start": 370.885,
+          "end": 371.155
+        },
+        {
+          "w": "even",
+          "start": 371.18,
+          "end": 371.63
+        },
+        {
+          "w": "has",
+          "start": 371.655,
+          "end": 371.925
+        },
+        {
+          "w": "a",
+          "start": 371.95,
+          "end": 372.22
+        },
+        {
+          "w": "word",
+          "start": 372.245,
+          "end": 372.515
+        },
+        {
+          "w": "for",
+          "start": 372.54,
+          "end": 372.81
+        },
+        {
+          "w": "it",
+          "start": 372.835,
+          "end": 373.105
+        },
+        {
+          "w": "A",
+          "start": 373.285,
+          "end": 373.555
+        },
+        {
+          "w": "word",
+          "start": 373.58,
+          "end": 373.85
+        },
+        {
+          "w": "that",
+          "start": 373.875,
+          "end": 374.145
+        },
+        {
+          "w": "literally",
+          "start": 374.17,
+          "end": 374.98
+        },
+        {
+          "w": "means",
+          "start": 375.005,
+          "end": 375.275
+        },
+        {
+          "w": "solitude",
+          "start": 375.3,
+          "end": 375.93
+        }
+      ]
+    },
+    {
+      "id": "s53",
+      "text": "That word is khalwa. Spiritual retreat.",
+      "start": 377.41,
+      "end": 380.03,
+      "words": [
+        {
+          "w": "That",
+          "start": 377.41,
+          "end": 377.68
+        },
+        {
+          "w": "word",
+          "start": 377.705,
+          "end": 377.975
+        },
+        {
+          "w": "is",
+          "start": 378.0,
+          "end": 378.27
+        },
+        {
+          "w": "khalwa",
+          "start": 378.295,
+          "end": 378.745
+        },
+        {
+          "w": "Spiritual",
+          "start": 378.925,
+          "end": 379.555
+        },
+        {
+          "w": "retreat",
+          "start": 379.58,
+          "end": 380.03
+        }
+      ]
+    },
+    {
+      "id": "s54",
+      "text": "It comes from Sufism, the inward tradition of Islam, concerned with the heart and with attention.",
+      "start": 380.81,
+      "end": 387.235,
+      "words": [
+        {
+          "w": "It",
+          "start": 380.81,
+          "end": 381.08
+        },
+        {
+          "w": "comes",
+          "start": 381.105,
+          "end": 381.555
+        },
+        {
+          "w": "from",
+          "start": 381.58,
+          "end": 381.85
+        },
+        {
+          "w": "Sufism",
+          "start": 381.875,
+          "end": 382.325
+        },
+        {
+          "w": "the",
+          "start": 382.405,
+          "end": 382.675
+        },
+        {
+          "w": "inward",
+          "start": 382.7,
+          "end": 383.15
+        },
+        {
+          "w": "tradition",
+          "start": 383.175,
+          "end": 383.805
+        },
+        {
+          "w": "of",
+          "start": 383.83,
+          "end": 384.1
+        },
+        {
+          "w": "Islam",
+          "start": 384.125,
+          "end": 384.575
+        },
+        {
+          "w": "concerned",
+          "start": 384.655,
+          "end": 385.105
+        },
+        {
+          "w": "with",
+          "start": 385.13,
+          "end": 385.4
+        },
+        {
+          "w": "the",
+          "start": 385.425,
+          "end": 385.695
+        },
+        {
+          "w": "heart",
+          "start": 385.72,
+          "end": 385.99
+        },
+        {
+          "w": "and",
+          "start": 386.015,
+          "end": 386.285
+        },
+        {
+          "w": "with",
+          "start": 386.31,
+          "end": 386.58
+        },
+        {
+          "w": "attention",
+          "start": 386.605,
+          "end": 387.235
+        }
+      ]
+    },
+    {
+      "id": "s55",
+      "text": "In a khalwa, you withdraw by choice. Traditionally for forty days, alone, under a master's guidance. The very thing those students in Virginia struggled with after fifteen minutes.",
+      "start": 388.015,
+      "end": 400.145,
+      "words": [
+        {
+          "w": "In",
+          "start": 388.015,
+          "end": 388.285
+        },
+        {
+          "w": "a",
+          "start": 388.31,
+          "end": 388.58
+        },
+        {
+          "w": "khalwa",
+          "start": 388.605,
+          "end": 389.055
+        },
+        {
+          "w": "you",
+          "start": 389.135,
+          "end": 389.405
+        },
+        {
+          "w": "withdraw",
+          "start": 389.43,
+          "end": 389.88
+        },
+        {
+          "w": "by",
+          "start": 389.905,
+          "end": 390.175
+        },
+        {
+          "w": "choice",
+          "start": 390.2,
+          "end": 390.47
+        },
+        {
+          "w": "Traditionally",
+          "start": 390.65,
+          "end": 391.64
+        },
+        {
+          "w": "for",
+          "start": 391.665,
+          "end": 391.935
+        },
+        {
+          "w": "forty",
+          "start": 391.96,
+          "end": 392.41
+        },
+        {
+          "w": "days",
+          "start": 392.435,
+          "end": 392.705
+        },
+        {
+          "w": "alone",
+          "start": 392.785,
+          "end": 393.235
+        },
+        {
+          "w": "under",
+          "start": 393.315,
+          "end": 393.765
+        },
+        {
+          "w": "a",
+          "start": 393.79,
+          "end": 394.06
+        },
+        {
+          "w": "master's",
+          "start": 394.085,
+          "end": 394.535
+        },
+        {
+          "w": "guidance",
+          "start": 394.56,
+          "end": 395.01
+        },
+        {
+          "w": "The",
+          "start": 395.19,
+          "end": 395.46
+        },
+        {
+          "w": "very",
+          "start": 395.485,
+          "end": 395.935
+        },
+        {
+          "w": "thing",
+          "start": 395.96,
+          "end": 396.23
+        },
+        {
+          "w": "those",
+          "start": 396.255,
+          "end": 396.525
+        },
+        {
+          "w": "students",
+          "start": 396.55,
+          "end": 397.0
+        },
+        {
+          "w": "in",
+          "start": 397.025,
+          "end": 397.295
+        },
+        {
+          "w": "Virginia",
+          "start": 397.32,
+          "end": 397.95
+        },
+        {
+          "w": "struggled",
+          "start": 397.975,
+          "end": 398.245
+        },
+        {
+          "w": "with",
+          "start": 398.27,
+          "end": 398.54
+        },
+        {
+          "w": "after",
+          "start": 398.565,
+          "end": 399.015
+        },
+        {
+          "w": "fifteen",
+          "start": 399.04,
+          "end": 399.49
+        },
+        {
+          "w": "minutes",
+          "start": 399.515,
+          "end": 400.145
+        }
+      ]
+    },
+    {
+      "id": "s56",
+      "text": "Why would anyone choose to do that? Listen to the story of one of the most brilliant minds of his time.",
+      "start": 401.325,
+      "end": 408.55,
+      "words": [
+        {
+          "w": "Why",
+          "start": 401.325,
+          "end": 401.595
+        },
+        {
+          "w": "would",
+          "start": 401.62,
+          "end": 401.89
+        },
+        {
+          "w": "anyone",
+          "start": 401.915,
+          "end": 402.365
+        },
+        {
+          "w": "choose",
+          "start": 402.39,
+          "end": 402.66
+        },
+        {
+          "w": "to",
+          "start": 402.685,
+          "end": 402.955
+        },
+        {
+          "w": "do",
+          "start": 402.98,
+          "end": 403.25
+        },
+        {
+          "w": "that",
+          "start": 403.275,
+          "end": 403.545
+        },
+        {
+          "w": "Listen",
+          "start": 403.725,
+          "end": 404.175
+        },
+        {
+          "w": "to",
+          "start": 404.2,
+          "end": 404.47
+        },
+        {
+          "w": "the",
+          "start": 404.495,
+          "end": 404.765
+        },
+        {
+          "w": "story",
+          "start": 404.79,
+          "end": 405.24
+        },
+        {
+          "w": "of",
+          "start": 405.265,
+          "end": 405.535
+        },
+        {
+          "w": "one",
+          "start": 405.56,
+          "end": 406.01
+        },
+        {
+          "w": "of",
+          "start": 406.035,
+          "end": 406.305
+        },
+        {
+          "w": "the",
+          "start": 406.33,
+          "end": 406.6
+        },
+        {
+          "w": "most",
+          "start": 406.625,
+          "end": 406.895
+        },
+        {
+          "w": "brilliant",
+          "start": 406.92,
+          "end": 407.37
+        },
+        {
+          "w": "minds",
+          "start": 407.395,
+          "end": 407.665
+        },
+        {
+          "w": "of",
+          "start": 407.69,
+          "end": 407.96
+        },
+        {
+          "w": "his",
+          "start": 407.985,
+          "end": 408.255
+        },
+        {
+          "w": "time",
+          "start": 408.28,
+          "end": 408.55
+        }
+      ]
+    },
+    {
+      "id": "s57",
+      "text": "Baghdad, ten ninety-five. Al-Ghazali is a celebrated teacher. Three hundred students. A career at its peak.",
+      "start": 409.53,
+      "end": 417.085,
+      "words": [
+        {
+          "w": "Baghdad",
+          "start": 409.53,
+          "end": 409.98
+        },
+        {
+          "w": "ten",
+          "start": 410.06,
+          "end": 410.33
+        },
+        {
+          "w": "ninety-five",
+          "start": 410.355,
+          "end": 411.165
+        },
+        {
+          "w": "Al-Ghazali",
+          "start": 411.345,
+          "end": 412.155
+        },
+        {
+          "w": "is",
+          "start": 412.18,
+          "end": 412.45
+        },
+        {
+          "w": "a",
+          "start": 412.475,
+          "end": 412.745
+        },
+        {
+          "w": "celebrated",
+          "start": 412.77,
+          "end": 413.58
+        },
+        {
+          "w": "teacher",
+          "start": 413.605,
+          "end": 414.055
+        },
+        {
+          "w": "Three",
+          "start": 414.235,
+          "end": 414.505
+        },
+        {
+          "w": "hundred",
+          "start": 414.53,
+          "end": 414.8
+        },
+        {
+          "w": "students",
+          "start": 414.825,
+          "end": 415.275
+        },
+        {
+          "w": "A",
+          "start": 415.455,
+          "end": 415.725
+        },
+        {
+          "w": "career",
+          "start": 415.75,
+          "end": 416.2
+        },
+        {
+          "w": "at",
+          "start": 416.225,
+          "end": 416.495
+        },
+        {
+          "w": "its",
+          "start": 416.52,
+          "end": 416.79
+        },
+        {
+          "w": "peak",
+          "start": 416.815,
+          "end": 417.085
+        }
+      ]
+    },
+    {
+      "id": "s58",
+      "text": "One day, he tries to teach, and nothing comes out. He writes: “my tongue would not utter a single word”. He describes his tongue drying up. The doctors give up. “This trouble arises from the heart”, they say.",
+      "start": 417.865,
+      "end": 432.05,
+      "words": [
+        {
+          "w": "One",
+          "start": 417.865,
+          "end": 418.315
+        },
+        {
+          "w": "day",
+          "start": 418.34,
+          "end": 418.61
+        },
+        {
+          "w": "he",
+          "start": 418.69,
+          "end": 418.96
+        },
+        {
+          "w": "tries",
+          "start": 418.985,
+          "end": 419.255
+        },
+        {
+          "w": "to",
+          "start": 419.28,
+          "end": 419.55
+        },
+        {
+          "w": "teach",
+          "start": 419.575,
+          "end": 419.845
+        },
+        {
+          "w": "and",
+          "start": 419.925,
+          "end": 420.195
+        },
+        {
+          "w": "nothing",
+          "start": 420.22,
+          "end": 420.67
+        },
+        {
+          "w": "comes",
+          "start": 420.695,
+          "end": 421.145
+        },
+        {
+          "w": "out",
+          "start": 421.17,
+          "end": 421.44
+        },
+        {
+          "w": "He",
+          "start": 421.62,
+          "end": 421.89
+        },
+        {
+          "w": "writes",
+          "start": 421.915,
+          "end": 422.365
+        },
+        {
+          "w": "my",
+          "start": 422.445,
+          "end": 422.715
+        },
+        {
+          "w": "tongue",
+          "start": 422.74,
+          "end": 423.01
+        },
+        {
+          "w": "would",
+          "start": 423.035,
+          "end": 423.305
+        },
+        {
+          "w": "not",
+          "start": 423.33,
+          "end": 423.6
+        },
+        {
+          "w": "utter",
+          "start": 423.625,
+          "end": 424.075
+        },
+        {
+          "w": "a",
+          "start": 424.1,
+          "end": 424.37
+        },
+        {
+          "w": "single",
+          "start": 424.395,
+          "end": 424.845
+        },
+        {
+          "w": "word",
+          "start": 424.87,
+          "end": 425.14
+        },
+        {
+          "w": "He",
+          "start": 425.32,
+          "end": 425.59
+        },
+        {
+          "w": "describes",
+          "start": 425.615,
+          "end": 426.245
+        },
+        {
+          "w": "his",
+          "start": 426.27,
+          "end": 426.54
+        },
+        {
+          "w": "tongue",
+          "start": 426.565,
+          "end": 426.835
+        },
+        {
+          "w": "drying",
+          "start": 426.86,
+          "end": 427.13
+        },
+        {
+          "w": "up",
+          "start": 427.155,
+          "end": 427.425
+        },
+        {
+          "w": "The",
+          "start": 427.605,
+          "end": 427.875
+        },
+        {
+          "w": "doctors",
+          "start": 427.9,
+          "end": 428.35
+        },
+        {
+          "w": "give",
+          "start": 428.375,
+          "end": 428.645
+        },
+        {
+          "w": "up",
+          "start": 428.67,
+          "end": 428.94
+        },
+        {
+          "w": "This",
+          "start": 429.12,
+          "end": 429.39
+        },
+        {
+          "w": "trouble",
+          "start": 429.415,
+          "end": 429.865
+        },
+        {
+          "w": "arises",
+          "start": 429.89,
+          "end": 430.52
+        },
+        {
+          "w": "from",
+          "start": 430.545,
+          "end": 430.815
+        },
+        {
+          "w": "the",
+          "start": 430.84,
+          "end": 431.11
+        },
+        {
+          "w": "heart",
+          "start": 431.135,
+          "end": 431.405
+        },
+        {
+          "w": "they",
+          "start": 431.485,
+          "end": 431.755
+        },
+        {
+          "w": "say",
+          "start": 431.78,
+          "end": 432.05
+        }
+      ]
+    },
+    {
+      "id": "s59",
+      "text": "So he leaves. He spends nearly two years in Damascus. For a time, he goes up into the minaret of the great mosque each day and shuts himself in. All day. To be alone.",
+      "start": 433.03,
+      "end": 445.33,
+      "words": [
+        {
+          "w": "So",
+          "start": 433.03,
+          "end": 433.3
+        },
+        {
+          "w": "he",
+          "start": 433.325,
+          "end": 433.595
+        },
+        {
+          "w": "leaves",
+          "start": 433.62,
+          "end": 434.07
+        },
+        {
+          "w": "He",
+          "start": 434.25,
+          "end": 434.52
+        },
+        {
+          "w": "spends",
+          "start": 434.545,
+          "end": 434.815
+        },
+        {
+          "w": "nearly",
+          "start": 434.84,
+          "end": 435.29
+        },
+        {
+          "w": "two",
+          "start": 435.315,
+          "end": 435.585
+        },
+        {
+          "w": "years",
+          "start": 435.61,
+          "end": 435.88
+        },
+        {
+          "w": "in",
+          "start": 435.905,
+          "end": 436.175
+        },
+        {
+          "w": "Damascus",
+          "start": 436.2,
+          "end": 436.83
+        },
+        {
+          "w": "For",
+          "start": 437.01,
+          "end": 437.28
+        },
+        {
+          "w": "a",
+          "start": 437.305,
+          "end": 437.575
+        },
+        {
+          "w": "time",
+          "start": 437.6,
+          "end": 437.87
+        },
+        {
+          "w": "he",
+          "start": 437.95,
+          "end": 438.22
+        },
+        {
+          "w": "goes",
+          "start": 438.245,
+          "end": 438.515
+        },
+        {
+          "w": "up",
+          "start": 438.54,
+          "end": 438.81
+        },
+        {
+          "w": "into",
+          "start": 438.835,
+          "end": 439.285
+        },
+        {
+          "w": "the",
+          "start": 439.31,
+          "end": 439.58
+        },
+        {
+          "w": "minaret",
+          "start": 439.605,
+          "end": 440.235
+        },
+        {
+          "w": "of",
+          "start": 440.26,
+          "end": 440.53
+        },
+        {
+          "w": "the",
+          "start": 440.555,
+          "end": 440.825
+        },
+        {
+          "w": "great",
+          "start": 440.85,
+          "end": 441.12
+        },
+        {
+          "w": "mosque",
+          "start": 441.145,
+          "end": 441.415
+        },
+        {
+          "w": "each",
+          "start": 441.44,
+          "end": 441.71
+        },
+        {
+          "w": "day",
+          "start": 441.735,
+          "end": 442.005
+        },
+        {
+          "w": "and",
+          "start": 442.03,
+          "end": 442.3
+        },
+        {
+          "w": "shuts",
+          "start": 442.325,
+          "end": 442.595
+        },
+        {
+          "w": "himself",
+          "start": 442.62,
+          "end": 443.07
+        },
+        {
+          "w": "in",
+          "start": 443.095,
+          "end": 443.365
+        },
+        {
+          "w": "All",
+          "start": 443.545,
+          "end": 443.815
+        },
+        {
+          "w": "day",
+          "start": 443.84,
+          "end": 444.11
+        },
+        {
+          "w": "To",
+          "start": 444.29,
+          "end": 444.56
+        },
+        {
+          "w": "be",
+          "start": 444.585,
+          "end": 444.855
+        },
+        {
+          "w": "alone",
+          "start": 444.88,
+          "end": 445.33
+        }
+      ]
+    },
+    {
+      "id": "s60",
+      "text": "This isn't a call to run away. He devoted a whole book of his major work to the question: live among other people, or withdraw? His answer depends on the circumstances, and above all on intention. He himself eventually returned to teaching.",
+      "start": 446.31,
+      "end": 463.445,
+      "words": [
+        {
+          "w": "This",
+          "start": 446.31,
+          "end": 446.58
+        },
+        {
+          "w": "isn't",
+          "start": 446.605,
+          "end": 446.875
+        },
+        {
+          "w": "a",
+          "start": 446.9,
+          "end": 447.17
+        },
+        {
+          "w": "call",
+          "start": 447.195,
+          "end": 447.465
+        },
+        {
+          "w": "to",
+          "start": 447.49,
+          "end": 447.76
+        },
+        {
+          "w": "run",
+          "start": 447.785,
+          "end": 448.055
+        },
+        {
+          "w": "away",
+          "start": 448.08,
+          "end": 448.53
+        },
+        {
+          "w": "He",
+          "start": 448.71,
+          "end": 448.98
+        },
+        {
+          "w": "devoted",
+          "start": 449.005,
+          "end": 449.635
+        },
+        {
+          "w": "a",
+          "start": 449.66,
+          "end": 449.93
+        },
+        {
+          "w": "whole",
+          "start": 449.955,
+          "end": 450.225
+        },
+        {
+          "w": "book",
+          "start": 450.25,
+          "end": 450.52
+        },
+        {
+          "w": "of",
+          "start": 450.545,
+          "end": 450.815
+        },
+        {
+          "w": "his",
+          "start": 450.84,
+          "end": 451.11
+        },
+        {
+          "w": "major",
+          "start": 451.135,
+          "end": 451.585
+        },
+        {
+          "w": "work",
+          "start": 451.61,
+          "end": 451.88
+        },
+        {
+          "w": "to",
+          "start": 451.905,
+          "end": 452.175
+        },
+        {
+          "w": "the",
+          "start": 452.2,
+          "end": 452.47
+        },
+        {
+          "w": "question",
+          "start": 452.495,
+          "end": 452.945
+        },
+        {
+          "w": "live",
+          "start": 453.025,
+          "end": 453.295
+        },
+        {
+          "w": "among",
+          "start": 453.32,
+          "end": 453.77
+        },
+        {
+          "w": "other",
+          "start": 453.795,
+          "end": 454.245
+        },
+        {
+          "w": "people",
+          "start": 454.27,
+          "end": 454.72
+        },
+        {
+          "w": "or",
+          "start": 454.8,
+          "end": 455.07
+        },
+        {
+          "w": "withdraw",
+          "start": 455.095,
+          "end": 455.545
+        },
+        {
+          "w": "His",
+          "start": 455.725,
+          "end": 455.995
+        },
+        {
+          "w": "answer",
+          "start": 456.02,
+          "end": 456.47
+        },
+        {
+          "w": "depends",
+          "start": 456.495,
+          "end": 456.945
+        },
+        {
+          "w": "on",
+          "start": 456.97,
+          "end": 457.24
+        },
+        {
+          "w": "the",
+          "start": 457.265,
+          "end": 457.535
+        },
+        {
+          "w": "circumstances",
+          "start": 457.56,
+          "end": 458.37
+        },
+        {
+          "w": "and",
+          "start": 458.45,
+          "end": 458.72
+        },
+        {
+          "w": "above",
+          "start": 458.745,
+          "end": 459.195
+        },
+        {
+          "w": "all",
+          "start": 459.22,
+          "end": 459.49
+        },
+        {
+          "w": "on",
+          "start": 459.515,
+          "end": 459.785
+        },
+        {
+          "w": "intention",
+          "start": 459.81,
+          "end": 460.44
+        },
+        {
+          "w": "He",
+          "start": 460.62,
+          "end": 460.89
+        },
+        {
+          "w": "himself",
+          "start": 460.915,
+          "end": 461.365
+        },
+        {
+          "w": "eventually",
+          "start": 461.39,
+          "end": 462.2
+        },
+        {
+          "w": "returned",
+          "start": 462.225,
+          "end": 462.675
+        },
+        {
+          "w": "to",
+          "start": 462.7,
+          "end": 462.97
+        },
+        {
+          "w": "teaching",
+          "start": 462.995,
+          "end": 463.445
+        }
+      ]
+    },
+    {
+      "id": "s61",
+      "text": "But what do you actually do alone in a closed room? In Sufism, you practise dhikr.",
+      "start": 464.425,
+      "end": 470.23,
+      "words": [
+        {
+          "w": "But",
+          "start": 464.425,
+          "end": 464.695
+        },
+        {
+          "w": "what",
+          "start": 464.72,
+          "end": 464.99
+        },
+        {
+          "w": "do",
+          "start": 465.015,
+          "end": 465.285
+        },
+        {
+          "w": "you",
+          "start": 465.31,
+          "end": 465.58
+        },
+        {
+          "w": "actually",
+          "start": 465.605,
+          "end": 466.235
+        },
+        {
+          "w": "do",
+          "start": 466.26,
+          "end": 466.53
+        },
+        {
+          "w": "alone",
+          "start": 466.555,
+          "end": 467.005
+        },
+        {
+          "w": "in",
+          "start": 467.03,
+          "end": 467.3
+        },
+        {
+          "w": "a",
+          "start": 467.325,
+          "end": 467.595
+        },
+        {
+          "w": "closed",
+          "start": 467.62,
+          "end": 467.89
+        },
+        {
+          "w": "room",
+          "start": 467.915,
+          "end": 468.185
+        },
+        {
+          "w": "In",
+          "start": 468.365,
+          "end": 468.635
+        },
+        {
+          "w": "Sufism",
+          "start": 468.66,
+          "end": 469.11
+        },
+        {
+          "w": "you",
+          "start": 469.19,
+          "end": 469.46
+        },
+        {
+          "w": "practise",
+          "start": 469.485,
+          "end": 469.935
+        },
+        {
+          "w": "dhikr",
+          "start": 469.96,
+          "end": 470.23
+        }
+      ]
+    },
+    {
+      "id": "s62",
+      "text": "Remembrance. In practice: repeating a name. Again and again. Other traditions speak of mantras. Here's the idea: you put a piece of furniture in the empty room. A fixed point. Your mind wanders, you bring it back to the name. It wanders again. You bring it back.",
+      "start": 471.01,
+      "end": 489.675,
+      "words": [
+        {
+          "w": "Remembrance",
+          "start": 471.01,
+          "end": 471.64
+        },
+        {
+          "w": "In",
+          "start": 471.82,
+          "end": 472.09
+        },
+        {
+          "w": "practice",
+          "start": 472.115,
+          "end": 472.565
+        },
+        {
+          "w": "repeating",
+          "start": 472.645,
+          "end": 473.275
+        },
+        {
+          "w": "a",
+          "start": 473.3,
+          "end": 473.57
+        },
+        {
+          "w": "name",
+          "start": 473.595,
+          "end": 473.865
+        },
+        {
+          "w": "Again",
+          "start": 474.045,
+          "end": 474.495
+        },
+        {
+          "w": "and",
+          "start": 474.52,
+          "end": 474.79
+        },
+        {
+          "w": "again",
+          "start": 474.815,
+          "end": 475.265
+        },
+        {
+          "w": "Other",
+          "start": 475.445,
+          "end": 475.895
+        },
+        {
+          "w": "traditions",
+          "start": 475.92,
+          "end": 476.55
+        },
+        {
+          "w": "speak",
+          "start": 476.575,
+          "end": 476.845
+        },
+        {
+          "w": "of",
+          "start": 476.87,
+          "end": 477.14
+        },
+        {
+          "w": "mantras",
+          "start": 477.165,
+          "end": 477.615
+        },
+        {
+          "w": "Here's",
+          "start": 477.795,
+          "end": 478.245
+        },
+        {
+          "w": "the",
+          "start": 478.27,
+          "end": 478.54
+        },
+        {
+          "w": "idea",
+          "start": 478.565,
+          "end": 479.015
+        },
+        {
+          "w": "you",
+          "start": 479.095,
+          "end": 479.365
+        },
+        {
+          "w": "put",
+          "start": 479.39,
+          "end": 479.66
+        },
+        {
+          "w": "a",
+          "start": 479.685,
+          "end": 479.955
+        },
+        {
+          "w": "piece",
+          "start": 479.98,
+          "end": 480.25
+        },
+        {
+          "w": "of",
+          "start": 480.275,
+          "end": 480.545
+        },
+        {
+          "w": "furniture",
+          "start": 480.57,
+          "end": 481.2
+        },
+        {
+          "w": "in",
+          "start": 481.225,
+          "end": 481.495
+        },
+        {
+          "w": "the",
+          "start": 481.52,
+          "end": 481.79
+        },
+        {
+          "w": "empty",
+          "start": 481.815,
+          "end": 482.265
+        },
+        {
+          "w": "room",
+          "start": 482.29,
+          "end": 482.56
+        },
+        {
+          "w": "A",
+          "start": 482.74,
+          "end": 483.01
+        },
+        {
+          "w": "fixed",
+          "start": 483.035,
+          "end": 483.305
+        },
+        {
+          "w": "point",
+          "start": 483.33,
+          "end": 483.6
+        },
+        {
+          "w": "Your",
+          "start": 483.78,
+          "end": 484.05
+        },
+        {
+          "w": "mind",
+          "start": 484.075,
+          "end": 484.345
+        },
+        {
+          "w": "wanders",
+          "start": 484.37,
+          "end": 484.82
+        },
+        {
+          "w": "you",
+          "start": 484.9,
+          "end": 485.17
+        },
+        {
+          "w": "bring",
+          "start": 485.195,
+          "end": 485.465
+        },
+        {
+          "w": "it",
+          "start": 485.49,
+          "end": 485.76
+        },
+        {
+          "w": "back",
+          "start": 485.785,
+          "end": 486.055
+        },
+        {
+          "w": "to",
+          "start": 486.08,
+          "end": 486.35
+        },
+        {
+          "w": "the",
+          "start": 486.375,
+          "end": 486.645
+        },
+        {
+          "w": "name",
+          "start": 486.67,
+          "end": 486.94
+        },
+        {
+          "w": "It",
+          "start": 487.12,
+          "end": 487.39
+        },
+        {
+          "w": "wanders",
+          "start": 487.415,
+          "end": 487.865
+        },
+        {
+          "w": "again",
+          "start": 487.89,
+          "end": 488.34
+        },
+        {
+          "w": "You",
+          "start": 488.52,
+          "end": 488.79
+        },
+        {
+          "w": "bring",
+          "start": 488.815,
+          "end": 489.085
+        },
+        {
+          "w": "it",
+          "start": 489.11,
+          "end": 489.38
+        },
+        {
+          "w": "back",
+          "start": 489.405,
+          "end": 489.675
+        }
+      ]
+    },
+    {
+      "id": "s63",
+      "text": "The Quran puts it in one sentence.",
+      "start": 490.655,
+      "end": 493.235,
+      "words": [
+        {
+          "w": "The",
+          "start": 490.655,
+          "end": 490.925
+        },
+        {
+          "w": "Quran",
+          "start": 490.95,
+          "end": 491.4
+        },
+        {
+          "w": "puts",
+          "start": 491.425,
+          "end": 491.695
+        },
+        {
+          "w": "it",
+          "start": 491.72,
+          "end": 491.99
+        },
+        {
+          "w": "in",
+          "start": 492.015,
+          "end": 492.285
+        },
+        {
+          "w": "one",
+          "start": 492.31,
+          "end": 492.76
+        },
+        {
+          "w": "sentence",
+          "start": 492.785,
+          "end": 493.235
+        }
+      ],
+      "reserved_after": 3.5
+    },
+    {
+      "id": "s64",
+      "text": "The path I follow is called the Karkariya. A contemporary Moroccan Sufi path, founded in two thousand and seven near Nador by Sheikh Mohamed Faouzi al-Karkari. This patched cloak is its garment. And among the foundations the Sheikh describes are these two: the retreat, and the Name. In our path, the retreat has two stages: an initial three-day khalwa, followed by a second retreat of forty days.",
+      "start": 498.215,
+      "end": 525.925,
+      "words": [
+        {
+          "w": "The",
+          "start": 498.215,
+          "end": 498.485
+        },
+        {
+          "w": "path",
+          "start": 498.51,
+          "end": 498.78
+        },
+        {
+          "w": "I",
+          "start": 498.805,
+          "end": 499.075
+        },
+        {
+          "w": "follow",
+          "start": 499.1,
+          "end": 499.55
+        },
+        {
+          "w": "is",
+          "start": 499.575,
+          "end": 499.845
+        },
+        {
+          "w": "called",
+          "start": 499.87,
+          "end": 500.14
+        },
+        {
+          "w": "the",
+          "start": 500.165,
+          "end": 500.435
+        },
+        {
+          "w": "Karkariya",
+          "start": 500.46,
+          "end": 501.27
+        },
+        {
+          "w": "A",
+          "start": 501.45,
+          "end": 501.72
+        },
+        {
+          "w": "contemporary",
+          "start": 501.745,
+          "end": 502.735
+        },
+        {
+          "w": "Moroccan",
+          "start": 502.76,
+          "end": 503.39
+        },
+        {
+          "w": "Sufi",
+          "start": 503.415,
+          "end": 503.865
+        },
+        {
+          "w": "path",
+          "start": 503.89,
+          "end": 504.16
+        },
+        {
+          "w": "founded",
+          "start": 504.24,
+          "end": 504.69
+        },
+        {
+          "w": "in",
+          "start": 504.715,
+          "end": 504.985
+        },
+        {
+          "w": "two",
+          "start": 505.01,
+          "end": 505.28
+        },
+        {
+          "w": "thousand",
+          "start": 505.305,
+          "end": 505.755
+        },
+        {
+          "w": "and",
+          "start": 505.78,
+          "end": 506.05
+        },
+        {
+          "w": "seven",
+          "start": 506.075,
+          "end": 506.525
+        },
+        {
+          "w": "near",
+          "start": 506.55,
+          "end": 506.82
+        },
+        {
+          "w": "Nador",
+          "start": 506.845,
+          "end": 507.295
+        },
+        {
+          "w": "by",
+          "start": 507.32,
+          "end": 507.59
+        },
+        {
+          "w": "Sheikh",
+          "start": 507.615,
+          "end": 507.885
+        },
+        {
+          "w": "Mohamed",
+          "start": 507.91,
+          "end": 508.54
+        },
+        {
+          "w": "Faouzi",
+          "start": 508.565,
+          "end": 509.015
+        },
+        {
+          "w": "al-Karkari",
+          "start": 509.04,
+          "end": 509.85
+        },
+        {
+          "w": "This",
+          "start": 510.03,
+          "end": 510.3
+        },
+        {
+          "w": "patched",
+          "start": 510.325,
+          "end": 510.595
+        },
+        {
+          "w": "cloak",
+          "start": 510.62,
+          "end": 510.89
+        },
+        {
+          "w": "is",
+          "start": 510.915,
+          "end": 511.185
+        },
+        {
+          "w": "its",
+          "start": 511.21,
+          "end": 511.48
+        },
+        {
+          "w": "garment",
+          "start": 511.505,
+          "end": 511.955
+        },
+        {
+          "w": "And",
+          "start": 512.135,
+          "end": 512.405
+        },
+        {
+          "w": "among",
+          "start": 512.43,
+          "end": 512.88
+        },
+        {
+          "w": "the",
+          "start": 512.905,
+          "end": 513.175
+        },
+        {
+          "w": "foundations",
+          "start": 513.2,
+          "end": 513.83
+        },
+        {
+          "w": "the",
+          "start": 513.855,
+          "end": 514.125
+        },
+        {
+          "w": "Sheikh",
+          "start": 514.15,
+          "end": 514.42
+        },
+        {
+          "w": "describes",
+          "start": 514.445,
+          "end": 515.075
+        },
+        {
+          "w": "are",
+          "start": 515.1,
+          "end": 515.55
+        },
+        {
+          "w": "these",
+          "start": 515.575,
+          "end": 515.845
+        },
+        {
+          "w": "two",
+          "start": 515.87,
+          "end": 516.14
+        },
+        {
+          "w": "the",
+          "start": 516.22,
+          "end": 516.49
+        },
+        {
+          "w": "retreat",
+          "start": 516.515,
+          "end": 516.965
+        },
+        {
+          "w": "and",
+          "start": 517.045,
+          "end": 517.315
+        },
+        {
+          "w": "the",
+          "start": 517.34,
+          "end": 517.61
+        },
+        {
+          "w": "Name",
+          "start": 517.635,
+          "end": 517.905
+        },
+        {
+          "w": "In",
+          "start": 518.085,
+          "end": 518.355
+        },
+        {
+          "w": "our",
+          "start": 518.38,
+          "end": 518.65
+        },
+        {
+          "w": "path",
+          "start": 518.675,
+          "end": 518.945
+        },
+        {
+          "w": "the",
+          "start": 519.025,
+          "end": 519.295
+        },
+        {
+          "w": "retreat",
+          "start": 519.32,
+          "end": 519.77
+        },
+        {
+          "w": "has",
+          "start": 519.795,
+          "end": 520.065
+        },
+        {
+          "w": "two",
+          "start": 520.09,
+          "end": 520.36
+        },
+        {
+          "w": "stages",
+          "start": 520.385,
+          "end": 520.835
+        },
+        {
+          "w": "an",
+          "start": 520.915,
+          "end": 521.185
+        },
+        {
+          "w": "initial",
+          "start": 521.21,
+          "end": 521.84
+        },
+        {
+          "w": "three-day",
+          "start": 521.865,
+          "end": 522.315
+        },
+        {
+          "w": "khalwa",
+          "start": 522.34,
+          "end": 522.79
+        },
+        {
+          "w": "followed",
+          "start": 522.87,
+          "end": 523.32
+        },
+        {
+          "w": "by",
+          "start": 523.345,
+          "end": 523.615
+        },
+        {
+          "w": "a",
+          "start": 523.64,
+          "end": 523.91
+        },
+        {
+          "w": "second",
+          "start": 523.935,
+          "end": 524.385
+        },
+        {
+          "w": "retreat",
+          "start": 524.41,
+          "end": 524.86
+        },
+        {
+          "w": "of",
+          "start": 524.885,
+          "end": 525.155
+        },
+        {
+          "w": "forty",
+          "start": 525.18,
+          "end": 525.63
+        },
+        {
+          "w": "days",
+          "start": 525.655,
+          "end": 525.925
+        }
+      ]
+    },
+    {
+      "id": "s65",
+      "text": "I'm not going to ask you for three days, let alone forty. Tonight, I'm asking for two minutes. And I'll tell you what to expect.",
+      "start": 528.605,
+      "end": 537.635,
+      "words": [
+        {
+          "w": "I'm",
+          "start": 528.605,
+          "end": 528.875
+        },
+        {
+          "w": "not",
+          "start": 528.9,
+          "end": 529.17
+        },
+        {
+          "w": "going",
+          "start": 529.195,
+          "end": 529.465
+        },
+        {
+          "w": "to",
+          "start": 529.49,
+          "end": 529.76
+        },
+        {
+          "w": "ask",
+          "start": 529.785,
+          "end": 530.055
+        },
+        {
+          "w": "you",
+          "start": 530.08,
+          "end": 530.35
+        },
+        {
+          "w": "for",
+          "start": 530.375,
+          "end": 530.645
+        },
+        {
+          "w": "three",
+          "start": 530.67,
+          "end": 530.94
+        },
+        {
+          "w": "days",
+          "start": 530.965,
+          "end": 531.235
+        },
+        {
+          "w": "let",
+          "start": 531.315,
+          "end": 531.585
+        },
+        {
+          "w": "alone",
+          "start": 531.61,
+          "end": 532.06
+        },
+        {
+          "w": "forty",
+          "start": 532.085,
+          "end": 532.535
+        },
+        {
+          "w": "Tonight",
+          "start": 532.715,
+          "end": 533.165
+        },
+        {
+          "w": "I'm",
+          "start": 533.245,
+          "end": 533.515
+        },
+        {
+          "w": "asking",
+          "start": 533.54,
+          "end": 533.99
+        },
+        {
+          "w": "for",
+          "start": 534.015,
+          "end": 534.285
+        },
+        {
+          "w": "two",
+          "start": 534.31,
+          "end": 534.58
+        },
+        {
+          "w": "minutes",
+          "start": 534.605,
+          "end": 535.235
+        },
+        {
+          "w": "And",
+          "start": 535.415,
+          "end": 535.685
+        },
+        {
+          "w": "I'll",
+          "start": 535.71,
+          "end": 535.98
+        },
+        {
+          "w": "tell",
+          "start": 536.005,
+          "end": 536.275
+        },
+        {
+          "w": "you",
+          "start": 536.3,
+          "end": 536.57
+        },
+        {
+          "w": "what",
+          "start": 536.595,
+          "end": 536.865
+        },
+        {
+          "w": "to",
+          "start": 536.89,
+          "end": 537.16
+        },
+        {
+          "w": "expect",
+          "start": 537.185,
+          "end": 537.635
+        }
+      ]
+    },
+    {
+      "id": "s66",
+      "text": "One. Put your phone in another room. Not face down beside you. Another room. If you want a timer, start it first. You'll hear it from there.",
+      "start": 539.015,
+      "end": 549.045,
+      "words": [
+        {
+          "w": "One",
+          "start": 539.015,
+          "end": 539.465
+        },
+        {
+          "w": "Put",
+          "start": 539.645,
+          "end": 539.915
+        },
+        {
+          "w": "your",
+          "start": 539.94,
+          "end": 540.21
+        },
+        {
+          "w": "phone",
+          "start": 540.235,
+          "end": 540.505
+        },
+        {
+          "w": "in",
+          "start": 540.53,
+          "end": 540.8
+        },
+        {
+          "w": "another",
+          "start": 540.825,
+          "end": 541.455
+        },
+        {
+          "w": "room",
+          "start": 541.48,
+          "end": 541.75
+        },
+        {
+          "w": "Not",
+          "start": 541.93,
+          "end": 542.2
+        },
+        {
+          "w": "face",
+          "start": 542.225,
+          "end": 542.495
+        },
+        {
+          "w": "down",
+          "start": 542.52,
+          "end": 542.79
+        },
+        {
+          "w": "beside",
+          "start": 542.815,
+          "end": 543.265
+        },
+        {
+          "w": "you",
+          "start": 543.29,
+          "end": 543.56
+        },
+        {
+          "w": "Another",
+          "start": 543.74,
+          "end": 544.37
+        },
+        {
+          "w": "room",
+          "start": 544.395,
+          "end": 544.665
+        },
+        {
+          "w": "If",
+          "start": 544.845,
+          "end": 545.115
+        },
+        {
+          "w": "you",
+          "start": 545.14,
+          "end": 545.41
+        },
+        {
+          "w": "want",
+          "start": 545.435,
+          "end": 545.705
+        },
+        {
+          "w": "a",
+          "start": 545.73,
+          "end": 546.0
+        },
+        {
+          "w": "timer",
+          "start": 546.025,
+          "end": 546.475
+        },
+        {
+          "w": "start",
+          "start": 546.555,
+          "end": 546.825
+        },
+        {
+          "w": "it",
+          "start": 546.85,
+          "end": 547.12
+        },
+        {
+          "w": "first",
+          "start": 547.145,
+          "end": 547.415
+        },
+        {
+          "w": "You'll",
+          "start": 547.595,
+          "end": 547.865
+        },
+        {
+          "w": "hear",
+          "start": 547.89,
+          "end": 548.16
+        },
+        {
+          "w": "it",
+          "start": 548.185,
+          "end": 548.455
+        },
+        {
+          "w": "from",
+          "start": 548.48,
+          "end": 548.75
+        },
+        {
+          "w": "there",
+          "start": 548.775,
+          "end": 549.045
+        }
+      ]
+    },
+    {
+      "id": "s67",
+      "text": "Two. Sit down. Nothing heroic. A chair will do.",
+      "start": 550.125,
+      "end": 553.58,
+      "words": [
+        {
+          "w": "Two",
+          "start": 550.125,
+          "end": 550.395
+        },
+        {
+          "w": "Sit",
+          "start": 550.575,
+          "end": 550.845
+        },
+        {
+          "w": "down",
+          "start": 550.87,
+          "end": 551.14
+        },
+        {
+          "w": "Nothing",
+          "start": 551.32,
+          "end": 551.77
+        },
+        {
+          "w": "heroic",
+          "start": 551.795,
+          "end": 552.245
+        },
+        {
+          "w": "A",
+          "start": 552.425,
+          "end": 552.695
+        },
+        {
+          "w": "chair",
+          "start": 552.72,
+          "end": 552.99
+        },
+        {
+          "w": "will",
+          "start": 553.015,
+          "end": 553.285
+        },
+        {
+          "w": "do",
+          "start": 553.31,
+          "end": 553.58
+        }
+      ]
+    },
+    {
+      "id": "s68",
+      "text": "Three. For one minute, just notice the noise. “I need to reply to that message.” “I forgot the bread.” Don't push anything away. Just notice it. Like cars passing beneath your window. You might be surprised how loud it is.",
+      "start": 554.66,
+      "end": 570.095,
+      "words": [
+        {
+          "w": "Three",
+          "start": 554.66,
+          "end": 554.93
+        },
+        {
+          "w": "For",
+          "start": 555.11,
+          "end": 555.38
+        },
+        {
+          "w": "one",
+          "start": 555.405,
+          "end": 555.855
+        },
+        {
+          "w": "minute",
+          "start": 555.88,
+          "end": 556.33
+        },
+        {
+          "w": "just",
+          "start": 556.41,
+          "end": 556.68
+        },
+        {
+          "w": "notice",
+          "start": 556.705,
+          "end": 557.155
+        },
+        {
+          "w": "the",
+          "start": 557.18,
+          "end": 557.45
+        },
+        {
+          "w": "noise",
+          "start": 557.475,
+          "end": 557.745
+        },
+        {
+          "w": "I",
+          "start": 557.925,
+          "end": 558.195
+        },
+        {
+          "w": "need",
+          "start": 558.22,
+          "end": 558.49
+        },
+        {
+          "w": "to",
+          "start": 558.515,
+          "end": 558.785
+        },
+        {
+          "w": "reply",
+          "start": 558.81,
+          "end": 559.26
+        },
+        {
+          "w": "to",
+          "start": 559.285,
+          "end": 559.555
+        },
+        {
+          "w": "that",
+          "start": 559.58,
+          "end": 559.85
+        },
+        {
+          "w": "message",
+          "start": 559.875,
+          "end": 560.325
+        },
+        {
+          "w": "I",
+          "start": 560.505,
+          "end": 560.775
+        },
+        {
+          "w": "forgot",
+          "start": 560.8,
+          "end": 561.25
+        },
+        {
+          "w": "the",
+          "start": 561.275,
+          "end": 561.545
+        },
+        {
+          "w": "bread",
+          "start": 561.57,
+          "end": 561.84
+        },
+        {
+          "w": "Don't",
+          "start": 562.02,
+          "end": 562.29
+        },
+        {
+          "w": "push",
+          "start": 562.315,
+          "end": 562.585
+        },
+        {
+          "w": "anything",
+          "start": 562.61,
+          "end": 563.24
+        },
+        {
+          "w": "away",
+          "start": 563.265,
+          "end": 563.715
+        },
+        {
+          "w": "Just",
+          "start": 563.895,
+          "end": 564.165
+        },
+        {
+          "w": "notice",
+          "start": 564.19,
+          "end": 564.64
+        },
+        {
+          "w": "it",
+          "start": 564.665,
+          "end": 564.935
+        },
+        {
+          "w": "Like",
+          "start": 565.115,
+          "end": 565.385
+        },
+        {
+          "w": "cars",
+          "start": 565.41,
+          "end": 565.68
+        },
+        {
+          "w": "passing",
+          "start": 565.705,
+          "end": 566.155
+        },
+        {
+          "w": "beneath",
+          "start": 566.18,
+          "end": 566.63
+        },
+        {
+          "w": "your",
+          "start": 566.655,
+          "end": 566.925
+        },
+        {
+          "w": "window",
+          "start": 566.95,
+          "end": 567.4
+        },
+        {
+          "w": "You",
+          "start": 567.58,
+          "end": 567.85
+        },
+        {
+          "w": "might",
+          "start": 567.875,
+          "end": 568.145
+        },
+        {
+          "w": "be",
+          "start": 568.17,
+          "end": 568.44
+        },
+        {
+          "w": "surprised",
+          "start": 568.465,
+          "end": 568.915
+        },
+        {
+          "w": "how",
+          "start": 568.94,
+          "end": 569.21
+        },
+        {
+          "w": "loud",
+          "start": 569.235,
+          "end": 569.505
+        },
+        {
+          "w": "it",
+          "start": 569.53,
+          "end": 569.8
+        },
+        {
+          "w": "is",
+          "start": 569.825,
+          "end": 570.095
+        }
+      ]
+    },
+    {
+      "id": "s69",
+      "text": "Four. Rest your attention on a single point. Your breathing. Or a word, repeated silently, slowly. A word that means something to you. In our path, we repeat “Astaghfirullah”: I ask God's forgiveness. Astaghfirullah… Astaghfirullah…",
+      "start": 571.175,
+      "end": 587.64,
+      "words": [
+        {
+          "w": "Four",
+          "start": 571.175,
+          "end": 571.445
+        },
+        {
+          "w": "Rest",
+          "start": 571.625,
+          "end": 571.895
+        },
+        {
+          "w": "your",
+          "start": 571.92,
+          "end": 572.19
+        },
+        {
+          "w": "attention",
+          "start": 572.215,
+          "end": 572.845
+        },
+        {
+          "w": "on",
+          "start": 572.87,
+          "end": 573.14
+        },
+        {
+          "w": "a",
+          "start": 573.165,
+          "end": 573.435
+        },
+        {
+          "w": "single",
+          "start": 573.46,
+          "end": 573.91
+        },
+        {
+          "w": "point",
+          "start": 573.935,
+          "end": 574.205
+        },
+        {
+          "w": "Your",
+          "start": 574.385,
+          "end": 574.655
+        },
+        {
+          "w": "breathing",
+          "start": 574.68,
+          "end": 575.13
+        },
+        {
+          "w": "Or",
+          "start": 575.31,
+          "end": 575.58
+        },
+        {
+          "w": "a",
+          "start": 575.605,
+          "end": 575.875
+        },
+        {
+          "w": "word",
+          "start": 575.9,
+          "end": 576.17
+        },
+        {
+          "w": "repeated",
+          "start": 576.25,
+          "end": 576.88
+        },
+        {
+          "w": "silently",
+          "start": 576.905,
+          "end": 577.535
+        },
+        {
+          "w": "slowly",
+          "start": 577.615,
+          "end": 578.065
+        },
+        {
+          "w": "A",
+          "start": 578.245,
+          "end": 578.515
+        },
+        {
+          "w": "word",
+          "start": 578.54,
+          "end": 578.81
+        },
+        {
+          "w": "that",
+          "start": 578.835,
+          "end": 579.105
+        },
+        {
+          "w": "means",
+          "start": 579.13,
+          "end": 579.4
+        },
+        {
+          "w": "something",
+          "start": 579.425,
+          "end": 580.055
+        },
+        {
+          "w": "to",
+          "start": 580.08,
+          "end": 580.35
+        },
+        {
+          "w": "you",
+          "start": 580.375,
+          "end": 580.645
+        },
+        {
+          "w": "In",
+          "start": 580.825,
+          "end": 581.095
+        },
+        {
+          "w": "our",
+          "start": 581.12,
+          "end": 581.39
+        },
+        {
+          "w": "path",
+          "start": 581.415,
+          "end": 581.685
+        },
+        {
+          "w": "we",
+          "start": 581.765,
+          "end": 582.035
+        },
+        {
+          "w": "repeat",
+          "start": 582.06,
+          "end": 582.51
+        },
+        {
+          "w": "Astaghfirullah",
+          "start": 582.535,
+          "end": 583.525
+        },
+        {
+          "w": "I",
+          "start": 583.605,
+          "end": 583.875
+        },
+        {
+          "w": "ask",
+          "start": 583.9,
+          "end": 584.17
+        },
+        {
+          "w": "God's",
+          "start": 584.195,
+          "end": 584.465
+        },
+        {
+          "w": "forgiveness",
+          "start": 584.49,
+          "end": 585.3
+        },
+        {
+          "w": "Astaghfirullah",
+          "start": 585.48,
+          "end": 586.47
+        },
+        {
+          "w": "Astaghfirullah",
+          "start": 586.65,
+          "end": 587.64
+        }
+      ]
+    },
+    {
+      "id": "s70",
+      "text": "Five. When you drift away, and you will, come back. Without judging yourself.",
+      "start": 588.72,
+      "end": 593.67,
+      "words": [
+        {
+          "w": "Five",
+          "start": 588.72,
+          "end": 588.99
+        },
+        {
+          "w": "When",
+          "start": 589.17,
+          "end": 589.44
+        },
+        {
+          "w": "you",
+          "start": 589.465,
+          "end": 589.735
+        },
+        {
+          "w": "drift",
+          "start": 589.76,
+          "end": 590.03
+        },
+        {
+          "w": "away",
+          "start": 590.055,
+          "end": 590.505
+        },
+        {
+          "w": "and",
+          "start": 590.585,
+          "end": 590.855
+        },
+        {
+          "w": "you",
+          "start": 590.88,
+          "end": 591.15
+        },
+        {
+          "w": "will",
+          "start": 591.175,
+          "end": 591.445
+        },
+        {
+          "w": "come",
+          "start": 591.525,
+          "end": 591.795
+        },
+        {
+          "w": "back",
+          "start": 591.82,
+          "end": 592.09
+        },
+        {
+          "w": "Without",
+          "start": 592.27,
+          "end": 592.72
+        },
+        {
+          "w": "judging",
+          "start": 592.745,
+          "end": 593.195
+        },
+        {
+          "w": "yourself",
+          "start": 593.22,
+          "end": 593.67
+        }
+      ]
+    },
+    {
+      "id": "s71",
+      "text": "Here's what will probably happen. Very soon, perhaps after forty seconds, you'll want to get up. Check something. Go and get your phone. “Just to see the time.”",
+      "start": 594.95,
+      "end": 605.895,
+      "words": [
+        {
+          "w": "Here's",
+          "start": 594.95,
+          "end": 595.4
+        },
+        {
+          "w": "what",
+          "start": 595.425,
+          "end": 595.695
+        },
+        {
+          "w": "will",
+          "start": 595.72,
+          "end": 595.99
+        },
+        {
+          "w": "probably",
+          "start": 596.015,
+          "end": 596.645
+        },
+        {
+          "w": "happen",
+          "start": 596.67,
+          "end": 597.12
+        },
+        {
+          "w": "Very",
+          "start": 597.3,
+          "end": 597.75
+        },
+        {
+          "w": "soon",
+          "start": 597.775,
+          "end": 598.045
+        },
+        {
+          "w": "perhaps",
+          "start": 598.125,
+          "end": 598.575
+        },
+        {
+          "w": "after",
+          "start": 598.6,
+          "end": 599.05
+        },
+        {
+          "w": "forty",
+          "start": 599.075,
+          "end": 599.525
+        },
+        {
+          "w": "seconds",
+          "start": 599.55,
+          "end": 600.0
+        },
+        {
+          "w": "you'll",
+          "start": 600.08,
+          "end": 600.35
+        },
+        {
+          "w": "want",
+          "start": 600.375,
+          "end": 600.645
+        },
+        {
+          "w": "to",
+          "start": 600.67,
+          "end": 600.94
+        },
+        {
+          "w": "get",
+          "start": 600.965,
+          "end": 601.235
+        },
+        {
+          "w": "up",
+          "start": 601.26,
+          "end": 601.53
+        },
+        {
+          "w": "Check",
+          "start": 601.71,
+          "end": 601.98
+        },
+        {
+          "w": "something",
+          "start": 602.005,
+          "end": 602.635
+        },
+        {
+          "w": "Go",
+          "start": 602.815,
+          "end": 603.085
+        },
+        {
+          "w": "and",
+          "start": 603.11,
+          "end": 603.38
+        },
+        {
+          "w": "get",
+          "start": 603.405,
+          "end": 603.675
+        },
+        {
+          "w": "your",
+          "start": 603.7,
+          "end": 603.97
+        },
+        {
+          "w": "phone",
+          "start": 603.995,
+          "end": 604.265
+        },
+        {
+          "w": "Just",
+          "start": 604.445,
+          "end": 604.715
+        },
+        {
+          "w": "to",
+          "start": 604.74,
+          "end": 605.01
+        },
+        {
+          "w": "see",
+          "start": 605.035,
+          "end": 605.305
+        },
+        {
+          "w": "the",
+          "start": 605.33,
+          "end": 605.6
+        },
+        {
+          "w": "time",
+          "start": 605.625,
+          "end": 605.895
+        }
+      ]
+    },
+    {
+      "id": "s72",
+      "text": "That moment is the button in the study. You haven't failed the exercise. That is the exercise. Every return counts, like a rep at the gym. Two minutes tonight. Tomorrow, if you want, three.",
+      "start": 606.875,
+      "end": 620.52,
+      "words": [
+        {
+          "w": "That",
+          "start": 606.875,
+          "end": 607.145
+        },
+        {
+          "w": "moment",
+          "start": 607.17,
+          "end": 607.62
+        },
+        {
+          "w": "is",
+          "start": 607.645,
+          "end": 607.915
+        },
+        {
+          "w": "the",
+          "start": 607.94,
+          "end": 608.21
+        },
+        {
+          "w": "button",
+          "start": 608.235,
+          "end": 608.685
+        },
+        {
+          "w": "in",
+          "start": 608.71,
+          "end": 608.98
+        },
+        {
+          "w": "the",
+          "start": 609.005,
+          "end": 609.275
+        },
+        {
+          "w": "study",
+          "start": 609.3,
+          "end": 609.75
+        },
+        {
+          "w": "You",
+          "start": 609.93,
+          "end": 610.2
+        },
+        {
+          "w": "haven't",
+          "start": 610.225,
+          "end": 610.675
+        },
+        {
+          "w": "failed",
+          "start": 610.7,
+          "end": 610.97
+        },
+        {
+          "w": "the",
+          "start": 610.995,
+          "end": 611.265
+        },
+        {
+          "w": "exercise",
+          "start": 611.29,
+          "end": 611.92
+        },
+        {
+          "w": "That",
+          "start": 612.1,
+          "end": 612.37
+        },
+        {
+          "w": "is",
+          "start": 612.395,
+          "end": 612.665
+        },
+        {
+          "w": "the",
+          "start": 612.69,
+          "end": 612.96
+        },
+        {
+          "w": "exercise",
+          "start": 612.985,
+          "end": 613.615
+        },
+        {
+          "w": "Every",
+          "start": 613.795,
+          "end": 614.245
+        },
+        {
+          "w": "return",
+          "start": 614.27,
+          "end": 614.72
+        },
+        {
+          "w": "counts",
+          "start": 614.745,
+          "end": 615.015
+        },
+        {
+          "w": "like",
+          "start": 615.095,
+          "end": 615.365
+        },
+        {
+          "w": "a",
+          "start": 615.39,
+          "end": 615.66
+        },
+        {
+          "w": "rep",
+          "start": 615.685,
+          "end": 615.955
+        },
+        {
+          "w": "at",
+          "start": 615.98,
+          "end": 616.25
+        },
+        {
+          "w": "the",
+          "start": 616.275,
+          "end": 616.545
+        },
+        {
+          "w": "gym",
+          "start": 616.57,
+          "end": 616.84
+        },
+        {
+          "w": "Two",
+          "start": 617.02,
+          "end": 617.29
+        },
+        {
+          "w": "minutes",
+          "start": 617.315,
+          "end": 617.945
+        },
+        {
+          "w": "tonight",
+          "start": 617.97,
+          "end": 618.42
+        },
+        {
+          "w": "Tomorrow",
+          "start": 618.6,
+          "end": 619.23
+        },
+        {
+          "w": "if",
+          "start": 619.31,
+          "end": 619.58
+        },
+        {
+          "w": "you",
+          "start": 619.605,
+          "end": 619.875
+        },
+        {
+          "w": "want",
+          "start": 619.9,
+          "end": 620.17
+        },
+        {
+          "w": "three",
+          "start": 620.25,
+          "end": 620.52
+        }
+      ]
+    },
+    {
+      "id": "s73",
+      "text": "Back to the button.",
+      "start": 622.0,
+      "end": 623.335,
+      "words": [
+        {
+          "w": "Back",
+          "start": 622.0,
+          "end": 622.27
+        },
+        {
+          "w": "to",
+          "start": 622.295,
+          "end": 622.565
+        },
+        {
+          "w": "the",
+          "start": 622.59,
+          "end": 622.86
+        },
+        {
+          "w": "button",
+          "start": 622.885,
+          "end": 623.335
+        }
+      ]
+    },
+    {
+      "id": "s74",
+      "text": "It's tempting to laugh at those students. But you carry that button in your pocket. This one doesn't hurt. It even feels good, for a couple of seconds. That's why we open it around twenty times a day without thinking.",
+      "start": 624.115,
+      "end": 639.265,
+      "words": [
+        {
+          "w": "It's",
+          "start": 624.115,
+          "end": 624.385
+        },
+        {
+          "w": "tempting",
+          "start": 624.41,
+          "end": 624.86
+        },
+        {
+          "w": "to",
+          "start": 624.885,
+          "end": 625.155
+        },
+        {
+          "w": "laugh",
+          "start": 625.18,
+          "end": 625.45
+        },
+        {
+          "w": "at",
+          "start": 625.475,
+          "end": 625.745
+        },
+        {
+          "w": "those",
+          "start": 625.77,
+          "end": 626.04
+        },
+        {
+          "w": "students",
+          "start": 626.065,
+          "end": 626.515
+        },
+        {
+          "w": "But",
+          "start": 626.695,
+          "end": 626.965
+        },
+        {
+          "w": "you",
+          "start": 626.99,
+          "end": 627.26
+        },
+        {
+          "w": "carry",
+          "start": 627.285,
+          "end": 627.735
+        },
+        {
+          "w": "that",
+          "start": 627.76,
+          "end": 628.03
+        },
+        {
+          "w": "button",
+          "start": 628.055,
+          "end": 628.505
+        },
+        {
+          "w": "in",
+          "start": 628.53,
+          "end": 628.8
+        },
+        {
+          "w": "your",
+          "start": 628.825,
+          "end": 629.095
+        },
+        {
+          "w": "pocket",
+          "start": 629.12,
+          "end": 629.57
+        },
+        {
+          "w": "This",
+          "start": 629.75,
+          "end": 630.02
+        },
+        {
+          "w": "one",
+          "start": 630.045,
+          "end": 630.495
+        },
+        {
+          "w": "doesn't",
+          "start": 630.52,
+          "end": 630.79
+        },
+        {
+          "w": "hurt",
+          "start": 630.815,
+          "end": 631.085
+        },
+        {
+          "w": "It",
+          "start": 631.265,
+          "end": 631.535
+        },
+        {
+          "w": "even",
+          "start": 631.56,
+          "end": 632.01
+        },
+        {
+          "w": "feels",
+          "start": 632.035,
+          "end": 632.305
+        },
+        {
+          "w": "good",
+          "start": 632.33,
+          "end": 632.6
+        },
+        {
+          "w": "for",
+          "start": 632.68,
+          "end": 632.95
+        },
+        {
+          "w": "a",
+          "start": 632.975,
+          "end": 633.245
+        },
+        {
+          "w": "couple",
+          "start": 633.27,
+          "end": 633.72
+        },
+        {
+          "w": "of",
+          "start": 633.745,
+          "end": 634.015
+        },
+        {
+          "w": "seconds",
+          "start": 634.04,
+          "end": 634.49
+        },
+        {
+          "w": "That's",
+          "start": 634.67,
+          "end": 634.94
+        },
+        {
+          "w": "why",
+          "start": 634.965,
+          "end": 635.235
+        },
+        {
+          "w": "we",
+          "start": 635.26,
+          "end": 635.53
+        },
+        {
+          "w": "open",
+          "start": 635.555,
+          "end": 636.005
+        },
+        {
+          "w": "it",
+          "start": 636.03,
+          "end": 636.3
+        },
+        {
+          "w": "around",
+          "start": 636.325,
+          "end": 636.775
+        },
+        {
+          "w": "twenty",
+          "start": 636.8,
+          "end": 637.25
+        },
+        {
+          "w": "times",
+          "start": 637.275,
+          "end": 637.725
+        },
+        {
+          "w": "a",
+          "start": 637.75,
+          "end": 638.02
+        },
+        {
+          "w": "day",
+          "start": 638.045,
+          "end": 638.315
+        },
+        {
+          "w": "without",
+          "start": 638.34,
+          "end": 638.79
+        },
+        {
+          "w": "thinking",
+          "start": 638.815,
+          "end": 639.265
+        }
+      ]
+    },
+    {
+      "id": "s75",
+      "text": "The study's final sentence. The one I promised you:",
+      "start": 640.245,
+      "end": 643.93,
+      "words": [
+        {
+          "w": "The",
+          "start": 640.245,
+          "end": 640.515
+        },
+        {
+          "w": "study's",
+          "start": 640.54,
+          "end": 640.99
+        },
+        {
+          "w": "final",
+          "start": 641.015,
+          "end": 641.465
+        },
+        {
+          "w": "sentence",
+          "start": 641.49,
+          "end": 641.94
+        },
+        {
+          "w": "The",
+          "start": 642.12,
+          "end": 642.39
+        },
+        {
+          "w": "one",
+          "start": 642.415,
+          "end": 642.865
+        },
+        {
+          "w": "I",
+          "start": 642.89,
+          "end": 643.16
+        },
+        {
+          "w": "promised",
+          "start": 643.185,
+          "end": 643.635
+        },
+        {
+          "w": "you",
+          "start": 643.66,
+          "end": 643.93
+        }
+      ]
+    },
+    {
+      "id": "s76",
+      "text": "“The untutored mind does not like to be alone with itself.”",
+      "start": 644.91,
+      "end": 648.85,
+      "words": [
+        {
+          "w": "The",
+          "start": 644.91,
+          "end": 645.18
+        },
+        {
+          "w": "untutored",
+          "start": 645.205,
+          "end": 645.835
+        },
+        {
+          "w": "mind",
+          "start": 645.86,
+          "end": 646.13
+        },
+        {
+          "w": "does",
+          "start": 646.155,
+          "end": 646.425
+        },
+        {
+          "w": "not",
+          "start": 646.45,
+          "end": 646.72
+        },
+        {
+          "w": "like",
+          "start": 646.745,
+          "end": 647.015
+        },
+        {
+          "w": "to",
+          "start": 647.04,
+          "end": 647.31
+        },
+        {
+          "w": "be",
+          "start": 647.335,
+          "end": 647.605
+        },
+        {
+          "w": "alone",
+          "start": 647.63,
+          "end": 648.08
+        },
+        {
+          "w": "with",
+          "start": 648.105,
+          "end": 648.375
+        },
+        {
+          "w": "itself",
+          "start": 648.4,
+          "end": 648.85
+        }
+      ]
+    },
+    {
+      "id": "s77",
+      "text": "Untutored. That's the key word. It means there's something you can learn.",
+      "start": 649.93,
+      "end": 654.655,
+      "words": [
+        {
+          "w": "Untutored",
+          "start": 649.93,
+          "end": 650.56
+        },
+        {
+          "w": "That's",
+          "start": 650.74,
+          "end": 651.01
+        },
+        {
+          "w": "the",
+          "start": 651.035,
+          "end": 651.305
+        },
+        {
+          "w": "key",
+          "start": 651.33,
+          "end": 651.6
+        },
+        {
+          "w": "word",
+          "start": 651.625,
+          "end": 651.895
+        },
+        {
+          "w": "It",
+          "start": 652.075,
+          "end": 652.345
+        },
+        {
+          "w": "means",
+          "start": 652.37,
+          "end": 652.64
+        },
+        {
+          "w": "there's",
+          "start": 652.665,
+          "end": 653.115
+        },
+        {
+          "w": "something",
+          "start": 653.14,
+          "end": 653.77
+        },
+        {
+          "w": "you",
+          "start": 653.795,
+          "end": 654.065
+        },
+        {
+          "w": "can",
+          "start": 654.09,
+          "end": 654.36
+        },
+        {
+          "w": "learn",
+          "start": 654.385,
+          "end": 654.655
+        }
+      ]
+    },
+    {
+      "id": "s78",
+      "text": "You don't have a problem with solitude. You've just never furnished the room.",
+      "start": 656.835,
+      "end": 661.7,
+      "words": [
+        {
+          "w": "You",
+          "start": 656.835,
+          "end": 657.105
+        },
+        {
+          "w": "don't",
+          "start": 657.13,
+          "end": 657.4
+        },
+        {
+          "w": "have",
+          "start": 657.425,
+          "end": 657.695
+        },
+        {
+          "w": "a",
+          "start": 657.72,
+          "end": 657.99
+        },
+        {
+          "w": "problem",
+          "start": 658.015,
+          "end": 658.465
+        },
+        {
+          "w": "with",
+          "start": 658.49,
+          "end": 658.76
+        },
+        {
+          "w": "solitude",
+          "start": 658.785,
+          "end": 659.415
+        },
+        {
+          "w": "You've",
+          "start": 659.595,
+          "end": 659.865
+        },
+        {
+          "w": "just",
+          "start": 659.89,
+          "end": 660.16
+        },
+        {
+          "w": "never",
+          "start": 660.185,
+          "end": 660.635
+        },
+        {
+          "w": "furnished",
+          "start": 660.66,
+          "end": 661.11
+        },
+        {
+          "w": "the",
+          "start": 661.135,
+          "end": 661.405
+        },
+        {
+          "w": "room",
+          "start": 661.43,
+          "end": 661.7
+        }
+      ]
+    },
+    {
+      "id": "s79",
+      "text": "Next time: why trying to think about nothing works so badly, and what Sufis do instead.",
+      "start": 663.38,
+      "end": 669.085,
+      "words": [
+        {
+          "w": "Next",
+          "start": 663.38,
+          "end": 663.65
+        },
+        {
+          "w": "time",
+          "start": 663.675,
+          "end": 663.945
+        },
+        {
+          "w": "why",
+          "start": 664.025,
+          "end": 664.295
+        },
+        {
+          "w": "trying",
+          "start": 664.32,
+          "end": 664.59
+        },
+        {
+          "w": "to",
+          "start": 664.615,
+          "end": 664.885
+        },
+        {
+          "w": "think",
+          "start": 664.91,
+          "end": 665.18
+        },
+        {
+          "w": "about",
+          "start": 665.205,
+          "end": 665.655
+        },
+        {
+          "w": "nothing",
+          "start": 665.68,
+          "end": 666.13
+        },
+        {
+          "w": "works",
+          "start": 666.155,
+          "end": 666.425
+        },
+        {
+          "w": "so",
+          "start": 666.45,
+          "end": 666.72
+        },
+        {
+          "w": "badly",
+          "start": 666.745,
+          "end": 667.195
+        },
+        {
+          "w": "and",
+          "start": 667.275,
+          "end": 667.545
+        },
+        {
+          "w": "what",
+          "start": 667.57,
+          "end": 667.84
+        },
+        {
+          "w": "Sufis",
+          "start": 667.865,
+          "end": 668.315
+        },
+        {
+          "w": "do",
+          "start": 668.34,
+          "end": 668.61
+        },
+        {
+          "w": "instead",
+          "start": 668.635,
+          "end": 669.085
+        }
+      ]
+    }
+  ]
+}

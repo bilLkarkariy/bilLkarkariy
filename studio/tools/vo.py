@@ -91,13 +91,13 @@ def tokens(text):
     return [t for t in re.findall(r"[\w'’-]+", spoken(text)) if norm(t)]
 
 
-def expand_numbers(words):
+def expand_numbers(words, language="fr"):
     from num2words import num2words
     out = []
     for w in words:
         digits = re.sub(r"[^\d]", "", w["word"])
         if digits and digits == re.sub(r"[%.,\s]", "", w["word"].strip()):
-            parts = num2words(int(digits), lang="fr").replace("-", " ").split()
+            parts = num2words(int(digits), lang=language).replace("-", " ").split()
             n = len(parts)
             for i, p in enumerate(parts):  # répartit la durée du nombre sur ses mots
                 a = w["start"] + (w["end"] - w["start"]) * i / n
@@ -181,6 +181,8 @@ def tts(script_path):
     sc = json.load(open(script_path))
     cfg = sc.get("tts", {})
     engine = cfg.get("engine", "piper")
+    if engine == "elevenlabs" and not cfg.get("voice_id"):
+        raise SystemExit("Voix non choisie : génération refusée avant tout accès aux identifiants.")
     chunks = [np.zeros(int(sc["lead"] * SR))]
     with tempfile.TemporaryDirectory() as tmp:
         for seg in sc["segments"]:
@@ -223,7 +225,7 @@ def align(script_path, audio_path):
     sc = json.load(open(script_path))
     model = WhisperModel("small", device="cpu", compute_type="int8")
     # pas d'initial_prompt : avec le script complet en indice, Whisper hallucine et saute des phrases
-    segs, _ = model.transcribe(audio_path, language="fr", word_timestamps=True)
+    segs, _ = model.transcribe(audio_path, language=sc.get("language", "fr"), word_timestamps=True)
     heard = [{"word": w.word.strip(), "start": w.start, "end": w.end} for s in segs for w in s.words]
     # Whisper coupe « t'endors » en « t » + « 'endors », « occupe-toi » en « occupe » + « -toi » : on recolle
     merged = []
@@ -232,7 +234,7 @@ def align(script_path, audio_path):
             merged[-1] = {"word": merged[-1]["word"] + w["word"], "start": merged[-1]["start"], "end": w["end"]}
         else:
             merged.append(w)
-    heard = expand_numbers(merged)
+    heard = expand_numbers(merged, sc.get("language", "fr"))
 
     script = [(seg["id"], t) for seg in sc["segments"] for t in tokens(seg["text"])]
     a = [norm(t) for _, t in script]
