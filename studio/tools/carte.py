@@ -1,7 +1,9 @@
 """Carte à l'encre Bagdad → Damas (al-Ghazali, 1095), tracée depuis Natural Earth (domaine public).
 
-Côtes, Tigre, Euphrate, Jourdain, lacs : de vraies géométries, projetées sur l'écran
-(équirectangulaire corrigée de la latitude) puis simplifiées. Le montage les dessine à l'encre.
+Terres, côtes, Tigre, Euphrate, Jourdain, lacs : de vraies géométries, projetées sur l'écran
+(équirectangulaire corrigée de la latitude) puis simplifiées. Les terres sont des surfaces pleines
+(la mer est ce qui reste) : on voit d'un coup d'œil où est la terre, où est l'eau. Les noms des fleuves
+sont posés sur leur propre tracé.
 
   python3 tools/carte.py   -> src/data/carte_ghazali.json
 """
@@ -89,20 +91,67 @@ def path(pts):
     return "M" + " L".join(f"{x} {y}" for x, y in pts)
 
 
+# les terres débordent largement du cadre : la caméra peut zoomer et glisser sans tomber sur un bord
+LAND_BOX = (27.0, 24.0, 54.0, 42.0)
+# (nom affiché, fleuve, latitude où poser le nom)
+RIVER_LABELS = [("Tigre", "Tigre", 34.75), ("Euphrate", "Euphrate", 34.45)]
+
+
+def land():
+    from shapely.geometry import box, shape
+    from shapely.ops import unary_union
+    b = box(*LAND_BOX)
+    geo = unary_union([shape(f["geometry"]).intersection(b) for f in load("ne_10m_land")]).simplify(0.01)
+    polys = list(geo.geoms) if hasattr(geo, "geoms") else [geo]
+    fills, rings = [], []
+    for poly in polys:
+        if poly.area < 0.02:
+            continue
+        rs = [poly.exterior] + list(poly.interiors)
+        fills.append(" ".join(path([proj(*c) for c in r.coords]) + " Z" for r in rs))
+        rings += [path([proj(*c) for c in r.coords]) for r in rs]
+    # la côte à l'encre est le bord même des terres : le trait tombe toujours entre la terre et l'eau
+    # (les bords du cadre LAND_BOX sont loin hors champ, même au plus fort zoom)
+    return fills, rings
+
+
+def river_label(paths_lonlat, lat):
+    """Point du fleuve le plus proche de la latitude voulue, et l'angle du tracé à cet endroit."""
+    best = None
+    for line in paths_lonlat:
+        for (a, b) in zip(line, line[1:]):
+            d = abs((a[1] + b[1]) / 2 - lat)
+            if best is None or d < best[0]:
+                best = (d, a, b)
+    _, a, b = best
+    (x0, y0), (x1, y1) = proj(*a), proj(*b)
+    ang = math.degrees(math.atan2(y1 - y0, x1 - x0))
+    if ang > 90:
+        ang -= 180
+    if ang < -90:
+        ang += 180
+    return round((x0 + x1) / 2, 1), round((y0 + y1) / 2, 1), round(ang, 1)
+
+
 def main():
-    coast = [path(rdp(p, 0.8)) for f in load("ne_10m_coastline") for l in lines(f["geometry"]) for p in clip(l) if len(p) > 2]
+    fills, coast = land()
     lakes = [path(rdp(p, 0.8)) + " Z" for f in load("ne_10m_lakes") for l in lines(f["geometry"]) for p in clip(l)
              if len(p) > 6]
-    rivers = {}
+    rivers, raw = {}, {}
     for f in load("ne_10m_rivers_lake_centerlines"):
         name = RIVERS.get(f["properties"].get("name") or "")
         if not name:
             continue
         for l in lines(f["geometry"]):
+            raw.setdefault(name, []).append(l)
             for p in clip(l):
                 if len(p) > 2:
                     rivers.setdefault(name, []).append(path(rdp(p, 0.8)))
-    data = {"w": W, "h": H, "coast": coast, "lakes": lakes, "rivers": rivers,
+    labels = [{"t": t, **dict(zip(("x", "y", "a"), river_label(raw[r], lat)))} for t, r, lat in RIVER_LABELS]
+    data = {"w": W, "h": H, "land": fills, "coast": coast, "lakes": lakes, "rivers": rivers, "riverLabels": labels,
+            "seas": [{"t": "Mer Méditerranée", "x": proj(33.9, 34.0)[0], "y": proj(33.9, 34.0)[1], "a": -70, "s": 40},
+                     {"t": "Golfe Persique", "x": proj(49.15, 29.45)[0], "y": proj(49.15, 29.45)[1], "a": 0, "s": 26}],
+            "regions": [{"t": "DÉSERT DE SYRIE", "x": proj(39.6, 32.4)[0], "y": proj(39.6, 32.4)[1]}],
             "cities": {k: proj(*v) for k, v in CITIES.items()},
             "source": "Natural Earth (domaine public), naturalearthdata.com"}
     out = os.path.join(ROOT, "src/data/carte_ghazali.json")

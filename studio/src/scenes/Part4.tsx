@@ -148,6 +148,12 @@ type MapCues = {
   routeLabel?: {t: string; at: number};
 };
 
+// la terre en papier chaud, l'eau en bleu-gris doux (comme une carte ancienne lavée à l'aquarelle)
+const LAND = '#EFE6D2';
+const SEA = '#C9D7DB';
+const SEA_EDGE = '#DCE5E6';
+const WATER = '#4E7690';
+
 export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, damas, route, routeLabel}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -187,24 +193,40 @@ export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, dam
     <AbsoluteFill>
       <svg width={1920} height={1080} style={{position: 'absolute'}}>
         <g transform={`translate(960 540) scale(${k}) translate(${-cx} ${-cy})`}>
+          {/* la mer d'abord, puis les terres posées dessus : on voit tout de suite où est l'eau */}
+          <rect x={-3000} y={-3000} width={8000} height={8000} fill={SEA} opacity={ink} />
+          {carte.coast.map((d, j) => (
+            <path key={`h${j}`} d={d} fill="none" stroke={SEA_EDGE} strokeWidth={22 / k} strokeLinejoin="round" opacity={ink} />
+          ))}
+          {carte.land.map((d, j) => (
+            <path key={`t${j}`} d={d} fill={LAND} fillRule="evenodd" opacity={ink} />
+          ))}
           {carte.coast.map((d, j) => (
             <path key={`c${j}`} d={d} fill="none" stroke={C.ink} strokeWidth={2.2 / k} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - ink} />
           ))}
           {carte.lakes.map((d, j) => (
-            <path key={`l${j}`} d={d} fill={C.inkFaint} fillOpacity={0.4 * ink} stroke={C.ink} strokeWidth={1.4 / k} opacity={ink} />
+            <path key={`l${j}`} d={d} fill={SEA} stroke={WATER} strokeWidth={1.4 / k} opacity={ink} />
           ))}
           {Object.entries(carte.rivers).flatMap(([, ds]) =>
-            ds.map((d, j) => <path key={`r${d.length}-${j}`} d={d} fill="none" stroke="#5E7C93" strokeWidth={2 / k} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - ink} />),
+            ds.map((d, j) => (
+              <path key={`r${d.length}-${j}`} d={d} fill="none" stroke={WATER} strokeWidth={3.2 / k} strokeLinecap="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - ink} />
+            )),
           )}
-          <text x={300} y={560} fontFamily="Garamond, serif" fontStyle="italic" fontSize={34 / k} fill={C.inkSoft} opacity={ink} transform="rotate(-62 300 560)">
-            Méditerranée
-          </text>
-          <text x={1215} y={470} fontFamily="'Plex Mono', monospace" fontSize={18 / k} letterSpacing={3 / k} fill="#5E7C93" opacity={ink}>
-            TIGRE
-          </text>
-          <text x={1050} y={470} fontFamily="'Plex Mono', monospace" fontSize={18 / k} letterSpacing={3 / k} fill="#5E7C93" opacity={ink} transform="rotate(32 1050 470)">
-            EUPHRATE
-          </text>
+          {carte.seas.map((m) => (
+            <text key={m.t} x={m.x} y={m.y} textAnchor="middle" fontFamily="Garamond, serif" fontStyle="italic" fontSize={m.s / k} letterSpacing={3 / k} fill={WATER} opacity={ink} transform={`rotate(${m.a} ${m.x} ${m.y})`}>
+              {m.t}
+            </text>
+          ))}
+          {carte.riverLabels.map((m) => (
+            <text key={m.t} x={m.x} y={m.y} dy={-14 / k} textAnchor="middle" fontFamily="Garamond, serif" fontStyle="italic" fontSize={32 / k} fill={WATER} stroke={LAND} strokeWidth={6 / k} paintOrder="stroke" opacity={ink} transform={`rotate(${m.a} ${m.x} ${m.y})`}>
+              {m.t}
+            </text>
+          ))}
+          {carte.regions.map((m) => (
+            <text key={m.t} x={m.x} y={m.y} textAnchor="middle" fontFamily="'Plex Mono', monospace" fontSize={20 / k} letterSpacing={9 / k} fill={C.inkSoft} opacity={0.7 * ink}>
+              {m.t}
+            </text>
+          ))}
           {route && (
             <path
               d={`M ${bx} ${by} Q ${mx} ${my} ${dx} ${dy}`}
