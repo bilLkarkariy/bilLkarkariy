@@ -8,7 +8,9 @@ export const Root: React.FC = () => (
   <>
     <Composition id="V01" component={V01} durationInFrames={V01_DURATION} calculateMetadata={({props}) => ({durationInFrames: durationFor(props.lang === 'en' ? 'en' : 'fr')})} fps={30} width={1920} height={1080} />
     <Composition id="V01-EN" component={V01} durationInFrames={durationFor('en')} calculateMetadata={({props}) => ({durationInFrames: durationFor(props.lang === 'fr' ? 'fr' : 'en')})} fps={30} width={1920} height={1080} defaultProps={{lang: 'en'}} />
-    {(['fr', 'en'] as const).flatMap((lang) => getShorts(lang).map((s) => (
+    {/* ourdou : de droite à gauche, sans face caméra au rendu (--props '{"faceless":true}') */}
+    <Composition id="V01-UR" component={V01} durationInFrames={durationFor('ur')} calculateMetadata={({props}) => ({durationInFrames: durationFor(props.lang === 'fr' ? 'fr' : props.lang === 'en' ? 'en' : 'ur')})} fps={30} width={1920} height={1080} defaultProps={{lang: 'ur'}} />
+    {(['fr', 'en', 'ur'] as const).flatMap((lang) => getShorts(lang).map((s) => (
       <Composition
         key={s.id}
         id={s.id}

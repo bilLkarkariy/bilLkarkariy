@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useRtl, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, getInputProps, Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {C, F} from '../theme';
@@ -26,7 +26,8 @@ const Frames: React.FC<{idx: number}> = ({idx}) => {
 };
 
 const Tag: React.FC<{label: string; from: number; strikeAt: number; y: number}> = ({label, from, strikeAt, y}) => {
-  
+  // (ourdou : le trait d'attache reste du côté de la maquette, le mot se barre de droite à gauche)
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const o = interpolate(frame, [from, from + 6], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const strike = interpolate(frame, [strikeAt, strikeAt + 8], [0, 1], {
@@ -35,14 +36,14 @@ const Tag: React.FC<{label: string; from: number; strikeAt: number; y: number}> 
     easing: Easing.out(Easing.cubic),
   });
   return (
-    <div style={{position: 'absolute', left: 1572, top: y, opacity: o, display: 'flex', alignItems: 'center', gap: 14}}>
+    <div style={{position: 'absolute', left: 1572, top: y, opacity: o, display: 'flex', alignItems: 'center', gap: 14, ...(rtl ? {direction: 'ltr'} : {})}}>
       <div style={{width: 30, height: 1.5, background: C.inkSoft}} />
       <div style={{position: 'relative', fontFamily: F.mono, fontSize: 21, letterSpacing: '0.14em', color: C.ink}}>
         {label}
         <div
           style={{
             position: 'absolute',
-            left: -4,
+            ...(rtl ? {right: -4} : {left: -4}),
             top: '52%',
             height: 2.5,
             width: `calc(${strike * 100}% + 8px)`,
@@ -60,6 +61,7 @@ const Tag: React.FC<{label: string; from: number; strikeAt: number; y: number}> 
  */
 export const Maquette: React.FC<{reachTop: number; phone: number; read: number}> = ({reachTop, phone, read}) => {
   const tx = useText();
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const idx = interpolate(frame, [0, reachTop], [0, TOP_REACHED], {extrapolateRight: 'clamp'});
   const cart = interpolate(frame, [6, 16], [0, 1], {extrapolateRight: 'clamp'});
@@ -83,7 +85,7 @@ export const Maquette: React.FC<{reachTop: number; phone: number; read: number}>
           gridTemplateColumns: 'auto auto',
         }}
       >
-        <div style={{padding: '8px 14px', fontSize: 15, letterSpacing: '0.12em', borderRight: `1.5px solid ${C.ink}`}}>{tx("SEUL · SANS RIEN")}</div>
+        <div style={{padding: '8px 14px', fontSize: 15, letterSpacing: '0.12em', ...(rtl ? {borderLeft: `1.5px solid ${C.ink}`} : {borderRight: `1.5px solid ${C.ink}`})}}>{tx("SEUL · SANS RIEN")}</div>
         <div style={{padding: '2px 14px', fontSize: 30, fontWeight: 500, letterSpacing: '0.04em'}}>15:00</div>
       </div>
     </AbsoluteFill>

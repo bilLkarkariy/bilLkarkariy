@@ -3,7 +3,8 @@
 // Rendu : npx remotion render out/bundle short-bouton out/short-bouton.mp4 --props='{"clean":true}'
 import React from 'react';
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
-import {Lang, translator} from './i18n';
+import {isRtl, Lang, translator} from './i18n';
+import {RtlScope} from './i18n/rtl';
 import {createCues, voices, LEAD, toF} from './cues';
 import {C, F} from './theme';
 import {V01} from './V01';
@@ -38,7 +39,7 @@ return [
     from: at('p54') - 6,
     to: at('p61', undefined, 'end') + 18,
   },
-].map((s) => ({...s, id: s.id + (lang === 'en' ? '-en' : '')}));
+].map((s) => ({...s, id: s.id + (lang === 'fr' ? '' : `-${lang}`)}));
 };
 export const SHORTS = getShorts('fr');
 
@@ -58,7 +59,7 @@ const groupsFor = (lang: Lang): Word[][] => {
   }
   return out;
 };
-const captionGroups = {fr: groupsFor('fr'), en: groupsFor('en')};
+const captionGroups = {fr: groupsFor('fr'), en: groupsFor('en'), ur: groupsFor('ur')};
 
 const Captions: React.FC<{from: number; lang: Lang}> = ({from, lang}) => {
   const GROUPS = captionGroups[lang];
@@ -81,6 +82,7 @@ const Captions: React.FC<{from: number; lang: Lang}> = ({from, lang}) => {
         fontSize: 84,
         lineHeight: 1.12,
         color: C.ink,
+        ...(isRtl(lang) ? {lineHeight: 1.9, top: VIDEO_Y + 1080 * K + 60} : {}),
       }}
     >
       {g.map((w, i) => {
@@ -103,6 +105,7 @@ export const Short: React.FC<{from: number; to: number; title: string[]; lang?: 
   const fadeOut = interpolate(frame, [len - 10, len], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const endIn = interpolate(frame, [len, len + 12], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
+    <RtlScope lang={lang}>
     <AbsoluteFill style={{background: C.paperWarm}}>
       <div style={{opacity: fadeOut}}>
         <div
@@ -116,6 +119,7 @@ export const Short: React.FC<{from: number; to: number; title: string[]; lang?: 
             lineHeight: 1.05,
             color: C.ink,
             textAlign: 'center',
+            ...(isRtl(lang) ? {top: 190, lineHeight: 1.75} : {}),
           }}
         >
           {title.map((t, i) => (
@@ -157,11 +161,12 @@ export const Short: React.FC<{from: number; to: number; title: string[]; lang?: 
         }}
       >
         <div style={{fontFamily: F.mono, fontSize: 30, letterSpacing: '0.18em', color: C.inkSoft}}>{tx("LA VIDÉO COMPLÈTE")}</div>
-        <div style={{fontSize: 76, lineHeight: 1.1, marginTop: 40}}>{tx("Pourquoi tu n’arrives plus à rester seul avec toi-même")}</div>
+        <div style={{fontSize: 76, lineHeight: isRtl(lang) ? 1.9 : 1.1, marginTop: 40}}>{tx("Pourquoi tu n’arrives plus à rester seul avec toi-même")}</div>
         <div style={{width: 120, height: 3, background: C.gold, margin: '60px auto'}} />
         <div style={{fontFamily: F.mono, fontSize: 34, letterSpacing: '0.12em'}}>bilLkarkariy</div>
       </AbsoluteFill>
     </AbsoluteFill>
+    </RtlScope>
   );
 };
 

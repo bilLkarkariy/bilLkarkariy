@@ -1,4 +1,5 @@
-import {useText} from '../i18n';
+import {useRtl, useText} from '../i18n';
+import {Ltr} from '../i18n/rtl';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -12,14 +13,15 @@ const SCREEN = '#CFE0FF';
 const q = (frame: number, a: number, len = 8) => interpolate(frame, [a, a + len], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
 const draw = (frame: number, a: number, len = 16) => interpolate(frame, [a, a + len], [0, 1], {...clamp, easing: inOut});
 
-/** Lignes alignées à gauche, mot à mot. */
+/** Lignes alignées à gauche, mot à mot (de droite à gauche : alignées à droite sur le bord de la colonne). */
+const RTL_EDGE = 1920 - 760; // bord droit de la colonne de texte, avant les dessins (x ≥ 800)
 export const Lines: React.FC<{x: number; y: number; lines: {t: string; at: number; size?: number; italic?: boolean; mono?: boolean; color?: string; out?: number}[]; gap?: number}> = ({
   x,
   y,
   lines,
   gap = 1.32,
 }) => {
-  
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   let top = y;
   return (
@@ -27,10 +29,10 @@ export const Lines: React.FC<{x: number; y: number; lines: {t: string; at: numbe
       {lines.map((l, i) => {
         const size = l.size ?? 52;
         const t = top;
-        top += size * gap;
+        top += size * gap * (rtl ? 1.3 : 1); // le nastaliq a besoin de plus d'interligne
         const o = l.out === undefined ? 1 : interpolate(frame, [l.out, l.out + 8], [1, 0], clamp);
         return (
-          <div key={i} style={{position: 'absolute', left: x, top: t, opacity: o, whiteSpace: 'nowrap'}}>
+          <div key={i} style={{position: 'absolute', ...(rtl ? {right: RTL_EDGE} : {left: x}), top: t, opacity: o, whiteSpace: 'nowrap'}}>
             {l.t.split(' ').map((w, k) => {
               const v = q(frame, l.at + k * 2.5, 7);
               return (
@@ -38,7 +40,7 @@ export const Lines: React.FC<{x: number; y: number; lines: {t: string; at: numbe
                   key={k}
                   style={{
                     display: 'inline-block',
-                    marginRight: '0.26em',
+                    ...(rtl ? {marginLeft: '0.26em'} : {marginRight: '0.26em'}),
                     opacity: v,
                     transform: `translateY(${(1 - v) * 14}px)`,
                     fontFamily: l.mono ? F.mono : F.serif,
@@ -62,16 +64,17 @@ export const Lines: React.FC<{x: number; y: number; lines: {t: string; at: numbe
 /** Le cadre d'une étape : le numéro, la ligne d'or, « L'EXERCICE · n / 5 ». */
 export const StepNum: React.FC<{n: number; out?: number}> = ({n, out}) => {
   const tx = useText();
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame, fps, config: {damping: 14, stiffness: 140}});
   const o = out === undefined ? 1 : interpolate(frame, [out, out + 8], [1, 0], clamp);
   return (
     <AbsoluteFill style={{opacity: o}}>
-      <div style={{position: 'absolute', left: 150, top: 150, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.2em', color: C.inkSoft, opacity: q(frame, 2)}}>{tx("L’EXERCICE ·")}{' '}{n} / 5
+      <div style={{position: 'absolute', ...(rtl ? {right: RTL_EDGE} : {left: 150}), top: 150, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.2em', color: C.inkSoft, opacity: q(frame, 2)}}>{tx("L’EXERCICE ·")}{' '}<Ltr rtl={rtl}>{n} / 5</Ltr>
       </div>
-      <div style={{position: 'absolute', left: 140, top: 190, fontFamily: F.serif, fontSize: 300, lineHeight: 1, color: C.ink, opacity: s, transform: `translateY(${(1 - s) * 40}px)`}}>{n}</div>
-      <div style={{position: 'absolute', left: 150, top: 520, width: 150 * draw(frame, 6, 14), height: 3, background: C.gold}} />
+      <div style={{position: 'absolute', ...(rtl ? {right: RTL_EDGE - 10} : {left: 140}), top: 190, fontFamily: F.serif, fontSize: 300, lineHeight: 1, color: C.ink, opacity: s, transform: `translateY(${(1 - s) * 40}px)`}}>{n}</div>
+      <div style={{position: 'absolute', ...(rtl ? {right: RTL_EDGE} : {left: 150}), top: 520, width: 150 * draw(frame, 6, 14), height: 3, background: C.gold}} />
     </AbsoluteFill>
   );
 };

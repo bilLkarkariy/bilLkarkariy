@@ -1,4 +1,5 @@
-import {useText} from '../i18n';
+import {useRtl, useText} from '../i18n';
+import {Ltr} from '../i18n/rtl';
 import React, {useMemo} from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -290,7 +291,7 @@ export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => 
 export type ElevatorCues = {twenty: number; ceiling: number; floor: number; screen: number};
 
 export const Elevator: React.FC<ElevatorCues> = ({twenty, ceiling, floor, screen}) => {
-  
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const draw = (s: number, len = 16) => interpolate(frame, [s, s + len], [0, 1], {...clamp, easing: inOut});
@@ -350,7 +351,7 @@ export const Elevator: React.FC<ElevatorCues> = ({twenty, ceiling, floor, screen
         </g>
       </svg>
       <Mono x={box.x + box.w / 2} y={box.y + box.h + 50} size={18} o={interpolate(frame, [twenty, twenty + 8], [0, 1], clamp)}>
-        {`0:${String(Math.round(prog * 20)).padStart(2, '0')} / 0:20`}
+        <Ltr rtl={rtl}>{`0:${String(Math.round(prog * 20)).padStart(2, '0')} / 0:20`}</Ltr>
       </Mono>
     </AbsoluteFill>
   );
@@ -372,7 +373,7 @@ const Digit: React.FC<{v: number; size: number}> = ({v, size}) => (
 );
 
 export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt = 0, sub, subAt = 0, out}) => {
-  
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const q = interpolate(frame, [start, start + len], [0, 1], {...clamp, easing: inOut});
   const y = from + (to - from) * q;
@@ -386,7 +387,7 @@ export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt
   const o = interpolate(frame, [0, 8], [0, 1], clamp) * (out === undefined ? 1 : interpolate(frame, [out, out + 10], [1, 0], clamp));
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: o}}>
-      <div style={{fontFamily: F.serif, fontSize: size, color: C.ink, display: 'flex', fontVariantNumeric: 'lining-nums tabular-nums', lineHeight: 1}}>
+      <div style={{fontFamily: F.serif, fontSize: size, color: C.ink, display: 'flex', fontVariantNumeric: 'lining-nums tabular-nums', lineHeight: 1, ...(rtl ? {direction: 'ltr'} : {})}}>
         {digits.map((d, i) => (
           <Digit key={i} v={d} size={size} />
         ))}
@@ -517,7 +518,7 @@ export const Night: React.FC<NightCues> = ({wake, spin, reflex, screen}) => {
 
 // ── p27 : « une vingtaine de sessions sur smartphone par jour » : la journée, et chaque session ─────
 export const DayTicks: React.FC<{start: number; n?: number; y?: number}> = ({start, n = 20, y = 760}) => {
-  
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const X0 = 300;
@@ -544,7 +545,7 @@ export const DayTicks: React.FC<{start: number; n?: number; y?: number}> = ({sta
       </svg>
       {[0, 6, 12, 18, 24].map((h) => (
         <Mono key={h} x={X0 + ((X1 - X0) * h) / 24} y={Y + 22} size={16} o={ruler}>
-          {`${h} H`}
+          {`${h}${tx('heures.suffixe')}`}
         </Mono>
       ))}
     </AbsoluteFill>

@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useRtl, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -136,7 +136,7 @@ export const Static: React.FC<StaticCues> = ({shock, handle, label, spark}) => {
         <circle cx={me.x} cy={me.y} r={34 * dotS * (1 + 0.3 * hit)} fill={C.ink} />
       </svg>
       <Label x={me.x} y={me.y + 70} o={dotS} align="center" size={18}>
-        PARTICIPANT
+        {tx("PARTICIPANT")}
       </Label>
       <Label x={me.x} y={me.y - 120} o={tagO} align="center">{tx("1 DÉCHARGE D'ESSAI")}</Label>
       <Label x={box.x - 84} y={box.y + 120} o={interpolate(frame, [label, label + 8], [0, 1], clamp)} align="center">{tx("≈ ÉLECTRICITÉ STATIQUE")}</Label>
@@ -165,10 +165,13 @@ const pick = (n: number, k: number, seed: string) =>
 
 export const Groups: React.FC<GroupsCues> = ({men, menN, women, womenN}) => {
   const tx = useText();
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const M = grid(18, 6, 560, 560, 74);
-  const W = grid(24, 6, 1360, 560, 74);
+  // (ourdou : on lit de droite à gauche, les hommes, cités d'abord, passent à droite)
+  const [MX, WX] = rtl ? [1360, 560] : [560, 1360];
+  const M = grid(18, 6, MX, 560, 74);
+  const W = grid(24, 6, WX, 560, 74);
   const mRed = pick(18, 12, 'h');
   const wRed = pick(24, 6, 'f');
   const order = (set: Set<number>) => [...set].sort((a, b) => a - b);
@@ -198,7 +201,7 @@ export const Groups: React.FC<GroupsCues> = ({men, menN, women, womenN}) => {
         transform: `translateY(${(1 - numIn(f)) * 16}px)`,
       }}
     >
-      <span style={{fontFamily: F.mono, fontWeight: 500, fontSize: 96, color: C.ink}}>
+      <span style={{fontFamily: F.mono, fontWeight: 500, fontSize: 96, color: C.ink, ...(rtl ? {direction: 'ltr', unicodeBidi: 'isolate'} : {})}}>
         <span style={{color: C.red}}>{a}</span>
         <span style={{color: C.inkSoft}}> / {b}</span>
       </span>
@@ -210,10 +213,10 @@ export const Groups: React.FC<GroupsCues> = ({men, menN, women, womenN}) => {
         {M.map((p, i) => dot(p, i, mRed.has(i), men, mOrder.indexOf(i), `m${i}`))}
         {W.map((p, i) => dot(p, i + 6, wRed.has(i), women, wOrder.indexOf(i), `w${i}`))}
       </svg>
-      <Label x={560} y={350} o={interpolate(frame, [0, 8], [0, 1], clamp)} align="center">{tx("HOMMES")}</Label>
-      <Label x={1360} y={310} o={interpolate(frame, [6, 14], [0, 1], clamp)} align="center">{tx("FEMMES")}</Label>
-      {num(menN, 560, 12, 18)}
-      {num(womenN, 1360, 6, 24)}
+      <Label x={MX} y={350} o={interpolate(frame, [0, 8], [0, 1], clamp)} align="center">{tx("HOMMES")}</Label>
+      <Label x={WX} y={310} o={interpolate(frame, [6, 14], [0, 1], clamp)} align="center">{tx("FEMMES")}</Label>
+      {num(menN, MX, 12, 18)}
+      {num(womenN, WX, 6, 24)}
     </AbsoluteFill>
   );
 };

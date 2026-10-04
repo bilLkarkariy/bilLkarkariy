@@ -304,6 +304,6 @@ const P5Front: React.FC = () => (
 
 return {P5, P5Front, P5_SFX, P5_END};
 };
-const versions = {fr: makeP5('fr'), en: makeP5('en')};
+const versions = {fr: makeP5('fr'), en: makeP5('en'), ur: makeP5('ur')};
 export const getP5 = (lang: Lang) => versions[lang];
 export const {P5, P5Front, P5_SFX, P5_END} = versions.fr;

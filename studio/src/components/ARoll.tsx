@@ -5,7 +5,7 @@ import {C, F} from '../theme';
 
 /**
  * Emplacement face caméra, en attendant les rushes : une photo de Billel (public/aroll/, jamais dans git).
- * Plans larges (taille, poitrine) : setup.jpg, le bureau en entier ; plans serrés : placeholder.jpg.
+ * Plans larges (taille, poitrine ; en ourdou « کمر تک », « سینے تک ») : setup.jpg, le bureau en entier ; plans serrés : placeholder.jpg.
  * --props '{"clean":true}' : sans le carton « à remplacer » ni la réplique (vidéo livrée, Shorts).
  * Au montage final, remplacer par <OffthreadVideo src={...} startFrom={...} />.
  */
@@ -20,7 +20,7 @@ export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
   return (
     <AbsoluteFill style={{background: C.night, overflow: 'hidden'}}>
       <Img
-        src={staticFile(/TAILLE|POITRINE|WAIST|CHEST/.test(shot) ? 'aroll/setup.jpg' : 'aroll/placeholder.jpg')}
+        src={staticFile(/TAILLE|POITRINE|WAIST|CHEST|کمر تک|سینے تک/.test(shot) ? 'aroll/setup.jpg' : 'aroll/placeholder.jpg')}
         style={{
           position: 'absolute',
           width: 1920,

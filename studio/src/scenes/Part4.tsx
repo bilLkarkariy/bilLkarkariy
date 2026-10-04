@@ -1,4 +1,4 @@
-import {useLang, useText} from '../i18n';
+import {useLang, useRtl, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import carte from '../data/carte_ghazali.json';
@@ -30,8 +30,12 @@ export type Line = {
   out?: number;
 };
 
+// (de droite à gauche : les mots s'enchaînent vers la gauche, le trait rouge barre en partant de la droite)
+const PUNCT = /[.,:;!?«»]/g;
+const PUNCT_RTL = /[.,:;!?«»۔،؛؟“”]/g;
+
 export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
-  
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill>
@@ -44,7 +48,7 @@ export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
           <div key={i} style={{position: 'absolute', left: 0, right: 0, top: l.y, textAlign: 'center', opacity: o}}>
             <span style={{position: 'relative', display: 'inline-block'}}>
               {words.map((w, k) => {
-                const bare = w.replace(/[.,:;!?«»]/g, '');
+                const bare = w.replace(rtl ? PUNCT_RTL : PUNCT, '');
                 const color = l.gold?.includes(bare) ? C.gold : l.red?.includes(bare) ? C.red : l.color ?? C.ink;
                 return (
                   <span
@@ -52,7 +56,7 @@ export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
                     style={{
                       ...rise(frame, l.at + k * (l.stagger ?? 2.5)),
                       display: 'inline-block',
-                      marginRight: '0.26em',
+                      ...(rtl ? {marginLeft: '0.26em'} : {marginRight: '0.26em'}),
                       fontFamily: l.mono ? F.mono : F.serif,
                       fontStyle: l.italic ? 'italic' : 'normal',
                       fontSize: size,
@@ -68,13 +72,12 @@ export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
                 <div
                   style={{
                     position: 'absolute',
-                    left: -10,
-                    right: 0,
-                    top: size * 0.6,
+                    ...(rtl ? {left: 0, right: -10} : {left: -10, right: 0}),
+                    top: size * (rtl ? 1.05 : 0.6), // (nastaliq : la ligne de base est plus bas dans la boîte)
                     height: size * 0.08,
                     borderRadius: size * 0.04,
                     background: C.red,
-                    transformOrigin: '0 50%',
+                    transformOrigin: rtl ? '100% 50%' : '0 50%',
                     transform: `scaleX(${strike}) rotate(-1deg)`,
                   }}
                 />
@@ -301,7 +304,7 @@ export const Verse: React.FC<{out: number}> = ({out}) => {
   const o = interpolate(frame, [0, 14, out, out + 14], [0, 1, 1, 0], clamp);
   return (
     <AbsoluteFill style={{opacity: o, alignItems: 'center', justifyContent: 'center'}}>
-      <div aria-hidden={lang === 'en' ? true : undefined} style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{lang === 'fr' ? tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28") : '\u00a0'}</div>
+      <div aria-hidden={lang !== 'fr' ? true : undefined} style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{lang === 'fr' ? tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28") : '\u00a0'}</div>
       <div style={{fontFamily: F.quran, fontSize: 52, color: C.inkSoft, direction: 'rtl', lineHeight: 1.6}}>ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ</div>
       <div style={{fontFamily: F.quran, fontSize: 112, color: C.ink, direction: 'rtl', lineHeight: 1.7, marginTop: 6}}>أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ</div>
       <div style={{width: 120, height: 2, background: C.gold, margin: '40px 0 36px'}} />

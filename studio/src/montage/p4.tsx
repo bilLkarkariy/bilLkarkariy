@@ -5,7 +5,8 @@ import {ARoll, FACELESS} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
 import {createCues, LEAD, toF} from '../cues';
-import {Lang, translator} from '../i18n';
+import {isRtl, Lang, translator} from '../i18n';
+import {Ltr} from '../i18n/rtl';
 import {ArabicWord, GhazaliMap, Kinetic, Tasbih, Verse} from '../scenes/Part4';
 import {C, F} from '../theme';
 import {Cit, citSfx, Fade, Sfx} from './kit';
@@ -46,10 +47,10 @@ const p49In = at('p49') - 4;
 const p50In = at('p50') - 4;
 const aroll6 = at('p53') - 6;
 // La traduction enregistrée reste audible AVANT le plateau silencieux.
-// Sans insert, repli sur la pause du script ; la version FR reste inchangée.
+// Sans insert, repli sur la pause du script ; la version FR reste inchangée (anglais, ourdou : même logique).
 const verseHold = vo.silences?.find((s) => s.kind === 'silent_verse');
-const verseIn = lang === 'en' ? (verseHold ? LEAD + toF(verseHold.start) : at('p52', undefined, 'end') + 1) : at('p52') - 10;
-const verseOut = lang === 'en' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
+const verseIn = lang !== 'fr' ? (verseHold ? LEAD + toF(verseHold.start) : at('p52', undefined, 'end') + 1) : at('p52') - 10;
+const verseOut = lang !== 'fr' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
 const fondIn = at('p53', 'Et') - 4;
 const P4_END = at('p54') - 6;
 
@@ -225,13 +226,13 @@ const cits: Cit[] = [
         i: hl('karkariya_fondements', 'the Spiritual Retreat'),
         at: at('p53', 'retraite') - fondIn,
         tone: 'gold',
-        note: {at: at('p53', 'retraite') + 2 - fondIn, kicker: 'AL-KHALWA', big: tx("La retraite"), tone: 'gold'},
+        note: {at: at('p53', 'retraite') + 2 - fondIn, kicker: tx("AL-KHALWA"), big: tx("La retraite"), tone: 'gold'},
       },
       {
         i: hl('karkariya_fondements', 'the Singular Name'),
         at: at('p53', 'Nom') - fondIn,
         tone: 'gold',
-        note: {at: at('p53', 'Nom') + 2 - fondIn, kicker: 'AL-ISM AL-MUFRAD', big: tx("Le Nom"), tone: 'gold'},
+        note: {at: at('p53', 'Nom') + 2 - fondIn, kicker: tx("AL-ISM AL-MUFRAD"), big: tx("Le Nom"), tone: 'gold'},
       },
     ],
     notes: [{at: at('p53', 'fondements') - fondIn, kicker: tx("PARMI LES FONDEMENTS DE LA VOIE"), text: tx("ces deux-là"), until: at('p53', 'retraite') - 2 - fondIn}],
@@ -258,7 +259,7 @@ const KhalwaHud: React.FC = () => {
   const ink = `rgba(${Math.round(34 + 200 * night)},${Math.round(33 + 197 * night)},${Math.round(30 + 194 * night)},1)`;
   return (
     <>
-      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: ink, opacity: interpolate(frame, [jours0 - 10, jours0], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("KHALWA · JOUR")}{' '}{String(day).padStart(2, '0')} / 40
+      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: ink, opacity: interpolate(frame, [jours0 - 10, jours0], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("KHALWA · JOUR")}{' '}<Ltr rtl={isRtl(lang)}>{String(day).padStart(2, '0')} / 40</Ltr>
       </div>
       <div style={{position: 'absolute', left: 64, top: 86, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.red, opacity: interpolate(frame, [fuy, fuy + 8], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("VIRGINIE · 15 MINUTES")}</div>
     </>
@@ -345,7 +346,7 @@ const P4: React.FC = () => (
             {t: tx("LE CŒUR · L’ATTENTION"), at: at('p43', 'cœur') - 2 - motIn, y: 870, size: 26, mono: true, stagger: 8},
           ]}
         />
-        <ArabicWord ar="خلوة" latin="KHALWA" gloss={tx("la retraite spirituelle")} at={at('p42', 'khalwa') - 6 - motIn} glossAt={at('p42', 'retraite') - motIn} y={130} />
+        <ArabicWord ar="خلوة" latin={tx("KHALWA")} gloss={tx("la retraite spirituelle")} at={at('p42', 'khalwa') - 6 - motIn} glossAt={at('p42', 'retraite') - motIn} y={130} />
       </Fade>
     </Sequence>
 
@@ -416,8 +417,8 @@ const P4: React.FC = () => (
           n={{
             at: at('p49', 'livre') - p49In,
             kicker: tx("IḤYĀʾ ʿULŪM AL-DĪN · LIVRE 16"),
-            big: tx("La retraite"),
-            text: 'Kitāb ādāb al-ʿuzla',
+            big: tx("retraite.uzla"),
+            text: tx("Kitāb ādāb al-ʿuzla"),
             chips: [
               {t: tx("VIVRE AU MILIEU DES GENS"), at: at('p49', 'vivre') - p49In},
               {t: tx("OU SE RETIRER ?"), at: at('p49', 'retirer') - p49In},
@@ -443,7 +444,7 @@ const P4: React.FC = () => (
             {t: tx("AILLEURS : MANTRA"), at: at('p51', 'mantra') - 4 - p50In, y: 860, size: 24, mono: true, stagger: 6},
           ]}
         />
-        <ArabicWord ar="ذكر" latin="DHIKR" gloss={tx("le rappel")} at={at('p50', 'dhikr') - 8 - p50In} glossAt={at('p51', 'rappel') - p50In} y={150} out={at('p51', 'Concrètement') - 6 - p50In} />
+        <ArabicWord ar="ذكر" latin={tx("DHIKR")} gloss={tx("le rappel")} at={at('p50', 'dhikr') - 8 - p50In} glossAt={at('p51', 'rappel') - p50In} y={150} out={at('p51', 'Concrètement') - 6 - p50In} />
         <Lift>
           <Tasbih
             at={at('p51', 'Concrètement') - p50In}
@@ -454,7 +455,7 @@ const P4: React.FC = () => (
     </Sequence>
 
     {/* p51 : le point fixe (3D) */}
-    <Sequence from={dhikrIn} durationInFrames={lang === 'en' ? verseIn - dhikrIn : dhikrN}>
+    <Sequence from={dhikrIn} durationInFrames={lang !== 'fr' ? verseIn - dhikrIn : dhikrN}>
       <Shot3D dir="dhikr" frames={dhikrN} label={tx("La pièce nue. Sur « meuble », le point d'or se pose au centre ; le pion s'en éloigne (« l'esprit part ») et y revient, deux fois.")} />
     </Sequence>
 
@@ -478,6 +479,6 @@ const VERSE_SILENCE: [number, number] = [verseIn, verseOut];
 
 return {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE};
 };
-const versions = {fr: makeP4('fr'), en: makeP4('en')};
+const versions = {fr: makeP4('fr'), en: makeP4('en'), ur: makeP4('ur')};
 export const getP4 = (lang: Lang) => versions[lang];
 export const {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE} = versions.fr;

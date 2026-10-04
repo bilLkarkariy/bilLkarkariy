@@ -6,7 +6,7 @@ import {Citation, NoteCard} from '../components/Citation';
 import {Lift} from '../components/Light';
 import {Paper} from '../components/Paper';
 import {createCues} from '../cues';
-import {Lang, translator} from '../i18n';
+import {isRtl, Lang, translator} from '../i18n';
 import {DayTicks, Elevator, FilmStrip, Night, PocketDoor, Queue, Years} from '../scenes/Part3';
 import {Cit, citSfx, Fade, Sfx} from './kit';
 
@@ -94,7 +94,7 @@ const cits: Cit[] = [
       {
         i: hl('kg_page', 'Harvard'),
         at: at('p23', 'Harvard') - kgIn,
-        note: {at: at('p23', 'Harvard') + 4 - kgIn, kicker: tx("DEUX CHERCHEURS"), big: 'Harvard', text: tx("en 2010"), y: 560},
+        note: {at: at('p23', 'Harvard') + 4 - kgIn, kicker: tx("DEUX CHERCHEURS"), big: tx("Harvard"), text: tx("en 2010"), y: 560},
       },
     ],
   },
@@ -169,7 +169,7 @@ const cits: Cit[] = [
         note: {
           at: at('p24', 'deux') - resIn,
           kicker: tx("TU PENSES À CE QUE TU FAIS ? « NON »"),
-          count: {to: 469, dur: 22, fmt: (n) => `${(n / 10).toFixed(1).replace('.', lang === 'fr' ? ',' : '.')} %`},
+          count: {to: 469, dur: 22, fmt: (n) => `${(n / 10).toFixed(1).replace('.', lang === 'fr' ? ',' : '.')}${isRtl(lang) ? '%' : ' %'}`},
           text: tx("du temps : près d’une fois sur deux"),
           until: at('p25', 'moins') - 2 - resIn,
           y: 140,
@@ -476,6 +476,6 @@ const P3Front: React.FC = () => (
 
 return {P3, P3Back, P3Front, P3_SFX, P3_END};
 };
-const versions = {fr: makeP3('fr'), en: makeP3('en')};
+const versions = {fr: makeP3('fr'), en: makeP3('en'), ur: makeP3('ur')};
 export const getP3 = (lang: Lang) => versions[lang];
 export const {P3, P3Back, P3Front, P3_SFX, P3_END} = versions.fr;

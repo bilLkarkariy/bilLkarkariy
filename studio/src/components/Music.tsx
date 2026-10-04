@@ -28,7 +28,7 @@ const env = new Float32Array(N);
 
 return {env, N};
 };
-const envelopes = {fr: envelope('fr'), en: envelope('en')};
+const envelopes = {fr: envelope('fr'), en: envelope('en'), ur: envelope('ur')};
 
 export type Cue = {src: string; from: number; to: number; gain?: number; fadeIn?: number; fadeOut?: number; startFrom?: number};
 

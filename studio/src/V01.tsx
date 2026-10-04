@@ -7,7 +7,8 @@ import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Music} from './components/Music';
 import {Grain, Paper} from './components/Paper';
 import {createCues, LEAD} from './cues';
-import {Lang, LanguageProvider, translator} from './i18n';
+import {isRtl, Lang, LanguageProvider, translator} from './i18n';
+import {RtlScope} from './i18n/rtl';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
 import {Cit, citSfx, Fade, Sfx} from './montage/kit';
@@ -33,8 +34,8 @@ const Faceless = getFaceless(lang);
 
 // hook
 const cut1 = at('p1', 'Seul') - 3; // A-roll -> maquette
-// (en anglais sans face caméra, aucun visage : la maquette ouvre la vidéo dès la première image)
-const mIn = FACELESS && lang === 'en' ? 0 : cut1;
+// (versions étrangères sans face caméra, aucun visage : la maquette ouvre la vidéo dès la première image)
+const mIn = FACELESS && lang !== 'fr' ? 0 : cut1;
 const planIn = at('p2') - 10; // la maquette, vue de dessus, devient le plan
 const xfade = 14;
 const dotsIn = at('p3') - 5; // « Deux hommes sur trois »
@@ -117,7 +118,7 @@ const cits: Cit[] = [
         i: 0,
         at: at('p6', 'Science') - docIn - 5,
         tone: 'ink',
-        note: {at: at('p6', 'Science') - docIn - 1, kicker: tx("PUBLIÉE DANS"), big: 'Science', text: tx("le 4 juillet 2014"), y: -40},
+        note: {at: at('p6', 'Science') - docIn - 1, kicker: tx("PUBLIÉE DANS"), big: tx("Science"), text: tx("le 4 juillet 2014"), y: -40},
       },
     ],
     notesX: 1150,
@@ -232,7 +233,7 @@ const cits: Cit[] = [
       {
         i: hl('pmc_vagabondage', 'their mind wandered'),
         at: at('p15', 'neuf') - vagIn,
-        note: {at: at('p15', 'dix') - vagIn, kicker: tx("NEUF SUR DIX"), count: {to: 89, fmt: (n) => `${n} %`}, text: tx("ont l'esprit qui part ailleurs")},
+        note: {at: at('p15', 'dix') - vagIn, kicker: tx("NEUF SUR DIX"), count: {to: 89, fmt: (n) => (isRtl(lang) ? `${n}%` : `${n} %`)}, text: tx("ont l'esprit qui part ailleurs")},
       },
       {
         i: hl('pmc_vagabondage', 'difficult to concentrate'),
@@ -456,7 +457,7 @@ const V01_DURATION = P5_END; // (la voix finit à DURATION ; l'écran de fin dur
 
 const Component: React.FC = () => {
   const frame = useCurrentFrame();
-  const verse = lang === 'en' && frame >= VERSE_SILENCE[0] && frame < VERSE_SILENCE[1];
+  const verse = lang !== 'fr' && frame >= VERSE_SILENCE[0] && frame < VERSE_SILENCE[1];
   return (
   <AbsoluteFill style={{background: C.paper}}>
     <Paper grid={0.8} />
@@ -594,7 +595,7 @@ const Component: React.FC = () => {
           src={staticFile(s.src)}
           toneFrequency={s.tone}
           volume={(lf) =>
-            (lang === 'en' && s.f + lf >= VERSE_SILENCE[0] && s.f + lf < VERSE_SILENCE[1] ? 0 : s.v) *
+            (lang !== 'fr' && s.f + lf >= VERSE_SILENCE[0] && s.f + lf < VERSE_SILENCE[1] ? 0 : s.v) *
             (s.fadeIn ? interpolate(lf, [0, s.fadeIn], [0.35, 1], CLAMP) : 1) *
             interpolate(lf, [s.len - 3, s.len], [1, 0], CLAMP)
           }
@@ -607,10 +608,10 @@ const Component: React.FC = () => {
 };
 return {Component, duration: V01_DURATION};
 };
-const versions = {fr: makeV01('fr'), en: makeV01('en')};
+const versions = {fr: makeV01('fr'), en: makeV01('en'), ur: makeV01('ur')};
 export const durationFor = (lang: Lang) => versions[lang].duration;
 export const V01_DURATION = durationFor('fr');
 export const V01: React.FC<{lang?: Lang}> = ({lang = 'fr'}) => {
   const {Component} = versions[lang];
-  return <LanguageProvider value={lang}><Component /></LanguageProvider>;
+  return <LanguageProvider value={lang}><RtlScope lang={lang}><Component /></RtlScope></LanguageProvider>;
 };

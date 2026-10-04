@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useRtl, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -64,6 +64,7 @@ export type StudyCues = {
 
 export const Study: React.FC<StudyCues> = (c) => {
   const tx = useText();
+  const rtl = useRtl();
 const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pas.")], [tx("Occupe-toi"), tx("avec"), tx("tes"), tx("pensées.")]];
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -238,7 +239,7 @@ const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pa
           }}
         >{tx("CONSIGNE")}</div>
         {CONSIGNE.map((line, li) => (
-          <div key={li} style={{fontFamily: F.mono, fontSize: 46, lineHeight: 1.32, color: C.ink, display: 'flex', gap: '0.55em'}}>
+          <div key={li} style={{fontFamily: F.mono, fontSize: 46, lineHeight: rtl ? 1.8 : 1.32, color: C.ink, display: 'flex', gap: '0.55em'}}>
             {line.map((w) => {
               const at = c.words[wi++];
               return (

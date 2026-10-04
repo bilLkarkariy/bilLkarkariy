@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useRtl, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -10,9 +10,11 @@ export type DotsCues = {presses: number[]; pct: number; before: number; pay: num
 /** « Deux hommes sur trois ont appuyé. » Chaque personne = un point, comme partout. */
 export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
   const tx = useText();
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const xs = [760, 960, 1160];
+  // (de droite à gauche : les deux premiers à appuyer sont à droite)
+  const xs = rtl ? [1160, 960, 760] : [760, 960, 1160];
   const y = 560;
 
   const pctIn = interpolate(frame, [pct, pct + 9], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});

@@ -1,4 +1,4 @@
-import {useLang} from '../i18n';
+import {useLang, useRtl} from '../i18n';
 import {EnglishEvidence, ENGLISH_ONLY_CAPTURES} from './EnglishEvidence';
 import React from 'react';
 import {Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
@@ -69,8 +69,8 @@ export const lineDur = (r: Rect) => Math.max(5, Math.min(16, Math.round(r.w / 34
 const CHIP_FONT = 17;
 const chipW = (c: {t: string; dot?: boolean}) => c.t.length * CHIP_FONT * 0.72 + 28 + (c.dot ? 24 : 0);
 
-/** Hauteur estimée d'une fiche (pour empiler sans chevauchement). */
-const noteH = (n: Note, w: number) => {
+/** Hauteur estimée d'une fiche (pour empiler sans chevauchement). En nastaliq (ourdou), les lignes sont plus hautes. */
+const noteH = (n: Note, w: number, rtl = false) => {
   const inner = w - 64;
   const perLine = Math.floor(inner / 15.5);
   let rows = 0;
@@ -83,14 +83,15 @@ const noteH = (n: Note, w: number) => {
   }
   return (
     46 +
-    (n.kicker ? 30 : 0) +
-    (n.big || n.count ? 92 : 0) +
-    (n.text ? Math.ceil(n.text.length / perLine) * 42 : 0) +
+    (n.kicker ? (rtl ? 40 : 30) : 0) +
+    (n.big || n.count ? (rtl ? 104 : 92) : 0) +
+    (n.text ? Math.ceil(n.text.length / perLine) * (rtl ? 64 : 42) : 0) +
     (rows ? 14 + rows * 44 : 0)
   );
 };
 
 export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone: Tone}> = ({n, x, y, w, tone}) => {
+  const rtl = useRtl();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const a = frame - n.at;
@@ -150,9 +151,9 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
         </div>
       )}
       {n.text && (
-        <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 36, lineHeight: 1.16}}>
+        <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 36, lineHeight: rtl ? 1.75 : 1.16}}>
           {words.map((wd, i) => (
-            <span key={i} style={{...rise(textAt + i * 1.3), marginRight: '0.26em'}}>
+            <span key={i} style={{...rise(textAt + i * 1.3), ...(rtl ? {marginLeft: '0.26em'} : {marginRight: '0.26em'})}}>
               {wd}
             </span>
           ))}
@@ -178,7 +179,7 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
                 }}
               >
                 {c.dot && (
-                  <span style={{display: 'inline-block', width: 14, height: 14, borderRadius: 7, background: C.red, marginRight: 10, verticalAlign: '-1px'}} />
+                  <span style={{display: 'inline-block', width: 14, height: 14, borderRadius: 7, background: C.red, ...(rtl ? {marginLeft: 10} : {marginRight: 10}), verticalAlign: '-1px'}} />
                 )}
                 {c.t}
               </span>
@@ -194,7 +195,9 @@ export const Citation: React.FC<CitationProps> = (p) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const lang = useLang();
-  if (lang === 'en' && ENGLISH_ONLY_CAPTURES.has(p.cap)) return <EnglishEvidence {...p} />;
+  const rtl = useRtl();
+  // (hors français : les captures en français deviennent des fiches dans la langue de la vidéo)
+  if (lang !== 'fr' && ENGLISH_ONLY_CAPTURES.has(p.cap)) return <EnglishEvidence {...p} />;
   if (lang === 'en' && ['pmc_titre', 'kg_page'].includes(p.cap)) p = {...p, sub: undefined};
   if (lang === 'en' && p.cap === 'pmc_revue') p = {...p, marks: p.marks?.map(({note, ...mark}) => mark)};
   const meta = CAP[p.cap];
@@ -266,7 +269,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
       const stays = q.n.until === undefined || q.n.until > it.n.at;
       if (stays) y = Math.max(y, q.y + q.h + 18);
     }
-    placed.push({...it, y, h: noteH(it.n, notesW)});
+    placed.push({...it, y, h: noteH(it.n, notesW, rtl)});
   }
 
   return (
@@ -407,12 +410,13 @@ export const Citation: React.FC<CitationProps> = (p) => {
             fontStyle: 'italic',
             fontSize: 38,
             color: C.ink,
+            ...(rtl ? {lineHeight: 1.75} : {}),
           }}
         >
           {p.sub.text.split(' ').map((wd, i) => {
             const q = interpolate(frame, [p.sub!.at + i * 1.5, p.sub!.at + i * 1.5 + 6], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
             return (
-              <span key={i} style={{display: 'inline-block', marginRight: '0.26em', opacity: q, transform: `translateY(${(1 - q) * 12}px)`}}>
+              <span key={i} style={{display: 'inline-block', ...(rtl ? {marginLeft: '0.26em'} : {marginRight: '0.26em'}), opacity: q, transform: `translateY(${(1 - q) * 12}px)`}}>
                 {wd}
               </span>
             );
