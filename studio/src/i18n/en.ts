@@ -238,7 +238,7 @@ export const en: Record<keyof typeof fr, string> = {
   "Occupe-toi": "Entertain",
   "avec": "yourself",
   "tes": "with",
-  "pensées.": "thoughts.",
+  "pensées.": "your thoughts.",
   "habiter": "live",
   "JAMAIS": "NEVER",
   "seul": "alone",

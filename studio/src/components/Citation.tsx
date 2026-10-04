@@ -196,6 +196,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
   const lang = useLang();
   if (lang === 'en' && ENGLISH_ONLY_CAPTURES.has(p.cap)) return <EnglishEvidence {...p} />;
   if (lang === 'en' && ['pmc_titre', 'kg_page'].includes(p.cap)) p = {...p, sub: undefined};
+  if (lang === 'en' && p.cap === 'pmc_revue') p = {...p, marks: p.marks?.map(({note, ...mark}) => mark)};
   const meta = CAP[p.cap];
   if (!meta) throw new Error(`capture inconnue : ${p.cap}`);
   const k = p.width / meta.w;
