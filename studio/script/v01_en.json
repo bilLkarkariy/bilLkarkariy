@@ -1,0 +1,415 @@
+{
+  "_doc": "English adaptation; same segment IDs, pauses and performance tag as v01.json. Provisional Quran slot in s63: no translation selected. Religious wording to review in docs/v01-en-questions.md. Not ready for TTS.",
+  "tts": {
+    "engine": "elevenlabs",
+    "voice_id": null,
+    "_voice": "PENDING — English voice to be selected by Billel; no generation authorised.",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.85,
+      "use_speaker_boost": true
+    },
+    "post": "isolate"
+  },
+  "lead": 0.8,
+  "tail": 1.5,
+  "segments": [
+    {
+      "id": "s1",
+      "text": "Fifteen minutes.",
+      "pause": 0.45
+    },
+    {
+      "id": "s2",
+      "text": "Alone in an empty room.",
+      "pause": 0.35
+    },
+    {
+      "id": "s3",
+      "text": "No phone. Nothing to read.",
+      "pause": 0.6
+    },
+    {
+      "id": "s4",
+      "text": "Just you and your thoughts…",
+      "pause": 0.45
+    },
+    {
+      "id": "s5",
+      "text": "and a button that gives you an electric shock.",
+      "pause": 1.6
+    },
+    {
+      "id": "s6",
+      "text": "[serious] Two out of three men pressed it.",
+      "pause": 0.9
+    },
+    {
+      "id": "s7",
+      "text": "People who, just moments earlier, had said they'd pay never to feel that shock again.",
+      "pause": 0.6
+    },
+    {
+      "id": "s8",
+      "text": "And I'm pretty sure you would have pressed it too.",
+      "pause": 0.7
+    },
+    {
+      "id": "s9",
+      "text": "This was a study published in Science in twenty fourteen.",
+      "pause": 0.35
+    },
+    {
+      "id": "s10",
+      "text": "Almost nobody quotes its final sentence.",
+      "pause": 0.35
+    },
+    {
+      "id": "s11",
+      "text": "But it changes the way you see that button.",
+      "pause": 0.45
+    },
+    {
+      "id": "s12",
+      "text": "I'll come back to it at the end, with a two-minute exercise you can try tonight.",
+      "pause": 0.8
+    },
+    {
+      "id": "s13",
+      "text": "The University of Virginia.",
+      "pause": 0.45
+    },
+    {
+      "id": "s14",
+      "text": "Students walk into an almost empty room.",
+      "pause": 0.35
+    },
+    {
+      "id": "s15",
+      "text": "They're asked to leave their belongings at the door.",
+      "pause": 0.3
+    },
+    {
+      "id": "s16",
+      "text": "Their phones. Even their pens.",
+      "pause": 0.3
+    },
+    {
+      "id": "s17",
+      "text": "Nothing to write with.",
+      "pause": 0.7
+    },
+    {
+      "id": "s18",
+      "text": "The instructions are simple: stay seated, don't fall asleep, and entertain yourself with your thoughts.",
+      "pause": 0.5
+    },
+    {
+      "id": "s19",
+      "text": "Fifteen minutes.",
+      "pause": 1.0
+    },
+    {
+      "id": "s20",
+      "text": "Before leaving people alone, the researchers give them a mild electric shock. Like a strong jolt of static electricity. Then they ask: how much would you pay never to feel it again? They only keep the people who say: I'd pay.",
+      "pause": 0.7
+    },
+    {
+      "id": "s21",
+      "text": "Then they're left alone. And the button is right there, if they want another shock.",
+      "pause": 1.1
+    },
+    {
+      "id": "s22",
+      "text": "Twelve out of eighteen men pressed it. Among the women, six out of twenty-four.",
+      "pause": 0.7
+    },
+    {
+      "id": "s23",
+      "text": "One man pressed it a hundred and ninety times.",
+      "pause": 0.8
+    },
+    {
+      "id": "s24",
+      "text": "These are small groups. Forty-two people in total. But remember: every one of them had just said they'd pay to avoid it.",
+      "pause": 1.0
+    },
+    {
+      "id": "s25",
+      "text": "You might be thinking: students in a lab? That doesn't tell us much. The researchers wondered about that too.",
+      "pause": 0.6
+    },
+    {
+      "id": "s26",
+      "text": "In the experiments without a button, nine out of ten people said their minds wandered. More than half found it hard to concentrate.",
+      "pause": 0.7
+    },
+    {
+      "id": "s27",
+      "text": "Maybe it's the lab, the researchers thought. An intimidating place. So they ran the experiment in people's homes. On their own sofas. One in three cheated: they put on music, used their phone, or got up.",
+      "pause": 0.7
+    },
+    {
+      "id": "s28",
+      "text": "And it wasn't just students. People aged eighteen to seventy-seven tried it at home. Same result. No link with age. No link with how often they used a smartphone.",
+      "pause": 0.8
+    },
+    {
+      "id": "s29",
+      "text": "But the strangest thing isn't the button.",
+      "pause": 1.3
+    },
+    {
+      "id": "s30",
+      "text": "It's this. The researchers gave people a few minutes to plan what they would think about. A trip. A memory. A project. It made no difference.",
+      "pause": 0.7
+    },
+    {
+      "id": "s31",
+      "text": "The authors have a way of putting it. Thinking alone means being both the writer and the audience of your own film. Once the writer gets tired, the film goes all over the place.",
+      "pause": 0.7
+    },
+    {
+      "id": "s32",
+      "text": "You know the feeling. You're waiting at a bakery. Three people ahead of you. Your hand is in your pocket before you've even decided to move it.",
+      "pause": 1.0
+    },
+    {
+      "id": "s33",
+      "text": "A question. When was the last time you spent five minutes doing nothing? No screen, no music, no conversation. When was it?",
+      "pause": 2.0
+    },
+    {
+      "id": "s34",
+      "text": "In twenty ten, two Harvard researchers sent phone alerts to two thousand two hundred and fifty people at random moments. Three questions: what are you doing, how are you feeling, and are you thinking about what you're doing?",
+      "pause": 0.6
+    },
+    {
+      "id": "s35",
+      "text": "Almost half the time, the answer was no.",
+      "pause": 0.8
+    },
+    {
+      "id": "s36",
+      "text": "And when their minds were elsewhere, people were less happy. The paper's title is “A Wandering Mind Is an Unhappy Mind.”",
+      "pause": 0.8
+    },
+    {
+      "id": "s37",
+      "text": "The lift. Twenty seconds between floors. You look at the ceiling. The floor. Then your screen.",
+      "pause": 0.8
+    },
+    {
+      "id": "s38",
+      "text": "The phone cuts the film off before it unravels. In France, people spend over three hours a day online. Eighty percent of that time is on mobile. Médiamétrie reported around twenty internet sessions a day. And four in ten people in France say they spend too much time on screens.",
+      "pause": 0.8
+    },
+    {
+      "id": "s39",
+      "text": "But smartphones didn't invent this problem.",
+      "pause": 1.0
+    },
+    {
+      "id": "s40",
+      "text": "Blaise Pascal, in the seventeenth century: “all the unhappiness of men arises from one single fact, that they cannot stay quietly in their own chamber.”",
+      "pause": 0.9
+    },
+    {
+      "id": "s41",
+      "text": "And a few lines later: “hence it comes that the pleasure of solitude is a thing incomprehensible.”",
+      "pause": 0.9
+    },
+    {
+      "id": "s42",
+      "text": "More than three hundred and fifty years ago. The phone didn't invent the escape. It put it in your pocket, available day and night.",
+      "pause": 0.8
+    },
+    {
+      "id": "s43",
+      "text": "Three in the morning. You wake up and your mind is racing. Your first instinct? The screen.",
+      "pause": 0.8
+    },
+    {
+      "id": "s44",
+      "text": "So if the phone isn't the cause… what is?",
+      "pause": 1.3
+    },
+    {
+      "id": "s45",
+      "text": "I think we're looking at the wrong problem. The problem isn't being alone. It's being alone with a mind that has no centre.",
+      "pause": 0.8
+    },
+    {
+      "id": "s46",
+      "text": "Imagine a room with no furniture. No chair. No table. You walk in. What do you do? Walk around. Touch the walls. And after a while, you start looking for the door.",
+      "pause": 0.7
+    },
+    {
+      "id": "s47",
+      "text": "Your mind without an anchor is that room. The phone is the door.",
+      "pause": 0.8
+    },
+    {
+      "id": "s48",
+      "text": "It's not a character flaw. Nobody taught you how to live in that room. You were taught to fill your attention. Never to stay with it.",
+      "pause": 0.6
+    },
+    {
+      "id": "s49",
+      "text": "It's like a muscle you've never trained.",
+      "pause": 0.6
+    },
+    {
+      "id": "s50",
+      "text": "The authors say it themselves: without training, we tend to choose doing over thinking. They mention meditation, and other techniques.",
+      "pause": 0.6
+    },
+    {
+      "id": "s51",
+      "text": "Other techniques. Two words in a scientific paper. Behind those words are centuries of practice. Entire traditions have developed ways to do one thing: be alone without running away.",
+      "pause": 0.8
+    },
+    {
+      "id": "s52",
+      "text": "One of them even has a word for it. A word that literally means solitude.",
+      "pause": 1.3
+    },
+    {
+      "id": "s53",
+      "text": "That word is khalwa. Spiritual retreat.",
+      "pause": 0.6
+    },
+    {
+      "id": "s54",
+      "text": "It comes from Sufism, the inward tradition of Islam, concerned with the heart and with attention.",
+      "pause": 0.6
+    },
+    {
+      "id": "s55",
+      "text": "In a khalwa, you withdraw by choice. Traditionally for forty days, alone, under a master's guidance. The very thing those students in Virginia struggled with after fifteen minutes.",
+      "pause": 1.0
+    },
+    {
+      "id": "s56",
+      "text": "Why would anyone choose to do that? Listen to the story of one of the most brilliant minds of his time.",
+      "pause": 0.8
+    },
+    {
+      "id": "s57",
+      "text": "Baghdad, ten ninety-five. Al-Ghazali is a celebrated teacher. Three hundred students. A career at its peak.",
+      "pause": 0.6
+    },
+    {
+      "id": "s58",
+      "text": "One day, he tries to teach, and nothing comes out. He writes: “my tongue would not utter a single word”. He describes his tongue drying up. The doctors give up. “This trouble arises from the heart”, they say.",
+      "pause": 0.8
+    },
+    {
+      "id": "s59",
+      "text": "So he leaves. He spends nearly two years in Damascus. For a time, he goes up into the minaret of the great mosque each day and shuts himself in. All day. To be alone.",
+      "pause": 0.8
+    },
+    {
+      "id": "s60",
+      "text": "This isn't a call to run away. He devoted a whole book of his major work to the question: live among other people, or withdraw? His answer depends on the circumstances, and above all on intention. He himself eventually returned to teaching.",
+      "pause": 0.8
+    },
+    {
+      "id": "s61",
+      "text": "But what do you actually do alone in a closed room? In Sufism, you practise dhikr.",
+      "pause": 0.6
+    },
+    {
+      "id": "s62",
+      "text": "Remembrance. In practice: repeating a name. Again and again. Other traditions speak of mantras. Here's the idea: you put a piece of furniture in the empty room. A fixed point. Your mind wanders, you bring it back to the name. It wanders again. You bring it back.",
+      "pause": 0.8
+    },
+    {
+      "id": "s63",
+      "text": "The Quran puts it in one sentence.",
+      "pause": 1.3,
+      "_pending": "Quran 13:28 English translation: Billel must choose. Estimator reserves the French verse slot."
+    },
+    {
+      "id": "s64",
+      "text": "The path I follow is called the Karkariya. A contemporary Moroccan Sufi path, founded in two thousand and seven near Nador by Sheikh Mohamed Faouzi al-Karkari. This patched cloak is its garment. And among the foundations the Sheikh describes are these two: the retreat, and the Name. In our path, the retreat has two stages: an initial three-day khalwa, followed by a second retreat of forty days.",
+      "pause": 2.5
+    },
+    {
+      "id": "s65",
+      "text": "I'm not going to ask you for three days, let alone forty. Tonight, I'm asking for two minutes. And I'll tell you what to expect.",
+      "pause": 1.2
+    },
+    {
+      "id": "s66",
+      "text": "One. Put your phone in another room. Not face down beside you. Another room. If you want a timer, start it first. You'll hear it from there.",
+      "pause": 0.9
+    },
+    {
+      "id": "s67",
+      "text": "Two. Sit down. Nothing heroic. A chair will do.",
+      "pause": 0.9
+    },
+    {
+      "id": "s68",
+      "text": "Three. For one minute, just notice the noise. “I need to reply to that message.” “I forgot the bread.” Don't push anything away. Just notice it. Like cars passing beneath your window. You might be surprised how loud it is.",
+      "pause": 0.9
+    },
+    {
+      "id": "s69",
+      "text": "Four. Rest your attention on a single point. Your breathing. Or a word, repeated silently, slowly. A word that means something to you. In our path, we repeat “Astaghfirullah”: I ask God's forgiveness. Astaghfirullah… Astaghfirullah…",
+      "pause": 0.9
+    },
+    {
+      "id": "s70",
+      "text": "Five. When you drift away, and you will, come back. Without judging yourself.",
+      "pause": 1.1
+    },
+    {
+      "id": "s71",
+      "text": "Here's what will probably happen. Very soon, perhaps after forty seconds, you'll want to get up. Check something. Go and get your phone. “Just to see the time.”",
+      "pause": 0.8
+    },
+    {
+      "id": "s72",
+      "text": "That moment is the button in the study. You haven't failed the exercise. That is the exercise. Every return counts, like a rep at the gym. Two minutes tonight. Tomorrow, if you want, three.",
+      "pause": 1.3
+    },
+    {
+      "id": "s73",
+      "text": "Back to the button.",
+      "pause": 0.6
+    },
+    {
+      "id": "s74",
+      "text": "It's tempting to laugh at those students. But you carry that button in your pocket. This one doesn't hurt. It even feels good, for a couple of seconds. That's why we open it around twenty times a day without thinking.",
+      "pause": 0.8
+    },
+    {
+      "id": "s75",
+      "text": "The study's final sentence. The one I promised you:",
+      "pause": 0.9
+    },
+    {
+      "id": "s76",
+      "text": "“The untutored mind does not like to be alone with itself.”",
+      "pause": 0.9
+    },
+    {
+      "id": "s77",
+      "text": "Untutored. That's the key word. It means there's something you can learn.",
+      "pause": 2.0
+    },
+    {
+      "id": "s78",
+      "text": "You don't have a problem with solitude. You've just never furnished the room.",
+      "pause": 1.5
+    },
+    {
+      "id": "s79",
+      "text": "Next time: why trying to think about nothing works so badly, and what Sufis do instead.",
+      "pause": 0
+    }
+  ]
+}
