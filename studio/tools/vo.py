@@ -221,8 +221,11 @@ def tts(script_path):
 
 
 def align(script_path, audio_path):
-    from faster_whisper import WhisperModel
     sc = json.load(open(script_path))
+    if sc.get("language") == "en":
+        from vo_alignment_en import align_recording
+        return align_recording(script_path, audio_path)
+    from faster_whisper import WhisperModel
     model = WhisperModel("small", device="cpu", compute_type="int8")
     # pas d'initial_prompt : avec le script complet en indice, Whisper hallucine et saute des phrases
     segs, _ = model.transcribe(audio_path, language=sc.get("language", "fr"), word_timestamps=True)
