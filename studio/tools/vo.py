@@ -245,7 +245,7 @@ def tts(script_path):
 
 def align(script_path, audio_path):
     sc = json.load(open(script_path))
-    if sc.get("language") == "en":
+    if sc.get("language") in ("en", "ur"):
         from vo_alignment_en import align_recording
         return align_recording(script_path, audio_path)
     from faster_whisper import WhisperModel
