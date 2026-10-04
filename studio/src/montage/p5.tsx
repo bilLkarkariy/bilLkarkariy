@@ -1,6 +1,6 @@
 import React from 'react';
 import {Sequence} from 'remotion';
-import {ARoll} from '../components/ARoll';
+import {ARoll, FACELESS} from '../components/ARoll';
 import {Citation} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
 import {at} from '../cues';
@@ -279,14 +279,20 @@ export const P5: React.FC = () => (
 
 export const P5Front: React.FC = () => (
   <>
-    <Sequence from={aroll7} durationInFrames={s1 - aroll7}>
-      <ARoll shot="PLAN POITRINE · proche, une invitation" line="« Je ne vais pas te demander trois jours, encore moins quarante. Ce soir, je te demande deux minutes. »" />
-    </Sequence>
-    <Sequence from={aroll8} durationInFrames={meubleeIn - aroll8}>
-      <ARoll shot="GROS PLAN SERRÉ · le plus calme" line="« Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne. »" />
-    </Sequence>
-    <Sequence from={aroll9} durationInFrames={endIn - aroll9}>
-      <ARoll shot="PLAN POITRINE · plus léger, petit sourire" line="« Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal… »" />
-    </Sequence>
+    {!FACELESS && (
+      <Sequence from={aroll7} durationInFrames={s1 - aroll7}>
+        <ARoll shot="PLAN POITRINE · proche, une invitation" line="« Je ne vais pas te demander trois jours, encore moins quarante. Ce soir, je te demande deux minutes. »" />
+      </Sequence>
+    )}
+    {!FACELESS && (
+      <Sequence from={aroll8} durationInFrames={meubleeIn - aroll8}>
+        <ARoll shot="GROS PLAN SERRÉ · le plus calme" line="« Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne. »" />
+      </Sequence>
+    )}
+    {!FACELESS && (
+      <Sequence from={aroll9} durationInFrames={endIn - aroll9}>
+        <ARoll shot="PLAN POITRINE · plus léger, petit sourire" line="« Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal… »" />
+      </Sequence>
+    )}
   </>
 );

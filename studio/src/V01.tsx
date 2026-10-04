@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {hl} from './captures';
-import {ARoll} from './components/ARoll';
+import {ARoll, FACELESS} from './components/ARoll';
 import {Citation} from './components/Citation';
 import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Music} from './components/Music';
@@ -13,6 +13,7 @@ import {Cit, citSfx, Fade, Sfx} from './montage/kit';
 import {P3, P3Back, P3Front, P3_SFX} from './montage/p3';
 import {P4, P4Front, P4_SFX, VERSE_SILENCE} from './montage/p4';
 import {P5, P5Front, P5_END, P5_SFX} from './montage/p5';
+import {Faceless} from './montage/faceless';
 import {Countdown, Groups, Lab, Static} from './scenes/Part2';
 import {Plan} from './scenes/Plan';
 import {Study} from './scenes/Study';
@@ -532,6 +533,8 @@ export const V01: React.FC = () => (
     <P4 />
     <P5 />
 
+    {FACELESS && <Faceless />}
+
     {/* la lumière de la fenêtre, sur tout ce qui est posé sur le bureau */}
     <WindowLight />
 
@@ -539,12 +542,16 @@ export const V01: React.FC = () => (
     <Sequence from={0} durationInFrames={cut1}>
       <ARoll shot="PLAN SERRÉ · il retourne son téléphone sur le bureau" line="« Quinze minutes. »" />
     </Sequence>
-    <Sequence from={aroll2} durationInFrames={docIn - aroll2}>
-      <ARoll shot="REGARD CAMÉRA" line="« Et je suis presque sûr que toi aussi, tu aurais appuyé. »" />
-    </Sequence>
-    <Sequence from={aroll3} durationInFrames={vagIn - aroll3}>
-      <ARoll shot="REGARD CAMÉRA · la relance" line="« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »" />
-    </Sequence>
+    {!FACELESS && (
+      <>
+        <Sequence from={aroll2} durationInFrames={docIn - aroll2}>
+          <ARoll shot="REGARD CAMÉRA" line="« Et je suis presque sûr que toi aussi, tu aurais appuyé. »" />
+        </Sequence>
+        <Sequence from={aroll3} durationInFrames={vagIn - aroll3}>
+          <ARoll shot="REGARD CAMÉRA · la relance" line="« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »" />
+        </Sequence>
+      </>
+    )}
     <P3Front />
     <P4Front />
     <P5Front />

@@ -5,7 +5,7 @@ import path from 'node:path';
 
 const [outDir, ...pairs] = process.argv.slice(2);
 const serveUrl = path.resolve(process.env.BUNDLE ?? 'out/bundle');
-const inputProps = {no3d: !process.env.WITH3D, clean: Boolean(process.env.CLEAN)};
+const inputProps = {no3d: !process.env.WITH3D, clean: Boolean(process.env.CLEAN), faceless: Boolean(process.env.FACELESS)};
 const browser = await openBrowser('chrome', {browserExecutable: process.env.CHROME ?? null});
 const composition = await selectComposition({serveUrl, id: 'V01', inputProps, puppeteerInstance: browser});
 for (const p of pairs) {
