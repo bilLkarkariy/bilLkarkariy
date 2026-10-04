@@ -1,0 +1,46 @@
+{
+  "source_sha256": "bf6581f9c9e3c323501d75e13c60674b12d28b15a1dc927f1707a21058847e4f",
+  "_doc": "Contrôles Whisper et signal uniquement, sans écoute humaine. Secondes dans la prise brute ; aucune modification du texte ni gain audio.",
+  "retranscribe": [
+    {
+      "id": "questions",
+      "start": 214.6,
+      "end": 220.8,
+      "reason": "Whisper continu entend مار à la place de ماذا ; reprise isolée sans prompt."
+    },
+    {
+      "id": "techniques",
+      "start": 343.2,
+      "end": 349.2,
+      "reason": "La passe continue fusionne les deux autres techniques ; récupérer la répétition avant de fixer la coupe s50/s51."
+    },
+    {
+      "id": "chuchotements",
+      "start": 548,
+      "end": 565.5,
+      "reason": "La reconnaissance continue omet le second أستغفر الله et avance خمسة ; isoler les deux chuchotements, sans aucun gain, avant la coupe s69/s70. Conserver les mots de contexte de la passe complète hors de replace_range, notamment بعد coupé à la fin du clip.",
+      "replace_range": [
+        552.4,
+        561.8
+      ]
+    },
+    {
+      "id": "invitation",
+      "start": 503.5,
+      "end": 508.4,
+      "replace_range": [
+        506.04,
+        508.24
+      ],
+      "reason": "La reprise isolée reconnaît مالذي en un seul bloc ; répartir ce bloc sur les mots figés ما الذي. Conserver les mots de contexte de la passe complète."
+    }
+  ],
+  "boundaries": {
+    "s50": {
+      "minimum_end": 345.8,
+      "maximum_start": 346.04,
+      "reason": "La répétition commence après le blanc 345.826–346.028 s, mesuré indépendamment par ffmpeg à -60 dBFS ; ne pas couper après la seconde occurrence."
+    }
+  },
+  "word_times": []
+}
