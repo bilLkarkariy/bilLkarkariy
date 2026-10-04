@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -18,6 +19,7 @@ export const Lines: React.FC<{x: number; y: number; lines: {t: string; at: numbe
   lines,
   gap = 1.32,
 }) => {
+  
   const frame = useCurrentFrame();
   let top = y;
   return (
@@ -59,14 +61,14 @@ export const Lines: React.FC<{x: number; y: number; lines: {t: string; at: numbe
 
 /** Le cadre d'une étape : le numéro, la ligne d'or, « L'EXERCICE · n / 5 ». */
 export const StepNum: React.FC<{n: number; out?: number}> = ({n, out}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame, fps, config: {damping: 14, stiffness: 140}});
   const o = out === undefined ? 1 : interpolate(frame, [out, out + 8], [1, 0], clamp);
   return (
     <AbsoluteFill style={{opacity: o}}>
-      <div style={{position: 'absolute', left: 150, top: 150, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.2em', color: C.inkSoft, opacity: q(frame, 2)}}>
-        L’EXERCICE · {n} / 5
+      <div style={{position: 'absolute', left: 150, top: 150, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.2em', color: C.inkSoft, opacity: q(frame, 2)}}>{tx("L’EXERCICE ·")}{' '}{n} / 5
       </div>
       <div style={{position: 'absolute', left: 140, top: 190, fontFamily: F.serif, fontSize: 300, lineHeight: 1, color: C.ink, opacity: s, transform: `translateY(${(1 - s) * 40}px)`}}>{n}</div>
       <div style={{position: 'absolute', left: 150, top: 520, width: 150 * draw(frame, 6, 14), height: 3, background: C.gold}} />
@@ -75,6 +77,7 @@ export const StepNum: React.FC<{n: number; out?: number}> = ({n, out}) => {
 };
 
 const Phone: React.FC<{x: number; y: number; w?: number; glow?: number; rot?: number; down?: boolean}> = ({x, y, w = 40, glow = 0, rot = 0, down}) => {
+  
   const h = w * 2.05;
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot})`}>
@@ -100,6 +103,7 @@ const Glow: React.FC = () => (
 
 // ── 1 · le téléphone dans une autre pièce ; un minuteur, qui sonnera de loin ─────────────────────
 export const StepPhone: React.FC<{phone: number; other: number; notNext: number; timer: number; ring: number}> = ({phone, other, notNext, timer, ring}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const walls = draw(frame, 2, 22);
@@ -142,14 +146,15 @@ export const StepPhone: React.FC<{phone: number; other: number; notNext: number;
             return <circle key={k} cx={B.x + 120} cy={B.y + 90} r={40 + r * 120} fill="none" stroke={C.ink} strokeWidth={2} opacity={(1 - r) * 0.7} />;
           })}
       </svg>
-      <div style={{position: 'absolute', left: A.x + 150, top: A.y + A.h + 24, fontFamily: F.mono, fontSize: 18, letterSpacing: '0.16em', color: C.ink, opacity: walls}}>TOI</div>
-      <div style={{position: 'absolute', left: B.x + 80, top: A.y + A.h + 24, fontFamily: F.mono, fontSize: 18, letterSpacing: '0.16em', color: C.ink, opacity: walls}}>UNE AUTRE PIÈCE</div>
+      <div style={{position: 'absolute', left: A.x + 150, top: A.y + A.h + 24, fontFamily: F.mono, fontSize: 18, letterSpacing: '0.16em', color: C.ink, opacity: walls}}>{tx("TOI")}</div>
+      <div style={{position: 'absolute', left: B.x + 80, top: A.y + A.h + 24, fontFamily: F.mono, fontSize: 18, letterSpacing: '0.16em', color: C.ink, opacity: walls}}>{tx("UNE AUTRE PIÈCE")}</div>
     </AbsoluteFill>
   );
 };
 
 // ── 2 · une chaise suffit ───────────────────────────────────────────────────────────────────────
 export const StepChair: React.FC<{sit: number}> = ({sit}) => {
+  
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const d = draw(frame, 2, 20);
@@ -179,6 +184,7 @@ export const StepChair: React.FC<{sit: number}> = ({sit}) => {
 // ── 3 · regarder le bruit passer, comme des voitures sous la fenêtre ───────────────────────────
 type Bubble = {t: string; at: number; lane: number; dur?: number};
 export const StepNoise: React.FC<{bubbles: Bubble[]; flood: number; still: number}> = ({bubbles, flood, still}) => {
+  
   const frame = useCurrentFrame();
   const win = {x: 860, y: 230, w: 940, h: 520};
   const d = draw(frame, 2, 18);
@@ -226,6 +232,7 @@ export const StepNoise: React.FC<{bubbles: Bubble[]; flood: number; still: numbe
 
 // ── 4 · un seul point : la respiration, ou un mot ───────────────────────────────────────────────
 export const StepPoint: React.FC<{point: number; breath: number; word: number; ar: number; arGloss: number}> = ({point, breath, word, ar, arGloss}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: frame - point, fps, config: {damping: 12, stiffness: 170}});
@@ -246,23 +253,20 @@ export const StepPoint: React.FC<{point: number; breath: number; word: number; a
           })}
       </svg>
       <div style={{position: 'absolute', left: X - 400, width: 800, top: Y + 150, textAlign: 'center', opacity: q(frame, word) * (1 - arO)}}>
-        <span style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 46, color: C.ink}}>un mot, répété, lentement</span>
+        <span style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 46, color: C.ink}}>{tx("un mot, répété, lentement")}</span>
       </div>
       <div style={{position: 'absolute', left: X - 500, width: 1000, top: Y + 120, textAlign: 'center', opacity: arO, direction: 'rtl', fontFamily: F.arabic, fontSize: 120, color: C.gold, lineHeight: 1.3}}>
         أستغفر الله
       </div>
-      <div style={{position: 'absolute', left: X - 500, width: 1000, top: Y + 300, textAlign: 'center', opacity: arO, fontFamily: F.mono, fontSize: 24, letterSpacing: '0.3em', color: C.ink}}>
-        ASTAGHFIRULLĀH
-      </div>
-      <div style={{position: 'absolute', left: X - 500, width: 1000, top: Y + 346, textAlign: 'center', opacity: q(frame, arGloss), fontFamily: F.serif, fontStyle: 'italic', fontSize: 44, color: C.ink}}>
-        je demande pardon à Dieu
-      </div>
+      <div style={{position: 'absolute', left: X - 500, width: 1000, top: Y + 300, textAlign: 'center', opacity: arO, fontFamily: F.mono, fontSize: 24, letterSpacing: '0.3em', color: C.ink}}>{tx("ASTAGHFIRULLĀH")}</div>
+      <div style={{position: 'absolute', left: X - 500, width: 1000, top: Y + 346, textAlign: 'center', opacity: q(frame, arGloss), fontFamily: F.serif, fontStyle: 'italic', fontSize: 44, color: C.ink}}>{tx("je demande pardon à Dieu")}</div>
     </AbsoluteFill>
   );
 };
 
 // ── 5 · tu pars, tu reviens, sans te juger ──────────────────────────────────────────────────────
 export const StepReturn: React.FC<{away: number; back: number; judge: number}> = ({away, back, judge}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const X = 1300;
   const Y = 480;
@@ -283,15 +287,14 @@ export const StepReturn: React.FC<{away: number; back: number; judge: number}> =
         <path d={`M ${X - 70} ${Y + 20} Q ${X + 120} ${Y - 260} ${X + 260} ${Y - 150}`} fill="none" stroke={C.inkSoft} strokeWidth={2} strokeDasharray="6 10" opacity={out * 0.8} />
         <circle cx={X - 70 + dx} cy={Y + 20 + dy} r={30} fill={C.ink} />
       </svg>
-      <div style={{position: 'absolute', left: X - 300, width: 600, top: Y + 200, textAlign: 'center', opacity: q(frame, judge), fontFamily: F.mono, fontSize: 26, letterSpacing: '0.24em', color: C.ink}}>
-        SANS TE JUGER
-      </div>
+      <div style={{position: 'absolute', left: X - 300, width: 600, top: Y + 200, textAlign: 'center', opacity: q(frame, judge), fontFamily: F.mono, fontSize: 26, letterSpacing: '0.24em', color: C.ink}}>{tx("SANS TE JUGER")}</div>
     </AbsoluteFill>
   );
 };
 
 // ── p60 : au bout de quarante secondes, l'envie de se lever ────────────────────────────────────
 export const Urge: React.FC<{t40: [number, number]; itch: number; chips: {t: string; at: number}[]}> = ({t40, itch, chips}) => {
+  
   const frame = useCurrentFrame();
   const X = 760;
   const Y = 520;
@@ -340,6 +343,7 @@ export const Urge: React.FC<{t40: [number, number]; itch: number; chips: {t: str
 
 // ── p61 : « Ce moment-là, c'est le bouton de l'étude. » Chaque retour compte ─────────────────────
 export const Reps: React.FC<{button: number; count: number; per?: number}> = ({button, count, per = 7}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: frame - button, fps, config: {damping: 9, stiffness: 200}});
@@ -366,15 +370,14 @@ export const Reps: React.FC<{button: number; count: number; per?: number}> = ({b
           );
         })}
       </svg>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 460, textAlign: 'center', fontFamily: F.mono, fontSize: 22, letterSpacing: '0.2em', color: C.ink, opacity: q(frame, button + 6) * (1 - out)}}>
-        LE BOUTON DE L’ÉTUDE
-      </div>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 460, textAlign: 'center', fontFamily: F.mono, fontSize: 22, letterSpacing: '0.2em', color: C.ink, opacity: q(frame, button + 6) * (1 - out)}}>{tx("LE BOUTON DE L’ÉTUDE")}</div>
     </AbsoluteFill>
   );
 };
 
 // ── p63 : le bouton, tu l'as dans ta poche ──────────────────────────────────────────────────────
 export const ButtonPhone: React.FC<{morph: number; warm: number}> = ({morph, warm}) => {
+  
   const frame = useCurrentFrame();
   const m = interpolate(frame, [morph, morph + 20], [0, 1], {...clamp, easing: inOut});
   const glow = q(frame, warm, 16);
@@ -398,13 +401,12 @@ export const ButtonPhone: React.FC<{morph: number; warm: number}> = ({morph, war
 
 // ── L'écran de fin (les éléments YouTube se posent sur les cadres) ──────────────────────────────
 export const EndCard: React.FC = () => {
+  const tx = useText();
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{opacity: q(frame, 0, 14)}}>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 150, textAlign: 'center', fontFamily: F.mono, fontSize: 22, letterSpacing: '0.3em', color: C.inkSoft}}>PROCHAINE VIDÉO</div>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 200, textAlign: 'center', fontFamily: F.serif, fontStyle: 'italic', fontSize: 58, color: C.ink}}>
-        Pourquoi « ne penser à rien » marche si mal
-      </div>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 150, textAlign: 'center', fontFamily: F.mono, fontSize: 22, letterSpacing: '0.3em', color: C.inkSoft}}>{tx("PROCHAINE VIDÉO")}</div>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 200, textAlign: 'center', fontFamily: F.serif, fontStyle: 'italic', fontSize: 58, color: C.ink}}>{tx("Pourquoi « ne penser à rien » marche si mal")}</div>
       <div style={{position: 'absolute', left: 300, top: 360, width: 720, height: 405, border: `2px dashed ${C.inkSoft}`}} />
       <div style={{position: 'absolute', left: 1180, top: 440, width: 250, height: 250, borderRadius: 125, border: `2px dashed ${C.inkSoft}`}} />
       <div style={{position: 'absolute', left: 1180, top: 720, width: 250, textAlign: 'center', fontFamily: F.mono, fontSize: 18, letterSpacing: '0.2em', color: C.ink}}>BILLKARKARIY</div>

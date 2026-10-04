@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import carte from '../data/carte_ghazali.json';
@@ -30,6 +31,7 @@ export type Line = {
 };
 
 export const Kinetic: React.FC<{lines: Line[]}> = ({lines}) => {
+  
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill>
@@ -97,6 +99,7 @@ export const ArabicWord: React.FC<{ar: string; latin: string; gloss?: string; at
   out,
   size = 230,
 }) => {
+  
   const frame = useCurrentFrame();
   const w = interpolate(frame, [at, at + 26], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
   const o = out === undefined ? 1 : interpolate(frame, [out, out + 10], [1, 0], clamp);
@@ -155,6 +158,7 @@ const SEA_EDGE = '#DCE5E6';
 const WATER = '#4E7690';
 
 export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, damas, route, routeLabel}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const ink = interpolate(frame, [draw, draw + 40], [0, 1], {...clamp, easing: Easing.out(Easing.quad)});
@@ -213,18 +217,18 @@ export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, dam
             )),
           )}
           {carte.seas.map((m) => (
-            <text key={m.t} x={m.x} y={m.y} textAnchor="middle" fontFamily="Garamond, serif" fontStyle="italic" fontSize={m.s / k} letterSpacing={3 / k} fill={WATER} opacity={ink} transform={`rotate(${m.a} ${m.x} ${m.y})`}>
-              {m.t}
+            <text key={tx(m.t)} x={m.x} y={m.y} textAnchor="middle" fontFamily="Garamond, serif" fontStyle="italic" fontSize={m.s / k} letterSpacing={3 / k} fill={WATER} opacity={ink} transform={`rotate(${m.a} ${m.x} ${m.y})`}>
+              {tx(m.t)}
             </text>
           ))}
           {carte.riverLabels.map((m) => (
-            <text key={m.t} x={m.x} y={m.y} dy={-14 / k} textAnchor="middle" fontFamily="Garamond, serif" fontStyle="italic" fontSize={32 / k} fill={WATER} stroke={LAND} strokeWidth={6 / k} paintOrder="stroke" opacity={ink} transform={`rotate(${m.a} ${m.x} ${m.y})`}>
-              {m.t}
+            <text key={tx(m.t)} x={m.x} y={m.y} dy={-14 / k} textAnchor="middle" fontFamily="Garamond, serif" fontStyle="italic" fontSize={32 / k} fill={WATER} stroke={LAND} strokeWidth={6 / k} paintOrder="stroke" opacity={ink} transform={`rotate(${m.a} ${m.x} ${m.y})`}>
+              {tx(m.t)}
             </text>
           ))}
           {carte.regions.map((m) => (
-            <text key={m.t} x={m.x} y={m.y} textAnchor="middle" fontFamily="'Plex Mono', monospace" fontSize={20 / k} letterSpacing={9 / k} fill={C.inkSoft} opacity={0.7 * ink}>
-              {m.t}
+            <text key={tx(m.t)} x={m.x} y={m.y} textAnchor="middle" fontFamily="'Plex Mono', monospace" fontSize={20 / k} letterSpacing={9 / k} fill={C.inkSoft} opacity={0.7 * ink}>
+              {tx(m.t)}
             </text>
           ))}
           {route && (
@@ -238,8 +242,8 @@ export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, dam
               style={{clipPath: `inset(0 0 0 ${(1 - rP) * 100}%)`}}
             />
           )}
-          {city(bx, by, bagdad, 'BAGDAD', bagdadSub)}
-          {city(dx, dy, damas, 'DAMAS')}
+          {city(bx, by, bagdad, tx("BAGDAD"), bagdadSub)}
+          {city(dx, dy, damas, tx("DAMAS"))}
         </g>
       </svg>
       {routeLabel && (
@@ -253,6 +257,7 @@ export const GhazaliMap: React.FC<MapCues> = ({draw, cam, bagdad, bagdadSub, dam
 
 // ── Le chapelet : répéter un nom, encore et encore ──────────────────────────────────────────────
 export const Tasbih: React.FC<{at: number; beats: number[]; n?: number; out?: number}> = ({at, beats, n = 33, out}) => {
+  
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const R = 330;
@@ -290,15 +295,16 @@ export const Tasbih: React.FC<{at: number; beats: number[]; n?: number; out?: nu
 
 // ── Le verset : pas d'animation (un fondu), pas de son dessous ──────────────────────────────────
 export const Verse: React.FC<{out: number}> = ({out}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const o = interpolate(frame, [0, 14, out, out + 14], [0, 1, 1, 0], clamp);
   return (
     <AbsoluteFill style={{opacity: o, alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28</div>
+      <div style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28")}</div>
       <div style={{fontFamily: F.quran, fontSize: 52, color: C.inkSoft, direction: 'rtl', lineHeight: 1.6}}>ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ</div>
       <div style={{fontFamily: F.quran, fontSize: 112, color: C.ink, direction: 'rtl', lineHeight: 1.7, marginTop: 6}}>أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ</div>
       <div style={{width: 120, height: 2, background: C.gold, margin: '40px 0 36px'}} />
-      <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 48, color: C.ink}}>« C'est par le rappel de Dieu que les cœurs s'apaisent. »</div>
+      <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 48, color: C.ink}}>{tx("« C'est par le rappel de Dieu que les cœurs s'apaisent. »")}</div>
     </AbsoluteFill>
   );
 };

@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React, {useMemo} from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -69,6 +70,7 @@ export type PlanCues = {
 };
 
 export const Plan: React.FC<PlanCues> = ({dot, wander, button, zaps, push, pushLen}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const draw = (start: number, len = 16) => interpolate(frame, [start, start + len], [0, 1], {...clamp, easing: inOut});
@@ -242,8 +244,7 @@ export const Plan: React.FC<PlanCues> = ({dot, wander, button, zaps, push, pushL
           gap: 14,
         }}
       >
-        <div style={{width: 40, height: 1.5, background: C.ink}} />1 PRESSION = 1 DÉCHARGE
-      </div>
+        <div style={{width: 40, height: 1.5, background: C.ink}} />{tx("1 PRESSION = 1 DÉCHARGE")}</div>
       <AbsoluteFill style={{background: '#fff', opacity: flash}} />
     </AbsoluteFill>
   );

@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -10,13 +11,14 @@ import {C, F} from '../theme';
  */
 const CLEAN = Boolean(getInputProps().clean);
 export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
   const zoom = interpolate(frame, [0, durationInFrames], [1.0, 1.045]);
   return (
     <AbsoluteFill style={{background: C.night, overflow: 'hidden'}}>
       <Img
-        src={staticFile(/TAILLE|POITRINE/.test(shot) ? 'aroll/setup.jpg' : 'aroll/placeholder.jpg')}
+        src={staticFile(/TAILLE|POITRINE|WAIST|CHEST/.test(shot) ? 'aroll/setup.jpg' : 'aroll/placeholder.jpg')}
         style={{
           position: 'absolute',
           width: 1920,
@@ -57,9 +59,7 @@ export const ARoll: React.FC<{shot: string; line: string}> = ({shot, line}) => {
                 background: '#F2D64B',
                 padding: '6px 12px',
               }}
-            >
-              A-ROLL · À REMPLACER
-            </span>
+            >{tx("A-ROLL · À REMPLACER")}</span>
             <span
               style={{
                 fontFamily: F.mono,

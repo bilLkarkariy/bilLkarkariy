@@ -1,3 +1,5 @@
+import {Shot3D} from '../components/Light';
+import {useLang, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, getInputProps, Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {C, F} from '../theme';
@@ -11,6 +13,7 @@ const TOP_REACHED = 137; // index où la caméra est exactement à la verticale
 const file = (n: number) => staticFile(`3d/maquette/f${String(n).padStart(4, '0')}.png`);
 
 const Frames: React.FC<{idx: number}> = ({idx}) => {
+  
   const n = Math.min(LAST, idx + 1);
   const n0 = Math.min(LAST, 1 + Math.floor((n - 1) / STEP) * STEP);
   const n1 = Math.min(LAST, n0 + STEP);
@@ -24,6 +27,7 @@ const Frames: React.FC<{idx: number}> = ({idx}) => {
 };
 
 const Tag: React.FC<{label: string; from: number; strikeAt: number; y: number}> = ({label, from, strikeAt, y}) => {
+  
   const frame = useCurrentFrame();
   const o = interpolate(frame, [from, from + 6], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const strike = interpolate(frame, [strikeAt, strikeAt + 8], [0, 1], {
@@ -56,14 +60,15 @@ const Tag: React.FC<{label: string; from: number; strikeAt: number; y: number}> 
  * reachTop : image locale où la vue de dessus doit être atteinte.
  */
 export const Maquette: React.FC<{reachTop: number; phone: number; read: number}> = ({reachTop, phone, read}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const idx = interpolate(frame, [0, reachTop], [0, TOP_REACHED], {extrapolateRight: 'clamp'});
   const cart = interpolate(frame, [6, 16], [0, 1], {extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill>
-      {getInputProps().noMaquette ? null : <Frames idx={idx} />}
-      <Tag label="TÉLÉPHONE" from={phone - 4} strikeAt={phone + 6} y={430} />
-      <Tag label="LECTURE" from={read - 4} strikeAt={read + 6} y={490} />
+      {useLang() === 'en' ? <Shot3D dir="maquette" frames={reachTop} label={tx('SEUL · SANS RIEN')} /> : getInputProps().noMaquette ? null : <Frames idx={idx} />}
+      <Tag label={tx("TÉLÉPHONE")} from={phone - 4} strikeAt={phone + 6} y={430} />
+      <Tag label={tx("LECTURE")} from={read - 4} strikeAt={read + 6} y={490} />
       {/* cartouche */}
       <div
         style={{
@@ -78,9 +83,7 @@ export const Maquette: React.FC<{reachTop: number; phone: number; read: number}>
           gridTemplateColumns: 'auto auto',
         }}
       >
-        <div style={{padding: '8px 14px', fontSize: 15, letterSpacing: '0.12em', borderRight: `1.5px solid ${C.ink}`}}>
-          SEUL · SANS RIEN
-        </div>
+        <div style={{padding: '8px 14px', fontSize: 15, letterSpacing: '0.12em', borderRight: `1.5px solid ${C.ink}`}}>{tx("SEUL · SANS RIEN")}</div>
         <div style={{padding: '2px 14px', fontSize: 30, fontWeight: 500, letterSpacing: '0.04em'}}>15:00</div>
       </div>
     </AbsoluteFill>

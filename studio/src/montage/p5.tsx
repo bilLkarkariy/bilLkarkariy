@@ -3,11 +3,16 @@ import {Sequence} from 'remotion';
 import {ARoll} from '../components/ARoll';
 import {Citation} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
-import {at} from '../cues';
+import {createCues} from '../cues';
+import {Lang, translator} from '../i18n';
 import {DayTicks} from '../scenes/Part3';
 import {Kinetic} from '../scenes/Part4';
 import {ButtonPhone, EndCard, Lines, Reps, StepChair, StepNoise, StepNum, StepPhone, StepPoint, StepReturn, Urge} from '../scenes/Part5';
 import {Cit, citSfx, Fade, Sfx} from './kit';
+
+const makeP5 = (lang: Lang) => {
+const {at} = createCues(lang);
+const tx = translator(lang);
 
 // ── Partie 5 (7:29 → fin) : l'exercice, l'envie de se lever, le bouton dans la poche, ──────────
 //    la dernière phrase de l'étude (enfin lisible), la pièce meublée. p54 → p68.
@@ -28,7 +33,7 @@ const meubleeIn = at('p67', 'meublé') - 10; // = t0 de tools/plans3d.py meublee
 const meubleeN = at('p68') + 30 - meubleeIn;
 const aroll9 = at('p68') - 2;
 const endIn = at('p68', undefined, 'end') + 20;
-export const P5_END = endIn + 6 * 30; // l'écran de fin : 6 s pour les éléments YouTube
+const P5_END = endIn + 6 * 30; // l'écran de fin : 6 s pour les éléments YouTube
 
 const L = (id: string, w: string, from: number, nth = 0) => at(id, w, 'start', nth) - from;
 
@@ -55,8 +60,8 @@ const cits: Cit[] = [
         unredact: L('p65', "L'esprit", finIn) - 6,
         note: {
           at: L('p65', 'non', finIn),
-          kicker: 'LA DERNIÈRE PHRASE DE L’ÉTUDE',
-          text: '« L’esprit non entraîné n’aime pas être seul avec lui-même. »',
+          kicker: tx("LA DERNIÈRE PHRASE DE L’ÉTUDE"),
+          text: tx("« L’esprit non entraîné n’aime pas être seul avec lui-même. »"),
           tone: 'gold',
           y: -40,
         },
@@ -65,7 +70,7 @@ const cits: Cit[] = [
   },
 ];
 
-export const P5_SFX: Sfx[] = [
+const P5_SFX: Sfx[] = [
   ...[s1, s2, s3, s4, s5].map((f) => ['tick', f + 4, 0.6] as Sfx),
   ['poche', at('p55', 'téléphone'), 0.6],
   ['porte', at('p55', 'autre') + 22, 0.3],
@@ -90,7 +95,7 @@ export const P5_SFX: Sfx[] = [
   ...citSfx(cits),
 ];
 
-export const P5: React.FC = () => (
+const P5: React.FC = () => (
   <>
     {/* 1 · le téléphone dans une autre pièce */}
     <Sequence from={s1} durationInFrames={s2 - s1}>
@@ -100,10 +105,10 @@ export const P5: React.FC = () => (
           x={150}
           y={600}
           lines={[
-            {t: 'Ton téléphone', at: L('p55', 'Ton', s1)},
-            {t: 'dans une autre pièce.', at: L('p55', 'autre', s1)},
-            {t: 'Pas retourné à côté de toi.', at: L('p55', 'Pas', s1), size: 36, italic: true},
-            {t: 'Un minuteur ? Lance-le avant.', at: L('p55', 'minuteur', s1), size: 36, italic: true},
+            {t: tx("Ton téléphone"), at: L('p55', 'Ton', s1)},
+            {t: tx("dans une autre pièce."), at: L('p55', 'autre', s1)},
+            {t: tx("Pas retourné à côté de toi."), at: L('p55', 'Pas', s1), size: 36, italic: true},
+            {t: tx("Un minuteur ? Lance-le avant."), at: L('p55', 'minuteur', s1), size: 36, italic: true},
           ]}
         />
         <Lift>
@@ -126,9 +131,9 @@ export const P5: React.FC = () => (
           x={150}
           y={600}
           lines={[
-            {t: 'Assieds-toi.', at: L('p56', 'Assieds-toi', s2)},
-            {t: 'Rien d’héroïque.', at: L('p56', 'Rien', s2), size: 40, italic: true},
-            {t: 'Une chaise suffit.', at: L('p56', 'Une', s2), size: 40, italic: true},
+            {t: tx("Assieds-toi."), at: L('p56', 'Assieds-toi', s2)},
+            {t: tx("Rien d’héroïque."), at: L('p56', 'Rien', s2), size: 40, italic: true},
+            {t: tx("Une chaise suffit."), at: L('p56', 'Une', s2), size: 40, italic: true},
           ]}
         />
         <Lift>
@@ -145,19 +150,19 @@ export const P5: React.FC = () => (
           x={150}
           y={600}
           lines={[
-            {t: 'Une minute :', at: L('p57', 'Pendant', s3)},
-            {t: 'regarde le bruit.', at: L('p57', 'regarde', s3)},
-            {t: 'Tu ne chasses rien.', at: L('p57', 'Tu', s3), size: 36, italic: true},
-            {t: 'Tu remarques.', at: L('p57', 'Tu', s3, 1), size: 36, italic: true},
+            {t: tx("Une minute :"), at: L('p57', 'Pendant', s3)},
+            {t: tx("regarde le bruit."), at: L('p57', 'regarde', s3)},
+            {t: tx("Tu ne chasses rien."), at: L('p57', 'Tu', s3), size: 36, italic: true},
+            {t: tx("Tu remarques."), at: L('p57', 'Tu', s3, 1), size: 36, italic: true},
           ]}
         />
         <Lift>
           <StepNoise
             bubbles={[
-              {t: '« Faut que je réponde à ce message. »', at: L('p57', 'Faut', s3) - 14, lane: 0},
-              {t: '« J’ai oublié le pain. »', at: L('p57', "J'ai", s3) - 14, lane: 2},
-              {t: '« Et demain, la réunion… »', at: L('p57', 'voitures', s3) - 20, lane: 1},
-              {t: '« Il faut que je rappelle… »', at: L('p57', 'fenêtre', s3) - 14, lane: 3},
+              {t: tx("« Faut que je réponde à ce message. »"), at: L('p57', 'Faut', s3) - 14, lane: 0},
+              {t: tx("« J’ai oublié le pain. »"), at: L('p57', "J'ai", s3) - 14, lane: 2},
+              {t: tx("« Et demain, la réunion… »"), at: L('p57', 'voitures', s3) - 20, lane: 1},
+              {t: tx("« Il faut que je rappelle… »"), at: L('p57', 'fenêtre', s3) - 14, lane: 3},
             ]}
             flood={L('p57', 'surpris', s3) - 16}
             still={L('p57', 'chasses', s3)}
@@ -174,9 +179,9 @@ export const P5: React.FC = () => (
           x={150}
           y={600}
           lines={[
-            {t: 'Un seul point :', at: L('p58', 'Pose', s4)},
-            {t: 'ta respiration,', at: L('p58', 'Ta', s4), size: 40, italic: true},
-            {t: 'ou un mot qui compte pour toi.', at: L('p58', 'Ou', s4), size: 40, italic: true},
+            {t: tx("Un seul point :"), at: L('p58', 'Pose', s4)},
+            {t: tx("ta respiration,"), at: L('p58', 'Ta', s4), size: 40, italic: true},
+            {t: tx("ou un mot qui compte pour toi."), at: L('p58', 'Ou', s4), size: 40, italic: true},
           ]}
         />
         <StepPoint
@@ -197,8 +202,8 @@ export const P5: React.FC = () => (
           x={150}
           y={600}
           lines={[
-            {t: 'Tu pars.', at: L('p59', 'pars', s5)},
-            {t: 'Tu reviens.', at: L('p59', 'reviens', s5)},
+            {t: tx("Tu pars."), at: L('p59', 'pars', s5)},
+            {t: tx("Tu reviens."), at: L('p59', 'reviens', s5)},
           ]}
         />
         <StepReturn away={L('p59', 'pars', s5)} back={L('p59', 'reviens', s5)} judge={L('p59', 'Sans', s5)} />
@@ -208,16 +213,16 @@ export const P5: React.FC = () => (
     {/* p60 : quarante secondes, et l'envie de se lever */}
     <Sequence from={urgeIn} durationInFrames={repsIn - urgeIn}>
       <Fade from={repsIn - urgeIn - 8} len={8} out>
-        <Kinetic lines={[{t: 'CE QUI VA PROBABLEMENT SE PASSER', at: 4, y: 130, size: 24, mono: true, stagger: 3}]} />
+        <Kinetic lines={[{t: tx("CE QUI VA PROBABLEMENT SE PASSER"), at: 4, y: 130, size: 24, mono: true, stagger: 3}]} />
         <Lift>
           <Urge
             t40={[L('p60', 'vite', urgeIn), L('p60', 'secondes', urgeIn)]}
             itch={L('p60', 'envie', urgeIn)}
             chips={[
-              {t: 'TE LEVER', at: L('p60', 'lever', urgeIn)},
-              {t: 'VÉRIFIER UN TRUC', at: L('p60', 'Vérifier', urgeIn)},
-              {t: 'LE TÉLÉPHONE…', at: L('p60', 'téléphone', urgeIn)},
-              {t: '« JUSTE POUR L’HEURE »', at: L('p60', 'juste', urgeIn)},
+              {t: tx("TE LEVER"), at: L('p60', 'lever', urgeIn)},
+              {t: tx("VÉRIFIER UN TRUC"), at: L('p60', 'Vérifier', urgeIn)},
+              {t: tx("LE TÉLÉPHONE…"), at: L('p60', 'téléphone', urgeIn)},
+              {t: tx("« JUSTE POUR L’HEURE »"), at: L('p60', 'juste', urgeIn)},
             ]}
           />
         </Lift>
@@ -232,10 +237,10 @@ export const P5: React.FC = () => (
         </Lift>
         <Kinetic
           lines={[
-            {t: 'Tu n’as pas raté l’exercice.', at: L('p61', 'Tu', repsIn), y: 560, size: 54, italic: true, out: L('p61', 'Chaque', repsIn) - 8},
-            {t: 'C’est ça, l’exercice.', at: L('p61', "C'est", repsIn), y: 650, size: 72, gold: ['l’exercice.'], out: L('p61', 'Chaque', repsIn) - 8},
-            {t: 'chaque retour compte', at: L('p61', 'Chaque', repsIn), y: 560, size: 54, italic: true},
-            {t: 'CE SOIR · 2 MIN   DEMAIN · 3 MIN', at: L('p61', 'Deux', repsIn), y: 700, size: 30, mono: true, stagger: 5},
+            {t: tx("Tu n’as pas raté l’exercice."), at: L('p61', 'Tu', repsIn), y: 560, size: 54, italic: true, out: L('p61', 'Chaque', repsIn) - 8},
+            {t: tx("C’est ça, l’exercice."), at: L('p61', "C'est", repsIn), y: 650, size: 72, gold: [tx("l’exercice.")], out: L('p61', 'Chaque', repsIn) - 8},
+            {t: tx("chaque retour compte"), at: L('p61', 'Chaque', repsIn), y: 560, size: 54, italic: true},
+            {t: tx("CE SOIR · 2 MIN   DEMAIN · 3 MIN"), at: L('p61', 'Deux', repsIn), y: 700, size: 30, mono: true, stagger: 5},
           ]}
         />
       </Fade>
@@ -249,9 +254,9 @@ export const P5: React.FC = () => (
         </Lift>
         <Kinetic
           lines={[
-            {t: 'Le bouton, tu l’as dans ta poche.', at: L('p63', 'Mais', pocketIn), y: 90, size: 52, italic: true, red: ['bouton,'], out: L('p63', 'Lui', pocketIn) - 6},
-            {t: 'Lui ne fait pas mal. Il fait même du bien.', at: L('p63', 'Lui', pocketIn), y: 90, size: 52, italic: true, out: L('p63', "C'est", pocketIn) - 6},
-            {t: 'une vingtaine de fois par jour, sans y penser', at: L('p63', 'vingtaine', pocketIn) - 4, y: 90, size: 52, italic: true},
+            {t: tx("Le bouton, tu l’as dans ta poche."), at: L('p63', 'Mais', pocketIn), y: 90, size: 52, italic: true, red: [tx("bouton,")], out: L('p63', 'Lui', pocketIn) - 6},
+            {t: tx("Lui ne fait pas mal. Il fait même du bien."), at: L('p63', 'Lui', pocketIn), y: 90, size: 52, italic: true, out: L('p63', "C'est", pocketIn) - 6},
+            {t: tx("une vingtaine de fois par jour, sans y penser"), at: L('p63', 'vingtaine', pocketIn) - 4, y: 90, size: 52, italic: true},
           ]}
         />
         <Lift>
@@ -268,7 +273,7 @@ export const P5: React.FC = () => (
 
     {/* « Tu n'as juste jamais meublé la pièce » : la pièce meublée (3D, une image sur trois) */}
     <Sequence from={meubleeIn} durationInFrames={aroll9 - meubleeIn}>
-      <Shot3D dir="meublee" frames={meubleeN} step={3} label="La même pièce, lumière dorée : le pion assis près du point d'or. La caméra s'élève." />
+      <Shot3D dir="meublee" frames={meubleeN} step={3} label={tx("La même pièce, lumière dorée : le pion assis près du point d'or. La caméra s'élève.")} />
     </Sequence>
 
     <Sequence from={endIn}>
@@ -277,16 +282,22 @@ export const P5: React.FC = () => (
   </>
 );
 
-export const P5Front: React.FC = () => (
+const P5Front: React.FC = () => (
   <>
     <Sequence from={aroll7} durationInFrames={s1 - aroll7}>
-      <ARoll shot="PLAN POITRINE · proche, une invitation" line="« Je ne vais pas te demander trois jours, encore moins quarante. Ce soir, je te demande deux minutes. »" />
+      <ARoll shot={tx("PLAN POITRINE · proche, une invitation")} line={tx("« Je ne vais pas te demander trois jours, encore moins quarante. Ce soir, je te demande deux minutes. »")} />
     </Sequence>
     <Sequence from={aroll8} durationInFrames={meubleeIn - aroll8}>
-      <ARoll shot="GROS PLAN SERRÉ · le plus calme" line="« Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne. »" />
+      <ARoll shot={tx("GROS PLAN SERRÉ · le plus calme")} line={tx("« Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne. »")} />
     </Sequence>
     <Sequence from={aroll9} durationInFrames={endIn - aroll9}>
-      <ARoll shot="PLAN POITRINE · plus léger, petit sourire" line="« Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal… »" />
+      <ARoll shot={tx("PLAN POITRINE · plus léger, petit sourire")} line={tx("« Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal… »")} />
     </Sequence>
   </>
 );
+
+return {P5, P5Front, P5_SFX, P5_END};
+};
+const versions = {fr: makeP5('fr'), en: makeP5('en')};
+export const getP5 = (lang: Lang) => versions[lang];
+export const {P5, P5Front, P5_SFX, P5_END} = versions.fr;

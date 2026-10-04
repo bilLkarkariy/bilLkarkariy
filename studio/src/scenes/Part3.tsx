@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React, {useMemo} from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -74,6 +75,7 @@ function scribble(seed: string, x0: number, y0: number, n: number, step: number,
 
 /** Un téléphone vu de face, écran allumé (glow de 0 à 1). */
 const Phone: React.FC<{x: number; y: number; w?: number; glow: number; rot?: number; children?: React.ReactNode}> = ({x, y, w = 120, glow, rot = 0, children}) => {
+  
   const h = w * 2.05;
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot})`}>
@@ -103,6 +105,7 @@ const CELL = 360; // une image de la pellicule
 const STRIP_H = 270;
 
 export const FilmStrip: React.FC<FilmCues> = ({tired, chaos, cut, out}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const enter = spring({frame, fps, config: {damping: 18, stiffness: 90}});
@@ -200,12 +203,8 @@ export const FilmStrip: React.FC<FilmCues> = ({tired, chaos, cut, out}) => {
           )}
         </g>
       </svg>
-      <Mono x={PEN_X} y={waveY(PEN_X) - STRIP_H / 2 - 270} o={(1 - vrille) * interpolate(frame, [6, 14], [0, 1], clamp)}>
-        SCÉNARISTE
-      </Mono>
-      <Mono x={EYE_X} y={waveY(EYE_X) - STRIP_H / 2 - 150} o={(1 - vrille) * interpolate(frame, [10, 18], [0, 1], clamp)}>
-        SPECTATEUR
-      </Mono>
+      <Mono x={PEN_X} y={waveY(PEN_X) - STRIP_H / 2 - 270} o={(1 - vrille) * interpolate(frame, [6, 14], [0, 1], clamp)}>{tx("SCÉNARISTE")}</Mono>
+      <Mono x={EYE_X} y={waveY(EYE_X) - STRIP_H / 2 - 150} o={(1 - vrille) * interpolate(frame, [10, 18], [0, 1], clamp)}>{tx("SPECTATEUR")}</Mono>
     </AbsoluteFill>
   );
 };
@@ -214,6 +213,7 @@ export const FilmStrip: React.FC<FilmCues> = ({tired, chaos, cut, out}) => {
 export type QueueCues = {file: number; three: number; you: number; hand: number; decide: number};
 
 export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const draw = (s: number, len = 16) => interpolate(frame, [s, s + len], [0, 1], {...clamp, easing: inOut});
@@ -246,7 +246,7 @@ export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => 
           <path d={`M 1470 500 q 30 -50 60 0 M 1550 500 q 30 -60 70 0 M 1640 500 q 20 -40 50 0`} strokeWidth={2.5} opacity={shop} />
         </g>
         <foreignObject x={1400} y={178} width={360} height={60}>
-          <div style={{fontFamily: F.mono, fontSize: 22, letterSpacing: '0.24em', textAlign: 'center', color: C.ink, opacity: shop, lineHeight: '60px'}}>BOULANGERIE</div>
+          <div style={{fontFamily: F.mono, fontSize: 22, letterSpacing: '0.24em', textAlign: 'center', color: C.ink, opacity: shop, lineHeight: '60px'}}>{tx("BOULANGERIE")}</div>
         </foreignObject>
         {/* trois personnes devant toi */}
         {people.map((x, k) => {
@@ -281,9 +281,7 @@ export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => 
           {String(3 - k)}
         </Mono>
       ))}
-      <Mono x={me.x} y={GROUND + 26} size={18} o={interpolate(frame, [you, you + 6], [0, 1], clamp)}>
-        TOI
-      </Mono>
+      <Mono x={me.x} y={GROUND + 26} size={18} o={interpolate(frame, [you, you + 6], [0, 1], clamp)}>{tx("TOI")}</Mono>
     </AbsoluteFill>
   );
 };
@@ -292,6 +290,7 @@ export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => 
 export type ElevatorCues = {twenty: number; ceiling: number; floor: number; screen: number};
 
 export const Elevator: React.FC<ElevatorCues> = ({twenty, ceiling, floor, screen}) => {
+  
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const draw = (s: number, len = 16) => interpolate(frame, [s, s + len], [0, 1], {...clamp, easing: inOut});
@@ -373,6 +372,7 @@ const Digit: React.FC<{v: number; size: number}> = ({v, size}) => (
 );
 
 export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt = 0, sub, subAt = 0, out}) => {
+  
   const frame = useCurrentFrame();
   const q = interpolate(frame, [start, start + len], [0, 1], {...clamp, easing: inOut});
   const y = from + (to - from) * q;
@@ -419,6 +419,7 @@ export const Years: React.FC<YearsCues> = ({from, to, start, len, label, labelAt
 export type PocketCues = {phone: number; door: number; pocket: number; open: number};
 
 export const PocketDoor: React.FC<PocketCues> = ({phone, door, pocket, open}) => {
+  
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const draw = (s: number, len = 16) => interpolate(frame, [s, s + len], [0, 1], {...clamp, easing: inOut});
@@ -466,6 +467,7 @@ export const PocketDoor: React.FC<PocketCues> = ({phone, door, pocket, open}) =>
 export type NightCues = {wake: number; spin: number; reflex: number; screen: number};
 
 export const Night: React.FC<NightCues> = ({wake, spin, reflex, screen}) => {
+  
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const dark = interpolate(frame, [0, 12], [0, 1], clamp);
@@ -515,6 +517,7 @@ export const Night: React.FC<NightCues> = ({wake, spin, reflex, screen}) => {
 
 // ── p27 : « une vingtaine de sessions sur smartphone par jour » : la journée, et chaque session ─────
 export const DayTicks: React.FC<{start: number; n?: number; y?: number}> = ({start, n = 20, y = 760}) => {
+  
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const X0 = 300;

@@ -5,9 +5,14 @@ import {ARoll} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift} from '../components/Light';
 import {Paper} from '../components/Paper';
-import {at} from '../cues';
+import {createCues} from '../cues';
+import {Lang, translator} from '../i18n';
 import {DayTicks, Elevator, FilmStrip, Night, PocketDoor, Queue, Years} from '../scenes/Part3';
 import {Cit, citSfx, Fade, Sfx} from './kit';
+
+const makeP3 = (lang: Lang) => {
+const {at} = createCues(lang);
+const tx = translator(lang);
 
 // ── Partie 3 (2:27 → 4:28) : le scénariste fatigué, Harvard 2010, les écrans, Pascal ─────────────
 //    p20 → p34. Les vraies pages : Wilson (PMC), Killingsworth & Gilbert (Science 2010, PDF),
@@ -34,11 +39,11 @@ const years2In = at('p31') - 4;
 const pocketIn = at('p31', 'téléphone') - 6;
 const nightIn = at('p32') - 6;
 const aroll5 = at('p33') - 6;
-export const P3_END = at('p35') - 4; // (la pièce vide prend le relais, src/montage/p4.tsx)
+const P3_END = at('p35') - 4; // (la pièce vide prend le relais, src/montage/p4.tsx)
 
 const SHEET = {x: 110, width: 1100};
 const KG = 'SCIENCE · 2010 · KILLINGSWORTH & GILBERT';
-const fr = (n: number) => n.toLocaleString('fr-FR').replace(/\s/g, ' ');
+const fr = (n: number) => n.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-GB').replace(/\s/g, ' ');
 
 const cits: Cit[] = [
   // p20 : « Penser seul, c'est être en même temps le scénariste et le spectateur du film »
@@ -59,11 +64,11 @@ const cits: Cit[] = [
         tone: 'ink',
         note: {
           at: at('p20', 'ça') - (at('p20') - 4),
-          kicker: "L'IMAGE DES AUTEURS",
-          text: 'Penser seul, c’est tenir deux rôles à la fois',
+          kicker: tx("L'IMAGE DES AUTEURS"),
+          text: tx("Penser seul, c’est tenir deux rôles à la fois"),
           chips: [
-            {t: 'SCÉNARISTE', at: at('p20', 'scénariste') - (at('p20') - 4)},
-            {t: 'SPECTATEUR', at: at('p20', 'spectateur') - (at('p20') - 4)},
+            {t: tx("SCÉNARISTE"), at: at('p20', 'scénariste') - (at('p20') - 4)},
+            {t: tx("SPECTATEUR"), at: at('p20', 'spectateur') - (at('p20') - 4)},
           ],
         },
       },
@@ -89,7 +94,7 @@ const cits: Cit[] = [
       {
         i: hl('kg_page', 'Harvard'),
         at: at('p23', 'Harvard') - kgIn,
-        note: {at: at('p23', 'Harvard') + 4 - kgIn, kicker: 'DEUX CHERCHEURS', big: 'Harvard', text: 'en 2010', y: 560},
+        note: {at: at('p23', 'Harvard') + 4 - kgIn, kicker: tx("DEUX CHERCHEURS"), big: 'Harvard', text: tx("en 2010"), y: 560},
       },
     ],
   },
@@ -110,8 +115,8 @@ const cits: Cit[] = [
         at: at('p23', 'sonner') - methIn,
         note: {
           at: at('p23', 'téléphone') - methIn,
-          kicker: 'UNE APPLI SUR LEUR iPHONE',
-          text: 'Le téléphone sonne à des moments pris au hasard',
+          kicker: tx("UNE APPLI SUR LEUR iPHONE"),
+          text: tx("Le téléphone sonne à des moments pris au hasard"),
           until: at('p23', 'deux', 'start', 2) - 2 - methIn,
         },
       },
@@ -120,9 +125,9 @@ const cits: Cit[] = [
         at: at('p23', 'deux', 'start', 2) - methIn,
         note: {
           at: at('p23', 'deux', 'start', 2) + 2 - methIn,
-          kicker: 'ADULTES',
+          kicker: tx("ADULTES"),
           count: {to: 2250, from: 0, dur: 26, fmt: fr},
-          text: 'personnes',
+          text: tx("personnes"),
           until: at('p23', 'Trois') - 2 - methIn,
           y: 120,
         },
@@ -133,11 +138,11 @@ const cits: Cit[] = [
     notes: [
       {
         at: at('p23', 'Trois') - methIn,
-        kicker: 'TROIS QUESTIONS',
+        kicker: tx("TROIS QUESTIONS"),
         chips: [
-          {t: "QU'EST-CE QUE TU FAIS ?", at: at('p23', "qu'est-ce") - methIn},
-          {t: 'COMMENT TU TE SENS ?', at: at('p23', 'comment') - methIn},
-          {t: 'TU PENSES À CE QUE TU FAIS ?', at: at('p23', 'penses') - methIn, dot: true},
+          {t: tx("QU'EST-CE QUE TU FAIS ?"), at: at('p23', "qu'est-ce") - methIn},
+          {t: tx("COMMENT TU TE SENS ?"), at: at('p23', 'comment') - methIn},
+          {t: tx("TU PENSES À CE QUE TU FAIS ?"), at: at('p23', 'penses') - methIn, dot: true},
         ],
         tone: 'red',
         y: 160,
@@ -163,9 +168,9 @@ const cits: Cit[] = [
         at: at('p24', 'fois') - resIn,
         note: {
           at: at('p24', 'deux') - resIn,
-          kicker: 'TU PENSES À CE QUE TU FAIS ? « NON »',
-          count: {to: 469, dur: 22, fmt: (n) => `${(n / 10).toFixed(1).replace('.', ',')} %`},
-          text: 'du temps : près d’une fois sur deux',
+          kicker: tx("TU PENSES À CE QUE TU FAIS ? « NON »"),
+          count: {to: 469, dur: 22, fmt: (n) => `${(n / 10).toFixed(1).replace('.', lang === 'fr' ? ',' : '.')} %`},
+          text: tx("du temps : près d’une fois sur deux"),
           until: at('p25', 'moins') - 2 - resIn,
           y: 140,
         },
@@ -173,7 +178,7 @@ const cits: Cit[] = [
       {
         i: hl('kg_resultats', 'people were less happy'),
         at: at('p25', 'ailleurs') - resIn,
-        note: {at: at('p25', 'moins') - resIn, kicker: "QUAND L'ESPRIT EST AILLEURS", big: 'Moins heureux', y: 520},
+        note: {at: at('p25', 'moins') - resIn, kicker: tx("QUAND L'ESPRIT EST AILLEURS"), big: tx("Moins heureux"), y: 520},
       },
     ],
   },
@@ -188,7 +193,7 @@ const cits: Cit[] = [
     tag: KG + ' · LE TITRE',
     out: liftIn - 6 - titleIn,
     marks: [{i: hl('kg_page', 'A Wandering Mind'), at: at('p25', 'article') - titleIn}],
-    sub: {text: '« Un esprit qui vagabonde est un esprit malheureux »', at: at('p25', 'Un') - titleIn},
+    sub: {text: tx("« Un esprit qui vagabonde est un esprit malheureux »"), at: at('p25', 'Un') - titleIn},
   },
   // p27 : les écrans, en France
   {
@@ -206,7 +211,7 @@ const cits: Cit[] = [
       {
         i: 0,
         at: at('p27', 'plus') - mmIn,
-        note: {at: at('p27', 'heures') - mmIn, kicker: 'EN FRANCE, CHAQUE JOUR', big: '+ de 3 h', text: 'en ligne : un record', y: -40},
+        note: {at: at('p27', 'heures') - mmIn, kicker: tx("EN FRANCE, CHAQUE JOUR"), big: tx("+ de 3 h"), text: tx("en ligne : un record"), y: -40},
       },
     ],
   },
@@ -220,7 +225,7 @@ const cits: Cit[] = [
     y: 620,
     tilt: 0.6,
     out: sessIn - 6 - mm2In,
-    marks: [{i: 0, at: at('p27', 'quatre-vingts') - mm2In, note: {at: at('p27', 'mobile') - mm2In, big: '80 %', text: 'du temps sur Internet : sur mobile', y: -20}}],
+    marks: [{i: 0, at: at('p27', 'quatre-vingts') - mm2In, note: {at: at('p27', 'mobile') - mm2In, big: tx("80 %"), text: tx("du temps sur Internet : sur mobile"), y: -20}}],
   },
   {
     from: arcepIn,
@@ -237,7 +242,7 @@ const cits: Cit[] = [
       {
         i: 0,
         at: at('p27', 'quatre') - arcepIn,
-        note: {at: at('p27', 'Français') - arcepIn, kicker: '42 % DES FRANÇAIS', big: '4 sur 10', text: 'trouvent qu’ils passent trop de temps devant les écrans', y: -60},
+        note: {at: at('p27', 'Français') - arcepIn, kicker: tx("42 % DES FRANÇAIS"), big: tx("4 sur 10"), text: tx("trouvent qu’ils passent trop de temps devant les écrans"), y: -60},
       },
     ],
   },
@@ -303,7 +308,7 @@ const cits: Cit[] = [
   },
 ];
 
-export const P3_SFX: Sfx[] = [
+const P3_SFX: Sfx[] = [
   ['projecteur', filmIn + 2, 0.35],
   ['pellicule_vrille', at('p20', 'part'), 0.5],
   ['tick', queueIn + 10, 0.4],
@@ -325,7 +330,7 @@ export const P3_SFX: Sfx[] = [
 ];
 
 /** Sous tout le reste : le papier se réchauffe à partir de Pascal. */
-export const P3Back: React.FC = () => (
+const P3Back: React.FC = () => (
   <Sequence from={warmIn}>
     <Fade from={0} len={24}>
       <Paper warm />
@@ -334,7 +339,7 @@ export const P3Back: React.FC = () => (
 );
 
 /** Ce qui est posé sur le bureau (sous la lumière de la fenêtre). */
-export const P3: React.FC = () => (
+const P3: React.FC = () => (
   <>
     {/* p20 : la pellicule ; quand le scénariste fatigue, le film part dans tous les sens */}
     <Sequence from={filmIn} durationInFrames={queueIn + 8 - filmIn}>
@@ -382,7 +387,7 @@ export const P3: React.FC = () => (
       <Fade from={arcepIn - sessIn - 6} len={10} out>
         <AbsoluteFill>
           <NoteCard
-            n={{at: 6, kicker: 'MÉDIAMÉTRIE · CHAQUE JOUR', count: {to: 20, dur: 24, fmt: (n) => `≈ ${n}`}, text: 'sessions sur smartphone'}}
+            n={{at: 6, kicker: tx("MÉDIAMÉTRIE · CHAQUE JOUR"), count: {to: 20, dur: 24, fmt: (n) => `≈ ${n}`}, text: tx("sessions sur smartphone")}}
             x={690}
             y={250}
             w={540}
@@ -403,7 +408,7 @@ export const P3: React.FC = () => (
           to={1670}
           start={at('p28', 'smartphone') - yearsIn}
           len={at('p29', 'Blaise') - at('p28', 'smartphone')}
-          label="BLAISE PASCAL · PENSÉES · 1670"
+          label={tx("BLAISE PASCAL · PENSÉES · 1670")}
           labelAt={at('p29', 'Blaise') - yearsIn}
           out={pascalIn - yearsIn - 2}
         />
@@ -423,7 +428,7 @@ export const P3: React.FC = () => (
           to={2025}
           start={6}
           len={at('p31', 'ans') - years2In}
-          sub="plus de 350 ans"
+          sub={tx("plus de 350 ans")}
           subAt={at('p31', 'ans') - years2In}
           out={pocketIn - years2In - 4}
         />
@@ -446,7 +451,7 @@ export const P3: React.FC = () => (
 );
 
 /** Au premier plan (au-dessus de la lumière de la fenêtre) : la nuit, le face caméra. */
-export const P3Front: React.FC = () => (
+const P3Front: React.FC = () => (
   <>
     <Sequence from={nightIn} durationInFrames={aroll5 - nightIn}>
       <Night
@@ -457,10 +462,16 @@ export const P3Front: React.FC = () => (
       />
     </Sequence>
     <Sequence from={aroll4} durationInFrames={kgIn - aroll4}>
-      <ARoll shot="GROS PLAN · regard caméra, 2 s de silence" line="« Question. La dernière fois que t'es resté cinq minutes sans rien faire… c'était quand ? »" />
+      <ARoll shot={tx("GROS PLAN · regard caméra, 2 s de silence")} line={tx("« Question. La dernière fois que t'es resté cinq minutes sans rien faire… c'était quand ? »")} />
     </Sequence>
     <Sequence from={aroll5} durationInFrames={P3_END - aroll5}>
-      <ARoll shot="3/4 PUIS FACE · la bascule" line="« Je crois qu'on se trompe de problème. »" />
+      <ARoll shot={tx("3/4 PUIS FACE · la bascule")} line={tx("« Je crois qu'on se trompe de problème. »")} />
     </Sequence>
   </>
 );
+
+return {P3, P3Back, P3Front, P3_SFX, P3_END};
+};
+const versions = {fr: makeP3('fr'), en: makeP3('en')};
+export const getP3 = (lang: Lang) => versions[lang];
+export const {P3, P3Back, P3Front, P3_SFX, P3_END} = versions.fr;

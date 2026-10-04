@@ -1,3 +1,5 @@
+import {useLang} from '../i18n';
+import {EnglishEvidence, ENGLISH_ONLY_CAPTURES} from './EnglishEvidence';
 import React from 'react';
 import {Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {CAP, Rect} from '../captures';
@@ -191,6 +193,9 @@ export const NoteCard: React.FC<{n: Note; x: number; y: number; w: number; tone:
 export const Citation: React.FC<CitationProps> = (p) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
+  const lang = useLang();
+  if (lang === 'en' && ENGLISH_ONLY_CAPTURES.has(p.cap)) return <EnglishEvidence {...p} />;
+  if (lang === 'en' && ['pmc_titre', 'kg_page'].includes(p.cap)) p = {...p, sub: undefined};
   const meta = CAP[p.cap];
   if (!meta) throw new Error(`capture inconnue : ${p.cap}`);
   const k = p.width / meta.w;
@@ -276,7 +281,7 @@ export const Citation: React.FC<CitationProps> = (p) => {
           ),
       )}
       <div style={sheet3d}>
-      {p.tag && (
+      {lang === 'fr' && p.tag && (
         <div
           style={{
             position: 'absolute',

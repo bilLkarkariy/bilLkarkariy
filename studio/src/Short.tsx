@@ -3,8 +3,8 @@
 // Rendu : npx remotion render out/bundle short-bouton out/short-bouton.mp4 --props='{"clean":true}'
 import React from 'react';
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
-import vo from './data/v01.vo.json';
-import {at, LEAD, toF} from './cues';
+import {Lang, translator} from './i18n';
+import {createCues, voices, LEAD, toF} from './cues';
 import {C, F} from './theme';
 import {V01} from './V01';
 
@@ -16,31 +16,36 @@ const K = W / 1920; // le 16:9 garde toute sa largeur : rien n'est rogné (les d
 const VIDEO_Y = 620;
 const END = 75; // carton final, en images
 
-export const SHORTS = [
+export const getShorts = (lang: Lang = 'fr') => {
+const {at} = createCues(lang);
+const tx = translator(lang);
+return [
   {
     id: 'short-bouton',
-    title: ['Quinze minutes seul.', 'Ou une décharge.'],
+    title: [tx("Quinze minutes seul."), tx("Ou une décharge.")],
     from: at('p1') - LEAD,
     to: at('p13', undefined, 'end') + 18,
   },
   {
     id: 'short-pascal',
-    title: ['Le téléphone', 'n’a rien inventé.'],
+    title: [tx("Le téléphone"), tx("n’a rien inventé.")],
     from: at('p28') - 6,
     to: at('p36', undefined, 'end') + 24,
   },
   {
     id: 'short-exercice',
-    title: ['Deux minutes,', 'ce soir.'],
+    title: [tx("Deux minutes,"), tx("ce soir.")],
     from: at('p54') - 6,
     to: at('p61', undefined, 'end') + 18,
   },
-];
+].map((s) => ({...s, id: s.id + (lang === 'en' ? '-en' : '')}));
+};
+export const SHORTS = getShorts('fr');
 
 /** Les mots de la voix, par petits groupes : coupés sur un silence ou tous les 3 mots. */
-const GROUPS: Word[][] = (() => {
+const groupsFor = (lang: Lang): Word[][] => {
   const out: Word[][] = [];
-  for (const s of vo.segments as Seg[]) {
+  for (const s of voices[lang].segments as Seg[]) {
     let cur: Word[] = [];
     for (const w of s.words) {
       if (cur.length && (cur.length >= 3 || w.start - cur[cur.length - 1].end > 0.3)) {
@@ -52,9 +57,11 @@ const GROUPS: Word[][] = (() => {
     if (cur.length) out.push(cur);
   }
   return out;
-})();
+};
+const captionGroups = {fr: groupsFor('fr'), en: groupsFor('en')};
 
-const Captions: React.FC<{from: number}> = ({from}) => {
+const Captions: React.FC<{from: number; lang: Lang}> = ({from, lang}) => {
+  const GROUPS = captionGroups[lang];
   const f = useCurrentFrame() + from; // image dans la vidéo longue
   const g = GROUPS.find((x, i) => {
     const a = LEAD + toF(x[0].start);
@@ -89,7 +96,8 @@ const Captions: React.FC<{from: number}> = ({from}) => {
   );
 };
 
-export const Short: React.FC<{from: number; to: number; title: string[]}> = ({from, to, title}) => {
+export const Short: React.FC<{from: number; to: number; title: string[]; lang?: Lang}> = ({from, to, title, lang = 'fr'}) => {
+  const tx = translator(lang);
   const frame = useCurrentFrame();
   const len = to - from;
   const fadeOut = interpolate(frame, [len - 10, len], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
@@ -130,11 +138,11 @@ export const Short: React.FC<{from: number; to: number; title: string[]}> = ({fr
           }}
         >
           <Sequence from={-from} durationInFrames={to}>
-            <V01 />
+            <V01 lang={lang} />
           </Sequence>
         </div>
         <Sequence durationInFrames={len}>
-          <Captions from={from} />
+          <Captions from={from} lang={lang} />
         </Sequence>
       </div>
       <AbsoluteFill
@@ -148,10 +156,8 @@ export const Short: React.FC<{from: number; to: number; title: string[]}> = ({fr
           color: C.ink,
         }}
       >
-        <div style={{fontFamily: F.mono, fontSize: 30, letterSpacing: '0.18em', color: C.inkSoft}}>LA VIDÉO COMPLÈTE</div>
-        <div style={{fontSize: 76, lineHeight: 1.1, marginTop: 40}}>
-          Pourquoi tu n’arrives plus à rester seul avec toi-même
-        </div>
+        <div style={{fontFamily: F.mono, fontSize: 30, letterSpacing: '0.18em', color: C.inkSoft}}>{tx("LA VIDÉO COMPLÈTE")}</div>
+        <div style={{fontSize: 76, lineHeight: 1.1, marginTop: 40}}>{tx("Pourquoi tu n’arrives plus à rester seul avec toi-même")}</div>
         <div style={{width: 120, height: 3, background: C.gold, margin: '60px auto'}} />
         <div style={{fontFamily: F.mono, fontSize: 34, letterSpacing: '0.12em'}}>bilLkarkariy</div>
       </AbsoluteFill>

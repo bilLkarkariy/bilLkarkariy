@@ -1,11 +1,14 @@
 import React from 'react';
 import {Audio, interpolate, Sequence, staticFile} from 'remotion';
-import vo from '../data/v01.vo.json';
+import {voices} from '../cues';
+import {Lang, useLang} from '../i18n';
 import {LEAD, toF} from '../cues';
 
 // La musique s'efface sous la voix, mot à mot (attaque rapide, retour lent),
 // et se tait complètement dans les fenêtres `silence` (le verset).
 
+const envelope = (lang: Lang) => {
+const vo = voices[lang];
 const words = (vo.segments as {words: {start: number; end: number}[]}[]).flatMap((s) => s.words);
 const N = LEAD + toF(vo.duration) + 600;
 const speaking = new Float32Array(N);
@@ -23,9 +26,15 @@ const env = new Float32Array(N);
   }
 }
 
+return {env, N};
+};
+const envelopes = {fr: envelope('fr'), en: envelope('en')};
+
 export type Cue = {src: string; from: number; to: number; gain?: number; fadeIn?: number; fadeOut?: number; startFrom?: number};
 
-export const Music: React.FC<{cues: Cue[]; duck?: number; silence?: [number, number][]}> = ({cues, duck = 0.32, silence = []}) => (
+export const Music: React.FC<{cues: Cue[]; duck?: number; silence?: [number, number][]}> = ({cues, duck = 0.32, silence = []}) => {
+  const {env, N} = envelopes[useLang()];
+  return (
   <>
     {cues.map((c, i) => (
       <Sequence key={i} from={c.from} durationInFrames={c.to - c.from}>
@@ -50,3 +59,4 @@ export const Music: React.FC<{cues: Cue[]; duck?: number; silence?: [number, num
     ))}
   </>
 );
+};

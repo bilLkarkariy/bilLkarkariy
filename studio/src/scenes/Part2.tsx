@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -54,6 +55,7 @@ const Label: React.FC<{x: number; y: number; o: number; children: React.ReactNod
 export type StaticCues = {shock: number; handle: number; label: number; spark: number};
 
 export const Static: React.FC<StaticCues> = ({shock, handle, label, spark}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const me = {x: 700, y: 560};
@@ -136,12 +138,8 @@ export const Static: React.FC<StaticCues> = ({shock, handle, label, spark}) => {
       <Label x={me.x} y={me.y + 70} o={dotS} align="center" size={18}>
         PARTICIPANT
       </Label>
-      <Label x={me.x} y={me.y - 120} o={tagO} align="center">
-        1 DÉCHARGE D'ESSAI
-      </Label>
-      <Label x={box.x - 84} y={box.y + 120} o={interpolate(frame, [label, label + 8], [0, 1], clamp)} align="center">
-        ≈ ÉLECTRICITÉ STATIQUE
-      </Label>
+      <Label x={me.x} y={me.y - 120} o={tagO} align="center">{tx("1 DÉCHARGE D'ESSAI")}</Label>
+      <Label x={box.x - 84} y={box.y + 120} o={interpolate(frame, [label, label + 8], [0, 1], clamp)} align="center">{tx("≈ ÉLECTRICITÉ STATIQUE")}</Label>
       <AbsoluteFill style={{background: '#fff', opacity: flash}} />
     </AbsoluteFill>
   );
@@ -166,6 +164,7 @@ const pick = (n: number, k: number, seed: string) =>
   );
 
 export const Groups: React.FC<GroupsCues> = ({men, menN, women, womenN}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const M = grid(18, 6, 560, 560, 74);
@@ -211,12 +210,8 @@ export const Groups: React.FC<GroupsCues> = ({men, menN, women, womenN}) => {
         {M.map((p, i) => dot(p, i, mRed.has(i), men, mOrder.indexOf(i), `m${i}`))}
         {W.map((p, i) => dot(p, i + 6, wRed.has(i), women, wOrder.indexOf(i), `w${i}`))}
       </svg>
-      <Label x={560} y={350} o={interpolate(frame, [0, 8], [0, 1], clamp)} align="center">
-        HOMMES
-      </Label>
-      <Label x={1360} y={310} o={interpolate(frame, [6, 14], [0, 1], clamp)} align="center">
-        FEMMES
-      </Label>
+      <Label x={560} y={350} o={interpolate(frame, [0, 8], [0, 1], clamp)} align="center">{tx("HOMMES")}</Label>
+      <Label x={1360} y={310} o={interpolate(frame, [6, 14], [0, 1], clamp)} align="center">{tx("FEMMES")}</Label>
       {num(menN, 560, 12, 18)}
       {num(womenN, 1360, 6, 24)}
     </AbsoluteFill>
@@ -225,6 +220,7 @@ export const Groups: React.FC<GroupsCues> = ({men, menN, women, womenN}) => {
 
 // ── p16 : « c'est le labo, c'est intimidant » (le salon qui suit est en 3D : tools/plans3d.py salon) ─
 export const Lab: React.FC<{intimidating: number}> = ({intimidating}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const hw = ROOM.w / 2;
   const hd = ROOM.d / 2;
@@ -275,15 +271,14 @@ export const Lab: React.FC<{intimidating: number}> = ({intimidating}) => {
           <circle cx={me.x} cy={me.y} r={15} fill={C.ink} />
         </g>
       </svg>
-      <Label x={64} y={52} o={o}>
-        LABO · UNIVERSITÉ DE VIRGINIE
-      </Label>
+      <Label x={64} y={52} o={o}>{tx("LABO · UNIVERSITÉ DE VIRGINIE")}</Label>
     </AbsoluteFill>
   );
 };
 
 /** Le minuteur de la consigne, en bas à droite, qui continue de tourner. */
 export const Countdown: React.FC<{left: number; o?: number}> = ({left, o = 1}) => {
+  
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const l = Math.max(0, left - Math.floor(frame / fps));

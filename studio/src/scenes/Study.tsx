@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, ROOM, S, px, py} from '../theme';
@@ -59,9 +60,11 @@ export type StudyCues = {
   count: number; // fin de « minutes » : le compte à rebours part
 };
 
-const CONSIGNE = [['Reste', 'assis.'], ['Ne', "t'endors", 'pas.'], ['Occupe-toi', 'avec', 'tes', 'pensées.']];
+
 
 export const Study: React.FC<StudyCues> = (c) => {
+  const tx = useText();
+const CONSIGNE = [[tx("Reste"), tx("assis.")], [tx("Ne"), tx("t'endors"), tx("pas.")], [tx("Occupe-toi"), tx("avec"), tx("tes"), tx("pensées.")]];
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const draw = (start: number, len = 14) => interpolate(frame, [start, start + len], [0, 1], {...clamp, easing: inOut});
@@ -193,10 +196,8 @@ export const Study: React.FC<StudyCues> = (c) => {
 
       {/* chapitre + lieu */}
       <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, color: C.ink}}>
-        <div style={{fontSize: 20, letterSpacing: '0.18em', fontWeight: 500, opacity: draw(0, 10)}}>01 · L'EXPÉRIENCE</div>
-        <div style={{fontSize: 18, letterSpacing: '0.14em', marginTop: 10, color: C.inkSoft, opacity: labelO * planDim}}>
-          UNIVERSITÉ DE VIRGINIE · ÉTATS-UNIS
-        </div>
+        <div style={{fontSize: 20, letterSpacing: '0.18em', fontWeight: 500, opacity: draw(0, 10)}}>{tx("01 · L'EXPÉRIENCE")}</div>
+        <div style={{fontSize: 18, letterSpacing: '0.14em', marginTop: 10, color: C.inkSoft, opacity: labelO * planDim}}>{tx("UNIVERSITÉ DE VIRGINIE · ÉTATS-UNIS")}</div>
       </div>
       <div
         style={{
@@ -209,9 +210,7 @@ export const Study: React.FC<StudyCues> = (c) => {
           color: C.inkSoft,
           opacity: corridor * planDim,
         }}
-      >
-        AFFAIRES
-      </div>
+      >{tx("AFFAIRES")}</div>
 
       {/* la consigne, mot à mot sur la voix */}
       <div
@@ -237,9 +236,7 @@ export const Study: React.FC<StudyCues> = (c) => {
             paddingBottom: 12,
             marginBottom: 22,
           }}
-        >
-          CONSIGNE
-        </div>
+        >{tx("CONSIGNE")}</div>
         {CONSIGNE.map((line, li) => (
           <div key={li} style={{fontFamily: F.mono, fontSize: 46, lineHeight: 1.32, color: C.ink, display: 'flex', gap: '0.55em'}}>
             {line.map((w) => {

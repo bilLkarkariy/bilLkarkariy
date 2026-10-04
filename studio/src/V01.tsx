@@ -6,17 +6,25 @@ import {Citation} from './components/Citation';
 import {Lift, Shot3D, WindowLight} from './components/Light';
 import {Music} from './components/Music';
 import {Grain, Paper} from './components/Paper';
-import {at, LEAD, VO_SRC} from './cues';
+import {createCues, LEAD} from './cues';
+import {Lang, LanguageProvider, translator} from './i18n';
 import {Dots} from './scenes/Dots';
 import {Maquette} from './scenes/Maquette';
 import {Cit, citSfx, Fade, Sfx} from './montage/kit';
-import {P3, P3Back, P3Front, P3_SFX} from './montage/p3';
-import {P4, P4Front, P4_SFX, VERSE_SILENCE} from './montage/p4';
-import {P5, P5Front, P5_END, P5_SFX} from './montage/p5';
+import {getP3} from './montage/p3';
+import {getP4} from './montage/p4';
+import {getP5} from './montage/p5';
 import {Countdown, Groups, Lab, Static} from './scenes/Part2';
 import {Plan} from './scenes/Plan';
 import {Study} from './scenes/Study';
 import {C, F} from './theme';
+
+const makeV01 = (lang: Lang) => {
+const {at, vo} = createCues(lang);
+const tx = translator(lang);
+const {P3, P3Back, P3Front, P3_SFX} = getP3(lang);
+const {P4, P4Front, P4_SFX, VERSE_SILENCE} = getP4(lang);
+const {P5, P5Front, P5_END, P5_SFX} = getP5(lang);
 
 // ── Vidéo 1 : hook + « 01 · L'expérience » (ici), puis les parties suivantes (src/montage/p*.tsx).
 //    Tout est accroché aux mots de la voix.
@@ -87,7 +95,7 @@ const cits: Cit[] = [
     ...SHEET,
     y: 440,
     tilt: -0.5,
-    sub: {text: "« Juste penser : le défi de l'esprit livré à lui-même »", at: at('p6', 'étude') - docIn},
+    sub: {text: tx("« Juste penser : le défi de l'esprit livré à lui-même »"), at: at('p6', 'étude') - docIn},
     out: finIn - docIn,
   },
   {
@@ -105,7 +113,7 @@ const cits: Cit[] = [
         i: 0,
         at: at('p6', 'Science') - docIn - 5,
         tone: 'ink',
-        note: {at: at('p6', 'Science') - docIn - 1, kicker: 'PUBLIÉE DANS', big: 'Science', text: 'le 4 juillet 2014', y: -40},
+        note: {at: at('p6', 'Science') - docIn - 1, kicker: tx("PUBLIÉE DANS"), big: 'Science', text: tx("le 4 juillet 2014"), y: -40},
       },
     ],
     notesX: 1150,
@@ -130,9 +138,9 @@ const cits: Cit[] = [
         redact: -40,
         note: {
           at: at('p6', 'phrase') - finIn,
-          kicker: 'LA DERNIÈRE PHRASE',
-          text: 'presque personne ne la cite',
-          chips: [{t: 'CHANGE LE SENS DU BOUTON', at: at('p6', 'bouton') - finIn, dot: true}],
+          kicker: tx("LA DERNIÈRE PHRASE"),
+          text: tx("presque personne ne la cite"),
+          chips: [{t: tx("CHANGE LE SENS DU BOUTON"), at: at('p6', 'bouton') - finIn, dot: true}],
           until: at('p6', 'Tu') - finIn - 2,
           y: -10,
         },
@@ -141,9 +149,9 @@ const cits: Cit[] = [
     notes: [
       {
         at: at('p6', 'fin') - finIn,
-        kicker: "TU L'AURAS",
-        big: 'À la fin',
-        chips: [{t: "+ 2 MIN D'EXERCICE", at: at('p6', "d'exercice") - finIn}],
+        kicker: tx("TU L'AURAS"),
+        big: tx("À la fin"),
+        chips: [{t: tx("+ 2 MIN D'EXERCICE"), at: at('p6', "d'exercice") - finIn}],
         tone: 'red',
         y: 20,
       },
@@ -162,10 +170,10 @@ const cits: Cit[] = [
       {
         i: hl('pmc_methode', 'how much'),
         at: at('p9', 'combien') - methIn,
-        note: {at: at('p9', 'paierais') - methIn, kicker: 'LA QUESTION', text: 'Combien paierais-tu pour ne plus jamais la sentir ?'},
+        note: {at: at('p9', 'paierais') - methIn, kicker: tx("LA QUESTION"), text: tx("Combien paierais-tu pour ne plus jamais la sentir ?")},
       },
     ],
-    notes: [{at: at('p9', 'garde') - methIn, kicker: 'ON NE GARDE QUE CEUX QUI DISENT', big: '« Je paierais »', tone: 'red'}],
+    notes: [{at: at('p9', 'garde') - methIn, kicker: tx("ON NE GARDE QUE CEUX QUI DISENT"), big: tx("« Je paierais »"), tone: 'red'}],
   },
   // p12-p13 : les résultats
   {
@@ -182,9 +190,9 @@ const cits: Cit[] = [
         at: at('p12', 'appuyé') - resIn,
         note: {
           at: at('p12', 'cent') - resIn,
-          kicker: 'UN SEUL HOMME',
+          kicker: tx("UN SEUL HOMME"),
           count: {to: 190, dur: 24},
-          text: 'décharges en quinze minutes',
+          text: tx("décharges en quinze minutes"),
           until: at('p13', 'quarante-deux') - resIn - 2,
         },
       },
@@ -194,16 +202,16 @@ const cits: Cit[] = [
         at: at('p13', 'groupes') - resIn,
         note: {
           at: at('p13', 'quarante-deux') - resIn,
-          kicker: '18 HOMMES + 24 FEMMES',
+          kicker: tx("18 HOMMES + 24 FEMMES"),
           big: '42',
-          text: 'personnes en tout',
+          text: tx("personnes en tout"),
           until: at('p13', 'tous') - resIn - 4,
         },
       },
       {
         i: hl('pmc_resultats', 'only include'),
         at: at('p13', 'tous') - resIn,
-        note: {at: at('p13', 'dire') - resIn, kicker: 'JUSTE AVANT', text: 'Tous avaient dit : je paierais pour ne plus la sentir.'},
+        note: {at: at('p13', 'dire') - resIn, kicker: tx("JUSTE AVANT"), text: tx("Tous avaient dit : je paierais pour ne plus la sentir.")},
       },
     ],
   },
@@ -220,12 +228,12 @@ const cits: Cit[] = [
       {
         i: hl('pmc_vagabondage', 'their mind wandered'),
         at: at('p15', 'neuf') - vagIn,
-        note: {at: at('p15', 'dix') - vagIn, kicker: 'NEUF SUR DIX', count: {to: 89, fmt: (n) => `${n} %`}, text: "ont l'esprit qui part ailleurs"},
+        note: {at: at('p15', 'dix') - vagIn, kicker: tx("NEUF SUR DIX"), count: {to: 89, fmt: (n) => `${n} %`}, text: tx("ont l'esprit qui part ailleurs")},
       },
       {
         i: hl('pmc_vagabondage', 'difficult to concentrate'),
         at: at('p15', 'moitié') - vagIn,
-        note: {at: at('p15', 'trouvent') - vagIn, kicker: 'PLUS DE LA MOITIÉ', big: '57,5 %', text: 'trouvent dur de se concentrer'},
+        note: {at: at('p15', 'trouvent') - vagIn, kicker: tx("PLUS DE LA MOITIÉ"), big: tx("57,5 %"), text: tx("trouvent dur de se concentrer")},
       },
     ],
   },
@@ -244,13 +252,13 @@ const cits: Cit[] = [
         at: at('p16', 'trois') - domIn,
         note: {
           at: at('p16', 'triche') - domIn,
-          kicker: '32 %',
-          big: '1 sur 3',
-          text: 'a triché',
+          kicker: tx("32 %"),
+          big: tx("1 sur 3"),
+          text: tx("a triché"),
           chips: [
-            {t: 'MUSIQUE', at: at('p16', 'musique') - domIn},
-            {t: 'TÉLÉPHONE', at: at('p16', 'téléphone') - domIn},
-            {t: 'SE LEVER', at: at('p16', 'lève') - domIn},
+            {t: tx("MUSIQUE"), at: at('p16', 'musique') - domIn},
+            {t: tx("TÉLÉPHONE"), at: at('p16', 'téléphone') - domIn},
+            {t: tx("SE LEVER"), at: at('p16', 'lève') - domIn},
           ],
         },
       },
@@ -271,22 +279,22 @@ const cits: Cit[] = [
       {
         i: hl('pmc_etude9', 'ranged in age'),
         at: at('p17', 'dix-huit') - e9In,
-        note: {at: at('p17', 'soixante-dix-sept') - e9In, kicker: 'PAS QUE DES ÉTUDIANTS', big: '18 → 77 ans', until: at('p17', 'même') - e9In - 4},
+        note: {at: at('p17', 'soixante-dix-sept') - e9In, kicker: tx("PAS QUE DES ÉTUDIANTS"), big: tx("18 → 77 ans"), until: at('p17', 'même') - e9In - 4},
       },
       {
         i: hl('pmc_etude9', 'The results were similar'),
         at: at('p17', 'même') - e9In,
-        note: {at: at('p17', 'résultat') - e9In, big: 'Même résultat', text: "qu'avec les étudiants", until: at('p17', 'Aucun') - e9In - 4},
+        note: {at: at('p17', 'résultat') - e9In, big: tx("Même résultat"), text: tx("qu'avec les étudiants"), until: at('p17', 'Aucun') - e9In - 4},
       },
       {
         i: hl('pmc_etude9', "participants' age"),
         at: at('p17', 'Aucun') - e9In,
-        note: {at: at('p17', "l'âge") - e9In, big: 'Aucun lien', text: "avec l'âge"},
+        note: {at: at('p17', "l'âge") - e9In, big: tx("Aucun lien"), text: tx("avec l'âge")},
       },
       {
         i: hl('pmc_etude9', 'smart phones'),
         at: at('p17', 'fréquence') - e9In,
-        note: {at: at('p17', 'fréquence') - e9In + 4, text: '… ni avec le temps passé sur le smartphone'},
+        note: {at: at('p17', 'fréquence') - e9In + 4, text: tx("… ni avec le temps passé sur le smartphone")},
       },
     ],
   },
@@ -305,12 +313,12 @@ const cits: Cit[] = [
         at: at('p19', 'quelques') - prepIn,
         note: {
           at: at('p19', 'préparer') - prepIn,
-          kicker: 'AVANT DE COMMENCER',
-          text: 'quelques minutes pour préparer à quoi penser',
+          kicker: tx("AVANT DE COMMENCER"),
+          text: tx("quelques minutes pour préparer à quoi penser"),
           chips: [
-            {t: 'UN VOYAGE', at: at('p19', 'voyage') - prepIn},
-            {t: 'UN SOUVENIR', at: at('p19', 'souvenir') - prepIn},
-            {t: 'UN PROJET', at: at('p19', 'projet') - prepIn},
+            {t: tx("UN VOYAGE"), at: at('p19', 'voyage') - prepIn},
+            {t: tx("UN SOUVENIR"), at: at('p19', 'souvenir') - prepIn},
+            {t: tx("UN PROJET"), at: at('p19', 'projet') - prepIn},
           ],
           until: at('p19', 'Ça', 'start', 1) - prepIn - 2, // le 2e « ça » : « Ça n'a rien changé »
         },
@@ -318,7 +326,7 @@ const cits: Cit[] = [
       {
         i: hl('pmc_preparation', 'none reliably'),
         at: at('p19', 'Ça', 'start', 1) - prepIn,
-        note: {at: at('p19', 'rien') - prepIn, big: 'Rien changé.', text: "Aucune version n'a rendu le moment plus agréable."},
+        note: {at: at('p19', 'rien') - prepIn, big: tx("Rien changé."), text: tx("Aucune version n'a rendu le moment plus agréable.")},
       },
     ],
   },
@@ -437,9 +445,12 @@ const played = (() => {
     });
 })();
 
-export const V01_DURATION = P5_END; // (la voix finit à DURATION ; l'écran de fin dure 6 s de plus)
+const V01_DURATION = P5_END; // (la voix finit à DURATION ; l'écran de fin dure 6 s de plus)
 
-export const V01: React.FC = () => (
+const Component: React.FC = () => {
+  const frame = useCurrentFrame();
+  const verse = lang === 'en' && frame >= VERSE_SILENCE[0] && frame < VERSE_SILENCE[1];
+  return (
   <AbsoluteFill style={{background: C.paper}}>
     <Paper grid={0.8} />
     <P3Back />
@@ -480,7 +491,7 @@ export const V01: React.FC = () => (
     <Sequence from={aloneIn} durationInFrames={groupsIn - aloneIn + 8}>
       <Fade from={groupsIn - aloneIn} len={8} out>
         {/* 3D : soleil rasant par la porte, la porte se ferme, il ne reste que le bouton */}
-        <Shot3D dir="seuls" frames={groupsIn - aloneIn + 2} label="La maquette en contre-jour : un soleil rasant entre par la porte jusqu'à la chaise. La porte se ferme, la lumière se referme, il ne reste que le bouton rouge qui s'allume.">
+        <Shot3D dir="seuls" frames={groupsIn - aloneIn + 2} label={tx("La maquette en contre-jour : un soleil rasant entre par la porte jusqu'à la chaise. La porte se ferme, la lumière se referme, il ne reste que le bouton rouge qui s'allume.")}>
           <Countdown left={15 * 60 - 13} />
         </Shot3D>
       </Fade>
@@ -509,16 +520,14 @@ export const V01: React.FC = () => (
 
     <Sequence from={salonIn} durationInFrames={domIn - salonIn + 8}>
       <Fade from={domIn - salonIn} len={8} out>
-        <Shot3D dir="salon" frames={domIn - salonIn + 2} label="Le salon en maquette, le soir, une lampe chaude. Sur « canapé », le participant tombe dans le canapé.">
-          <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink}}>
-            CHEZ EUX · EN LIGNE, SEULS
-          </div>
+        <Shot3D dir="salon" frames={domIn - salonIn + 2} label={tx("Le salon en maquette, le soir, une lampe chaude. Sur « canapé », le participant tombe dans le canapé.")}>
+          <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.ink}}>{tx("CHEZ EUX · EN LIGNE, SEULS")}</div>
         </Shot3D>
       </Fade>
     </Sequence>
 
     <Sequence from={lastIn} durationInFrames={prepIn - lastIn}>
-      <Shot3D dir="bouton" frames={prepIn - lastIn + 2} label="Gros plan sur le bouton rouge, le participant flou derrière. Sur « bouton », la lumière tombe." />
+      <Shot3D dir="bouton" frames={prepIn - lastIn + 2} label={tx("Gros plan sur le bouton rouge, le participant flou derrière. Sur « bouton », la lumière tombe.")} />
     </Sequence>
 
     {cits.map(({from, to, sound, ...p}, i) => (
@@ -533,28 +542,28 @@ export const V01: React.FC = () => (
     <P5 />
 
     {/* la lumière de la fenêtre, sur tout ce qui est posé sur le bureau */}
-    <WindowLight />
+    {!verse && <WindowLight />}
 
     {/* face caméra : emplacements à remplacer par les rushes */}
     <Sequence from={0} durationInFrames={cut1}>
-      <ARoll shot="PLAN SERRÉ · il retourne son téléphone sur le bureau" line="« Quinze minutes. »" />
+      <ARoll shot={tx("PLAN SERRÉ · il retourne son téléphone sur le bureau")} line={tx("« Quinze minutes. »")} />
     </Sequence>
     <Sequence from={aroll2} durationInFrames={docIn - aroll2}>
-      <ARoll shot="REGARD CAMÉRA" line="« Et je suis presque sûr que toi aussi, tu aurais appuyé. »" />
+      <ARoll shot={tx("REGARD CAMÉRA")} line={tx("« Et je suis presque sûr que toi aussi, tu aurais appuyé. »")} />
     </Sequence>
     <Sequence from={aroll3} durationInFrames={vagIn - aroll3}>
-      <ARoll shot="REGARD CAMÉRA · la relance" line="« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »" />
+      <ARoll shot={tx("REGARD CAMÉRA · la relance")} line={tx("« Tu te dis peut-être : des étudiants, dans un labo, ça ne prouve pas grand-chose. »")} />
     </Sequence>
     <P3Front />
     <P4Front />
     <P5Front />
 
-    <Grain />
+    {!verse && <Grain />}
 
     {/* son */}
-    <Sequence from={LEAD}>
-      <Audio src={staticFile(VO_SRC)} />
-    </Sequence>
+    {vo.audio && <Sequence from={LEAD}>
+      <Audio src={staticFile(vo.audio)} volume={verse ? 0 : 1} />
+    </Sequence>}
     {/* musique (ElevenLabs, tools/sfx_el.py music) : la science, rien sous la pièce vide, la khalwa, la voie */}
     <Music
       silence={[VERSE_SILENCE]}
@@ -570,7 +579,7 @@ export const V01: React.FC = () => (
           src={staticFile(s.src)}
           toneFrequency={s.tone}
           volume={(lf) =>
-            s.v *
+            (lang === 'en' && s.f + lf >= VERSE_SILENCE[0] && s.f + lf < VERSE_SILENCE[1] ? 0 : s.v) *
             (s.fadeIn ? interpolate(lf, [0, s.fadeIn], [0.35, 1], CLAMP) : 1) *
             interpolate(lf, [s.len - 3, s.len], [1, 0], CLAMP)
           }
@@ -579,3 +588,14 @@ export const V01: React.FC = () => (
     ))}
   </AbsoluteFill>
 );
+
+};
+return {Component, duration: V01_DURATION};
+};
+const versions = {fr: makeV01('fr'), en: makeV01('en')};
+export const durationFor = (lang: Lang) => versions[lang].duration;
+export const V01_DURATION = durationFor('fr');
+export const V01: React.FC<{lang?: Lang}> = ({lang = 'fr'}) => {
+  const {Component} = versions[lang];
+  return <LanguageProvider value={lang}><Component /></LanguageProvider>;
+};

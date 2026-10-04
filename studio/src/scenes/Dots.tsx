@@ -1,3 +1,4 @@
+import {useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../theme';
@@ -8,6 +9,7 @@ export type DotsCues = {presses: number[]; pct: number; before: number; pay: num
 
 /** « Deux hommes sur trois ont appuyé. » Chaque personne = un point, comme partout. */
 export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const xs = [760, 960, 1160];
@@ -61,12 +63,8 @@ export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
           gap: 18,
         }}
       >
-        <span style={{opacity: beforeIn, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.inkSoft}}>
-          JUSTE AVANT
-        </span>
-        <span style={{opacity: payIn, fontFamily: F.serif, fontStyle: 'italic', fontSize: 42, color: C.ink}}>
-          prêts à payer pour ne plus jamais la sentir
-        </span>
+        <span style={{opacity: beforeIn, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.inkSoft}}>{tx("JUSTE AVANT")}</span>
+        <span style={{opacity: payIn, fontFamily: F.serif, fontStyle: 'italic', fontSize: 42, color: C.ink}}>{tx("prêts à payer pour ne plus jamais la sentir")}</span>
       </div>
       <div
         style={{
@@ -84,7 +82,7 @@ export const Dots: React.FC<DotsCues> = ({presses, pct, before, pay}) => {
         <span style={{fontFamily: F.mono, fontWeight: 500, fontSize: 150, color: C.ink, letterSpacing: '-0.02em'}}>
           67<span style={{marginLeft: '0.08em'}}>%</span>
         </span>
-        <span style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 50, color: C.ink}}>des hommes</span>
+        <span style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 50, color: C.ink}}>{tx("des hommes")}</span>
       </div>
     </AbsoluteFill>
   );

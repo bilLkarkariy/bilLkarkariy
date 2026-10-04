@@ -4,10 +4,15 @@ import {hl} from '../captures';
 import {ARoll} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
-import {at} from '../cues';
+import {createCues} from '../cues';
+import {Lang, translator} from '../i18n';
 import {ArabicWord, GhazaliMap, Kinetic, Tasbih, Verse} from '../scenes/Part4';
 import {C, F} from '../theme';
 import {Cit, citSfx, Fade, Sfx} from './kit';
+
+const makeP4 = (lang: Lang) => {
+const {at} = createCues(lang);
+const tx = translator(lang);
 
 // ── Partie 4 (4:28 → 7:29) : la pièce sans meuble, la khalwa, al-Ghazali, le dhikr, le verset ─────
 //    p35 → p53. Trois plans 3D (tools/plans3d.py : vide, khalwa, dhikr) ; les vraies pages :
@@ -42,7 +47,7 @@ const p50In = at('p50') - 4;
 const verseIn = at('p52') - 10;
 const aroll6 = at('p53') - 6;
 const fondIn = at('p53', 'Et') - 4;
-export const P4_END = at('p54') - 6;
+const P4_END = at('p54') - 6;
 
 const WATT = 'AL-GHAZĀLĪ · « DELIVERANCE FROM ERROR » · TRAD. W. M. WATT';
 
@@ -66,8 +71,8 @@ const cits: Cit[] = [
         at: at('p39', 'sans') - techIn,
         note: {
           at: at('p39', 'entraînement') - techIn,
-          kicker: 'LES AUTEURS LE DISENT',
-          text: 'Sans entraînement, on préfère faire plutôt que penser',
+          kicker: tx("LES AUTEURS LE DISENT"),
+          text: tx("Sans entraînement, on préfère faire plutôt que penser"),
           until: at('p39', 'citent') - 2 - techIn,
           y: -60,
         },
@@ -77,10 +82,10 @@ const cits: Cit[] = [
         at: at('p39', 'méditation') - techIn,
         note: {
           at: at('p39', 'méditation') + 2 - techIn,
-          kicker: 'ILS CITENT',
+          kicker: tx("ILS CITENT"),
           chips: [
-            {t: 'LA MÉDITATION', at: at('p39', 'méditation') + 2 - techIn},
-            {t: "D'AUTRES TECHNIQUES", at: at('p39', 'techniques') - techIn},
+            {t: tx("LA MÉDITATION"), at: at('p39', 'méditation') + 2 - techIn},
+            {t: tx("D'AUTRES TECHNIQUES"), at: at('p39', 'techniques') - techIn},
           ],
           until: at('p40', 'Deux') - 2 - techIn,
           y: -60,
@@ -90,7 +95,7 @@ const cits: Cit[] = [
         i: hl('pmc_techniques', 'meditation'),
         at: at('p40', "D'autres") - techIn,
         tone: 'gold',
-        note: {at: at('p40', 'Deux') - techIn, kicker: '« OTHER TECHNIQUES »', big: 'Deux mots', text: 'dans un article scientifique', tone: 'gold', y: -60},
+        note: {at: at('p40', 'Deux') - techIn, kicker: tx("« OTHER TECHNIQUES »"), big: tx("Deux mots"), text: tx("dans un article scientifique"), tone: 'gold', y: -60},
       },
     ],
   },
@@ -107,13 +112,13 @@ const cits: Cit[] = [
     tag: WATT,
     out: langueIn - 6 - ghzIn,
     notes: [
-      {at: 6, kicker: 'ABŪ ḤĀMID AL-GHAZĀLĪ · 1058-1111', text: 'un professeur célèbre', until: at('p46', 'Trois') - 2 - ghzIn, y: -150},
+      {at: 6, kicker: tx("ABŪ ḤĀMID AL-GHAZĀLĪ · 1058-1111"), text: tx("un professeur célèbre"), until: at('p46', 'Trois') - 2 - ghzIn, y: -150},
     ],
     marks: [
       {
         i: 0,
         at: at('p46', 'Trois') - ghzIn,
-        note: {at: at('p46', 'cents') - ghzIn, kicker: 'À BAGDAD', count: {to: 300, dur: 18}, text: 'étudiants : une carrière au sommet', y: -150},
+        note: {at: at('p46', 'cents') - ghzIn, kicker: tx("À BAGDAD"), count: {to: 300, dur: 18}, text: tx("étudiants : une carrière au sommet"), y: -150},
       },
     ],
   },
@@ -133,12 +138,12 @@ const cits: Cit[] = [
       {
         i: hl('ghazali_langue', 'my tongue would not'),
         at: at('p47', 'mot') - langueIn,
-        note: {at: at('p47', 'sort') - langueIn, kicker: 'IL VEUT FAIRE COURS', text: '« ma langue ne prononçait plus un seul mot »', until: at('p47', 'langue') - 2 - langueIn, y: -140},
+        note: {at: at('p47', 'sort') - langueIn, kicker: tx("IL VEUT FAIRE COURS"), text: tx("« ma langue ne prononçait plus un seul mot »"), until: at('p47', 'langue') - 2 - langueIn, y: -140},
       },
       {
         i: hl('ghazali_langue', 'God caused'),
         at: at('p47', 'langue') - langueIn,
-        note: {at: at('p47', 'desséchée') - langueIn, kicker: 'IL LE RACONTE LUI-MÊME', text: '« Dieu dessécha ma langue : je ne pouvais plus enseigner »', y: -140},
+        note: {at: at('p47', 'desséchée') - langueIn, kicker: tx("IL LE RACONTE LUI-MÊME"), text: tx("« Dieu dessécha ma langue : je ne pouvais plus enseigner »"), y: -140},
       },
     ],
   },
@@ -157,12 +162,12 @@ const cits: Cit[] = [
       {
         i: hl('ghazali_coeur', 'the doctors'),
         at: at('p47', 'médecins') - coeurIn,
-        note: {at: at('p47', 'renoncent') - coeurIn, kicker: 'LES MÉDECINS', text: 'renoncent à le soigner', until: at('p47', 'Ça') - 2 - coeurIn, y: -160},
+        note: {at: at('p47', 'renoncent') - coeurIn, kicker: tx("LES MÉDECINS"), text: tx("renoncent à le soigner"), until: at('p47', 'Ça') - 2 - coeurIn, y: -160},
       },
       {
         i: hl('ghazali_coeur', 'This trouble'),
         at: at('p47', 'Ça') - coeurIn,
-        note: {at: at('p47', 'cœur') - coeurIn, kicker: 'DISENT-ILS', big: '« Ça vient du cœur »', y: -160},
+        note: {at: at('p47', 'cœur') - coeurIn, kicker: tx("DISENT-ILS"), big: tx("« Ça vient du cœur »"), y: -160},
       },
     ],
   },
@@ -195,7 +200,7 @@ const cits: Cit[] = [
       {
         i: 0,
         at: at('p48', 'enferme') - minaretIn,
-        note: {at: at('p48', 'Toute') - minaretIn, kicker: 'IL LE RACONTE', text: '« je montais au minaret de la mosquée toute la journée, et je m’y enfermais »', y: -560},
+        note: {at: at('p48', 'Toute') - minaretIn, kicker: tx("IL LE RACONTE"), text: tx("« je montais au minaret de la mosquée toute la journée, et je m’y enfermais »"), y: -560},
       },
     ],
   },
@@ -216,16 +221,16 @@ const cits: Cit[] = [
         i: hl('karkariya_fondements', 'the Spiritual Retreat'),
         at: at('p53', 'retraite') - fondIn,
         tone: 'gold',
-        note: {at: at('p53', 'retraite') + 2 - fondIn, kicker: 'AL-KHALWA', big: 'La retraite', tone: 'gold'},
+        note: {at: at('p53', 'retraite') + 2 - fondIn, kicker: 'AL-KHALWA', big: tx("La retraite"), tone: 'gold'},
       },
       {
         i: hl('karkariya_fondements', 'the Singular Name'),
         at: at('p53', 'Nom') - fondIn,
         tone: 'gold',
-        note: {at: at('p53', 'Nom') + 2 - fondIn, kicker: 'AL-ISM AL-MUFRAD', big: 'Le Nom', tone: 'gold'},
+        note: {at: at('p53', 'Nom') + 2 - fondIn, kicker: 'AL-ISM AL-MUFRAD', big: tx("Le Nom"), tone: 'gold'},
       },
     ],
-    notes: [{at: at('p53', 'fondements') - fondIn, kicker: 'PARMI LES FONDEMENTS DE LA VOIE', text: 'ces deux-là', until: at('p53', 'retraite') - 2 - fondIn}],
+    notes: [{at: at('p53', 'fondements') - fondIn, kicker: tx("PARMI LES FONDEMENTS DE LA VOIE"), text: tx("ces deux-là"), until: at('p53', 'retraite') - 2 - fondIn}],
   },
 ];
 
@@ -249,12 +254,9 @@ const KhalwaHud: React.FC = () => {
   const ink = `rgba(${Math.round(34 + 200 * night)},${Math.round(33 + 197 * night)},${Math.round(30 + 194 * night)},1)`;
   return (
     <>
-      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: ink, opacity: interpolate(frame, [jours0 - 10, jours0], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
-        KHALWA · JOUR {String(day).padStart(2, '0')} / 40
+      <div style={{position: 'absolute', left: 64, top: 52, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: ink, opacity: interpolate(frame, [jours0 - 10, jours0], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("KHALWA · JOUR")}{' '}{String(day).padStart(2, '0')} / 40
       </div>
-      <div style={{position: 'absolute', left: 64, top: 86, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.red, opacity: interpolate(frame, [fuy, fuy + 8], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
-        VIRGINIE · 15 MINUTES
-      </div>
+      <div style={{position: 'absolute', left: 64, top: 86, fontFamily: F.mono, fontSize: 20, letterSpacing: '0.16em', color: C.red, opacity: interpolate(frame, [fuy, fuy + 8], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>{tx("VIRGINIE · 15 MINUTES")}</div>
     </>
   );
 };
@@ -266,7 +268,7 @@ const Push: React.FC<{len: number; to: number; ox: number; oy: number; children:
   return <AbsoluteFill style={{transform: `scale(${k})`, transformOrigin: `${ox}px ${oy}px`}}>{children}</AbsoluteFill>;
 };
 
-export const P4_SFX: Sfx[] = [
+const P4_SFX: Sfx[] = [
   ['paper', at('p35', 'chaise') + 2, 0.5],
   ['paper', at('p35', 'table') + 2, 0.5],
   ['toc_mur', at('p35', 'touches') + 10, 0.6],
@@ -293,13 +295,13 @@ export const P4_SFX: Sfx[] = [
 ];
 
 /** Ce qui est posé sur le bureau (sous la lumière de la fenêtre). */
-export const P4: React.FC = () => (
+const P4: React.FC = () => (
   <>
     {/* p35-p36 : la pièce sans meuble ; « le téléphone, c'est la porte » : le bureau s'éteint */}
     <Sequence from={videIn} durationInFrames={videN + 10}>
       <Fade from={videN} len={10} out>
         <Dusk curve={(f) => interpolate(f, [at('p36', 'téléphone') - 6 - videIn, at('p36', 'téléphone') + 12 - videIn], [0, 0.82], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
-        <Shot3D dir="vide" frames={videN} label="La maquette sans meubles : la chaise et la table disparaissent sur leurs mots, le pion entre, tourne, touche les murs, cherche la porte. Sur « téléphone », tout s'éteint et la porte s'allume comme un écran." />
+        <Shot3D dir="vide" frames={videN} label={tx("La maquette sans meubles : la chaise et la table disparaissent sur leurs mots, le pion entre, tourne, touche les murs, cherche la porte. Sur « téléphone », tout s'éteint et la porte s'allume comme un écran.")} />
       </Fade>
     </Sequence>
 
@@ -307,11 +309,11 @@ export const P4: React.FC = () => (
     <Sequence from={p37In} durationInFrames={techIn - p37In}>
       <Kinetic
         lines={[
-          {t: 'un défaut de caractère', at: at('p37', 'défaut') - 2 - p37In, y: 400, size: 76, italic: true, strike: at('p37', 'caractère') + 4 - p37In, out: at('p37', 'On') - 6 - p37In},
-          {t: 'Personne ne t’a appris à habiter cette pièce.', at: at('p37', 'Personne') - p37In, y: 540, size: 60, gold: ['habiter'], out: at('p37', 'On') - 6 - p37In},
-          {t: 'REMPLIR TON ATTENTION', at: at('p37', 'remplir') - p37In, y: 440, size: 40, mono: true, out: at('p38') - 6 - p37In},
-          {t: 'JAMAIS Y RESTER', at: at('p37', 'Jamais') - p37In, y: 530, size: 40, mono: true, red: ['JAMAIS'], out: at('p38') - 6 - p37In},
-          {t: 'Comme un muscle qu’on n’a jamais entraîné.', at: at('p38', 'muscle') - 4 - p37In, y: 490, size: 62, italic: true},
+          {t: tx("un défaut de caractère"), at: at('p37', 'défaut') - 2 - p37In, y: 400, size: 76, italic: true, strike: at('p37', 'caractère') + 4 - p37In, out: at('p37', 'On') - 6 - p37In},
+          {t: tx("Personne ne t’a appris à habiter cette pièce."), at: at('p37', 'Personne') - p37In, y: 540, size: 60, gold: [tx("habiter")], out: at('p37', 'On') - 6 - p37In},
+          {t: tx("REMPLIR TON ATTENTION"), at: at('p37', 'remplir') - p37In, y: 440, size: 40, mono: true, out: at('p38') - 6 - p37In},
+          {t: tx("JAMAIS Y RESTER"), at: at('p37', 'Jamais') - p37In, y: 530, size: 40, mono: true, red: [tx("JAMAIS")], out: at('p38') - 6 - p37In},
+          {t: tx("Comme un muscle qu’on n’a jamais entraîné."), at: at('p38', 'muscle') - 4 - p37In, y: 490, size: 62, italic: true},
         ]}
       />
     </Sequence>
@@ -320,10 +322,10 @@ export const P4: React.FC = () => (
     <Sequence from={siecleIn} durationInFrames={motIn - siecleIn}>
       <Kinetic
         lines={[
-          {t: 'Derrière ces deux mots,', at: at('p40', 'Derrière') - siecleIn, y: 380, size: 56, italic: true, out: at('p40', 'Des', 'start', 1) - 6 - siecleIn},
-          {t: 'des siècles.', at: at('p40', 'siècles') - 4 - siecleIn, y: 470, size: 130, gold: ['siècles.'], out: at('p40', 'Des', 'start', 1) - 6 - siecleIn},
-          {t: 'Des traditions entières, une seule chose :', at: at('p40', 'Des', 'start', 1) - siecleIn, y: 400, size: 52, italic: true},
-          {t: 'être seul sans fuir.', at: at('p40', 'être') - 2 - siecleIn, y: 490, size: 120, gold: ['seul'], red: ['fuir.', 'fuir']},
+          {t: tx("Derrière ces deux mots,"), at: at('p40', 'Derrière') - siecleIn, y: 380, size: 56, italic: true, out: at('p40', 'Des', 'start', 1) - 6 - siecleIn},
+          {t: tx("des siècles."), at: at('p40', 'siècles') - 4 - siecleIn, y: 470, size: 130, gold: [tx("siècles.")], out: at('p40', 'Des', 'start', 1) - 6 - siecleIn},
+          {t: tx("Des traditions entières, une seule chose :"), at: at('p40', 'Des', 'start', 1) - siecleIn, y: 400, size: 52, italic: true},
+          {t: tx("être seul sans fuir."), at: at('p40', 'être') - 2 - siecleIn, y: 490, size: 120, gold: [tx("seul")], red: [tx("fuir."), tx("fuir")]},
         ]}
       />
     </Sequence>
@@ -333,20 +335,20 @@ export const P4: React.FC = () => (
       <Fade from={khalwaIn - motIn} len={8} out>
         <Kinetic
           lines={[
-            {t: 'Un mot qui veut dire, littéralement :', at: at('p41', 'Un', 'start', 1) - motIn, y: 390, size: 52, italic: true, out: at('p42', 'khalwa') - 10 - motIn},
-            {t: '« solitude »', at: at('p41', 'solitude') - 2 - motIn, y: 480, size: 130, italic: true, out: at('p42', 'khalwa') - 10 - motIn},
-            {t: 'le soufisme, la tradition intérieure de l’islam', at: at('p43', 'soufisme') - motIn, y: 780, size: 46, italic: true},
-            {t: 'LE CŒUR · L’ATTENTION', at: at('p43', 'cœur') - 2 - motIn, y: 870, size: 26, mono: true, stagger: 8},
+            {t: tx("Un mot qui veut dire, littéralement :"), at: at('p41', 'Un', 'start', 1) - motIn, y: 390, size: 52, italic: true, out: at('p42', 'khalwa') - 10 - motIn},
+            {t: tx("« solitude »"), at: at('p41', 'solitude') - 2 - motIn, y: 480, size: 130, italic: true, out: at('p42', 'khalwa') - 10 - motIn},
+            {t: tx("le soufisme, la tradition intérieure de l’islam"), at: at('p43', 'soufisme') - motIn, y: 780, size: 46, italic: true},
+            {t: tx("LE CŒUR · L’ATTENTION"), at: at('p43', 'cœur') - 2 - motIn, y: 870, size: 26, mono: true, stagger: 8},
           ]}
         />
-        <ArabicWord ar="خلوة" latin="KHALWA" gloss="la retraite spirituelle" at={at('p42', 'khalwa') - 6 - motIn} glossAt={at('p42', 'retraite') - motIn} y={130} />
+        <ArabicWord ar="خلوة" latin="KHALWA" gloss={tx("la retraite spirituelle")} at={at('p42', 'khalwa') - 6 - motIn} glossAt={at('p42', 'retraite') - motIn} y={130} />
       </Fade>
     </Sequence>
 
     {/* p44 : la khalwa en 3D, les jours et les nuits */}
     <Sequence from={khalwaIn} durationInFrames={khalwaN}>
       <Dusk curve={(f) => 0.62 * Math.pow(1 - Math.max(0, sunH(f)), 1.4)} />
-      <Shot3D dir="khalwa" frames={khalwaN} label="Le pion entre et ferme la porte lui-même ; une petite lumière d'or au centre. Sur « quarante jours », le soleil tourne au-dessus de la maquette : jours et nuits en accéléré.">
+      <Shot3D dir="khalwa" frames={khalwaN} label={tx("Le pion entre et ferme la porte lui-même ; une petite lumière d'or au centre. Sur « quarante jours », le soleil tourne au-dessus de la maquette : jours et nuits en accéléré.")}>
         <KhalwaHud />
       </Shot3D>
     </Sequence>
@@ -366,7 +368,7 @@ export const P4: React.FC = () => (
             bagdadSub={{t: '1095', at: at('p46', 'mille') - p45In}}
           />
         </Lift>
-        <Kinetic lines={[{t: 'Pourquoi quelqu’un ferait ça de son plein gré ?', at: 4, y: 470, size: 60, italic: true, out: at('p45', 'Écoute') - 8 - p45In}]} />
+        <Kinetic lines={[{t: tx("Pourquoi quelqu’un ferait ça de son plein gré ?"), at: 4, y: 470, size: 60, italic: true, out: at('p45', 'Écoute') - 8 - p45In}]} />
       </Fade>
     </Sequence>
 
@@ -384,7 +386,7 @@ export const P4: React.FC = () => (
             bagdad={-30}
             damas={at('p48', 'Damas') - routeIn}
             route={[at('p48', 'part') - routeIn, at('p48', 'Damas') - routeIn]}
-            routeLabel={{t: 'près de deux ans à Damas', at: at('p48', 'deux') - routeIn}}
+            routeLabel={{t: tx("près de deux ans à Damas"), at: at('p48', 'deux') - routeIn}}
           />
         </Lift>
       </Fade>
@@ -404,17 +406,17 @@ export const P4: React.FC = () => (
 
     {/* p49 : pas un éloge de la fuite ; l'Iḥyāʾ, livre 16 ; l'intention */}
     <Sequence from={p49In} durationInFrames={p50In - p49In}>
-      <Kinetic lines={[{t: 'Ce n’est pas un éloge de la fuite.', at: 4, y: 470, size: 66, italic: true, red: ['fuite.'], out: at('p49', 'Il') - 6 - p49In}]} />
+      <Kinetic lines={[{t: tx("Ce n’est pas un éloge de la fuite."), at: 4, y: 470, size: 66, italic: true, red: [tx("fuite.")], out: at('p49', 'Il') - 6 - p49In}]} />
       <Lift>
         <NoteCard
           n={{
             at: at('p49', 'livre') - p49In,
-            kicker: 'IḤYĀʾ ʿULŪM AL-DĪN · LIVRE 16',
-            big: 'La retraite',
+            kicker: tx("IḤYĀʾ ʿULŪM AL-DĪN · LIVRE 16"),
+            big: tx("La retraite"),
             text: 'Kitāb ādāb al-ʿuzla',
             chips: [
-              {t: 'VIVRE AU MILIEU DES GENS', at: at('p49', 'vivre') - p49In},
-              {t: 'OU SE RETIRER ?', at: at('p49', 'retirer') - p49In},
+              {t: tx("VIVRE AU MILIEU DES GENS"), at: at('p49', 'vivre') - p49In},
+              {t: tx("OU SE RETIRER ?"), at: at('p49', 'retirer') - p49In},
             ],
           }}
           x={250}
@@ -422,8 +424,8 @@ export const P4: React.FC = () => (
           w={640}
           tone="ink"
         />
-        <NoteCard n={{at: at('p49', 'réponse') - p49In, kicker: 'SA RÉPONSE', big: 'Ça dépend', text: 'et d’abord de l’intention.'}} x={1010} y={260} w={620} tone="gold" />
-        <NoteCard n={{at: at('p49', 'revenir') - 4 - p49In, kicker: 'ET LUI-MÊME', text: 'a fini par revenir enseigner.'}} x={1010} y={600} w={620} tone="ink" />
+        <NoteCard n={{at: at('p49', 'réponse') - p49In, kicker: tx("SA RÉPONSE"), big: tx("Ça dépend"), text: tx("et d’abord de l’intention.")}} x={1010} y={260} w={620} tone="gold" />
+        <NoteCard n={{at: at('p49', 'revenir') - 4 - p49In, kicker: tx("ET LUI-MÊME"), text: tx("a fini par revenir enseigner.")}} x={1010} y={600} w={620} tone="ink" />
       </Lift>
     </Sequence>
 
@@ -432,12 +434,12 @@ export const P4: React.FC = () => (
       <Fade from={dhikrIn - p50In} len={8} out>
         <Kinetic
           lines={[
-            {t: 'Seul dans une pièce fermée, on fait quoi ?', at: at('p50', 'seul') - p50In, y: 470, size: 60, italic: true, out: at('p50', 'Dans', 'start', 1) - 6 - p50In},
-            {t: 'répéter un nom. Encore, et encore.', at: at('p51', 'répéter') - p50In, y: 760, size: 56, italic: true, gold: ['nom.']},
-            {t: 'AILLEURS : MANTRA', at: at('p51', 'mantra') - 4 - p50In, y: 860, size: 24, mono: true, stagger: 6},
+            {t: tx("Seul dans une pièce fermée, on fait quoi ?"), at: at('p50', 'seul') - p50In, y: 470, size: 60, italic: true, out: at('p50', 'Dans', 'start', 1) - 6 - p50In},
+            {t: tx("répéter un nom. Encore, et encore."), at: at('p51', 'répéter') - p50In, y: 760, size: 56, italic: true, gold: [tx("nom.")]},
+            {t: tx("AILLEURS : MANTRA"), at: at('p51', 'mantra') - 4 - p50In, y: 860, size: 24, mono: true, stagger: 6},
           ]}
         />
-        <ArabicWord ar="ذكر" latin="DHIKR" gloss="le rappel" at={at('p50', 'dhikr') - 8 - p50In} glossAt={at('p51', 'rappel') - p50In} y={150} out={at('p51', 'Concrètement') - 6 - p50In} />
+        <ArabicWord ar="ذكر" latin="DHIKR" gloss={tx("le rappel")} at={at('p50', 'dhikr') - 8 - p50In} glossAt={at('p51', 'rappel') - p50In} y={150} out={at('p51', 'Concrètement') - 6 - p50In} />
         <Lift>
           <Tasbih
             at={at('p51', 'Concrètement') - p50In}
@@ -449,7 +451,7 @@ export const P4: React.FC = () => (
 
     {/* p51 : le point fixe (3D) */}
     <Sequence from={dhikrIn} durationInFrames={dhikrN}>
-      <Shot3D dir="dhikr" frames={dhikrN} label="La pièce nue. Sur « meuble », le point d'or se pose au centre ; le pion s'en éloigne (« l'esprit part ») et y revient, deux fois." />
+      <Shot3D dir="dhikr" frames={dhikrN} label={tx("La pièce nue. Sur « meuble », le point d'or se pose au centre ; le pion s'en éloigne (« l'esprit part ») et y revient, deux fois.")} />
     </Sequence>
 
     {/* p52 : le verset. Aucun mouvement, aucun son dessous. */}
@@ -460,11 +462,17 @@ export const P4: React.FC = () => (
 );
 
 /** Au premier plan : le face caméra. */
-export const P4Front: React.FC = () => (
+const P4Front: React.FC = () => (
   <Sequence from={aroll6} durationInFrames={fondIn - aroll6}>
-    <ARoll shot="PLAN TAILLE · la veste visible" line="« La voie que je suis s'appelle la Karkariya. […] Cette veste rapiécée, c'est son habit. »" />
+    <ARoll shot={tx("PLAN TAILLE · la veste visible")} line={tx("« La voie que je suis s'appelle la Karkariya. […] Cette veste rapiécée, c'est son habit. »")} />
   </Sequence>
 );
 
 /** Fenêtre où rien ne doit jouer (le verset) : la musique s'y coupe. */
-export const VERSE_SILENCE: [number, number] = [verseIn, aroll6];
+const VERSE_SILENCE: [number, number] = [verseIn, aroll6];
+
+return {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE};
+};
+const versions = {fr: makeP4('fr'), en: makeP4('en')};
+export const getP4 = (lang: Lang) => versions[lang];
+export const {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE} = versions.fr;
