@@ -39,13 +39,7 @@ SHOT = ARGS[0]
 TEST = "--test" in ARGS
 STEP = int(ARGS[ARGS.index("--step") + 1]) if "--step" in ARGS else 2
 SAMPLES = int(ARGS[ARGS.index("--samples") + 1]) if "--samples" in ARGS else 32
-CUES = json.load(open(ARGS[ARGS.index("--cues") + 1])) if "--cues" in ARGS else None
-if CUES is not None and "--out-root" not in ARGS:
-    raise SystemExit("Un calage alternatif exige --out-root pour protéger les images FR.")
-OUT_ROOT = ARGS[ARGS.index("--out-root") + 1] if "--out-root" in ARGS else os.path.join(ROOT, "public", "3d")
-if CUES is not None and os.path.commonpath([os.path.realpath(OUT_ROOT), os.path.realpath(os.path.join(ROOT, "public"))]) == os.path.realpath(os.path.join(ROOT, "public")):
-    raise SystemExit("Le rendu alternatif doit rester hors de public/ : choisir out/3d-en.")
-OUT = os.path.join(OUT_ROOT, SHOT)
+OUT = os.path.join(ROOT, "public", "3d", SHOT)
 FPS, LEAD = 30, 24
 
 # ── repères sur la voix (même calcul que src/cues.ts) ───────────────────────────────────────────
@@ -58,8 +52,6 @@ def _norm(s):
 
 
 def at(pid, w=None, edge="start", nth=0):
-    if CUES is not None:
-        return CUES[f"{pid}|{w or ''}|{edge}|{nth}"]
     if w is None:
         t = VO[pid][edge]
     else:
@@ -717,7 +709,7 @@ ls.linestyle.alpha = 0.55
 os.makedirs(OUT, exist_ok=True)
 json.dump({"frames": N, "step": STEP}, open(os.path.join(OUT, "info.json"), "w"))
 if not TEST:  # le montage ne demandera jamais une image qui n'a pas été rendue (src/components/Light.tsx)
-    reg = os.path.join(OUT_ROOT, "renders3d.json") if "--out-root" in ARGS else os.path.join(ROOT, "src/data/renders3d.json")
+    reg = os.path.join(ROOT, "src/data/renders3d.json")
     done = json.load(open(reg)) if os.path.exists(reg) else {}
     done[SHOT] = {"frames": N, "step": STEP}
     json.dump(done, open(reg, "w"), indent=1)
