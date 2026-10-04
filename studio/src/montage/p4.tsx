@@ -4,14 +4,14 @@ import {hl} from '../captures';
 import {ARoll} from '../components/ARoll';
 import {Citation, NoteCard} from '../components/Citation';
 import {Lift, Shot3D} from '../components/Light';
-import {createCues} from '../cues';
+import {createCues, LEAD, toF} from '../cues';
 import {Lang, translator} from '../i18n';
 import {ArabicWord, GhazaliMap, Kinetic, Tasbih, Verse} from '../scenes/Part4';
 import {C, F} from '../theme';
 import {Cit, citSfx, Fade, Sfx} from './kit';
 
 const makeP4 = (lang: Lang) => {
-const {at} = createCues(lang);
+const {at, vo} = createCues(lang);
 const tx = translator(lang);
 
 // ── Partie 4 (4:28 → 7:29) : la pièce sans meuble, la khalwa, al-Ghazali, le dhikr, le verset ─────
@@ -44,8 +44,12 @@ const photoIn = at('p48', 'minaret') - 10;
 const minaretIn = at('p48', 'enferme') - 8;
 const p49In = at('p49') - 4;
 const p50In = at('p50') - 4;
-const verseIn = at('p52') - 10;
 const aroll6 = at('p53') - 6;
+// La traduction enregistrée reste audible AVANT le plateau silencieux.
+// Sans insert, repli sur la pause du script ; la version FR reste inchangée.
+const verseHold = vo.silences?.find((s) => s.kind === 'silent_verse');
+const verseIn = lang === 'en' ? (verseHold ? LEAD + toF(verseHold.start) : at('p52', undefined, 'end') + 1) : at('p52') - 10;
+const verseOut = lang === 'en' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
 const fondIn = at('p53', 'Et') - 4;
 const P4_END = at('p54') - 6;
 
@@ -450,13 +454,13 @@ const P4: React.FC = () => (
     </Sequence>
 
     {/* p51 : le point fixe (3D) */}
-    <Sequence from={dhikrIn} durationInFrames={dhikrN}>
+    <Sequence from={dhikrIn} durationInFrames={lang === 'en' ? verseIn - dhikrIn : dhikrN}>
       <Shot3D dir="dhikr" frames={dhikrN} label={tx("La pièce nue. Sur « meuble », le point d'or se pose au centre ; le pion s'en éloigne (« l'esprit part ») et y revient, deux fois.")} />
     </Sequence>
 
     {/* p52 : le verset. Aucun mouvement, aucun son dessous. */}
-    <Sequence from={verseIn} durationInFrames={aroll6 - verseIn}>
-      <Verse out={aroll6 - verseIn - 14} />
+    <Sequence from={verseIn} durationInFrames={verseOut - verseIn}>
+      <Verse out={verseOut - verseIn - 14} />
     </Sequence>
   </>
 );
@@ -469,7 +473,7 @@ const P4Front: React.FC = () => (
 );
 
 /** Fenêtre où rien ne doit jouer (le verset) : la musique s'y coupe. */
-const VERSE_SILENCE: [number, number] = [verseIn, aroll6];
+const VERSE_SILENCE: [number, number] = [verseIn, verseOut];
 
 return {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE};
 };

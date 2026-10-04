@@ -14,7 +14,7 @@ export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, cl
   const entry = path.resolve(outDir, 'entry.ts');
   const output = path.resolve(outDir, 'render.mjs');
   const remotionPath = pathToFileURL(import.meta.resolve('remotion').replace('file://', '')).pathname;
-  await fs.writeFile(entry, `export * from ${JSON.stringify(path.resolve(sourceRoot, 'V01.tsx'))};\nexport * from ${JSON.stringify(path.resolve(sourceRoot, 'Short.tsx'))};`);
+  await fs.writeFile(entry, `export * from ${JSON.stringify(path.resolve(sourceRoot, 'V01.tsx'))};\nexport * from ${JSON.stringify(path.resolve(sourceRoot, 'Short.tsx'))};\nexport {audioEvents} from 'remotion';`);
   await build({entryPoints: [entry], outfile: output, bundle: true, packages: 'external', platform: 'node', format: 'esm', plugins: [{
     name: 'static-frame', setup(b) {
       b.onResolve({filter: /remotion\/dist\/esm\/index.mjs$/}, (a) => ({path: a.path, external: true}));
@@ -22,7 +22,13 @@ export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, cl
       b.onLoad({filter: /.*/, namespace: 'still'}, () => ({loader: 'js', resolveDir: process.cwd(), contents: `
         export * from ${JSON.stringify(remotionPath)};
         import React from 'react';
-        export const Audio = () => null;
+        import {useCurrentFrame} from ${JSON.stringify(remotionPath)};
+        export const audioEvents = [];
+        export const Audio = (p) => {
+          const f = useCurrentFrame();
+          audioEvents.push({src:p.src, frame:f, volume:typeof p.volume === 'function' ? p.volume(f) : p.volume ?? 1});
+          return null;
+        };
         export const Img = ({pauseWhenBuffering, onError, onLoad, ...p}) => React.createElement('img', p);
         export const staticFile = (s) => ${JSON.stringify(pathToFileURL(path.resolve('public')).href + '/')} + s;
         export const getInputProps = () => (${JSON.stringify({no3d, clean})});
@@ -48,7 +54,9 @@ export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, cl
     ];
     let tree = React.createElement(short ? m.Short : m.V01, props);
     for (const [context, value] of providers.reverse()) tree = React.createElement(context.Provider, {value}, tree);
-    return {markup: renderToStaticMarkup(tree), ...config};
+    m.audioEvents.length = 0;
+    const markup = renderToStaticMarkup(tree);
+    return {markup, audio: [...m.audioEvents], ...config};
   };
 }
 

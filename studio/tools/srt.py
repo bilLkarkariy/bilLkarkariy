@@ -18,6 +18,17 @@ NOMBRES = [
     ("cent quatre-vingt-dix", "190"), ("quarante-deux", "42"), ("dix-septième siècle", "XVIIᵉ siècle"),
     ("trois cent cinquante", "350"),
 ]
+NOMBRES_EN = [
+    ('two thousand two hundred and fifty', '2,250'),
+    ('three hundred and fifty', '350'), ('a hundred and ninety', '190'),
+    ('two thousand and seven', '2007'), ('twenty fourteen', '2014'),
+    ('twenty ten', '2010'), ('ten ninety-five', '1095'),
+    ('three hundred', '300'), ('eighty percent', '80%'),
+    ('eighteen to seventy-seven', '18–77'), ('seventeenth century', '17th century'),
+    ('forty-two', '42'), ('twenty-four', '24'), ('two-minute', '2-minute'), ('three-day', '3-day'),
+    *zip('seventy-seven forty twenty eighteen fifteen twelve ten nine six five four three two one'.split(),
+         '77 40 20 18 15 12 10 9 6 5 4 3 2 1'.split()),
+]
 
 
 def tc(t):
@@ -25,7 +36,7 @@ def tc(t):
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
-def tokens(seg):
+def tokens(seg, language='fr'):
     """Les mots du texte (avec leur ponctuation) posés sur les temps des mots alignés."""
     text = re.sub(r"\[[^\]]*\]\s*", "", seg["text"])
     # la ponctuation isolée (« : », « « », « » », « — ») n'a pas de mot aligné : on la colle à son voisin
@@ -48,13 +59,19 @@ def tokens(seg):
         res = [(t, words[min(n - 1, i * n // len(toks))]["start"], words[min(n - 1, (i + 1) * n // len(toks) - 1)]["end"])
                for i, t in enumerate(toks)]
     # un nombre écrit en lettres devient un seul jeton en chiffres (il ne sera jamais coupé en deux)
-    for a, b in NOMBRES:
+    for a, b in NOMBRES_EN if language == 'en' else NOMBRES:
         k = len(a.split())
         i = 0
         while i + k <= len(res):
             chunk = " ".join(x[0] for x in res[i:i + k])
-            if chunk.lower().startswith(a):
-                res[i:i + k] = [(b + chunk[len(a):], res[i][1], res[i + k - 1][2])]
+            if language == 'fr':
+                if chunk.lower().startswith(a):
+                    res[i:i+k] = [(b + chunk[len(a):], res[i][1], res[i+k-1][2])]
+                i += 1
+                continue
+            match = re.match(r'^([“"‘(]*)' + re.escape(a) + r'(?=$|[.,!?;:…”"\)])', chunk, re.I)
+            if match:
+                res[i:i + k] = [(match[1] + b + chunk[match.end():], res[i][1], res[i + k - 1][2])]
             i += 1
     return res
 
@@ -76,7 +93,7 @@ def cues(vo):
     for seg in vo["segments"]:
         # 1. propositions : coupées après la ponctuation ou sur un silence
         parts, cur = [], []
-        for t in tokens(seg):
+        for t in tokens(seg, vo.get('language', 'fr')):
             if cur and t[1] - cur[-1][2] > GAP:
                 parts.append(cur)
                 cur = []

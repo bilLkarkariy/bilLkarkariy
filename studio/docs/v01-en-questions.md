@@ -10,6 +10,12 @@ Billel a fourni une prise complète de son clone anglais, `public/vo/v01_en_brut
 
 Billel a choisi Marmaduke Pickthall, *The Meaning of the Glorious Koran* (1930) : “Verily in the remembrance of Allah do hearts find rest!” La dernière proposition est conservée, comme dans le récit FR. `s63` est complet et `_pending` supprimé. La traduction figure sous l’arabe, dans le même composant et le même style que le FR ; son crédit reste dans la description. L’arabe uthmani et Amiri Quran restent inchangés, avec fondu seul et silence total pendant leur affichage.
 
+## Contrôle de la prise anglaise
+
+- **« dhikr » (s61) :** l’ancienne transcription disait « the remembrance ». La nouvelle passe Whisper small, sans prompt, reconnaît `dhikr` entre 405,64 et 406,42 s dans la brute, puis `remembrance` entre 406,70 et 407,18 s. Le mot n’est donc **pas déclaré manquant**. Une écoute humaine reste à faire : je n’ai pas écouté le son. Extrait : `out/validation/vo-en/dhikr-brut.wav`.
+- **Chuchotements (s69) :** Whisper raccourcit fortement les deux occurrences et pose même la dernière en partie sur le blanc précédent. Le signal montre deux enveloppes, environ 513,05–514,65 s et 515,04–516,50 s. Elles sont protégées dans `script/v01_en.audio-review.json` et conservées sans retouche ni changement de niveau. Écouter `out/validation/vo-en/chuchotements-final.wav` pour valider la diction ; aucune régénération n’a été faite.
+- **Plateau du verset :** la pause de script de 1,3 s est conservée. J’ai ajouté provisoirement 6 s de silence après cette pause, pour entendre la traduction complète puis lire l’arabe et sa traduction sans son. Cette proposition a été soumise pendant le travail, sans réponse reçue. C’est un insert de montage explicite (`--verse-hold 6`), pas une modification religieuse ni un changement masqué du script. Il est réversible avec `--verse-hold 0`, puis réalignement et recalcul des repères ; ce repli ne laisserait qu’environ 1 s d’affichage utile.
+
 ## Formulations religieuses à valider
 
 Ces formulations reprennent le récit français ; elles ne constituent pas une nouvelle interprétation de ma part.

@@ -13,6 +13,10 @@ const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().rep
 assert.deepEqual(en.segments.map(({id, pause}) => ({id, pause})), fr.segments.map(({id, pause}) => ({id, pause})));
 assert.deepEqual(en.segments.map((s) => s.text.match(/\[[^\]]*\]/g)), fr.segments.map((s) => s.text.match(/\[[^\]]*\]/g)));
 assert.deepEqual(vo.segments.map((s) => s.id), en.segments.map((s) => s.id));
+for (const [i,s] of en.segments.entries()) {
+  const expected = s.text.replace(/\[[^\]]*\]/g, '').match(/[\p{L}\p{N}_'’-]+/gu).filter(norm);
+  assert.deepEqual(vo.segments[i].words.map((w) => w.w), expected, `Texte complet ${s.id}`);
+}
 const segments = Object.fromEntries(vo.segments.map((s) => [s.id, s]));
 const words = vo.segments.flatMap((s) => s.words);
 for (let i = 0; i < words.length; i++) {
@@ -48,11 +52,27 @@ for (const f of [...frames].sort((a, b) => a-b)) {
 }
 await fs.writeFile(path.join(outDir, 'rendered-text.txt'), [...texts].join('\n'));
 // Même texte uthmani, police Amiri Quran, et aucun mouvement pendant le plateau du fondu.
-const verseA = render('V01-EN', at('p52') + 30).markup;
-const verseB = render('V01-EN', at('p52') + 60).markup;
+const hold = vo.silences?.find((s) => s.kind === 'silent_verse');
+const verseStart = hold ? 24 + Math.round(hold.start * 30) : vo.audio ? end('p52') + 1 : at('p52') - 10;
+const verseEnd = hold ? Math.min(at('p53') - 6, 24 + Math.round(hold.end * 30)) : at('p53') - 6;
+assert(verseEnd - verseStart >= 29, 'Le verset doit laisser au moins un plateau entre les fondus');
+const verseA = render('V01-EN', verseStart + 14).markup;
+const verseB = render('V01-EN', verseEnd - 15).markup;
 assert.equal(verseA, verseB, 'Le verset doit être immobile entre ses fondus');
 assert(verseA.includes('Amiri Quran'));
 assert(verseA.includes('أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ'));
+assert(verseA.includes('Verily in the remembrance of Allah do hearts find rest!'));
+if (vo.audio) {
+  assert.equal(vo.audio, 'vo/v01_en.wav');
+  for (let f = verseStart; f < verseEnd; f++) {
+    assert(render('V01-EN', f).audio.every((a) => a.volume === 0), `Son sous le verset : ${f}`);
+    assert(!words.some((w) => 24 + w.start*30 < f+1 && 24 + w.end*30 > f), `Mot sous le verset : ${f}`);
+  }
+  for (const w of segments.s63.words) {
+    const f = 24 + Math.round((w.start+w.end)*15);
+    assert(render('V01-EN',f).audio.some((a) => a.src.endsWith(vo.audio) && a.volume === 1), `Traduction inaudible : ${w.w}`);
+  }
+}
 const boundaries = [0, at('p7')-8, at('p20')-4, at('p35')-4, at('p54')-6, duration];
 const pairs = boundaries.slice(0, -1).flatMap((a, i) => [
   {name: `p${i+1}_debut`, frame: a+30},
@@ -60,8 +80,12 @@ const pairs = boundaries.slice(0, -1).flatMap((a, i) => [
   {name: `p${i+1}_fin`, frame: boundaries[i+1]-35},
 ]);
 for (const [name, p] of Object.entries({consigne:'p8', ecrans:'p27', pascal:'p29', solitude:'p30', khalwa:'p44', carte:'p46', ghazali:'p47', dhikr:'p51', verset:'p52', fondements:'p53', point:'p58', retour:'p59', revelation:'p65'})) {
-  pairs.push({name, frame: Math.round((at(p)+end(p))/2)});
+  pairs.push({name, frame: name === 'verset' ? Math.round((verseStart+verseEnd)/2) : Math.round((at(p)+end(p))/2)});
 }
+for (const [name,frame] of Object.entries({verset_fondu_entree:verseStart+7, verset_fondu_sortie:verseEnd-7,
+  verset_avant:verseStart-1, verset_apres:verseEnd, traduction_parlee:Math.round((at('p52')+end('p52'))/2),
+  pause_question:24+Math.round(segments.s33.end*30)+30, chuchotements:24+Math.round(segments.s69.words.at(-1).start*30),
+  fin_voix:24+Math.round(segments.s79.end*30), ecran_final:duration-90})) pairs.push({name,frame});
 await htmlStills({outDir:path.join(outDir, 'en'), pairs, composition:'V01-EN'});
 const shortDurations = {};
 for (const id of ['short-bouton-en', 'short-pascal-en', 'short-exercice-en']) {
@@ -87,7 +111,7 @@ if (baselineIndex !== -1) {
   assert.deepEqual(frenchComparison.different, []);
 }
 const report = {segments:en.segments.length, anchors:anchorCount, durationInFrames:duration, checkedEnglishFrames:frames.size,
-  shortDurations, frenchComparison, pngInspection:'NOT_PERFORMED: this check renders HTML, not PNG; inspect stills.mjs PNG output separately', stills:pairs};
+  shortDurations, frenchComparison, verseSilence:[verseStart,verseEnd], audioSource:vo.audio, pngInspection:'NOT_PERFORMED: this check renders HTML, not PNG; inspect stills.mjs PNG output separately', stills:pairs};
 await fs.writeFile(path.join(outDir,'v01-en-report.json'),JSON.stringify(report,null,2)+'\n');
 await fs.writeFile(path.join(outDir,'render-en-stills.txt'), 'node tools/stills.mjs out/validation/en-png --composition V01-EN '+pairs.map(({name,frame})=>`${name}:${frame}`).join(' ')+'\n');
 console.log(JSON.stringify({...report,stills:`${pairs.length} vues EN + 9 vues Shorts, HTML`},null,2));

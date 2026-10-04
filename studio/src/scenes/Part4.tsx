@@ -1,4 +1,4 @@
-import {useText} from '../i18n';
+import {useLang, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import carte from '../data/carte_ghazali.json';
@@ -296,11 +296,12 @@ export const Tasbih: React.FC<{at: number; beats: number[]; n?: number; out?: nu
 // ── Le verset : pas d'animation (un fondu), pas de son dessous ──────────────────────────────────
 export const Verse: React.FC<{out: number}> = ({out}) => {
   const tx = useText();
+  const lang = useLang();
   const frame = useCurrentFrame();
   const o = interpolate(frame, [0, 14, out, out + 14], [0, 1, 1, 0], clamp);
   return (
     <AbsoluteFill style={{opacity: o, alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28")}</div>
+      <div aria-hidden={lang === 'en' ? true : undefined} style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{lang === 'fr' ? tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28") : '\u00a0'}</div>
       <div style={{fontFamily: F.quran, fontSize: 52, color: C.inkSoft, direction: 'rtl', lineHeight: 1.6}}>ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ</div>
       <div style={{fontFamily: F.quran, fontSize: 112, color: C.ink, direction: 'rtl', lineHeight: 1.7, marginTop: 6}}>أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ</div>
       <div style={{width: 120, height: 2, background: C.gold, margin: '40px 0 36px'}} />
