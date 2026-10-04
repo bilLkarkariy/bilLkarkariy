@@ -70,9 +70,10 @@ def main():
     assert not gaps, gaps
     work = root/'out/validation/vo-ar'
     clip = next(s for s in manifest['segments'] if s['id']=='s69')
-    shift = clip['output_start']-clip['source_start']
-    for name,x in [('brut',source[round(553*sr):round(558.5*sr)]),
-                   ('final',audio[round(553*sr)+shift:round(558.5*sr)+shift])]:
+    # L'étape 4 entière : les repères approximatifs du brief ne doivent pas
+    # rogner la première occurrence chuchotée dans les extraits de contrôle.
+    for name,x in [('brut',source[clip['source_start']:clip['source_end']]),
+                   ('final',audio[clip['output_start']:clip['output_end']])]:
         sf.write(work/f'chuchotements-{name}.wav',x,sr,subtype='PCM_24')
     audit=vo['alignment']['interpolated']
     report={'source_sha256':digest(raw),'output_sha256':digest(final),'duration':len(audio)/sr,

@@ -67,7 +67,16 @@ for (const [id, targets] of Object.entries(anchors)) {
 const outDir = 'out/validation-ar';
 const render = await prepareStills({outDir: path.join(outDir, 'check')});
 const duration = render('V01-AR', 0).durationInFrames;
-const at = (p) => 24 + Math.round(segments[groups[p][0]].start * 30);
+const at = (p, key) => {
+  if (!key) return 24 + Math.round(segments[groups[p][0]].start * 30);
+  const target = anchors[p][`${key}|0`];
+  const phrase = (typeof target === 'string' ? target : target.phrase).split(' ').map(norm);
+  const nth = typeof target === 'string' ? 0 : target.nth;
+  const ws = groups[p].flatMap((s) => segments[s].words);
+  const hits = ws.map((_, i) => i).filter((i) => phrase.every((w, j) => w === norm(ws[i+j]?.w ?? '')));
+  assert(hits.length > nth, `Repère de vue introuvable ${p}:${key}`);
+  return 24 + Math.round(ws[hits[nth]].start * 30);
+};
 const end = (p) => 24 + Math.round(segments[groups[p].at(-1)].end * 30);
 const frames = new Set();
 for (let f = 0; f < duration; f += 30) frames.add(f);
@@ -173,7 +182,7 @@ const named = {
   verset: Math.round((verseStart + verseEnd) / 2), verset_fondu_entree: verseStart + 7, verset_fondu_sortie: verseEnd - 7,
   fondements: end('p53') - 20, exercice_1: mid('p55'), exercice_2: mid('p56'), exercice_3: mid('p57'), exercice_4: end('p58') - 30,
   exercice_5: mid('p59'), envie: end('p60') - 10, retours: end('p61') - 10, bouton_poche: end('p63') - 10, revelation: mid('p65'),
-  page_entraine: mid('p66'), meublee: mid('p67'), page_suite: end('p68') - 10, ecran_final: duration - 90,
+  page_entraine: mid('p66'), meublee: Math.round((at('p67', 'meublé') - 10 + at('p68') + 30) / 2), page_suite: end('p68') - 10, ecran_final: duration - 90,
 };
 for (const [name, frame] of Object.entries(named)) pairs.push({name, frame: Math.min(duration - 1, frame)});
 await htmlStills({outDir: path.join(outDir, 'ar'), pairs, composition: 'V01-AR'});
