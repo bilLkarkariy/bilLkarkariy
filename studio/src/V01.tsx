@@ -33,6 +33,8 @@ const Faceless = getFaceless(lang);
 
 // hook
 const cut1 = at('p1', 'Seul') - 3; // A-roll -> maquette
+// (en anglais sans face caméra, aucun visage : la maquette ouvre la vidéo dès la première image)
+const mIn = FACELESS && lang === 'en' ? 0 : cut1;
 const planIn = at('p2') - 10; // la maquette, vue de dessus, devient le plan
 const xfade = 14;
 const dotsIn = at('p3') - 5; // « Deux hommes sur trois »
@@ -460,9 +462,9 @@ const Component: React.FC = () => {
     <Paper grid={0.8} />
     <P3Back />
 
-    <Sequence from={cut1} durationInFrames={planIn + xfade - cut1}>
-      <Fade from={planIn - cut1} len={xfade} out>
-        <Maquette reachTop={planIn - cut1} phone={at('p1', 'téléphone') - cut1} read={at('p1', 'lire') - cut1} />
+    <Sequence from={mIn} durationInFrames={planIn + xfade - mIn}>
+      <Fade from={planIn - mIn} len={xfade} out>
+        <Maquette reachTop={planIn - mIn} phone={at('p1', 'téléphone') - mIn} read={at('p1', 'lire') - mIn} />
       </Fade>
     </Sequence>
 
@@ -552,9 +554,11 @@ const Component: React.FC = () => {
     {!verse && <WindowLight />}
 
     {/* face caméra : emplacements à remplacer par les rushes */}
-    <Sequence from={0} durationInFrames={cut1}>
-      <ARoll shot={tx("PLAN SERRÉ · il retourne son téléphone sur le bureau")} line={tx("« Quinze minutes. »")} />
-    </Sequence>
+    {mIn > 0 && (
+      <Sequence from={0} durationInFrames={cut1}>
+        <ARoll shot={tx("PLAN SERRÉ · il retourne son téléphone sur le bureau")} line={tx("« Quinze minutes. »")} />
+      </Sequence>
+    )}
     {!FACELESS && (
       <>
         <Sequence from={aroll2} durationInFrames={docIn - aroll2}>
