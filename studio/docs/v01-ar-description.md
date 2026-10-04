@@ -1,9 +1,6 @@
 # Description YouTube — V01 AR
 
-**Provisoire.** La voix arabe n'existe pas encore : les chapitres sont calculés sur l'alignement estimé
-(`src/data/v01_ar.vo.json`, `estimated: true`), avec `LEAD + début du groupe p…`, arrondis à la seconde inférieure.
-Durée provisoire de `V01-AR` : **12:31** (22 542 images). À recalculer sur le Mac après le vrai alignement
-(voir `v01-ar-etat.md`). Les points à trancher sont dans `v01-ar-questions.md`.
+Voix enregistrée assemblée et alignée (`vo/v01_ar.wav`). Chapitres calculés sur `src/data/v01_ar.vo.json` : début du groupe + 0,8 s, arrondi à la seconde inférieure. Durée de `V01-AR` : **11:23.433** (20503 images à 30 i/s). Les points éditoriaux restants sont dans `v01-ar-questions.md`.
 
 Titre proposé : **لماذا لم تعد تستطيع البقاء وحدك مع نفسك؟**
 (c'est aussi le titre de l'écran de fin des Shorts ; sans point d'interrogation à l'écran, avec dans le titre YouTube).
@@ -24,14 +21,14 @@ Textes de miniature (sur le modèle « YOU WOULD HAVE PRESSED IT. », « 15 MIN.
 من مختبر علم النفس إلى باسكال، ومن عزلة الغزالي إلى الخلوة والذكر في الطريق الصوفي الذي أسلكه، الطريقة الكركرية. وفي النهاية تمرين بسيط من دقيقتين تجرّبه الليلة.
 
 00:00 خمس عشرة دقيقة وحدك، وزرّ
-00:56 التجربة
-03:06 الأغرب في الأمر
-05:09 باسكال رأى ذلك قبلنا
-05:56 الغرفة الفارغة
-07:03 الخلوة، وقصة الغزالي
-08:46 الذكر
-09:53 تمرين الدقيقتين لهذه الليلة
-11:30 عودة إلى الزر
+00:53 التجربة
+02:52 الأغرب في الأمر
+04:42 باسكال رأى ذلك قبلنا
+05:25 الغرفة الفارغة
+06:26 الخلوة، وقصة الغزالي
+07:56 الذكر
+08:59 تمرين الدقيقتين لهذه الليلة
+10:30 عودة إلى الزر
 
 المصادر
 
@@ -70,9 +67,7 @@ Mohamed Faouzi al-Karkari (محمد فوزي الكركري), The Foundations of
 
 ## Notes de préparation (hors description à publier)
 
-- Chapitres : p7, p18, p28, p34, p41, p50, p54, p62, comme la version anglaise. Valeurs **estimées** (vitesse de parole
-  supposée) : elles bougeront de plusieurs secondes avec la vraie voix. Recalcul : début du premier segment du groupe
-  dans `src/data/v01_ar.vo.json` + 0,8 s, arrondi à la seconde inférieure.
+- Chapitres : p7, p18, p28, p34, p41, p50, p54, p62, comme l’anglais. Temps du vrai alignement + 0,8 s, arrondis à la seconde inférieure.
 - Titres d'œuvres dans leur langue d'origine : المنقذ من الضلال (al-Munqidh min al-ḍalāl), إحياء علوم الدين
   (Iḥyāʾ ʿulūm al-dīn), كتاب آداب العزلة ; Pensées en français ; les articles scientifiques en anglais.
 - Mêmes sources et mêmes liens que `v01-en-description.md`, sans revérification en ligne dans cette session
@@ -82,5 +77,4 @@ Mohamed Faouzi al-Karkari (محمد فوزي الكركري), The Foundations of
 - La voix cite le Munqidh directement en arabe (« فكان لساني لا ينطق بكلمة واحدة ») : l'édition arabe à citer, et
   l'ordre des mots, sont dans `v01-ar-questions.md`. Idem pour la traduction arabe de Pascal et le titre arabe
   éventuel du livre de la Karkariya (je ne l'invente pas).
-- Sous-titres : `python3 tools/srt.py src/data/v01_ar.vo.json out/package_ar/v01.ar.srt` après le vrai alignement
-  (267 entrées sur l'alignement estimé).
+- Sous-titres : `python3 tools/srt.py src/data/v01_ar.vo.json docs/v01-ar.srt` (266 entrées sur la vraie voix, temps vidéo, chiffres occidentaux et marque RTL).
