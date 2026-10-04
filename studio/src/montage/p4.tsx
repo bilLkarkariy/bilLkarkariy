@@ -46,11 +46,12 @@ const minaretIn = at('p48', 'enferme') - 8;
 const p49In = at('p49') - 4;
 const p50In = at('p50') - 4;
 const aroll6 = at('p53') - 6;
-// La traduction enregistrée reste audible AVANT le plateau silencieux.
-// Sans insert, repli sur la pause du script ; la version FR reste inchangée.
+// EN : traduction avant le plateau silencieux. AR : introduction et récitation
+// sous le verset, puis une seconde de tenue, sans silence ajouté à la voix.
 const verseHold = vo.silences?.find((s) => s.kind === 'silent_verse');
 const verseIn = lang === 'en' ? (verseHold ? LEAD + toF(verseHold.start) : at('p52', undefined, 'end') + 1) : at('p52') - 10;
-const verseOut = lang === 'en' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
+const verseOut = lang === 'ar' ? Math.min(aroll6, at('p52', undefined, 'end') + 30)
+  : lang === 'en' && verseHold ? Math.min(aroll6, LEAD + toF(verseHold.end)) : aroll6;
 const fondIn = at('p53', 'Et') - 4;
 const P4_END = at('p54') - 6;
 
@@ -455,7 +456,7 @@ const P4: React.FC = () => (
     </Sequence>
 
     {/* p51 : le point fixe (3D) */}
-    <Sequence from={dhikrIn} durationInFrames={lang === 'en' ? verseIn - dhikrIn : dhikrN}>
+    <Sequence from={dhikrIn} durationInFrames={lang !== 'fr' ? verseIn - dhikrIn : dhikrN}>
       <Shot3D dir="dhikr" frames={dhikrN} label={tx("La pièce nue. Sur « meuble », le point d'or se pose au centre ; le pion s'en éloigne (« l'esprit part ») et y revient, deux fois.")} />
     </Sequence>
 

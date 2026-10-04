@@ -34,6 +34,9 @@ Object.values(groups).forEach((ids, i) => assert.equal(ids.map((id) => byId[id].
 assert.deepEqual(Object.values(groups).flat(), ar.segments.map((s) => s.id));
 
 // 2. l'alignement : tous les mots, dans l'ordre
+assert.equal(vo.audio, 'vo/v01_ar.wav', 'La vraie voix arabe doit être branchée');
+assert(!vo.estimated, 'Alignement estimé interdit pour la livraison');
+assert.deepEqual(vo.silences, [], 'Aucun plateau silencieux ajouté au WAV arabe');
 assert.deepEqual(vo.segments.map((s) => s.id), ar.segments.map((s) => s.id));
 for (const [i, s] of ar.segments.entries()) {
   const expected = s.text.replace(/\[[^\]]*\]/g, '').match(/[\p{L}\p{M}\p{N}_'’-]+/gu).filter(norm);
@@ -122,7 +125,7 @@ assert.deepEqual([...ltrArabic], [], `Texte arabe sans direction rtl : ${[...ltr
 
 // 5. le verset : la voix arabe le dit, l'écran ne montre que le texte uthmani
 const verseStart = at('p52') - 10;
-const verseEnd = at('p53') - 6;
+const verseEnd = Math.min(at('p53') - 6, end('p52') + 30);
 assert(verseEnd - verseStart >= 29, 'Le verset doit laisser au moins un plateau entre les fondus');
 // (une séquence vide, sans rien à l'écran, peut s'ouvrir pendant le plateau : on l'ignore)
 const visible = (markup) => markup.replace(/<div style="[^"]*"><\/div>/g, '');
@@ -134,8 +137,18 @@ assert(verseA.includes('ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَ
 assert(verseA.includes('أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ'));
 assert(!/rappel de Dieu|remembrance of Allah|CORAN|QURAN|سورة/.test(verseA), 'Rien sous le verset en arabe');
 for (let f = verseStart; f < verseEnd; f++) {
-  for (const a of render('V01-AR', f).audio) {
-    if (vo.audio && a.src.endsWith(vo.audio)) continue; // la voix dit le verset
+  const shot = render('V01-AR', f);
+  assert(!/3d\//.test(shot.markup), `Plan 3D sous le verset : ${f}`);
+  assert.deepEqual(textNodes(shot.markup).filter((t) => !t.style).map((t) => t.text.trim()).filter(Boolean), [
+    'ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ',
+    'أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ',
+  ], `Texte autre que le verset : ${f}`);
+  if (f >= verseStart + 14 && f <= verseEnd - 15) {
+    assert.equal(visible(shot.markup), verseA, `Mouvement pendant le verset : ${f}`);
+  }
+  assert(shot.audio.some((a) => a.src.endsWith(vo.audio) && a.volume === 1), `Voix coupée sous le verset : ${f}`);
+  for (const a of shot.audio) {
+    if (a.src.endsWith(vo.audio)) continue; // la voix dit le verset
     assert.equal(a.volume, 0, `Son sous le verset : ${f} ${a.src}`);
   }
 }
