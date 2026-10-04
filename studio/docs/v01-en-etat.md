@@ -13,7 +13,7 @@ La préparation anglaise est livrée. **Le contrôle visuel du montage n'est pas
 | `tools/vo_estime.py` | Estimateur hors ligne, sans dépendance audio : syllabes, ponctuation et pauses du script FR. Reproductible. |
 | `src/data/v01_en.vo.json` | Alignement **estimé**, `audio: null`, durée 670,765 s. Ce n'est pas une voix enregistrée. |
 | `src/data/v01_en.groups.json`, `v01_en.anchors.json` | Correspondance des 79 segments du script avec les 68 groupes historiques du montage ; 278 repères de mots/expressions EN vérifiés. Aucun étirement global de la timeline FR. |
-| `V01_EN` | 20 297 images à 30 i/s, soit **11:16,57**, écran de fin de six secondes inclus. Durée provisoire. |
+| `V01-EN` | 20 297 images à 30 i/s, soit **11:16,57**, écran de fin de six secondes inclus. Durée provisoire. |
 | `short-bouton-en` | 3 442 images, environ 1:54,73. |
 | `short-pascal-en` | 2 219 images, environ 1:13,97. |
 | `short-exercice-en` | 2 857 images, environ 1:35,23. |
@@ -61,7 +61,7 @@ node tools/bundle_local.mjs out/bundle-en
 # CHROME doit désigner un navigateur installé et autorisé à démarrer.
 # BUNDLE est un dossier de bundle, jamais le dépôt public partagé.
 CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' BUNDLE=out/bundle-en \
-  node tools/stills.mjs out/validation/en-png --composition V01_EN p1:300 p3:9000 fin:20180
+  node tools/stills.mjs out/validation/en-png --composition V01-EN p1:300 p3:9000 fin:20180
 # Remplacer ces trois exemples par la liste complète : out/validation/render-en-stills.txt.
 CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' BUNDLE=out/bundle-en \
   node tools/stills.mjs out/validation/short-bouton-en-png --composition short-bouton-en debut:60 milieu:1721 fin:3412

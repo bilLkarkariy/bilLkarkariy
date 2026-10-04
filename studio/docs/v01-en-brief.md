@@ -33,7 +33,7 @@ Lis d'abord `docs/reprise-agent.md` (règles du projet, sécurité, architecture
    avant/après). Les captures de documents sont déjà en anglais : en version anglaise, les fiches qui traduisaient
    l'anglais vers le français deviennent inutiles. Remplace-les par une fiche courte qui reformule l'idée, ou
    supprime-les si le surlignage suffit (décide au cas par cas, note tes choix).
-3. **La composition `V01_EN`** et les Shorts anglais (`short-*-en`) dans `src/Root.tsx`, indexées sur
+3. **La composition `V01-EN`** et les Shorts anglais (`short-*-en`) dans `src/Root.tsx`, indexées sur
    `src/data/v01_en.vo.json`. Comme la voix n'existe pas encore, fabrique un alignement provisoire
    (`tools/vo_estime.py`) : durée de chaque mot estimée à partir du nombre de syllabes, avec les mêmes respirations
    que la version française, pour pouvoir prévisualiser le montage. Il sera remplacé par le vrai alignement

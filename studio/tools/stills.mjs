@@ -1,4 +1,4 @@
-// node tools/stills.mjs out/stills --composition V01_EN debut:300 milieu:9000
+// node tools/stills.mjs out/stills --composition V01-EN debut:300 milieu:9000
 // --html : planche locale de secours, sans lancer Chromium ; pas un export PNG.
 import {openBrowser, renderStill, selectComposition} from '@remotion/renderer';
 import fs from 'node:fs/promises';
@@ -16,7 +16,7 @@ for (let i = 0; i < args.length; i++) {
   if (!match) throw new Error(`Image invalide : ${args[i]} (nom:frame attendu)`);
   pairs.push({name: match[1], frame: Number(match[2])});
 }
-if (!outDir || !pairs.length) throw new Error('Usage : node tools/stills.mjs out/stills [--composition V01_EN] [--html] nom:frame …');
+if (!outDir || !pairs.length) throw new Error('Usage : node tools/stills.mjs out/stills [--composition V01-EN] [--html] nom:frame …');
 await fs.mkdir(outDir, {recursive: true});
 const inputProps = {no3d: !process.env.WITH3D, clean: Boolean(process.env.CLEAN)};
 if (html) {
