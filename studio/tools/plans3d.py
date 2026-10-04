@@ -653,8 +653,29 @@ if "--gpu" in ARGS:  # en local : la carte graphique (NVIDIA, AMD, Apple, Intel)
             break
     else:
         print("aucune carte graphique utilisable : rendu sur le processeur")
+if "--eevee" in ARGS:  # moteur temps réel : 10 à 20 fois plus rapide que Cycles, même trait, même AgX
+    scene.render.engine = "BLENDER_EEVEE"
+    ee = scene.eevee
+    ee.taa_render_samples = SAMPLES if "--samples" in ARGS else 64
+    for k, v in (("use_raytracing", True), ("use_shadows", True), ("use_gtao", True), ("shadow_ray_count", 3),
+                 ("shadow_step_count", 12), ("use_fast_gi", True), ("fast_gi_resolution", "2")):
+        try:
+            setattr(ee, k, v)
+        except (AttributeError, TypeError):
+            pass
+    try:
+        ee.ray_tracing_options.resolution_scale = "1"
+        ee.ray_tracing_options.use_denoise = True
+    except (AttributeError, TypeError):
+        pass
+    print("moteur : EEVEE")
 scene.cycles.samples = SAMPLES if "--samples" in ARGS else (16 if TEST else 32)
-scene.cycles.use_denoising = True
+scene.cycles.use_denoising = "--sans-debruit" not in ARGS
+try:  # débruitage OIDN sur la carte graphique (Blender 4.1+) : sur le processeur, il coûtait 60 % du temps
+    scene.cycles.denoiser = "OPENIMAGEDENOISE"
+    scene.cycles.denoising_use_gpu = "--gpu" in ARGS
+except (AttributeError, TypeError):
+    pass
 scene.cycles.max_bounces = 6
 scene.render.use_persistent_data = True
 scene.render.film_transparent = True
@@ -671,7 +692,7 @@ except TypeError:
 scene.render.image_settings.file_format = "PNG"
 scene.render.image_settings.color_mode = "RGBA"
 
-scene.render.use_freestyle = True
+scene.render.use_freestyle = "--sans-trait" not in ARGS  # (mesure : le trait Freestyle se calcule sur le processeur)
 scene.render.line_thickness_mode = "ABSOLUTE"
 scene.render.line_thickness = 1.1
 fs = scene.view_layers[0].freestyle_settings
@@ -696,7 +717,7 @@ if TEST:
     frames = [int(x) for x in ARGS[ARGS.index("--test") + 1].split(",")] if len(ARGS) > ARGS.index("--test") + 1 and ARGS[ARGS.index("--test") + 1][0].isdigit() else [1, N // 2, N]
     for f in frames:
         scene.frame_set(f)
-        scene.render.filepath = os.path.join(OUT, f"test_{f:03d}.png")
+        scene.render.filepath = os.path.join(OUT, f"{'eevee' if '--eevee' in ARGS else 'test'}_{f:03d}.png")
         bpy.ops.render.render(write_still=True)
 else:
     scene.frame_step = STEP
