@@ -5124,83 +5124,83 @@
   {
    "id": "p46",
    "text": "Bagdad, mille quatre-vingt-quinze. Al-Ghazali est un professeur célèbre. Trois cents étudiants. Une carrière au sommet.",
-   "start": 355.29,
-   "end": 361.26,
+   "start": 353.908,
+   "end": 361.56,
    "words": [
     {
      "w": "Bagdad",
-     "start": 355.29,
-     "end": 355.56
+     "start": 353.908,
+     "end": 354.44
     },
     {
      "w": "mille",
-     "start": 355.56,
-     "end": 355.68
+     "start": 354.7,
+     "end": 355.08
     },
     {
      "w": "quatre-vingt-quinze",
-     "start": 355.68,
-     "end": 356.27
+     "start": 355.08,
+     "end": 355.82
     },
     {
      "w": "Al-Ghazali",
-     "start": 357.18,
-     "end": 357.23
+     "start": 356.18,
+     "end": 356.78
     },
     {
      "w": "est",
-     "start": 357.18,
-     "end": 357.36
+     "start": 356.78,
+     "end": 357.04
     },
     {
      "w": "un",
-     "start": 357.36,
-     "end": 357.5
+     "start": 357.04,
+     "end": 357.16
     },
     {
      "w": "professeur",
-     "start": 357.5,
-     "end": 357.94
+     "start": 357.16,
+     "end": 357.68
     },
     {
      "w": "célèbre",
-     "start": 357.94,
-     "end": 358.46
+     "start": 357.68,
+     "end": 358.28
     },
     {
      "w": "Trois",
-     "start": 358.81,
-     "end": 358.94
+     "start": 358.66,
+     "end": 359.02
     },
     {
      "w": "cents",
-     "start": 358.94,
-     "end": 359.12
+     "start": 359.02,
+     "end": 359.16
     },
     {
      "w": "étudiants",
-     "start": 359.12,
-     "end": 359.77
+     "start": 359.16,
+     "end": 359.78
     },
     {
      "w": "Une",
-     "start": 360.03,
-     "end": 360.14
+     "start": 360.14,
+     "end": 360.24
     },
     {
      "w": "carrière",
-     "start": 360.14,
-     "end": 360.6
+     "start": 360.24,
+     "end": 360.8
     },
     {
      "w": "au",
-     "start": 360.6,
-     "end": 360.76
+     "start": 360.8,
+     "end": 361.0
     },
     {
      "w": "sommet",
-     "start": 360.76,
-     "end": 361.26
+     "start": 361.0,
+     "end": 361.56
     }
    ]
   },
