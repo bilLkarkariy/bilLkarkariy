@@ -6941,7 +6941,7 @@
    "id": "p58",
    "text": "Quatre. Pose ton attention sur un seul point. Ta respiration. Ou un mot, répété intérieurement, lentement. Un mot qui compte pour toi. Chez nous, on répète « Astaghfiroullah » : je demande pardon à Dieu. Astaghfiroullaaah… Astaghfiroullaaah…",
    "start": 487.42,
-   "end": 504.92,
+   "end": 507.87,
    "words": [
     {
      "w": "Quatre",
@@ -7105,1046 +7105,1046 @@
     },
     {
      "w": "Astaghfiroullaaah",
-     "start": 504.13,
-     "end": 504.41
+     "start": 504.21,
+     "end": 505.45
     },
     {
      "w": "Astaghfiroullaaah",
-     "start": 504.92,
-     "end": 504.92
+     "start": 506.47,
+     "end": 507.87
     }
    ]
   },
   {
    "id": "p59",
    "text": "Cinq. Quand tu pars, et tu vas partir, tu reviens. Sans te juger.",
-   "start": 505.15,
-   "end": 510.21,
+   "start": 509.75,
+   "end": 514.81,
    "words": [
     {
      "w": "Cinq",
-     "start": 505.15,
-     "end": 505.4
+     "start": 509.75,
+     "end": 510.0
     },
     {
      "w": "Quand",
-     "start": 506.16,
-     "end": 506.22
+     "start": 510.76,
+     "end": 510.82
     },
     {
      "w": "tu",
-     "start": 506.22,
-     "end": 506.4
+     "start": 510.82,
+     "end": 511.0
     },
     {
      "w": "pars",
-     "start": 506.4,
-     "end": 506.76
+     "start": 511.0,
+     "end": 511.36
     },
     {
      "w": "et",
-     "start": 506.76,
-     "end": 506.81
+     "start": 511.36,
+     "end": 511.41
     },
     {
      "w": "tu",
-     "start": 507.18,
-     "end": 507.32
+     "start": 511.78,
+     "end": 511.92
     },
     {
      "w": "vas",
-     "start": 507.32,
-     "end": 507.44
+     "start": 511.92,
+     "end": 512.04
     },
     {
      "w": "partir",
-     "start": 507.44,
-     "end": 507.86
+     "start": 512.04,
+     "end": 512.46
     },
     {
      "w": "tu",
-     "start": 508.42,
-     "end": 508.52
+     "start": 513.02,
+     "end": 513.12
     },
     {
      "w": "reviens",
-     "start": 508.52,
-     "end": 509.04
+     "start": 513.12,
+     "end": 513.64
     },
     {
      "w": "Sans",
-     "start": 509.47,
-     "end": 509.74
+     "start": 514.07,
+     "end": 514.34
     },
     {
      "w": "te",
-     "start": 509.74,
-     "end": 509.9
+     "start": 514.34,
+     "end": 514.5
     },
     {
      "w": "juger",
-     "start": 509.9,
-     "end": 510.21
+     "start": 514.5,
+     "end": 514.81
     }
    ]
   },
   {
    "id": "p60",
    "text": "Ce qui va probablement se passer : très vite, peut-être au bout de quarante secondes, tu vas avoir envie de te lever. Vérifier un truc. Aller chercher le téléphone, « juste pour l'heure ».",
-   "start": 511.44,
-   "end": 520.42,
+   "start": 516.04,
+   "end": 525.02,
    "words": [
     {
      "w": "Ce",
-     "start": 511.44,
-     "end": 511.54
+     "start": 516.04,
+     "end": 516.14
     },
     {
      "w": "qui",
-     "start": 511.54,
-     "end": 511.72
+     "start": 516.14,
+     "end": 516.32
     },
     {
      "w": "va",
-     "start": 511.72,
-     "end": 511.84
+     "start": 516.32,
+     "end": 516.44
     },
     {
      "w": "probablement",
-     "start": 511.84,
-     "end": 512.6
+     "start": 516.44,
+     "end": 517.2
     },
     {
      "w": "se",
-     "start": 512.6,
-     "end": 512.69
+     "start": 517.2,
+     "end": 517.29
     },
     {
      "w": "passer",
-     "start": 512.73,
-     "end": 512.96
+     "start": 517.33,
+     "end": 517.56
     },
     {
      "w": "très",
-     "start": 513.47,
-     "end": 513.68
+     "start": 518.07,
+     "end": 518.28
     },
     {
      "w": "vite",
-     "start": 513.67,
-     "end": 513.86
+     "start": 518.27,
+     "end": 518.46
     },
     {
      "w": "peut-être",
-     "start": 514.11,
-     "end": 514.36
+     "start": 518.71,
+     "end": 518.96
     },
     {
      "w": "au",
-     "start": 514.36,
-     "end": 514.52
+     "start": 518.96,
+     "end": 519.12
     },
     {
      "w": "bout",
-     "start": 514.52,
-     "end": 514.57
+     "start": 519.12,
+     "end": 519.17
     },
     {
      "w": "de",
-     "start": 514.55,
-     "end": 514.7
+     "start": 519.15,
+     "end": 519.3
     },
     {
      "w": "quarante",
-     "start": 514.7,
-     "end": 515.06
+     "start": 519.3,
+     "end": 519.66
     },
     {
      "w": "secondes",
-     "start": 515.05,
-     "end": 515.6
+     "start": 519.65,
+     "end": 520.2
     },
     {
      "w": "tu",
-     "start": 515.87,
-     "end": 515.94
+     "start": 520.47,
+     "end": 520.54
     },
     {
      "w": "vas",
-     "start": 515.94,
-     "end": 516.08
+     "start": 520.54,
+     "end": 520.68
     },
     {
      "w": "avoir",
-     "start": 516.08,
-     "end": 516.28
+     "start": 520.68,
+     "end": 520.88
     },
     {
      "w": "envie",
-     "start": 516.27,
-     "end": 516.48
+     "start": 520.87,
+     "end": 521.08
     },
     {
      "w": "de",
-     "start": 516.48,
-     "end": 516.55
+     "start": 521.08,
+     "end": 521.15
     },
     {
      "w": "te",
-     "start": 516.6,
-     "end": 516.68
+     "start": 521.2,
+     "end": 521.28
     },
     {
      "w": "lever",
-     "start": 516.67,
-     "end": 516.84
+     "start": 521.27,
+     "end": 521.44
     },
     {
      "w": "Vérifier",
-     "start": 517.26,
-     "end": 517.58
+     "start": 521.86,
+     "end": 522.18
     },
     {
      "w": "un",
-     "start": 517.58,
-     "end": 517.76
+     "start": 522.18,
+     "end": 522.36
     },
     {
      "w": "truc",
-     "start": 517.76,
-     "end": 517.92
+     "start": 522.36,
+     "end": 522.52
     },
     {
      "w": "Aller",
-     "start": 518.38,
-     "end": 518.54
+     "start": 522.98,
+     "end": 523.14
     },
     {
      "w": "chercher",
-     "start": 518.53,
-     "end": 518.74
+     "start": 523.13,
+     "end": 523.34
     },
     {
      "w": "le",
-     "start": 518.74,
-     "end": 518.92
+     "start": 523.34,
+     "end": 523.52
     },
     {
      "w": "téléphone",
-     "start": 518.91,
-     "end": 519.24
+     "start": 523.51,
+     "end": 523.84
     },
     {
      "w": "juste",
-     "start": 519.57,
-     "end": 519.9
+     "start": 524.17,
+     "end": 524.5
     },
     {
      "w": "pour",
-     "start": 519.9,
-     "end": 520.18
+     "start": 524.5,
+     "end": 524.78
     },
     {
      "w": "l'heure",
-     "start": 520.17,
-     "end": 520.42
+     "start": 524.77,
+     "end": 525.02
     }
    ]
   },
   {
    "id": "p61",
    "text": "Ce moment-là, c'est le bouton de l'étude. Tu n'as pas raté l'exercice. C'est ça, l'exercice. Chaque retour compte, comme une répétition à la salle. Deux minutes ce soir. Demain, si tu veux, trois.",
-   "start": 521.19,
-   "end": 533.92,
+   "start": 525.79,
+   "end": 538.52,
    "words": [
     {
      "w": "Ce",
-     "start": 521.19,
-     "end": 521.44
+     "start": 525.79,
+     "end": 526.04
     },
     {
      "w": "moment-là",
-     "start": 521.44,
-     "end": 522.0
+     "start": 526.04,
+     "end": 526.6
     },
     {
      "w": "c'est",
-     "start": 522.21,
-     "end": 522.42
+     "start": 526.81,
+     "end": 527.02
     },
     {
      "w": "le",
-     "start": 522.41,
-     "end": 522.56
+     "start": 527.01,
+     "end": 527.16
     },
     {
      "w": "bouton",
-     "start": 522.55,
-     "end": 523.1
+     "start": 527.15,
+     "end": 527.7
     },
     {
      "w": "de",
-     "start": 523.1,
-     "end": 523.24
+     "start": 527.7,
+     "end": 527.84
     },
     {
      "w": "l'étude",
-     "start": 523.24,
-     "end": 523.6
+     "start": 527.84,
+     "end": 528.2
     },
     {
      "w": "Tu",
-     "start": 524.03,
-     "end": 524.1
+     "start": 528.63,
+     "end": 528.7
     },
     {
      "w": "n'as",
-     "start": 524.1,
-     "end": 524.22
+     "start": 528.7,
+     "end": 528.82
     },
     {
      "w": "pas",
-     "start": 524.22,
-     "end": 524.5
+     "start": 528.82,
+     "end": 529.1
     },
     {
      "w": "raté",
-     "start": 524.5,
-     "end": 524.78
+     "start": 529.1,
+     "end": 529.38
     },
     {
      "w": "l'exercice",
-     "start": 524.77,
-     "end": 525.36
+     "start": 529.37,
+     "end": 529.96
     },
     {
      "w": "C'est",
-     "start": 525.64,
-     "end": 525.88
+     "start": 530.24,
+     "end": 530.48
     },
     {
      "w": "ça",
-     "start": 525.88,
-     "end": 526.22
+     "start": 530.48,
+     "end": 530.82
     },
     {
      "w": "l'exercice",
-     "start": 526.22,
-     "end": 527.08
+     "start": 530.82,
+     "end": 531.68
     },
     {
      "w": "Chaque",
-     "start": 527.5,
-     "end": 527.9
+     "start": 532.1,
+     "end": 532.5
     },
     {
      "w": "retour",
-     "start": 527.9,
-     "end": 528.14
+     "start": 532.5,
+     "end": 532.74
     },
     {
      "w": "compte",
-     "start": 528.14,
-     "end": 528.62
+     "start": 532.74,
+     "end": 533.22
     },
     {
      "w": "comme",
-     "start": 528.99,
-     "end": 529.12
+     "start": 533.59,
+     "end": 533.72
     },
     {
      "w": "une",
-     "start": 529.12,
-     "end": 529.26
+     "start": 533.72,
+     "end": 533.86
     },
     {
      "w": "répétition",
-     "start": 529.26,
-     "end": 529.74
+     "start": 533.86,
+     "end": 534.34
     },
     {
      "w": "à",
-     "start": 529.74,
-     "end": 529.9
+     "start": 534.34,
+     "end": 534.5
     },
     {
      "w": "la",
-     "start": 529.9,
-     "end": 529.98
+     "start": 534.5,
+     "end": 534.58
     },
     {
      "w": "salle",
-     "start": 529.98,
-     "end": 530.27
+     "start": 534.58,
+     "end": 534.87
     },
     {
      "w": "Deux",
-     "start": 530.96,
-     "end": 531.1
+     "start": 535.56,
+     "end": 535.7
     },
     {
      "w": "minutes",
-     "start": 531.1,
-     "end": 531.28
+     "start": 535.7,
+     "end": 535.88
     },
     {
      "w": "ce",
-     "start": 531.27,
-     "end": 531.52
+     "start": 535.87,
+     "end": 536.12
     },
     {
      "w": "soir",
-     "start": 531.52,
-     "end": 531.8
+     "start": 536.12,
+     "end": 536.4
     },
     {
      "w": "Demain",
-     "start": 532.29,
-     "end": 532.6
+     "start": 536.89,
+     "end": 537.2
     },
     {
      "w": "si",
-     "start": 532.86,
-     "end": 532.94
+     "start": 537.46,
+     "end": 537.54
     },
     {
      "w": "tu",
-     "start": 532.94,
-     "end": 533.1
+     "start": 537.54,
+     "end": 537.7
     },
     {
      "w": "veux",
-     "start": 533.1,
-     "end": 533.3
+     "start": 537.7,
+     "end": 537.9
     },
     {
      "w": "trois",
-     "start": 533.69,
-     "end": 533.92
+     "start": 538.29,
+     "end": 538.52
     }
    ]
   },
   {
    "id": "p62",
    "text": "Revenons au bouton.",
-   "start": 535.89,
-   "end": 536.69,
+   "start": 540.49,
+   "end": 541.29,
    "words": [
     {
      "w": "Revenons",
-     "start": 535.89,
-     "end": 536.28
+     "start": 540.49,
+     "end": 540.88
     },
     {
      "w": "au",
-     "start": 536.27,
-     "end": 536.42
+     "start": 540.87,
+     "end": 541.02
     },
     {
      "w": "bouton",
-     "start": 536.41,
-     "end": 536.69
+     "start": 541.01,
+     "end": 541.29
     }
    ]
   },
   {
    "id": "p63",
    "text": "On a envie de rire de ces étudiants. Mais le bouton, tu l'as dans ta poche. Lui ne fait pas mal. Il fait même du bien, deux secondes. C'est pour ça qu'on l'ouvre une vingtaine de fois par jour sans y penser.",
-   "start": 537.43,
-   "end": 548.08,
+   "start": 542.03,
+   "end": 552.68,
    "words": [
     {
      "w": "On",
-     "start": 537.43,
-     "end": 537.58
+     "start": 542.03,
+     "end": 542.18
     },
     {
      "w": "a",
-     "start": 537.58,
-     "end": 537.7
+     "start": 542.18,
+     "end": 542.3
     },
     {
      "w": "envie",
-     "start": 537.7,
-     "end": 537.86
+     "start": 542.3,
+     "end": 542.46
     },
     {
      "w": "de",
-     "start": 537.86,
-     "end": 538.02
+     "start": 542.46,
+     "end": 542.62
     },
     {
      "w": "rire",
-     "start": 538.02,
-     "end": 538.2
+     "start": 542.62,
+     "end": 542.8
     },
     {
      "w": "de",
-     "start": 538.2,
-     "end": 538.34
+     "start": 542.8,
+     "end": 542.94
     },
     {
      "w": "ces",
-     "start": 538.34,
-     "end": 538.46
+     "start": 542.94,
+     "end": 543.06
     },
     {
      "w": "étudiants",
-     "start": 538.46,
-     "end": 538.94
+     "start": 543.06,
+     "end": 543.54
     },
     {
      "w": "Mais",
-     "start": 539.34,
-     "end": 539.44
+     "start": 543.94,
+     "end": 544.04
     },
     {
      "w": "le",
-     "start": 539.44,
-     "end": 539.56
-    },
-    {
-     "w": "bouton",
-     "start": 539.55,
-     "end": 539.94
-    },
-    {
-     "w": "tu",
-     "start": 540.24,
-     "end": 540.32
-    },
-    {
-     "w": "l'as",
-     "start": 540.32,
-     "end": 540.5
-    },
-    {
-     "w": "dans",
-     "start": 540.5,
-     "end": 540.64
-    },
-    {
-     "w": "ta",
-     "start": 540.64,
-     "end": 540.78
-    },
-    {
-     "w": "poche",
-     "start": 540.77,
-     "end": 541.14
-    },
-    {
-     "w": "Lui",
-     "start": 541.55,
-     "end": 541.74
-    },
-    {
-     "w": "ne",
-     "start": 541.74,
-     "end": 541.9
-    },
-    {
-     "w": "fait",
-     "start": 541.9,
-     "end": 542.06
-    },
-    {
-     "w": "pas",
-     "start": 542.05,
-     "end": 542.26
-    },
-    {
-     "w": "mal",
-     "start": 542.26,
-     "end": 542.52
-    },
-    {
-     "w": "Il",
-     "start": 542.82,
-     "end": 542.92
-    },
-    {
-     "w": "fait",
-     "start": 542.91,
-     "end": 543.1
-    },
-    {
-     "w": "même",
-     "start": 543.1,
-     "end": 543.24
-    },
-    {
-     "w": "du",
-     "start": 543.24,
-     "end": 543.44
-    },
-    {
-     "w": "bien",
-     "start": 543.44,
-     "end": 543.78
-    },
-    {
-     "w": "deux",
-     "start": 543.77,
+     "start": 544.04,
      "end": 544.16
     },
     {
-     "w": "secondes",
+     "w": "bouton",
      "start": 544.15,
-     "end": 544.66
+     "end": 544.54
     },
     {
-     "w": "C'est",
-     "start": 545.09,
+     "w": "tu",
+     "start": 544.84,
+     "end": 544.92
+    },
+    {
+     "w": "l'as",
+     "start": 544.92,
+     "end": 545.1
+    },
+    {
+     "w": "dans",
+     "start": 545.1,
      "end": 545.24
     },
     {
-     "w": "pour",
+     "w": "ta",
      "start": 545.24,
-     "end": 545.4
+     "end": 545.38
     },
     {
-     "w": "ça",
-     "start": 545.4,
-     "end": 545.56
-    },
-    {
-     "w": "qu'on",
-     "start": 545.55,
+     "w": "poche",
+     "start": 545.37,
      "end": 545.74
     },
     {
+     "w": "Lui",
+     "start": 546.15,
+     "end": 546.34
+    },
+    {
+     "w": "ne",
+     "start": 546.34,
+     "end": 546.5
+    },
+    {
+     "w": "fait",
+     "start": 546.5,
+     "end": 546.66
+    },
+    {
+     "w": "pas",
+     "start": 546.65,
+     "end": 546.86
+    },
+    {
+     "w": "mal",
+     "start": 546.86,
+     "end": 547.12
+    },
+    {
+     "w": "Il",
+     "start": 547.42,
+     "end": 547.52
+    },
+    {
+     "w": "fait",
+     "start": 547.51,
+     "end": 547.7
+    },
+    {
+     "w": "même",
+     "start": 547.7,
+     "end": 547.84
+    },
+    {
+     "w": "du",
+     "start": 547.84,
+     "end": 548.04
+    },
+    {
+     "w": "bien",
+     "start": 548.04,
+     "end": 548.38
+    },
+    {
+     "w": "deux",
+     "start": 548.37,
+     "end": 548.76
+    },
+    {
+     "w": "secondes",
+     "start": 548.75,
+     "end": 549.26
+    },
+    {
+     "w": "C'est",
+     "start": 549.69,
+     "end": 549.84
+    },
+    {
+     "w": "pour",
+     "start": 549.84,
+     "end": 550.0
+    },
+    {
+     "w": "ça",
+     "start": 550.0,
+     "end": 550.16
+    },
+    {
+     "w": "qu'on",
+     "start": 550.15,
+     "end": 550.34
+    },
+    {
      "w": "l'ouvre",
-     "start": 545.74,
-     "end": 545.98
+     "start": 550.34,
+     "end": 550.58
     },
     {
      "w": "une",
-     "start": 545.98,
-     "end": 546.12
+     "start": 550.58,
+     "end": 550.72
     },
     {
      "w": "vingtaine",
-     "start": 546.12,
-     "end": 546.58
+     "start": 550.72,
+     "end": 551.18
     },
     {
      "w": "de",
-     "start": 546.58,
-     "end": 546.72
+     "start": 551.18,
+     "end": 551.32
     },
     {
      "w": "fois",
-     "start": 546.72,
-     "end": 546.88
+     "start": 551.32,
+     "end": 551.48
     },
     {
      "w": "par",
-     "start": 546.88,
-     "end": 547.08
+     "start": 551.48,
+     "end": 551.68
     },
     {
      "w": "jour",
-     "start": 547.08,
-     "end": 547.3
+     "start": 551.68,
+     "end": 551.9
     },
     {
      "w": "sans",
-     "start": 547.29,
-     "end": 547.64
+     "start": 551.89,
+     "end": 552.24
     },
     {
      "w": "y",
-     "start": 547.64,
-     "end": 547.79
+     "start": 552.24,
+     "end": 552.39
     },
     {
      "w": "penser",
-     "start": 547.84,
-     "end": 548.08
+     "start": 552.44,
+     "end": 552.68
     }
    ]
   },
   {
    "id": "p64",
    "text": "La dernière phrase de l'étude, celle que je t'avais promise :",
-   "start": 549.38,
-   "end": 551.72,
+   "start": 553.98,
+   "end": 556.32,
    "words": [
     {
      "w": "La",
-     "start": 549.38,
-     "end": 549.48
+     "start": 553.98,
+     "end": 554.08
     },
     {
      "w": "dernière",
-     "start": 549.48,
-     "end": 549.74
+     "start": 554.08,
+     "end": 554.34
     },
     {
      "w": "phrase",
-     "start": 549.74,
-     "end": 550.04
+     "start": 554.34,
+     "end": 554.64
     },
     {
      "w": "de",
-     "start": 550.03,
-     "end": 550.18
+     "start": 554.63,
+     "end": 554.78
     },
     {
      "w": "l'étude",
-     "start": 550.17,
-     "end": 550.56
+     "start": 554.77,
+     "end": 555.16
     },
     {
      "w": "celle",
-     "start": 550.88,
-     "end": 551.0
+     "start": 555.48,
+     "end": 555.6
     },
     {
      "w": "que",
-     "start": 551.0,
-     "end": 551.16
+     "start": 555.6,
+     "end": 555.76
     },
     {
      "w": "je",
-     "start": 551.15,
-     "end": 551.24
+     "start": 555.75,
+     "end": 555.84
     },
     {
      "w": "t'avais",
-     "start": 551.24,
-     "end": 551.42
+     "start": 555.84,
+     "end": 556.02
     },
     {
      "w": "promise",
-     "start": 551.41,
-     "end": 551.72
+     "start": 556.01,
+     "end": 556.32
     }
    ]
   },
   {
    "id": "p65",
    "text": "« L'esprit non entraîné n'aime pas être seul avec lui-même. »",
-   "start": 552.72,
-   "end": 556.4,
+   "start": 557.32,
+   "end": 561.0,
    "words": [
     {
      "w": "L'esprit",
-     "start": 552.72,
-     "end": 553.2
+     "start": 557.32,
+     "end": 557.8
     },
     {
      "w": "non",
-     "start": 553.2,
-     "end": 553.48
+     "start": 557.8,
+     "end": 558.08
     },
     {
      "w": "entraîné",
-     "start": 553.48,
-     "end": 554.1
+     "start": 558.08,
+     "end": 558.7
     },
     {
      "w": "n'aime",
-     "start": 554.47,
-     "end": 554.72
+     "start": 559.07,
+     "end": 559.32
     },
     {
      "w": "pas",
-     "start": 554.72,
-     "end": 555.08
+     "start": 559.32,
+     "end": 559.68
     },
     {
      "w": "être",
-     "start": 555.08,
-     "end": 555.3
+     "start": 559.68,
+     "end": 559.9
     },
     {
      "w": "seul",
-     "start": 555.29,
-     "end": 555.7
+     "start": 559.89,
+     "end": 560.3
     },
     {
      "w": "avec",
-     "start": 555.7,
-     "end": 555.9
+     "start": 560.3,
+     "end": 560.5
     },
     {
      "w": "lui-même",
-     "start": 556.07,
-     "end": 556.4
+     "start": 560.67,
+     "end": 561.0
     }
    ]
   },
   {
    "id": "p66",
    "text": "Non entraîné. Tout est dans ce mot. Ça veut dire que ça s'entraîne.",
-   "start": 557.2,
-   "end": 561.26,
+   "start": 561.8,
+   "end": 565.86,
    "words": [
     {
      "w": "Non",
-     "start": 557.2,
-     "end": 557.54
+     "start": 561.8,
+     "end": 562.14
     },
     {
      "w": "entraîné",
-     "start": 557.53,
-     "end": 558.12
+     "start": 562.13,
+     "end": 562.72
     },
     {
      "w": "Tout",
-     "start": 558.58,
-     "end": 558.7
+     "start": 563.18,
+     "end": 563.3
     },
     {
      "w": "est",
-     "start": 558.7,
-     "end": 558.94
+     "start": 563.3,
+     "end": 563.54
     },
     {
      "w": "dans",
-     "start": 558.94,
-     "end": 559.08
+     "start": 563.54,
+     "end": 563.68
     },
     {
      "w": "ce",
-     "start": 559.08,
-     "end": 559.28
+     "start": 563.68,
+     "end": 563.88
     },
     {
      "w": "mot",
-     "start": 559.27,
-     "end": 559.44
+     "start": 563.87,
+     "end": 564.04
     },
     {
      "w": "Ça",
-     "start": 559.79,
-     "end": 559.9
+     "start": 564.39,
+     "end": 564.5
     },
     {
      "w": "veut",
-     "start": 559.9,
-     "end": 560.04
+     "start": 564.5,
+     "end": 564.64
     },
     {
      "w": "dire",
-     "start": 560.03,
-     "end": 560.28
+     "start": 564.63,
+     "end": 564.88
     },
     {
      "w": "que",
-     "start": 560.27,
-     "end": 560.42
+     "start": 564.87,
+     "end": 565.02
     },
     {
      "w": "ça",
-     "start": 560.41,
-     "end": 560.58
+     "start": 565.01,
+     "end": 565.18
     },
     {
      "w": "s'entraîne",
-     "start": 560.58,
-     "end": 561.26
+     "start": 565.18,
+     "end": 565.86
     }
    ]
   },
   {
    "id": "p67",
    "text": "Tu n'as pas un problème avec la solitude. Tu n'as juste jamais meublé la pièce.",
-   "start": 564.12,
-   "end": 568.72,
+   "start": 568.72,
+   "end": 573.32,
    "words": [
     {
      "w": "Tu",
-     "start": 564.12,
-     "end": 564.18
+     "start": 568.72,
+     "end": 568.78
     },
     {
      "w": "n'as",
-     "start": 564.17,
-     "end": 564.32
+     "start": 568.77,
+     "end": 568.92
     },
     {
      "w": "pas",
-     "start": 564.32,
-     "end": 564.5
+     "start": 568.92,
+     "end": 569.1
     },
     {
      "w": "un",
-     "start": 564.5,
-     "end": 564.62
+     "start": 569.1,
+     "end": 569.22
     },
     {
      "w": "problème",
-     "start": 564.62,
-     "end": 564.92
+     "start": 569.22,
+     "end": 569.52
     },
     {
      "w": "avec",
-     "start": 564.91,
-     "end": 565.16
+     "start": 569.51,
+     "end": 569.76
     },
     {
      "w": "la",
-     "start": 565.15,
-     "end": 565.34
+     "start": 569.75,
+     "end": 569.94
     },
     {
      "w": "solitude",
-     "start": 565.34,
-     "end": 565.74
+     "start": 569.94,
+     "end": 570.34
     },
     {
      "w": "Tu",
-     "start": 566.4,
-     "end": 566.45
+     "start": 571.0,
+     "end": 571.05
     },
     {
      "w": "n'as",
-     "start": 566.46,
-     "end": 566.64
+     "start": 571.06,
+     "end": 571.24
     },
     {
      "w": "juste",
-     "start": 566.64,
-     "end": 566.98
+     "start": 571.24,
+     "end": 571.58
     },
     {
      "w": "jamais",
-     "start": 566.98,
-     "end": 567.74
+     "start": 571.58,
+     "end": 572.34
     },
     {
      "w": "meublé",
-     "start": 567.74,
-     "end": 568.18
+     "start": 572.34,
+     "end": 572.78
     },
     {
      "w": "la",
-     "start": 568.17,
-     "end": 568.32
+     "start": 572.77,
+     "end": 572.92
     },
     {
      "w": "pièce",
-     "start": 568.46,
-     "end": 568.72
+     "start": 573.06,
+     "end": 573.32
     }
    ]
   },
   {
    "id": "p68",
    "text": "Prochaine vidéo : pourquoi essayer de ne penser à rien marche si mal, et ce que les soufis font à la place.",
-   "start": 570.71,
-   "end": 576.72,
+   "start": 575.31,
+   "end": 581.32,
    "words": [
     {
      "w": "Prochaine",
-     "start": 570.71,
-     "end": 570.98
+     "start": 575.31,
+     "end": 575.58
     },
     {
      "w": "vidéo",
-     "start": 570.98,
-     "end": 571.34
+     "start": 575.58,
+     "end": 575.94
     },
     {
      "w": "pourquoi",
-     "start": 571.86,
-     "end": 572.08
+     "start": 576.46,
+     "end": 576.68
     },
     {
      "w": "essayer",
-     "start": 572.08,
-     "end": 572.48
+     "start": 576.68,
+     "end": 577.08
     },
     {
      "w": "de",
-     "start": 572.48,
-     "end": 572.68
+     "start": 577.08,
+     "end": 577.28
     },
     {
      "w": "ne",
-     "start": 572.67,
-     "end": 572.8
+     "start": 577.27,
+     "end": 577.4
     },
     {
      "w": "penser",
-     "start": 572.79,
-     "end": 573.06
+     "start": 577.39,
+     "end": 577.66
     },
     {
      "w": "à",
-     "start": 573.05,
-     "end": 573.26
+     "start": 577.65,
+     "end": 577.86
     },
     {
      "w": "rien",
-     "start": 573.26,
-     "end": 573.5
+     "start": 577.86,
+     "end": 578.1
     },
     {
      "w": "marche",
-     "start": 573.5,
-     "end": 573.92
+     "start": 578.1,
+     "end": 578.52
     },
     {
      "w": "si",
-     "start": 573.91,
-     "end": 574.28
+     "start": 578.51,
+     "end": 578.88
     },
     {
      "w": "mal",
-     "start": 574.27,
-     "end": 574.58
+     "start": 578.87,
+     "end": 579.18
     },
     {
      "w": "et",
-     "start": 574.84,
-     "end": 575.1
+     "start": 579.44,
+     "end": 579.7
     },
     {
      "w": "ce",
-     "start": 575.1,
-     "end": 575.34
+     "start": 579.7,
+     "end": 579.94
     },
     {
      "w": "que",
-     "start": 575.34,
-     "end": 575.5
+     "start": 579.94,
+     "end": 580.1
     },
     {
      "w": "les",
-     "start": 575.5,
-     "end": 575.62
+     "start": 580.1,
+     "end": 580.22
     },
     {
      "w": "soufis",
-     "start": 575.62,
-     "end": 576.02
+     "start": 580.22,
+     "end": 580.62
     },
     {
      "w": "font",
-     "start": 576.02,
-     "end": 576.3
+     "start": 580.62,
+     "end": 580.9
     },
     {
      "w": "à",
-     "start": 576.29,
-     "end": 576.4
+     "start": 580.89,
+     "end": 581.0
     },
     {
      "w": "la",
-     "start": 576.4,
-     "end": 576.48
+     "start": 581.0,
+     "end": 581.08
     },
     {
      "w": "place",
-     "start": 576.48,
-     "end": 576.72
+     "start": 581.08,
+     "end": 581.32
     }
    ]
   }
  ],
- "duration": 577.934
+ "duration": 582.534
 }

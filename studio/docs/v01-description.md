@@ -14,7 +14,7 @@ En 2014, des chercheurs ont laissé des gens seuls 15 minutes dans une pièce vi
 05:21 La khalwa, et l'histoire d'al-Ghazali
 06:39 Le rappel (dhikr)
 07:31 L'exercice de ce soir
-08:56 Revenons au bouton
+09:01 Revenons au bouton
 
 SOURCES
 
