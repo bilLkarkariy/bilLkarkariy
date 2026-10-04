@@ -72,3 +72,19 @@ rendu restent à faire sur le Mac. Aucune voix générée, aucun appel ElevenLab
 - `src/data/remap3d_ur.json` vient de la voix estimée : le refaire (étape 5), sinon les plans 3D seront décalés.
 - La police nastaliq est haute : regarder en priorité les fiches noires, les étapes de l'exercice et les Shorts.
 - L'avertissement React sur les clés de `FilmStrip` existe aussi en français et en anglais.
+
+## Prompt plus récent sur `studio/v01-en`
+
+Après le départ de cette branche, `studio/v01-en` a reçu `docs/prompts/v01-ur-agent-cloud.md` et
+`docs/v01-finition.md` (pas sur cette branche). Ce travail suit `docs/v01-langue-brief.md`. Écarts à reprendre par
+l'agent suivant, si ce prompt est confirmé :
+
+- **Verset :** le prompt demande `--verse-hold 0` et le verset affiché dès « قرآن اسے ایک جملے میں کہتا ہے »
+  (`at('p52') - 10`), pendant la voix, musique et bruitages coupés. Ici : silence de 6 s après `s63`, comme l'anglais
+  (`src/montage/p4.tsx`, `src/V01.tsx`, `tools/check_v01_en.mjs`).
+- **Voix jointe** (`bilKarkariy_ep1_urdu.mp3`) : pas reçue ici. Assemblage, gain des deux « استغفراللہ » chuchotés,
+  manifeste `src/data/v01_ur.assembly.json`, vrai alignement : à faire.
+- **À livrer en plus :** `docs/v01-ur-finition.md` (repères de finition et `sfxOff`), `docs/v01-ur.srt`, chapitres sur
+  le vrai alignement.
+- Déjà conforme : ouverture sur la maquette dès l'image 0, `remap3d_ur.json` lu par `Shot3D` (image la plus proche à
+  pas 1), Shorts, police et chiffres.
