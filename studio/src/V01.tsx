@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, getInputProps, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {hl} from './captures';
 import {ARoll, FACELESS} from './components/ARoll';
 import {Citation} from './components/Citation';
@@ -419,9 +419,12 @@ const POOL: Record<string, {takes: string[]; gain: number; max?: number; fadeIn?
 };
 const CLAMP = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const rnd = (n: number, k: number) => (((Math.sin(n * 12.9898 + k * 78.233) * 43758.5453) % 1) + 1) % 1;
+/** --props '{"sfxOff":[[de, à], …]}' : bruitages coupés sur ces images (passages remplacés au montage, qui ont les leurs). */
+const SFX_OFF = (getInputProps().sfxOff ?? []) as [number, number][];
 const played = (() => {
   const seen: Record<string, number> = {};
   return [...sfx]
+    .filter(([, f]) => !SFX_OFF.some(([a, b]) => f >= a && f < b))
     .sort((a, b) => a[1] - b[1])
     .map(([name, f, v, max]) => {
       const pool = POOL[name];
