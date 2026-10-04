@@ -81,7 +81,7 @@ def transcribe(path, cache, windows=None, lang='en', gain_db=0):
     return words
 
 
-def align_words(sc, heard, bounds=None, lang='en'):
+def align_words(sc, heard, bounds=None, lang='en', phonetic=False):
     """Interpole chaque série manquante une seule fois, entre ses deux voisins.
 
     bounds peut limiter chaque segment à sa copie exacte dans le WAV assemblé.
@@ -111,7 +111,7 @@ def align_words(sc, heard, bounds=None, lang='en'):
                 slots[a[i][0]].append((b[j][2], b[j][3], merged[b[j][0]]['word']))
         elif lang == 'ur' and tag == 'replace':
             from vo_alignment_ur import match_replacement
-            for ai,az,bj,bz,ratio in match_replacement([x[1] for x in a[i0:i1]], [x[1] for x in b[j0:j1]]):
+            for ai,az,bj,bz,ratio in match_replacement([x[1] for x in a[i0:i1]], [x[1] for x in b[j0:j1]],phonetic=phonetic):
                 aa,bb=a[i0+ai:i0+az],b[j0+bj:j0+bz]
                 start,end=bb[0][2],bb[-1][3]
                 weight=sum(len(x[1]) for x in aa)
@@ -208,7 +208,13 @@ def align_recording(script_path, audio_path):
         bounds={s['id']:(s['output_start']/info.samplerate,s['output_end']/info.samplerate) for s in manifest['segments']}
     work=root/f'out/validation/vo-{lang}'
     heard=transcribe(audio_path,work/'final.whisper.json',list(bounds.values()) if bounds else None,lang=lang)
-    segments,audit=align_words(sc,heard,bounds,lang=lang)
+    extra={}
+    if lang == 'ur' and manifest:
+        from vo_alignment_ur import align_assembled
+        segments,audit,choices=align_assembled(sc,heard,manifest,work,info.samplerate)
+        extra={'segment_recognition':choices}
+    else:
+        segments,audit=align_words(sc,heard,bounds,lang=lang)
     if manifest:
         for fix in manifest.get('review',{}).get('word_times',[]):
             s=next(s for s in segments if s['id']==fix['segment'])
@@ -217,10 +223,13 @@ def align_recording(script_path, audio_path):
             w=[w for w in s['words'] if w['w']==fix['word']][fix['nth']]
             w.update(start=round(fix['start']+shift,3),end=round(fix['end']+shift,3))
             s.update(start=s['words'][0]['start'],end=s['words'][-1]['end'])
+            if lang == 'ur':
+                index=s['words'].index(w)
+                audit=[item for item in audit if not (item['segment']==s['id'] and item.get('index')==index)]
             audit.append({**fix,'start':w['start'],'end':w['end'],'status':'reviewed_signal_envelope'})
     out={'audio':audio_path.resolve().relative_to((root/'public').resolve()).as_posix(),
          'language':lang,'segments':segments,'duration':round(info.duration,3),
-         'alignment':{'engine':'faster-whisper/small/cpu/int8','interpolated':audit},
+         'alignment':{'engine':'faster-whisper/small/cpu/int8','interpolated':audit,**extra},
          'silences':manifest['inserts'] if manifest else []}
     dst=root/'src/data'/script_path.name.replace('.json','.vo.json')
     dst.write_text(json.dumps(out,ensure_ascii=False,indent=1)+'\n')
