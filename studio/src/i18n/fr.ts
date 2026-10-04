@@ -256,5 +256,16 @@ export const fr = {
   "80 %": "80 %",
   "32 %": "32 %",
   "pascal.chamber": "Tout le malheur des hommes vient d'une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre.",
-  "pascal.solitude": "De là vient que le plaisir de la solitude est une chose incompréhensible."
+  "pascal.solitude": "De là vient que le plaisir de la solitude est une chose incompréhensible.",
+  // textes jusque-là écrits en dur dans le montage (même rendu en français et en anglais)
+  "PARTICIPANT": "PARTICIPANT",
+  "?": "?",
+  "Harvard": "Harvard",
+  "KHALWA": "KHALWA",
+  "DHIKR": "DHIKR",
+  "AL-KHALWA": "AL-KHALWA",
+  "AL-ISM AL-MUFRAD": "AL-ISM AL-MUFRAD",
+  "ihya.retraite": "La retraite",
+  "Kitāb ādāb al-ʿuzla": "Kitāb ādāb al-ʿuzla",
+  "{h} H": "{h} H"
 } as const;

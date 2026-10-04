@@ -38,7 +38,7 @@ return [
     from: at('p54') - 6,
     to: at('p61', undefined, 'end') + 18,
   },
-].map((s) => ({...s, id: s.id + (lang === 'en' ? '-en' : '')}));
+].map((s) => ({...s, id: s.id + (lang === 'fr' ? '' : `-${lang}`)}));
 };
 export const SHORTS = getShorts('fr');
 
@@ -58,7 +58,7 @@ const groupsFor = (lang: Lang): Word[][] => {
   }
   return out;
 };
-const captionGroups = {fr: groupsFor('fr'), en: groupsFor('en')};
+const captionGroups = {fr: groupsFor('fr'), en: groupsFor('en'), ar: groupsFor('ar')};
 
 const Captions: React.FC<{from: number; lang: Lang}> = ({from, lang}) => {
   const GROUPS = captionGroups[lang];

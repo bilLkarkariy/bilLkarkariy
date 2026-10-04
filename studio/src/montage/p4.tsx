@@ -225,13 +225,13 @@ const cits: Cit[] = [
         i: hl('karkariya_fondements', 'the Spiritual Retreat'),
         at: at('p53', 'retraite') - fondIn,
         tone: 'gold',
-        note: {at: at('p53', 'retraite') + 2 - fondIn, kicker: 'AL-KHALWA', big: tx("La retraite"), tone: 'gold'},
+        note: {at: at('p53', 'retraite') + 2 - fondIn, kicker: tx("AL-KHALWA") || undefined, big: tx("La retraite"), tone: 'gold'},
       },
       {
         i: hl('karkariya_fondements', 'the Singular Name'),
         at: at('p53', 'Nom') - fondIn,
         tone: 'gold',
-        note: {at: at('p53', 'Nom') + 2 - fondIn, kicker: 'AL-ISM AL-MUFRAD', big: tx("Le Nom"), tone: 'gold'},
+        note: {at: at('p53', 'Nom') + 2 - fondIn, kicker: tx("AL-ISM AL-MUFRAD") || undefined, big: tx("Le Nom"), tone: 'gold'},
       },
     ],
     notes: [{at: at('p53', 'fondements') - fondIn, kicker: tx("PARMI LES FONDEMENTS DE LA VOIE"), text: tx("ces deux-là"), until: at('p53', 'retraite') - 2 - fondIn}],
@@ -345,7 +345,7 @@ const P4: React.FC = () => (
             {t: tx("LE CŒUR · L’ATTENTION"), at: at('p43', 'cœur') - 2 - motIn, y: 870, size: 26, mono: true, stagger: 8},
           ]}
         />
-        <ArabicWord ar="خلوة" latin="KHALWA" gloss={tx("la retraite spirituelle")} at={at('p42', 'khalwa') - 6 - motIn} glossAt={at('p42', 'retraite') - motIn} y={130} />
+        <ArabicWord ar="خلوة" latin={tx("KHALWA")} gloss={tx("la retraite spirituelle")} at={at('p42', 'khalwa') - 6 - motIn} glossAt={at('p42', 'retraite') - motIn} y={130} />
       </Fade>
     </Sequence>
 
@@ -416,8 +416,8 @@ const P4: React.FC = () => (
           n={{
             at: at('p49', 'livre') - p49In,
             kicker: tx("IḤYĀʾ ʿULŪM AL-DĪN · LIVRE 16"),
-            big: tx("La retraite"),
-            text: 'Kitāb ādāb al-ʿuzla',
+            big: tx("ihya.retraite"),
+            text: tx("Kitāb ādāb al-ʿuzla"),
             chips: [
               {t: tx("VIVRE AU MILIEU DES GENS"), at: at('p49', 'vivre') - p49In},
               {t: tx("OU SE RETIRER ?"), at: at('p49', 'retirer') - p49In},
@@ -443,7 +443,7 @@ const P4: React.FC = () => (
             {t: tx("AILLEURS : MANTRA"), at: at('p51', 'mantra') - 4 - p50In, y: 860, size: 24, mono: true, stagger: 6},
           ]}
         />
-        <ArabicWord ar="ذكر" latin="DHIKR" gloss={tx("le rappel")} at={at('p50', 'dhikr') - 8 - p50In} glossAt={at('p51', 'rappel') - p50In} y={150} out={at('p51', 'Concrètement') - 6 - p50In} />
+        <ArabicWord ar="ذكر" latin={tx("DHIKR")} gloss={tx("le rappel")} at={at('p50', 'dhikr') - 8 - p50In} glossAt={at('p51', 'rappel') - p50In} y={150} out={at('p51', 'Concrètement') - 6 - p50In} />
         <Lift>
           <Tasbih
             at={at('p51', 'Concrètement') - p50In}
@@ -478,6 +478,6 @@ const VERSE_SILENCE: [number, number] = [verseIn, verseOut];
 
 return {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE};
 };
-const versions = {fr: makeP4('fr'), en: makeP4('en')};
+const versions = {fr: makeP4('fr'), en: makeP4('en'), ar: makeP4('ar')};
 export const getP4 = (lang: Lang) => versions[lang];
 export const {P4, P4Front, P4_SFX, P4_END, VERSE_SILENCE} = versions.fr;

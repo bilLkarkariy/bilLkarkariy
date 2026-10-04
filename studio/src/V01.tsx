@@ -33,8 +33,8 @@ const Faceless = getFaceless(lang);
 
 // hook
 const cut1 = at('p1', 'Seul') - 3; // A-roll -> maquette
-// (en anglais sans face caméra, aucun visage : la maquette ouvre la vidéo dès la première image)
-const mIn = FACELESS && lang === 'en' ? 0 : cut1;
+// (en anglais et en arabe sans face caméra, aucun visage : la maquette ouvre la vidéo dès la première image)
+const mIn = FACELESS && lang !== 'fr' ? 0 : cut1;
 const planIn = at('p2') - 10; // la maquette, vue de dessus, devient le plan
 const xfade = 14;
 const dotsIn = at('p3') - 5; // « Deux hommes sur trois »
@@ -456,7 +456,8 @@ const V01_DURATION = P5_END; // (la voix finit à DURATION ; l'écran de fin dur
 
 const Component: React.FC = () => {
   const frame = useCurrentFrame();
-  const verse = lang === 'en' && frame >= VERSE_SILENCE[0] && frame < VERSE_SILENCE[1];
+  // pendant le verset (hors français) : ni grain ni lumière qui bouge, aucun bruitage ; en arabe, la voix dit le verset
+  const verse = lang !== 'fr' && frame >= VERSE_SILENCE[0] && frame < VERSE_SILENCE[1];
   return (
   <AbsoluteFill style={{background: C.paper}}>
     <Paper grid={0.8} />
@@ -577,7 +578,7 @@ const Component: React.FC = () => {
 
     {/* son */}
     {vo.audio && <Sequence from={LEAD}>
-      <Audio src={staticFile(vo.audio)} volume={verse ? 0 : 1} />
+      <Audio src={staticFile(vo.audio)} volume={verse && lang === 'en' ? 0 : 1} />
     </Sequence>}
     {/* musique (ElevenLabs, tools/sfx_el.py music) : la science, rien sous la pièce vide, la khalwa, la voie */}
     <Music
@@ -594,7 +595,7 @@ const Component: React.FC = () => {
           src={staticFile(s.src)}
           toneFrequency={s.tone}
           volume={(lf) =>
-            (lang === 'en' && s.f + lf >= VERSE_SILENCE[0] && s.f + lf < VERSE_SILENCE[1] ? 0 : s.v) *
+            (lang !== 'fr' && s.f + lf >= VERSE_SILENCE[0] && s.f + lf < VERSE_SILENCE[1] ? 0 : s.v) *
             (s.fadeIn ? interpolate(lf, [0, s.fadeIn], [0.35, 1], CLAMP) : 1) *
             interpolate(lf, [s.len - 3, s.len], [1, 0], CLAMP)
           }
@@ -607,7 +608,7 @@ const Component: React.FC = () => {
 };
 return {Component, duration: V01_DURATION};
 };
-const versions = {fr: makeV01('fr'), en: makeV01('en')};
+const versions = {fr: makeV01('fr'), en: makeV01('en'), ar: makeV01('ar')};
 export const durationFor = (lang: Lang) => versions[lang].duration;
 export const V01_DURATION = durationFor('fr');
 export const V01: React.FC<{lang?: Lang}> = ({lang = 'fr'}) => {

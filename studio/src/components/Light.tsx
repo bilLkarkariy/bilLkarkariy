@@ -1,8 +1,11 @@
-import {useLang, useText} from '../i18n';
+import {Lang, useLang, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import rendered from '../data/renders3d.json';
 import remapEN from '../data/remap3d_en.json';
+
+// Hors français, aucune 3D recalculée : les images FR sont recalées sur les mots de la langue (tools/remap3d.py).
+const REMAP: Partial<Record<Lang, Record<string, number[][]>>> = {en: remapEN};
 
 // La lumière de la pièce : une fenêtre en haut à gauche. Le soleil glisse lentement
 // sur le bureau pendant toute la vidéo, ses montants posent une ombre floue sur le papier.
@@ -77,9 +80,11 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
 }) => {
   const tx = useText();
   const frame = useCurrentFrame();
-  const en = useLang() === 'en';
-  // (version anglaise : aucune 3D recalculée, les images FR sont recalées sur les mots anglais, tools/remap3d_en.py)
-  const knots = en ? (remapEN as Record<string, number[][]>)[dir] : undefined;
+  const lang = useLang();
+  const foreign = lang !== 'fr';
+  // (anglais, arabe : aucune 3D recalculée, les images FR sont recalées sur les mots de la langue ;
+  //  tant que le recalage manque, le carton « en cours de rendu » reste)
+  const knots = foreign ? REMAP[lang]?.[dir] : undefined;
   // (si la voix a bougé depuis le rendu, on s'arrête sur la dernière image rendue)
   const done = (rendered as Record<string, {frames: number; step: number}>)[dir];
   // (le pas réellement rendu prime : un plan recalculé image par image n'a plus rien à fondre)
@@ -94,7 +99,7 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
   const file = (k: number) => staticFile(`3d/${dir}/f${String(k).padStart(4, '0')}.png`);
   return (
     <AbsoluteFill>
-      {((en && !knots) || no3d(dir)) ? (
+      {((foreign && !knots) || no3d(dir)) ? (
         <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 18, color: '#22211E', textAlign: 'center'}}>
           <div style={{fontFamily: "'Plex Mono', monospace", fontSize: 20, letterSpacing: '0.16em', background: '#F2D64B', padding: '6px 12px'}}>{tx("PLAN 3D · EN COURS DE RENDU")}</div>
           <div style={{fontFamily: "'Garamond', serif", fontStyle: 'italic', fontSize: 40, maxWidth: 1300}}>{label ?? dir}</div>

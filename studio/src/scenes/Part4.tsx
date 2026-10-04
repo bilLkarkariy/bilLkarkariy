@@ -299,13 +299,15 @@ export const Verse: React.FC<{out: number}> = ({out}) => {
   const lang = useLang();
   const frame = useCurrentFrame();
   const o = interpolate(frame, [0, 14, out, out + 14], [0, 1, 1, 0], clamp);
+  // en arabe, la voix dit le verset lui-même : rien sous le texte uthmani, ni référence, ni traduction
+  const alone = lang === 'ar';
   return (
     <AbsoluteFill style={{opacity: o, alignItems: 'center', justifyContent: 'center'}}>
-      <div aria-hidden={lang === 'en' ? true : undefined} style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{lang === 'fr' ? tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28") : '\u00a0'}</div>
+      {!alone && <div aria-hidden={lang === 'en' ? true : undefined} style={{fontFamily: F.mono, fontSize: 20, letterSpacing: '0.24em', color: C.inkSoft, marginBottom: 46}}>{lang === 'fr' ? tx("CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28") : '\u00a0'}</div>}
       <div style={{fontFamily: F.quran, fontSize: 52, color: C.inkSoft, direction: 'rtl', lineHeight: 1.6}}>ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ</div>
       <div style={{fontFamily: F.quran, fontSize: 112, color: C.ink, direction: 'rtl', lineHeight: 1.7, marginTop: 6}}>أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ</div>
-      <div style={{width: 120, height: 2, background: C.gold, margin: '40px 0 36px'}} />
-      <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 48, color: C.ink}}>{tx("« C'est par le rappel de Dieu que les cœurs s'apaisent. »")}</div>
+      {!alone && <div style={{width: 120, height: 2, background: C.gold, margin: '40px 0 36px'}} />}
+      {!alone && <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 48, color: C.ink}}>{tx("« C'est par le rappel de Dieu que les cœurs s'apaisent. »")}</div>}
     </AbsoluteFill>
   );
 };

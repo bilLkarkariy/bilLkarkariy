@@ -136,7 +136,7 @@ export const Static: React.FC<StaticCues> = ({shock, handle, label, spark}) => {
         <circle cx={me.x} cy={me.y} r={34 * dotS * (1 + 0.3 * hit)} fill={C.ink} />
       </svg>
       <Label x={me.x} y={me.y + 70} o={dotS} align="center" size={18}>
-        PARTICIPANT
+        {tx("PARTICIPANT")}
       </Label>
       <Label x={me.x} y={me.y - 120} o={tagO} align="center">{tx("1 DÉCHARGE D'ESSAI")}</Label>
       <Label x={box.x - 84} y={box.y + 120} o={interpolate(frame, [label, label + 8], [0, 1], clamp)} align="center">{tx("≈ ÉLECTRICITÉ STATIQUE")}</Label>

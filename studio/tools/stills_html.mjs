@@ -37,11 +37,11 @@ export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, cl
   }]});
   const m = await import(pathToFileURL(output).href + '?t=' + Date.now());
   return (id, frame) => {
-    const lang = id.endsWith('-en') || id === 'V01-EN' ? 'en' : 'fr';
+    const lang = id.endsWith('-en') || id === 'V01-EN' ? 'en' : id.endsWith('-ar') || id === 'V01-AR' ? 'ar' : 'fr';
     const isShort = id.startsWith('short-');
     const short = isShort ? (m.getShorts ? m.getShorts(lang) : m.SHORTS).find((s) => s.id === id) : null;
     if (isShort && !short) throw new Error(`Composition inconnue : ${id}`);
-    if (!isShort && !['V01', 'V01-EN'].includes(id)) throw new Error(`Composition inconnue : ${id}`);
+    if (!isShort && !['V01', 'V01-EN', 'V01-AR'].includes(id)) throw new Error(`Composition inconnue : ${id}`);
     const props = short ? {...short, lang} : {lang};
     const config = {id, fps: 30, width: isShort ? 1080 : 1920, height: isShort ? 1920 : 1080,
       durationInFrames: short ? short.to - short.from + m.SHORT_END : m.durationFor ? m.durationFor(lang) : m.V01_DURATION,

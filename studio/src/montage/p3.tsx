@@ -94,7 +94,7 @@ const cits: Cit[] = [
       {
         i: hl('kg_page', 'Harvard'),
         at: at('p23', 'Harvard') - kgIn,
-        note: {at: at('p23', 'Harvard') + 4 - kgIn, kicker: tx("DEUX CHERCHEURS"), big: 'Harvard', text: tx("en 2010"), y: 560},
+        note: {at: at('p23', 'Harvard') + 4 - kgIn, kicker: tx("DEUX CHERCHEURS"), big: tx("Harvard"), text: tx("en 2010"), y: 560},
       },
     ],
   },
@@ -476,6 +476,6 @@ const P3Front: React.FC = () => (
 
 return {P3, P3Back, P3Front, P3_SFX, P3_END};
 };
-const versions = {fr: makeP3('fr'), en: makeP3('en')};
+const versions = {fr: makeP3('fr'), en: makeP3('en'), ar: makeP3('ar')};
 export const getP3 = (lang: Lang) => versions[lang];
 export const {P3, P3Back, P3Front, P3_SFX, P3_END} = versions.fr;

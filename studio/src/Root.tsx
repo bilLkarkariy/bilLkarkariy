@@ -8,7 +8,8 @@ export const Root: React.FC = () => (
   <>
     <Composition id="V01" component={V01} durationInFrames={V01_DURATION} calculateMetadata={({props}) => ({durationInFrames: durationFor(props.lang === 'en' ? 'en' : 'fr')})} fps={30} width={1920} height={1080} />
     <Composition id="V01-EN" component={V01} durationInFrames={durationFor('en')} calculateMetadata={({props}) => ({durationInFrames: durationFor(props.lang === 'fr' ? 'fr' : 'en')})} fps={30} width={1920} height={1080} defaultProps={{lang: 'en'}} />
-    {(['fr', 'en'] as const).flatMap((lang) => getShorts(lang).map((s) => (
+    <Composition id="V01-AR" component={V01} durationInFrames={durationFor('ar')} calculateMetadata={({props}) => ({durationInFrames: durationFor(props.lang === 'fr' ? 'fr' : props.lang === 'en' ? 'en' : 'ar')})} fps={30} width={1920} height={1080} defaultProps={{lang: 'ar'}} />
+    {(['fr', 'en', 'ar'] as const).flatMap((lang) => getShorts(lang).map((s) => (
       <Composition
         key={s.id}
         id={s.id}

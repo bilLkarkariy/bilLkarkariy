@@ -271,7 +271,7 @@ export const Queue: React.FC<QueueCues> = ({file, three, you, hand, decide}) => 
             <circle cx={16} cy={40} r={10} fill="none" stroke={C.ink} strokeWidth={2} />
             <ellipse cx={-26} cy={-6} rx={64} ry={42} fill={C.sheet} stroke={C.ink} strokeWidth={2.5} />
             <text x={-26} y={10} textAnchor="middle" fontFamily="Garamond, serif" fontSize={48} fill={C.ink}>
-              ?
+              {tx("?")}
             </text>
           </g>
         </g>
@@ -517,7 +517,7 @@ export const Night: React.FC<NightCues> = ({wake, spin, reflex, screen}) => {
 
 // ── p27 : « une vingtaine de sessions sur smartphone par jour » : la journée, et chaque session ─────
 export const DayTicks: React.FC<{start: number; n?: number; y?: number}> = ({start, n = 20, y = 760}) => {
-  
+  const tx = useText();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const X0 = 300;
@@ -544,7 +544,7 @@ export const DayTicks: React.FC<{start: number; n?: number; y?: number}> = ({sta
       </svg>
       {[0, 6, 12, 18, 24].map((h) => (
         <Mono key={h} x={X0 + ((X1 - X0) * h) / 24} y={Y + 22} size={16} o={ruler}>
-          {`${h} H`}
+          {tx('{h} H').replace('{h}', String(h))}
         </Mono>
       ))}
     </AbsoluteFill>

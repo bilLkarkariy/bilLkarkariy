@@ -257,5 +257,15 @@ export const en: Record<keyof typeof fr, string> = {
   "80 %": "80%",
   "32 %": "32%",
   "pascal.chamber": "all the unhappiness of men arises from one single fact, that they cannot stay quietly in their own chamber.",
-  "pascal.solitude": "hence it comes that the pleasure of solitude is a thing incomprehensible."
+  "pascal.solitude": "hence it comes that the pleasure of solitude is a thing incomprehensible.",
+  "PARTICIPANT": "PARTICIPANT",
+  "?": "?",
+  "Harvard": "Harvard",
+  "KHALWA": "KHALWA",
+  "DHIKR": "DHIKR",
+  "AL-KHALWA": "AL-KHALWA",
+  "AL-ISM AL-MUFRAD": "AL-ISM AL-MUFRAD",
+  "ihya.retraite": "The retreat",
+  "Kitāb ādāb al-ʿuzla": "Kitāb ādāb al-ʿuzla",
+  "{h} H": "{h} H"
 };
