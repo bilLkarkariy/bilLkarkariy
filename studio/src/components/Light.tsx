@@ -64,6 +64,8 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
   const frame = useCurrentFrame();
   // (si la voix a bougé depuis le rendu, on s'arrête sur la dernière image rendue)
   const done = (rendered as Record<string, {frames: number; step: number}>)[dir];
+  // (le pas réellement rendu prime : un plan recalculé image par image n'a plus rien à fondre)
+  if (done?.step) step = Math.min(step, done.step);
   const last = 1 + Math.floor((Math.min(frames, done?.frames ?? frames) - 1) / step) * step;
   const n = Math.min(last, frame + 1);
   const n0 = 1 + Math.floor((n - 1) / step) * step;
