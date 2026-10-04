@@ -111,7 +111,7 @@ export const ur: Record<keyof typeof fr, string> = {
   "IL VEUT FAIRE COURS": "وہ درس دینا چاہتے ہیں",
   "« ma langue ne prononçait plus un seul mot »": "“میری زبان ایک لفظ بھی ادا نہ کر سکی”",
   "IL LE RACONTE LUI-MÊME": "وہ خود بتاتے ہیں",
-  "« Dieu dessécha ma langue : je ne pouvais plus enseigner »": "“اللہ نے میری زبان خشک کر دی، میں درس نہ دے سکا”",
+  "« Dieu dessécha ma langue : je ne pouvais plus enseigner »": "ان کی زبان جیسے خشک ہو گئی تھی۔",
   "LES MÉDECINS": "طبیب",
   "renoncent à le soigner": "علاج سے ہار مان لیتے ہیں",
   "« Ça vient du cœur »": "“یہ معاملہ دل سے اٹھا ہے”",
