@@ -9,7 +9,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 
-export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, clean = false}) {
+export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, clean = false, faceless = false}) {
   await fs.mkdir(outDir, {recursive: true});
   const entry = path.resolve(outDir, 'entry.ts');
   const output = path.resolve(outDir, 'render.mjs');
@@ -31,17 +31,18 @@ export async function prepareStills({sourceRoot = 'src', outDir, no3d = true, cl
         };
         export const Img = ({pauseWhenBuffering, onError, onLoad, ...p}) => React.createElement('img', p);
         export const staticFile = (s) => ${JSON.stringify(pathToFileURL(path.resolve('public')).href + '/')} + s;
-        export const getInputProps = () => (${JSON.stringify({no3d, clean})});
+        export const getInputProps = () => (${JSON.stringify(faceless ? {no3d, clean, faceless} : {no3d, clean})});
       `}));
     },
   }]});
   const m = await import(pathToFileURL(output).href + '?t=' + Date.now());
   return (id, frame) => {
-    const lang = id.endsWith('-en') || id === 'V01-EN' ? 'en' : 'fr';
+    // V01, V01-EN, V01-UR ; short-xxx, short-xxx-en, short-xxx-ur
+    const lang = id.match(/-(en|ur)$/i)?.[1].toLowerCase() ?? 'fr';
     const isShort = id.startsWith('short-');
     const short = isShort ? (m.getShorts ? m.getShorts(lang) : m.SHORTS).find((s) => s.id === id) : null;
     if (isShort && !short) throw new Error(`Composition inconnue : ${id}`);
-    if (!isShort && !['V01', 'V01-EN'].includes(id)) throw new Error(`Composition inconnue : ${id}`);
+    if (!isShort && !['V01', 'V01-EN', 'V01-UR'].includes(id)) throw new Error(`Composition inconnue : ${id}`);
     const props = short ? {...short, lang} : {lang};
     const config = {id, fps: 30, width: isShort ? 1080 : 1920, height: isShort ? 1920 : 1080,
       durationInFrames: short ? short.to - short.from + m.SHORT_END : m.durationFor ? m.durationFor(lang) : m.V01_DURATION,
@@ -65,10 +66,12 @@ const fontCSS = () => [
   ['Plex Mono', 'PlexMono-Light.ttf', 'normal', '300'], ['Plex Mono', 'PlexMono-Regular.ttf', 'normal', '400'],
   ['Plex Mono', 'PlexMono-Medium.ttf', 'normal', '500'], ['Amiri Quran', 'AmiriQuran-Regular.ttf', 'normal', '400'],
   ['Amiri', 'Amiri-Regular.ttf', 'normal', '400'],
-].map(([family, file, style, weight]) => `@font-face{font-family:'${family}';src:url('${pathToFileURL(path.resolve('public/fonts', file)).href}');font-style:${style};font-weight:${weight}}`).join('\n');
+].map(([family, file, style, weight]) => `@font-face{font-family:'${family}';src:url('${pathToFileURL(path.resolve('public/fonts', file)).href}');font-style:${style};font-weight:${weight}}`).join('\n')
+  // L'ourdou : mêmes réglages que src/fonts.ts ; à défaut du fichier, la police système du Mac du même nom.
+  + `\n@font-face{font-family:'Noto Nastaliq Urdu';src:url('${pathToFileURL(path.resolve('public/fonts', 'NotoNastaliqUrdu-Regular.ttf')).href}'),local('Noto Nastaliq Urdu');font-weight:400;ascent-override:130%;descent-override:50%;line-gap-override:0%}`;
 
-export async function htmlStills({outDir, pairs, composition, sourceRoot, clean, no3d}) {
-  const render = await prepareStills({sourceRoot, outDir, clean, no3d});
+export async function htmlStills({outDir, pairs, composition, sourceRoot, clean, no3d, faceless}) {
+  const render = await prepareStills({sourceRoot, outDir, clean, no3d, faceless});
   const shots = [];
   for (const {name, frame} of pairs) {
     const shot = render(composition, frame);
