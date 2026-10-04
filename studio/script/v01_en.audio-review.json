@@ -1,0 +1,14 @@
+{
+  "source_sha256": "f05932f6023e24d170c1802216eccb7306b0660eb4357f1abfa2256fbd667957",
+  "_doc": "Contrôles par Whisper et mesure du signal, sans écoute humaine. Temps en secondes dans la prise brute. Ne jamais réutiliser ces corrections sur une autre prise.",
+  "retranscribe": [
+    {"id": "pascal", "start": 230, "end": 241, "reason": "La transcription continue omettait 13 mots ; la reprise isolée sans prompt retrouve la citation."}
+  ],
+  "boundaries": {
+    "s69": {"minimum_end": 516.5, "threshold_dbfs": -70, "reason": "La seconde occurrence chuchotée continue jusqu’à environ 516.5 s ; le blanc à -60 dBFS vers 515.7 s est interne au mot."}
+  },
+  "word_times": [
+    {"segment": "s69", "word": "Astaghfirullah", "nth": 1, "start": 513.05, "end": 514.65, "reason": "Whisper identifie le mot mais sous-estime sa durée ; enveloppe du chuchotement mesurée."},
+    {"segment": "s69", "word": "Astaghfirullah", "nth": 2, "start": 515.04, "end": 516.5, "reason": "Whisper pose le mot dans le blanc précédent ; signal chuchoté conservé jusqu’au vrai blanc avant Five."}
+  ]
+}
