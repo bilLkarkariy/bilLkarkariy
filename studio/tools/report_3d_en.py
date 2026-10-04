@@ -83,7 +83,7 @@ def cues(lang, source=None):
     return at
 
 
-def specs(at):
+def specs(at, lang='en'):
     # Mêmes expressions que les séquences Remotion et tools/plans3d.py.
     return {
         'maquette':(at('p1','Seul')-3,at('p2')-10,2),
@@ -92,7 +92,7 @@ def specs(at):
         'salon':(at('p16','chez')-3,at('p16','Un')-4+2,2),
         'vide':(at('p35')-4,at('p36',None,'end')+24,2),
         'khalwa':(at('p44')-6,at('p44',None,'end')+24,2),
-        'dhikr':(at('p51',"L'idée")-6,at('p51',None,'end')+30,2),
+        'dhikr':(at('p51',"L'idée")-6,at('p52')-10 if lang=='ur' else at('p51',None,'end')+30,2),
         'meublee':(at('p67','meublé')-10,at('p68')+30,3),
     }
 
@@ -105,7 +105,7 @@ def main():
     L=LANG.upper()
     en,fr=cues(LANG),cues('fr')
     estimated=ROOT/f'out/validation/vo-{LANG}/v01_{LANG}.estime.json'
-    old=specs(cues(LANG,estimated)) if estimated.exists() else None
+    old=specs(cues(LANG,estimated),LANG) if estimated.exists() else None
     out=ROOT/'out/validation';out.mkdir(parents=True,exist_ok=True)
     anchors=all_anchors()
     groups=json.loads((ROOT/f'src/data/v01_{LANG}.groups.json').read_text())
@@ -138,7 +138,7 @@ def main():
         'Aucun calcul Blender lancé. Images vidéo à 30 i/s, bornes inclusives dans le tableau ; images Blender locales numérotées depuis 1. Estimation indicative : 7 s par image calculée, hors initialisation.','',
         f'| Plan | Images vidéo {L} | Images locales | Pas | PNG à calculer | Temps GPU | Décalage début / fin depuis estimation {L} |',
         '|---|---:|---:|---:|---:|---:|---:|']
-    for shot,(a,b,step) in specs(en).items():
+    for shot,(a,b,step) in specs(en,LANG).items():
         n=b-a; count=math.ceil(n/step);fa,fb,_=specs(fr)[shot]
         actual=len(list((ROOT/'public/3d'/shot).glob('f[0-9][0-9][0-9][0-9].png')))
         words=[]
@@ -166,6 +166,22 @@ def main():
         lines.append(f'{base} --test 1,{s["frames"]//2},{s["frames"]} --pct 50')
         lines.append(base)
     lines+=['```','',f'Ces commandes écrivent les PNG et leur registre dans `out/3d-{LANG}/`. Après inspection, Claude devra prévoir leur copie vers des assets {L} séparés et leur branchement Remotion, dans une session autorisant cette écriture. Ne pas remplacer le registre ni les PNG FR.','']
+    if LANG == 'ur':
+        # Décision éditoriale : uniquement le réemploi FR, jamais de Blender.
+        lines=['# V01 UR — réemploi 3D sur la voix réelle','',
+            'Aucun calcul Blender. Les images françaises sont lues par `Shot3D`, avec les correspondances de `src/data/remap3d_ur.json`. Images vidéo à 30 i/s ; fin exclusive ; images locales depuis 1. Le plan dhikr finit à `at("p52") - 10`, quand le verset apparaît pendant la voix.','',
+            '| Plan | Images vidéo UR [début, fin[ | Durée (images) | PNG FR présents | Décalage début / fin depuis estimation |',
+            '|---|---:|---:|---:|---:|']
+        for name,s in shots.items():
+            delta=f'{s["from"]-old[name][0]:+d} / {s["to_exclusive"]-old[name][1]:+d}' if old else '—'
+            lines.append(f'| {name} | {s["from"]} → {s["to_exclusive"]} | {s["frames"]} | {s["fr_png_present"]} | {delta} |')
+        lines+=['','## Repères locaux FR → UR','']
+        for name,s in shots.items():
+            lines.append(f'- **{name}** : '+ '; '.join(f'{w["cue"]}: {w["fr_local"]} → {w["ur_local"]}' for w in s['words'])+'.')
+        lines+=['','## Reproduction sans rendu 3D','',
+            '```bash','HF_HUB_OFFLINE=1 python3 tools/report_3d_en.py --lang ur',
+            'HF_HUB_OFFLINE=1 python3 tools/remap3d_en.py --lang ur','```','',
+            'Contrôler les PNG Remotion avec `WITH3D=1 FACELESS=1`, selon `docs/v01-ur-images-fixes.md`. Vérifier les changements de vitesse, les fondus et les éventuelles images tenues. Aucun PNG français n’est modifié.','']
     (out/f'3d-{LANG}-plan.json').write_text(json.dumps(shots,ensure_ascii=False,indent=2)+'\n')
     (ROOT/f'docs/v01-{LANG}-3d.md').write_text('\n'.join(lines))
     print('Plans 3D préparés : aucun moteur de rendu chargé.')
