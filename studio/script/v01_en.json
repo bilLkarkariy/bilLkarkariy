@@ -1,9 +1,9 @@
 {
-  "_doc": "English adaptation; same segment IDs, pauses and performance tag as v01.json. Provisional Quran slot in s63: no translation selected. Religious wording to review in docs/v01-en-questions.md. Not ready for TTS.",
+  "_doc": "English adaptation; same IDs, pauses and performance tag as v01.json. Pickthall translation chosen by Billel. Recorded clone supplied locally; no new generation authorised.",
   "tts": {
     "engine": "elevenlabs",
     "voice_id": null,
-    "_voice": "PENDING — English voice to be selected by Billel; no generation authorised.",
+    "_voice": "English clone recorded by Billel, supplied as v01_en_brut.wav; no generation authorised.",
     "model": "eleven_v4",
     "settings": {
       "stability": 0.6,
@@ -327,9 +327,8 @@
     },
     {
       "id": "s63",
-      "text": "The Quran puts it in one sentence.",
-      "pause": 1.3,
-      "_pending": "Quran 13:28 English translation: Billel must choose. Estimator reserves the French verse slot."
+      "text": "The Quran puts it in one sentence. “Verily in the remembrance of Allah do hearts find rest!”",
+      "pause": 1.3
     },
     {
       "id": "s64",

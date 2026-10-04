@@ -210,7 +210,7 @@ export const en: Record<keyof typeof fr, string> = {
   "BAGDAD": "BAGHDAD",
   "DAMAS": "DAMASCUS",
   "CORAN · SOURATE 13 (AR-RAʿD) · VERSET 28": "QURAN · SURAH 13 (AR-RAʿD) · VERSE 28",
-  "« C'est par le rappel de Dieu que les cœurs s'apaisent. »": "",
+  "« C'est par le rappel de Dieu que les cœurs s'apaisent. »": "“Verily in the remembrance of Allah do hearts find rest!”",
   "L’EXERCICE ·": "THE EXERCISE ·",
   "UNE AUTRE PIÈCE": "ANOTHER ROOM",
   "un mot, répété, lentement": "a word, repeated slowly",

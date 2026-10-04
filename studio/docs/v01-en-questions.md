@@ -1,26 +1,14 @@
 # V01 EN — questions pour Billel
 
-Préparé le 4 octobre 2026. Ces choix restent ouverts ; aucune voix ni traduction du verset n'a été sélectionnée.
+Mis à jour le 4 octobre 2026. La voix et la traduction du verset sont désormais choisies.
 
-## Voix anglaise
+## Voix anglaise : décision prise
 
-1. Qui porte la version anglaise : ta propre prise, une voix synthétique à choisir, ou ton clone autorisé pour l'anglais ? Quel accent souhaites-tu ? Le texte est actuellement en anglais britannique léger (« centre », « lift », « practise »), sans expressions régionales difficiles.
-2. Enregistres-tu toute la voix ou seulement les neuf passages face caméra ? La photo de travail reste un emplacement ; aucun rush anglais n'a été inventé.
+Billel a fourni une prise complète de son clone anglais, `public/vo/v01_en_brut.wav` (48 kHz, mono, PCM 24 bits). Aucun appel ElevenLabs ni aucune régénération n’est autorisé. Le champ `tts.voice_id` reste vide pour empêcher une génération accidentelle. Les rushes face caméra restent à fournir.
 
-`script/v01_en.json` a `tts.voice_id: null`. Le script TTS refuse une génération sans voix choisie, avant tout accès aux identifiants. Aucun appel ElevenLabs n'a été fait ; la voix « Sidi Mounir » n'a pas été utilisée.
+## Coran 13:28 : question tranchée
 
-## Coran 13:28 : traduction à choisir
-
-Pour la dernière proposition citée à l'oral dans la version FR, deux traductions publiées :
-
-| Traduction | Extrait exact proposé |
-|---|---|
-| Sahih International | “Unquestionably, by the remembrance of Allah hearts are assured.” |
-| Marmaduke Pickthall, *The Meaning of the Glorious Koran* | “Verily in the remembrance of Allah do hearts find rest!” |
-
-Les deux versions sont consultables côte à côte dans le [Quranic Arabic Corpus, 13:28](https://corpus.quran.com/translation.jsp?chapter=13&verse=28). Quelle version veux-tu citer ? Veux-tu garder seulement cette proposition en anglais, comme dans le récit FR, ou traduire aussi la première proposition arabe affichée ?
-
-En attendant : `s63` contient uniquement l'introduction. Le champ `_pending` décrit la décision attendue, sans balise de jeu ajoutée. L'estimateur réserve 3,5 secondes après cette introduction, puis conserve la pause FR de 1,3 seconde. Aucun texte anglais religieux de remplacement n'apparaît à l'écran. L'arabe uthmani et Amiri Quran restent identiques au FR. La séquence EN n'a que son fondu : ni lumière mobile, ni grain changeant, ni son dessous.
+Billel a choisi Marmaduke Pickthall, *The Meaning of the Glorious Koran* (1930) : “Verily in the remembrance of Allah do hearts find rest!” La dernière proposition est conservée, comme dans le récit FR. `s63` est complet et `_pending` supprimé. La traduction figure sous l’arabe, dans le même composant et le même style que le FR ; son crédit reste dans la description. L’arabe uthmani et Amiri Quran restent inchangés, avec fondu seul et silence total pendant leur affichage.
 
 ## Formulations religieuses à valider
 

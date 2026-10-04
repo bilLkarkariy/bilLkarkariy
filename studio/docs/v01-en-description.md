@@ -46,6 +46,7 @@ The Revival of the Religious Sciences (Iḥyāʾ ʿulūm al-dīn), Book 16: Kit�
 
 Quran 13:28
 Arabic text: https://quran.com/13/28
+English translation: Marmaduke Pickthall, The Meaning of the Glorious Koran (1930). “Verily in the remembrance of Allah do hearts find rest!”
 
 The Karkariya path
 Mohamed Faouzi al-Karkari, The Foundations of the Karkariya Order, translated by Yousef Casewit and Khalid Williams: https://wardahbooks.com/products/the-foundations-of-the-karkariya-order
@@ -59,7 +60,7 @@ Map data: Natural Earth, public domain: https://www.naturalearthdata.com/about/t
 
 ## Notes de préparation (hors description à publier)
 
-- Ajouter le nom du traducteur anglais de Coran 13:28 après le choix de Billel. Aucune traduction n'est choisie dans ce brouillon.
+- Traduction de Coran 13:28 tranchée par Billel : Marmaduke Pickthall (1930), dernière proposition seulement, telle qu’enregistrée.
 - Les citations de Pascal en `s40` et `s41` sont des extraits continus, ponctuation conservée, sans retraduction du français. La première commence à « all » dans une phrase plus longue. Le titre cité de Killingsworth & Gilbert (`s36`) et la dernière phrase de Wilson (`s76`) sont exacts. Les deux courtes citations d'al-Ghazali (`s58`) suivent Watt ; le récit autour est une reformulation.
 - Le script anglais dit « internet sessions » (`s38`), conformément au libellé de la source conservée dans la description FR ; il n'attribue pas les 20 sessions exclusivement au smartphone. Le rappel de ce chiffre en `s74` garde l'image du téléphone du récit FR : vérifier cette généralisation éditoriale avant publication.
 - Vérifiés par lecture web dans cette session : PDF Killingsworth & Gilbert, Watt, Pascal/Gutenberg, Arcep, Wardah Books, Natural Earth, Quran.com et Quranic Arabic Corpus. L'accès à PMC est intercepté par un contrôle navigateur ; la citation finale correspond aussi à la métadonnée de capture locale `pmc_fin.json`.
