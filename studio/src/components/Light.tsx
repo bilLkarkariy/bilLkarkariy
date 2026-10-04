@@ -1,8 +1,9 @@
-import {isRtl, useLang, useText} from '../i18n';
+import {isRtl, Lang, useLang, useText} from '../i18n';
 import React from 'react';
 import {AbsoluteFill, getInputProps, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import rendered from '../data/renders3d.json';
 import remapEN from '../data/remap3d_en.json';
+import remapUR from '../data/remap3d_ur.json';
 
 // La lumière de la pièce : une fenêtre en haut à gauche. Le soleil glisse lentement
 // sur le bureau pendant toute la vidéo, ses montants posent une ombre floue sur le papier.
@@ -58,6 +59,7 @@ const no3d = (dir: string) => (Array.isArray(NO3D_PROP) ? NO3D_PROP.includes(dir
  * on fond les deux voisines (mouvements lents, ça ne se voit pas).
  */
 /** Image FR (fractionnaire) à montrer pour une image EN : linéaire entre deux repères [EN, FR]. */
+const REMAP: Partial<Record<Lang, Record<string, number[][]>>> = {en: remapEN, ur: remapUR};
 const remap = (knots: number[][], e: number) => {
   if (e <= knots[0][0]) return knots[0][1];
   for (let i = 1; i < knots.length; i++) {
@@ -79,8 +81,8 @@ export const Shot3D: React.FC<{dir: string; frames: number; step?: number; label
   const frame = useCurrentFrame();
   const lang = useLang();
   const foreign = lang !== 'fr';
-  // (versions étrangères : aucune 3D recalculée, les images FR sont recalées sur les mots traduits, tools/remap3d_en.py)
-  const knots = lang === 'en' ? (remapEN as Record<string, number[][]>)[dir] : undefined;
+  // (versions étrangères : aucune 3D recalculée, les images FR sont recalées sur les mots traduits, tools/remap3d_en.py --lang)
+  const knots = REMAP[lang]?.[dir];
   // (si la voix a bougé depuis le rendu, on s'arrête sur la dernière image rendue)
   const done = (rendered as Record<string, {frames: number; step: number}>)[dir];
   // (le pas réellement rendu prime : un plan recalculé image par image n'a plus rien à fondre)
