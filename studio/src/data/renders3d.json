@@ -10,5 +10,21 @@
  "salon": {
   "frames": 82,
   "step": 2
+ },
+ "vide": {
+  "frames": 515,
+  "step": 1
+ },
+ "khalwa": {
+  "frames": 332,
+  "step": 1
+ },
+ "meublee": {
+  "frames": 129,
+  "step": 3
+ },
+ "dhikr": {
+  "frames": 312,
+  "step": 1
  }
 }
