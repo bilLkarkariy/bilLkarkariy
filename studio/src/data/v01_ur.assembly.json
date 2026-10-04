@@ -1,0 +1,1465 @@
+{
+  "source": "public/vo/v01_ur_brut.wav",
+  "source_sha256": "7dc530f0c308557ee6dfcdd8d7ecffc6106c0bba95e4105e801cd40f73a9589d",
+  "script_sha256": "6392ba15d6c57560b3b8e2395bda5e7cbdf9f7390bfee7ff6d0d76f39d32c409",
+  "samplerate": 48000,
+  "subtype": "PCM_24",
+  "format": "WAVEX",
+  "lead": 0.8,
+  "tail": 1.5,
+  "fade_ms": 8,
+  "segments": [
+    {
+      "id": "s1",
+      "source_start": 0,
+      "source_end": 60960,
+      "output_start": 38400,
+      "output_end": 99360,
+      "pause_samples": 21600,
+      "pause": 0.45,
+      "interior_sha256": "80ead54b7027622ff22b35014210330c9e24ab3c91601d620255c5defb4f6b6e"
+    },
+    {
+      "id": "s2",
+      "source_start": 66960,
+      "source_end": 164640,
+      "output_start": 120960,
+      "output_end": 218640,
+      "pause_samples": 16800,
+      "pause": 0.35,
+      "interior_sha256": "6481c85bc43d13d002493f4ebd38d1d65ce95772aaf96c3cf76ed59ff6d68f4f"
+    },
+    {
+      "id": "s3",
+      "source_start": 171120,
+      "source_end": 279840,
+      "output_start": 235440,
+      "output_end": 344160,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "958ed58aef0df78a4a9d1b3caceb5522be402a545c96a20e7842f6cfb3bfffcd"
+    },
+    {
+      "id": "s4",
+      "source_start": 288960,
+      "source_end": 396960,
+      "output_start": 372960,
+      "output_end": 480960,
+      "pause_samples": 21600,
+      "pause": 0.45,
+      "interior_sha256": "8302342d6ee7315ebe8ccce47d73c6948b918a320b20ebf17f125a920618f1b7"
+    },
+    {
+      "id": "s5",
+      "source_start": 398400,
+      "source_end": 579360,
+      "output_start": 502560,
+      "output_end": 683520,
+      "pause_samples": 76800,
+      "pause": 1.6,
+      "interior_sha256": "96a3bb71ffe70eb11072395480ccbfae08008d9fb72006e036801bdb4a1ca3df"
+    },
+    {
+      "id": "s6",
+      "source_start": 585360,
+      "source_end": 697440,
+      "output_start": 760320,
+      "output_end": 872400,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "c47cadf1fada2791028f3221afc7ac91510f37e32bb0731c7f616c6337c62b54"
+    },
+    {
+      "id": "s7",
+      "source_start": 709920,
+      "source_end": 1058400,
+      "output_start": 915600,
+      "output_end": 1264080,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "56daf719b19dfa557fb84aafe1fc435783cdff35e7096c0222d8dda1886cf009"
+    },
+    {
+      "id": "s8",
+      "source_start": 1061760,
+      "source_end": 1238880,
+      "output_start": 1292880,
+      "output_end": 1470000,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "49773588ed4c1d45f3c76a6780e3721981e8f6374724a708a9d3a911fbd003b2"
+    },
+    {
+      "id": "s9",
+      "source_start": 1243680,
+      "source_end": 1476000,
+      "output_start": 1503600,
+      "output_end": 1735920,
+      "pause_samples": 16800,
+      "pause": 0.35,
+      "interior_sha256": "5e24ae9a4b4224e1d187a3b129cefa2ad8e5bf0b6ec9b40eb9b24e705de6e9fc"
+    },
+    {
+      "id": "s10",
+      "source_start": 1483200,
+      "source_end": 1644960,
+      "output_start": 1752720,
+      "output_end": 1914480,
+      "pause_samples": 16800,
+      "pause": 0.35,
+      "interior_sha256": "11e800eca9b7dedc4b5fc9d0e217c37e08db1a0e3c24b40c4f7b7970f2fe366d"
+    },
+    {
+      "id": "s11",
+      "source_start": 1645920,
+      "source_end": 1772640,
+      "output_start": 1931280,
+      "output_end": 2058000,
+      "pause_samples": 21600,
+      "pause": 0.45,
+      "interior_sha256": "ed4e47340cea90602ef084f883683f12518ca984589486095a71e6a54a6d9b68"
+    },
+    {
+      "id": "s12",
+      "source_start": 1775040,
+      "source_end": 2042400,
+      "output_start": 2079600,
+      "output_end": 2346960,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "f98dd32226cd2dd306b74a67154777fb34d28269d75ef642ea2ddcf769aa6f0e"
+    },
+    {
+      "id": "s13",
+      "source_start": 2045520,
+      "source_end": 2120160,
+      "output_start": 2385360,
+      "output_end": 2460000,
+      "pause_samples": 21600,
+      "pause": 0.45,
+      "interior_sha256": "e04a3a3cd973a0cb176d54545b59a532eef01daf68aee6d99becff6aaa46ab38"
+    },
+    {
+      "id": "s14",
+      "source_start": 2122080,
+      "source_end": 2287200,
+      "output_start": 2481600,
+      "output_end": 2646720,
+      "pause_samples": 16800,
+      "pause": 0.35,
+      "interior_sha256": "198d3b9c9e65b5807fa0bd07657dd90b6e97418bdf7cce256e65954651d4c8d4"
+    },
+    {
+      "id": "s15",
+      "source_start": 2297760,
+      "source_end": 2446560,
+      "output_start": 2663520,
+      "output_end": 2812320,
+      "pause_samples": 14400,
+      "pause": 0.3,
+      "interior_sha256": "c947edeac61433426d2544aa5d6dab68e9f2374fa38a222977353fbe717a453a"
+    },
+    {
+      "id": "s16",
+      "source_start": 2454480,
+      "source_end": 2529840,
+      "output_start": 2826720,
+      "output_end": 2902080,
+      "pause_samples": 14400,
+      "pause": 0.3,
+      "interior_sha256": "ed4659af92d197ec098d9a0f8baac43bf903a11bfae036b29810583affe6c8a0"
+    },
+    {
+      "id": "s17",
+      "source_start": 2539680,
+      "source_end": 2609760,
+      "output_start": 2916480,
+      "output_end": 2986560,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "43199e254c4cd991585673ef095fc90de12aceb852d477d21fd4808b8c9a6574"
+    },
+    {
+      "id": "s18",
+      "source_start": 2614560,
+      "source_end": 2871360,
+      "output_start": 3020160,
+      "output_end": 3276960,
+      "pause_samples": 24000,
+      "pause": 0.5,
+      "interior_sha256": "da45e28c85d2c0b2d10a1fb7f0b60497857ca06bc380d1c365eea96ea5188487"
+    },
+    {
+      "id": "s19",
+      "source_start": 2904240,
+      "source_end": 2969760,
+      "output_start": 3300960,
+      "output_end": 3366480,
+      "pause_samples": 48000,
+      "pause": 1.0,
+      "interior_sha256": "15b06885a8cb815ce51dd842655c90c5aadc5d228520d764723a41f5726cf61a"
+    },
+    {
+      "id": "s20",
+      "source_start": 2975760,
+      "source_end": 3852000,
+      "output_start": 3414480,
+      "output_end": 4290720,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "a90af84b76c1c85980dde682950b66d951d421e26902b92b4db32912b365353d"
+    },
+    {
+      "id": "s21",
+      "source_start": 3856800,
+      "source_end": 4129440,
+      "output_start": 4324320,
+      "output_end": 4596960,
+      "pause_samples": 52800,
+      "pause": 1.1,
+      "interior_sha256": "f0505962d682ca0cfb5267b4d729720b95bbb82c6815f09a644cc4014e39b17a"
+    },
+    {
+      "id": "s22",
+      "source_start": 4136160,
+      "source_end": 4430400,
+      "output_start": 4649760,
+      "output_end": 4944000,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "8b466cf99120e75885697592d52a7d47b53973e2e73ecf7afe6fa9472dedda56"
+    },
+    {
+      "id": "s23",
+      "source_start": 4432800,
+      "source_end": 4621920,
+      "output_start": 4977600,
+      "output_end": 5166720,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "0e719418ccd8d67f31f19af3e60fa58b7c3b1768545caa44bdd1b449d96109f9"
+    },
+    {
+      "id": "s24",
+      "source_start": 4627680,
+      "source_end": 5060640,
+      "output_start": 5205120,
+      "output_end": 5638080,
+      "pause_samples": 48000,
+      "pause": 1.0,
+      "interior_sha256": "56ce805270c8fcdea070c040ae42891d7a12bea2af3403000621b9b5f6ce964e"
+    },
+    {
+      "id": "s25",
+      "source_start": 5066880,
+      "source_end": 5389440,
+      "output_start": 5686080,
+      "output_end": 6008640,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "a6a5dc57ec37166036337635e7b72cf4a3957333ef8a00dec7b7a44d15db2a9a"
+    },
+    {
+      "id": "s26",
+      "source_start": 5393760,
+      "source_end": 5816160,
+      "output_start": 6037440,
+      "output_end": 6459840,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "7ac0b9dc4ec56aa1ca07bb0d004e31bee17ff424aac0772d99d72dfd392796d6"
+    },
+    {
+      "id": "s27",
+      "source_start": 5821680,
+      "source_end": 6549600,
+      "output_start": 6493440,
+      "output_end": 7221360,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "f3ef36aabd27286ff46b759a9baaf8e6ed8501998542010b982a074451b46576"
+    },
+    {
+      "id": "s28",
+      "source_start": 6554880,
+      "source_end": 7220640,
+      "output_start": 7254960,
+      "output_end": 7920720,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "482bee5713925370f02e8301f945e2f3d8c1b63de1374c3954599141a6e783ec"
+    },
+    {
+      "id": "s29",
+      "source_start": 7221840,
+      "source_end": 7379040,
+      "output_start": 7959120,
+      "output_end": 8116320,
+      "pause_samples": 62400,
+      "pause": 1.3,
+      "interior_sha256": "37b49ed01c1452e3b77b127f02b78c9c6be9558948fd40e635c8a8b87f5796e0"
+    },
+    {
+      "id": "s30",
+      "source_start": 7381440,
+      "source_end": 7968480,
+      "output_start": 8178720,
+      "output_end": 8765760,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "c4649d44a04a9ffc3b75eb0c0a8156ced538982effe660491a4aeb8e1f26979c"
+    },
+    {
+      "id": "s31",
+      "source_start": 7972560,
+      "source_end": 8569440,
+      "output_start": 8799360,
+      "output_end": 9396240,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "42314b836e4709f99ea980946d75a949311e756e62855b9ae9ab21f8c2f71a05"
+    },
+    {
+      "id": "s32",
+      "source_start": 8574960,
+      "source_end": 9017760,
+      "output_start": 9429840,
+      "output_end": 9872640,
+      "pause_samples": 48000,
+      "pause": 1.0,
+      "interior_sha256": "7c328bdac89c42caa19c509234ffda4f5742a677cfb8124ec4e14119674cbad6"
+    },
+    {
+      "id": "s33",
+      "source_start": 9024720,
+      "source_end": 9438240,
+      "output_start": 9920640,
+      "output_end": 10334160,
+      "pause_samples": 96000,
+      "pause": 2.0,
+      "interior_sha256": "8bf1822f2de3ca3847aab31081e07b6245119871bca34fd8dc0775210952bb03"
+    },
+    {
+      "id": "s34",
+      "source_start": 9440400,
+      "source_end": 10221600,
+      "output_start": 10430160,
+      "output_end": 11211360,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "0c97616b21bbfacaea4d74fa30a92c1e1f680505e0e792df7a8d977982c34ac0"
+    },
+    {
+      "id": "s35",
+      "source_start": 10226640,
+      "source_end": 10366560,
+      "output_start": 11240160,
+      "output_end": 11380080,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "c77da57655cdce85f595ac11f9d33deb2b959fbb399f53f887d62144386fd27b"
+    },
+    {
+      "id": "s36",
+      "source_start": 10371600,
+      "source_end": 10727520,
+      "output_start": 11418480,
+      "output_end": 11774400,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "577466bec75f91311d83385717ad4a281c2a904a45760fcab395c2f6089f71fe"
+    },
+    {
+      "id": "s37",
+      "source_start": 10728960,
+      "source_end": 11038560,
+      "output_start": 11812800,
+      "output_end": 12122400,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "5def430b48abebef2ea26029a69508978e7fdc65353271fe3740a89e828e9765"
+    },
+    {
+      "id": "s38",
+      "source_start": 11046720,
+      "source_end": 12063840,
+      "output_start": 12160800,
+      "output_end": 13177920,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "efe8b7c0ef4caed55d9934081a89b423a2914f6e81b7cc9ddceb5dc216b62ddb"
+    },
+    {
+      "id": "s39",
+      "source_start": 12068160,
+      "source_end": 12212880,
+      "output_start": 13216320,
+      "output_end": 13361040,
+      "pause_samples": 48000,
+      "pause": 1.0,
+      "interior_sha256": "890de933681b157cd6e4ab57046888c1679156abe882e49b4fedaa93512b0ad5"
+    },
+    {
+      "id": "s40",
+      "source_start": 12245520,
+      "source_end": 12750240,
+      "output_start": 13409040,
+      "output_end": 13913760,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "d6ec0d2682830ec6c0b51faf155db4c90cd36d1b2bd6b0a326923cd7a8ce5239"
+    },
+    {
+      "id": "s41",
+      "source_start": 12756000,
+      "source_end": 13034640,
+      "output_start": 13956960,
+      "output_end": 14235600,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "5c5af473c21b063092d59e003baca9d17675c16938bcbbbab783e21b74f91a84"
+    },
+    {
+      "id": "s42",
+      "source_start": 13045920,
+      "source_end": 13464480,
+      "output_start": 14278800,
+      "output_end": 14697360,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "f451af8dcaa894a16ae20167068be7fd7c070bdd3610a0fd95cf077b9569999f"
+    },
+    {
+      "id": "s43",
+      "source_start": 13467840,
+      "source_end": 13804320,
+      "output_start": 14735760,
+      "output_end": 15072240,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "be43311ac1fa53dc66bdf03ac1b327ba4cf155de74467e3d4830c144fc9cf9fe"
+    },
+    {
+      "id": "s44",
+      "source_start": 13809600,
+      "source_end": 13965600,
+      "output_start": 15110640,
+      "output_end": 15266640,
+      "pause_samples": 62400,
+      "pause": 1.3,
+      "interior_sha256": "147363c0422d01d22fbfbf910b0c82e916b952ed6a233c8671c822d97a2ff263"
+    },
+    {
+      "id": "s45",
+      "source_start": 13969680,
+      "source_end": 14436960,
+      "output_start": 15329040,
+      "output_end": 15796320,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "af161f241089b2317808f300062ea9aa527922c1f48cf593ed9c129dd16f31b0"
+    },
+    {
+      "id": "s46",
+      "source_start": 14443200,
+      "source_end": 15099120,
+      "output_start": 15834720,
+      "output_end": 16490640,
+      "pause_samples": 33600,
+      "pause": 0.7,
+      "interior_sha256": "340a28bf6e781e2476bdf470e106bdb925877a9a7ec25b9b34b17b99ee0632aa"
+    },
+    {
+      "id": "s47",
+      "source_start": 15108000,
+      "source_end": 15344160,
+      "output_start": 16524240,
+      "output_end": 16760400,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "b994312e5c8e9865eac06aa45fa9e98537a28fd749301bfb2ca252581665e436"
+    },
+    {
+      "id": "s48",
+      "source_start": 15352560,
+      "source_end": 15818400,
+      "output_start": 16798800,
+      "output_end": 17264640,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "5f4b7b5d4ccad78908e29286044c4c49c144c10a0c8daca4af4e0b34008f439d"
+    },
+    {
+      "id": "s49",
+      "source_start": 15822240,
+      "source_end": 16005600,
+      "output_start": 17293440,
+      "output_end": 17476800,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "fe22ca91443a0c2588fa56dd36dd5007b7fa22297926e5432ea8637a89d3d4d5"
+    },
+    {
+      "id": "s50",
+      "source_start": 16009680,
+      "source_end": 16511520,
+      "output_start": 17505600,
+      "output_end": 18007440,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "e5db7cc0b24dd956f71a867611b58c7cb18a7afa3d9e6b9d6f07ae142c8bc11d"
+    },
+    {
+      "id": "s51",
+      "source_start": 16515120,
+      "source_end": 17084640,
+      "output_start": 18036240,
+      "output_end": 18605760,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "3cd4ddc47d3050bb734a099933a24f8aacc63b8637c78d99c49ba37c43b869dd"
+    },
+    {
+      "id": "s52",
+      "source_start": 17089920,
+      "source_end": 17399520,
+      "output_start": 18644160,
+      "output_end": 18953760,
+      "pause_samples": 62400,
+      "pause": 1.3,
+      "interior_sha256": "d3a8ffc56750f2454b3aaaf4e16c6a6a7f7e9d44ef002e1204dde5e2e92194ac"
+    },
+    {
+      "id": "s53",
+      "source_start": 17405280,
+      "source_end": 17566560,
+      "output_start": 19016160,
+      "output_end": 19177440,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "c753886b93a9d543f89198c99e8936a5a5fabe610d5024546283131e77ee7872"
+    },
+    {
+      "id": "s54",
+      "source_start": 17571840,
+      "source_end": 17867040,
+      "output_start": 19206240,
+      "output_end": 19501440,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "52aec499670aa9f5c35847caa1b63efb3ff83c3c6105e46a54b67e9a34c91ab7"
+    },
+    {
+      "id": "s55",
+      "source_start": 17871840,
+      "source_end": 18492960,
+      "output_start": 19530240,
+      "output_end": 20151360,
+      "pause_samples": 48000,
+      "pause": 1.0,
+      "interior_sha256": "82c073253f711b651602dd1e9739e550faaefe7097ea540483801c41562e0d0d"
+    },
+    {
+      "id": "s56",
+      "source_start": 18496320,
+      "source_end": 18790560,
+      "output_start": 20199360,
+      "output_end": 20493600,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "86fcebe129a1eb471579a9a8bbe1823d7d340e86afd6ed330aab7c0d073fd359"
+    },
+    {
+      "id": "s57",
+      "source_start": 18797040,
+      "source_end": 19206240,
+      "output_start": 20532000,
+      "output_end": 20941200,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "8dd5994758a9b148511a21b3a29117795fb2c61c7c4aeec4fddfbf4e5d581b62"
+    },
+    {
+      "id": "s58",
+      "source_start": 19209360,
+      "source_end": 19970400,
+      "output_start": 20970000,
+      "output_end": 21731040,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "a6194b8861917c540834d0ffaa72551bb5a278aeafe758840a6a6e79bd878512"
+    },
+    {
+      "id": "s59",
+      "source_start": 19974480,
+      "source_end": 20550240,
+      "output_start": 21769440,
+      "output_end": 22345200,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "ae46fbcdb7f6a4fce234a13b0a5f1d4e7ba3fa12eecd5d0e7025794aa8f69d03"
+    },
+    {
+      "id": "s60",
+      "source_start": 20553360,
+      "source_end": 21481440,
+      "output_start": 22383600,
+      "output_end": 23311680,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "3114f03116205974127bf45496c273aa3d285b7383d88297603cbc469bc4f9b9"
+    },
+    {
+      "id": "s61",
+      "source_start": 21487680,
+      "source_end": 21791760,
+      "output_start": 23350080,
+      "output_end": 23654160,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "4f90ce58ec777864d477141b2b6e64f57403bf231b0771c77bbdc8e6bd3dd997"
+    },
+    {
+      "id": "s62",
+      "source_start": 21799440,
+      "source_end": 22742880,
+      "output_start": 23682960,
+      "output_end": 24626400,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "61b284b57d762c6f6f094e755bc9fc19d04f151e8a326a357289252bc83ff996"
+    },
+    {
+      "id": "s63",
+      "source_start": 22752000,
+      "source_end": 23044800,
+      "output_start": 24664800,
+      "output_end": 24957600,
+      "pause_samples": 62400,
+      "pause": 1.3,
+      "interior_sha256": "5b49fd5808e2242ee2a4ffbee8c3b30197d71229daa5f97c4bf1c9e795b8274b"
+    },
+    {
+      "id": "s64",
+      "source_start": 23046240,
+      "source_end": 24407760,
+      "output_start": 25020000,
+      "output_end": 26381520,
+      "pause_samples": 120000,
+      "pause": 2.5,
+      "interior_sha256": "00f3d729cbed8d6ca295f4fc919ef8f058e85e12abbb8cabff1e06ce8583e694"
+    },
+    {
+      "id": "s65",
+      "source_start": 24408720,
+      "source_end": 24824160,
+      "output_start": 26501520,
+      "output_end": 26916960,
+      "pause_samples": 57600,
+      "pause": 1.2,
+      "interior_sha256": "85e8e316b9f7ad5be00ea7b6a6a0f7b576c1e7dd9fea6bd8cb20de1ae19a19df"
+    },
+    {
+      "id": "s66",
+      "source_start": 24868320,
+      "source_end": 25350240,
+      "output_start": 26974560,
+      "output_end": 27456480,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "52f8a33254ac94e2d88260bdd03cbb1b0f8d8c3b88ffbdb9a4df1eddff735f08"
+    },
+    {
+      "id": "s67",
+      "source_start": 25356960,
+      "source_end": 25551600,
+      "output_start": 27499680,
+      "output_end": 27694320,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "50519a4bf19a4ca4ab042b64911e8a9a6f67bedbdb06f558f22812a3254a6b4a"
+    },
+    {
+      "id": "s68",
+      "source_start": 25553760,
+      "source_end": 26283600,
+      "output_start": 27737520,
+      "output_end": 28467360,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "8e08c0f2cfd67da5a3f00def7b9395eea6610259833b68d4d4ce8a7f3fe2508c"
+    },
+    {
+      "id": "s69",
+      "source_start": 26292480,
+      "source_end": 27257760,
+      "output_start": 28510560,
+      "output_end": 29475840,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "2aa4fc5ee7c84886d16c9efaa058caede77c923f93404973c6a24a4ec3a9aed3"
+    },
+    {
+      "id": "s70",
+      "source_start": 27262560,
+      "source_end": 27547440,
+      "output_start": 29519040,
+      "output_end": 29803920,
+      "pause_samples": 52800,
+      "pause": 1.1,
+      "interior_sha256": "5ae68ef5093b21a1f2c0dad81e878a89c6eac61d30a3f6a984af88980369674c"
+    },
+    {
+      "id": "s71",
+      "source_start": 27551520,
+      "source_end": 27986400,
+      "output_start": 29856720,
+      "output_end": 30291600,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "c8876be7750d9ccc35323721255eeaeee6bd9138133f0649783f70910409ca03"
+    },
+    {
+      "id": "s72",
+      "source_start": 27993120,
+      "source_end": 28594320,
+      "output_start": 30330000,
+      "output_end": 30931200,
+      "pause_samples": 62400,
+      "pause": 1.3,
+      "interior_sha256": "164e01263adc8065fc0ad75777e19cfe5a5a7d64bf786e8c3fec05df48bf8904"
+    },
+    {
+      "id": "s73",
+      "source_start": 28640160,
+      "source_end": 28716480,
+      "output_start": 30993600,
+      "output_end": 31069920,
+      "pause_samples": 28800,
+      "pause": 0.6,
+      "interior_sha256": "f7389a060214574b85b5e2794c7683486f1a191c8439c97672cbedf2ed9038e7"
+    },
+    {
+      "id": "s74",
+      "source_start": 28721760,
+      "source_end": 29347680,
+      "output_start": 31098720,
+      "output_end": 31724640,
+      "pause_samples": 38400,
+      "pause": 0.8,
+      "interior_sha256": "e615d82d9197a293ad24c73e606fd5f9e346289c9e72ce3c0a23deb2e0ee1a59"
+    },
+    {
+      "id": "s75",
+      "source_start": 29350560,
+      "source_end": 29519040,
+      "output_start": 31763040,
+      "output_end": 31931520,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "a8392961582a8a30dba8e8c5e87cdeb2f7fcaca32cdde4a61b20c2d414d1afe3"
+    },
+    {
+      "id": "s76",
+      "source_start": 29548560,
+      "source_end": 29788080,
+      "output_start": 31974720,
+      "output_end": 32214240,
+      "pause_samples": 43200,
+      "pause": 0.9,
+      "interior_sha256": "f1a675a95b7483cc4f770f771ccf7d0ee99e3069eb2c17df6d5abb92df108540"
+    },
+    {
+      "id": "s77",
+      "source_start": 29790240,
+      "source_end": 30122400,
+      "output_start": 32257440,
+      "output_end": 32589600,
+      "pause_samples": 96000,
+      "pause": 2.0,
+      "interior_sha256": "a4ef4c0021a4291cbb3bedff068b7cd68c32652db4eb37a519d3794325d61977"
+    },
+    {
+      "id": "s78",
+      "source_start": 30126240,
+      "source_end": 30371280,
+      "output_start": 32685600,
+      "output_end": 32930640,
+      "pause_samples": 72000,
+      "pause": 1.5,
+      "interior_sha256": "d5589e3fb926700e51f1f18ad2f431e0cf4f4951591727d9ce41c89be6677904"
+    },
+    {
+      "id": "s79",
+      "source_start": 30399360,
+      "source_end": 30754560,
+      "output_start": 33002640,
+      "output_end": 33357840,
+      "pause_samples": 0,
+      "pause": 0,
+      "interior_sha256": "1933b380e86acd4c947f4c64d86d2f22d5de1336facb9cd1783efe839cf78e74"
+    }
+  ],
+  "boundaries": [
+    {
+      "after": "s1",
+      "quiet_start": 1.26,
+      "quiet_end": 1.405,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.25054081783783
+    },
+    {
+      "after": "s2",
+      "quiet_start": 3.42,
+      "quiet_end": 3.575,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.17376813190029
+    },
+    {
+      "after": "s3",
+      "quiet_start": 5.82,
+      "quiet_end": 6.03,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.18192735002562
+    },
+    {
+      "after": "s4",
+      "quiet_start": 8.26,
+      "quiet_end": 8.31,
+      "expanded_word_window": false,
+      "rms_dbfs": -65.6529240250112
+    },
+    {
+      "after": "s5",
+      "quiet_start": 12.06,
+      "quiet_end": 12.205,
+      "expanded_word_window": false,
+      "rms_dbfs": -74.75979591878598
+    },
+    {
+      "after": "s6",
+      "quiet_start": 14.52,
+      "quiet_end": 14.8,
+      "expanded_word_window": true,
+      "rms_dbfs": -68.71321224012823
+    },
+    {
+      "after": "s7",
+      "quiet_start": 22.04,
+      "quiet_end": 22.13,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.13781665367564
+    },
+    {
+      "after": "s8",
+      "quiet_start": 25.8,
+      "quiet_end": 25.92,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.91974565264992
+    },
+    {
+      "after": "s9",
+      "quiet_start": 30.74,
+      "quiet_end": 30.91,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.99795718815457
+    },
+    {
+      "after": "s10",
+      "quiet_start": 34.26,
+      "quiet_end": 34.3,
+      "expanded_word_window": false,
+      "rms_dbfs": -67.96046262294539
+    },
+    {
+      "after": "s11",
+      "quiet_start": 36.92,
+      "quiet_end": 36.99,
+      "expanded_word_window": false,
+      "rms_dbfs": -68.6888599798676
+    },
+    {
+      "after": "s12",
+      "quiet_start": 42.54,
+      "quiet_end": 42.625,
+      "expanded_word_window": false,
+      "rms_dbfs": -75.38158087058
+    },
+    {
+      "after": "s13",
+      "quiet_start": 44.16,
+      "quiet_end": 44.22,
+      "expanded_word_window": false,
+      "rms_dbfs": -65.90559453473277
+    },
+    {
+      "after": "s14",
+      "quiet_start": 47.64,
+      "quiet_end": 47.88,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.12840674875689
+    },
+    {
+      "after": "s15",
+      "quiet_start": 50.96,
+      "quiet_end": 51.145,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.43551799765179
+    },
+    {
+      "after": "s16",
+      "quiet_start": 52.695,
+      "quiet_end": 52.92,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.88347895001306
+    },
+    {
+      "after": "s17",
+      "quiet_start": 54.36,
+      "quiet_end": 54.48,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.76129385103674
+    },
+    {
+      "after": "s18",
+      "quiet_start": 59.81,
+      "quiet_end": 60.515,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.32825864755446
+    },
+    {
+      "after": "s19",
+      "quiet_start": 61.86,
+      "quiet_end": 62.005,
+      "expanded_word_window": false,
+      "rms_dbfs": -74.94027810718472
+    },
+    {
+      "after": "s20",
+      "quiet_start": 80.24,
+      "quiet_end": 80.36,
+      "expanded_word_window": false,
+      "rms_dbfs": -68.72837034605769
+    },
+    {
+      "after": "s21",
+      "quiet_start": 86.02,
+      "quiet_end": 86.18,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.58260311236347
+    },
+    {
+      "after": "s22",
+      "quiet_start": 92.29,
+      "quiet_end": 92.36,
+      "expanded_word_window": false,
+      "rms_dbfs": -66.76165056785196
+    },
+    {
+      "after": "s23",
+      "quiet_start": 96.28,
+      "quiet_end": 96.42,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.66392128043057
+    },
+    {
+      "after": "s24",
+      "quiet_start": 105.42,
+      "quiet_end": 105.57,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.06581475480955
+    },
+    {
+      "after": "s25",
+      "quiet_start": 112.27,
+      "quiet_end": 112.38,
+      "expanded_word_window": false,
+      "rms_dbfs": -68.00282417041291
+    },
+    {
+      "after": "s26",
+      "quiet_start": 121.16,
+      "quiet_end": 121.295,
+      "expanded_word_window": false,
+      "rms_dbfs": -74.56113378995099
+    },
+    {
+      "after": "s27",
+      "quiet_start": 136.44,
+      "quiet_end": 136.57,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.73628120918498
+    },
+    {
+      "after": "s28",
+      "quiet_start": 150.42,
+      "quiet_end": 150.465,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.92586001596797
+    },
+    {
+      "after": "s29",
+      "quiet_start": 153.72,
+      "quiet_end": 153.79,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.61787330606107
+    },
+    {
+      "after": "s30",
+      "quiet_start": 166.0,
+      "quiet_end": 166.105,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.68982357927528
+    },
+    {
+      "after": "s31",
+      "quiet_start": 178.52,
+      "quiet_end": 178.655,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.88398993167804
+    },
+    {
+      "after": "s32",
+      "quiet_start": 187.86,
+      "quiet_end": 188.025,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.89626524114728
+    },
+    {
+      "after": "s33",
+      "quiet_start": 196.62,
+      "quiet_end": 196.685,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.72385783455363
+    },
+    {
+      "after": "s34",
+      "quiet_start": 212.94,
+      "quiet_end": 213.065,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.08512486946653
+    },
+    {
+      "after": "s35",
+      "quiet_start": 215.96,
+      "quiet_end": 216.085,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.23906769479703
+    },
+    {
+      "after": "s36",
+      "quiet_start": 223.48,
+      "quiet_end": 223.53,
+      "expanded_word_window": false,
+      "rms_dbfs": -67.73213944806639
+    },
+    {
+      "after": "s37",
+      "quiet_start": 229.96,
+      "quiet_end": 230.15,
+      "expanded_word_window": true,
+      "rms_dbfs": -67.96853447960714
+    },
+    {
+      "after": "s38",
+      "quiet_start": 251.32,
+      "quiet_end": 251.43,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.93677049421893
+    },
+    {
+      "after": "s39",
+      "quiet_start": 254.425,
+      "quiet_end": 255.125,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.24656584063816
+    },
+    {
+      "after": "s40",
+      "quiet_start": 265.62,
+      "quiet_end": 265.76,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.9414479424214
+    },
+    {
+      "after": "s41",
+      "quiet_start": 271.545,
+      "quiet_end": 271.8,
+      "expanded_word_window": true,
+      "rms_dbfs": -69.85186188748882
+    },
+    {
+      "after": "s42",
+      "quiet_start": 280.5,
+      "quiet_end": 280.59,
+      "expanded_word_window": false,
+      "rms_dbfs": -66.52072877245566
+    },
+    {
+      "after": "s43",
+      "quiet_start": 287.58,
+      "quiet_end": 287.71,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.20129304441546
+    },
+    {
+      "after": "s44",
+      "quiet_start": 290.94,
+      "quiet_end": 291.045,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.33706335338061
+    },
+    {
+      "after": "s45",
+      "quiet_start": 300.76,
+      "quiet_end": 300.91,
+      "expanded_word_window": false,
+      "rms_dbfs": -73.15200489315562
+    },
+    {
+      "after": "s46",
+      "quiet_start": 314.555,
+      "quiet_end": 314.76,
+      "expanded_word_window": true,
+      "rms_dbfs": -68.60175307984325
+    },
+    {
+      "after": "s47",
+      "quiet_start": 319.66,
+      "quiet_end": 319.855,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.41828066982201
+    },
+    {
+      "after": "s48",
+      "quiet_start": 329.54,
+      "quiet_end": 329.64,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.75775285369208
+    },
+    {
+      "after": "s49",
+      "quiet_start": 333.44,
+      "quiet_end": 333.545,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.79728406420516
+    },
+    {
+      "after": "s50",
+      "quiet_start": 343.98,
+      "quiet_end": 344.075,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.36473099220564
+    },
+    {
+      "after": "s51",
+      "quiet_start": 355.92,
+      "quiet_end": 356.05,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.64378134842087
+    },
+    {
+      "after": "s52",
+      "quiet_start": 362.48,
+      "quiet_end": 362.62,
+      "expanded_word_window": false,
+      "rms_dbfs": -67.80620408735844
+    },
+    {
+      "after": "s53",
+      "quiet_start": 365.96,
+      "quiet_end": 366.09,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.67079265513546
+    },
+    {
+      "after": "s54",
+      "quiet_start": 372.22,
+      "quiet_end": 372.34,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.58531539624943
+    },
+    {
+      "after": "s55",
+      "quiet_start": 385.26,
+      "quiet_end": 385.35,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.76655336580971
+    },
+    {
+      "after": "s56",
+      "quiet_start": 391.46,
+      "quiet_end": 391.615,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.63745327592537
+    },
+    {
+      "after": "s57",
+      "quiet_start": 400.12,
+      "quiet_end": 400.205,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.0429422066101
+    },
+    {
+      "after": "s58",
+      "quiet_start": 416.04,
+      "quiet_end": 416.145,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.69779765596952
+    },
+    {
+      "after": "s59",
+      "quiet_start": 428.12,
+      "quiet_end": 428.205,
+      "expanded_word_window": false,
+      "rms_dbfs": -68.51664530000043
+    },
+    {
+      "after": "s60",
+      "quiet_start": 447.52,
+      "quiet_end": 447.67,
+      "expanded_word_window": false,
+      "rms_dbfs": -71.75997023199137
+    },
+    {
+      "after": "s61",
+      "quiet_start": 453.985,
+      "quiet_end": 454.165,
+      "expanded_word_window": true,
+      "rms_dbfs": -71.12910108243217
+    },
+    {
+      "after": "s62",
+      "quiet_start": 473.8,
+      "quiet_end": 474.01,
+      "expanded_word_window": false,
+      "rms_dbfs": -68.78802785313448
+    },
+    {
+      "after": "s63",
+      "quiet_start": 480.09,
+      "quiet_end": 480.14,
+      "expanded_word_window": false,
+      "rms_dbfs": -62.72353421333142
+    },
+    {
+      "after": "s64",
+      "quiet_start": 508.485,
+      "quiet_end": 508.525,
+      "expanded_word_window": false,
+      "rms_dbfs": -62.9094441931414
+    },
+    {
+      "after": "s65",
+      "quiet_start": 517.16,
+      "quiet_end": 518.1,
+      "expanded_word_window": false,
+      "rms_dbfs": -84.85523177197314
+    },
+    {
+      "after": "s66",
+      "quiet_start": 528.12,
+      "quiet_end": 528.28,
+      "expanded_word_window": false,
+      "rms_dbfs": -69.32576690976022
+    },
+    {
+      "after": "s67",
+      "quiet_start": 532.315,
+      "quiet_end": 532.38,
+      "expanded_word_window": false,
+      "rms_dbfs": -65.58825149393012
+    },
+    {
+      "after": "s68",
+      "quiet_start": 547.565,
+      "quiet_end": 547.77,
+      "expanded_word_window": false,
+      "rms_dbfs": -70.26095231839443
+    },
+    {
+      "after": "s69",
+      "quiet_start": 567.86,
+      "quiet_end": 567.98,
+      "expanded_word_window": false,
+      "rms_dbfs": -86.62449396699205
+    },
+    {
+      "after": "s70",
+      "quiet_start": 573.895,
+      "quiet_end": 574.0,
+      "expanded_word_window": false,
+      "rms_dbfs": -67.65450561459058
+    },
+    {
+      "after": "s71",
+      "quiet_start": 583.04,
+      "quiet_end": 583.2,
+      "expanded_word_window": false,
+      "rms_dbfs": -67.36183465766788
+    },
+    {
+      "after": "s72",
+      "quiet_start": 595.705,
+      "quiet_end": 596.68,
+      "expanded_word_window": false,
+      "rms_dbfs": -76.31646040261737
+    },
+    {
+      "after": "s73",
+      "quiet_start": 598.25,
+      "quiet_end": 598.38,
+      "expanded_word_window": true,
+      "rms_dbfs": -69.26822677110863
+    },
+    {
+      "after": "s74",
+      "quiet_start": 611.4,
+      "quiet_end": 611.48,
+      "expanded_word_window": false,
+      "rms_dbfs": -68.92202831204546
+    },
+    {
+      "after": "s75",
+      "quiet_start": 614.97,
+      "quiet_end": 615.605,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.95601176440582
+    },
+    {
+      "after": "s76",
+      "quiet_start": 620.575,
+      "quiet_end": 620.64,
+      "expanded_word_window": false,
+      "rms_dbfs": -75.30105203182195
+    },
+    {
+      "after": "s77",
+      "quiet_start": 627.54,
+      "quiet_end": 627.64,
+      "expanded_word_window": false,
+      "rms_dbfs": -67.03000627842744
+    },
+    {
+      "after": "s78",
+      "quiet_start": 632.725,
+      "quiet_end": 633.33,
+      "expanded_word_window": false,
+      "rms_dbfs": -72.410527506954
+    }
+  ],
+  "inserts": [],
+  "review": {
+    "source_sha256": "7dc530f0c308557ee6dfcdd8d7ecffc6106c0bba95e4105e801cd40f73a9589d",
+    "_doc": "Contrôles Whisper small hors ligne et enveloppe du signal ; aucune écoute humaine. Temps source en secondes. +24 dB uniquement pour la reconnaissance, +12 dB uniquement sur les deux chuchotements dans le WAV livré.",
+    "retranscribe": [
+      {
+        "id": "chuchotement1",
+        "start": 564.96,
+        "end": 566.45,
+        "analysis_gain_db": 24,
+        "reason": "La reprise isolée reconnaît استغفر اللہ ; le signal faible se prolonge après la fin Whisper (566.10 s)."
+      },
+      {
+        "id": "chuchotement2",
+        "start": 566.48,
+        "end": 567.98,
+        "analysis_gain_db": 24,
+        "reason": "La reprise isolée reconnaît استغفر اللہ ; conserver la fin faible du mot jusqu’au blanc vers 567.80 s."
+      }
+    ],
+    "boundaries": {
+      "s69": {
+        "minimum_end": 567.86,
+        "maximum_start": 567.98,
+        "threshold_dbfs": -70,
+        "reason": "Ne pas prendre les consonnes faibles ou le blanc entre les deux chuchotements pour la fin du segment."
+      }
+    },
+    "word_times": [
+      {
+        "segment": "s69",
+        "word": "استغفراللہ",
+        "nth": 1,
+        "start": 565.2,
+        "end": 566.42,
+        "reason": "Reconnaissance isolée +24 dB ; attaque et décroissance mesurées sur le signal."
+      },
+      {
+        "segment": "s69",
+        "word": "استغفراللہ",
+        "nth": 2,
+        "start": 566.52,
+        "end": 567.8,
+        "reason": "Reconnaissance isolée +24 dB ; attaque et décroissance mesurées sur le signal."
+      },
+      {
+        "segment": "s70",
+        "word": "پانچ",
+        "nth": 0,
+        "start": 568.0,
+        "end": 568.45,
+        "reason": "Whisper inclut le blanc précédent ; attaque de parole mesurée à 568.0 s, après le second chuchotement. Fin bornée au début du mot suivant (écart Whisper de 10 ms entre les deux reconnaissances)."
+      }
+    ],
+    "gains": [
+      {
+        "segment": "s69",
+        "word": "استغفراللہ",
+        "nth": 1,
+        "start": 565.18,
+        "end": 566.45,
+        "db": 12,
+        "fade_ms": 30
+      },
+      {
+        "segment": "s69",
+        "word": "استغفراللہ",
+        "nth": 2,
+        "start": 566.49,
+        "end": 567.83,
+        "db": 12,
+        "fade_ms": 30
+      }
+    ]
+  },
+  "language": "ur",
+  "gains": [
+    {
+      "segment": "s69",
+      "word": "استغفراللہ",
+      "nth": 1,
+      "start": 565.18,
+      "end": 566.45,
+      "db": 12,
+      "fade_ms": 30,
+      "source_start": 27128640,
+      "source_end": 27189600,
+      "rms_before_dbfs": -53.03182507920317,
+      "rms_after_dbfs": -41.05517681229073,
+      "peak_after_dbfs": -18.265306106936286,
+      "output_start": 29346720,
+      "output_end": 29407680
+    },
+    {
+      "segment": "s69",
+      "word": "استغفراللہ",
+      "nth": 2,
+      "start": 566.49,
+      "end": 567.83,
+      "db": 12,
+      "fade_ms": 30,
+      "source_start": 27191520,
+      "source_end": 27255840,
+      "rms_before_dbfs": -55.97856829992854,
+      "rms_after_dbfs": -43.98147321560489,
+      "peak_after_dbfs": -21.813723414789195,
+      "output_start": 29409600,
+      "output_end": 29473920
+    }
+  ],
+  "output": "public/vo/v01_ur.wav",
+  "output_sha256": "c509a8bfc53a26f5726f15e7259088f2f92687fd09df22c78dbc11a740f492dc",
+  "duration": 696.455,
+  "samples": 33429840
+}

@@ -1,0 +1,74 @@
+{
+  "source_sha256": "7dc530f0c308557ee6dfcdd8d7ecffc6106c0bba95e4105e801cd40f73a9589d",
+  "_doc": "Contrôles Whisper small hors ligne et enveloppe du signal ; aucune écoute humaine. Temps source en secondes. +24 dB uniquement pour la reconnaissance, +12 dB uniquement sur les deux chuchotements dans le WAV livré.",
+  "retranscribe": [
+    {
+      "id": "chuchotement1",
+      "start": 564.96,
+      "end": 566.45,
+      "analysis_gain_db": 24,
+      "reason": "La reprise isolée reconnaît استغفر اللہ ; le signal faible se prolonge après la fin Whisper (566.10 s)."
+    },
+    {
+      "id": "chuchotement2",
+      "start": 566.48,
+      "end": 567.98,
+      "analysis_gain_db": 24,
+      "reason": "La reprise isolée reconnaît استغفر اللہ ; conserver la fin faible du mot jusqu’au blanc vers 567.80 s."
+    }
+  ],
+  "boundaries": {
+    "s69": {
+      "minimum_end": 567.86,
+      "maximum_start": 567.98,
+      "threshold_dbfs": -70,
+      "reason": "Ne pas prendre les consonnes faibles ou le blanc entre les deux chuchotements pour la fin du segment."
+    }
+  },
+  "word_times": [
+    {
+      "segment": "s69",
+      "word": "استغفراللہ",
+      "nth": 1,
+      "start": 565.2,
+      "end": 566.42,
+      "reason": "Reconnaissance isolée +24 dB ; attaque et décroissance mesurées sur le signal."
+    },
+    {
+      "segment": "s69",
+      "word": "استغفراللہ",
+      "nth": 2,
+      "start": 566.52,
+      "end": 567.8,
+      "reason": "Reconnaissance isolée +24 dB ; attaque et décroissance mesurées sur le signal."
+    },
+    {
+      "segment": "s70",
+      "word": "پانچ",
+      "nth": 0,
+      "start": 568.0,
+      "end": 568.45,
+      "reason": "Whisper inclut le blanc précédent ; attaque de parole mesurée à 568.0 s, après le second chuchotement. Fin bornée au début du mot suivant (écart Whisper de 10 ms entre les deux reconnaissances)."
+    }
+  ],
+  "gains": [
+    {
+      "segment": "s69",
+      "word": "استغفراللہ",
+      "nth": 1,
+      "start": 565.18,
+      "end": 566.45,
+      "db": 12,
+      "fade_ms": 30
+    },
+    {
+      "segment": "s69",
+      "word": "استغفراللہ",
+      "nth": 2,
+      "start": 566.49,
+      "end": 567.83,
+      "db": 12,
+      "fade_ms": 30
+    }
+  ]
+}
