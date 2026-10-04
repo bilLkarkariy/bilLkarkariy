@@ -113,16 +113,14 @@ def tokens(text, lang=None):
 
 
 def expand_numbers(words, language="fr"):
+    if language in ARABIC_SCRIPT:  # num2words ne connaît pas l'ourdou : un nombre entendu en chiffres reste non apparié
+        return list(words)
     from num2words import num2words
     out = []
     for w in words:
         digits = re.sub(r"[^\d]", "", w["word"])
         if digits and digits == re.sub(r"[%.,\s]", "", w["word"].strip()):
-            try:
-                parts = num2words(int(digits), lang=language).replace("-", " ").split()
-            except (NotImplementedError, OverflowError):  # langue absente de num2words (ourdou) : le mot reste tel quel
-                out.append(w)
-                continue
+            parts = num2words(int(digits), lang=language).replace("-", " ").split()
             n = len(parts)
             for i, p in enumerate(parts):  # répartit la durée du nombre sur ses mots
                 a = w["start"] + (w["end"] - w["start"]) * i / n
