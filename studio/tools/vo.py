@@ -76,11 +76,15 @@ def elevenlabs(text, cfg, prev_text, next_text, dst):
 
 def norm(w):
     w = unicodedata.normalize("NFD", w.lower())
+    # (arabe : NFD détache la hamza de son support, أ إ آ ؤ ئ -> ا ا ا و ي ; les harakat sont aussi des Mn)
     w = "".join(c for c in w if unicodedata.category(c) != "Mn")
-    return re.sub(r"[^a-z0-9]", "", w)
+    w = w.replace("ٱ", "ا").replace("ة", "ه").replace("ى", "ي")  # ٱ->ا ة->ه ى->ي
+    return re.sub(r"[^a-z0-9ء-غف-ي]", "", w)
 
 
 TAG = re.compile(r"\[[^\]]*\]")  # balises d'intonation ElevenLabs : [pause], [whispers]…
+# mots : lettres, chiffres, apostrophe, trait d'union ; en arabe, avec leurs signes (harakat, shadda, tanwin)
+WORD = re.compile(r"[\wؐ-ًؚ-ٰٟۖ-ۭ'’-]+")
 
 
 def spoken(text):
@@ -88,7 +92,7 @@ def spoken(text):
 
 
 def tokens(text):
-    return [t for t in re.findall(r"[\w'’-]+", spoken(text)) if norm(t)]
+    return [t for t in WORD.findall(spoken(text)) if norm(t)]
 
 
 def expand_numbers(words, language="fr"):
