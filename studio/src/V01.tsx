@@ -421,6 +421,8 @@ const CLAMP = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const rnd = (n: number, k: number) => (((Math.sin(n * 12.9898 + k * 78.233) * 43758.5453) % 1) + 1) % 1;
 /** --props '{"sfxOff":[[de, à], …]}' : bruitages coupés sur ces images (passages remplacés au montage, qui ont les leurs). */
 const SFX_OFF = (getInputProps().sfxOff ?? []) as [number, number][];
+/** --props '{"voOff":[[de, à], …]}' : voix coupée sur ces images (face caméra posé au montage avec sa propre prise). */
+const VO_OFF = (getInputProps().voOff ?? []) as [number, number][];
 const played = (() => {
   const seen: Record<string, number> = {};
   return [...sfx]
@@ -563,7 +565,7 @@ export const V01: React.FC = () => (
 
     {/* son */}
     <Sequence from={LEAD}>
-      <Audio src={staticFile(VO_SRC)} />
+      <Audio src={staticFile(VO_SRC)} volume={(f) => (VO_OFF.some(([a, b]) => f + LEAD >= a && f + LEAD < b) ? 0 : 1)} />
     </Sequence>
     {/* musique (ElevenLabs, tools/sfx_el.py music) : la science, rien sous la pièce vide, la khalwa, la voie */}
     <Music
