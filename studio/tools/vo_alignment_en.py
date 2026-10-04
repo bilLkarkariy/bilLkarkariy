@@ -10,7 +10,7 @@ import json
 import re
 from pathlib import Path
 
-from vo import norm, spoken, tokens
+from vo import norm, norm_arabic, spoken, tokens
 
 
 def digest(path):
@@ -31,7 +31,13 @@ def integer_en(n):
     raise ValueError(f'Nombre hors plage : {n}')
 
 
-def units(word):
+def units(word, lang='en'):
+    if lang == 'ar':
+        from vo_alignment_ar import units_ar
+        return units_ar(word)
+    if lang == 'ur':
+        from vo_alignment_ur import units_ur
+        return units_ur(word)
     if word == '%':
         return ['percent']
     if norm(word)=='untutored':
@@ -48,36 +54,56 @@ def units(word):
     return [aliases.get(norm(t), norm(t)) for t in word.replace('-', ' ').split() if norm(t)] + (['percent'] if percent else [])
 
 
-def transcribe(path, cache, windows=None):
+def transcribe(path, cache, windows=None, lang='en', gain_db=0):
     from faster_whisper import WhisperModel
     windows = [list(pair) for pair in windows] if windows else None
     fingerprint = digest(path)
     cache = Path(cache)
+    # Réduire l'empreinte mémoire arabe sur ce Mac chargé : une passe
+    # déterministe sans contexte reporté, puis des reprises isolées auditées.
+    decoding = {'beam_size': 1, 'temperature': 0, 'condition_on_previous_text': False} if lang == 'ar' else {}
     if cache.exists():
         data = json.loads(cache.read_text())
-        if data.get('sha256') == fingerprint and data.get('windows') == windows:
+        if (data.get('sha256') == fingerprint and data.get('windows') == windows
+                and data.get('language', 'en') == lang and data.get('gain_db', 0) == gain_db
+                and data.get('decoding', {}) == decoding):
             return data['words']
-    model = WhisperModel('small', device='cpu', compute_type='int8', local_files_only=True)
+    model = WhisperModel('small', device='cpu', compute_type='int8', local_files_only=True,
+                         **({'cpu_threads': 2} if lang == 'ar' else {}))
     options = {'clip_timestamps': [t for pair in windows for t in pair], 'condition_on_previous_text': False} if windows else {}
-    segs, _ = model.transcribe(str(path), language='en', word_timestamps=True, **options)
+    options.update(decoding)
+    source = str(path)
+    if gain_db:
+        # Gain de reconnaissance seulement : la prise et le WAV livré restent intacts.
+        from faster_whisper.audio import decode_audio
+        import numpy as np
+        source = np.clip(decode_audio(str(path)) * 10**(gain_db/20), -1, 1)
+    segs, _ = model.transcribe(source, language=lang, word_timestamps=True, **options)
     words = []
     for s in segs:
         words.extend({'word': w.word.strip(), 'start': w.start, 'end': w.end,
                       'probability': w.probability} for w in s.words)
         print(f'Whisper : {s.end:.2f} s', flush=True)
+        if lang == 'ar':
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.with_suffix('.partial.json').write_text(json.dumps({'sha256': fingerprint, 'words': words}, ensure_ascii=False))
     cache.parent.mkdir(parents=True, exist_ok=True)
-    cache.write_text(json.dumps({'engine': 'faster-whisper/small/cpu/int8', 'sha256': fingerprint, 'windows':windows, 'words': words}, ensure_ascii=False, indent=2) + '\n')
+    extra = {'language':lang, 'gain_db':gain_db} if lang != 'en' or gain_db else {}
+    if decoding:
+        extra['decoding'] = decoding
+    cache.write_text(json.dumps({'engine': 'faster-whisper/small/cpu/int8', 'sha256': fingerprint, 'windows':windows, 'words': words, **extra}, ensure_ascii=False, indent=2) + '\n')
+    cache.with_suffix('.partial.json').unlink(missing_ok=True)
     return words
 
 
-def align_words(sc, heard, bounds=None):
+def align_words(sc, heard, bounds=None, lang='en', phonetic=False):
     """Interpole chaque série manquante une seule fois, entre ses deux voisins.
 
     bounds peut limiter chaque segment à sa copie exacte dans le WAV assemblé.
     L'audit distingue reconnaissance, substitution et timing interpolé.
     """
-    refs = [(s['id'], t) for s in sc['segments'] for t in tokens(s['text'])]
-    a = [(i, u) for i, (_, t) in enumerate(refs) for u in units(t)]
+    refs = [(s['id'], t) for s in sc['segments'] for t in tokens(s['text'], lang)]
+    a = [(i, u) for i, (_, t) in enumerate(refs) for u in units(t, lang)]
     merged = []
     for w in heard:
         if merged and re.fullmatch(r',\d+',w['word']) and re.fullmatch(r'\d+',merged[-1]['word']):
@@ -88,22 +114,39 @@ def align_words(sc, heard, bounds=None):
             merged.append(dict(w))
     b = []
     for j, w in enumerate(merged):
-        us = units(w['word'])
+        us = units(w['word'], lang)
         for k, u in enumerate(us):
             b.append((j, u, w['start'] + (w['end']-w['start'])*k/len(us),
                       w['start'] + (w['end']-w['start'])*(k+1)/len(us)))
     slots = [[] for _ in refs]
+    recovered = {}
     for tag, i0, i1, j0, j1 in difflib.SequenceMatcher(None, [x[1] for x in a], [x[1] for x in b], autojunk=False).get_opcodes():
         if tag == 'equal':
             for i, j in zip(range(i0, i1), range(j0, j1)):
                 slots[a[i][0]].append((b[j][2], b[j][3], merged[b[j][0]]['word']))
+        elif lang in ('ur', 'ar') and tag == 'replace':
+            from vo_alignment_ur import match_replacement
+            for ai,az,bj,bz,ratio in match_replacement([x[1] for x in a[i0:i1]], [x[1] for x in b[j0:j1]],phonetic=phonetic):
+                aa,bb=a[i0+ai:i0+az],b[j0+bj:j0+bz]
+                start,end=bb[0][2],bb[-1][3]
+                weight=sum(len(x[1]) for x in aa)
+                cursor=start
+                for index,unit in aa:
+                    until=cursor+(end-start)*len(unit)/weight
+                    slots[index].append((cursor,until,' '.join(x[1] for x in bb)))
+                    recovered[index]={'status':'substituted' if len(aa)==1 else 'recognized_split',
+                                      'heard':' '.join(x[1] for x in bb),'similarity':round(ratio,3)}
+                    cursor=until
     times = [(min(v[0] for v in x), max(v[1] for v in x)) if x else None for x in slots]
     audit = []
     offset = 0
     out = []
     for seg in sc['segments']:
-        count = len(tokens(seg['text']))
+        count = len(tokens(seg['text'], lang))
         lo, hi = offset, offset + count
+        for i in range(lo, hi):
+            if i in recovered:
+                audit.append({'segment':seg['id'],'index':i-lo,'word':refs[i][1],**recovered[i]})
         limits = bounds[seg['id']] if bounds else (0, max(w['end'] for w in heard))
         for i in range(lo, hi):
             if times[i]:
@@ -133,7 +176,7 @@ def align_words(sc, heard, bounds=None):
                     times[j] = (nxt, times[j][1])
                 else:
                     raise ValueError(f'Pas de durée pour {seg["id"]} : {refs[i:j]}')
-            weights = [max(1, len(norm(refs[k][1]))) for k in range(i,j)]
+            weights = [max(1, len(norm_arabic(refs[k][1], lang) if lang in ('ur', 'ar') else norm(refs[k][1]))) for k in range(i,j)]
             cursor = prev
             for k, weight in zip(range(i,j), weights):
                 end = cursor + (nxt-prev)*weight/sum(weights)
@@ -169,6 +212,7 @@ def align_recording(script_path, audio_path):
     script_path, audio_path = Path(script_path), Path(audio_path)
     root=Path(__file__).resolve().parent.parent
     sc=json.loads(script_path.read_text())
+    lang=sc.get('language', 'en')
     info=sf.info(audio_path)
     manifest_path=audio_path.with_suffix('.assembly.json')
     manifest=json.loads(manifest_path.read_text()) if manifest_path.exists() else None
@@ -177,9 +221,20 @@ def align_recording(script_path, audio_path):
         assert manifest['output_sha256']==digest(audio_path), 'Manifeste audio périmé'
         assert manifest['script_sha256']==digest(script_path), 'Manifeste script périmé'
         bounds={s['id']:(s['output_start']/info.samplerate,s['output_end']/info.samplerate) for s in manifest['segments']}
-    work=root/'out/validation/vo-en'
-    heard=transcribe(audio_path,work/'final.whisper.json',list(bounds.values()) if bounds else None)
-    segments,audit=align_words(sc,heard,bounds)
+    work=root/f'out/validation/vo-{lang}'
+    # AR : deux observations continues (source/finale), rapprochées ensuite
+    # sous les bornes exactes. Évite 79 encodages rembourrés à 30 secondes.
+    windows = list(bounds.values()) if bounds and lang != 'ar' else None
+    heard=transcribe(audio_path,work/'final.whisper.json',windows,lang=lang)
+    extra={}
+    if lang in ('ur', 'ar') and manifest:
+        from vo_alignment_ur import align_assembled
+        segments,audit,choices=align_assembled(sc,heard,manifest,work,info.samplerate,lang=lang)
+        extra={'segment_recognition':choices}
+    else:
+        segments,audit=align_words(sc,heard,bounds,lang=lang)
+    if lang == 'ar':
+        extra['decoding'] = json.loads((work/'final.whisper.json').read_text())['decoding']
     if manifest:
         for fix in manifest.get('review',{}).get('word_times',[]):
             s=next(s for s in segments if s['id']==fix['segment'])
@@ -188,10 +243,13 @@ def align_recording(script_path, audio_path):
             w=[w for w in s['words'] if w['w']==fix['word']][fix['nth']]
             w.update(start=round(fix['start']+shift,3),end=round(fix['end']+shift,3))
             s.update(start=s['words'][0]['start'],end=s['words'][-1]['end'])
+            if lang in ('ur', 'ar'):
+                index=s['words'].index(w)
+                audit=[item for item in audit if not (item['segment']==s['id'] and item.get('index')==index)]
             audit.append({**fix,'start':w['start'],'end':w['end'],'status':'reviewed_signal_envelope'})
     out={'audio':audio_path.resolve().relative_to((root/'public').resolve()).as_posix(),
-         'language':'en','segments':segments,'duration':round(info.duration,3),
-         'alignment':{'engine':'faster-whisper/small/cpu/int8','interpolated':audit},
+         'language':lang,'segments':segments,'duration':round(info.duration,3),
+         'alignment':{'engine':'faster-whisper/small/cpu/int8','interpolated':audit,**extra},
          'silences':manifest['inserts'] if manifest else []}
     dst=root/'src/data'/script_path.name.replace('.json','.vo.json')
     dst.write_text(json.dumps(out,ensure_ascii=False,indent=1)+'\n')

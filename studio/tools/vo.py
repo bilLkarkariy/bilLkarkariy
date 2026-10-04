@@ -82,6 +82,14 @@ def norm(w):
     return re.sub(r"[^a-z0-9ء-غف-ي]", "", w)
 
 
+def norm_arabic(w, lang="ur"):
+    if lang == "ar":
+        return norm(w)
+    w = unicodedata.normalize("NFD", w)
+    w = "".join(c for c in w if unicodedata.category(c)[0] in "LN")
+    return w.translate(str.maketrans({"ي": "ی", "ى": "ی", "ك": "ک", "ه": "ہ", "ۀ": "ۂ"}))
+
+
 TAG = re.compile(r"\[[^\]]*\]")  # balises d'intonation ElevenLabs : [pause], [whispers]…
 # mots : lettres, chiffres, apostrophe, trait d'union ; en arabe, avec leurs signes (harakat, shadda, tanwin)
 WORD = re.compile(r"[\wؐ-ًؚ-ٰٟۖ-ۭ'’-]+")
@@ -91,7 +99,16 @@ def spoken(text):
     return re.sub(r"\s+", " ", TAG.sub("", text)).strip()
 
 
-def tokens(text):
+def tokens(text, lang=None):
+    if lang == 'ur':
+        out, cur = [], ''
+        for c in spoken(text) + ' ':
+            if unicodedata.category(c)[0] in 'LMN':
+                cur += c
+            elif cur:
+                out.append(cur)
+                cur = ''
+        return [t for t in out if norm_arabic(t, lang)]
     return [t for t in WORD.findall(spoken(text)) if norm(t)]
 
 
@@ -231,7 +248,7 @@ def tts(script_path):
 
 def align(script_path, audio_path):
     sc = json.load(open(script_path))
-    if sc.get("language") == "en":
+    if sc.get("language") in ("en", "ar"):
         from vo_alignment_en import align_recording
         return align_recording(script_path, audio_path)
     from faster_whisper import WhisperModel
