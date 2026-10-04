@@ -64,10 +64,7 @@ Contrôle `src/data/v01_en.vo.json` :
   « Médiamétrie », « Faouzi », « al-Karkari », « Nador », « Karkariya » ;
 - les nombres (15, 2014, 12 sur 18, 6 sur 24, 190, 42, 2010, 2,250, 80 %, 20, 350, 1095, 300, 2007, 40, 18 à 77).
 
-**À vérifier à l'oreille, et à signaler à Billel si c'est le cas :** la transcription donne « In Sufism, you practice
-the remembrance. » là où le script dit « In Sufism, you practise dhikr. Remembrance. » Ça peut être une erreur de
-Whisper, ou le clone a pu avaler « dhikr ». Écoute le passage (vers 400–410 s dans la brute) par mesure d'énergie et par
-la durée des mots. N'invente rien : si le mot manque, note-le dans `docs/v01-en-questions.md`.
+**Confirmé par Billel :** « dhikr » est bien prononcé (« In Sufism, you practise dhikr. Remembrance. »). Whisper l'entend mal : aligne le mot du script, ne le signale pas comme manquant.
 
 ## Étape 3 : le montage suit la voix
 
