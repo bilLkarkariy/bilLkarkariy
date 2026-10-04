@@ -17,7 +17,7 @@ Relis `docs/v01-en-etat.md` (ce que tu as déjà fait) et `docs/reprise-agent.md
   Commits en français, un par étape. Ne pousse pas : Claude poussera.
 - Le verset (Coran 13:28) reste en arabe uthmani exact (Amiri Quran), sans animation, fondu seul, aucun son dessous.
   Les sources ne s'affichent jamais à l'écran.
-- Ne lance aucun calcul 3D (Blender). Tu peux préparer les commandes, c'est Claude qui les lancera.
+- Aucun calcul 3D (Blender), jamais : la version EN réutilise les images 3D françaises, recalées dans le temps.
 
 ## La matière
 
@@ -74,9 +74,10 @@ Contrôle `src/data/v01_en.vo.json` :
 - Musique, bruitages et silences : même logique que le FR (pas de son sous le verset).
 - Recale les trois Shorts EN, les chapitres de `docs/v01-en-description.md` et génère les sous-titres anglais
   (`tools/srt.py`, à adapter à l'anglais si besoin : nombres en chiffres, ponctuation) vers `out/package_en/v01.en.srt`.
-- 3D : liste les plans dont les mots de calage ont bougé, avec pour chacun la plage d'images à recalculer et une
-  estimation du temps (le FR prend environ 7 s par image sur le GPU). Si tu vois une façon de réutiliser les images
-  FR en les recalant dans le temps au lieu de tout recalculer, propose-la. Ne lance rien.
+- 3D : **aucune 3D anglaise n'est calculée, ni maintenant ni plus tard (décision de Billel).** La version EN réutilise
+  les images 3D françaises déjà rendues (`public/3d/`). Là où les mots de calage EN tombent à d'autres moments, recale
+  les images FR dans le temps (lecture plus lente ou plus rapide, image tenue, découpe) depuis `Shot3D`, par exemple avec
+  une table de correspondance « image EN → image FR » construite sur les repères de chaque plan. Pas de nouveau rendu.
 - `npx tsc --noEmit` doit passer. Ton bac à sable ne peut pas lancer Chromium : prépare la liste des images fixes à
   regarder (début, milieu, fin de chaque partie et tous les points sensibles), Claude les rendra.
 
