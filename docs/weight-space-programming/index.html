@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weight-space programming, reproduced</title>
+<meta name="description" content="We reproduced MIT's weight-space programming result on Qwen3.5-0.8B, added the missing controls, then had Claude find its own weight edit: 63% on held-out MATH-500, vs 52% for the original edit.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Weight-space programming, reproduced">
+<meta property="og:description" content="A replication of MIT's Qwen3.5-0.8B weight edit, with controls, and a new edit found from scratch that fixes two failure modes instead of one.">
+<meta property="og:image" content="https://billkarkariy.github.io/bilLkarkariy/weight-space-programming/img/headline.png">
+<meta property="og:url" content="https://billkarkariy.github.io/bilLkarkariy/weight-space-programming/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://billkarkariy.github.io/bilLkarkariy/weight-space-programming/img/headline.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root {
+  --bg: #ffffff; --ink: #14181d; --ink-2: #4a525c; --muted: #6b7380; --rule: #e3e6ea; --soft: #f4f6f8;
+  --accent: #2357c6; --orange: #eb6834; --code: #eef1f4;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0f1216; --ink: #e9edf1; --ink-2: #b6bec8; --muted: #8b949e; --rule: #262c33; --soft: #171b20;
+          --accent: #82a8ff; --orange: #f08055; --code: #1b2128; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.65 var(--serif); }
+main { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+h1, h2, h3 { font-family: var(--sans); line-height: 1.2; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); letter-spacing: -0.02em; margin: 6px 0 12px; }
+h2 { font-size: 1.45rem; margin: 48px 0 12px; }
+h3 { font-size: 1.08rem; margin: 28px 0 8px; }
+p { margin: 0 0 1em; }
+.kicker, .byline, figcaption, table, .note { font-family: var(--sans); }
+.kicker { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.dek { font-size: 1.2rem; color: var(--ink-2); margin: 0 0 14px; }
+.byline { font-size: 0.9rem; color: var(--muted); margin-bottom: 30px; }
+.tldr { background: var(--soft); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 22px; margin: 26px 0; }
+.tldr b { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.tldr ul { margin: 8px 0 0; padding-left: 20px; } .tldr li { margin: 6px 0; }
+figure { margin: 26px 0; }
+figure img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid var(--rule); }
+figcaption { font-size: 0.86rem; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+pre { background: var(--code); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 0.86rem/1.5 var(--mono); }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--code); padding: 1px 5px; border-radius: 4px; }
+pre code { background: none; padding: 0; }
+.box { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; margin: 22px 0; }
+ol.steps { padding-left: 22px; } ol.steps li { margin: 8px 0; }
+.table-wrap { overflow-x: auto; margin: 18px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--ink-2); font-weight: 600; font-size: 0.82rem; }
+td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.win td { font-weight: 600; }
+.note { font-size: 0.9rem; color: var(--ink-2); }
+footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); font: 0.85rem/1.6 var(--sans); color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">Replication · interpretability · November 2026</div>
+  <h1>Weight-space programming, reproduced</h1>
+  <p class="dek">MIT showed an AI fixing another model by editing its weights directly. We checked it, added the controls it was missing, and asked Claude to find its own edit. It found a better one.</p>
+  <div class="byline">Billel Helali · experiments run with Claude Code on Modal GPUs · <a href="https://rikiyat.github.io/blog/weight-space-programming/">original MIT post</a></div>
+
+  <div class="tldr">
+    <b>In short</b>
+    <ul>
+      <li>MIT's edit of Qwen3.5-0.8B holds up: from <strong>9% to 52%</strong> on 100 held-out MATH-500 problems, with their exact protocol.</li>
+      <li>Claude found its own edit from the model's behaviour alone. It corrects <strong>two</strong> internal "directions" instead of one.</li>
+      <li>Result: <strong>63%</strong> on the same problems, with shorter answers. The same edit along random directions gets 11%.</li>
+    </ul>
+  </div>
+
+  <figure>
+    <a href="img/headline.png"><img src="img/headline.png" alt="Bar chart of accuracy on 100 held-out MATH-500 problems: base model 9%, MIT edit 52%, Claude's edit 63%, Claude's edit with random directions 11%." width="2400" height="1350"></a>
+  </figure>
+
+  <h2>1. The problem: a model that can't stop thinking</h2>
+  <p>Qwen3.5-0.8B has a "thinking" mode: it reasons before it answers. On hard problems, it often never answers. It doubts, starts over, and eventually repeats the same lines until it runs out of room. With the MIT post's settings, <strong>93%</strong> of its answers hit the 32,768-token limit. A real excerpt:</p>
+  <pre><code>Wait, where did I make a mistake in the previous step?
+Wait, $5t \cdot bt = 5b t^2$.
+Wait, $5t \cdot bt = 5b t^2$.
+Wait, $5t \cdot bt = 5b t^2$.
+…  (repeated until the token limit)</code></pre>
+  <p>The MIT team asked GPT-6 Astra to fix this without any training. Astra found a cause inside the weights and changed 0.016% of them. Math accuracy jumped from 7.9% to 48.1%.</p>
+
+  <h2>2. The idea in one minute</h2>
+  <p>Inside the model, each word is represented by a list of 1,024 numbers that every layer updates. Each layer contains thousands of small units, "neurons". When a neuron fires, it adds a fixed list of 1,024 numbers to that representation. That list is one column of a weight matrix.</p>
+  <p>A behaviour such as "I am about to loop" often shows up as a <strong>direction</strong> in that 1,024-dimensional space: when the model is heading into a loop, its representation points a little more that way. You can find such a direction by comparing the model's internal state in two situations and taking the difference of the averages.</p>
+  <p>To edit the behaviour, you pick the few neurons that push hardest along that direction and change their columns so they push less, or in the opposite direction. A strength <strong>α</strong> sets how much:</p>
+  <figure>
+    <a href="img/alpha.png"><img src="img/alpha.png" alt="Diagram of one neuron's output vector. Original: a small component along the loop direction. Removal with alpha 1: that component becomes zero. MIT edit with alpha 6: the component is flipped and five times larger." width="2400" height="1040"></a>
+    <figcaption>Only the part of each neuron's vector that lies along the direction changes. Everything else in the neuron stays the same.</figcaption>
+  </figure>
+  <div class="box"><p><strong>Why controls matter.</strong> Changing any 128 neurons might shake the model out of a loop by luck. So each edit is compared with a <em>control</em>: same neurons, same size of change, but a random direction. If the control does as well, the direction was not the reason.</p></div>
+
+  <h2>3. Step one: reproducing MIT's edit</h2>
+  <p>We used their protocol exactly (vLLM, thinking on, temperature 0.6, up to 32,768 tokens, math-verify grading) on 100 MATH-500 problems that were never used for anything else.</p>
+  <figure>
+    <a href="img/replication.png"><img src="img/replication.png" alt="Bar chart on 100 held-out problems: base 9%, MIT edit 52%, MIT direction with removal only 14%, MIT neurons with a random direction 19%." width="2400" height="1350"></a>
+  </figure>
+  <p>Their result holds: <strong>9% → 52%</strong>. The control they did not run gets 19%, so their direction really matters. One detail differs from the post: it describes deleting the direction, but the released weights subtract it <strong>six times</strong> (α = 6), which flips it. Deleting it only (α = 1) gives 14%.</p>
+
+  <h2>4. Step two: letting Claude find its own edit</h2>
+  <p>The rules: Claude could only use the original model's own answers on 100 separate "practice" problems. It never used MIT's weights. Every choice was made on the practice problems, and the 100 test problems were used only for the final verdict.</p>
+  <ol class="steps">
+    <li><strong>Find the loops.</strong> Generate long answers and mark where each loop starts (around token 5,800, typically).</li>
+    <li><strong>Direction 1, "about to loop".</strong> Compare the model's internal state just before a loop with its state during normal reasoning earlier on.</li>
+    <li><strong>Direction 2, "about to doubt".</strong> Compare the state just before it writes "Wait", "No" or "But" with the state just before "So", "Then" or "Thus".</li>
+    <li><strong>Find who writes each direction.</strong> Measure how much each layer's neurons push along it, and keep the 64 strongest neurons in the top two layers.</li>
+    <li><strong>Pick the strength</strong> on the practice problems: α = 8 for the first direction, α = 4 for the second.</li>
+  </ol>
+  <figure>
+    <a href="img/layers.png"><img src="img/layers.png" alt="The 24 layers of Qwen3.5-0.8B. MIT's edit changes layers 15 and 19. Claude's edit changes layers 15 and 19 (about to loop, close to MIT's direction) and layers 16 and 18 (about to doubt, a new direction)." width="2400" height="1350"></a>
+  </figure>
+  <p>The first direction landed in MIT's layers, 15 and 19, and turned out close to MIT's own direction: a similarity of 0.7 on a scale where unrelated directions score near 0. It was rediscovered independently. The second direction is new. It sits in layers 16 and 18 and is unrelated to MIT's (similarity 0.07).</p>
+  <p>Not everything worked. The first attempt looked at the state <em>inside</em> a loop and changed nothing, even at α = 8. More neurons, more layers or more strength did not help either. What worked was looking at the moment <em>before</em> the loop, and combining two different mechanisms.</p>
+
+  <h2>5. Results</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>100 held-out MATH-500 problems</th><th>Accuracy</th><th>Hit the token limit</th><th>Avg. tokens</th></tr></thead>
+      <tbody>
+        <tr><td>Base model</td><td class="n">9%</td><td class="n">93%</td><td class="n">31,136</td></tr>
+        <tr><td>MIT edit</td><td class="n">52%</td><td class="n">32%</td><td class="n">21,198</td></tr>
+        <tr class="win"><td>Claude's edit</td><td class="n">63%</td><td class="n">21%</td><td class="n">13,576</td></tr>
+        <tr><td>Claude's edit, random directions</td><td class="n">11%</td><td class="n">89%</td><td class="n">30,389</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Problem by problem, Claude's edit solves 16 that MIT's misses and misses 5 that MIT's solves (p = 0.03). On GSM8K, a different set of math word problems, the two edits are tied, but Claude's answers are much shorter:</p>
+  <figure>
+    <a href="img/gsm8k.png"><img src="img/gsm8k.png" alt="GSM8K, 100 problems. Accuracy: base 14%, MIT edit 73%, Claude's edit 72%. Average tokens per answer: base 29.3k, MIT edit 12.3k, Claude's edit 5.6k." width="2400" height="1350"></a>
+  </figure>
+  <p>A plausible reading: MIT's edit stops the model from spiralling into a loop. The second direction also stops it from second-guessing every step. With both fixed, the model commits to an answer.</p>
+
+  <h2>6. What it means</h2>
+  <p>The core claim is real. A model can be repaired by editing a tiny fraction of its weights, about 0.03% here, with no training at all. Random edits of the same size do nothing.</p>
+  <p>But "an LLM natively reads weights" oversells how it works. What worked here is ordinary interpretability done carefully: compare internal states, find which neurons are responsible, check against controls, and keep test problems separate. A capable AI agent with GPUs can now run that loop on its own.</p>
+  <h3>Limits</h3>
+  <ul class="note">
+    <li>100 test problems, one answer each. The gap over MIT's edit (p = 0.03) still needs confirming on all 500 problems.</li>
+    <li>Claude's edit changes twice as many weights as MIT's (262,144 vs 131,072).</li>
+    <li>About 20 variants were tried on the practice problems before choosing one.</li>
+    <li>Claude knew which layers MIT had edited before it started.</li>
+    <li>The protocol's temperature (0.6) makes loops worse. At Qwen's recommended 1.0, the unedited model already goes from 8% to 23% on the practice set.</li>
+  </ul>
+
+  <h2>Reproduce it</h2>
+  <p>The whole edit fits in a 47 KB file: two directions of 1,024 numbers and 64 neuron indices per layer. <code>apply_edit.py</code> applies it to the original model.</p>
+  <ul class="note">
+    <li><a href="data/edit_compact.json">edit_compact.json</a>: the edit · <a href="code/apply_edit.py">apply_edit.py</a>: apply it to Qwen/Qwen3.5-0.8B</li>
+    <li><a href="data/results_summary.csv">results_summary.csv</a>: all 40 runs · <a href="data/math500_eval100_per_problem.csv">per-problem results</a> for the key runs</li>
+    <li>Problem lists: <a href="data/math500_eval100.json">test</a>, <a href="data/math500_dev100.json">practice</a>, <a href="data/gsm8k_100.json">GSM8K</a> · <a href="code/README.md">all code</a> (Modal + vLLM)</li>
+    <li>Compute: about 6 H100-hours in total (roughly $24).</li>
+  </ul>
+
+  <footer>
+    Original work: <a href="https://rikiyat.github.io/blog/weight-space-programming/">Sparks of Weight-Space Programming</a> (Takehi, Teoh, Zhang, Khattab, MIT CSAIL) and their <a href="https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming">edited model</a>.
+    Experiments designed and run with Claude Code (Anthropic) on Modal H100 GPUs, November 3, 2026.
+    <br><a href="https://billkarkariy.github.io/bilLkarkariy/">← Billel Helali</a>
+  </footer>
+</main>
+</body>
+</html>
