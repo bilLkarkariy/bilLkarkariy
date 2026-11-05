@@ -1,0 +1,357 @@
+# Référentiels utilisés par la grille — libellés officiels (en anglais) relevés le 2026-11-05
+# directement dans les publications sources listées ci-dessous. Ne pas traduire les libellés :
+# ils servent de clé de correspondance avec les documents d'origine.
+sources:
+  nist_ai_rmf:
+    titre: NIST AI 100-1 — Artificial Intelligence Risk Management Framework (AI RMF 1.0), janvier 2023
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
+  nist_csf:
+    titre: NIST CSWP 29 — The NIST Cybersecurity Framework (CSF) 2.0, 26 février 2024
+    url: https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf
+  owasp_llm:
+    titre: OWASP Top 10 for LLM Applications 2025
+    url: https://genai.owasp.org/llm-top-10/
+  owasp_asi:
+    titre: OWASP Top 10 for Agentic Applications for 2026 (publié le 9 décembre 2025)
+    url: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+  atlas:
+    titre: MITRE ATLAS, version 2026.10 (modifiée le 2026-10-28)
+    url: https://github.com/mitre-atlas/atlas-data/tree/main/dist/v6
+  releve_le: '2026-11-05'
+owasp_llm:
+  LLM01:2025: Prompt Injection
+  LLM02:2025: Sensitive Information Disclosure
+  LLM03:2025: Supply Chain
+  LLM04:2025: Data and Model Poisoning
+  LLM05:2025: Improper Output Handling
+  LLM06:2025: Excessive Agency
+  LLM07:2025: System Prompt Leakage
+  LLM08:2025: Vector and Embedding Weaknesses
+  LLM09:2025: Misinformation
+  LLM10:2025: Unbounded Consumption
+owasp_asi:
+  ASI01: Agent Goal Hijack
+  ASI02: Tool Misuse and Exploitation
+  ASI03: Identity and Privilege Abuse
+  ASI04: Agentic Supply Chain Vulnerabilities
+  ASI05: Unexpected Code Execution (RCE)
+  ASI06: Memory & Context Poisoning
+  ASI07: Insecure Inter-Agent Communication
+  ASI08: Cascading Failures
+  ASI09: Human-Agent Trust Exploitation
+  ASI10: Rogue Agents
+nist_ai_rmf:
+  GOVERN 1.1: Legal and regulatory requirements involving AI are understood, managed, and documented.
+  GOVERN 1.4: The risk management process and its outcomes are established through transparent policies, procedures,
+    and other controls based on organizational risk priorities.
+  GOVERN 1.6: Mechanisms are in place to inventory AI systems and are resourced according to organizational risk
+    priorities.
+  GOVERN 2.1: Roles and responsibilities and lines of communication related to mapping, measuring, and managing
+    AI risks are documented and are clear to individuals and teams throughout the organization.
+  GOVERN 2.3: Executive leadership of the organization takes responsibility for decisions about risks associated
+    with AI system development and deployment.
+  GOVERN 3.2: Policies and procedures are in place to define and differentiate roles and responsibilities for human-AI
+    configurations and oversight of AI systems.
+  GOVERN 4.3: Organizational practices are in place to enable AI testing, identification of incidents, and information
+    sharing.
+  GOVERN 6.1: Policies and procedures are in place that address AI risks associated with third-party entities, including
+    risks of infringement of a third-party’s intellectual property or other rights.
+  MANAGE 2.3: Procedures are followed to respond to and recover from a previously unknown risk when it is identified.
+  MANAGE 2.4: Mechanisms are in place and applied, and responsibilities are assigned and understood, to supersede,
+    disengage, or deactivate AI systems that demonstrate performance or outcomes inconsistent with intended use.
+  MANAGE 3.1: AI risks and benefits from third-party resources are regularly monitored, and risk controls are applied
+    and documented.
+  MANAGE 3.2: Pre-trained models which are used for development are monitored as part of AI system regular monitoring
+    and maintenance.
+  MANAGE 4.1: Post-deployment AI system monitoring plans are implemented, including mechanisms for capturing and
+    evaluating input from users and other relevant AI actors, appeal and override, decommissioning, incident response,
+    recovery, and change management.
+  MANAGE 4.3: Incidents and errors are communicated to relevant AI actors, including affected communities. Processes
+    for tracking, responding to, and recovering from incidents and errors are followed and documented.
+  MAP 1.5: Organizational risk tolerances are determined and documented.
+  MAP 3.5: Processes for human oversight are defined, assessed, and documented in accordance with organizational
+    policies from the GOVERN function.
+  MAP 4.1: Approaches for mapping AI technology and legal risks of its components – including the use of third-party
+    data or software – are in place, followed, and documented, as are risks of infringement of a third party’s intellectual
+    property or other rights.
+  MAP 4.2: Internal risk controls for components of the AI system, including third-party AI technologies, are identified
+    and documented.
+  MEASURE 1.3: Internal experts who did not serve as front-line developers for the system and/or independent assessors
+    are involved in regular assessments and updates. Domain experts, users, AI actors external to the team that
+    developed or deployed the AI system, and affected communities are consulted in support of assessments as necessary
+    per organizational risk tolerance.
+  MEASURE 2.4: The functionality and behavior of the AI system and its components – as identified in the MAP function
+    – are monitored when in production.
+  MEASURE 2.6: The AI system is evaluated regularly for safety risks – as identified in the MAP function. The AI
+    system to be deployed is demonstrated to be safe, its residual negative risk does not exceed the risk tolerance,
+    and it can fail safely, particularly if made to operate beyond its knowledge limits. Safety metrics reflect
+    system reliability and robustness, real-time monitoring, and response times for AI system failures.
+  MEASURE 2.7: AI system security and resilience – as identified in the MAP function – are evaluated and documented.
+  MEASURE 2.10: Privacy risk of the AI system – as identified in the MAP function – is examined and documented.
+  MEASURE 3.1: Approaches, personnel, and documentation are in place to regularly identify and track existing, unanticipated,
+    and emergent AI risks based on factors such as intended and actual performance in deployed contexts.
+nist_csf:
+  DE.AE-02: Potentially adverse events are analyzed to better understand associated activities
+  DE.AE-03: Information is correlated from multiple sources
+  DE.CM-01: Networks and network services are monitored to find potentially adverse events
+  DE.CM-03: Personnel activity and technology usage are monitored to find potentially adverse events
+  DE.CM-06: External service provider activities and services are monitored to find potentially adverse events
+  DE.CM-09: Computing hardware and software, runtime environments, and their data are monitored to find potentially
+    adverse events
+  GV.OV-01: Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction
+  GV.RR-02: Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated,
+    understood, and enforced
+  GV.SC-05: Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated
+    into contracts and other types of agreements with suppliers and other relevant third parties
+  GV.SC-07: The risks posed by a supplier, their products and services, and other third parties are understood,
+    recorded, prioritized, assessed, responded to, and monitored over the course of the relationship
+  GV.SC-08: Relevant suppliers and other third parties are included in incident planning, response, and recovery
+    activities
+  ID.AM-01: Inventories of hardware managed by the organization are maintained
+  ID.AM-02: Inventories of software, services, and systems managed by the organization are maintained
+  ID.AM-08: Systems, hardware, software, services, and data are managed throughout their life cycles
+  ID.IM-01: Improvements are identified from evaluations
+  ID.IM-02: Improvements are identified from security tests and exercises, including those done in coordination
+    with suppliers and relevant third parties
+  ID.IM-04: Incident response plans and other cybersecurity plans that affect operations are established, communicated,
+    maintained, and improved
+  ID.RA-01: Vulnerabilities in assets are identified, validated, and recorded
+  ID.RA-02: Cyber threat intelligence is received from information sharing forums and sources
+  ID.RA-05: Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk
+    response prioritization
+  ID.RA-08: Processes for receiving, analyzing, and responding to vulnerability disclosures are established
+  ID.RA-09: The authenticity and integrity of hardware and software are assessed prior to acquisition and use
+  PR.AA-01: Identities and credentials for authorized users, services, and hardware are managed by the organization
+  PR.AA-03: Users, services, and hardware are authenticated
+  PR.AA-05: Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and
+    reviewed, and incorporate the principles of least privilege and separation of duties
+  PR.AT-01: Personnel are provided with awareness and training so that they possess the knowledge and skills to
+    perform general tasks with cybersecurity risks in mind
+  PR.DS-01: The confidentiality, integrity, and availability of data-at-rest are protected
+  PR.DS-11: Backups of data are created, protected, maintained, and tested
+  PR.IR-01: Networks and environments are protected from unauthorized logical access and usage
+  PR.IR-03: Mechanisms are implemented to achieve resilience requirements in normal and adverse situations
+  PR.PS-01: Configuration management practices are established and applied
+  PR.PS-02: Software is maintained, replaced, and removed commensurate with risk
+  PR.PS-03: Hardware is maintained, replaced, and removed commensurate with risk
+  PR.PS-04: Log records are generated and made available for continuous monitoring
+  PR.PS-06: Secure software development practices are integrated, and their performance is monitored throughout
+    the software development life cycle
+  RC.RP-01: The recovery portion of the incident response plan is executed once initiated from the incident response
+    process
+  RC.RP-03: The integrity of backups and other restoration assets is verified before using them for restoration
+  RS.CO-02: Internal and external stakeholders are notified of incidents
+  RS.MA-01: The incident response plan is executed in coordination with relevant third parties once an incident
+    is declared
+  RS.MA-02: Incident reports are triaged and validated
+atlas:
+  AML.M0014:
+    nom: Verify AI Artifacts
+    type: mitigation
+  AML.M0018:
+    nom: User Training
+    type: mitigation
+  AML.M0023:
+    nom: Maintain an AI Bill of Materials
+    type: mitigation
+  AML.M0024:
+    nom: AI Telemetry Logging and Monitoring
+    type: mitigation
+  AML.M0026:
+    nom: Manage AI Agent Service Access
+    type: mitigation
+  AML.M0027:
+    nom: Manage User-Delegated AI Agent Access
+    type: mitigation
+  AML.M0028:
+    nom: Enforce Access Controls for AI Agent Tools
+    type: mitigation
+  AML.M0029:
+    nom: Human In-the-Loop for AI Agent Actions
+    type: mitigation
+  AML.M0030:
+    nom: Restrict AI Agent Tool Invocation on Untrusted Data
+    type: mitigation
+  AML.M0031:
+    nom: Memory Hardening
+    type: mitigation
+  AML.M0032:
+    nom: Segmentation of AI Agent Components
+    type: mitigation
+  AML.M0033:
+    nom: Input and Output Validation for AI Agent Components
+    type: mitigation
+  AML.M0035:
+    nom: AI Red Team
+    type: mitigation
+  AML.M0036:
+    nom: Limit AI Workload Resource Consumption
+    type: mitigation
+  AML.M0037:
+    nom: AI Agent Authority Expansion Controls
+    type: mitigation
+  AML.M0038:
+    nom: AI Agent Scope Drift Detection
+    type: mitigation
+  AML.M0039:
+    nom: AI Honeypots
+    type: mitigation
+  AML.M0043:
+    nom: AI Agent External Resource Lifecycle Management
+    type: mitigation
+  AML.T0006:
+    nom: Active Scanning
+    type: technique
+  AML.T0006.002:
+    nom: 'Active Scanning: Scan for Exposed AI Infrastructure'
+    type: technique
+  AML.T0010.001:
+    nom: 'Supply Chain Compromise: Software'
+    type: technique
+  AML.T0010.003:
+    nom: 'Supply Chain Compromise: Model Repository'
+    type: technique
+  AML.T0010.005:
+    nom: 'Supply Chain Compromise: AI Agent Tool'
+    type: technique
+  AML.T0011.000:
+    nom: 'User Execution: Unsafe AI Artifacts'
+    type: technique
+  AML.T0011.001:
+    nom: 'User Execution: Malicious Package'
+    type: technique
+  AML.T0012:
+    nom: Valid Accounts
+    type: technique
+  AML.T0034:
+    nom: Cost Harvesting
+    type: technique
+  AML.T0034.002:
+    nom: 'Cost Harvesting: Agentic Resource Consumption'
+    type: technique
+  AML.T0049:
+    nom: Exploit Public-Facing Application
+    type: technique
+  AML.T0050:
+    nom: Command and Scripting Interpreter
+    type: technique
+  AML.T0051:
+    nom: LLM Prompt Injection
+    type: technique
+  AML.T0051.001:
+    nom: 'LLM Prompt Injection: Indirect'
+    type: technique
+  AML.T0052.000:
+    nom: 'Phishing: Spearphishing via Social Engineering LLM'
+    type: technique
+  AML.T0053:
+    nom: AI Agent Tool Invocation
+    type: technique
+  AML.T0055:
+    nom: Unsecured Credentials
+    type: technique
+  AML.T0060:
+    nom: Publish Hallucinated Entities
+    type: technique
+  AML.T0062:
+    nom: Discover LLM Hallucinations
+    type: technique
+  AML.T0069.002:
+    nom: 'Discover LLM System Information: System Prompt'
+    type: technique
+  AML.T0070:
+    nom: RAG Poisoning
+    type: technique
+  AML.T0073:
+    nom: Impersonation
+    type: technique
+  AML.T0077:
+    nom: LLM Response Rendering
+    type: technique
+  AML.T0080:
+    nom: AI Agent Context Poisoning
+    type: technique
+  AML.T0081:
+    nom: Modify AI Agent Configuration
+    type: technique
+  AML.T0082:
+    nom: RAG Credential Harvesting
+    type: technique
+  AML.T0083:
+    nom: Credentials from AI Agent Configuration
+    type: technique
+  AML.T0084.001:
+    nom: 'Discover AI Agent Configuration: Tool Definitions'
+    type: technique
+  AML.T0085.000:
+    nom: 'Data from AI Services: RAG Databases'
+    type: technique
+  AML.T0086:
+    nom: Exfiltration via AI Agent Tool Invocation
+    type: technique
+  AML.T0088:
+    nom: Generate Deepfakes
+    type: technique
+  AML.T0090:
+    nom: OS Credential Dumping
+    type: technique
+  AML.T0091:
+    nom: Use Alternate Authentication Material
+    type: technique
+  AML.T0091.000:
+    nom: 'Use Alternate Authentication Material: Application Access Token'
+    type: technique
+  AML.T0094:
+    nom: Delay Execution of LLM Instructions
+    type: technique
+  AML.T0096:
+    nom: AI Service API
+    type: technique
+  AML.T0097:
+    nom: Virtualization/Sandbox Evasion
+    type: technique
+  AML.T0098:
+    nom: AI Agent Tool Credential Harvesting
+    type: technique
+  AML.T0101:
+    nom: Data Destruction via AI Agent Tool Invocation
+    type: technique
+  AML.T0102:
+    nom: Generate Malicious Commands
+    type: technique
+  AML.T0103:
+    nom: Deploy AI Agent
+    type: technique
+  AML.T0105:
+    nom: Escape to Host
+    type: technique
+  AML.T0109:
+    nom: AI Supply Chain Rug Pull
+    type: technique
+  AML.T0110:
+    nom: AI Agent Tool Poisoning
+    type: technique
+  AML.T0112.000:
+    nom: 'Machine Compromise: Local AI Agent'
+    type: technique
+  AML.T0115.002:
+    nom: 'Publish Poisoned AI Artifacts: AI Agent Tools'
+    type: technique
+  AML.T0116:
+    nom: Autonomous Reconnaissance
+    type: technique
+  AML.T0118.000:
+    nom: 'Autonomous AI Agent Communication: Communication via Shared Artifacts'
+    type: technique
+  AML.T0122:
+    nom: Exploitation of Remote Services
+    type: technique
+  AML.T0124:
+    nom: Autonomous Attack Orchestration
+    type: technique
+  AML.T0129:
+    nom: Triggers in Multimodal Inputs
+    type: technique
+  AML.T0132:
+    nom: Misconfigured or Publicly Exposed AI Services
+    type: technique

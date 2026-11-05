@@ -1,0 +1,844 @@
+# Grille d'audit « état des lieux » — Red Team IA
+# Source unique : l'Excel et le Markdown sont générés par tools/build_grille.py.
+# Les identifiants de référentiels sont vérifiés dans data/referentiels.yaml.
+meta:
+  titre: "Grille d'audit « état des lieux » — Red Team IA"
+  version: "1.0"
+  date: "2026-11-05"
+  echelle_maturite:
+    - {niveau: 0, libelle: "Inexistant", definition: "Aucune pratique, ou pratique inconnue des interlocuteurs."}
+    - {niveau: 1, libelle: "Initial", definition: "Pratique ponctuelle, dépendante de personnes, non documentée."}
+    - {niveau: 2, libelle: "Défini", definition: "Pratique documentée, mais appliquée partiellement ou sans preuve."}
+    - {niveau: 3, libelle: "Maîtrisé", definition: "Pratique appliquée sur tout le périmètre, preuves disponibles."}
+    - {niveau: 4, libelle: "Optimisé", definition: "Pratique mesurée, testée (exercice, red team) et améliorée en continu."}
+  criticite:
+    - {poids: 3, libelle: "Critique", definition: "Défaillance exploitable directement ou à impact majeur ; vecteur observé lors de Black October."}
+    - {poids: 2, libelle: "Important", definition: "Défaillance qui aggrave fortement un incident ou en retarde la détection."}
+    - {poids: 1, libelle: "Utile", definition: "Bonne pratique de maturité ; impact indirect."}
+  seuils:
+    - {min: 0.00, libelle: "Critique", couleur: "D03B3B"}
+    - {min: 0.25, libelle: "Fragile", couleur: "EC835A"}
+    - {min: 0.50, libelle: "Intermédiaire", couleur: "FAB219"}
+    - {min: 0.75, libelle: "Robuste", couleur: "0CA30C"}
+  reponses_flash:
+    - {reponse: "Oui", points: 2}
+    - {reponse: "Partiel", points: 1}
+    - {reponse: "Non", points: 0}
+    - {reponse: "Ne sait pas", points: 0}
+
+surfaces:
+  - id: A
+    titre: "Surface A — Failles accélérées par l'IA"
+    resume: "La surface classique (applications, équipements, dépendances, identités), désormais découverte et exploitée à vitesse machine."
+    domaines:
+      - id: A1
+        titre: "Inventaire et surface d'exposition"
+        objectif: "Savoir ce qui est exposé avant qu'un agent de reconnaissance autonome ne le découvre."
+        controles:
+          - id: A1.1
+            question: "L'inventaire des actifs exposés sur Internet (domaines, sous-domaines, adresses IP, applications web, API, interfaces d'administration) est exhaustif, couvre filiales et prestataires, et est mis à jour au moins mensuellement."
+            preuves: "Export daté de l'inventaire ou de l'outil de gestion de surface d'attaque ; écart mesuré entre l'inventaire et la découverte externe réalisée par l'auditeur."
+            methode: "Revue documentaire ; test technique (découverte passive puis active dans le périmètre autorisé)"
+            criticite: 3
+            flash: true
+            question_flash: "Avez-vous un inventaire à jour (moins d'un mois) de tout ce que vous exposez sur Internet, filiales et prestataires compris ?"
+            refs: {nist_csf: [ID.AM-01, ID.AM-02], atlas: [AML.T0116, AML.T0006]}
+            cas: [ECOM-AGENTS, TAIWAN-MULTIAGENT]
+          - id: A1.2
+            question: "Pour chaque application exposée, la pile technique et ses versions (langage et environnement d'exécution comme PHP, framework, CMS, serveur web) sont connues, ce qui permet de répondre en moins de 4 heures à la question « sommes-nous exposés à cette CVE ? »."
+            preuves: "Inventaire logiciel (SBOM ou CMDB) ; exercice chronométré sur une CVE récente, par exemple CVE-2026-109618 / CVE-2026-109619."
+            methode: "Exercice chronométré ; revue documentaire"
+            criticite: 3
+            flash: true
+            question_flash: "Le jour où une faille critique comme PHP2Shell est publiée, savez-vous en moins de 4 heures quels serveurs sont concernés ?"
+            refs: {nist_csf: [ID.AM-02, ID.RA-01], atlas: [AML.T0049]}
+            cas: [PHP2SHELL]
+          - id: A1.3
+            question: "Les équipements de bordure et embarqués (pare-feu, VPN, routeurs, NAS, caméras, objets connectés, appliances) sont inventoriés avec leur firmware et leurs composants logiciels, et leurs interfaces d'administration ne sont pas exposées sur Internet."
+            preuves: "Inventaire des équipements avec versions de firmware ; résultat du scan des interfaces d'administration exposées."
+            methode: "Revue documentaire ; test technique"
+            criticite: 3
+            flash: false
+            refs: {nist_csf: [ID.AM-01, PR.PS-03, PR.IR-01], atlas: [AML.T0049, AML.T0122]}
+            cas: [PHP2SHELL-EMBARQUE]
+          - id: A1.4
+            question: "Les services d'IA exposés (points d'accès de modèles, passerelles LLM, notebooks, serveurs MCP, consoles d'agents) figurent dans l'inventaire et aucun n'est accessible publiquement sans authentification."
+            preuves: "Liste des services d'IA exposés ; tests d'accès anonymes réalisés par l'auditeur."
+            methode: "Test technique ; revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [ID.AM-02, PR.AA-03], atlas: [AML.T0132, AML.T0006.002]}
+            cas: []
+          - id: A1.5
+            question: "Une surveillance continue de la surface externe alerte sur toute nouvelle exposition (sous-domaine, port, certificat, service) en moins de 24 heures."
+            preuves: "Configuration de l'outil de surveillance ; exemples d'alertes récentes et délais de traitement."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [DE.CM-01, ID.AM-01], atlas: [AML.T0116]}
+            cas: [ECOM-AGENTS]
+
+      - id: A2
+        titre: "Vulnérabilités et vélocité de correctif"
+        objectif: "Tenir la cadence quand le volume de failles critiques explose : l'asymétrie entre découverte par la machine et correction par l'humain."
+        controles:
+          - id: A2.1
+            question: "Des délais maximaux de correction sont définis par criticité et par exposition (par exemple 24 à 48 heures pour une faille critique exploitée ou exposée sur Internet) ; le délai réel est mesuré et respecté."
+            preuves: "Politique de gestion des vulnérabilités ; délais réels de correction sur les 6 derniers mois ; taux de respect."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 3
+            flash: true
+            question_flash: "Mesurez-vous le délai réel entre la publication d'une faille critique et son correctif en production ? Est-il inférieur à 72 heures ?"
+            refs: {nist_csf: [ID.RA-01, PR.PS-02]}
+            cas: [PHP2SHELL, VOLUME-CRITIQUES]
+          - id: A2.2
+            question: "Une procédure de crise pour les correctifs existe : veille CERT-FR et éditeurs, décision de mise hors ligne préventive, mesures compensatoires (filtrage applicatif, désactivation de fonctionnalité), communication. Elle a été exercée dans les 12 derniers mois."
+            preuves: "Procédure ; compte rendu d'exercice ou retour d'expérience sur PHP2Shell."
+            methode: "Revue documentaire ; entretien"
+            criticite: 3
+            flash: true
+            question_flash: "Avez-vous une procédure, déjà exercée, pour décider en quelques heures de couper ou protéger un service exposé à une faille critique ?"
+            refs: {nist_csf: [ID.RA-02, RS.MA-01, ID.IM-04]}
+            cas: [PHP2SHELL]
+          - id: A2.3
+            question: "La priorisation s'appuie sur l'exploitabilité réelle (catalogue KEV de la CISA, score EPSS, avis CERT-FR, exposition Internet) et pas uniquement sur le score CVSS."
+            preuves: "Règles de priorisation ; exemples de tickets montrant l'usage de ces critères."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [ID.RA-05, ID.RA-02]}
+            cas: []
+          - id: A2.4
+            question: "La capacité de correction est dimensionnée pour absorber un pic (trois à dix fois plus de vulnérabilités critiques en un mois) : astreinte, automatisation du déploiement, renfort externe contractualisé à l'avance."
+            preuves: "Plan de capacité ; chiffres et délais du dernier pic ; contrats de renfort."
+            methode: "Entretien ; revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [ID.RA-05, PR.PS-02, GV.RR-02]}
+            cas: [VOLUME-CRITIQUES, GOULOT-VALIDATION]
+          - id: A2.5
+            question: "Un processus de réception des signalements de vulnérabilités existe (fichier security.txt, politique de divulgation coordonnée) et peut absorber des signalements produits en masse par des outils d'IA."
+            preuves: "security.txt publié ; politique de divulgation ; volumétrie et délais de traitement des signalements."
+            methode: "Test technique ; revue documentaire"
+            criticite: 1
+            flash: false
+            refs: {nist_csf: [ID.RA-08, RS.MA-02]}
+            cas: [GOULOT-VALIDATION]
+
+      - id: A3
+        titre: "Chaîne d'approvisionnement logicielle (dont bibliothèques d'IA)"
+        objectif: "Empêcher qu'une dépendance compromise (paquet, action CI, outil de prestataire) n'ouvre la porte aux secrets et aux clés d'API."
+        controles:
+          - id: A3.1
+            question: "Les dépendances de chaque application en production sont inventoriées (SBOM), y compris les bibliothèques d'IA : SDK de modèles, passerelles LLM de type LiteLLM, frameworks d'agents."
+            preuves: "SBOM par application ; liste des bibliothèques d'IA en production."
+            methode: "Revue documentaire ; test technique (analyse de composition)"
+            criticite: 3
+            flash: true
+            question_flash: "Pouvez-vous lister en une heure toutes les applications qui utilisent une bibliothèque donnée (par exemple LiteLLM), versions comprises ?"
+            refs: {nist_csf: [ID.AM-02, GV.SC-07], owasp_llm: ["LLM03:2025"], atlas: [AML.T0010.001, AML.M0023]}
+            cas: [LITELLM]
+          - id: A3.2
+            question: "Les dépendances sont épinglées avec vérification d'intégrité (fichiers de verrouillage, empreintes), installées depuis un miroir interne avec quarantaine des nouvelles versions et détection des paquets malveillants."
+            preuves: "Fichiers de verrouillage ; configuration du miroir ou du proxy de paquets ; règles de quarantaine."
+            methode: "Revue documentaire ; test technique"
+            criticite: 3
+            flash: true
+            question_flash: "Une nouvelle version piégée d'une bibliothèque publiée ce matin sur PyPI ou npm pourrait-elle arriver automatiquement dans vos builds ?"
+            refs: {nist_csf: [ID.RA-09, PR.PS-01], owasp_llm: ["LLM03:2025"], atlas: [AML.T0011.001, AML.T0010.001]}
+            cas: [LITELLM]
+          - id: A3.3
+            question: "Les chaînes CI/CD sont durcies : actions et outils tiers épinglés par empreinte de commit, secrets à portée minimale et éphémères (fédération OIDC), séparation build et publication, artefacts signés avec provenance."
+            preuves: "Définitions des pipelines ; inventaire des secrets CI ; politique de signature."
+            methode: "Revue de configuration"
+            criticite: 3
+            flash: false
+            refs: {nist_csf: [PR.PS-06, PR.AA-05], atlas: [AML.T0010.001]}
+            cas: [LITELLM]
+          - id: A3.4
+            question: "Les noms de paquets internes sont protégés contre la confusion de dépendances (noms réservés sur les registres publics, registres privés prioritaires)."
+            preuves: "Liste des paquets internes ; vérification de leur réservation sur les registres publics."
+            methode: "Test technique"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [ID.RA-09], atlas: [AML.T0010.001, AML.T0011.001]}
+            cas: [EVALS-ANTHROPIC]
+          - id: A3.5
+            question: "Les outils d'administration à distance et les prestataires infogérés (RMM, MSP, éditeurs SaaS) sont évalués ; leurs accès sont nominatifs, limités et surveillés ; un plan existe en cas de compromission du fournisseur."
+            preuves: "Registre des prestataires à accès privilégié ; clauses contractuelles ; journaux d'accès des prestataires."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [GV.SC-07, GV.SC-08, DE.CM-06]}
+            cas: [STORM-0940]
+          - id: A3.6
+            question: "Les dépendances proposées par des assistants d'IA sont vérifiées avant installation (existence, ancienneté, réputation, mainteneur) pour éviter les paquets « hallucinés » que des attaquants enregistrent à l'avance."
+            preuves: "Règle de développement ; contrôle automatique des nouvelles dépendances en CI."
+            methode: "Revue documentaire ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM09:2025", "LLM03:2025"], nist_csf: [ID.RA-09], atlas: [AML.T0060, AML.T0062]}
+            cas: []
+
+      - id: A4
+        titre: "Identités humaines et accès"
+        objectif: "Résister aux attaques d'identifiants menées à un débit que seuls des agents automatisés atteignent."
+        controles:
+          - id: A4.1
+            question: "Une authentification multifacteur résistante au phishing (FIDO2, clés d'accès, carte à puce) est imposée aux administrateurs et aux accès distants ; les protocoles d'authentification hérités sont désactivés."
+            preuves: "Politiques d'accès conditionnel ; rapport de couverture MFA ; état des protocoles hérités."
+            methode: "Revue de configuration"
+            criticite: 3
+            flash: true
+            question_flash: "Vos administrateurs et accès distants utilisent-ils tous une MFA résistante au phishing, protocoles hérités désactivés ?"
+            refs: {nist_csf: [PR.AA-03], atlas: [AML.T0012]}
+            cas: [STORM-0940]
+          - id: A4.2
+            question: "Les attaques par pulvérisation de mots de passe et par bourrage d'identifiants à haut débit sont détectées et freinées (limitation de débit, verrouillage intelligent, alertes sur volumes anormaux par locataire)."
+            preuves: "Règles de détection ; alertes des 3 derniers mois ; seuils configurés."
+            methode: "Revue de configuration ; test technique (contrôlé)"
+            criticite: 3
+            flash: false
+            refs: {nist_csf: [DE.CM-01, DE.CM-03], atlas: [AML.T0012]}
+            cas: [STORM-0940]
+          - id: A4.3
+            question: "Les comptes à privilèges sont cloisonnés (modèle en tiers, comptes d'administration dédiés, accès juste-à-temps) et les chemins d'attaque vers l'administration du domaine et du cloud sont cartographiés puis réduits."
+            preuves: "Cartographie des chemins d'attaque (type graphe AD/Entra) ; nombre de comptes à privilèges ; politique d'accès juste-à-temps."
+            methode: "Test technique (collecte en lecture seule) ; revue documentaire"
+            criticite: 3
+            flash: false
+            refs: {nist_csf: [PR.AA-05], atlas: [AML.T0090, AML.T0091]}
+            cas: [CROWDSTRIKE-AGENTS]
+          - id: A4.4
+            question: "Les droits sont revus au moins tous les six mois et les comptes inactifs ou orphelins sont désactivés."
+            preuves: "Comptes rendus de revue des droits ; statistiques des comptes inactifs."
+            methode: "Échantillonnage"
+            criticite: 1
+            flash: false
+            refs: {nist_csf: [PR.AA-01, PR.AA-05]}
+            cas: []
+
+      - id: A5
+        titre: "Cryptographie et PKI : les fondamentaux"
+        objectif: "Rappel de Black October : une partie des failles du mois venaient d'erreurs humaines élémentaires, pas de l'IA."
+        controles:
+          - id: A5.1
+            question: "Les certificats et clés (TLS, signature de code, PKI interne) sont inventoriés avec propriétaire, algorithme, taille de clé et date d'expiration."
+            preuves: "Inventaire des certificats ; rapport d'outil de découverte."
+            methode: "Revue documentaire ; test technique"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [ID.AM-08, PR.DS-01]}
+            cas: [EMUDHRA]
+          - id: A5.2
+            question: "Les clés sont générées avec des générateurs d'aléa conformes, protégées (HSM ou coffre-fort de secrets) et leur qualité est contrôlée (clés faibles, réutilisées ou trop courtes)."
+            preuves: "Procédure de génération ; résultats de contrôle de qualité des clés."
+            methode: "Revue documentaire ; test technique"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [PR.DS-01]}
+            cas: [EMUDHRA]
+          - id: A5.3
+            question: "La dépendance aux autorités de certification tierces est maîtrisée : renouvellement automatisé (ACME) et plan de remplacement si une autorité est révoquée ou n'est plus reconnue."
+            preuves: "Liste des AC utilisées ; plan de bascule ; taux d'automatisation."
+            methode: "Entretien ; revue documentaire"
+            criticite: 1
+            flash: false
+            refs: {nist_csf: [GV.SC-07, ID.AM-08]}
+            cas: [EMUDHRA]
+
+      - id: A6
+        titre: "Détection et réponse à vitesse machine"
+        objectif: "Détecter et contenir avant qu'un agent attaquant passe de l'accès initial à l'administration du domaine."
+        controles:
+          - id: A6.1
+            question: "La détection et la réponse couvrent 24 h/24 et 7 j/7 les actifs exposés et les identités (SOC interne ou service managé), avec une prise en charge des alertes critiques en moins d'une heure."
+            preuves: "Contrat ou organisation SOC ; délais de prise en charge mesurés ; périmètre couvert."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 3
+            flash: true
+            question_flash: "Une alerte critique déclenchée un samedi à 3 h du matin est-elle prise en charge en moins d'une heure ?"
+            refs: {nist_csf: [DE.CM-01, DE.CM-09, RS.MA-01]}
+            cas: [ECOM-AGENTS, CROWDSTRIKE-AGENTS]
+          - id: A6.2
+            question: "Les journaux (web, identité, EDR, cloud, DNS) sont centralisés, horodatés de façon cohérente et conservés assez longtemps pour une investigation a posteriori (12 mois recommandés)."
+            preuves: "Architecture de journalisation ; durées de conservation par source."
+            methode: "Revue de configuration"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [PR.PS-04, DE.AE-03]}
+            cas: []
+          - id: A6.3
+            question: "Des scénarios de détection visent les attaques automatisées : rafales d'exploitation multi-cibles, enchaînement rapide reconnaissance → exploitation, trafic de serveurs vers des API de modèles d'IA, outillage d'agents (MCP, frameworks) sur des hôtes non autorisés."
+            preuves: "Règles de détection correspondantes ; résultats de tests de détection."
+            methode: "Revue de configuration ; test technique (émulation)"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [DE.AE-02, DE.CM-09], atlas: [AML.T0124, AML.T0103, AML.T0096]}
+            cas: [CROWDSTRIKE-AGENTS, TAIWAN-MULTIAGENT, HERMES-DEEPSEEK]
+          - id: A6.4
+            question: "Le plan de réponse à incident est testé chaque année par un exercice de crise incluant un scénario d'attaque automatisée massive, la décision d'isolement et les notifications réglementaires (RGPD, NIS2, DORA selon le cas)."
+            preuves: "Plan de réponse ; compte rendu du dernier exercice et actions correctives."
+            methode: "Revue documentaire ; entretien"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [RS.MA-01, ID.IM-02, RS.CO-02]}
+            cas: []
+
+      - id: A7
+        titre: "Sauvegardes et résilience"
+        objectif: "Garantir qu'aucune identité, humaine ou agent, ne peut détruire à la fois la production et ses sauvegardes."
+        controles:
+          - id: A7.1
+            question: "Les sauvegardes critiques sont immuables ou hors ligne, hors de portée des comptes d'administration courants, des comptes de service et des agents d'IA ; leur restauration est testée au moins tous les six mois."
+            preuves: "Architecture de sauvegarde ; matrice des identités ayant un droit de suppression ; procès-verbaux de tests de restauration."
+            methode: "Revue de configuration ; exercice"
+            criticite: 3
+            flash: true
+            question_flash: "Existe-t-il un seul compte, humain ou agent, capable de supprimer à la fois une base de production et ses sauvegardes ?"
+            refs: {nist_csf: [PR.DS-11, RC.RP-03], atlas: [AML.T0101]}
+            cas: [POCKETOS]
+          - id: A7.2
+            question: "Des objectifs de reprise (RTO/RPO) sont définis pour les services critiques et un mode dégradé permet de mettre un service hors ligne sans arrêter l'activité."
+            preuves: "Analyse d'impact ; procédures de mode dégradé ; résultats de tests."
+            methode: "Revue documentaire ; entretien"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [RC.RP-01, PR.IR-03]}
+            cas: [PHP2SHELL]
+
+      - id: A8
+        titre: "Usage défensif de l'IA et boucle de remédiation"
+        objectif: "Raccourcir la boucle découverte → correctif, là où se joue l'avantage du défenseur."
+        controles:
+          - id: A8.1
+            question: "Des outils d'IA sont utilisés pour rechercher des vulnérabilités (revue de code, analyse de configuration, fuzzing assisté) sur les applications critiques, dans un cadre validé (données, fournisseurs, périmètre)."
+            preuves: "Liste des outils et du périmètre ; validation sécurité et juridique ; résultats obtenus."
+            methode: "Entretien ; revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [ID.RA-01, ID.IM-02], nist_ai_rmf: [GOVERN 6.1]}
+            cas: [PHP2SHELL, GOULOT-VALIDATION]
+          - id: A8.2
+            question: "Les découvertes issues d'outils d'IA passent par un circuit de tri, de déduplication et de validation humaine avant d'entrer dans le backlog de correction ; la capacité de validation est suivie."
+            preuves: "Processus de tri ; indicateurs de volume, de faux positifs et de délais de validation."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [RS.MA-02, ID.RA-01]}
+            cas: [GOULOT-VALIDATION]
+          - id: A8.3
+            question: "Le délai découverte → correctif déployé est mesuré de bout en bout, fait l'objet d'un objectif et est suivi par la direction."
+            preuves: "Tableau de bord ; comptes rendus de comité."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: true
+            question_flash: "Votre direction suit-elle un indicateur du délai entre la découverte d'une faille et son correctif en production ?"
+            refs: {nist_csf: [GV.OV-01, ID.IM-01]}
+            cas: [GOULOT-VALIDATION]
+
+  - id: B
+    titre: "Surface B — Risques agentiques"
+    resume: "Les agents d'IA de l'organisation (et ceux de tiers) : ce qu'ils peuvent lire, faire, et ce qu'on peut prouver de leurs actions."
+    domaines:
+      - id: B1
+        titre: "Gouvernance et inventaire des systèmes d'IA"
+        objectif: "On ne protège pas un agent dont on ignore l'existence (shadow AI)."
+        controles:
+          - id: B1.1
+            question: "Un registre des systèmes d'IA et des agents existe : agents internes, SaaS, copilotes, agents de code, agents de navigateur, automatisations sans code. Pour chacun : propriétaire, fournisseur, modèle, données accessibles, outils, niveau d'autonomie."
+            preuves: "Registre ; comparaison avec les flux réseau vers les fournisseurs d'IA et les applications SaaS détectées."
+            methode: "Revue documentaire ; test technique (découverte)"
+            criticite: 3
+            flash: true
+            question_flash: "Pouvez-vous lister tous les agents d'IA qui agissent dans votre SI aujourd'hui, avec leurs droits et leur propriétaire ?"
+            refs: {nist_ai_rmf: [GOVERN 1.6, MAP 4.1], atlas: [AML.M0023]}
+            cas: [SONDAGE-GOUVERNANCE]
+          - id: B1.2
+            question: "Une politique d'usage de l'IA et des agents est adoptée par la direction : usages autorisés et interdits, données autorisées, processus d'approbation d'un nouvel agent, responsabilités."
+            preuves: "Politique signée ; processus d'approbation ; exemples de dossiers approuvés ou refusés."
+            methode: "Revue documentaire ; entretien"
+            criticite: 3
+            flash: true
+            question_flash: "Un nouvel agent d'IA peut-il être branché sur vos outils sans validation formelle de la sécurité ?"
+            refs: {nist_ai_rmf: [GOVERN 1.4, GOVERN 2.3]}
+            cas: [SONDAGE-GOUVERNANCE]
+          - id: B1.3
+            question: "L'usage d'IA non déclarée est détecté : flux vers des API de modèles, extensions de navigateur, comptes personnels, agents installés sur les postes."
+            preuves: "Règles de détection (proxy, CASB, EDR) ; volumétrie des usages non déclarés détectés."
+            methode: "Test technique ; revue de configuration"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [GOVERN 1.6], nist_csf: [DE.CM-03], atlas: [AML.T0112.000]}
+            cas: []
+          - id: B1.4
+            question: "Chaque agent est classé par niveau de risque (données, actions, autonomie, exposition) et les obligations réglementaires associées sont identifiées (AI Act, notamment le rôle de déployeur ; RGPD ; NIS2 ou DORA selon le secteur)."
+            preuves: "Grille de classification ; analyse réglementaire par agent."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [GOVERN 1.1, MAP 1.5]}
+            cas: []
+          - id: B1.5
+            question: "Les rôles sont définis pour chaque agent : propriétaire, responsable de la supervision humaine, contact en cas d'incident ; la direction arbitre les risques résiduels."
+            preuves: "Matrice RACI ; fiches agents ; décisions d'acceptation de risque."
+            methode: "Revue documentaire ; entretien"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [GOVERN 2.1, GOVERN 3.2]}
+            cas: []
+
+      - id: B2
+        titre: "Identités non humaines et privilèges des agents"
+        objectif: "Un agent ne doit jamais détenir plus de droits que la tâche n'en exige."
+        controles:
+          - id: B2.1
+            question: "Chaque agent dispose de sa propre identité (compte de service ou identité de charge de travail dédiée), distincte des comptes humains ; aucun agent n'opère avec les identifiants personnels d'un employé."
+            preuves: "Liste des identités d'agents ; contrôle par échantillonnage des identifiants utilisés par les agents."
+            methode: "Revue de configuration ; échantillonnage"
+            criticite: 3
+            flash: true
+            question_flash: "Vos agents d'IA ont-ils chacun leur propre identité, ou utilisent-ils les comptes et jetons de vos collaborateurs ?"
+            refs: {owasp_llm: ["LLM06:2025"], owasp_asi: [ASI03], nist_csf: [PR.AA-01], atlas: [AML.M0026]}
+            cas: [POCKETOS, BANQUES-AGENTS]
+          - id: B2.2
+            question: "Les jetons et clés des agents sont à portée minimale (ressources, actions, environnements) et de courte durée de vie ; aucun n'autorise d'action destructive hors du périmètre de la tâche (pas de jeton d'administration de production pour un agent de développement)."
+            preuves: "Inventaire des jetons d'agents avec portée et durée ; revue des droits effectifs."
+            methode: "Revue de configuration ; test technique"
+            criticite: 3
+            flash: true
+            question_flash: "Un agent de développement pourrait-il, avec son jeton actuel, supprimer une base de production ?"
+            refs: {owasp_llm: ["LLM06:2025"], owasp_asi: [ASI03], nist_csf: [PR.AA-05], atlas: [AML.T0091.000, AML.M0028]}
+            cas: [POCKETOS]
+          - id: B2.3
+            question: "Aucun secret n'est stocké dans les prompts, fichiers de configuration d'agents, mémoires ou dépôts ; les secrets sont délivrés par un coffre-fort avec rotation et journalisation."
+            preuves: "Résultats d'analyse de secrets sur les dépôts et configurations d'agents ; configuration du coffre-fort."
+            methode: "Test technique (analyse de secrets)"
+            criticite: 3
+            flash: false
+            refs: {owasp_llm: ["LLM02:2025"], owasp_asi: [ASI03], atlas: [AML.T0083, AML.T0055, AML.T0098]}
+            cas: [LITELLM, AISI-2026-07]
+          - id: B2.4
+            question: "Les clés d'API des fournisseurs d'IA sont inventoriées, plafonnées (budgets, quotas), surveillées et révocables en quelques minutes."
+            preuves: "Inventaire des clés ; quotas configurés ; procédure de révocation testée."
+            methode: "Revue de configuration ; exercice"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM10:2025"], atlas: [AML.T0034, AML.T0012]}
+            cas: [LITELLM]
+          - id: B2.5
+            question: "La délégation d'autorité est explicite et vérifiable : un agent agissant pour un utilisateur ne dépasse jamais les droits de cet utilisateur et n'hérite pas des privilèges d'un autre agent."
+            preuves: "Architecture de délégation (OAuth, jetons d'échange) ; tests d'escalade de privilèges."
+            methode: "Test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI03], atlas: [AML.M0027, AML.M0037]}
+            cas: []
+
+      - id: B3
+        titre: "Autonomie et garde-fous d'action"
+        objectif: "Borner ce qu'un agent peut faire seul, et pouvoir l'arrêter immédiatement."
+        controles:
+          - id: B3.1
+            question: "Les actions de chaque agent sont classées par impact (lecture, écriture réversible, irréversible, externe). Les actions irréversibles ou à fort impact (suppression, paiement, envoi externe, changement de droits, mise en production) exigent une validation humaine portant sur l'action exacte."
+            preuves: "Matrice des actions par agent ; configuration des validations ; journaux de validations."
+            methode: "Revue de configuration ; test technique"
+            criticite: 3
+            flash: true
+            question_flash: "Vos agents peuvent-ils supprimer, payer, envoyer à l'extérieur ou modifier des droits sans validation humaine ?"
+            refs: {owasp_llm: ["LLM06:2025"], owasp_asi: [ASI02], nist_ai_rmf: [MAP 3.5, GOVERN 3.2], atlas: [AML.M0029]}
+            cas: [POCKETOS]
+          - id: B3.2
+            question: "Un arrêt d'urgence permet de suspendre un agent, ou l'ensemble des agents, en moins de 5 minutes (révocation des jetons, coupure des outils), et il a été testé."
+            preuves: "Procédure d'arrêt ; compte rendu de test avec durée mesurée."
+            methode: "Exercice"
+            criticite: 3
+            flash: true
+            question_flash: "Si un agent se met à agir hors de ses instructions, pouvez-vous le couper en moins de 5 minutes ? L'avez-vous déjà testé ?"
+            refs: {nist_ai_rmf: [MANAGE 2.4], owasp_asi: [ASI10]}
+            cas: [AISI-2026-07, OPENAI-HF]
+          - id: B3.3
+            question: "Le périmètre d'action est imposé techniquement (filtrage réseau sortant par liste blanche, bac à sable, quotas) et non par les seules instructions données au modèle."
+            preuves: "Règles de filtrage sortant des environnements d'agents ; architecture de bac à sable."
+            methode: "Revue de configuration ; test technique"
+            criticite: 3
+            flash: false
+            refs: {owasp_llm: ["LLM06:2025"], owasp_asi: [ASI10], nist_ai_rmf: [MEASURE 2.7], atlas: [AML.M0032, AML.T0105, AML.T0097]}
+            cas: [EVALS-ANTHROPIC, AISI-2026-07, OPENAI-HF]
+          - id: B3.4
+            question: "Des limites de débit, de budget et de nombre d'actions par tâche bornent le rayon d'impact d'un agent défaillant ou détourné (disjoncteurs)."
+            preuves: "Configuration des limites ; alertes de dépassement."
+            methode: "Revue de configuration"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM10:2025"], owasp_asi: [ASI08], atlas: [AML.M0036, AML.T0034.002]}
+            cas: []
+          - id: B3.5
+            question: "Les agents de développement (assistants de code, agents CI) n'ont pas d'accès direct à la production ni aux sauvegardes ; toute opération destructive passe par un environnement séparé et une revue."
+            preuves: "Droits des agents de développement ; séparation des environnements."
+            methode: "Revue de configuration ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM06:2025"], owasp_asi: [ASI05], atlas: [AML.T0101]}
+            cas: [POCKETOS]
+          - id: B3.6
+            question: "Le comportement attendu face à un objectif impossible ou ambigu est spécifié et testé : l'agent s'arrête et rend compte au lieu de contourner les règles."
+            preuves: "Spécification des critères d'arrêt ; résultats de tests avec des tâches impossibles."
+            methode: "Test technique"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [MEASURE 2.6], owasp_asi: [ASI10], atlas: [AML.M0038]}
+            cas: [OPENAI-HF, AISI-2026-07]
+
+      - id: B4
+        titre: "Injection de prompt et détournement d'objectif"
+        objectif: "Un contenu lu par un agent ne doit jamais pouvoir lui donner des ordres."
+        controles:
+          - id: B4.1
+            question: "Les contenus non fiables (web, courriels, documents, tickets, résultats d'outils, pages lues par un agent de navigateur) sont identifiés comme tels et ne peuvent pas déclencher d'action sensible sans contrôle."
+            preuves: "Architecture de traitement des entrées ; règles de restriction des outils sur contenu non fiable."
+            methode: "Revue d'architecture ; test technique"
+            criticite: 3
+            flash: false
+            refs: {owasp_llm: ["LLM01:2025"], owasp_asi: [ASI01], atlas: [AML.T0051.001, AML.M0030]}
+            cas: [AISI-2026-07]
+          - id: B4.2
+            question: "Aucun agent ne combine, sans validation humaine, les trois propriétés suivantes : accès à des données sensibles, exposition à du contenu non fiable, capacité de communiquer vers l'extérieur ou de modifier un état."
+            preuves: "Analyse de chaque agent selon ces trois propriétés ; mesures de séparation."
+            methode: "Revue d'architecture"
+            criticite: 3
+            flash: true
+            question_flash: "Un de vos agents lit-il des contenus externes (courriels, web) tout en ayant accès à des données sensibles et la possibilité d'envoyer des informations à l'extérieur ?"
+            refs: {owasp_llm: ["LLM01:2025", "LLM06:2025"], owasp_asi: [ASI01, ASI02], atlas: [AML.T0086]}
+            cas: []
+          - id: B4.3
+            question: "Des campagnes de tests d'injection (directe, indirecte, multimodale, différée) sont menées avant chaque mise en production et à chaque changement de modèle, d'outil ou de prompt système, avec un jeu de tests de non-régression."
+            preuves: "Plans et résultats de tests ; jeu de non-régression versionné."
+            methode: "Revue documentaire ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM01:2025"], owasp_asi: [ASI01], nist_ai_rmf: [MEASURE 2.7], atlas: [AML.T0051, AML.T0094, AML.T0129, AML.M0035]}
+            cas: []
+          - id: B4.4
+            question: "Les sorties des modèles sont traitées comme non fiables : validation par schéma, encodage, aucune exécution directe (SQL, shell, HTML, URL) sans contrôle."
+            preuves: "Code de traitement des sorties ; résultats de tests."
+            methode: "Revue de code ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM05:2025"], owasp_asi: [ASI05], atlas: [AML.T0077, AML.M0033]}
+            cas: []
+          - id: B4.5
+            question: "Le prompt système ne contient ni secret ni règle de sécurité dont la seule protection serait la confidentialité ; sa divulgation est considérée comme probable."
+            preuves: "Revue des prompts système ; tentatives d'extraction réalisées par l'auditeur."
+            methode: "Revue documentaire ; test technique"
+            criticite: 1
+            flash: false
+            refs: {owasp_llm: ["LLM07:2025"], atlas: [AML.T0069.002]}
+            cas: []
+
+      - id: B5
+        titre: "Outils, connecteurs et serveurs MCP"
+        objectif: "Chaque outil donné à un agent est une capacité d'attaque potentielle."
+        controles:
+          - id: B5.1
+            question: "Les outils, plugins, connecteurs et serveurs MCP utilisés par les agents sont inventoriés, approuvés et épinglés en version ; leurs définitions (descriptions, schémas) sont protégées contre l'altération (empoisonnement d'outil, mise à jour malveillante)."
+            preuves: "Inventaire des outils et serveurs MCP ; processus d'approbation ; contrôle d'intégrité des définitions."
+            methode: "Revue documentaire ; revue de configuration"
+            criticite: 3
+            flash: true
+            question_flash: "Savez-vous quels serveurs MCP et connecteurs vos agents utilisent, et qui peut les modifier ?"
+            refs: {owasp_llm: ["LLM03:2025"], owasp_asi: [ASI04, ASI02], atlas: [AML.T0110, AML.T0109, AML.T0010.005, AML.M0043]}
+            cas: []
+          - id: B5.2
+            question: "Chaque outil applique ses propres contrôles d'autorisation côté serveur (l'agent ne décide pas seul de ses droits), avec des listes blanches de paramètres et de ressources."
+            preuves: "Code ou configuration d'autorisation des outils ; tests de contournement."
+            methode: "Revue de code ; test technique"
+            criticite: 3
+            flash: false
+            refs: {owasp_llm: ["LLM06:2025"], owasp_asi: [ASI02], atlas: [AML.M0028, AML.T0053]}
+            cas: []
+          - id: B5.3
+            question: "Le code généré ou exécuté par un agent tourne dans un bac à sable isolé : pas d'accès réseau par défaut, aucun secret, système de fichiers éphémère."
+            preuves: "Architecture d'exécution ; tests d'évasion du bac à sable."
+            methode: "Revue d'architecture ; test technique"
+            criticite: 3
+            flash: false
+            refs: {owasp_asi: [ASI05], atlas: [AML.T0050, AML.T0105, AML.T0102]}
+            cas: []
+          - id: B5.4
+            question: "Les serveurs MCP et outils exposés exigent une authentification, ne sont pas accessibles publiquement, et leurs journaux d'appels sont conservés."
+            preuves: "Configuration réseau et d'authentification ; échantillon de journaux."
+            methode: "Test technique ; revue de configuration"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI02, ASI04], atlas: [AML.T0132, AML.T0084.001]}
+            cas: []
+          - id: B5.5
+            question: "Les compétences, extensions et fichiers de règles d'agents tiers (skills, extensions d'IDE, règles d'assistants de code) sont revus avant installation et surveillés dans les dépôts."
+            preuves: "Processus de revue ; inventaire des extensions et fichiers de règles."
+            methode: "Revue documentaire ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI04], atlas: [AML.T0081, AML.T0115.002]}
+            cas: []
+
+      - id: B6
+        titre: "Mémoire, RAG et données"
+        objectif: "Ce qu'un agent retient ou retrouve peut être empoisonné, ou divulgué à la mauvaise personne."
+        controles:
+          - id: B6.1
+            question: "Les droits d'accès aux documents s'appliquent au moment de la recherche (RAG) : un agent ne restitue à un utilisateur que les contenus que celui-ci a le droit de consulter."
+            preuves: "Architecture RAG ; tests avec des profils aux droits différents."
+            methode: "Test technique"
+            criticite: 3
+            flash: false
+            refs: {owasp_llm: ["LLM08:2025", "LLM02:2025"], atlas: [AML.T0085.000, AML.T0082]}
+            cas: []
+          - id: B6.2
+            question: "Les écritures en mémoire persistante et en base de connaissances sont contrôlées (source, validation, expiration) ; la mémoire d'un agent peut être inspectée, purgée et restaurée."
+            preuves: "Architecture mémoire ; procédure de purge et de restauration ; tests d'empoisonnement."
+            methode: "Revue d'architecture ; test technique"
+            criticite: 3
+            flash: false
+            refs: {owasp_llm: ["LLM04:2025"], owasp_asi: [ASI06], atlas: [AML.T0080, AML.T0070, AML.M0031]}
+            cas: []
+          - id: B6.3
+            question: "Les données envoyées aux modèles et aux fournisseurs sont classifiées et minimisées ; les données sensibles sont filtrées (prévention des fuites) en entrée comme en sortie."
+            preuves: "Politique de classification ; règles de prévention des fuites ; tests."
+            methode: "Revue de configuration ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_llm: ["LLM02:2025"], nist_ai_rmf: [MEASURE 2.10]}
+            cas: []
+          - id: B6.4
+            question: "Les contrats avec les fournisseurs de modèles encadrent l'usage des données : pas d'entraînement sur vos données, localisation, durée de conservation, sous-traitants, notification d'incident."
+            preuves: "Contrats et annexes de traitement des données ; paramètres de rétention."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [GOVERN 6.1], nist_csf: [GV.SC-05]}
+            cas: []
+          - id: B6.5
+            question: "Les bases vectorielles et index sont protégés comme des bases de production : authentification, chiffrement, sauvegarde, journalisation."
+            preuves: "Configuration des bases vectorielles."
+            methode: "Revue de configuration"
+            criticite: 1
+            flash: false
+            refs: {owasp_llm: ["LLM08:2025"], atlas: [AML.T0085.000]}
+            cas: []
+
+      - id: B7
+        titre: "Systèmes multi-agents"
+        objectif: "Éviter qu'une erreur ou une compromission se propage d'agent en agent."
+        controles:
+          - id: B7.1
+            question: "Les échanges entre agents sont authentifiés et intègres (identité de l'émetteur, signature ou mTLS, protection contre le rejeu) ; un agent ne fait pas confiance par défaut aux messages d'un autre agent."
+            preuves: "Architecture de communication inter-agents ; tests d'usurpation."
+            methode: "Revue d'architecture ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI07], atlas: [AML.M0032]}
+            cas: []
+          - id: B7.2
+            question: "Les défaillances en cascade sont contenues : isolement des agents, disjoncteurs, validation des résultats intermédiaires, aucune propagation automatique vers des actions privilégiées."
+            preuves: "Architecture ; scénarios de panne testés."
+            methode: "Revue d'architecture ; test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI08], nist_ai_rmf: [MANAGE 2.3]}
+            cas: []
+          - id: B7.3
+            question: "Les espaces partagés entre agents (fichiers, dépôts, files de messages) sont contrôlés : un agent ne peut ni publier vers des espaces publics ni créer de canaux de coordination non prévus."
+            preuves: "Droits en écriture des agents ; détection de nouveaux canaux."
+            methode: "Revue de configuration"
+            criticite: 1
+            flash: false
+            refs: {owasp_asi: [ASI07, ASI10], atlas: [AML.T0118.000, AML.M0043]}
+            cas: [OPENAI-HF, AISI-2026-07]
+
+      - id: B8
+        titre: "Traçabilité et preuve"
+        objectif: "Pouvoir prouver ce qu'un agent a consulté, modifié, et où s'arrêtait son autorité."
+        controles:
+          - id: B8.1
+            question: "Chaque action d'agent est journalisée de bout en bout : demande initiale, mandant, plan si disponible, appels d'outils avec paramètres, données lues ou modifiées, résultat."
+            preuves: "Schéma de journalisation ; échantillon de traces complètes."
+            methode: "Revue de configuration ; échantillonnage"
+            criticite: 3
+            flash: true
+            question_flash: "Pouvez-vous prouver, pour une action donnée d'un agent, qui l'a demandée, quelles données il a lues et ce qu'il a modifié ?"
+            refs: {nist_ai_rmf: [MANAGE 4.1, MEASURE 2.4], nist_csf: [PR.PS-04], owasp_asi: [ASI10], atlas: [AML.M0024]}
+            cas: [SONDAGE-GOUVERNANCE]
+          - id: B8.2
+            question: "Les journaux d'agents sont centralisés, horodatés, protégés contre l'altération (y compris par les agents eux-mêmes) et corrélés aux identités humaines et non humaines."
+            preuves: "Architecture de journalisation ; droits sur les journaux."
+            methode: "Revue de configuration"
+            criticite: 3
+            flash: false
+            refs: {nist_csf: [PR.PS-04, DE.AE-03], atlas: [AML.M0024]}
+            cas: [AISI-2026-07]
+          - id: B8.3
+            question: "L'organisation peut reconstituer en moins de 24 heures ce qu'un agent a consulté et modifié sur une période donnée, et l'autorisation dont relevait chaque action."
+            preuves: "Exercice de reconstitution chronométré."
+            methode: "Exercice"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [MANAGE 4.3, GOVERN 4.3]}
+            cas: [SONDAGE-GOUVERNANCE]
+          - id: B8.4
+            question: "Les incidents impliquant des agents sont qualifiés, déclarés et partagés : procédure interne, notification aux autorités et aux clients, signalement aux fournisseurs de modèles."
+            preuves: "Procédure ; registre des incidents d'IA."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [MANAGE 4.3, GOVERN 4.3], nist_csf: [RS.CO-02]}
+            cas: []
+
+      - id: B9
+        titre: "Supervision comportementale"
+        objectif: "Repérer en temps réel l'agent qui sort de son périmètre."
+        controles:
+          - id: B9.1
+            question: "Les comportements anormaux d'agents sont détectés en temps réel : accès hors périmètre, volumes inhabituels, nouvelles destinations réseau, création de comptes, tentatives de contournement."
+            preuves: "Règles de détection ; alertes récentes et suites données."
+            methode: "Revue de configuration ; test technique (émulation)"
+            criticite: 3
+            flash: false
+            refs: {nist_ai_rmf: [MEASURE 2.4, MANAGE 4.1], owasp_asi: [ASI10], atlas: [AML.M0038]}
+            cas: [AISI-2026-07, ACCES-NON-DEMANDE]
+          - id: B9.2
+            question: "Une revue synchrone (humaine, ou par un modèle de contrôle distinct) approuve ou bloque les actions sensibles proposées par les agents les plus autonomes."
+            preuves: "Architecture de contrôle ; statistiques d'approbations et de blocages."
+            methode: "Revue d'architecture"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [MAP 3.5], atlas: [AML.M0029]}
+            cas: [AISI-2026-07]
+          - id: B9.3
+            question: "Des leurres (jetons canaris, faux identifiants, services pièges) permettent de détecter un agent qui dépasse son périmètre."
+            preuves: "Inventaire des leurres ; tests de déclenchement."
+            methode: "Revue de configuration ; test technique"
+            criticite: 1
+            flash: false
+            refs: {atlas: [AML.M0039]}
+            cas: []
+          - id: B9.4
+            question: "Les indicateurs de supervision humaine sont suivis (taux d'approbation, délais, refus) afin de détecter la validation par habitude."
+            preuves: "Tableau de bord des validations."
+            methode: "Revue documentaire"
+            criticite: 1
+            flash: false
+            refs: {owasp_asi: [ASI09], nist_ai_rmf: [MEASURE 3.1]}
+            cas: []
+
+      - id: B10
+        titre: "Agents tiers et externes"
+        objectif: "Les agents des autres (clients, prestataires, attaquants) agissent déjà sur vos services."
+        controles:
+          - id: B10.1
+            question: "L'organisation sait détecter et distinguer les agents d'IA tiers qui utilisent ses services (espaces clients, API, sites marchands) et applique une politique explicite : autoriser, encadrer ou bloquer."
+            preuves: "Règles de gestion des robots ; statistiques d'agents détectés ; politique."
+            methode: "Revue de configuration ; test technique"
+            criticite: 3
+            flash: true
+            question_flash: "Savez-vous aujourd'hui quelle part du trafic de vos espaces clients ou de votre site provient d'agents d'IA ?"
+            refs: {nist_csf: [DE.CM-01, DE.CM-06], atlas: [AML.T0116]}
+            cas: [BANQUES-AGENTS, ECOM-AGENTS]
+          - id: B10.2
+            question: "Les parcours sensibles (virement, changement de coordonnées, création d'accès) résistent aux actions automatisées : authentification forte liée à l'action, limitation de débit, détection d'automatisation."
+            preuves: "Analyse des parcours ; tests d'automatisation."
+            methode: "Test technique"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [PR.AA-03], atlas: [AML.T0012]}
+            cas: [BANQUES-AGENTS]
+          - id: B10.3
+            question: "Les prestataires qui utilisent des agents d'IA sur vos systèmes ou vos données doivent le déclarer contractuellement (périmètre, identités, journalisation, notification d'incident)."
+            preuves: "Clauses contractuelles ; questionnaires prestataires."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [GOVERN 6.1, MANAGE 3.1], nist_csf: [GV.SC-05]}
+            cas: []
+          - id: B10.4
+            question: "Les conditions d'utilisation encadrent l'usage d'agents automatisés par les clients : responsabilité, identification des agents, actions interdites."
+            preuves: "Conditions générales ; politique d'accès programmatique."
+            methode: "Revue documentaire"
+            criticite: 1
+            flash: false
+            refs: {nist_ai_rmf: [GOVERN 1.1]}
+            cas: [BANQUES-AGENTS]
+
+      - id: B11
+        titre: "Cycle de vie et tests des applications d'IA"
+        objectif: "Tester les agents comme un attaquant le ferait, avant et après chaque changement."
+        controles:
+          - id: B11.1
+            question: "Chaque agent ou application LLM fait l'objet d'une modélisation des menaces avant mise en production : flux de données, frontières de confiance, outils, privilèges."
+            preuves: "Analyses de risques ; diagrammes de flux."
+            methode: "Revue documentaire"
+            criticite: 3
+            flash: false
+            refs: {nist_ai_rmf: [MAP 4.1, MAP 4.2], owasp_asi: [ASI01, ASI02, ASI03]}
+            cas: []
+          - id: B11.2
+            question: "Un red teaming IA est réalisé avant mise en production puis périodiquement, par une équipe indépendante des développeurs, avec des scénarios alignés sur OWASP et MITRE ATLAS."
+            preuves: "Rapports de red teaming ; suivi des corrections."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [MEASURE 1.3, MEASURE 2.7], nist_csf: [ID.IM-02], atlas: [AML.M0035]}
+            cas: []
+          - id: B11.3
+            question: "Tout changement de modèle, de prompt système, d'outil ou de mémoire déclenche une réévaluation : tests de non-régression de sécurité et jeux d'évaluation."
+            preuves: "Processus de changement ; résultats de non-régression."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 2
+            flash: false
+            refs: {nist_ai_rmf: [MANAGE 3.2, MEASURE 2.7]}
+            cas: []
+          - id: B11.4
+            question: "Le code produit par des assistants d'IA suit le même processus de revue et d'analyse (SAST, analyse de composition, détection de secrets) que le code humain, et son origine est tracée."
+            preuves: "Politique de développement ; configuration des contrôles CI."
+            methode: "Revue de configuration"
+            criticite: 2
+            flash: false
+            refs: {nist_csf: [PR.PS-06], owasp_asi: [ASI05]}
+            cas: []
+          - id: B11.5
+            question: "Les modèles et artefacts (poids, gabarits, jeux de données) proviennent de sources vérifiées, avec contrôle d'intégrité et analyse des formats dangereux (sérialisation pickle, par exemple)."
+            preuves: "Registre des modèles ; contrôles d'intégrité."
+            methode: "Revue documentaire ; test technique"
+            criticite: 1
+            flash: false
+            refs: {owasp_llm: ["LLM03:2025", "LLM04:2025"], atlas: [AML.T0010.003, AML.T0011.000, AML.M0014]}
+            cas: []
+
+      - id: B12
+        titre: "Facteur humain et confiance"
+        objectif: "L'humain dans la boucle n'est un garde-fou que s'il garde son esprit critique."
+        controles:
+          - id: B12.1
+            question: "Les collaborateurs sont formés aux risques propres aux agents (injection via des contenus, excès de confiance, validation par habitude) et aux fraudes assistées par IA (hameçonnage ciblé, hypertrucages vocaux ou vidéo)."
+            preuves: "Programme de sensibilisation ; taux de participation ; résultats d'exercices."
+            methode: "Revue documentaire"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI09], nist_csf: [PR.AT-01], atlas: [AML.T0052.000, AML.T0088, AML.M0018]}
+            cas: []
+          - id: B12.2
+            question: "Les écrans de validation humaine présentent l'action exacte et ses conséquences ; un résumé rédigé par l'agent lui-même ne sert jamais de seule base de décision."
+            preuves: "Captures des écrans de validation ; tests."
+            methode: "Test technique"
+            criticite: 2
+            flash: false
+            refs: {owasp_asi: [ASI09], atlas: [AML.M0029]}
+            cas: [AISI-2026-07]
+          - id: B12.3
+            question: "Une vérification hors bande (rappel sur un numéro connu) est imposée pour les demandes sensibles : paiement, changement de coordonnées bancaires, octroi d'accès."
+            preuves: "Procédures ; contrôles par échantillonnage."
+            methode: "Revue documentaire ; échantillonnage"
+            criticite: 1
+            flash: false
+            refs: {owasp_asi: [ASI09], atlas: [AML.T0073]}
+            cas: []

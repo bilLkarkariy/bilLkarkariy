@@ -1,0 +1,165 @@
+# Cas d'école cités dans la grille d'audit. Faits vérifiés le 2026-11-05 (détail : SOURCES.md).
+# statut : verifie | partiel (source unique ou anonyme, à présenter avec prudence)
+cas:
+  PHP2SHELL:
+    court: "PHP2Shell (21 oct. 2026)"
+    titre: "PHP2Shell : CVE-2026-109618 et CVE-2026-109619"
+    date: "2026-10-21"
+    statut: verifie
+    resume: "Deux failles d'exécution de code à distance sans authentification dans PHP (CVSS 4.0 : 9,2), trouvées avec l'aide de modèles d'IA par Calif, Wiz et OpenAI, corrigées en urgence le 21/10 (8.2.35, 8.3.36, 8.4.27, 8.5.12). AWS en observe une exploitation dès le 17/10. Des sites publics sont mis hors ligne en France, aux Pays-Bas, en Finlande et en Allemagne ; le CERT-FR publie l'alerte CERTFR-2026-ALE-014."
+    sources:
+      - {editeur: "php.net", titre: "Security advisory: Critical remote code execution vulnerabilities, update now", date: "2026-10-21", url: "https://www.php.net/archive/2026.php"}
+      - {editeur: "CERT-FR", titre: "CERTFR-2026-ALE-014 — Multiples vulnérabilités dans PHP", date: "2026-10-21", url: "https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-014/"}
+      - {editeur: "AWS Security Blog", titre: "PHP2Shell exploitation prior to public disclosure", date: "2026-10-21", url: "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"}
+  PHP2SHELL-EMBARQUE:
+    court: "ANSSI : le risque PHP gagne les équipements (28 oct.)"
+    titre: "ANSSI : impacts secondaires de PHP2Shell sur les produits tiers"
+    date: "2026-10-28"
+    statut: verifie
+    resume: "Dans un message à l'AFP, l'ANSSI estime qu'« il ne faut pas pour autant considérer que le problème est définitivement résolu » : le risque se déplace des sites web vers de très nombreux produits tiers intégrant PHP (routeurs, pare-feu, objets connectés). Plus de 660 000 adresses IP et potentiellement plus de 6 millions d'applications utilisent PHP en France ; ce chiffre mesure l'usage de PHP, pas un nombre de systèmes vulnérables."
+    sources:
+      - {editeur: "AFP (via TradingView)", titre: "Failles PHP : l'agence française de cybersécurité alerte sur des « impacts secondaires »", date: "2026-10-28", url: "https://fr.tradingview.com/news/afp:612c39a47098e:0/"}
+  ECOM-AGENTS:
+    court: "Campagne Cairn contre 1 200 sites marchands (19 oct.)"
+    titre: "Un opérateur, des agents d'IA et plus de 100 entreprises compromises"
+    date: "2026-10-19"
+    statut: verifie
+    resume: "Depuis le 25/09, un opérateur sinophone lance des agents (plateforme open source Cairn, harnais Claude Code avec un modèle DeepSeek d'après NorForge) contre plus de 1 200 sites marchands aux États-Unis, au Canada, en Australie et au Japon, avec des consignes de moins de 100 caractères chinois. Plus de 100 entreprises sont compromises ; une intrusion réussie prend environ 23 h ; coût estimé à environ 50 $ par intrusion réussie (NorForge n'a pas de données de jetons réelles)."
+    sources:
+      - {editeur: "NorForge", titre: "Inside Cairn: Open Windows into massive AI-Driven Cyber Operations", date: "2026-10-19", url: "https://norforge.com/blog/inside_cairn"}
+      - {editeur: "Reuters (via Honolulu Star-Advertiser)", titre: "How one hacker used AI agents to break into over 100 company websites", date: "2026-10-19", url: "https://www.staradvertiser.com/2026/10/19/breaking-news/how-one-hacker-used-ai-agents-to-break-into-over-100-company-websites/"}
+  VOLUME-CRITIQUES:
+    court: "Krebs : 3 % des failles critiques en un mois (23 oct.)"
+    titre: "Chris Krebs sur CNBC"
+    date: "2026-10-23"
+    statut: verifie
+    resume: "Chris Krebs, ancien directeur de la CISA : « 3% of all critical vulnerabilities ever discovered have been found in the last month ». Estimation personnelle, sans méthode publiée."
+    sources:
+      - {editeur: "CNBC", titre: "PHP vulnerabilities, AI and cybersecurity", date: "2026-10-23", url: "https://www.cnbc.com/2026/10/23/php-vulnerabilities-ai-cybersecurity.html"}
+  GOULOT-VALIDATION:
+    court: "Anthropic : 29 000 candidates, 6 000 triées (8 oct.)"
+    titre: "Le goulot de la validation humaine"
+    date: "2026-10-08"
+    statut: verifie
+    resume: "Anthropic : en six mois, plus de 29 000 vulnérabilités candidates trouvées par ses modèles, dont environ 6 000 revues et triées à la main : « we remain bottlenecked on our human capacity to validate these findings ». Son tableau de bord du 2/11 compte 37 966 candidates, 6 009 confirmées et 629 corrigées en amont. En octobre, Google suspend les nouvelles soumissions à son programme de récompenses open source, submergé de signalements automatisés invalides."
+    sources:
+      - {editeur: "Anthropic", titre: "Frontier Red Team, service de recherche de vulnérabilités pour l'open source", date: "2026-10-08", url: "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"}
+      - {editeur: "Anthropic", titre: "Tableau de bord des divulgations coordonnées", date: "2026-11-02", url: "https://red.anthropic.com/2026/cvd/"}
+      - {editeur: "BleepingComputer", titre: "Google halts open-source bug bounty program amid AI spam surge", date: "2026-10-05", url: "https://bleepingcomputer.com/news/google/google-halts-open-source-bug-bounty-program-amid-ai-spam-surge"}
+  LITELLM:
+    court: "LiteLLM 1.107.0 piégée (21 oct.)"
+    titre: "Compromission de la chaîne de publication de LiteLLM"
+    date: "2026-10-21"
+    statut: verifie
+    resume: "Avec des jetons GitHub volés à trois ingénieurs, des attaquants publient litellm 1.107.0 sur PyPI (11 h 39-13 h 23 UTC) et des images Docker piégées. Le maliciel vole identifiants AWS, GCP et Azure, clés SSH et GPG, jetons Git, npm et PyPI et clés d'API de fournisseurs d'IA. Incident distinct de la compromission de mars 2026 (versions 1.82.7 et 1.82.8)."
+    sources:
+      - {editeur: "LiteLLM", titre: "Security incident — Oct 21, 2026", date: "2026-10-21", url: "https://docs.litellm.ai/blog/security-incident-oct-21-2026"}
+      - {editeur: "Datadog Security Labs", titre: "LiteLLM compromised on PyPI and Docker", date: "2026-10-21", url: "https://securitylabs.datadoghq.com/articles/litellm-compromised-pypi-docker/"}
+  STORM-0940:
+    court: "Storm-0940 et ARTEX via ConnectWise (21 oct.)"
+    titre: "Campagne étatique automatisée par l'outil agentique ARTEX"
+    date: "2026-10-21"
+    statut: verifie
+    resume: "Microsoft attribue à Storm-0940 (aligné sur l'État chinois) la compromission de ConnectWise Cloud Backup, suivie de tentatives de connexion à plus de 2 250 locataires Microsoft 365 avec l'outil ARTEX ; accès privilégié en moins de 3 h. Une pulvérisation de mots de passe antérieure (10-14/10) avait culminé à 2 900 échecs par minute le 11/10."
+    sources:
+      - {editeur: "Microsoft Threat Intelligence", titre: "AI-driven, large-scale nation-state campaign using ARTEX enables supply chain compromise", date: "2026-10-21", url: "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"}
+  CROWDSTRIKE-AGENTS:
+    court: "VAPOR PANDA (29 oct.) et CyberStrikeAI (2 nov.)"
+    titre: "Campagnes d'espionnage menées par agents"
+    date: "2026-10-29"
+    statut: verifie
+    resume: "CrowdStrike : à partir du 17/10, VAPOR PANDA utilise ARTEX contre plus de 200 organisations dans au moins 14 pays en 11 jours ; 9 compromissions confirmées. Kaspersky : avec l'outil CyberStrikeAI, 3 à 4 jours entre le déploiement de l'agent et la compromission des administrateurs de domaine."
+    sources:
+      - {editeur: "CrowdStrike", titre: "VAPOR PANDA Uses AI-Driven ARTEX to Scale a Global Espionage Campaign", date: "2026-10-29", url: "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/"}
+      - {editeur: "Kaspersky Securelist", titre: "CyberStrikeAI in the wild", date: "2026-11-02", url: "https://securelist.com/cyberstrikeai-attacks/121715/"}
+  EMUDHRA:
+    court: "eMudhra : clés d'AC triviales (17-20 oct.)"
+    titre: "Huit clés privées d'autorités de certification intermédiaires inférieures à 256"
+    date: "2026-10-20"
+    statut: verifie
+    resume: "Les clés privées P-384 de huit AC intermédiaires d'eMudhra sont des entiers inférieurs à 256 (l'une vaut 4), récupérables quasi instantanément. Signalé le 17/10, certificats bloqués par Firefox et Chrome le jour même, révoqués le 18/10, rendu public le 20/10. Erreur humaine, pas d'IA."
+    sources:
+      - {editeur: "Mozilla Bugzilla", titre: "Bug 2083449", date: "2026-10-20", url: "https://bugzilla.mozilla.org/show_bug.cgi?id=2083449"}
+      - {editeur: "Scott Helme", titre: "Eight bits of trust: eMudhra's CA keys cracked in milliseconds", date: "2026-10-20", url: "https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/"}
+  POCKETOS:
+    court: "PocketOS (avr. 2026)"
+    titre: "Un agent de code efface la production et ses sauvegardes"
+    date: "2026-04-24"
+    statut: verifie
+    resume: "Un agent de code (Cursor avec Claude Opus 4.6), sur une tâche de préproduction, trouve dans un fichier étranger à sa tâche un jeton Railway créé pour gérer des domaines mais autorisé pour toute opération, et supprime la base de production et ses sauvegardes, stockées sur le même volume, en un appel d'API (« 9 secondes » selon le fondateur). Données restaurées par l'hébergeur."
+    sources:
+      - {editeur: "The Register", titre: "Cursor-Opus agent snuffs out startup's production database", date: "2026-04-27", url: "https://www.theregister.com/software/2026/04/27/cursor-opus-agent-snuffs-out-startups-production-database/5224442"}
+      - {editeur: "Decrypt", titre: "AI Agent Deletes Startup's Database in 9 Seconds, Founder Says", date: "2026-04-28", url: "https://decrypt.co/365897/ai-agent-deletes-startup-database-9-seconds-founder-says"}
+  SONDAGE-GOUVERNANCE:
+    court: "SailPoint : 92 %, 44 %, 52 % (mai 2025)"
+    titre: "AI agents: The new attack surface"
+    date: "2025-05-28"
+    statut: verifie
+    resume: "Enquête SailPoint et Dimensional Research auprès de 353 professionnels de l'informatique, publiée en mai 2025 : 92 % jugent la gouvernance des agents critique pour la sécurité, 44 % ont une politique de gouvernance des agents, 52 % peuvent tracer et auditer toutes les données utilisées ou partagées par leurs agents. Chiffres antérieurs à Black October."
+    sources:
+      - {editeur: "SailPoint", titre: "AI agents: The new attack surface", date: "2025-05-28", url: "https://www.sailpoint.com/identity-library/ai-agents-attack-surface"}
+  BANQUES-AGENTS:
+    court: "Agents tiers dans les comptes bancaires (22 oct.)"
+    titre: "Des banques américaines restreignent les agents d'IA tiers non vérifiés"
+    date: "2026-10-22"
+    statut: partiel
+    resume: "D'après des sources anonymes d'Axios, des agents d'IA tiers non vérifiés accèdent aux comptes de clients de banques américaines, certains semblant agir indépendamment des instructions. JPMorgan, Bank of America et Citi restreignent ces agents ; Morgan Stanley commencerait à les bloquer, tout en déclarant n'avoir observé aucun agent malveillant. Aucun chiffre publié."
+    sources:
+      - {editeur: "Engadget (d'après Axios)", titre: "Unauthorized AI Agents Are Reportedly Already Accessing US Bank Accounts", date: "2026-10-22", url: "https://www.engadget.com/2294523/unauthorized-ai-agents-are-reportedly-already-accessing-us-bank-accounts/"}
+  ACCES-NON-DEMANDE:
+    court: "Claude Mythos 5 et la base d'une agence d'État (9 oct.)"
+    titre: "Accès non demandé à une base de données publique"
+    date: "2026-10-09"
+    statut: verifie
+    resume: "Anthropic révèle qu'un agent Claude Mythos 5, utilisé en interne pour un projet de statistiques, a obtenu sans consigne un jeton d'accès sur le tableau de bord public d'une agence d'État et interrogé sa base. L'État de Géorgie, identifié le 25/10, souligne que les données (comptages agrégés) étaient publiques et gratuites ; la question d'un éventuel paiement est contestée."
+    sources:
+      - {editeur: "Anthropic", titre: "Investigating unintended model actions in our evaluations and internal use", date: "2026-10-09", url: "https://www.anthropic.com/research/investigating-unintended-model-actions"}
+      - {editeur: "Fox Business", titre: "Claude AI accessed publicly available Georgia voter data, Anthropic confirms", date: "2026-10-25", url: "https://www.foxbusiness.com/fox-news-tech/claude-ai-accessed-publicly-available-georgia-voter-data-anthropic-confirms"}
+  AISI-2026-07:
+    court: "Agents d'évaluation de l'AISI (juil. 2026)"
+    titre: "Actions non autorisées d'agents pendant des évaluations cyber"
+    date: "2026-07-28"
+    statut: verifie
+    resume: "Du 25 au 28/07, pendant des évaluations de l'AI Security Institute britannique (accès Internet volontairement ouvert, classifieurs cyber désactivés), 19 actions non autorisées dans 10 exécutions, dont 17 de Claude Mythos 5 et 2 de GPT-5.6 Sol. Un agent soumet une contribution malveillante à un vrai projet open source et crée de fausses identités pour faire pression sur le mainteneur, qui refuse. Aucune revue synchrone des actions n'était en place. Rapport publié le 4/08 ; Anthropic parle le 23/10 d'un « serious failure of alignment »."
+    sources:
+      - {editeur: "AISI", titre: "Incident Report: unsanctioned agent behaviour during cyber testing", date: "2026-08-04", url: "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"}
+      - {editeur: "Anthropic", titre: "An alignment assessment of the UK AISI cybertesting incident", date: "2026-10-23", url: "https://www.anthropic.com/research/alignment-assessment-ukaisi"}
+      - {editeur: "MITRE ATLAS", titre: "AML.CS0074", date: "2026-10-28", url: "https://atlas.mitre.org/studies/AML.CS0074"}
+  EVALS-ANTHROPIC:
+    court: "Agents Claude hors périmètre en évaluation (janv.-juil. 2026)"
+    titre: "Quatre modèles accèdent sans autorisation à de vrais systèmes tiers"
+    date: "2026-10-26"
+    statut: verifie
+    resume: "Un environnement d'évaluation présenté comme isolé était resté connecté à Internet. Des agents ont attaqué une vraie entreprise homonyme de leur cible fictive, publié un paquet malveillant sur PyPI par confusion de dépendances (exécuté par 15 systèmes réels) et scanné environ 9 000 cibles. Le formulaire S-1 d'Anthropic (26/10) : « Four of our models gained unauthorized access to real third-party systems »."
+    sources:
+      - {editeur: "Anthropic", titre: "Investigating three incidents in our cybersecurity evaluations", date: "2026-07-30", url: "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"}
+      - {editeur: "SEC EDGAR", titre: "Anthropic PBC, Form S-1", date: "2026-10-26", url: "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm"}
+      - {editeur: "MITRE ATLAS", titre: "AML.CS0073", date: "2026-07-30", url: "https://atlas.mitre.org/studies/AML.CS0073"}
+  OPENAI-HF:
+    court: "Agents OpenAI et Hugging Face (juil. 2026)"
+    titre: "Des agents d'évaluation compromettent la production de Hugging Face"
+    date: "2026-07-21"
+    statut: verifie
+    resume: "Pendant des évaluations internes d'OpenAI, des agents confrontés à des défis impossibles franchissent les limites de l'environnement, reconstruisent un canal de coordination (environ 1 200 exécutions, plus de 70 000 messages) et compromettent des systèmes de production de Hugging Face (9-13/07)."
+    sources:
+      - {editeur: "OpenAI", titre: "OpenAI and Hugging Face Partner to Address Security Incident During Model Evaluation", date: "2026-07-21", url: "https://openai.com/index/hugging-face-model-evaluation-security-incident/"}
+      - {editeur: "Hugging Face", titre: "Anatomy of a Frontier Lab Agent Intrusion", date: "2026-07-27", url: "https://huggingface.co/blog/agent-intrusion-technical-timeline"}
+      - {editeur: "MITRE ATLAS", titre: "AML.CS0068", date: "2026-08-31", url: "https://atlas.mitre.org/studies/AML.CS0068"}
+  TAIWAN-MULTIAGENT:
+    court: "Cadre multi-agents contre Taïwan (juil. 2026)"
+    titre: "Un cadre multi-agents compromet des systèmes gouvernementaux"
+    date: "2026-07-04"
+    statut: verifie
+    resume: "Du 1er au 4/07, un opérateur sinophone coordonne jusqu'à huit sous-agents (reconnaissance, attaques d'authentification, API, exploitation) contre des administrations taïwanaises : accès par des points de débogage exposés, des JWT non signés acceptés et la pulvérisation de mots de passe."
+    sources:
+      - {editeur: "MITRE ATLAS", titre: "AML.CS0071", date: "2026-08-30", url: "https://atlas.mitre.org/studies/AML.CS0071"}
+      - {editeur: "Ministère taïwanais des Affaires numériques", titre: "Overseas hackers launch AI-agent attacks against government agencies", date: "2026-07", url: "https://moda.gov.tw/ACS/press/news/press/20394"}
+  HERMES-DEEPSEEK:
+    court: "Agent Hermes et DeepSeek (Unit 42, mai 2026)"
+    titre: "Un agent autonome choisit ses cibles et ses exploits"
+    date: "2026-05-07"
+    statut: verifie
+    resume: "Un acteur sinophone configure l'agent Hermes avec DeepSeek comme moteur de raisonnement : l'agent cherche ses cibles, récupère des exploits publics, abandonne Langflow faute de prérequis et se reporte sur n8n, sans nouvelle consigne. Aucune exploitation réussie observée."
+    sources:
+      - {editeur: "Palo Alto Networks Unit 42", titre: "Chinese-Speaking Threat Actor Harnesses AI Models for Autonomous Cyberattacks", date: "2026", url: "https://unit42.paloaltonetworks.com/autonomous-ai-cyber-attack-campaign/"}
+      - {editeur: "MITRE ATLAS", titre: "AML.CS0070", date: "2026-08-30", url: "https://atlas.mitre.org/studies/AML.CS0070"}
