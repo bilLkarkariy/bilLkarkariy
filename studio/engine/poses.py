@@ -51,3 +51,12 @@ SAUT = Pose(
     shoulder_L=To((0.38, 0.86, 0.30)), elbow_L=rx(-22),
     shoulder_R=To((-0.50, 0.62, 0.52)), elbow_R=rx(-42),
 )
+
+# Réception : genoux fléchis, buste engagé, bras écartés pour l'équilibre.
+RECEPTION = Pose(
+    pelvis=rx(18), waist=rx(16), neck=rx(-10), head=rx(-14),
+    hip_L=To((0.16, -0.72, 0.67)), knee_L=rx(78), ankle_L=Level(0),
+    hip_R=To((-0.14, -0.80, 0.58)), knee_R=rx(66), ankle_R=Level(0),
+    shoulder_L=To((0.62, -0.62, 0.36)), elbow_L=rx(-30),
+    shoulder_R=To((-0.66, -0.52, -0.20)), elbow_R=rx(-34),
+)

@@ -79,6 +79,10 @@ class Pose:
         self.ground = ground        # pose le point le plus bas des pieds sur le sol
         self.joints = joints
 
+    def at(self, x=0.0, y=None, z=0.0):
+        """La même pose, déplacée. Avec y, le bassin est levé d'autant et ne touche plus le sol."""
+        return Pose(root=(x, 0.0 if y is None else y, z), ground=y is None, **self.joints)
+
 
 # ---------- modèle ----------
 
@@ -355,6 +359,16 @@ def _outward(xy):
     d = np.roll(xy, -1, axis=0) - np.roll(xy, 1, axis=0)
     n = np.stack([d[:, 1], -d[:, 0]], axis=1)
     return n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-9)
+
+
+def occluders(model, pose):
+    """Les volumes d'un personnage posé, pour qu'il cache le décor derrière lui."""
+    frames = model.solve(pose)
+    occ = _Occluders()
+    for part in model.parts:
+        occ.add(*model._ellipsoids(part, frames), part.name)
+    occ.freeze()
+    return occ
 
 
 def _densify(pts3, cam, step=0.06):
