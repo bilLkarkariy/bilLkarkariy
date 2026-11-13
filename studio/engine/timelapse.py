@@ -1,9 +1,8 @@
 """Rejoue le journal d'un document, trait après trait, et en fait une vidéo."""
-import subprocess
-
 import numpy as np
 
 from .canvas import Document
+from .video import Video
 
 
 def timelapse(doc, path, seconds=10.0, fps=30, hold=2.0, scale=1.0):
@@ -16,20 +15,10 @@ def timelapse(doc, path, seconds=10.0, fps=30, hold=2.0, scale=1.0):
         replay.layer(layer.name)
     frame = replay.composite()
 
-    ow, oh = (int(doc.w * scale) // 2 * 2, int(doc.h * scale) // 2 * 2)
-    ff = subprocess.Popen(
-        ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
-         "-s", f"{doc.w}x{doc.h}", "-r", str(fps), "-i", "-",
-         "-vf", f"scale={ow}:{oh}:flags=area", "-c:v", "libx264", "-pix_fmt", "yuv420p",
-         "-crf", "20", "-movflags", "+faststart", str(path)],
-        stdin=subprocess.PIPE)
-
-    count = 0
+    video = Video(path, doc.w, doc.h, fps, scale)
 
     def emit():
-        nonlocal count
-        ff.stdin.write((frame * 255 + 0.5).astype(np.uint8).tobytes())
-        count += 1
+        video.add(frame)
 
     budget, dirty = per_frame, None
     for name, brush, dabs in doc.journal:
@@ -55,9 +44,5 @@ def timelapse(doc, path, seconds=10.0, fps=30, hold=2.0, scale=1.0):
     if dirty is not None:
         x0, y0, x1, y1 = dirty
         frame[y0:y1, x0:x1] = replay.composite(dirty)
-    for _ in range(int(hold * fps) + 1):
-        emit()
-    ff.stdin.close()
-    if ff.wait() != 0:
-        raise RuntimeError("ffmpeg a échoué")
-    return count
+    video.add(frame, int(hold * fps) + 1)
+    return video.close()

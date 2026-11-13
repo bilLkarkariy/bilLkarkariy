@@ -84,6 +84,10 @@ class Document:
         a = (np.asarray(mask, np.float32) / 255)[..., None]
         self.paper.rgb = self.paper.rgb * (1 - a) + np.asarray(color, np.float32) * a
 
+    def guide(self, y, x0, x1, strength=0.22):
+        """Fin trait horizontal imprimé sur la feuille (repère de model sheet)."""
+        self.paper.rgb[int(round(y)), int(x0):int(x1)] *= 1 - strength
+
     def composite(self, box=None):
         """Image finale (float, 0..1) : chaque calque assombrit le papier."""
         x0, y0, x1, y1 = box or (0, 0, self.w, self.h)
