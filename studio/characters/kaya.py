@@ -193,7 +193,7 @@ def design(expr="neutre"):
                               ("waist", (0, 0.05, 0.0), (0.50, 0.36)),
                               ("waist", (0, 0.55, 0.02), (0.56, 0.40)),
                               ("waist", (0, 1.00, 0.02), (0.61, 0.38)),
-                              ("waist", (0, 1.22, 0.0), (0.66, 0.30)),
+                              ("waist", (0, 1.25, 0.0), (0.67, 0.30)),
                               ("waist", (0, 1.37, 0.0), (0.27, 0.23))], start="open", end="open")],
              [_ring("pelvis", -0.02, 0.56, 0.40, weight=0.9),
               _ring("pelvis", 0.12, 0.585, 0.41, weight=0.6),
@@ -211,7 +211,8 @@ def design(expr="neutre"):
         sh, el, wr = f"shoulder_{side}", f"elbow_{side}", f"wrist_{side}"
         hip, kn, an = f"hip_{side}", f"knee_{side}", f"ankle_{side}"
         parts += [
-            Part(f"manche_{side}", [Sweep([(sh, (0, 0.06, 0), 0.19), (sh, (0, -0.30, 0), 0.195),
+            Part(f"manche_{side}", [Sweep([(sh, (-s * 0.05, -0.07, 0), 0.14),
+                                           (sh, (0, -0.24, 0), 0.185), (sh, (0, -0.45, 0), 0.19),
                                            (sh, (0, -0.80, 0), 0.165), (el, (0, 0, 0), 0.16),
                                            (el, (0, -0.45, 0), 0.155), (el, (0, -0.72, 0), 0.145),
                                            (el, (0, -0.80, 0), 0.11), (el, (0, -0.88, 0), 0.105)],

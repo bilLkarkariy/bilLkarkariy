@@ -11,6 +11,7 @@ python3 -m studio.steps.s01_crayon
 python3 -m studio.steps.s02_mannequin
 python3 -m studio.steps.s03_model_sheet
 python3 -m studio.steps.s03_expressions
+python3 -m studio.steps.s04_storyboard
 ```
 
 Les rendus sont écrits dans `studio/out/` (non versionné). Les planches de l'étape 3
@@ -39,7 +40,7 @@ Python 3, `numpy`, `pillow`, et `ffmpeg` pour les vidéos.
 | 1 | Crayon et main | fait |
 | 2 | Mannequin de construction (squelette, volumes, poses) | fait |
 | 3 | Model sheet (turnaround, expressions) | fait |
-| 4 | Storyboard rough | à faire |
+| 4 | Storyboard rough | fait |
 | 5 | Layout (cadre, perspective, caméra) | à faire |
 | 6 | Poses clés et feuille de timing | à faire |
 | 7 | Intervalles | à faire |

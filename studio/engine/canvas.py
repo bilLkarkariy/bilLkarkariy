@@ -89,6 +89,14 @@ class Document:
         y = int(round(y))
         self.paper.rgb[y:y + max(1, self.w // 2400), int(x0):int(x1)] *= 1 - strength
 
+    def frame(self, x0, y0, x1, y1, width=3, strength=0.75):
+        """Cadre imprimé sur la feuille (case de storyboard)."""
+        x0, y0, x1, y1 = (int(round(v)) for v in (x0, y0, x1, y1))
+        rgb = self.paper.rgb
+        for ys, xs in ((slice(y0, y0 + width), slice(x0, x1)), (slice(y1 - width, y1), slice(x0, x1)),
+                       (slice(y0, y1), slice(x0, x0 + width)), (slice(y0, y1), slice(x1 - width, x1))):
+            rgb[ys, xs] *= 1 - strength
+
     def composite(self, box=None):
         """Image finale (float, 0..1) : chaque calque assombrit le papier."""
         x0, y0, x1, y1 = box or (0, 0, self.w, self.h)

@@ -66,16 +66,18 @@ def _profile(base, w):
 
 
 def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, through=0.3,
-         care=1.0, clip=None):
+         care=1.0, clip=None, min_size=0.0):
     """Dessine une construction au crayon. `through` : force des traits cachés
     (0 pour ne pas les tracer), comme quand on dessine « en transparence ».
-    `clip` : cadre (x0, y0, x1, y1) en pixels hors duquel rien n'est tracé."""
+    `clip` : cadre (x0, y0, x1, y1) en pixels hors duquel rien n'est tracé.
+    `min_size` : les formes plus petites (en pixels) ne sont pas dessinées, comme dans
+    un croquis où l'on ne détaille pas ce qui est trop petit."""
     origin = np.asarray(origin, float)
     rng = d.hand.rng
     for shape in con.shapes:
         px = origin + shape.pts * (scale, -scale)
         n = len(px)
-        if n < 2:
+        if n < 2 or np.hypot(*np.ptp(px, axis=0)) < min_size:
             continue
         hidden, w = shape.hidden, shape.w
         skip = np.zeros(n, bool)

@@ -33,3 +33,21 @@ ELAN = Pose(
     shoulder_L=To((0.22, -0.42, -0.88)), elbow_L=rx(-16),
     shoulder_R=To((-0.22, -0.42, -0.88)), elbow_R=rx(-16),
 )
+
+# À l'arrêt, regard par-dessus l'épaule gauche.
+REGARD = Pose(
+    waist=ry(25), neck=ry(25), head=ry(58) @ rx(4),
+    hip_L=To((0.06, -1, 0.02), twist=10), hip_R=To((-0.05, -1, -0.03), twist=-6),
+    shoulder_L=To((0.16, -0.97, -0.12)), elbow_L=rx(-14),
+    shoulder_R=To((-0.14, -0.98, 0.08)), elbow_R=rx(-18),
+)
+
+# Saut, au sommet : corps étiré, bras levés, genou droit monté.
+SAUT = Pose(
+    root=(0, 1.9, 0), ground=False,
+    pelvis=rx(-6), waist=rx(-12), head=rx(-10),
+    hip_R=To((-0.05, -0.50, 0.86)), knee_R=rx(112), ankle_R=rx(25),
+    hip_L=To((0.04, -0.95, -0.30)), knee_L=rx(28), ankle_L=rx(40),
+    shoulder_L=To((0.38, 0.86, 0.30)), elbow_L=rx(-22),
+    shoulder_R=To((-0.50, 0.62, 0.52)), elbow_R=rx(-42),
+)
