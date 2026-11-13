@@ -11,6 +11,7 @@ python3 -m studio.steps.s01_crayon
 python3 -m studio.steps.s02_mannequin
 python3 -m studio.steps.s03_model_sheet
 python3 -m studio.steps.s03_expressions
+python3 -m studio.steps.s03_tete
 python3 -m studio.steps.s04_storyboard
 python3 -m studio.steps.s05_layout
 python3 -m studio.steps.s06_cles
