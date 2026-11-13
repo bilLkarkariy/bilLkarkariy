@@ -41,6 +41,9 @@ NET = Brush("net", (0.13, 0.13, 0.15), radius=2.1, density=2.3, min_size=0.28, g
             flow_gamma=0.9)
 # Crayon gras de storyboard : trait large et un peu sale, pour dessiner vite et petit.
 STORY = Brush("story", (0.14, 0.14, 0.16), radius=2.7, density=1.9, min_size=0.4, grain=0.75)
+# Trait définitif : sombre, net, peu sensible au grain. L'épaisseur varie encore avec la pression.
+TRAIT = Brush("trait", (0.09, 0.09, 0.11), radius=1.9, density=3.2, min_size=0.4, grain=0.2,
+              scatter=0.03, flow_gamma=0.7)
 ESTOMPE = Brush("tranche", (0.24, 0.24, 0.26), radius=8.0, density=0.5, min_size=0.8,
                 hardness=0.55, grain=0.95, spacing=0.18, scatter=0.04)
 # Trait vectoriel parfait : sert uniquement de point de comparaison.

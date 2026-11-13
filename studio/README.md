@@ -15,6 +15,7 @@ python3 -m studio.steps.s04_storyboard
 python3 -m studio.steps.s05_layout
 python3 -m studio.steps.s06_cles
 python3 -m studio.steps.s07_intervalles
+python3 -m studio.steps.s08_cleanup
 ```
 
 Les rendus sont écrits dans `studio/out/` (non versionné). Les planches de l'étape 3
@@ -51,7 +52,7 @@ Python 3, `numpy`, `pillow`, et `ffmpeg` pour les vidéos.
 | 5 | Layout (cadre, perspective, caméra) | fait |
 | 6 | Poses clés et feuille de timing | fait |
 | 7 | Intervalles | fait |
-| 8 | Clean-up | à faire |
+| 8 | Clean-up | fait |
 | 9 | Couleur et ombres | à faire |
 | 10 | Décors | à faire |
 | 11 | Compositing et export | à faire |

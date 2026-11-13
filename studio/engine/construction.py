@@ -4,6 +4,7 @@ C'est le format commun aux deux modes. Le mode mannequin l'obtient en projetant
 un modèle 3D ; le mode libre le reçoit tel quel, posé à la main. Ensuite le
 même crayon dessine les deux.
 """
+import zlib
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -19,6 +20,7 @@ class Shape:
     passes: int = 1
     weight: float = 1.0      # force du trait, relative au reste du dessin
     w: np.ndarray = None     # force point par point (pleins et déliés), ou None
+    key: str = ""            # nom stable de la forme, le même d'une image à l'autre
 
 
 @dataclass
@@ -85,12 +87,14 @@ def _profile(base, w):
 
 
 def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, through=0.3,
-         care=1.0, clip=None, min_size=0.0):
+         care=1.0, clip=None, min_size=0.0, stable=None):
     """Dessine une construction au crayon. `through` : force des traits cachés
     (0 pour ne pas les tracer), comme quand on dessine « en transparence ».
     `clip` : cadre (x0, y0, x1, y1) en pixels hors duquel rien n'est tracé.
     `min_size` : les formes plus petites (en pixels) ne sont pas dessinées, comme dans
-    un croquis où l'on ne détaille pas ce qui est trop petit."""
+    un croquis où l'on ne détaille pas ce qui est trop petit.
+    `stable` : un nombre ; chaque forme retrouve alors exactement la même main à chaque
+    dessin (mêmes petits écarts), si bien que le trait ne tremble plus d'une image à l'autre."""
     origin = np.asarray(origin, float)
     rng = d.hand.rng
     for shape in con.shapes:
@@ -98,6 +102,8 @@ def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, 
         n = len(px)
         if n < 2 or np.hypot(*np.ptp(px, axis=0)) < min_size:
             continue
+        if stable is not None:
+            rng = d.hand.rng = np.random.default_rng([stable, zlib.crc32(shape.key.encode())])
         hidden, w = shape.hidden, shape.w
         skip = np.zeros(n, bool)
         if clip is not None:
