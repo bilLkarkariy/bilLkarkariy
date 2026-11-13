@@ -58,6 +58,7 @@ class Document:
         self.paper = paper or Paper(w, h, seed)
         self.layers = []
         self.journal = []       # (nom du calque, brosse, dabs)
+        self.paints = []        # (x0, y0, rgb, alpha) : aplats posés sur la feuille
         self._rng = np.random.default_rng(seed + 1)
 
     def layer(self, name):
@@ -101,6 +102,16 @@ class Document:
         """Image finale (float, 0..1) : chaque calque assombrit le papier."""
         x0, y0, x1, y1 = box or (0, 0, self.w, self.h)
         out = self.paper.rgb[y0:y1, x0:x1].copy()
+        for px, py, rgb, alpha in self.paints:          # aplats de couleur, sous les traits
+            ax0, ay0 = max(x0, px), max(y0, py)
+            ax1, ay1 = min(x1, px + rgb.shape[1]), min(y1, py + rgb.shape[0])
+            if ax1 > ax0 and ay1 > ay0:
+                src = (slice(ay0 - py, ay1 - py), slice(ax0 - px, ax1 - px))
+                dst = (slice(ay0 - y0, ay1 - y0), slice(ax0 - x0, ax1 - x0))
+                a = alpha[src][..., None]
+                # L'aplat garde une trace du grain de la feuille, pour s'accorder au crayon.
+                grain = 0.94 + 0.06 * out[dst] / out[dst].mean()
+                out[dst] = out[dst] * (1 - a) + rgb[src] * grain * a
         for layer in self.layers:
             if not layer.visible:
                 continue

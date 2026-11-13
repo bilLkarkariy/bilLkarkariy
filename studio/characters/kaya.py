@@ -49,6 +49,24 @@ TAIL = [
     ([(0, 0.70, -0.62), (0.10, 0.30, -0.82), (0.14, -0.10, -0.80)], (0.07, 0.08, 0.01)),
 ]
 
+# Couleurs : un aplat par zone. L'ordre n'a pas d'importance.
+PALETTE = {
+    "peau": (0.985, 0.865, 0.765), "cheveux": (0.215, 0.185, 0.330),
+    "sweat": (0.935, 0.455, 0.360), "short": (0.230, 0.270, 0.370),
+    "chaussette": (0.970, 0.970, 0.960), "chaussure": (0.180, 0.600, 0.610),
+    "oeil": (0.990, 0.990, 0.985), "iris": (0.860, 0.560, 0.160),
+    "pupille": (0.170, 0.110, 0.130), "reflet": (1.0, 1.0, 1.0),
+}
+_ZONES = (("calotte", "cheveux"), ("meche", "cheveux"), ("queue", "cheveux"), ("sweat", "sweat"),
+          ("manche", "sweat"), ("capuche", "sweat"), ("short", "short"),
+          ("chaussette", "chaussette"), ("chaussure", "chaussure"))
+
+
+def zone(part):
+    """Zone de couleur d'une partie du personnage ; par défaut, la peau."""
+    return next((z for prefix, z in _ZONES if part.startswith(prefix)), "peau")
+
+
 # Expressions : décalage des sourcils (intérieur, extérieur), ouverture des yeux, bouche.
 EXPRESSIONS = {
     "neutre": dict(),
@@ -104,8 +122,9 @@ def _on_face(balls, xy, side=1, **kw):
 
 
 def _face(balls, expr):
+    """Traits du visage et détails peints (yeux). Renvoie (courbes, détails)."""
     e = EXPRESSIONS[expr]
-    curves = []
+    curves, fills = [], []
     wide, lid = e.get("wide", 1.0), e.get("lid", 0.0)
     inner, outer = e.get("brow", (0, 0))
     a = np.radians(np.linspace(155, 385, 16))
@@ -124,6 +143,19 @@ def _face(balls, expr):
             curves.append(_on_face(balls, [(0.08, 0.35), (0.13, 0.385), (0.20, 0.40), (0.27, 0.385),
                                            (0.32, 0.35)], s, weight=1.25, passes=2))
             continue
+        white = open_([(0.08, 0.355), (0.115, 0.395), (0.19, 0.41), (0.265, 0.40),
+                       (0.315, 0.375)]) + [(0.275, 0.312 - 0.01 * (wide - 1)), (0.21, 0.298),
+                                           (0.14, 0.305 - 0.01 * (wide - 1))]
+        ring = np.radians(np.linspace(0, 360, 25))
+
+        def disc(cx, cy, rx_, ry_):
+            return np.stack([cx + rx_ * np.cos(ring), cy + ry_ * np.sin(ring)], axis=1)
+
+        fills += [("oeil", ("peau",), _on_face(balls, white, s)),
+                  ("iris", ("oeil",), _on_face(balls, disc(0.195, 0.352, 0.052, 0.058 * wide), s)),
+                  ("pupille", ("iris",), _on_face(balls, disc(0.197, 0.348, 0.022, 0.032), s)),
+                  ("reflet", ("iris", "pupille"), _on_face(balls, disc(0.176, 0.372, 0.014, 0.014),
+                                                           s))]
         curves += [
             _on_face(balls, open_([(0.08, 0.355), (0.115, 0.395), (0.19, 0.41), (0.265, 0.40),
                                    (0.315, 0.375), (0.335, 0.385)]), s, weight=1.25, passes=2),
@@ -141,7 +173,7 @@ def _face(balls, expr):
                         np.array([(0, 0, 1.0)] * 3), weight=0.7))
     for line in MOUTHS[e.get("mouth", "neutre")]:
         curves.append(_on_face(balls, line, weight=0.75))
-    return curves
+    return curves, fills
 
 
 def _hand(wr, s):
@@ -168,8 +200,9 @@ def design(expr="neutre", sway=(0, 0, 0)):
     head = [Ball("head", **p["skull"]), Ball("head", (0, 0.22, 0.17), (0.25, 0.27, 0.28)),
             Ball("head", (0, 0.02, 0.30), (0.09, 0.08, 0.10)),      # menton
             Ball("head", (0, 0.20, 0.47), (0.03, 0.04, 0.05))]      # nez
+    face, eyes = _face(head[:3], expr)
     parts = [
-        Part("visage", head, _face(head[:3], expr) + ears(weight=0.8)),
+        Part("visage", head, face + ears(weight=0.8), fills=eyes),
         Part("cou", [Sweep([("neck", (0, -0.05, 0), 0.15), ("neck", (0, 0.12, 0), 0.125),
                             ("head", (0, 0.12, 0), 0.12)])]),
         Part("calotte", [Ball("head", (0, 0.58, -0.06), (0.47, 0.48, 0.52))]),
@@ -243,10 +276,14 @@ def design(expr="neutre", sway=(0, 0, 0)):
                                           (kn, (0, -1.00, -0.02), (0.12, 0.135)),
                                           (kn, (0, -1.45, 0), (0.095, 0.105)),
                                           (an, (0, 0, 0), (0.09, 0.10))])],
-                 [_ring(kn, -1.38, 0.103, 0.113, weight=0.7),
-                  Curve(kn, np.array([(-0.10, 0.07, 0.15), (-0.05, 0.01, 0.185), (0.05, 0.01, 0.185),
+                 [Curve(kn, np.array([(-0.10, 0.07, 0.15), (-0.05, 0.01, 0.185), (0.05, 0.01, 0.185),
                                       (0.10, 0.07, 0.15)]), np.tile((0, 0, 1.0), (4, 1)),
                         weight=0.5)]),
+            Part(f"chaussette_{side}", [Sweep([(kn, (0, -1.36, 0), (0.108, 0.118)),
+                                               (kn, (0, -1.50, 0), (0.10, 0.11)),
+                                               (an, (0, 0, 0), (0.095, 0.105))], start="open")],
+                 [_ring(kn, -1.36, 0.108, 0.118, weight=0.7,
+                        skip=(f"chaussette_{side}", f"jambe_{side}"))]),
             # Talon haut et rond, cou-de-pied, bout plat et plus étroit : un coin, pas un boudin.
             Part(f"chaussure_{side}", [Ball(an, (0, -0.115, -0.05), (0.13, 0.135, 0.14)),
                                        Ball(an, (0, -0.19, 0.50), (0.105, 0.06, 0.13)),

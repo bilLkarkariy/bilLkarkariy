@@ -29,6 +29,8 @@ class Construction:
     marks: dict = field(default_factory=dict)    # repères nommés (x, y), pour mesurer
     # (partie, polygone, boîtes du décor qui passent devant elle) : la surface pleine de chaque forme
     mattes: list = field(default_factory=list)
+    # (zone, zones qu'elle peut recouvrir, polygone) : détails peints, comme les yeux
+    fills: list = field(default_factory=list)
 
 
 def matte(con, origin, scale, w, h, in_front_of=None):

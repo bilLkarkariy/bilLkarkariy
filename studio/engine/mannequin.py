@@ -129,6 +129,7 @@ class Part:
     curves: list = field(default_factory=list)
     passes: int = 1
     weight: float = 1.0
+    fills: list = field(default_factory=list)   # (zone, zones recouvertes, Curve fermée)
 
 
 @dataclass
@@ -178,8 +179,11 @@ class Model:
         for prim in part.prims:
             if isinstance(prim, Sweep):
                 c, x, z, t, rx_, rz_ = sweep_frames(prim, frames)
-                depth = np.full(len(c), 0.08)
-                depth[0], depth[-1] = max(rx_[0], rz_[0], 0.02), max(rx_[-1], rz_[-1], 0.02)
+                depth = np.full(len(c), 0.08)              # tranches fines ; bouts ronds plus épais
+                if prim.start == "round":
+                    depth[0] = max(rx_[0], rz_[0], 0.02)
+                if prim.end == "round":
+                    depth[-1] = max(rx_[-1], rz_[-1], 0.02)
                 centers.extend(c)
                 axes.extend(np.stack([x * np.maximum(rx_, 0.004)[:, None], t * depth[:, None],
                                       z * np.maximum(rz_, 0.004)[:, None]], axis=2))
@@ -447,6 +451,14 @@ def construct(model, pose, cam, boxes=()):
             else:
                 con.shapes.append(Shape(cam.project(pts3), hidden, passes=curve.passes,
                                         weight=curve.weight, key=f"{part.name}/ligne{j}"))
+
+    for part in model.parts:                    # détails peints : visibles s'ils font face
+        for zone, over, curve in part.fills:
+            pos, rot = frames[curve.joint]
+            pts3 = pos + np.asarray(curve.points, float) @ rot.T
+            facing = ((np.asarray(curve.normals, float) @ rot.T) * cam.rays(pts3)).sum(axis=1)
+            if (facing > 0.05).mean() > 0.9:
+                con.fills.append((zone, over, cam.project(pts3)))
 
     # Les deux tangentes qui relient deux volumes (cage et bassin : la taille).
     for a, b in model.bridges:
