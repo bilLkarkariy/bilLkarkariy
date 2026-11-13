@@ -104,6 +104,8 @@ class Curve:
     points: np.ndarray
     normals: np.ndarray = None      # si fournies : visible seulement là où la surface fait face
     skip: tuple = None              # volumes qui ne la cachent pas (par défaut : le sien)
+    weight: float = 1.0
+    passes: int = 1
 
 
 @dataclass
@@ -112,6 +114,7 @@ class Part:
     prims: list
     curves: list = field(default_factory=list)
     passes: int = 1
+    weight: float = 1.0
 
 
 @dataclass
@@ -155,7 +158,7 @@ class Model:
         return frames
 
     @staticmethod
-    def _ellipsoids(part, frames, steps=7):
+    def _ellipsoids(part, frames, steps=12):
         """Les volumes d'une partie, en ellipsoïdes : centres (m, 3) et axes (m, 3, 3)."""
         centers, axes = [], []
         for prim in part.prims:
@@ -204,7 +207,7 @@ class Camera:
 
 # ---------- du 3D à la construction 2D ----------
 
-def _sphere(n=320):
+def _sphere(n=600):
     i = np.arange(n) + 0.5
     phi, th = np.arccos(1 - 2 * i / n), np.pi * (1 + 5 ** 0.5) * i
     return np.stack([np.cos(th) * np.sin(phi), np.cos(phi), np.sin(th) * np.sin(phi)], axis=1)
@@ -267,7 +270,7 @@ def construct(model, pose, cam):
         cloud = clouds[part.name]
         pts3 = _densify(cloud[hull(cam.project(cloud))], cam)
         con.shapes.append(Shape(cam.project(pts3), occ.hidden(pts3, cam.rays(pts3), {part.name}),
-                                closed=True, passes=part.passes))
+                                closed=True, passes=part.passes, weight=part.weight))
         for curve in part.curves:
             pos, rot = frames[curve.joint]
             pts3 = pos + np.asarray(curve.points, float) @ rot.T
@@ -280,9 +283,11 @@ def construct(model, pose, cam):
                 # Une ligne sur la face arrière n'est pas tracée du tout.
                 for seg in np.split(np.arange(len(pts3)), np.flatnonzero(np.diff(keep)) + 1):
                     if keep[seg[0]] and len(seg) > 1:
-                        con.shapes.append(Shape(cam.project(pts3[seg]), hidden[seg]))
+                        con.shapes.append(Shape(cam.project(pts3[seg]), hidden[seg],
+                                                passes=curve.passes, weight=curve.weight))
             else:
-                con.shapes.append(Shape(cam.project(pts3), hidden))
+                con.shapes.append(Shape(cam.project(pts3), hidden, passes=curve.passes,
+                                        weight=curve.weight))
 
     # Les deux tangentes qui relient deux volumes (cage et bassin : la taille).
     for a, b in model.bridges:

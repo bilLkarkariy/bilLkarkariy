@@ -17,6 +17,7 @@ class Shape:
     hidden: np.ndarray       # (n,) vrai là où une autre forme passe devant
     closed: bool = False
     passes: int = 1
+    weight: float = 1.0      # force du trait, relative au reste du dessin
 
 
 @dataclass
@@ -55,7 +56,8 @@ def _runs(hidden, closed):
     return shift, [(a, min(b, n - 1) if not closed else b, bool(h[a])) for a, b in zip(cuts, cuts[1:])]
 
 
-def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, through=0.3):
+def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, through=0.3,
+         care=1.0):
     """Dessine une construction au crayon. `through` : force des traits cachés
     (0 pour ne pas les tracer), comme quand on dessine « en transparence »."""
     origin = np.asarray(origin, float)
@@ -69,7 +71,8 @@ def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, 
             start = int(rng.integers(n))
             loop = np.roll(px, -start, axis=0)
             path = np.vstack([loop, loop[:max(2, n // 7)]])
-            d.stroke(path, brush, layer, passes=shape.passes, pressure=pressure, taper=(0.1, 0.25))
+            d.stroke(path, brush, layer, passes=shape.passes, pressure=pressure * shape.weight,
+                     taper=(0.1, 0.25), care=care)
             continue
         shift, runs = _runs(shape.hidden, shape.closed)
         ring = np.roll(px, -shift, axis=0)
@@ -82,4 +85,4 @@ def draw(d, con, origin, scale, brush=BLEU, layer="construction", pressure=0.6, 
             if np.hypot(*np.diff(piece, axis=0).T).sum() < 4:
                 continue
             d.stroke(piece, brush, layer, passes=1 if is_hidden else shape.passes,
-                     pressure=pressure * (through if is_hidden else 1.0))
+                     pressure=pressure * shape.weight * (through if is_hidden else 1.0), care=care)
