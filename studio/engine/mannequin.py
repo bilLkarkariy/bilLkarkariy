@@ -98,6 +98,16 @@ class Tube:
 
 
 @dataclass
+class Sweep:
+    """Forme allongée et souple : une suite de stations (articulation, point, rayon)
+    reliées par une courbe. Le rayon peut être un couple (largeur, profondeur).
+    Sert aux mèches, aux doigts, aux membres dessinés, aux vêtements."""
+    stations: list
+    start: str = "round"            # "round" : bout arrondi ; "open" : bout ouvert (ourlet)
+    end: str = "round"
+
+
+@dataclass
 class Curve:
     """Ligne de construction tracée sur un volume (axe du visage, ligne des yeux...)."""
     joint: str
@@ -162,7 +172,14 @@ class Model:
         """Les volumes d'une partie, en ellipsoïdes : centres (m, 3) et axes (m, 3, 3)."""
         centers, axes = [], []
         for prim in part.prims:
-            if isinstance(prim, Ball):
+            if isinstance(prim, Sweep):
+                c, x, z, t, rx_, rz_ = sweep_frames(prim, frames)
+                depth = np.full(len(c), 0.08)
+                depth[0], depth[-1] = max(rx_[0], rz_[0], 0.02), max(rx_[-1], rz_[-1], 0.02)
+                centers.extend(c)
+                axes.extend(np.stack([x * np.maximum(rx_, 0.004)[:, None], t * depth[:, None],
+                                      z * np.maximum(rz_, 0.004)[:, None]], axis=2))
+            elif isinstance(prim, Ball):
                 pos, rot = frames[prim.joint]
                 centers.append(pos + rot @ np.asarray(prim.center, float))
                 axes.append(rot @ np.diag(prim.radii))
@@ -239,6 +256,107 @@ class _Occluders:
         return hit.any(axis=1)
 
 
+def _catmull(pts, u):
+    """Courbe lisse passant par pts, évaluée aux paramètres u (0 .. n-1)."""
+    q = np.vstack([2 * pts[0] - pts[1], pts, 2 * pts[-1] - pts[-2]])
+    i = np.clip(np.floor(u).astype(int), 0, len(pts) - 2)
+    t = (u - i)[:, None]
+    a, b, c, d = q[i], q[i + 1], q[i + 2], q[i + 3]
+    return 0.5 * (2 * b + (c - a) * t + (2 * a - 5 * b + 4 * c - d) * t ** 2
+                  + (3 * b - a - 3 * c + d) * t ** 3)
+
+
+def sweep_frames(sweep, frames, step=0.05):
+    """Échantillonne un Sweep : centres, axes de section (x, z), tangente, rayons."""
+    c, x, z, rx_, rz_ = [], [], [], [], []
+    for joint, point, r in sweep.stations:
+        pos, rot = frames[joint]
+        c.append(pos + rot @ np.asarray(point, float))
+        x.append(rot[:, 0])
+        z.append(rot[:, 2])
+        a, b = (r, r) if np.isscalar(r) else r
+        rx_.append(a)
+        rz_.append(b)
+    c = np.array(c)
+    u = [i + np.linspace(0, 1, max(2, int(np.ceil(np.linalg.norm(c[i + 1] - c[i]) / step))),
+                         endpoint=False) for i in range(len(c) - 1)]
+    u = np.concatenate(u + [[len(c) - 1.0]])
+    k = np.arange(len(c))
+    f = u - np.floor(u)
+    smooth = np.floor(u) + f * f * (3 - 2 * f)          # les rayons arrivent à plat sur chaque station
+
+    def along(values, param):
+        values = np.asarray(values, float)
+        if values.ndim == 1:
+            return np.interp(param, k, values)
+        return np.stack([np.interp(param, k, values[:, j]) for j in range(values.shape[1])], axis=1)
+
+    centers = _catmull(c, u)
+    xs, zs = along(x, u), along(z, u)
+    xs /= np.linalg.norm(xs, axis=1, keepdims=True)
+    zs /= np.linalg.norm(zs, axis=1, keepdims=True)
+    tan = np.gradient(centers, axis=0)
+    tan /= np.maximum(np.linalg.norm(tan, axis=1, keepdims=True), 1e-9)
+    return centers, xs, zs, tan, along(rx_, smooth), along(rz_, smooth)
+
+
+def _sweep_outline(sweep, frames, cam):
+    """Contour d'un Sweep vu par la caméra : listes de (points 3D, fermé ?, normales 2D sortantes)."""
+    c, x, z, _, rx_, rz_ = sweep_frames(sweep, frames)
+    c2 = cam.project(c)
+    t2 = np.gradient(c2, axis=0)
+    length = np.hypot(t2[:, 0], t2[:, 1])
+    good = length > 1e-5
+    if not good.any():
+        t2[:] = (0.0, 1.0)
+    else:
+        idx = np.flatnonzero(good)
+        nearest = idx[np.abs(np.arange(len(c))[:, None] - idx[None]).argmin(axis=1)]
+        t2 = t2[nearest] / length[nearest][:, None]
+    n2 = np.stack([-t2[:, 1], t2[:, 0]], axis=1)
+    n3 = n2[:, :1] * cam.right + n2[:, 1:] * cam.up
+    t3 = t2[:, :1] * cam.right + t2[:, 1:] * cam.up
+    r = np.sqrt((rx_ * (n3 * x).sum(1)) ** 2 + (rz_ * (n3 * z).sum(1)) ** 2)[:, None]
+    left, right = (c + r * n3, n2), ((c - r * n3)[::-1], -n2[::-1])
+    ang = np.linspace(0, np.pi, 9)[1:-1, None]
+
+    def cap(i, sign):
+        if r[i, 0] < 0.02:                  # pointe : un seul point, sans arrondi
+            return c[i][None] + r[i] * sign * t3[i], sign * t2[i][None]
+        pts = c[i] + r[i] * sign * (np.cos(ang) * n3[i] + np.sin(ang) * t3[i])
+        return pts, sign * (np.cos(ang) * n2[i] + np.sin(ang) * t2[i])
+
+    loop = [left, cap(-1, 1) if sweep.end == "round" else None,
+            right, cap(0, -1) if sweep.start == "round" else None]
+    if None not in loop:
+        return [(np.vstack([p for p, _ in loop]), True, np.vstack([n for _, n in loop]))]
+    while loop[-1] is not None:             # fait tourner la boucle pour finir sur une coupure
+        loop = loop[1:] + loop[:1]
+    out, run = [], []
+    for item in loop:
+        if item is None:
+            if run:
+                out.append((np.vstack([p for p, _ in run]), False, np.vstack([n for _, n in run])))
+            run = []
+        else:
+            run.append(item)
+    return out
+
+
+LIGHT = np.array([0.45, -0.89])     # les traits tournés vers le bas à droite sont plus appuyés
+
+
+def _weights(normals, amount=0.38):
+    return 1 + amount * (normals @ LIGHT)
+
+
+def _outward(xy):
+    """Normales sortantes d'un contour fermé parcouru dans le sens direct."""
+    d = np.roll(xy, -1, axis=0) - np.roll(xy, 1, axis=0)
+    n = np.stack([d[:, 1], -d[:, 0]], axis=1)
+    return n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-9)
+
+
 def _densify(pts3, cam, step=0.06):
     """Ajoute des points le long des grands côtés d'un contour fermé, pour que
     chaque tronçon puisse être caché indépendamment."""
@@ -259,6 +377,8 @@ def construct(model, pose, cam):
     for part in model.parts:
         centers, axes = model._ellipsoids(part, frames)
         occ.add(centers, axes, part.name)
+        if isinstance(part.prims[0], Sweep):
+            continue
         # Le contour d'un volume convexe est l'enveloppe de ses points projetés.
         ends = [0, len(centers) - 1] if isinstance(part.prims[0], Tube) and len(part.prims) == 1 \
             else range(len(centers))
@@ -267,10 +387,18 @@ def construct(model, pose, cam):
 
     con = Construction()
     for part in model.parts:
-        cloud = clouds[part.name]
-        pts3 = _densify(cloud[hull(cam.project(cloud))], cam)
-        con.shapes.append(Shape(cam.project(pts3), occ.hidden(pts3, cam.rays(pts3), {part.name}),
-                                closed=True, passes=part.passes, weight=part.weight))
+        if isinstance(part.prims[0], Sweep):
+            for pts3, closed, normals in _sweep_outline(part.prims[0], frames, cam):
+                con.shapes.append(Shape(cam.project(pts3),
+                                        occ.hidden(pts3, cam.rays(pts3), {part.name}), closed=closed,
+                                        passes=part.passes, weight=part.weight, w=_weights(normals)))
+        else:
+            cloud = clouds[part.name]
+            pts3 = _densify(cloud[hull(cam.project(cloud))], cam)
+            xy = cam.project(pts3)
+            con.shapes.append(Shape(xy, occ.hidden(pts3, cam.rays(pts3), {part.name}), closed=True,
+                                    passes=part.passes, weight=part.weight,
+                                    w=_weights(_outward(xy))))
         for curve in part.curves:
             pos, rot = frames[curve.joint]
             pts3 = pos + np.asarray(curve.points, float) @ rot.T

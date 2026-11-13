@@ -8,7 +8,7 @@ Les deux viennent du même squelette, donc les cinq vues s'alignent.
 from pathlib import Path
 
 from studio.characters import kaya
-from studio.engine.brush import HB
+from studio.engine.brush import NET
 from studio.engine.canvas import Document
 from studio.engine.construction import draw
 from studio.engine.hand import Draftsman
@@ -39,8 +39,8 @@ def sheet(seed=21):
         doc.label((x - 50, GROUND + 30), name, size=16)
         cam = Camera(yaw)
         draw(d, construct(body, NEUTRE, cam), (x, GROUND), SCALE, pressure=0.32, through=0.25)
-        draw(d, construct(dressed, NEUTRE, cam), (x, GROUND), SCALE, brush=HB, layer="net",
-             pressure=0.8, through=0, care=1.8)
+        draw(d, construct(dressed, NEUTRE, cam), (x, GROUND), SCALE, brush=NET, layer="net",
+             pressure=0.62, through=0, care=1.8)
     return doc
 
 

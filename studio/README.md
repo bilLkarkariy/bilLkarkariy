@@ -10,6 +10,7 @@ gestes (tracé + pression) qu'un moteur pose sur le papier comme un crayon.
 python3 -m studio.steps.s01_crayon
 python3 -m studio.steps.s02_mannequin
 python3 -m studio.steps.s03_model_sheet
+python3 -m studio.steps.s03_expressions
 ```
 
 Les rendus sont écrits dans `studio/out/` (non versionné). Dépendances :
@@ -36,7 +37,7 @@ Python 3, `numpy`, `pillow`, et `ffmpeg` pour les vidéos.
 |---|---|---|
 | 1 | Crayon et main | fait |
 | 2 | Mannequin de construction (squelette, volumes, poses) | fait |
-| 3 | Model sheet (turnaround fait, expressions à faire) | en cours |
+| 3 | Model sheet (turnaround, expressions) | fait |
 | 4 | Storyboard rough | à faire |
 | 5 | Layout (cadre, perspective, caméra) | à faire |
 | 6 | Poses clés et feuille de timing | à faire |

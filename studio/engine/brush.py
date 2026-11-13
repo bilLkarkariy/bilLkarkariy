@@ -35,6 +35,9 @@ BLEU = Brush("bleu", (0.30, 0.50, 0.84), radius=1.7, density=0.95, grain=0.85)
 ROUGE = Brush("rouge", (0.84, 0.27, 0.22), radius=1.7, density=0.95, grain=0.85)
 HB = Brush("hb", (0.22, 0.22, 0.24), radius=1.35, density=1.5, grain=0.7)
 B2 = Brush("2b", (0.11, 0.11, 0.13), radius=1.75, density=2.4, grain=0.6, flow_gamma=1.1)
+# Crayon de mise au net : la pression change fortement l'épaisseur (pleins et déliés).
+NET = Brush("net", (0.13, 0.13, 0.15), radius=2.1, density=2.3, min_size=0.28, grain=0.55,
+            flow_gamma=0.9)
 ESTOMPE = Brush("tranche", (0.24, 0.24, 0.26), radius=8.0, density=0.5, min_size=0.8,
                 hardness=0.55, grain=0.95, spacing=0.18, scatter=0.04)
 # Trait vectoriel parfait : sert uniquement de point de comparaison.
