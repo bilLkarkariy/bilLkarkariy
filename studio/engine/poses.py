@@ -55,8 +55,71 @@ SAUT = Pose(
 # Réception : genoux fléchis, buste engagé, bras écartés pour l'équilibre.
 RECEPTION = Pose(
     pelvis=rx(18), waist=rx(16), neck=rx(-10), head=rx(-14),
-    hip_L=To((0.16, -0.72, 0.67)), knee_L=rx(78), ankle_L=Level(0),
-    hip_R=To((-0.14, -0.80, 0.58)), knee_R=rx(66), ankle_R=Level(0),
+    hip_L=To((0.16, -0.42, 0.89)), knee_L=rx(108), ankle_L=Level(0),
+    hip_R=To((-0.14, -0.52, 0.84)), knee_R=rx(98), ankle_R=Level(0),
     shoulder_L=To((0.62, -0.62, 0.36)), elbow_L=rx(-30),
     shoulder_R=To((-0.66, -0.52, -0.20)), elbow_R=rx(-34),
+)
+
+# Appui : les deux pieds se posent, le corps freine et commence à descendre.
+APPUI = Pose(
+    pelvis=rx(6), waist=rx(8), head=rx(-6),
+    hip_R=To((-0.08, -0.86, 0.50)), knee_R=rx(38), ankle_R=Level(0),
+    hip_L=To((0.08, -0.97, -0.22)), knee_L=rx(40), ankle_L=Level(25),
+    shoulder_L=To((0.20, -0.85, -0.50)), elbow_L=rx(-30),
+    shoulder_R=To((-0.20, -0.90, -0.40)), elbow_R=rx(-30),
+)
+
+# Détente : tout le corps s'étire, sur les pointes, les bras lancés vers le haut.
+DETENTE = Pose(
+    pelvis=rx(10), waist=rx(-4), head=rx(-8),
+    hip_L=To((0.06, -0.985, -0.16)), knee_L=rx(6), ankle_L=Level(55),
+    hip_R=To((-0.06, -0.96, -0.28)), knee_R=rx(10), ankle_R=Level(60),
+    shoulder_L=To((0.25, 0.72, 0.64)), elbow_L=rx(-15),
+    shoulder_R=To((-0.25, 0.78, 0.57)), elbow_R=rx(-15),
+)
+
+# Montée : les genoux commencent à remonter.
+MONTEE = Pose(
+    pelvis=rx(4), waist=rx(-6), head=rx(-6),
+    hip_R=To((-0.06, -0.80, 0.60)), knee_R=rx(70), ankle_R=rx(30),
+    hip_L=To((0.05, -0.96, -0.10)), knee_L=rx(35), ankle_L=rx(35),
+    shoulder_L=To((0.30, 0.90, 0.30)), elbow_L=rx(-15),
+    shoulder_R=To((-0.35, 0.85, 0.40)), elbow_R=rx(-15),
+)
+
+# Sommet : groupé au-dessus de l'obstacle.
+SOMMET = Pose(
+    pelvis=rx(-4), waist=rx(14), head=rx(-12),
+    hip_R=To((-0.10, -0.28, 0.95)), knee_R=rx(118), ankle_R=rx(15),
+    hip_L=To((0.10, -0.50, 0.86)), knee_L=rx(105), ankle_L=rx(20),
+    shoulder_L=To((0.55, 0.50, 0.50)), elbow_L=rx(-35),
+    shoulder_R=To((-0.60, 0.45, 0.45)), elbow_R=rx(-40),
+)
+
+# Descente : les jambes vont chercher le sol.
+DESCENTE = Pose(
+    pelvis=rx(-10), waist=rx(8), head=rx(-4),
+    hip_R=To((-0.08, -0.80, 0.60)), knee_R=rx(22), ankle_R=rx(-10),
+    hip_L=To((0.08, -0.88, 0.47)), knee_L=rx(35), ankle_L=rx(-5),
+    shoulder_L=To((0.60, 0.30, -0.20)), elbow_L=rx(-30),
+    shoulder_R=To((-0.65, 0.20, -0.10)), elbow_R=rx(-30),
+)
+
+# Contact : les pieds touchent, jambes encore presque tendues.
+CONTACT = Pose(
+    pelvis=rx(4), waist=rx(10), head=rx(-8),
+    hip_R=To((-0.10, -0.90, 0.42)), knee_R=rx(30), ankle_R=Level(-8),
+    hip_L=To((0.10, -0.93, 0.36)), knee_L=rx(34), ankle_L=Level(0),
+    shoulder_L=To((0.70, -0.30, 0.20)), elbow_L=rx(-25),
+    shoulder_R=To((-0.72, -0.25, 0.10)), elbow_R=rx(-25),
+)
+
+# Rétablissement : elle se redresse.
+RETABLI = Pose(
+    pelvis=rx(8), waist=rx(8), head=rx(-8),
+    hip_L=To((0.10, -0.93, 0.35)), knee_L=rx(40), ankle_L=Level(0),
+    hip_R=To((-0.10, -0.93, 0.35)), knee_R=rx(40), ankle_R=Level(0),
+    shoulder_L=To((0.35, -0.90, 0.15)), elbow_L=rx(-25),
+    shoulder_R=To((-0.35, -0.90, 0.15)), elbow_R=rx(-25),
 )

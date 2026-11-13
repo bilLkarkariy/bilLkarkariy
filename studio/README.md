@@ -13,6 +13,7 @@ python3 -m studio.steps.s03_model_sheet
 python3 -m studio.steps.s03_expressions
 python3 -m studio.steps.s04_storyboard
 python3 -m studio.steps.s05_layout
+python3 -m studio.steps.s06_cles
 ```
 
 Les rendus sont écrits dans `studio/out/` (non versionné). Les planches de l'étape 3
@@ -33,6 +34,7 @@ Python 3, `numpy`, `pillow`, et `ffmpeg` pour les vidéos.
 - `engine/scene.py` : décor en boîtes, vu par la même caméra que le personnage.
 - `characters/` : `body.py` (corps paramétrable), puis un personnage par fichier
   (proportions, volumes des cheveux et des vêtements, traits du visage).
+- `shots/` : un plan par fichier (caméra, décor, cadre, poses clés, timing).
 - `steps/` : une étape du studio par fichier.
 
 ## Étapes
@@ -44,7 +46,7 @@ Python 3, `numpy`, `pillow`, et `ffmpeg` pour les vidéos.
 | 3 | Model sheet (turnaround, expressions) | fait |
 | 4 | Storyboard rough | fait |
 | 5 | Layout (cadre, perspective, caméra) | fait |
-| 6 | Poses clés et feuille de timing | à faire |
+| 6 | Poses clés et feuille de timing | fait |
 | 7 | Intervalles | à faire |
 | 8 | Clean-up | à faire |
 | 9 | Couleur et ombres | à faire |

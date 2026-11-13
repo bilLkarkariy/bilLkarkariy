@@ -402,7 +402,9 @@ def construct(model, pose, cam):
     con = Construction()
     for part in model.parts:
         if isinstance(part.prims[0], Sweep):
-            for pts3, closed, normals in _sweep_outline(part.prims[0], frames, cam):
+            pieces = _sweep_outline(part.prims[0], frames, cam)
+            con.mattes.append((part.name, cam.project(np.vstack([p for p, _, _ in pieces]))))
+            for pts3, closed, normals in pieces:
                 con.shapes.append(Shape(cam.project(pts3),
                                         occ.hidden(pts3, cam.rays(pts3), {part.name}), closed=closed,
                                         passes=part.passes, weight=part.weight, w=_weights(normals)))
@@ -410,6 +412,7 @@ def construct(model, pose, cam):
             cloud = clouds[part.name]
             pts3 = _densify(cloud[hull(cam.project(cloud))], cam)
             xy = cam.project(pts3)
+            con.mattes.append((part.name, xy))
             con.shapes.append(Shape(xy, occ.hidden(pts3, cam.rays(pts3), {part.name}), closed=True,
                                     passes=part.passes, weight=part.weight,
                                     w=_weights(_outward(xy))))

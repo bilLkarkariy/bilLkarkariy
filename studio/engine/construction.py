@@ -25,6 +25,20 @@ class Shape:
 class Construction:
     shapes: list = field(default_factory=list)
     marks: dict = field(default_factory=dict)    # repères nommés (x, y), pour mesurer
+    mattes: list = field(default_factory=list)   # (partie, polygone) : la surface pleine de chaque forme
+
+
+def matte(con, origin, scale, w, h):
+    """Masque (h, w) de la surface couverte par le personnage : 1 dedans, 0 dehors.
+    C'est le « cellulo opaque » : ce qui est derrière ne se voit pas à travers."""
+    from PIL import Image, ImageDraw
+    img = Image.new("L", (w, h), 0)
+    pen = ImageDraw.Draw(img)
+    origin = np.asarray(origin, float)
+    for _, poly in con.mattes:
+        if len(poly) >= 3:
+            pen.polygon([tuple(p) for p in origin + poly * (scale, -scale)], fill=255)
+    return np.asarray(img, np.float32) / 255
 
 
 def hull(pts):
