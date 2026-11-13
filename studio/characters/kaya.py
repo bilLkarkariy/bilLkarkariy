@@ -159,8 +159,10 @@ def _hand(wr, s):
     return parts
 
 
-def design(expr="neutre"):
-    """Le personnage habillé, sur le même squelette que son mannequin."""
+def design(expr="neutre", sway=(0, 0, 0)):
+    """Le personnage habillé, sur le même squelette que son mannequin.
+    `sway` : décalage du bout de la queue de cheval, dans le repère de la tête
+    (elle traîne derrière le mouvement)."""
     p = PROPORTIONS
     joints, marks = skeleton(p)
     head = [Ball("head", **p["skull"]), Ball("head", (0, 0.22, 0.17), (0.25, 0.27, 0.28)),
@@ -175,6 +177,8 @@ def design(expr="neutre"):
     for i, (pts, r) in enumerate(TUFTS):
         parts.append(Part(f"meche_{i}", [_sweep("head", pts, (r, r * 0.72, 0.008))]))
     for i, (pts, radii) in enumerate(TAIL):
+        bend = (np.arange(len(pts)) / (len(pts) - 1)) ** 1.5       # la racine tient, le bout suit
+        pts = np.asarray(pts, float) + np.outer(bend, sway)
         parts.append(Part(f"queue_{i}", [_sweep("head", pts, radii)]))
 
     def on_torso(xy, weight=0.5):

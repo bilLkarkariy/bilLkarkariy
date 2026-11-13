@@ -15,11 +15,11 @@ from studio.characters import kaya
 from studio.engine import scene
 from studio.engine.brush import BLEU, HB, NET, ROUGE, VERT
 from studio.engine.canvas import Document
-from studio.engine.construction import draw, matte
+from studio.engine.construction import draw
 from studio.engine.hand import Draftsman, ellipse, spline, TAU
 from studio.engine.mannequin import Camera, construct
-from studio.engine.video import Video
 from studio.shots import plan6 as shot
+from studio.shots.render import ShotRenderer
 
 OUT = Path(__file__).resolve().parent.parent / "out"
 INK = (0.30, 0.31, 0.36)
@@ -125,50 +125,14 @@ def x_sheet(keys, seed=62):
     return doc
 
 
-def pose_test(body, dressed, keys, path, seed=63, loops=3):
+def pose_test(body, dressed, keys, path, seed=63):
     """Vidéo : chaque clé est tenue jusqu'à la suivante, et le cadre se déplace."""
-    w, h = shot.W, shot.H
     cons = [construct(dressed, key["pose"], shot.CAM, shot.DECOR) for key in keys]
-    # Deux calques de décor : le fond, toujours derrière Kaya, et le premier plan,
-    # fait des boîtes qui passent devant elle sur au moins un dessin (ici le muret).
-    front = sorted(set().union(*[b for con in cons for _, _, b in con.mattes]))
-    back = [i for i in range(len(shot.DECOR)) if i not in front]
-    base = Document(w, h, seed)
-    d = Draftsman(base, seed)
-    style = dict(brush=HB, pressure=0.5, through=0, care=1.5)
-    draw(d, scene.construct(shot.DECOR, shot.CAM, shot.SOL, only=back), shot.ORIGIN, shot.SCALE,
-         layer="decor", **style)
-    draw(d, scene.construct(shot.DECOR, shot.CAM, only=front), shot.ORIGIN, shot.SCALE,
-         layer="premier_plan", **style)
-    corners = np.array([c for _, c in shot.CAMERA_KEYS])
-    x0, y0 = corners.min(axis=0).astype(int)
-    x1, y1 = (corners.max(axis=0) + shot.FRAME).astype(int)
-    drawings = []
-    for i, (key, con) in enumerate(zip(keys, cons)):
-        doc = Document(w, h, seed, paper=base.paper)
-        # Kaya cache le fond partout, mais le premier plan seulement là où elle est devant lui.
-        for name, hole in (("decor", 1 - matte(con, shot.ORIGIN, shot.SCALE, w, h)),
-                           ("premier_plan", 1 - matte(con, shot.ORIGIN, shot.SCALE, w, h, front))):
-            source, layer = base.layer(name), doc.layer(name)
-            layer.D, layer.C = source.D * hole, source.C * hole[..., None]
-        d = Draftsman(doc, seed + 1 + i)
-        draw(d, construct(body, key["pose"], shot.CAM, shot.DECOR), shot.ORIGIN, shot.SCALE,
-             pressure=0.3, through=0.2)
-        draw(d, con, shot.ORIGIN, shot.SCALE, brush=NET, layer="net", pressure=0.7, through=0,
-             care=1.3, min_size=14)
-        drawings.append((key["image"], (doc.composite((x0, y0, x1, y1)) * 255).astype(np.uint8)))
-    fw, fh = shot.FRAME
-    ow, oh = fw // 2, fh // 4 * 2                   # demi-taille, hauteur paire pour la vidéo
-    video = Video(path, ow, oh, fps=shot.FPS)
-    for _ in range(loops):
-        for f in range(1, shot.FRAMES + 1):
-            image = [img for start, img in drawings if start <= f][-1]
-            cx, cy = (shot.frame_corner(f) - (x0, y0)).astype(int)
-            crop = image[cy:cy + oh * 2, cx:cx + ow * 2].astype(np.float32) / 255
-            small = crop.reshape(oh, 2, ow, 2, 3).mean(axis=(1, 3))
-            video.add(small)
-        video.add(small, 10)                        # courte pause entre deux passages
-    return video.close()
+    renderer = ShotRenderer(shot, cons, seed)
+    drawings = [(key["image"], renderer.drawing(
+        con, construct(body, key["pose"], shot.CAM, shot.DECOR), seed + 1 + i))
+        for i, (key, con) in enumerate(zip(keys, cons))]
+    return renderer.play(path, lambda f: [img for start, img in drawings if start <= f][-1])
 
 
 if __name__ == "__main__":

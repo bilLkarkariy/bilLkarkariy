@@ -63,11 +63,11 @@ RECEPTION = Pose(
 
 # Appui : les deux pieds se posent, le corps freine et commence à descendre.
 APPUI = Pose(
-    pelvis=rx(6), waist=rx(8), head=rx(-6),
-    hip_R=To((-0.08, -0.86, 0.50)), knee_R=rx(38), ankle_R=Level(0),
-    hip_L=To((0.08, -0.97, -0.22)), knee_L=rx(40), ankle_L=Level(25),
-    shoulder_L=To((0.20, -0.85, -0.50)), elbow_L=rx(-30),
-    shoulder_R=To((-0.20, -0.90, -0.40)), elbow_R=rx(-30),
+    pelvis=rx(-4), waist=rx(10), head=rx(-4),
+    hip_R=To((-0.09, -0.80, 0.59)), knee_R=rx(30), ankle_R=Level(0),
+    hip_L=To((0.09, -0.86, 0.50)), knee_L=rx(36), ankle_L=Level(0),
+    shoulder_L=To((0.20, -0.80, -0.56)), elbow_L=rx(-25),
+    shoulder_R=To((-0.20, -0.85, -0.50)), elbow_R=rx(-25),
 )
 
 # Détente : tout le corps s'étire, sur les pointes, les bras lancés vers le haut.
@@ -82,8 +82,8 @@ DETENTE = Pose(
 # Montée : les genoux commencent à remonter.
 MONTEE = Pose(
     pelvis=rx(4), waist=rx(-6), head=rx(-6),
-    hip_R=To((-0.06, -0.80, 0.60)), knee_R=rx(70), ankle_R=rx(12),
-    hip_L=To((0.05, -0.96, -0.10)), knee_L=rx(35), ankle_L=rx(18),
+    hip_R=To((-0.06, -0.42, 0.90)), knee_R=rx(118), ankle_R=rx(10),
+    hip_L=To((0.05, -0.90, -0.34)), knee_L=rx(62), ankle_L=rx(18),
     shoulder_L=To((0.30, 0.90, 0.30)), elbow_L=rx(-15),
     shoulder_R=To((-0.35, 0.85, 0.40)), elbow_R=rx(-15),
 )
