@@ -383,9 +383,18 @@ def _densify(pts3, cam, step=0.06):
     return np.vstack(out)
 
 
-def construct(model, pose, cam):
-    """Projette le modèle posé et renvoie sa construction 2D."""
+def construct(model, pose, cam, boxes=()):
+    """Projette le modèle posé et renvoie sa construction 2D.
+    `boxes` : boîtes du décor (scene.Box) qui peuvent passer devant le personnage."""
+    from .scene import hidden_by
     frames = model.solve(pose)
+
+    def behind(pts3):
+        """Par point : caché par le décor ? Et l'ensemble des boîtes qui cachent la forme."""
+        if not len(boxes):
+            return np.zeros(len(pts3), bool), frozenset()
+        by = hidden_by(pts3, cam.rays(pts3), boxes)
+        return by.any(axis=1), frozenset(np.flatnonzero(by.any(axis=0)).tolist())
     occ = _Occluders()
     clouds = {}
     for part in model.parts:
@@ -403,17 +412,20 @@ def construct(model, pose, cam):
     for part in model.parts:
         if isinstance(part.prims[0], Sweep):
             pieces = _sweep_outline(part.prims[0], frames, cam)
-            con.mattes.append((part.name, cam.project(np.vstack([p for p, _, _ in pieces]))))
+            every = np.vstack([p for p, _, _ in pieces])
+            con.mattes.append((part.name, cam.project(every), behind(every)[1]))
             for pts3, closed, normals in pieces:
-                con.shapes.append(Shape(cam.project(pts3),
-                                        occ.hidden(pts3, cam.rays(pts3), {part.name}), closed=closed,
+                hidden = occ.hidden(pts3, cam.rays(pts3), {part.name}) | behind(pts3)[0]
+                con.shapes.append(Shape(cam.project(pts3), hidden, closed=closed,
                                         passes=part.passes, weight=part.weight, w=_weights(normals)))
         else:
             cloud = clouds[part.name]
             pts3 = _densify(cloud[hull(cam.project(cloud))], cam)
             xy = cam.project(pts3)
-            con.mattes.append((part.name, xy))
-            con.shapes.append(Shape(xy, occ.hidden(pts3, cam.rays(pts3), {part.name}), closed=True,
+            by_decor, boxes_in_front = behind(pts3)
+            con.mattes.append((part.name, xy, boxes_in_front))
+            con.shapes.append(Shape(xy, occ.hidden(pts3, cam.rays(pts3), {part.name}) | by_decor,
+                                    closed=True,
                                     passes=part.passes, weight=part.weight,
                                     w=_weights(_outward(xy))))
         for curve in part.curves:
@@ -421,7 +433,7 @@ def construct(model, pose, cam):
             pts3 = pos + np.asarray(curve.points, float) @ rot.T
             rays = cam.rays(pts3)
             skip = {part.name} if curve.skip is None else set(curve.skip)
-            hidden = occ.hidden(pts3, rays, skip)
+            hidden = occ.hidden(pts3, rays, skip) | behind(pts3)[0]
             if curve.normals is not None:
                 facing = ((np.asarray(curve.normals, float) @ rot.T) * rays).sum(axis=1)
                 keep = facing > 0.02

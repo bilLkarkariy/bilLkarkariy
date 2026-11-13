@@ -20,18 +20,24 @@ class Box:
     weight: float = 1.0         # force du trait (premier plan plus appuyé)
 
 
-def _hidden(pts, rays, boxes, skip=-1):
-    """Vrai pour les points qu'une boîte (hors `skip`) cache à la caméra."""
-    out = np.zeros(len(pts), bool)
+def hidden_by(pts, rays, boxes):
+    """Tableau (points, boîtes) : vrai si la boîte cache le point à la caméra."""
+    out = np.zeros((len(pts), len(boxes)), bool)
     inv = 1.0 / np.where(np.abs(rays) < 1e-9, 1e-9, rays)
     for i, box in enumerate(boxes):
-        if i == skip:
-            continue
         t1 = (np.asarray(box.lo, float) + 1e-3 - pts) * inv
         t2 = (np.asarray(box.hi, float) - 1e-3 - pts) * inv
         near, far = np.minimum(t1, t2).max(axis=1), np.maximum(t1, t2).min(axis=1)
-        out |= (far > 1e-3) & (far >= near)
+        out[:, i] = (far > 1e-3) & (far >= near)
     return out
+
+
+def _hidden(pts, rays, boxes, skip=-1):
+    """Vrai pour les points qu'une boîte (hors `skip`) cache à la caméra."""
+    by = hidden_by(pts, rays, boxes)
+    if skip >= 0:
+        by[:, skip] = False
+    return by.any(axis=1)
 
 
 def _segment(a, b, step=0.25):
@@ -39,9 +45,10 @@ def _segment(a, b, step=0.25):
     return np.linspace(a, b, n)
 
 
-def construct(boxes, cam, lines=(), blockers=(), near=1.0):
+def construct(boxes, cam, lines=(), blockers=(), near=1.0, only=None):
     """Construction 2D du décor. `lines` : tracés 3D libres (bords de trottoir...).
-    `blockers` : volumes de personnages (mannequin.occluders) qui cachent le décor."""
+    `blockers` : volumes de personnages (mannequin.occluders) qui cachent le décor.
+    `only` : indices des boîtes à dessiner (toutes continuent de cacher les autres)."""
     con = Construction()
 
     def add(pts, skip=-1, weight=1.0):
@@ -55,6 +62,8 @@ def construct(boxes, cam, lines=(), blockers=(), near=1.0):
             con.shapes.append(Shape(cam.project(pts), hidden, weight=weight))
 
     for i, box in enumerate(boxes):
+        if only is not None and i not in only:
+            continue
         lo, hi = np.asarray(box.lo, float), np.asarray(box.hi, float)
         centre = (lo + hi) / 2
 

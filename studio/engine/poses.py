@@ -73,8 +73,8 @@ APPUI = Pose(
 # Détente : tout le corps s'étire, sur les pointes, les bras lancés vers le haut.
 DETENTE = Pose(
     pelvis=rx(10), waist=rx(-4), head=rx(-8),
-    hip_L=To((0.06, -0.985, -0.16)), knee_L=rx(6), ankle_L=Level(55),
-    hip_R=To((-0.06, -0.96, -0.28)), knee_R=rx(10), ankle_R=Level(60),
+    hip_L=To((0.06, -0.985, -0.16)), knee_L=rx(6), ankle_L=Level(38),
+    hip_R=To((-0.06, -0.96, -0.28)), knee_R=rx(10), ankle_R=Level(44),
     shoulder_L=To((0.25, 0.72, 0.64)), elbow_L=rx(-15),
     shoulder_R=To((-0.25, 0.78, 0.57)), elbow_R=rx(-15),
 )
@@ -82,8 +82,8 @@ DETENTE = Pose(
 # Montée : les genoux commencent à remonter.
 MONTEE = Pose(
     pelvis=rx(4), waist=rx(-6), head=rx(-6),
-    hip_R=To((-0.06, -0.80, 0.60)), knee_R=rx(70), ankle_R=rx(30),
-    hip_L=To((0.05, -0.96, -0.10)), knee_L=rx(35), ankle_L=rx(35),
+    hip_R=To((-0.06, -0.80, 0.60)), knee_R=rx(70), ankle_R=rx(12),
+    hip_L=To((0.05, -0.96, -0.10)), knee_L=rx(35), ankle_L=rx(18),
     shoulder_L=To((0.30, 0.90, 0.30)), elbow_L=rx(-15),
     shoulder_R=To((-0.35, 0.85, 0.40)), elbow_R=rx(-15),
 )

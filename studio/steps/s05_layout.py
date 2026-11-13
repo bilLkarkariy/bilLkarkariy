@@ -66,9 +66,10 @@ def sheet(seed=51):
 
     for key in shown:
         brush = SHOWN[key["name"]]
-        draw(d, construct(body, key["pose"], cam), shot.ORIGIN, shot.SCALE, pressure=0.3,
-             through=0.2, clip=clip)
-        draw(d, construct(dressed, key["pose"], cam), shot.ORIGIN, shot.SCALE, brush=brush,
+        draw(d, construct(body, key["pose"], cam, shot.DECOR), shot.ORIGIN, shot.SCALE,
+             pressure=0.3, through=0.2, clip=clip)
+        draw(d, construct(dressed, key["pose"], cam, shot.DECOR), shot.ORIGIN, shot.SCALE,
+             brush=brush,
              layer="net", pressure=0.95, through=0, care=1.3, clip=clip, min_size=16)
         x, y = shot.to_px(key["pelvis"])
         doc.label((x - 400, y - 30), f"image {key['image']} · {key['name']}", size=30,

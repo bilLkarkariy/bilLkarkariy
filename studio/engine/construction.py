@@ -25,17 +25,22 @@ class Shape:
 class Construction:
     shapes: list = field(default_factory=list)
     marks: dict = field(default_factory=dict)    # repères nommés (x, y), pour mesurer
-    mattes: list = field(default_factory=list)   # (partie, polygone) : la surface pleine de chaque forme
+    # (partie, polygone, boîtes du décor qui passent devant elle) : la surface pleine de chaque forme
+    mattes: list = field(default_factory=list)
 
 
-def matte(con, origin, scale, w, h):
+def matte(con, origin, scale, w, h, in_front_of=None):
     """Masque (h, w) de la surface couverte par le personnage : 1 dedans, 0 dehors.
-    C'est le « cellulo opaque » : ce qui est derrière ne se voit pas à travers."""
+    C'est le « cellulo opaque » : ce qui est derrière ne se voit pas à travers.
+    `in_front_of` : indices de boîtes du décor ; les formes qui passent derrière l'une
+    d'elles sont alors exclues, pour ne pas effacer un décor situé devant le personnage."""
     from PIL import Image, ImageDraw
     img = Image.new("L", (w, h), 0)
     pen = ImageDraw.Draw(img)
     origin = np.asarray(origin, float)
-    for _, poly in con.mattes:
+    for _, poly, behind in con.mattes:
+        if in_front_of is not None and behind & set(in_front_of):
+            continue
         if len(poly) >= 3:
             pen.polygon([tuple(p) for p in origin + poly * (scale, -scale)], fill=255)
     return np.asarray(img, np.float32) / 255

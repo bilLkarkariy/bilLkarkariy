@@ -48,7 +48,7 @@ def keys_sheet(body, dressed, keys, seed=61):
         d.stroke(path[a:a + 4], HB, "net", pressure=0.6, taper=(0.1, 0.1))
     for i, key in enumerate(keys):
         brush = COLORS[i % 3]
-        con = construct(dressed, key["pose"], shot.CAM)
+        con = construct(dressed, key["pose"], shot.CAM, shot.DECOR)
         strong = key["kind"] == "clé"
         # Seules les grandes formes : superposées, les poses doivent rester lisibles.
         draw(d, con, origin, shot.SCALE, brush=brush, layer="net", pressure=0.9 if strong else 0.5,
@@ -128,23 +128,32 @@ def x_sheet(keys, seed=62):
 def pose_test(body, dressed, keys, path, seed=63, loops=3):
     """Vidéo : chaque clé est tenue jusqu'à la suivante, et le cadre se déplace."""
     w, h = shot.W, shot.H
+    cons = [construct(dressed, key["pose"], shot.CAM, shot.DECOR) for key in keys]
+    # Deux calques de décor : le fond, toujours derrière Kaya, et le premier plan,
+    # fait des boîtes qui passent devant elle sur au moins un dessin (ici le muret).
+    front = sorted(set().union(*[b for con in cons for _, _, b in con.mattes]))
+    back = [i for i in range(len(shot.DECOR)) if i not in front]
     base = Document(w, h, seed)
-    draw(Draftsman(base, seed), scene.construct(shot.DECOR, shot.CAM, shot.SOL), shot.ORIGIN,
-         shot.SCALE, brush=HB, layer="decor", pressure=0.5, through=0, care=1.5)
-    decor = base.layer("decor")
+    d = Draftsman(base, seed)
+    style = dict(brush=HB, pressure=0.5, through=0, care=1.5)
+    draw(d, scene.construct(shot.DECOR, shot.CAM, shot.SOL, only=back), shot.ORIGIN, shot.SCALE,
+         layer="decor", **style)
+    draw(d, scene.construct(shot.DECOR, shot.CAM, only=front), shot.ORIGIN, shot.SCALE,
+         layer="premier_plan", **style)
     corners = np.array([c for _, c in shot.CAMERA_KEYS])
     x0, y0 = corners.min(axis=0).astype(int)
     x1, y1 = (corners.max(axis=0) + shot.FRAME).astype(int)
     drawings = []
-    for i, key in enumerate(keys):
+    for i, (key, con) in enumerate(zip(keys, cons)):
         doc = Document(w, h, seed, paper=base.paper)
-        con = construct(dressed, key["pose"], shot.CAM)
-        hole = 1 - matte(con, shot.ORIGIN, shot.SCALE, w, h)     # le personnage cache le décor
-        layer = doc.layer("decor")
-        layer.D, layer.C = decor.D * hole, decor.C * hole[..., None]
+        # Kaya cache le fond partout, mais le premier plan seulement là où elle est devant lui.
+        for name, hole in (("decor", 1 - matte(con, shot.ORIGIN, shot.SCALE, w, h)),
+                           ("premier_plan", 1 - matte(con, shot.ORIGIN, shot.SCALE, w, h, front))):
+            source, layer = base.layer(name), doc.layer(name)
+            layer.D, layer.C = source.D * hole, source.C * hole[..., None]
         d = Draftsman(doc, seed + 1 + i)
-        draw(d, construct(body, key["pose"], shot.CAM), shot.ORIGIN, shot.SCALE, pressure=0.3,
-             through=0.2)
+        draw(d, construct(body, key["pose"], shot.CAM, shot.DECOR), shot.ORIGIN, shot.SCALE,
+             pressure=0.3, through=0.2)
         draw(d, con, shot.ORIGIN, shot.SCALE, brush=NET, layer="net", pressure=0.7, through=0,
              care=1.3, min_size=14)
         drawings.append((key["image"], (doc.composite((x0, y0, x1, y1)) * 255).astype(np.uint8)))
