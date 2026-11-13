@@ -15,10 +15,27 @@ def timelapse(doc, path, seconds=10.0, fps=30, hold=2.0, scale=1.0):
         replay.layer(layer.name)
     frame = replay.composite()
 
-    video = Video(path, doc.w, doc.h, fps, scale)
+    # Une grande page est réduite par blocs entiers avant l'encodage : seule la zone
+    # modifiée est recalculée à chaque image.
+    k = max(1, int(1 / scale)) if scale < 1 else 1
+    hk, wk = doc.h // k, doc.w // k
+
+    def shrink(y0, y1, x0, x1):
+        block = frame[y0 * k:y1 * k, x0 * k:x1 * k]
+        return block.reshape(y1 - y0, k, x1 - x0, k, 3).mean(axis=(1, 3))
+
+    small = shrink(0, hk, 0, wk)
+    video = Video(path, wk, hk, fps, scale * k)
+
+    def refresh(box):
+        x0, y0, x1, y1 = box
+        frame[y0:y1, x0:x1] = replay.composite(box)
+        sx0, sy0 = x0 // k, y0 // k
+        sx1, sy1 = min(wk, -(-x1 // k)), min(hk, -(-y1 // k))
+        small[sy0:sy1, sx0:sx1] = shrink(sy0, sy1, sx0, sx1)
 
     def emit():
-        video.add(frame)
+        video.add(small)
 
     budget, dirty = per_frame, None
     for name, brush, dabs in doc.journal:
@@ -36,13 +53,11 @@ def timelapse(doc, path, seconds=10.0, fps=30, hold=2.0, scale=1.0):
                                                    max(dirty[2], box[2]), max(dirty[3], box[3]))
             if i < len(dabs):       # budget épuisé au milieu du trait : on sort une image
                 if dirty is not None:
-                    x0, y0, x1, y1 = dirty
-                    frame[y0:y1, x0:x1] = replay.composite(dirty)
+                    refresh(dirty)
                     dirty = None
                 emit()
                 budget = per_frame
     if dirty is not None:
-        x0, y0, x1, y1 = dirty
-        frame[y0:y1, x0:x1] = replay.composite(dirty)
-    video.add(frame, int(hold * fps) + 1)
+        refresh(dirty)
+    video.add(small, int(hold * fps) + 1)
     return video.close()

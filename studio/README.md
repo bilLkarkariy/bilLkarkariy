@@ -13,7 +13,8 @@ python3 -m studio.steps.s03_model_sheet
 python3 -m studio.steps.s03_expressions
 ```
 
-Les rendus sont écrits dans `studio/out/` (non versionné). Dépendances :
+Les rendus sont écrits dans `studio/out/` (non versionné). Les planches de l'étape 3
+sont dessinées en double résolution (`ZOOM = 2`, tête de 300 px) pour un trait fin. Dépendances :
 Python 3, `numpy`, `pillow`, et `ffmpeg` pour les vidéos.
 
 ## Structure

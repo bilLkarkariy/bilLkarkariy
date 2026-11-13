@@ -86,7 +86,8 @@ class Document:
 
     def guide(self, y, x0, x1, strength=0.22):
         """Fin trait horizontal imprimé sur la feuille (repère de model sheet)."""
-        self.paper.rgb[int(round(y)), int(x0):int(x1)] *= 1 - strength
+        y = int(round(y))
+        self.paper.rgb[y:y + max(1, self.w // 2400), int(x0):int(x1)] *= 1 - strength
 
     def composite(self, box=None):
         """Image finale (float, 0..1) : chaque calque assombrit le papier."""
